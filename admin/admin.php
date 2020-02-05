@@ -7,7 +7,7 @@ try {
             $_POST['formConnexion_mdp']
         );
     } else { // On vient d'arriver sur la page sans n'avoir rien cliqué.
-        CtlConnexion();
+        CtlConnexion('');
     }
 } catch (Exception $e) {
     CtlErreur($e->getMessage());
