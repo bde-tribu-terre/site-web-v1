@@ -1,4 +1,5 @@
-<?php // TODO : Sessions.
+<?php
+if (strlen(session_id()) < 1) session_start();
 require_once('./controleur/controleur.php');
 try {
     if (isset($_POST['formConnexion_seConnecter'])) {
@@ -10,5 +11,9 @@ try {
         CtlConnexion('');
     }
 } catch (Exception $e) {
-    CtlErreur($e->getMessage());
+    if (isset($_SESSION['id'])) {
+        CtlMenuErreur($e->getMessage());
+    } else {
+        CtlConnexionErreur($e->getMessage());
+    }
 }

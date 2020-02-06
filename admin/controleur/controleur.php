@@ -11,33 +11,17 @@ function CtlConnexion($messageRetour) {
 }
 
 function CtlVerifConnexion($login, $mdp) {
-    if ($login == 'login' && $mdp == 'mdp') {
-        CtlMenu('');
-    } else {
-        CtlConnexionErreur('Erreur : Mot de passe invalide.');
-    }
-    /*
     if (!empty($login) && !empty($mdp)) {
-        $categorie = checkUser($login, $mdp);
-        if ($categorie != false) {
-            switch ($categorie) {
-                case 'Médecin':
-                    CtlMedecin('');
-                    break;
-                case 'Agent':
-                    CtlAgent('');
-                    break;
-                case 'Directeur':
-                    CtlDirecteur('');
-                    break;
-            }
+        $id = verifConnexion($login, $mdp);
+        if ($id != false) {
+            $_SESSION['id'] = $id;
+            CtlMenu('');
         } else {
-            throw new Exception("<p>Connexion :<br><b>Login ou mot de passe invalide.</b></p>");
+            throw new Exception("Erreur : Login ou mot de passe invalide.");
         }
     } else {
-        throw new Exception("<p>Connexion :<br><b>Veuillez remplir tous les champs.</b></p>");
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
     }
-    */
 }
 
 function CtlConnexionErreur($messageErreur) {
