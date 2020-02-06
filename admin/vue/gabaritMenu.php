@@ -44,6 +44,14 @@
                 </p>
             </form>
         </fieldset>
+        <fieldset id="formMonDeconnexion_fieldset">
+            <h3>Se déconnecter</h3>
+            <form id="formMonDeconnexion" action="admin.php" method="post">
+                <p> <!-- Se déconnecter -->
+                    <input type="submit" value="Se déconnecter" name="formMonDeconnexion_deconnexion">
+                </p>
+            </form>
+        </fieldset>
     </div>
 </fieldset>
 </body>
