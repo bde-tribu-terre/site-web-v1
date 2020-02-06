@@ -17,15 +17,15 @@
         <fieldset id="formArticles_fieldset">
             <h3>Articles</h3>
             <form id="formArticles" action="admin.php" method="post">
-                <input type="submit" value="Créer un article" name="formArticles_creerArticle">
-                <input type="submit" value="Modifier un article" name="formArticles_modifierArticle">
+                <input type="submit" value="Créer un article" name="formArticles_creerArticle" disabled><!-- Disabled TODO: gabaritCreerArticle -->
+                <input type="submit" value="Modifier un article" name="formArticles_modifierArticle" disabled><!-- Disabled TODO: gabaritModifierArticle -->
             </form>
         </fieldset>
         <fieldset id="formEvents_fieldset">
             <h3>Events</h3>
             <form id="formEvents" action="admin.php" method="post">
-                <input type="submit" value="Créer un évent" name="formEvents_creerEvent">
-                <input type="submit" value="Modifier un évent" name="formEvents_modifierEvent">
+                <input type="submit" value="Créer un évent" name="formEvents_creerEvent" disabled><!-- Disabled TODO: gabaritCreerEvent -->
+                <input type="submit" value="Modifier un évent" name="formEvents_modifierEvent" disabled><!-- Disabled TODO: gabaritModifierEvent -->
             </form>
         </fieldset>
         <fieldset id="formMonCompte_fieldset">
