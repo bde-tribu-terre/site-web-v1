@@ -7,7 +7,9 @@ try {
             $_POST['formConnexion_login'],
             $_POST['formConnexion_mdp']
         );
-    } else { // On vient d'arriver sur la page sans n'avoir rien cliqué.
+    } elseif (isset($_SESSION['id'])) { // On vient d'arriver sur le menu.
+        CtlMenu('');
+    } else { // On vient d'arriver sur la page.
         CtlConnexion('');
     }
 } catch (Exception $e) {
