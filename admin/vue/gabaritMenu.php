@@ -44,11 +44,11 @@
                 </p>
             </form>
         </fieldset>
-        <fieldset id="formMonDeconnexion_fieldset">
+        <fieldset id="formDeconnexion_fieldset">
             <h3>Se déconnecter</h3>
-            <form id="formMonDeconnexion" action="admin.php" method="post">
+            <form id="formDeconnexion" action="admin.php" method="post">
                 <p> <!-- Se déconnecter -->
-                    <input type="submit" value="Se déconnecter" name="formMonDeconnexion_deconnexion">
+                    <input type="submit" value="Se déconnecter" name="formDeconnexion_deconnexion">
                 </p>
             </form>
         </fieldset>

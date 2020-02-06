@@ -35,13 +35,22 @@ function CtlMenu($messageRetour) {
     afficherMenu($messageRetour);
 }
 
-function CtlMenuErreur($messageErreur) {
-    afficherMenu($messageErreur);
-}
-
-########################################################################################################################
-# Gabarit Paramètres Compte                                                                                            #
-########################################################################################################################
 function CtlParametresCompte($messageRetour) {
     afficherParametresCompte($messageRetour);
 }
+
+function CtlDeconnexion($messageRetour) {
+    $_SESSION = array();
+    if (isset($COOKIE[session_name()])) {
+        setcookie(session_name(), '', time()-42000, '/');
+    }
+    session_destroy();
+    CtlConnexion('');
+}
+
+function CtlMenuErreur($messageErreur) {
+    afficherMenu($messageErreur);
+}
+########################################################################################################################
+# Gabarit Paramètres Compte                                                                                            #
+########################################################################################################################
