@@ -13,26 +13,28 @@
         echo '<fieldset id="message_fieldset">' . '<legend>Message</legend>' . '<p>' . $messageRetour . '</p>' . '</fieldset>';
     }
     ?>
-    <fieldset id="articles_fieldset">
-        <h3>Articles</h3>
-        <form id="formArticles" action="admin.php" method="post">
-            <input type="submit" value="Créer un article" name="formArticles_creerArticle">
-            <input type="submit" value="Modifier un article" name="formArticles_modifierArticle">
-        </form>
-    </fieldset>
-    <fieldset id="events_fieldset">
-        <h3>Events</h3>
-        <form id="formEvents" action="admin.php" method="post">
-            <input type="submit" value="Créer un évent" name="formEvents_creerEvent">
-            <input type="submit" value="Modifier un évent" name="formEvents_modifierEvent">
-        </form>
-    </fieldset>
-    <fieldset id="monCompte_fieldset">
-        <h3>Mon compte</h3>
-        <form id="formMonCompte" action="admin.php" method="post">
-            <input type="submit" value="Paramètres de mon compte" name="formMonCompte_parametres">
-        </form>
-    </fieldset>
+    <div id="divActions">
+        <fieldset id="formArticles_fieldset">
+            <h3>Articles</h3>
+            <form id="formArticles" action="admin.php" method="post">
+                <input type="submit" value="Créer un article" name="formArticles_creerArticle">
+                <input type="submit" value="Modifier un article" name="formArticles_modifierArticle">
+            </form>
+        </fieldset>
+        <fieldset id="formEvents_fieldset">
+            <h3>Events</h3>
+            <form id="formEvents" action="admin.php" method="post">
+                <input type="submit" value="Créer un évent" name="formEvents_creerEvent">
+                <input type="submit" value="Modifier un évent" name="formEvents_modifierEvent">
+            </form>
+        </fieldset>
+        <fieldset id="formMonCompte_fieldset">
+            <h3>Mon compte</h3>
+            <form id="formMonCompte" action="admin.php" method="post">
+                <input type="submit" value="Paramètres de mon compte" name="formMonCompte_parametres">
+            </form>
+        </fieldset>
+    </div>
 </fieldset>
 </body>
 </html>
