@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Tribu-Terre | Admin</title>
+    <title>Tribu-Terre | Menu administrateur</title>
     <meta charset="UTF-8">
 </head>
 <body>
