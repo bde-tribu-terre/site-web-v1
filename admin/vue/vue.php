@@ -10,5 +10,7 @@ function afficherConnexion($messageRetour) {
 # Gabarit Menu                                                                                                         #
 ########################################################################################################################
 function afficherMenu($messageErreur) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = $ligneInfoMembre->nomMembre;
     require_once('gabaritMenu.php');
 }

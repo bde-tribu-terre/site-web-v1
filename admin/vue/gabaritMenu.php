@@ -11,7 +11,8 @@ if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire u
 }
 ?>
 <fieldset>
-    <p>MENU</p>
+    <h1>MENU ADMINISTRATEUR</h1>
+    <h2>Bienvenue <?php echo $nomMembre ?> 😊</h2>
 </fieldset>
 </body>
 </html>

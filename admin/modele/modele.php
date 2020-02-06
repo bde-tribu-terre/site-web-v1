@@ -23,3 +23,15 @@ function verifConnexion($login, $mdp) {
     $prepare->closeCursor();
     return $return;
 }
+
+function infosMembre($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idMembre, nomMembre, descMembre FROM Membre WHERE idMembre=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
