@@ -62,7 +62,7 @@
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
             <form id="formRetourMenu" action="admin.php" method="post">
-                <p> <!-- Paramètres de mon compte -->
+                <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>
             </form>
