@@ -38,3 +38,10 @@ function CtlMenu($messageRetour) {
 function CtlMenuErreur($messageErreur) {
     afficherMenu($messageErreur);
 }
+
+########################################################################################################################
+# Gabarit Paramètres Compte                                                                                            #
+########################################################################################################################
+function CtlParametresCompte($messageRetour) {
+    afficherParametresCompte($messageRetour);
+}

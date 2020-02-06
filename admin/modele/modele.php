@@ -26,7 +26,7 @@ function verifConnexion($login, $mdp) {
 
 function infosMembre($id) {
     $connexion = getConnect();
-    $requete = "SELECT idMembre, nomMembre, descMembre FROM Membre WHERE idMembre=:id";
+    $requete = "SELECT idMembre, loginMembre, nomMembre, descMembre FROM Membre WHERE idMembre=:id";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();

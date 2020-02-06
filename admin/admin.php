@@ -7,6 +7,8 @@ try {
             $_POST['formConnexion_login'],
             $_POST['formConnexion_mdp']
         );
+    } elseif (isset($_POST['formMonCompte_parametres'])) {
+        CtlParametresCompte('');
     } elseif (isset($_SESSION['id'])) { // On vient d'arriver sur le menu.
         CtlMenu('');
     } else { // On vient d'arriver sur la page.

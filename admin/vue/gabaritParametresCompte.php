@@ -17,7 +17,7 @@
             <h3>Modifier mes infos</h3>
             <form id="formMettreAJour" action="admin.php" method="post">
                 <p> <!-- Login, non modifiable arbitrairement. -->
-                    Login = <?php echo $loginMembre ?>.
+                    Login = <b><?php echo $loginMembre ?></b>.
                 </p>
                 <p> <!-- Nom -->
                     <label for="formMettreAJour_nom">Nom :</label>
@@ -25,7 +25,10 @@
                 </p>
                 <p> <!-- Description -->
                     <label for="formMettreAJour_desc">Mot de passe :</label>
-                    <textarea id="formMettreAJour_desc" name="formMettreAJour_desc" content="<?php echo $descMembre ?>">
+                    <textarea id="formMettreAJour_desc" name="formMettreAJour_desc"><?php echo $descMembre ?></textarea>
+                </p>
+                <p>
+                    Le nom et la description seront affichés à la fin d'un article pour présenter son auteur.
                 </p>
                 <p> <!-- Modifier mes infos -->
                     <input type="submit" value="Modifier mes infos" name="formMettreAJour_modifierInfos">
@@ -36,8 +39,8 @@
             <h3>Changer mon mot de passe</h3>
             <form id="formChangerMdp" action="admin.php" method="post">
                 <p>
-                    <b>Attention : </b>Le mot de passe est visible par ceux ayant accès à la base de donnée, c'est à dire les membres du pôle info.<br>
-                    De plus, le mot de passe y sera sauvegardé de manière durable, et ce jusqu'à la potentielle disparition du site. Les futurs bureaux y auront aussi accès.
+                    <b>Attention : </b>Le mot de passe est visible par ceux ayant accès à la base de données, c'est à dire les membres du pôle info.<br>
+                    De plus, le mot de passe y sera sauvegardé de manière durable, et ce jusqu'à la potentielle disparition du site. Les futurs bureaux y auront aussi accès.<br>
                 </p>
                 <p> <!-- Mdp actuel -->
                     <label for="formChangerMdp_mdpActuel">Mot de passe actuel :</label>
