@@ -13,11 +13,21 @@ function afficherAccueil($prefixe) {
 }
 
 ########################################################################################################################
-# Gabarit Qui sommes-nous ?                                                                                            #
+# Gabarit Erreur                                                                                                       #
 ########################################################################################################################
-function afficherQuiSommesNous($prefixe) {
-    $title = 'Qui sommes-nous ?';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritQuiSommesNous.php';
+function afficherErreur($prefixe, $messageErreur) {
+    $title = 'Une erreur s\'est produite';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritErreur.php';
+
+    require_once($prefixe . 'vue/cadre.php');
+}
+
+########################################################################################################################
+# Gabarit Nous contacter                                                                                               #
+########################################################################################################################
+function afficherNousContacter($prefixe) {
+    $title = 'Nous contacter';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritNousContacter.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -103,11 +113,11 @@ function afficherPolePartenariats($prefixe) {
 }
 
 ########################################################################################################################
-# Gabarit Erreur                                                                                                       #
+# Gabarit Qui sommes-nous ?                                                                                            #
 ########################################################################################################################
-function afficherErreur($prefixe, $messageErreur) {
-    $title = 'Une erreur s\'est produite';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritErreur.php';
+function afficherQuiSommesNous($prefixe) {
+    $title = 'Qui sommes-nous ?';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritQuiSommesNous.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }

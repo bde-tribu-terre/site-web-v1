@@ -1,16 +1,16 @@
 <header>
     <div id="divLogo">
-        <img src="../global/images/imgLogo.png" alt="Logo" id="imgLogo"/>
+        <img src="<?php echo $prefixe . '../global/images/imgLogo.png' ?>" alt="Logo" id="imgLogo"/>
     </div>
     <div id="divReseaux">
         <a href="https://fr-fr.facebook.com/bdeTribuTerre/">
-            <img src="../global/images/imgFacebook.svg" width="32" height="32" alt="Facebook" id="imgFacebook"/>
+            <img src="<?php echo $prefixe . '../global/images/imgFacebook.svg' ?>" width="32" height="32" alt="Facebook" id="imgFacebook"/>
         </a>
         <a href="https://www.instagram.com/tribu.terre/">
-            <img src="../global/images/imgInstagram.svg" width="32" height="32" alt="Instagram" id="imgInstagram"/>
+            <img src="<?php echo $prefixe . '../global/images/imgInstagram.svg' ?>" width="32" height="32" alt="Instagram" id="imgInstagram"/>
         </a>
         <a href="https://twitter.com/Tributerre45">
-            <img src="../global/images/imgTwitter.svg" width="32" height="32" alt="Twitter" id="imgTwitter"/>
+            <img src="<?php echo $prefixe . '../global/images/imgTwitter.svg' ?>" width="32" height="32" alt="Twitter" id="imgTwitter"/>
         </a>
     </div>
     <div id="divTitre">
@@ -32,7 +32,7 @@
                     <a href="#">News</a>
                 </li>
                 <li class="listeDeroulante">
-                    Pôles &ensp;
+                    Pôles
                     <ul class="sousListeDeroulante">
                         <li>
                             <a href="<?php echo $prefixe . '../accueil/pole/communication.php' ?>">Pôle Com</a>

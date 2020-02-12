@@ -11,10 +11,17 @@ function CtlAccueil($prefixe) {
 }
 
 ########################################################################################################################
-# Gabarit Qui sommes-nous ?                                                                                            #
+# Gabarit Erreur                                                                                                       #
 ########################################################################################################################
-function CtlQuiSommesNous($prefixe) {
-    afficherQuiSommesNous($prefixe);
+function CtlErreur($prefixe, $messageErreur) {
+    afficherErreur($prefixe, $messageErreur);
+}
+
+########################################################################################################################
+# Gabarit Nous Contacter                                                                                               #
+########################################################################################################################
+function CtlNousContacter($prefixe) {
+    afficherNousContacter($prefixe);
 }
 
 ########################################################################################################################
@@ -74,8 +81,8 @@ function CtlPolePartenariats($prefixe) {
 }
 
 ########################################################################################################################
-# Gabarit Erreur                                                                                                       #
+# Gabarit Qui sommes-nous ?                                                                                            #
 ########################################################################################################################
-function CtlErreur($messageErreur) {
-    afficherErreur($messageErreur);
+function CtlQuiSommesNous($prefixe) {
+    afficherQuiSommesNous($prefixe);
 }
