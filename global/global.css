@@ -47,8 +47,9 @@ header h1{
 
 #divMenuPrincipal ul {
     background-color : rgba(120,120,120, 1);
-    width : 100% ;
-    padding : 5px; margin: 0;
+    width : 100%;
+    padding : 5px 0 5px 0;
+    margin: 0;
 }
 
 #divMenuPrincipal li {
