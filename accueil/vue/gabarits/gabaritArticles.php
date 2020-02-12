@@ -1,8 +1,5 @@
 <p>
-    Accueil
-</p>
-<p>
-    Events : <?php echo $events ?>
+    Articles
 </p>
 <p>
     Articles : <?php echo $articles ?>

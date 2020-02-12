@@ -13,11 +13,35 @@ function afficherAccueil($prefixe) {
 }
 
 ########################################################################################################################
+# Gabarit Articles                                                                                                     #
+########################################################################################################################
+function afficherArticles($prefixe) {
+    $title = 'Articles';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritArticles.php';
+
+    $articles = 'articles';
+
+    require_once($prefixe . 'vue/cadre.php');
+}
+
+########################################################################################################################
 # Gabarit Erreur                                                                                                       #
 ########################################################################################################################
 function afficherErreur($prefixe, $messageErreur) {
     $title = 'Une erreur s\'est produite';
     $gabarit = $prefixe . 'vue/gabarits/gabaritErreur.php';
+
+    require_once($prefixe . 'vue/cadre.php');
+}
+
+########################################################################################################################
+# Gabarit Events                                                                                                       #
+########################################################################################################################
+function afficherEvents($prefixe) {
+    $title = 'Events';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritEvents.php';
+
+    $events = 'events';
 
     require_once($prefixe . 'vue/cadre.php');
 }
