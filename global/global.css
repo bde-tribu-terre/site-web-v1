@@ -60,11 +60,13 @@ header h1{
     font-size : 20px;
     border-bottom : 1px solid black;
     color: #ff0000;
+    text-shadow: 1px 1px 2px black;
 }
 
 #divMenuPrincipal a {
     text-decoration: none;
     color: #ff0000;
+    text-shadow: 1px 1px 2px black;
 }
 
 #divMenuPrincipal li:hover{
