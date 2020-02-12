@@ -1,7 +1,8 @@
 <?php
-require_once('./controleur/controleur.php');
+$prefixe = './';
+require_once($prefixe . 'controleur/controleur.php');
 try {
-    CtlQuiSommesNous();
+    CtlQuiSommesNous($prefixe);
 } catch (Exception $e) {
-    CtlErreur($e->getMessage());
+    CtlErreur($prefixe, $e->getMessage());
 }

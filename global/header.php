@@ -20,10 +20,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="../accueil/accueil.php">Accueil</a>
+                    <a href="<?php echo $prefixe . '../accueil/accueil.php' ?>">Accueil</a>
                 </li>
                 <li>
-                    <a href="../accueil/qui-sommes-nous.php">Qui sommes-nous ?</a>
+                    <a href="<?php echo $prefixe . '../accueil/qui-sommes-nous.php' ?>">Qui sommes-nous ?</a>
                 </li>
                 <li>
                     <a href="#">Events</a>
@@ -35,28 +35,28 @@
                     Pôles &ensp;
                     <ul class="sousListeDeroulante">
                         <li>
-                            <a href="#">Pôle Com</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/communication.php' ?>">Pôle Com</a>
                         </li>
                         <li>
-                            <a href="#">Pôle Events</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/events.php' ?>">Pôle Events</a>
                         </li>
                         <li>
-                            <a href="#">Pôle Culture</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/culture.php' ?>">Pôle Culture</a>
                         </li>
                         <li>
-                            <a href="#">Pôle Goodies</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/goodies.php' ?>">Pôle Goodies</a>
                         </li>
                         <li>
-                            <a href="#">Pôle Jardin</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/jardin.php' ?>">Pôle Jardin</a>
                         </li>
                         <li>
-                            <a href="#">Pôle Journal</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/journal.php' ?>">Pôle Journal</a>
                         </li>
                         <li>
-                            <a href="#">Pôle Partenariats</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/partenariats.php' ?>">Pôle Partenariats</a>
                         </li>
                         <li>
-                            <a href="#">Pôle Informatique</a>
+                            <a href="<?php echo $prefixe . '../accueil/pole/informatique.php' ?>">Pôle Informatique</a>
                         </li>
                     </ul>
                 </li>

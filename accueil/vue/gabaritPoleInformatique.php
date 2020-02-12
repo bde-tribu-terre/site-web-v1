@@ -1,0 +1,3 @@
+<p>
+    Pôle Informatique
+</p>

@@ -28,7 +28,7 @@ function affichePresentation(){
 					<h2>Présentation</h2>
 					<img src="../images/bureau.png"> <br/>
 					Ici se trouveraient quelques informations sur l\'asso, ses activités, ses différents pôles et potentiellement quelques paragraphes complémentaires pour les nouveaux arrivant en science ou pour nos camarades potentiellement interessés pour rejoindre le bureau ! <br/><br/>
-					ps : Cette page ne serait pas la page d\'acceuil du site car la majorité des utilisateurs chercherons plutot les dernières news.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+					ps : Cette page ne serait pas la page d\'accueil du site car la majorité des utilisateurs chercherons plutot les dernières news.<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				</p>';
 	require_once("cadre.php");
 }
@@ -36,7 +36,7 @@ function affichePresentation(){
 function afficheNews($articles){
 	$contenu='<h2>News</h2>
 					<p>
-						ps : Cette page serait la page d\'acceuil du site<br/><br/>
+						ps : Cette page serait la page d\'accueil du site<br/><br/>
 						Ici se trouveraient des articles clicables traitant des dernieres nouvelles de l\'asso !<br/>
 						Ce qui pourait ressembler a ceci :<br/>
 					</p>';

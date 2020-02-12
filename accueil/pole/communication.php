@@ -1,8 +1,8 @@
 <?php
-$prefixe = './';
+$prefixe = '../';
 require_once($prefixe . 'controleur/controleur.php');
 try {
-    CtlAccueil($prefixe);
+    CtlPoleCommunication($prefixe);
 } catch (Exception $e) {
     CtlErreur($prefixe, $e->getMessage());
 }
