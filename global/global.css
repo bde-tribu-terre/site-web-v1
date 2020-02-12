@@ -53,6 +53,7 @@ header h1{
 }
 
 #divMenuPrincipal li {
+    margin: 0 5px 0 5px;
     font-family : 'Anton', sans-serif;
     font-weight : bold;
     display: inline;
