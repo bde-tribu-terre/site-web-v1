@@ -4,7 +4,7 @@
 ########################################################################################################################
 function afficherAccueil($prefixe) {
     $title = 'Accueil';
-    $gabarit = $prefixe . 'vue/gabaritAccueil.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritAccueil.php';
 
     $articles = 'articles';
     $events = 'events';
@@ -17,7 +17,7 @@ function afficherAccueil($prefixe) {
 ########################################################################################################################
 function afficherQuiSommesNous($prefixe) {
     $title = 'Qui sommes-nous ?';
-    $gabarit = $prefixe . 'vue/gabaritQuiSommesNous.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritQuiSommesNous.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -27,7 +27,7 @@ function afficherQuiSommesNous($prefixe) {
 ########################################################################################################################
 function afficherPoleCommunication($prefixe) {
     $title = 'Pôle Communication';
-    $gabarit = $prefixe . 'vue/gabaritPoleCommunication.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleCommunication.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -37,7 +37,7 @@ function afficherPoleCommunication($prefixe) {
 ########################################################################################################################
 function afficherPoleCulture($prefixe) {
     $title = 'Pôle Culture';
-    $gabarit = $prefixe . 'vue/gabaritPoleCulture.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleCulture.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -47,7 +47,7 @@ function afficherPoleCulture($prefixe) {
 ########################################################################################################################
 function afficherPoleEvents($prefixe) {
     $title = 'Pôle Events';
-    $gabarit = $prefixe . 'vue/gabaritPoleEvents.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleEvents.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -57,7 +57,7 @@ function afficherPoleEvents($prefixe) {
 ########################################################################################################################
 function afficherPoleGoodies($prefixe) {
     $title = 'Pôle Goodies';
-    $gabarit = $prefixe . 'vue/gabaritPoleGoodies.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleGoodies.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -67,7 +67,7 @@ function afficherPoleGoodies($prefixe) {
 ########################################################################################################################
 function afficherPoleInformatique($prefixe) {
     $title = 'Pôle Informatique';
-    $gabarit = $prefixe . 'vue/gabaritPoleInformatique.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleInformatique.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -77,7 +77,7 @@ function afficherPoleInformatique($prefixe) {
 ########################################################################################################################
 function afficherPoleJardin($prefixe) {
     $title = 'Pôle Jardin';
-    $gabarit = $prefixe . 'vue/gabaritPoleJardin.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleJardin.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -87,7 +87,7 @@ function afficherPoleJardin($prefixe) {
 ########################################################################################################################
 function afficherPoleJournal($prefixe) {
     $title = 'Pôle Journal';
-    $gabarit = $prefixe . 'vue/gabaritPoleJournal.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleJournal.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -97,7 +97,7 @@ function afficherPoleJournal($prefixe) {
 ########################################################################################################################
 function afficherPolePartenariats($prefixe) {
     $title = 'Pôle Partenariats';
-    $gabarit = $prefixe . 'vue/gabaritPolePartenariats.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritPolePartenariats.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -107,7 +107,7 @@ function afficherPolePartenariats($prefixe) {
 ########################################################################################################################
 function afficherErreur($prefixe, $messageErreur) {
     $title = 'Une erreur s\'est produite';
-    $gabarit = $prefixe . 'vue/gabaritErreur.php';
+    $gabarit = $prefixe . 'vue/gabarits/gabaritErreur.php';
 
     require_once($prefixe . 'vue/cadre.php');
 }
