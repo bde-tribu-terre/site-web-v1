@@ -26,10 +26,10 @@
                     <a href="<?php echo $prefixe . 'qui-sommes-nous.php' ?>">Qui sommes-nous ?</a>
                 </li>
                 <li>
-                    <a href="<?php echo $prefixe . 'articles.php' ?>">Events</a>
+                    <a href="<?php echo $prefixe . 'events.php' ?>">Events</a>
                 </li>
                 <li>
-                    <a href="<?php echo $prefixe . 'events.php' ?>">News</a>
+                    <a href="<?php echo $prefixe . 'articles.php' ?>">News</a>
                 </li>
                 <li class="listeDeroulante">
                     Pôles
