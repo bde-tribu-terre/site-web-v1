@@ -1,3 +1,2 @@
-<p>
-    Pôle Journal
-</p>
+<h1>Pôle journal</h1>
+<?php echo $tableJournaux ?>

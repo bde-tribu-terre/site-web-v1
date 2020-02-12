@@ -123,6 +123,21 @@ function afficherPoleJournal($prefixe) {
     $title = 'Pôle Journal';
     $gabarit = $prefixe . 'vue/gabarits/gabaritPoleJournal.php';
 
+    $tableJournaux = '<table><tr><th>Fichier</th><th>Date de parution</th></tr>';
+    $journaux = scandir($prefixe . 'ressources/journaux');
+    natsort($journaux);
+    foreach ($journaux as $repertoire) {
+        if (file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt') && $repertoire != '.' && $repertoire != '..') {
+            $desc = file($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt');
+            $titre = $desc[2];
+            $nomFichier = $desc[0];
+            $lienJournal = $prefixe . 'ressources/journaux/' . $repertoire . '/' . $nomFichier;
+            $dateParution = $desc[1];
+            $tableJournaux .= '<tr><td><a href="'. $lienJournal . '">' . $titre . '</a></td><td>' . $dateParution . '</td></tr>';
+        }
+    }
+    $tableJournaux .= '</table>';
+
     require_once($prefixe . 'vue/cadre.php');
 }
 
