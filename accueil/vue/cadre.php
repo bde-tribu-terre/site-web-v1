@@ -3,6 +3,7 @@
 <head>
     <title>Tribu-Terre | <?php echo $title ?></title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../global/global.css">
 </head>
 <body>
 <?php require_once('../global/header.html'); ?>
