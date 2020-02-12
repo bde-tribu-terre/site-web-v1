@@ -6,8 +6,8 @@ function afficherAccueil($prefixe) {
     $title = 'Accueil';
     $gabarit = $prefixe . 'vue/gabarits/gabaritAccueil.php';
 
-    $articles = 'articles';
-    $events = 'events';
+    $articles = '>>variable str php articles<<';
+    $events = '>>variable str php events<<';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -19,7 +19,7 @@ function afficherArticles($prefixe) {
     $title = 'Articles';
     $gabarit = $prefixe . 'vue/gabarits/gabaritArticles.php';
 
-    $articles = 'articles';
+    $articles = '>>variable str php articles<<';
 
     require_once($prefixe . 'vue/cadre.php');
 }
@@ -41,7 +41,7 @@ function afficherEvents($prefixe) {
     $title = 'Events';
     $gabarit = $prefixe . 'vue/gabarits/gabaritEvents.php';
 
-    $events = 'events';
+    $events = '>>variable str php events<<';
 
     require_once($prefixe . 'vue/cadre.php');
 }
