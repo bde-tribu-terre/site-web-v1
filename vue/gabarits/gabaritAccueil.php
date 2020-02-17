@@ -7,7 +7,7 @@
 <p>
     Articles : <?php echo $articles ?>
 </p>
-<div id="divEssaisMEF">
+<div id="divEssaisMEF" style="display: none">
     <h1>h1</h1>
     <h2>h2</h2>
     <h3>h3</h3>
