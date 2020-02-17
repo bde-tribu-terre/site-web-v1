@@ -1,162 +1,102 @@
 <?php
+require_once($prefixe . 'global/connect.php');
+require_once($prefixe . 'mvcpublic/modele/modele.php');
+require_once($prefixe . 'mvcpublic/vue/vue.php');
+
 ########################################################################################################################
 # Gabarit Accueil                                                                                                      #
 ########################################################################################################################
-function afficherAccueil($prefixe) {
-    $title = 'Accueil';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritAccueil.php';
-
-    $articles = '>>variable str php articles<<';
-    $events = '>>variable str php events<<';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlAccueil($prefixe) {
+    afficherAccueil($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Articles                                                                                                     #
 ########################################################################################################################
-function afficherArticles($prefixe) {
-    $title = 'Articles';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritArticles.php';
-
-    $articles = '>>variable str php articles<<';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlArticles($prefixe) {
+    afficherArticles($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Erreur                                                                                                       #
 ########################################################################################################################
-function afficherErreur($prefixe, $messageErreur) {
-    $title = 'Une erreur s\'est produite';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritErreur.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlErreur($prefixe, $messageErreur) {
+    afficherErreur($prefixe, $messageErreur);
 }
 
 ########################################################################################################################
 # Gabarit Events                                                                                                       #
 ########################################################################################################################
-function afficherEvents($prefixe) {
-    $title = 'Events';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritEvents.php';
-
-    $events = '>>variable str php events<<';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlEvents($prefixe) {
+    afficherEvents($prefixe);
 }
 
 ########################################################################################################################
-# Gabarit Nous contacter                                                                                               #
+# Gabarit Nous Contacter                                                                                               #
 ########################################################################################################################
-function afficherNousContacter($prefixe) {
-    $title = 'Nous contacter';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritNousContacter.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlNousContacter($prefixe) {
+    afficherNousContacter($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Communication                                                                                           #
 ########################################################################################################################
-function afficherPoleCommunication($prefixe) {
-    $title = 'Pôle Communication';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleCommunication.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPoleCommunication($prefixe) {
+    afficherPoleCommunication($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Culture                                                                                                 #
 ########################################################################################################################
-function afficherPoleCulture($prefixe) {
-    $title = 'Pôle Culture';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleCulture.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPoleCulture($prefixe) {
+    afficherPoleCulture($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Events                                                                                                  #
 ########################################################################################################################
-function afficherPoleEvents($prefixe) {
-    $title = 'Pôle Events';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleEvents.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPoleEvents($prefixe) {
+    afficherPoleEvents($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Goodies                                                                                                 #
 ########################################################################################################################
-function afficherPoleGoodies($prefixe) {
-    $title = 'Pôle Goodies';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleGoodies.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPoleGoodies($prefixe) {
+    afficherPoleGoodies($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Informatique                                                                                            #
 ########################################################################################################################
-function afficherPoleInformatique($prefixe) {
-    $title = 'Pôle Informatique';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleInformatique.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPoleInformatique($prefixe) {
+    afficherPoleInformatique($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Jardin                                                                                                  #
 ########################################################################################################################
-function afficherPoleJardin($prefixe) {
-    $title = 'Pôle Jardin';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleJardin.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPoleJardin($prefixe) {
+    afficherPoleJardin($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Journal                                                                                                 #
 ########################################################################################################################
-function afficherPoleJournal($prefixe) {
-    $title = 'Pôle Journal';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPoleJournal.php';
-
-    $tableJournaux = '<table><tr><th>Fichier</th><th>Date de parution</th></tr>';
-    $journaux = scandir($prefixe . 'ressources/journaux');
-    natsort($journaux);
-    foreach ($journaux as $repertoire) {
-        if (file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt') && $repertoire != '.' && $repertoire != '..') {
-            $desc = file($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt');
-            $titre = $desc[2];
-            $nomFichier = $desc[0];
-            $lienJournal = $prefixe . 'ressources/journaux/' . $repertoire . '/' . $nomFichier;
-            $dateParution = $desc[1];
-            $tableJournaux .= '<tr><td><a href="'. $lienJournal . '">' . $titre . '</a></td><td>' . $dateParution . '</td></tr>';
-        }
-    }
-    $tableJournaux .= '</table>';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPoleJournal($prefixe) {
+    afficherPoleJournal($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Pôle Partenariats                                                                                            #
 ########################################################################################################################
-function afficherPolePartenariats($prefixe) {
-    $title = 'Pôle Partenariats';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritPolePartenariats.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlPolePartenariats($prefixe) {
+    afficherPolePartenariats($prefixe);
 }
 
 ########################################################################################################################
 # Gabarit Qui sommes-nous ?                                                                                            #
 ########################################################################################################################
-function afficherQuiSommesNous($prefixe) {
-    $title = 'Qui sommes-nous ?';
-    $gabarit = $prefixe . 'vue/gabarits/gabaritQuiSommesNous.php';
-
-    require_once($prefixe . 'vue/cadre.php');
+function CtlQuiSommesNous($prefixe) {
+    afficherQuiSommesNous($prefixe);
 }

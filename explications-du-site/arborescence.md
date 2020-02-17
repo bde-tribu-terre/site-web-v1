@@ -10,15 +10,16 @@ De plus, ce sont deux parties du site qui sont totalement
 indépendantes l'une de l'autre.
 
 - Racine <- MVC public
-  - /controleur
-    - controleur.php
-  - /modele
-    - modele.php
-  - /vue
-    - /gabarits
-      - {Tous les gabarits du MVC public}
-    - cadre.php
-    - vue.php
+  - /mvcpublic
+    - /controleur
+      - controleur.php
+    - /modele
+      - modele.php
+    - /vue
+      - /gabarits
+        - {Tous les gabarits du MVC public}
+      - cadre.php
+      - vue.php
   - /global
     - /images
       - {Toutes les images du site}

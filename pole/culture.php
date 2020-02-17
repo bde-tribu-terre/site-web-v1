@@ -1,6 +1,6 @@
 <?php
 $prefixe = '../';
-require_once($prefixe . 'controleur/controleur.php');
+require_once($prefixe . 'mvcpublic/controleur/controleur.php');
 try {
     CtlPoleCulture($prefixe);
 } catch (Exception $e) {

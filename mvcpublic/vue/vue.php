@@ -1,102 +1,162 @@
 <?php
-require_once($prefixe . 'global/connect.php');
-require_once($prefixe . 'modele/modele.php');
-require_once($prefixe . 'vue/vue.php');
-
 ########################################################################################################################
 # Gabarit Accueil                                                                                                      #
 ########################################################################################################################
-function CtlAccueil($prefixe) {
-    afficherAccueil($prefixe);
+function afficherAccueil($prefixe) {
+    $title = 'Accueil';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritAccueil.php';
+
+    $articles = '>>variable str php articles<<';
+    $events = '>>variable str php events<<';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Articles                                                                                                     #
 ########################################################################################################################
-function CtlArticles($prefixe) {
-    afficherArticles($prefixe);
+function afficherArticles($prefixe) {
+    $title = 'Articles';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritArticles.php';
+
+    $articles = '>>variable str php articles<<';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Erreur                                                                                                       #
 ########################################################################################################################
-function CtlErreur($prefixe, $messageErreur) {
-    afficherErreur($prefixe, $messageErreur);
+function afficherErreur($prefixe, $messageErreur) {
+    $title = 'Une erreur s\'est produite';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritErreur.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Events                                                                                                       #
 ########################################################################################################################
-function CtlEvents($prefixe) {
-    afficherEvents($prefixe);
+function afficherEvents($prefixe) {
+    $title = 'Events';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritEvents.php';
+
+    $events = '>>variable str php events<<';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Nous Contacter                                                                                               #
+# Gabarit Nous contacter                                                                                               #
 ########################################################################################################################
-function CtlNousContacter($prefixe) {
-    afficherNousContacter($prefixe);
+function afficherNousContacter($prefixe) {
+    $title = 'Nous contacter';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritNousContacter.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Communication                                                                                           #
 ########################################################################################################################
-function CtlPoleCommunication($prefixe) {
-    afficherPoleCommunication($prefixe);
+function afficherPoleCommunication($prefixe) {
+    $title = 'Pôle Communication';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleCommunication.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Culture                                                                                                 #
 ########################################################################################################################
-function CtlPoleCulture($prefixe) {
-    afficherPoleCulture($prefixe);
+function afficherPoleCulture($prefixe) {
+    $title = 'Pôle Culture';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleCulture.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Events                                                                                                  #
 ########################################################################################################################
-function CtlPoleEvents($prefixe) {
-    afficherPoleEvents($prefixe);
+function afficherPoleEvents($prefixe) {
+    $title = 'Pôle Events';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleEvents.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Goodies                                                                                                 #
 ########################################################################################################################
-function CtlPoleGoodies($prefixe) {
-    afficherPoleGoodies($prefixe);
+function afficherPoleGoodies($prefixe) {
+    $title = 'Pôle Goodies';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleGoodies.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Informatique                                                                                            #
 ########################################################################################################################
-function CtlPoleInformatique($prefixe) {
-    afficherPoleInformatique($prefixe);
+function afficherPoleInformatique($prefixe) {
+    $title = 'Pôle Informatique';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleInformatique.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Jardin                                                                                                  #
 ########################################################################################################################
-function CtlPoleJardin($prefixe) {
-    afficherPoleJardin($prefixe);
+function afficherPoleJardin($prefixe) {
+    $title = 'Pôle Jardin';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleJardin.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Journal                                                                                                 #
 ########################################################################################################################
-function CtlPoleJournal($prefixe) {
-    afficherPoleJournal($prefixe);
+function afficherPoleJournal($prefixe) {
+    $title = 'Pôle Journal';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleJournal.php';
+
+    $tableJournaux = '<table><tr><th>Fichier</th><th>Date de parution</th></tr>';
+    $journaux = scandir($prefixe . 'ressources/journaux');
+    natsort($journaux);
+    foreach ($journaux as $repertoire) {
+        if (file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt') && $repertoire != '.' && $repertoire != '..') {
+            $desc = file($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt');
+            $titre = $desc[2];
+            $nomFichier = $desc[0];
+            $lienJournal = $prefixe . 'ressources/journaux/' . $repertoire . '/' . $nomFichier;
+            $dateParution = $desc[1];
+            $tableJournaux .= '<tr><td><a href="'. $lienJournal . '">' . $titre . '</a></td><td>' . $dateParution . '</td></tr>';
+        }
+    }
+    $tableJournaux .= '</table>';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Pôle Partenariats                                                                                            #
 ########################################################################################################################
-function CtlPolePartenariats($prefixe) {
-    afficherPolePartenariats($prefixe);
+function afficherPolePartenariats($prefixe) {
+    $title = 'Pôle Partenariats';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPolePartenariats.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Gabarit Qui sommes-nous ?                                                                                            #
 ########################################################################################################################
-function CtlQuiSommesNous($prefixe) {
-    afficherQuiSommesNous($prefixe);
+function afficherQuiSommesNous($prefixe) {
+    $title = 'Qui sommes-nous ?';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritQuiSommesNous.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
