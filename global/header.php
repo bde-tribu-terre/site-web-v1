@@ -3,15 +3,9 @@
         <img src="<?php echo $prefixe . 'global/images/imgLogo.png' ?>" alt="Logo" id="imgLogo"/>
     </div>
     <div id="divReseaux">
-        <a href="https://fr-fr.facebook.com/bdeTribuTerre/">
-            <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" width="32" height="32" alt="Facebook" id="imgFacebook"/>
-        </a>
-        <a href="https://www.instagram.com/tribu.terre/">
-            <img src="<?php echo $prefixe . 'global/images/imgInstagram.svg' ?>" width="32" height="32" alt="Instagram" id="imgInstagram"/>
-        </a>
-        <a href="https://twitter.com/Tributerre45">
-            <img src="<?php echo $prefixe . 'global/images/imgTwitter.svg' ?>" width="32" height="32" alt="Twitter" id="imgTwitter"/>
-        </a>
+        <a href="https://fr-fr.facebook.com/bdeTribuTerre/"><img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" width="32" height="32" alt="Facebook" id="imgFacebook"/></a>
+        <a href="https://www.instagram.com/tribu.terre/"><img src="<?php echo $prefixe . 'global/images/imgInstagram.svg' ?>" width="32" height="32" alt="Instagram" id="imgInstagram"/></a>
+        <a href="https://twitter.com/Tributerre45"><img src="<?php echo $prefixe . 'global/images/imgTwitter.svg' ?>" width="32" height="32" alt="Twitter" id="imgTwitter"/></a>
     </div>
     <div id="divTitre">
         <h1>Tribu-Terrement vôtre</h1>
