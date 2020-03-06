@@ -31,6 +31,10 @@ function CtlConnexionErreur($messageErreur) {
 ########################################################################################################################
 # Gabarit Menu                                                                                                         #
 ########################################################################################################################
+function CtlJournal($messageRetour) {
+    afficherJournal($messageRetour);
+}
+
 function CtlMenu($messageRetour) {
     afficherMenu($messageRetour);
 }
