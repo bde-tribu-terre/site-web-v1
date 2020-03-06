@@ -24,7 +24,7 @@
                     <input id="formMettreAJour_nom" type="text" name="formMettreAJour_nom" value="<?php echo $nomMembre ?>">
                 </p>
                 <p> <!-- Description -->
-                    <label for="formMettreAJour_desc">Mot de passe :</label>
+                    <label for="formMettreAJour_desc">Description :</label>
                     <textarea id="formMettreAJour_desc" name="formMettreAJour_desc"><?php echo $descMembre ?></textarea>
                 </p>
                 <p>
