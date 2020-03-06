@@ -55,6 +55,22 @@ function CtlDeconnexion($messageRetour) {
 function CtlMenuErreur($messageErreur) {
     afficherMenu($messageErreur);
 }
+
+########################################################################################################################
+# Gabarit Journal                                                                                                      #
+########################################################################################################################
+function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
+    if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($fileImput)) {
+        try {
+            ajouterJournal($titre, $mois, $annee, $fileImput);
+            afficherJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
+        } catch (Exception $e) {
+            afficherJournal($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
 ########################################################################################################################
 # Gabarit Paramètres Compte                                                                                            #
 ########################################################################################################################

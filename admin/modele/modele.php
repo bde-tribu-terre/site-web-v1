@@ -35,3 +35,22 @@ function infosMembre($id) {
     $prepare->closeCursor();
     return $ligne;
 }
+
+function ajouterJournal($titre, $mois, $annee, $fileImput) {
+    $journauxRep = '../ressources/journaux/';
+    $nextUpload = file($journauxRep . 'nextUpload.txt')[0];
+    $newName = 'file_' . preg_replace('/[\W]/', '', $titre);
+    mkdir($journauxRep . $nextUpload);
+    move_uploaded_file(
+        $_FILES[$fileImput]['tmp_name'],
+        $journauxRep . $nextUpload . '/' . $newName
+    );
+    $descFile = fopen($journauxRep . $nextUpload . '/desc.txt', 'w');
+    fwrite($descFile, $newName . "\n");
+    fwrite($descFile, $annee . '-' . $mois . "\n");
+    fwrite($descFile, $titre);
+    fclose($descFile);
+    $nextUploadFile = fopen($journauxRep . 'nextUpload.txt', 'w');
+    fwrite($nextUploadFile, strval(intval($nextUpload) + 1));
+    fclose($nextUploadFile);
+}
