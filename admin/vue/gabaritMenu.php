@@ -36,6 +36,14 @@
                 </p>
             </form>
         </fieldset>
+        <fieldset id="formJournal_fieldset">
+            <h3>Journal</h3>
+            <form id="formJournal" action="admin.php" method="post">
+                <p> <!-- Gérer les journaux -->
+                    <input type="submit" value="Gérer les journaux" name="formEvents_gererJournal">
+                </p>
+            </form>
+        </fieldset>
         <fieldset id="formMonCompte_fieldset">
             <h3>Mon compte</h3>
             <form id="formMonCompte" action="admin.php" method="post">
