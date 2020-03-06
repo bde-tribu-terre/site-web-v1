@@ -40,7 +40,7 @@
             <h3>Journal</h3>
             <form id="formJournal" action="admin.php" method="post">
                 <p> <!-- Gérer les journaux -->
-                    <input type="submit" value="Gérer les journaux" name="formEvents_gererJournal">
+                    <input type="submit" value="Gérer les journaux" name="formJournal_gererJournal">
                 </p>
             </form>
         </fieldset>
