@@ -39,7 +39,7 @@ function infosMembre($id) {
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
     $journauxRep = '../ressources/journaux/';
     $nextUpload = file($journauxRep . 'nextUpload.txt')[0];
-    $newName = 'file_' . preg_replace('/[\W]/', '', $titre);
+    $newName = 'file_' . preg_replace('/[\W]/', '', $titre) . '.pdf';
     mkdir($journauxRep . $nextUpload);
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
