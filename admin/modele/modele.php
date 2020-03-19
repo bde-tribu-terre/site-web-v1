@@ -38,7 +38,7 @@ function infosMembre($id) {
 
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
     $journauxRep = '../ressources/journaux/';
-    $nextUpload = file($journauxRep . 'nextUpload.txt')[0];
+    $nextUpload = file($journauxRep . 'next.txt')[0];
     $newName = 'file_' . preg_replace('/[\W]/', '', $titre) . '.pdf';
     mkdir($journauxRep . $nextUpload);
     move_uploaded_file(
@@ -50,7 +50,7 @@ function ajouterJournal($titre, $mois, $annee, $fileImput) {
     fwrite($descFile, $annee . '-' . $mois . "\n");
     fwrite($descFile, $titre);
     fclose($descFile);
-    $nextUploadFile = fopen($journauxRep . 'nextUpload.txt', 'w');
+    $nextUploadFile = fopen($journauxRep . 'next.txt', 'w');
     fwrite($nextUploadFile, strval(intval($nextUpload) + 1));
     fclose($nextUploadFile);
 }
