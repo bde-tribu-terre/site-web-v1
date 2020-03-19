@@ -42,7 +42,7 @@
                 <h4>Notre page Facebook</h4>
                 <a href="https://www.facebook.com/bdeTribuTerre/">
                     <p>
-                        <img src="../global/images/imgFacebook.svg" height="64" width="64" alt="Facebook">
+                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
                         www.facebook.com/bdeTribuTerre
                     </p>
                 </a>
@@ -53,7 +53,7 @@
                 <h4>Notre compte Instagram</h4>
                 <a href="https://www.instagram.com/tribu.terre/">
                     <p>
-                        <img src="../global/images/imgInstagram.svg" height="64" width="64" alt="Instagram">
+                        <img src="<?php echo $prefixe . 'global/images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
                         www.instagram.com/tribu.terre
                     </p>
                 </a>
@@ -64,7 +64,7 @@
                 <h4>Notre compte Twitter</h4>
                 <a href="https://twitter.com/Tributerre45/">
                     <p>
-                        <img src="../global/images/imgTwitter.svg" height="64" width="64" alt="Twitter">
+                        <img src="<?php echo $prefixe . 'global/images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
                         twitter.com/Tributerre45
                     </p>
                 </a>
@@ -85,7 +85,7 @@
                 <p>203 rue de Bourgogne, Orléans</p>
                 <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
                     <p>
-                        <img src="../global/images/imgFacebook.svg" height="20" width="20" alt="Facebook">
+                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="20" width="20" alt="Facebook">
                         Page Facebook
                     </p>
                 </a>
@@ -97,7 +97,7 @@
                 <p>208 rue de Bourgogne, Orléans</p>
                 <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
                     <p>
-                        <img src="../global/images/imgFacebook.svg" height="20" width="20" alt="Facebook">
+                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="20" width="20" alt="Facebook">
                         Page Facebook
                     </p>
                 </a>
@@ -109,7 +109,7 @@
                 <p>218 rue de Bourgogne, Orléans</p>
                 <a href="https://www.facebook.com/leptitbarc/">
                     <p>
-                        <img src="../global/images/imgFacebook.svg" height="20" width="20" alt="Facebook">
+                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="20" width="20" alt="Facebook">
                         Page Facebook
                     </p>
                 </a>

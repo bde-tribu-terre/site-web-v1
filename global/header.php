@@ -1,7 +1,7 @@
 <header>
     <div class="jumbotron">
         <div class="container text-center">
-            <img src="../global/images/imgLogo.png" alt="Logo" height="300">
+            <img src="<?php echo $prefixe . 'global/images/imgLogo.png' ?>" alt="Logo" height="300">
             <p>Association des étudiants en Science de l'Université d'Orléans</p>
         </div>
     </div>
