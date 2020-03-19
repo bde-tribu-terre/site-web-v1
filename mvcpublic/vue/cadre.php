@@ -1,16 +1,51 @@
+
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <title>Tribu-Terre | <?php echo $title ?></title>
     <meta charset="UTF-8">
-    <meta name="author" content="Tribu-Terre">
-    <link rel="stylesheet" href="<?php echo $prefixe . 'global/global.css' ?>">
+    <title>Tribu-Terre | <?php echo $title ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            /* background-image: url("../accueil_depreciated/images/Tribu-Terre.png");
+            background-clip: border-box;
+            background-repeat: no-repeat;
+            background-size: cover; */
+            margin-bottom: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+
+        .carousel-inner img {
+            width: 100%; /* Set width to 100% */
+            min-height: 200px;
+        }
+
+        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        @media (max-width: 600px) {
+            .carousel-caption {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 <?php require_once($prefixe . 'global/header.php'); ?>
-<div id="divContenu">
-    <?php require_once($gabarit); ?>
-</div>
+<?php require_once($gabarit); ?>
 <?php require_once($prefixe . 'global/footer.php'); ?>
 </body>
 </html>

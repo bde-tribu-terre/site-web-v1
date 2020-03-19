@@ -6,9 +6,6 @@ function afficherAccueil($prefixe) {
     $title = 'Accueil';
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritAccueil.php';
 
-    $articles = '>>variable str php articles<<';
-    $events = '>>variable str php events<<';
-
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 

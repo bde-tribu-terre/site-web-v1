@@ -1,37 +1,35 @@
 <header>
-    <div id="divLogo">
-        <img src="<?php echo $prefixe . 'global/images/imgLogo.png' ?>" alt="Logo" id="imgLogo" width="120" height="120"/>
+    <div class="jumbotron">
+        <div class="container text-center">
+            <img src="../global/images/imgLogo.png" alt="Logo" height="300">
+            <p>Association des étudiants en Science de l'Université d'Orléans</p>
+        </div>
     </div>
-    <div id="divReseaux">
-        <a href="https://fr-fr.facebook.com/bdeTribuTerre/"><img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" width="32" height="32" alt="Facebook" id="imgFacebook"/></a>
-        <a href="https://www.instagram.com/tribu.terre/"><img src="<?php echo $prefixe . 'global/images/imgInstagram.svg' ?>" width="32" height="32" alt="Instagram" id="imgInstagram"/></a>
-        <a href="https://twitter.com/Tributerre45"><img src="<?php echo $prefixe . 'global/images/imgTwitter.svg' ?>" width="32" height="32" alt="Twitter" id="imgTwitter"/></a>
-    </div>
-    <div id="divTitre">
-        <h1>Tribu-Terrement vôtre</h1>
-    </div>
-    <div id="divMenuPrincipal">
-        <nav>
-            <ul>
-                <li>
-                    <a href="<?php echo $prefixe . 'accueil.php' ?>">Accueil</a>
-                </li>
-                <li>
-                    <a href="<?php echo $prefixe . 'qui-sommes-nous.php' ?>">Qui sommes-nous ?</a>
-                </li>
-                <li>
-                    <a href="<?php echo $prefixe . 'events.php' ?>">Events</a>
-                </li>
-                <li>
-                    <a href="<?php echo $prefixe . 'goodies.php' ?>">Goodies</a>
-                </li>
-                <li>
-                    <a href="<?php echo $prefixe . 'journaux.php' ?>">Journaux</a>
-                </li>
-                <li>
-                    <a href="<?php echo $prefixe . 'statuts.php' ?>">Statuts</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <!-- C'est le petit bouton menu quand l'écran est trop petit -->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar"> <!-- Et ça c'est quand l'écran est assez grand -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Accueil</a></li>
+                    <li><a href="#">Qui sommes-nous ?</a></li>
+                    <li><a href="#">Évents</a></li>
+                    <li><a href="#">Goodies</a></li>
+                    <li><a href="#">Journaux</a></li>
+                    <li><a href="#">Statuts</a></li>
+                </ul>
+                <!-- Bouton se connecter
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+                -->
+            </div>
+        </div>
+    </nav>
 </header>
