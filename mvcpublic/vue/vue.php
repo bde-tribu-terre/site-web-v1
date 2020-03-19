@@ -51,6 +51,7 @@ function afficherJournaux($prefixe) {
     $tableJournaux = '';
     $journaux = scandir($prefixe . 'ressources/journaux');
     natsort($journaux);
+    array_reverse($journaux);
     foreach ($journaux as $repertoire) {
         if (file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt') && $repertoire != '.' && $repertoire != '..') {
             $desc = file($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt');
