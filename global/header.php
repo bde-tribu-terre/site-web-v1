@@ -22,9 +22,6 @@
                 <li>
                     <a href="<?php echo $prefixe . 'events.php' ?>">Events</a>
                 </li>
-                <li>
-                    <a href="<?php echo $prefixe . 'articles.php' ?>">News</a>
-                </li>
                 <li class="listeDeroulante">
                     Pôles
                     <ul class="sousListeDeroulante">

@@ -33,8 +33,6 @@ indépendantes l'une de l'autre.
     - /statuts
       - {Les statuts en format PDF, possibilité de mettre
       les anciens ou pas}
-    - /articles
-      - A voir encore comment on stocke les articles.
     - /events
       - Pareil, à voir comment stocker les events.
   - /admin <- MVC admin

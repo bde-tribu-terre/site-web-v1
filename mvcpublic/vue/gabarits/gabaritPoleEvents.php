@@ -1,3 +1,0 @@
-<p>
-    Pôle Event
-</p>

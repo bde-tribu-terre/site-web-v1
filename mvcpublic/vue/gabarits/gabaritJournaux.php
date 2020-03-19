@@ -1,2 +1,2 @@
-<h1>Pôle journal</h1>
+<h1>Journaux</h1>
 <?php echo $tableJournaux ?>

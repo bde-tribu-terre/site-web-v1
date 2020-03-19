@@ -1,3 +1,0 @@
-<p>
-    Pôle Goodies
-</p>

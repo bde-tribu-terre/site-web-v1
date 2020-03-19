@@ -13,18 +13,6 @@ function afficherAccueil($prefixe) {
 }
 
 ########################################################################################################################
-# Gabarit Articles                                                                                                     #
-########################################################################################################################
-function afficherArticles($prefixe) {
-    $title = 'Articles';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritArticles.php';
-
-    $articles = '>>variable str php articles<<';
-
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
-}
-
-########################################################################################################################
 # Gabarit Erreur                                                                                                       #
 ########################################################################################################################
 function afficherErreur($prefixe, $messageErreur) {
@@ -47,81 +35,21 @@ function afficherEvents($prefixe) {
 }
 
 ########################################################################################################################
-# Gabarit Nous contacter                                                                                               #
+# Gabarit Goodies                                                                                                      #
 ########################################################################################################################
-function afficherNousContacter($prefixe) {
-    $title = 'Nous contacter';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritNousContacter.php';
+function afficherGoodies($prefixe) {
+    $title = 'Goodies';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php';
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Pôle Communication                                                                                           #
+# Gabarit Journaux                                                                                                     #
 ########################################################################################################################
-function afficherPoleCommunication($prefixe) {
-    $title = 'Pôle Communication';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleCommunication.php';
-
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
-}
-
-########################################################################################################################
-# Gabarit Pôle Culture                                                                                                 #
-########################################################################################################################
-function afficherPoleCulture($prefixe) {
-    $title = 'Pôle Culture';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleCulture.php';
-
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
-}
-
-########################################################################################################################
-# Gabarit Pôle Events                                                                                                  #
-########################################################################################################################
-function afficherPoleEvents($prefixe) {
-    $title = 'Pôle Events';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleEvents.php';
-
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
-}
-
-########################################################################################################################
-# Gabarit Pôle Goodies                                                                                                 #
-########################################################################################################################
-function afficherPoleGoodies($prefixe) {
-    $title = 'Pôle Goodies';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleGoodies.php';
-
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
-}
-
-########################################################################################################################
-# Gabarit Pôle Informatique                                                                                            #
-########################################################################################################################
-function afficherPoleInformatique($prefixe) {
-    $title = 'Pôle Informatique';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleInformatique.php';
-
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
-}
-
-########################################################################################################################
-# Gabarit Pôle Jardin                                                                                                  #
-########################################################################################################################
-function afficherPoleJardin($prefixe) {
-    $title = 'Pôle Jardin';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleJardin.php';
-
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
-}
-
-########################################################################################################################
-# Gabarit Pôle Journal                                                                                                 #
-########################################################################################################################
-function afficherPoleJournal($prefixe) {
-    $title = 'Pôle Journal';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPoleJournal.php';
+function afficherJournaux($prefixe) {
+    $title = 'Journaux';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritJournaux.php';
 
     $tableJournaux = '<table><tr><th>Fichier</th><th>Date de parution</th></tr>';
     $journaux = scandir($prefixe . 'ressources/journaux');
@@ -142,11 +70,11 @@ function afficherPoleJournal($prefixe) {
 }
 
 ########################################################################################################################
-# Gabarit Pôle Partenariats                                                                                            #
+# Gabarit Nous contacter                                                                                               #
 ########################################################################################################################
-function afficherPolePartenariats($prefixe) {
-    $title = 'Pôle Partenariats';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritPolePartenariats.php';
+function afficherNousContacter($prefixe) {
+    $title = 'Nous contacter';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritNousContacter.php';
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
@@ -157,6 +85,16 @@ function afficherPolePartenariats($prefixe) {
 function afficherQuiSommesNous($prefixe) {
     $title = 'Qui sommes-nous ?';
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritQuiSommesNous.php';
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+}
+
+########################################################################################################################
+# Gabarit Statuts                                                                                                      #
+########################################################################################################################
+function afficherStatuts($prefixe) {
+    $title = 'Statuts';
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritStatuts.php';
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }

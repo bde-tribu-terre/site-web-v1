@@ -1,3 +1,0 @@
-<p>
-    Pôle Culture
-</p>
