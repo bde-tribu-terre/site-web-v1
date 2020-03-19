@@ -48,7 +48,7 @@ function afficherJournaux($prefixe) {
     $title = 'Journaux';
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritJournaux.php';
 
-    $tableJournaux = '<table><tr><th>Fichier</th><th>Date de parution</th></tr>';
+    $tableJournaux = '';
     $journaux = scandir($prefixe . 'ressources/journaux');
     natsort($journaux);
     foreach ($journaux as $repertoire) {
@@ -58,10 +58,18 @@ function afficherJournaux($prefixe) {
             $nomFichier = $desc[0];
             $lienJournal = $prefixe . 'ressources/journaux/' . $repertoire . '/' . $nomFichier;
             $dateParution = $desc[1];
-            $tableJournaux .= '<tr><td><a href="'. $lienJournal . '">' . $titre . '</a></td><td>' . $dateParution . '</td></tr>';
+            $tableJournaux .=
+                '<div class="col-sm-3">' .
+                    '<div class="well">' .
+                        '<h3>' . $titre . '</h3>' .
+                        '<h4>' . $dateParution . '</h4>' .
+                        '<a href="' . $lienJournal . '">' .
+                            '<h4>Lire en ligne</h4>' .
+                        '</a>' .
+                    '</div>' .
+                '</div>';
         }
     }
-    $tableJournaux .= '</table>';
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
