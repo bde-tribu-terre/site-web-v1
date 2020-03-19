@@ -9,13 +9,13 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <!-- C'est le petit bouton menu quand l'écran est trop petit -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationHeader"> <!-- C'est le petit bouton menu quand l'écran est trop petit -->
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar"> <!-- Et ça c'est quand l'écran est assez grand -->
+            <div class="collapse navbar-collapse" id="navigationHeader"> <!-- Et ça c'est quand l'écran est assez grand -->
                 <ul class="nav navbar-nav">
                     <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritAccueil.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'accueil.php' ?>">Accueil</a></li>
                     <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritQuiSommesNous.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'qui-sommes-nous.php' ?>">Qui sommes-nous ?</a></li>
