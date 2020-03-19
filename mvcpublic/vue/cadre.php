@@ -3,6 +3,7 @@
 <head>
     <title>Tribu-Terre | <?php echo $title ?></title>
     <meta charset="UTF-8">
+    <meta name="author" content="Tribu-Terre">
     <link rel="stylesheet" href="<?php echo $prefixe . 'global/global.css' ?>">
 </head>
 <body>
