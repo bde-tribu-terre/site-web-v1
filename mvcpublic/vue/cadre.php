@@ -16,10 +16,10 @@
 
         /* Remove the jumbotron's default bottom margin */
         .jumbotron {
-            /* background-image: url("../accueil_depreciated/images/Tribu-Terre.png");
+            background-image: url("<?php echo $prefixe . 'global/images/imgFondMarbre' ?>");
             background-clip: border-box;
             background-repeat: no-repeat;
-            background-size: cover; */
+            background-size: cover;
             margin-bottom: 0;
         }
 
