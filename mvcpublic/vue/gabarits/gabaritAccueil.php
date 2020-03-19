@@ -43,7 +43,7 @@
                 <a href="https://www.facebook.com/bdeTribuTerre/">
                     <p>
                         <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
-                        www.facebook.com/bdeTribuTerre
+                        facebook.com/bdeTribuTerre
                     </p>
                 </a>
             </div>
@@ -54,7 +54,7 @@
                 <a href="https://www.instagram.com/tribu.terre/">
                     <p>
                         <img src="<?php echo $prefixe . 'global/images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
-                        www.instagram.com/tribu.terre
+                        instagram.com/tribu.terre
                     </p>
                 </a>
             </div>
