@@ -29,6 +29,12 @@
             padding: 25px;
         }
 
+        /* Arrondit les bords du carousel. */
+        .carousel {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
         .carousel-inner img {
             width: 100%; /* Set width to 100% */
             min-height: 200px;
