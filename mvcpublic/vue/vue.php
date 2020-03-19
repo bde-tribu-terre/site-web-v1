@@ -20,10 +20,11 @@ function afficherAccueil($prefixe) {
             file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/img.png') // On élimine implicitement aussi . et ..
         ) {
             $attr = file($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt');
-            $nomGoodie = $attr[0];
-            $prixAdherent = $attr[1];
-            $prixNonAdherent = $attr[2];
-            $etat = $attr[3]; // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
+            $nomGoodie = preg_replace("/\r|\n/", "", $attr[0]);
+            $prixAdherent = preg_replace("/\r|\n/", "", $attr[1]);
+            $prixNonAdherent = preg_replace("/\r|\n/", "", $attr[2]);
+            $etat = preg_replace("/\r|\n/", "", $attr[3]);
+            // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
             if ($etat != 1) {
                 continue;
             }
