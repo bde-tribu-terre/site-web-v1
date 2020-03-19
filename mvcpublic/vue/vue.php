@@ -12,13 +12,12 @@ function afficherAccueil($prefixe) {
     $listeGoodies = scandir($prefixe . 'ressources/goodies');
     natsort($listeGoodies);
 
+    $premier = true;
     foreach ($listeGoodies as $repertoire) {
         if (
-            file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt') &&
-            file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/attr.txt') &&
-            file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/img.png') &&
-            $repertoire != '.' &&
-            $repertoire != '..'
+            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/desc.txt') &&
+            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt') &&
+            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/img.png') // On élimine implicitement aussi . et ..
         ) {
             $attr = file($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt');
             $nomGoodie = $attr[0];
@@ -30,13 +29,14 @@ function afficherAccueil($prefixe) {
             }
             $lienImg = $prefixe . 'ressources/goodies/' . $repertoire . '/img.png';
             $goodiesIndicators .= '<li data-target="carouselGoodies" data-slide-to="' . $repertoire . '"';
-            if ($listeGoodies[0] == $repertoire) {
+            if ($premier) {
                 $goodiesIndicators .= ' class="active"';
             }
             $goodiesIndicators .= '></li>';
             $goodies .= '<div class="item';
-            if ($listeGoodies[0] == $repertoire) {
+            if ($premier) {
                 $goodies .= ' active';
+                $premier = false;
             }
             $goodies .=
                 '">' .
