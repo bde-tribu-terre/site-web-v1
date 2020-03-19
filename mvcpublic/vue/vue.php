@@ -33,19 +33,19 @@ function afficherAccueil($prefixe) {
             if ($premier) {
                 $goodiesIndicators .= ' class="active"';
             }
-            $goodiesIndicators .= '></li>';
+            $goodiesIndicators .= '></li>' . '\n' .;
             $goodies .= '<div class="item';
             if ($premier) {
                 $goodies .= ' active';
                 $premier = false;
             }
             $goodies .=
-                '">' .
-                    '<img src="' . $lienImg . '" alt="Image">' .
-                    '<div class="carousel-caption">' .
-                        '<h3>' . $nomGoodie . '</h3>' .
-                        '<p>' . $prixAdherent . '€ Adhérent | ' . $prixNonAdherent . '€ Non-adhérent</p>' .
-                    '</div>' .
+                '">' . '\n' .
+                    '<img src="' . $lienImg . '" alt="Image">' . '\n' .
+                    '<div class="carousel-caption">' . '\n' .
+                        '<h3>' . $nomGoodie . '</h3>' . '\n' .
+                        '<p>' . $prixAdherent . '€ Adhérent | ' . $prixNonAdherent . '€ Non-adhérent</p>' . '\n' .
+                    '</div>' . '\n' .
                 '</div>';
         }
     }
