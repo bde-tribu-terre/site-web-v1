@@ -1,2 +1,6 @@
-<h1>Journaux</h1>
-<?php echo $tableJournaux ?>
+<div class="container">
+    <div class="row">
+        <?php echo $tableJournaux ?>
+    </div>
+    <hr>
+</div><br>
