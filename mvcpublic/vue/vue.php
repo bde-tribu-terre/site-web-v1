@@ -29,7 +29,7 @@ function afficherAccueil($prefixe) {
                 continue;
             }
             $lienImg = $prefixe . 'ressources/goodies/' . $repertoire . '/img.png';
-            $goodiesIndicators .= '<li data-target="carouselGoodies" data-slide-to="' . $repertoire . '"';
+            $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $repertoire . '"';
             if ($premier) {
                 $goodiesIndicators .= ' class="active"';
             }
