@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-8">
             <h3>Tous nos goodies !</h3>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div id="carouselGoodies" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <?php echo $goodiesIndicators ?>
