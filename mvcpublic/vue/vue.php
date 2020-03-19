@@ -78,7 +78,7 @@ function afficherJournaux($prefixe) {
                 '<div class="col-sm-3">' .
                     '<div class="well">' .
                         '<h3>' . $titre . '</h3>' .
-                        '<h4>' . $arrayMois[substr($dateParution, -2)] . ' ' . substr($dateParution, 0, -2) . '</h4>' .
+                        '<h4>' . $arrayMois[substr($dateParution, 5, 2)] . ' ' . substr($dateParution, 0, 4) . '</h4>' .
                         '<a href="' . $lienJournal . '">' .
                             '<h4>Lire en ligne</h4>' .
                         '</a>' .
