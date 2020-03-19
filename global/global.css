@@ -32,9 +32,15 @@ header {
     text-align: center;
 }
 
-header h1{
-    font-size: 40px;
-    text-align: center
+header h1 {
+    font-size: 60px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#divTitre {
+    height: 128px;
 }
 
 #divLogo {
@@ -77,21 +83,6 @@ header h1{
 
 #divMenuPrincipal a:hover {
     color: #c10000;
-}
-
-.sousListeDeroulante {
-    display: none;
-    position: absolute;
-    width: 100%;
-    z-index: 1000;
-}
-
-nav > ul li:hover .sousListeDeroulante {
-    display: block;
-}
-
-.listeDeroulante::after {
-    content: " ▼";
 }
 
 /**********************************************************************************************************************

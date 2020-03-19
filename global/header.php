@@ -1,6 +1,6 @@
 <header>
     <div id="divLogo">
-        <img src="<?php echo $prefixe . 'global/images/imgLogo.png' ?>" alt="Logo" id="imgLogo"/>
+        <img src="<?php echo $prefixe . 'global/images/imgLogo.png' ?>" alt="Logo" id="imgLogo" width="120" height="120"/>
     </div>
     <div id="divReseaux">
         <a href="https://fr-fr.facebook.com/bdeTribuTerre/"><img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" width="32" height="32" alt="Facebook" id="imgFacebook"/></a>
@@ -22,34 +22,14 @@
                 <li>
                     <a href="<?php echo $prefixe . 'events.php' ?>">Events</a>
                 </li>
-                <li class="listeDeroulante">
-                    Pôles
-                    <ul class="sousListeDeroulante">
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/communication.php' ?>">Pôle Com</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/events.php' ?>">Pôle Events</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/culture.php' ?>">Pôle Culture</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/goodies.php' ?>">Pôle Goodies</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/jardin.php' ?>">Pôle Jardin</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/journal.php' ?>">Pôle Journal</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/partenariats.php' ?>">Pôle Partenariats</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo $prefixe . 'pole/informatique.php' ?>">Pôle Informatique</a>
-                        </li>
-                    </ul>
+                <li>
+                    <a href="<?php echo $prefixe . 'goodies.php' ?>">Goodies</a>
+                </li>
+                <li>
+                    <a href="<?php echo $prefixe . 'journaux.php' ?>">Journaux</a>
+                </li>
+                <li>
+                    <a href="<?php echo $prefixe . 'statuts.php' ?>">Statuts</a>
                 </li>
             </ul>
         </nav>
