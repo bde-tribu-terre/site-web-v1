@@ -1,3 +1,1 @@
-<p>
-    Goodies
-</p>
+<h1>Goodies</h1>
