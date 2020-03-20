@@ -68,12 +68,21 @@ function afficherAccueil($prefixe) {
         $date = htmlentities($ligne->dateEvents, ENT_QUOTES, "UTF-8");
         $heure = htmlentities($ligne->heureEvents, ENT_QUOTES, "UTF-8");
         $lieu = htmlentities($ligne->lieuEvents, ENT_QUOTES, "UTF-8");
+        $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+        $nbJoursStr = '';
+        if ($nbJours == 0) {
+            $nbJoursStr .= '<strong><span style="color: red">(Aujourd\'hui)</span></strong>';
+        } elseif ($nbJours == 1) {
+            $nbJoursStr .= '<strong><span style="color: red">(Demain)</span></strong>';
+        } else {
+            $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+        }
         $events .=
             '<a href="' . $prefixe . 'events?id=' . $id . '">' .
                 '<div class="well">' .
                     '<h4>' . $titre . '</h4>' .
-                    '<p>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' (Dans 5 jours)</p>' .
-                    '<p>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 2, 2) . '</p>' .
+                    '<p>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . $nbJoursStr . '</p>' .
+                    '<p>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</p>' .
                     '<p>📍 ' . $lieu . '</p>' .
                 '</div>' .
             '</a>';
