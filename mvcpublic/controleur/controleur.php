@@ -36,7 +36,7 @@ function CtlGoodiePrecis($prefixe, $id) {
 
         afficherGoodiePrecis($prefixe, $id);
     } else {
-        throw new Exception("Erreur : Login ou mot de passe invalide.");
+        throw new Exception("Erreur : Le goodie recherché n'existe pas !");
     }
 }
 
