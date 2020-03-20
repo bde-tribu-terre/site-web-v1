@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS TRIBUTERRE;
+DROP DATABASE IF EXISTS MLR-TT;
 
-CREATE DATABASE IF NOT EXISTS TRIBUTERRE;;
-USE TRIBUTERRE;;
+CREATE DATABASE IF NOT EXISTS MLR-TT;
+USE MLR-TT;
 # -----------------------------------------------------------------------------
 #       TABLE : MEMBRE
 # -----------------------------------------------------------------------------
@@ -26,47 +26,15 @@ CREATE TABLE IF NOT EXISTS EVENTS
    IDEVENTS INTEGER NOT NULL AUTO_INCREMENT  ,
    TITREEVENTS VARCHAR(64) NOT NULL  ,
    DESCEVENTS VARCHAR(128) NOT NULL  ,
-   TEXTEEVENTS VARCHAR(32768) NOT NULL  ,
-   DATEDEBUTEVENTS DATETIME NOT NULL  ,
-   DATEFINEVENTS DATETIME NOT NULL  ,
-   ESTUNEDUREEEVENTS SMALLINT NOT NULL  ,
-   HEUREDEFINIEEVENTS SMALLINT NOT NULL  ,
+   DATEEVENTS DATE NOT NULL  ,
+   HEUREEVENTS TIME NOT NULL  ,
    LIEUEVENTS CHAR(32) NOT NULL  
    , PRIMARY KEY (IDEVENTS) 
  ) 
  comment = "";
 
-# -----------------------------------------------------------------------------
-#       TABLE : ARTICLE
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS ARTICLE
- (
-   IDARTICLE INTEGER NOT NULL AUTO_INCREMENT  ,
-   IDMEMBRE INTEGER NOT NULL  ,
-   TITREARTICLE VARCHAR(64) NOT NULL  ,
-   DESCARTICLE VARCHAR(128) NOT NULL  ,
-   TEXTEARTICLE VARCHAR(32768) NOT NULL  ,
-   DATEPUBLIARTICLE DATETIME NOT NULL  
-   , PRIMARY KEY (IDARTICLE) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE ARTICLE
-# -----------------------------------------------------------------------------
-
-
-CREATE  INDEX I_FK_ARTICLE_MEMBRE
-     ON ARTICLE (IDMEMBRE ASC);
-
 
 # -----------------------------------------------------------------------------
 #       CREATION DES REFERENCES DE TABLE
 # -----------------------------------------------------------------------------
-
-
-ALTER TABLE ARTICLE 
-  ADD FOREIGN KEY FK_ARTICLE_MEMBRE (IDMEMBRE)
-      REFERENCES MEMBRE (IDMEMBRE) ;
 
