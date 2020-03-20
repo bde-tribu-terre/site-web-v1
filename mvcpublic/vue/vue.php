@@ -156,7 +156,7 @@ function afficherGoodiePrecis($prefixe, $id) {
 
     $carouselGoodie = '';
     if (count($listeImages) == 3) { // Si il n'y a qu'une seule image... (car il y a . et .. )
-        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img' . '">';
+        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img.png' . '">';
     } else {
         $first = true;
         $nb = 0;
@@ -169,6 +169,7 @@ function afficherGoodiePrecis($prefixe, $id) {
                 if ($first) {
                     $carouselGoodieIndicator .= ' class="active"';
                     $carouselGoodieImages .= ' active';
+                    $first = false;
                 }
                 $carouselGoodieIndicator .= '></li>';
                 $carouselGoodieImages .= '">' .
