@@ -75,7 +75,7 @@ function afficherAccueil($prefixe) {
         } elseif ($nbJours == 1) {
             $nbJoursStr .= '<strong><span style="color: red"> (Demain)</span></strong>';
         } else {
-            $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+            $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
         }
         $events .=
             '<a href="' . $prefixe . 'events?id=' . $id . '">' .
