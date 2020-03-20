@@ -31,6 +31,15 @@ function CtlGoodies($prefixe) {
     afficherGoodies($prefixe);
 }
 
+function CtlGoodiePrecis($prefixe, $id) {
+    if (file_exists($prefixe . 'ressources/goodies/' . $id)) {
+
+        afficherGoodiePrecis($prefixe, $id);
+    } else {
+        throw new Exception("Erreur : Login ou mot de passe invalide.");
+    }
+}
+
 ########################################################################################################################
 # Gabarit Journaux                                                                                                     #
 ########################################################################################################################

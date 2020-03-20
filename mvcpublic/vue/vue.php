@@ -12,6 +12,7 @@ function afficherAccueil($prefixe) {
     $listeGoodies = scandir($prefixe . 'ressources/goodies');
     natsort($listeGoodies);
 
+    $nb = 0;
     $premier = true;
     foreach ($listeGoodies as $repertoire) {
         if (
@@ -29,7 +30,7 @@ function afficherAccueil($prefixe) {
                 continue;
             }
             $lienImg = $prefixe . 'ressources/goodies/' . $repertoire . '/img.png';
-            $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $repertoire . '"';
+            $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
             if ($premier) {
                 $goodiesIndicators .= ' class="active"';
             }
@@ -119,7 +120,7 @@ function afficherGoodies($prefixe) {
                         '<h3>' . $nomGoodie . '</h3>' .
                         '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
                         '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
-                        '<a class="btn btn-primary" href="' . $prefixe . 'goodies.php?' . $repertoire . '">' .
+                        '<a class="btn btn-primary" href="' . $prefixe . 'goodies.php?id=' . $repertoire . '">' .
                             'Voir les détails...' .
                         '</a>' .
                     '</div>' .
@@ -131,6 +132,65 @@ function afficherGoodies($prefixe) {
                 $pair = false;
             }
         }
+    }
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+}
+
+function afficherGoodiePrecis($prefixe, $id) {
+    // $title = 'Goodies'; Voir ci-après.
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodiePrecis.php';
+
+    $attr = file($prefixe . 'ressources/goodies/' . $id . '/attr.txt');
+    $nomGoodie = preg_replace("/\r|\n/", "", $attr[0]);
+    $prixAdherent = preg_replace("/\r|\n/", "", $attr[1]);
+    $prixNonAdherent = preg_replace("/\r|\n/", "", $attr[2]);
+    $descGoodie = nl2br(file_get_contents($prefixe . 'ressources/goodies/' . $id . '/desc.txt'));
+    $etat = preg_replace("/\r|\n/", "", $attr[3]);
+    // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
+
+    $title = $nomGoodie;
+
+    $listeImages = scandir($prefixe . 'ressources/goodies/' . $id . '/img');
+    natsort($listeImages);
+
+    $carouselGoodie = '';
+    if (count($listeImages) == 3) { // Si il n'y a qu'une seule image... (car il y a . et .. )
+        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img' . '">';
+    } else {
+        $first = true;
+        $nb = 0;
+        $carouselGoodieIndicator = '<ol class="carousel-indicators">';
+        $carouselGoodieImages = '<div class="carousel-inner" role="listbox">';
+        foreach ($listeImages as $image) {
+            if ($image != '.' && $image != '..') {
+                $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"';
+                $carouselGoodieImages .= '<div class="item';
+                if ($first) {
+                    $carouselGoodieIndicator .= ' class="active"';
+                    $carouselGoodieImages .= ' active';
+                }
+                $carouselGoodieIndicator .= '></li>';
+                $carouselGoodieImages .= '">' .
+                    '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img/' . $image . '" alt="Image">' .
+                    '</div>';
+            }
+        }
+        $carouselGoodieIndicator .= '</ol>';
+        $carouselGoodieImages .= '</div>';
+
+        $carouselGoodie = '<div id="carouselGoodie" class="carousel slide" data-ride="carousel">' .
+                $carouselGoodieIndicator .
+                $carouselGoodieImages .
+                '<a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">' .
+                    '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>' .
+                    '<span class="sr-only">Previous</span>' .
+                '</a>' .
+                '<a class="right carousel-control" href="#carouselGoodie" role="button" data-slide="next">' .
+                    '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' .
+                    '<span class="sr-only">Next</span>' .
+                '</a>' .
+            '</div>';
     }
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
