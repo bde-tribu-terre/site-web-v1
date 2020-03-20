@@ -24,6 +24,14 @@ function CtlEvents($prefixe) {
     afficherEvents($prefixe);
 }
 
+function CtlEventPrecis($prefixe, $id) {
+    if (eventPrecis($id) != false) {
+        afficherEventPrecis($prefixe, $event);
+    } else {
+        throw new Exception("L'évent recherché n'existe pas.");
+    }
+}
+
 ########################################################################################################################
 # Gabarit Goodies                                                                                                      #
 ########################################################################################################################

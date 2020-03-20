@@ -172,6 +172,42 @@ function afficherEvents($prefixe) {
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
+function afficherEventPrecis($prefixe, $event) {
+    // $title = 'Event'; Voir ci-après.
+    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritEventPrecis.php';
+
+    $arrayMois = [
+        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
+        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
+        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
+        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+    ];
+
+    $id = htmlentities($event->idEvents, ENT_QUOTES, "UTF-8");
+    $titre = htmlentities($event->titreEvents, ENT_QUOTES, "UTF-8");
+    $desc = htmlentities($event->descEvents, ENT_QUOTES, "UTF-8");
+    $date = htmlentities($event->dateEvents, ENT_QUOTES, "UTF-8");
+    $heure = htmlentities($event->heureEvents, ENT_QUOTES, "UTF-8");
+    $lieu = htmlentities($event->lieuEvents, ENT_QUOTES, "UTF-8");
+    $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+
+    $title = $titre;
+
+    $nbJoursStr = '';
+    if ($nbJours == 0) {
+        $nbJoursStr .= '<strong><span style="color: red">(Aujourd\'hui)</span></strong>';
+    } elseif ($nbJours == 1) {
+        $nbJoursStr .= '<strong><span style="color: red">(Demain)</span></strong>';
+    } elseif ($nbJours > 0) {
+        $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+    }
+
+    $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
+    $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
+
+    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+}
+
 ########################################################################################################################
 # Gabarit Goodies                                                                                                      #
 ########################################################################################################################
