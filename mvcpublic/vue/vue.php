@@ -52,7 +52,14 @@ function afficherAccueil($prefixe) {
     }
 
     # Events
-    # pass
+    $lignesEvents = eventsFuturs(date('Y-m-d'));
+    foreach ($lignesEvents as $ligne) {
+        $id = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
+        $titre = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
+        $date = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
+        $heure = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
+        echo 'id = ' . $id . '<br>titre = ' . $titre . '<br>date = ' . $date . '<br>heure = ' . $heure . '<br><br>';
+    }
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
