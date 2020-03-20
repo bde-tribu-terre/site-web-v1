@@ -14,17 +14,6 @@
     }
     ?>
     <div id="divActions">
-        <fieldset id="formArticles_fieldset">
-            <h3>Articles</h3>
-            <form id="formArticles" action="admin" method="post">
-                <p> <!-- Créer un article -->
-                    <input type="submit" value="Créer un article" name="formArticles_creerArticle" disabled><!-- Disabled TODO: gabaritCreerArticle -->
-                </p>
-                <p> <!-- Modifier un article -->
-                    <input type="submit" value="Modifier un article" name="formArticles_modifierArticle" disabled><!-- Disabled TODO: gabaritModifierArticle -->
-                </p>
-            </form>
-        </fieldset>
         <fieldset id="formEvents_fieldset">
             <h3>Events</h3>
             <form id="formEvents" action="admin" method="post">
