@@ -53,12 +53,30 @@ function afficherAccueil($prefixe) {
 
     # Events
     $lignesEvents = eventsFuturs(date('Y-m-d'));
+    $events = '';
+
+    $arrayMois = [
+        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
+        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
+        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
+        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+    ];
+
     foreach ($lignesEvents as $ligne) {
         $id = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
         $titre = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
         $date = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
         $heure = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
-        echo 'id = ' . $id . '<br>titre = ' . $titre . '<br>date = ' . $date . '<br>heure = ' . $heure . '<br><br>';
+        $lieu = htmlentities($ligne->lieuEvents, ENT_QUOTES, "UTF-8");
+        $events .=
+            '<a href="' . $prefixe . 'events?id=' . $id . '">' .
+                '<div class="well">' .
+                    '<h4>' . $titre . '</h4>' .
+                    '<p>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' (Dans 5 jours)</p>' .
+                    '<p>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 2, 2) . '</p>' .
+                    '<p>📍 ' . $lieu . '</p>' .
+                '</div>' .
+            '</a>';
     }
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
