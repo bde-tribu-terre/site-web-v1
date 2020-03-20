@@ -8,7 +8,7 @@ function getConnect() {
 
 function eventsFuturs($ajd) {
     $connexion = getConnect();
-    $requete = "SELECT idEvents, titreEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE dateEvents<=:ajd ORDER BY dateEvents LIMIT 2";
+    $requete = "SELECT idEvents, titreEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE dateEvents>=:ajd ORDER BY dateEvents LIMIT 2";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':ajd', $ajd, PDO::PARAM_STR);
     $prepare->execute();
