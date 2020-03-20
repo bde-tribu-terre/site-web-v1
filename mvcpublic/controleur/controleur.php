@@ -35,7 +35,7 @@ function CtlGoodiePrecis($prefixe, $id) {
     if (file_exists($prefixe . 'ressources/goodies/' . $id)) {
         afficherGoodiePrecis($prefixe, $id);
     } else {
-        throw new Exception("Erreur : Le goodie recherché n'existe pas !");
+        throw new Exception("Le goodie recherché n'existe pas.");
     }
 }
 
