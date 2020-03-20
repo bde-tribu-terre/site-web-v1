@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formAjouterJournal_fieldset">
             <h3>Modifier mes infos</h3>
-            <form id="formAjouterJournal" action="admin.php" method="post" enctype="multipart/form-data">
+            <form id="formAjouterJournal" action="admin" method="post" enctype="multipart/form-data">
                 <p> <!-- Titre du journal -->
                     <label for="formAjouterJournal_titreJournal">Titre du journal :</label>
                     <input id="formAjouterJournal_titreJournal" type="text" placeholder="Titre du journal" name="formAjouterJournal_titreJournal">

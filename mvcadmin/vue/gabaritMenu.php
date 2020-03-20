@@ -16,7 +16,7 @@
     <div id="divActions">
         <fieldset id="formArticles_fieldset">
             <h3>Articles</h3>
-            <form id="formArticles" action="admin.php" method="post">
+            <form id="formArticles" action="admin" method="post">
                 <p> <!-- Créer un article -->
                     <input type="submit" value="Créer un article" name="formArticles_creerArticle" disabled><!-- Disabled TODO: gabaritCreerArticle -->
                 </p>

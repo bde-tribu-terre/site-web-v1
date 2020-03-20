@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formMettreAJour_fieldset">
             <h3>Modifier mes infos</h3>
-            <form id="formMettreAJour" action="admin.php" method="post">
+            <form id="formMettreAJour" action="admin" method="post">
                 <p> <!-- Login, non modifiable arbitrairement. -->
                     Login = <b><?php echo $loginMembre ?></b>.
                 </p>
