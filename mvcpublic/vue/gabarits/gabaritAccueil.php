@@ -38,37 +38,35 @@
     <br>
     <div class="row">
         <div class="col-sm-4">
-            <div class="well">
-                <h4>Notre page Facebook</h4>
-                <a href="https://www.facebook.com/bdeTribuTerre/">
+            <a href="https://www.facebook.com/bdeTribuTerre/">
+                <div class="well">
+                    <h4>Notre page Facebook</h4>
                     <p>
                         <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
-                        facebook.com/bdeTribuTerre
                     </p>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div class="col-sm-4">
-            <div class="well">
+            <a href="https://www.instagram.com/tribu.terre/">
+                <div class="well">
                 <h4>Notre compte Instagram</h4>
-                <a href="https://www.instagram.com/tribu.terre/">
                     <p>
                         <img src="<?php echo $prefixe . 'global/images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
-                        instagram.com/tribu.terre
                     </p>
-                </a>
-            </div>
+
+                </div>
+            </a>
         </div>
         <div class="col-sm-4">
-            <div class="well">
-                <h4>Notre compte Twitter</h4>
-                <a href="https://twitter.com/Tributerre45/">
+            <a href="https://twitter.com/Tributerre45/">
+                <div class="well">
+                    <h4>Notre compte Twitter</h4>
                     <p>
                         <img src="<?php echo $prefixe . 'global/images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
-                        twitter.com/Tributerre45
                     </p>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
     </div>
     <hr>
@@ -80,40 +78,38 @@
     <br>
     <div class="row">
         <div class="col-sm-4">
-            <div class="well">
-                <h4>Bar L'Atelier</h4>
-                <p>203 rue de Bourgogne, Orléans</p>
-                <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
+            <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
+                <div class="well">
+                    <h4>Bar L'Atelier</h4>
+                    <p>203 rue de Bourgogne, Orléans</p>
                     <p>
-                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="20" width="20" alt="Facebook">
-                        Page Facebook
+                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
                     </p>
-                </a>
-            </div>
+
+                </div>
+            </a>
         </div>
         <div class="col-sm-4">
-            <div class="well">
-                <h4>Bar Le Key West</h4>
-                <p>208 rue de Bourgogne, Orléans</p>
-                <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
+            <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
+                <div class="well">
+                    <h4>Bar Le Key West</h4>
+                    <p>208 rue de Bourgogne, Orléans</p>
                     <p>
-                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="20" width="20" alt="Facebook">
-                        Page Facebook
+                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
                     </p>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
         <div class="col-sm-4">
-            <div class="well">
-                <h4>Bar Le Petit Barcelone</h4>
-                <p>218 rue de Bourgogne, Orléans</p>
-                <a href="https://www.facebook.com/leptitbarc/">
+            <a href="https://www.facebook.com/leptitbarc/">
+                <div class="well">
+                    <h4>Bar Le Petit Barcelone</h4>
+                    <p>218 rue de Bourgogne, Orléans</p>
                     <p>
-                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="20" width="20" alt="Facebook">
-                        Page Facebook
+                        <img src="<?php echo $prefixe . 'global/images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
                     </p>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
     </div>
 </div><br>
