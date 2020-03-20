@@ -1,5 +1,5 @@
 <?php
-require_once('./mvcadmin/modele/connect.php');
+require_once('./global/connect.php');
 require_once('./mvcadmin/modele/modele.php');
 require_once('./mvcadmin/vue/vue.php');
 
