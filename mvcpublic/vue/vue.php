@@ -115,7 +115,7 @@ function afficherGoodies($prefixe) {
                 '<div class="col-sm-6">' .
                     '<div class="well">' .
                         '<a href="' . $prefixe . 'goodies.php?id=' . $repertoire . '">' .
-                            '<img src="' . $lienImg . '" width="100%" class="miniatureGoodies" alt="Miniature">' .
+                            '<img src="' . $lienImg . '" class="miniatureGoodies" alt="Miniature">' .
                         '</a>' .
                         '<h3>' . $nomGoodie . '</h3>' .
                         '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
