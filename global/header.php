@@ -22,7 +22,6 @@
                     <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritEvents.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'events' ?>">Évents</a></li>
                     <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'goodies' ?>">Goodies</a></li>
                     <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritJournaux.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'journaux' ?>">Journaux</a></li>
-                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritStatuts.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'statuts' ?>">Statuts</a></li>
                 </ul>
                 <!-- Bouton se connecter
                 <ul class="nav navbar-nav navbar-right">
