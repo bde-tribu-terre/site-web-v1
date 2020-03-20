@@ -3,7 +3,7 @@
 # Gabarit Connexion                                                                                                    #
 ########################################################################################################################
 function afficherConnexion($messageRetour) {
-    require_once('gabaritConnexion.php');
+    require_once('gabarits/gabaritConnexion.php');
 }
 
 ########################################################################################################################
@@ -11,13 +11,13 @@ function afficherConnexion($messageRetour) {
 ########################################################################################################################
 function afficherJournal($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
-    require_once('gabaritJournal.php');
+    require_once('gabarits/gabaritJournal.php');
 }
 
 function afficherMenu($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = $ligneInfoMembre->nomMembre;
-    require_once('gabaritMenu.php');
+    require_once('gabarits/gabaritMenu.php');
 }
 
 function afficherParametresCompte($messageRetour) {
@@ -25,5 +25,5 @@ function afficherParametresCompte($messageRetour) {
     $loginMembre = $ligneInfoMembre->loginMembre;
     $nomMembre = $ligneInfoMembre->nomMembre;
     $descMembre = $ligneInfoMembre->descMembre;
-    require_once('gabaritParametresCompte.php');
+    require_once('gabarits/gabaritParametresCompte.php');
 }

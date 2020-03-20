@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Tribu-Terre | Paramètres de mon compte</title>
+    <title>Tribu-Terre | Gérer les journaux.</title>
     <meta charset="UTF-8">
 </head>
 <body>
