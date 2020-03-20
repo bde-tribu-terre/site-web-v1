@@ -51,6 +51,11 @@
             border-radius: 5px;
             overflow: hidden;
         }
+
+        .imageUniqueGoodiePrecis {
+            border-radius: 10px;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>

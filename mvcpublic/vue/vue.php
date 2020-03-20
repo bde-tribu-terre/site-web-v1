@@ -42,7 +42,7 @@ function afficherAccueil($prefixe) {
             }
             $goodies .=
                 '">' . "\n" .
-                    '<img src="' . $lienImg . '" alt="Image">' . "\n" .
+                    '<a href="' . $prefixe . 'goodies.php?id=' . $repertoire . '"><img src="' . $lienImg . '" alt="Image"></a>' . "\n" .
                     '<div class="carousel-caption">' . "\n" .
                         '<h3>' . $nomGoodie . '</h3>' . "\n" .
                         '<p>' . $prixAdherent . '€ Adhérent | ' . $prixNonAdherent . '€ Non-adhérent</p>' . "\n" .
@@ -114,7 +114,7 @@ function afficherGoodies($prefixe) {
             $tableGoodies .=
                 '<div class="col-sm-6">' .
                     '<div class="well">' .
-                        '<a href="' . $prefixe . 'goodies.php?' . $repertoire . '">' .
+                        '<a href="' . $prefixe . 'goodies.php?id=' . $repertoire . '">' .
                             '<img src="' . $lienImg . '" width="100%" class="miniatureGoodies" alt="Miniature">' .
                         '</a>' .
                         '<h3>' . $nomGoodie . '</h3>' .
@@ -156,7 +156,7 @@ function afficherGoodiePrecis($prefixe, $id) {
 
     $carouselGoodie = '';
     if (count($listeImages) == 3) { // Si il n'y a qu'une seule image... (car il y a . et .. )
-        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img.png' . '">';
+        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img.png' . '" class="imageUniqueGoodiePrecis">';
     } else {
         $first = true;
         $nb = 0;
