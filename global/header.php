@@ -17,12 +17,12 @@
             </div>
             <div class="collapse navbar-collapse" id="navigationHeader"> <!-- Et ça c'est quand l'écran est assez grand -->
                 <ul class="nav navbar-nav">
-                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritAccueil.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'accueil.php' ?>">Accueil</a></li>
-                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritQuiSommesNous.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'qui-sommes-nous.php' ?>">Qui sommes-nous ?</a></li>
-                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritEvents.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'events.php' ?>">Évents</a></li>
-                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'goodies.php' ?>">Goodies</a></li>
-                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritJournaux.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'journaux.php' ?>">Journaux</a></li>
-                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritStatuts.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'statuts.php' ?>">Statuts</a></li>
+                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritAccueil.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'accueil' ?>">Accueil</a></li>
+                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritQuiSommesNous.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'qui-sommes-nous' ?>">Qui sommes-nous ?</a></li>
+                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritEvents.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'events' ?>">Évents</a></li>
+                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'goodies' ?>">Goodies</a></li>
+                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritJournaux.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'journaux' ?>">Journaux</a></li>
+                    <li<?php if ($gabarit == $prefixe . 'mvcpublic/vue/gabarits/gabaritStatuts.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'statuts' ?>">Statuts</a></li>
                 </ul>
                 <!-- Bouton se connecter
                 <ul class="nav navbar-nav navbar-right">
