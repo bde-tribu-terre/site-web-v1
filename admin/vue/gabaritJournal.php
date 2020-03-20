@@ -22,7 +22,20 @@
                 </p>
                 <p> <!-- Mois de sortie du journal -->
                     <label for="formAjouterJournal_moisJournal">Mois du sortie du journal :</label>
-                    <input id="formAjouterJournal_moisJournal" type="number" value="1" min="1" max="12" name="formAjouterJournal_moisJournal">
+                    <select id="formAjouterJournal_moisJournal" name="formAjouterJournal_moisJournal">
+                        <option value="01">Janvier</option>
+                        <option value="02">Février</option>
+                        <option value="03">Mars</option>
+                        <option value="04">Avril</option>
+                        <option value="05">Mai</option>
+                        <option value="06">Juin</option>
+                        <option value="07">Juillet</option>
+                        <option value="08">Août</option>
+                        <option value="09">Septembre</option>
+                        <option value="10">Octobre</option>
+                        <option value="11">Novembre</option>
+                        <option value="12">Décembre</option>
+                    </select>
                 </p>
                 <p> <!-- Année de sortie du journal -->
                     <label for="formAjouterJournal_anneeJournal">Année du sortie du journal :</label>
