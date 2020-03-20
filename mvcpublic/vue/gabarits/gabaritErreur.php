@@ -5,12 +5,12 @@
             <div class="well">
                 <h3>Rapport de l'erreur :</h3>
                 <h4 style="color: darkred"><strong><?php echo $messageErreur ?></strong></h4>
-                <p><i>Pour te consoler voilà un cookie.</i></p>
+                <p><i>Pour te consoler voici une girafe.</i></p>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="well">
-                <p>🍪</p>
+                <img src="<?php echo $prefixe . 'global/images/imgGirafeErreur.svg' ?>" alt="Girafe" width="100%">
             </div>
         </div>
     </div>
