@@ -46,6 +46,11 @@
                 display: none;
             }
         }
+
+        .miniatureGoodies {
+            border-radius: 5px;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
