@@ -64,9 +64,9 @@ function afficherAccueil($prefixe) {
 
     foreach ($lignesEvents as $ligne) {
         $id = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
-        $titre = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
-        $date = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
-        $heure = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
+        $titre = htmlentities($ligne->titreEvents, ENT_QUOTES, "UTF-8");
+        $date = htmlentities($ligne->dateEvents, ENT_QUOTES, "UTF-8");
+        $heure = htmlentities($ligne->heureEvents, ENT_QUOTES, "UTF-8");
         $lieu = htmlentities($ligne->lieuEvents, ENT_QUOTES, "UTF-8");
         $events .=
             '<a href="' . $prefixe . 'events?id=' . $id . '">' .
