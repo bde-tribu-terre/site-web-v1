@@ -20,7 +20,7 @@ function eventsFuturs($ajd) {
 
 function eventsTous() {
     $connexion = getConnect();
-    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events";
+    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events ORDER BY dateEvents DESC";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);

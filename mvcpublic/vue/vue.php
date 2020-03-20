@@ -134,7 +134,7 @@ function afficherEvents($prefixe) {
         } elseif ($nbJours == 1) {
             $nbJoursStr .= '<strong><span style="color: red"> (Demain)</span></strong>';
         } elseif ($nbJours > 0) {
-            $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+            $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
         } else {
             $couleur = ' style="background-color: #d1d2ce"';
         }
@@ -146,7 +146,7 @@ function afficherEvents($prefixe) {
             '<div class="col-sm-6">' .
                 '<div class="well"' . $couleur . '>' .
                     '<h3>' . $titre . '</h3>' .
-                    '<h4>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
+                    '<h4>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . $nbJoursStr . '</h4>' .
                     '<h4>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</h4>' .
                     '<h4>📍️ ' . $lieu . '</h4>' .
                     '<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#event' . $id . '" aria-expanded="false" aria-controls="collapseExample">' .
@@ -155,7 +155,7 @@ function afficherEvents($prefixe) {
                     '<div class="collapse" id="event' . $id . '">' .
                         '<div class="card card-body">' .
                             '<h5>' .
-                                $desc .
+                                preg_replace("/\r|\n/", '<br>', $desc) .
                             '</h5>' .
                         '</div>' .
                     '</div>' .
