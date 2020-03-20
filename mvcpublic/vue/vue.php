@@ -71,9 +71,9 @@ function afficherAccueil($prefixe) {
         $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
         $nbJoursStr = '';
         if ($nbJours == 0) {
-            $nbJoursStr .= '<strong><span style="color: red">(Aujourd\'hui)</span></strong>';
+            $nbJoursStr .= '<strong><span style="color: red"> (Aujourd\'hui)</span></strong>';
         } elseif ($nbJours == 1) {
-            $nbJoursStr .= '<strong><span style="color: red">(Demain)</span></strong>';
+            $nbJoursStr .= '<strong><span style="color: red"> (Demain)</span></strong>';
         } else {
             $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
         }
@@ -81,7 +81,7 @@ function afficherAccueil($prefixe) {
             '<a href="' . $prefixe . 'events?id=' . $id . '">' .
                 '<div class="well">' .
                     '<h4>' . $titre . '</h4>' .
-                    '<p>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . $nbJoursStr . '</p>' .
+                    '<p>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . $nbJoursStr . '</p>' .
                     '<p>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</p>' .
                     '<p>📍 ' . $lieu . '</p>' .
                 '</div>' .
@@ -108,7 +108,66 @@ function afficherEvents($prefixe) {
     $title = 'Events';
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritEvents.php';
 
-    $events = '>>variable str php events<<';
+    $tableEvents = '';
+    $lignesEvents = eventsTous();
+
+    $arrayMois = [
+        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
+        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
+        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
+        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+    ];
+
+    $pair = true; // On commence à 0 en informatique.
+    foreach ($lignesEvents as $ligne) {
+        $id = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
+        $titre = htmlentities($ligne->titreEvents, ENT_QUOTES, "UTF-8");
+        $desc = htmlentities($ligne->descEvents, ENT_QUOTES, "UTF-8");
+        $date = htmlentities($ligne->dateEvents, ENT_QUOTES, "UTF-8");
+        $heure = htmlentities($ligne->heureEvents, ENT_QUOTES, "UTF-8");
+        $lieu = htmlentities($ligne->lieuEvents, ENT_QUOTES, "UTF-8");
+        $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+        $nbJoursStr = '';
+        $couleur = '';
+        if ($nbJours == 0) {
+            $nbJoursStr .= '<strong><span style="color: red"> (Aujourd\'hui)</span></strong>';
+        } elseif ($nbJours == 1) {
+            $nbJoursStr .= '<strong><span style="color: red"> (Demain)</span></strong>';
+        } elseif ($nbJours > 0) {
+            $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+        } else {
+            $couleur = ' style="background-color: #d1d2ce"';
+        }
+
+        if ($pair) {
+            $tableEvents .= '<div class="row">';
+        }
+        $tableEvents .=
+            '<div class="col-sm-6">' .
+                '<div class="well"' . $couleur . '>' .
+                    '<h3>' . $titre . '</h3>' .
+                    '<h4>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
+                    '<h4>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</h4>' .
+                    '<h4>📍️ ' . $lieu . '</h4>' .
+                    '<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#event' . $id . '" aria-expanded="false" aria-controls="collapseExample">' .
+                        'En savoir plus...' .
+                    '</button>' .
+                    '<div class="collapse" id="event' . $id . '">' .
+                        '<div class="card card-body">' .
+                            '<h5>' .
+                                $desc .
+                            '</h5>' .
+                        '</div>' .
+                    '</div>' .
+                '</div>' .
+            '</div>';
+        if (!$pair) {
+            $tableEvents .= '</div>';
+            $pair = true;
+        } else {
+            $pair = false;
+        }
+    }
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }

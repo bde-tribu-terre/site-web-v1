@@ -1,4 +1,4 @@
-<h1>Events</h1>
-<p>
-    Events : <?php echo $events ?>
-</p>
+<div class="container">
+    <?php echo $tableEvents ?>
+    <hr>
+</div><br>
