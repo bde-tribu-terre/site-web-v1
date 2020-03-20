@@ -44,7 +44,7 @@ function afficherAccueil($prefixe) {
                 '">' . "\n" .
                     '<a href="' . $prefixe . 'goodies.php?id=' . $repertoire . '"><img src="' . $lienImg . '" alt="Image"></a>' . "\n" .
                     '<div class="carousel-caption">' . "\n" .
-                        '<h3>' . $nomGoodie . '</h3>' . "\n" .
+                        '<a href="' . $prefixe . 'goodies.php?id=' . $repertoire . '"><h3>' . $nomGoodie . '</h3></a>' . "\n" .
                         '<p>' . $prixAdherent . '€ Adhérent | ' . $prixNonAdherent . '€ Non-adhérent</p>' . "\n" .
                     '</div>' . "\n" .
                 '</div>';

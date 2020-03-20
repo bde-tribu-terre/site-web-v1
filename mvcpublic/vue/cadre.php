@@ -35,6 +35,11 @@
             overflow: hidden;
         }
 
+        /* Les liens du carousel restent en blanc. */
+        .carousel a {
+            color: white;
+        }
+
         .carousel-inner img {
             width: 100%; /* Set width to 100% */
             min-height: 200px;
