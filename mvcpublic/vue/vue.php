@@ -124,11 +124,11 @@ function afficherGoodies($prefixe) {
                         '</a>' .
                     '</div>' .
                 '</div>';
-            if ($pair) {
+            if (!$pair) {
                 $tableGoodies .= '</div>';
-                $pair = false;
-            } else {
                 $pair = true;
+            } else {
+                $pair = false;
             }
         }
     }
