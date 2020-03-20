@@ -1,1 +1,4 @@
-<h1>Goodies</h1>
+<div class="container text-center">
+    <?php echo $tableGoodies ?>
+    <hr>
+</div><br>

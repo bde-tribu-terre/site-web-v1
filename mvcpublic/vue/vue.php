@@ -85,6 +85,54 @@ function afficherGoodies($prefixe) {
     $title = 'Goodies';
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php';
 
+    $tableGoodies = '';
+    $listeGoodies = scandir($prefixe . 'ressources/goodies');
+    natsort($listeGoodies);
+
+    $pair = true; // On commence à 0 en informatique.
+    foreach ($listeGoodies as $repertoire) {
+        if (
+            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/desc.txt') &&
+            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt') &&
+            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/img.png')
+        ) {
+            $attr = file($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt');
+            $nomGoodie = preg_replace("/\r|\n/", "", $attr[0]);
+            $prixAdherent = preg_replace("/\r|\n/", "", $attr[1]);
+            $prixNonAdherent = preg_replace("/\r|\n/", "", $attr[2]);
+            $etat = preg_replace("/\r|\n/", "", $attr[3]);
+            // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
+            if ($etat == 0) {
+                continue;
+            }
+            $lienImg = $prefixe . 'ressources/goodies/' . $repertoire . '/img.png';
+
+            if ($pair) {
+                $tableGoodies .= '<div class="row">';
+            }
+            $tableGoodies .=
+                '<div class="col-sm-6">' .
+                    '<div class="well">' .
+                        '<a href="' . $prefixe . 'goodies.php?' . $repertoire . '">' .
+                            '<img src="' . $lienImg . '" width="100%" class="miniatureGoodies" alt="Miniature">' .
+                        '</a>' .
+                        '<h3>' . $nomGoodie . '</h3>' .
+                        '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
+                        '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
+                        '<a class="btn btn-primary" href="' . $prefixe . 'goodies.php?' . $repertoire . '">' .
+                            'Voir les détails...' .
+                        '</a>' .
+                    '</div>' .
+                '</div>';
+            if ($pair) {
+                $tableGoodies .= '</div>';
+                $pair = false;
+            } else {
+                $pair = true;
+            }
+        }
+    }
+
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
