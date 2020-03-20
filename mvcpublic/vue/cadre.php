@@ -63,6 +63,11 @@
             border-radius: 10px;
             overflow: hidden;
         }
+
+        .texteFooter {
+            font-size: 10px;
+            line-height: 10px;
+        }
     </style>
 </head>
 <body>
