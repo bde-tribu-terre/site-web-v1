@@ -13,7 +13,7 @@ function eventsFuturs($ajd) {
     $prepare->bindValue(':ajd', $ajd, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
+    $ligne = $prepare->fetchall();
     $prepare->closeCursor();
     return $ligne;
 }
@@ -24,7 +24,7 @@ function eventsTous() {
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
+    $ligne = $prepare->fetchall();
     $prepare->closeCursor();
     return $ligne;
 }
