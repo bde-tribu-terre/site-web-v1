@@ -31,7 +31,7 @@ function eventsTous() {
 
 function eventPrecis($id) {
     $connexion = getConnect();
-    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE idEvents<=:id";
+    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE idEvents=:id";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();

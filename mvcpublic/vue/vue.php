@@ -200,8 +200,11 @@ function afficherEventPrecis($prefixe, $event) {
         $nbJoursStr .= '<strong><span style="color: red">(Demain)</span></strong>';
     } elseif ($nbJours > 0) {
         $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+    } else {
+        $nbJoursStr .= '<i><span style="color: darkgray">(Il y a ' . abs($nbJours) . ' jours)</span></i>';
     }
 
+    $descStr = preg_replace("/\r|\n/", '<br>', $desc);
     $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
     $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
 
