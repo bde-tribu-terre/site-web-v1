@@ -250,7 +250,7 @@ function supprimerGoodie($id) {
     $prepare->setFetchMode(PDO::FETCH_OBJ);
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
-    $miniature = $ligne->pdfJournaux;
+    $miniature = $ligne->miniatureGoodies;
     unlink('./ressources/goodies/' . $miniature);
 
     # Suppression des données
