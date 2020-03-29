@@ -56,7 +56,7 @@
                 </p>
             </form>
         </fieldset>
-        <fieldset id="formMonCompte_fieldset">
+        <fieldset id="formMonCompte_fieldset" style="display: none">
             <h3>Mon compte</h3>
             <form id="formMonCompte" action="admin" method="post">
                 <p> <!-- Paramètres de mon compte -->
