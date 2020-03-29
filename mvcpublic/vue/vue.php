@@ -13,19 +13,19 @@ function afficherAccueil($prefixe) {
 
     $nb = 0;
     $premier = true;
-    foreach ($lignesGoodies as $ligne) {
-        $id = htmlentities($ligne->idGoodies, ENT_QUOTES, "UTF-8");
-        $titre = htmlentities($ligne->titreGoodies, ENT_QUOTES, "UTF-8");
-        $prixAdherent = htmlentities($ligne->prixADGoodies, ENT_QUOTES, "UTF-8");
-        $prixNonAdherent = htmlentities($ligne->prixNADGoodies, ENT_QUOTES, "UTF-8");
-        $categorie = htmlentities($ligne->categorieGoodies, ENT_QUOTES, "UTF-8");
-        $miniature = htmlentities($ligne->miniatureGoodies, ENT_QUOTES, "UTF-8");
+    foreach ($lignesGoodies as $ligneGoodie) {
+        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
+        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $prixAdherentGoodie = htmlentities($ligneGoodie->prixADGoodies, ENT_QUOTES, "UTF-8");
+        $prixNonAdherentGoodie = htmlentities($ligneGoodie->prixNADGoodies, ENT_QUOTES, "UTF-8");
+        $categorieGoodie = htmlentities($ligneGoodie->categorieGoodies, ENT_QUOTES, "UTF-8");
+        $miniatureGoodie = htmlentities($ligneGoodie->miniatureGoodies, ENT_QUOTES, "UTF-8");
 
         // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
-        if ($categorie != 1) {
+        if ($categorieGoodie != 1) {
             continue;
         }
-        $lienMiniature = $prefixe . 'ressources/goodies/miniatures/' . $miniature;
+        $lienMiniature = $prefixe . 'ressources/goodies/miniatures/' . $miniatureGoodie;
 
         $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
         if ($premier) {
@@ -39,10 +39,10 @@ function afficherAccueil($prefixe) {
         }
         $goodies .=
             '">' . "\n" .
-                '<a href="' . $prefixe . 'goodies?id=' . $id . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
+                '<a href="' . $prefixe . 'goodies?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
                 '<div class="carousel-caption">' . "\n" .
-                    '<a href="' . $prefixe . 'goodies?id=' . $id . '"><h3>' . $titre . '</h3></a>' . "\n" .
-                    '<p>' . $prixAdherent . '€ Adhérent | ' . $prixNonAdherent . '€ Non-adhérent</p>' . "\n" .
+                    '<a href="' . $prefixe . 'goodies?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
+                    '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
                 '</div>' . "\n" .
             '</div>';
     }
@@ -58,13 +58,13 @@ function afficherAccueil($prefixe) {
         '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
     ];
 
-    foreach ($lignesEvents as $ligne) {
-        $id = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
-        $titre = htmlentities($ligne->titreEvents, ENT_QUOTES, "UTF-8");
-        $date = htmlentities($ligne->dateEvents, ENT_QUOTES, "UTF-8");
-        $heure = htmlentities($ligne->heureEvents, ENT_QUOTES, "UTF-8");
-        $lieu = htmlentities($ligne->lieuEvents, ENT_QUOTES, "UTF-8");
-        $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+    foreach ($lignesEvents as $ligneEvent) {
+        $idEvent = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
+        $titreEvent = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
+        $dateEvent = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
+        $heureEvent = htmlentities($ligneEvent->heureEvents, ENT_QUOTES, "UTF-8");
+        $lieuEvent = htmlentities($ligneEvent->lieuEvents, ENT_QUOTES, "UTF-8");
+        $nbJours = round((strtotime($dateEvent) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
         $nbJoursStr = '';
         if ($nbJours == 0) {
             $nbJoursStr .= '<strong><span style="color: red"> (Aujourd\'hui)</span></strong>';
@@ -74,12 +74,12 @@ function afficherAccueil($prefixe) {
             $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
         }
         $events .=
-            '<a href="' . $prefixe . 'events?id=' . $id . '">' .
+            '<a href="' . $prefixe . 'events?id=' . $idEvent . '">' .
                 '<div class="well">' .
-                    '<h4>' . $titre . '</h4>' .
-                    '<p>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . $nbJoursStr . '</p>' .
-                    '<p>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</p>' .
-                    '<p>📍 ' . $lieu . '</p>' .
+                    '<h4>' . $titreEvent . '</h4>' .
+                    '<p>📅 ' . substr($dateEvent, 8, 2) . ' ' . $arrayMois[substr($dateEvent, 5, 2)] . $nbJoursStr . '</p>' .
+                    '<p>⌚️ ' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</p>' .
+                    '<p>📍 ' . $lieuEvent . '</p>' .
                 '</div>' .
             '</a>';
     }
