@@ -14,6 +14,17 @@ try {
             $_POST['formConnexion_mdp']
         );
     }
+    // Gabarit Créer Évent
+    elseif (isset($_POST['formCreerEvent_ajouter'])) {
+        CtlCreerEvent(
+            $_POST['formCreerEvent_titre'],
+            $_POST['formCreerEvent_date'],
+            $_POST['formCreerEvent_heureHeure'],
+            $_POST['formCreerEvent_heureMinute'],
+            $_POST['formCreerEvent_lieu'],
+            $_POST['formCreerEvent_desc']
+        );
+    }
     // Gabarit Ajouter Goodie
     elseif (isset($_POST['formAjouterGoodie_ajouterGoodie'])) {
         CtlAjouterGoodie(
@@ -88,7 +99,9 @@ try {
         );
     }
     // Gabarit Menu
-    elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
+    elseif (isset($_POST['formEvents_creerEventMenu'])) {
+        CtlCreerEventMenu('');
+    } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
         CtlAjouterGoodieMenu('');
     } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
         CtlAjouterImageGoodieMenu('');

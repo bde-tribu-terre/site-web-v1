@@ -36,6 +36,19 @@ function infosMembre($id) {
     return $ligne;
 }
 
+function creerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
+    $connexion = getConnect();
+    $requete = "INSERT INTO Events VALUES (0, :titreEvents, :descEvents, :dateEvents, :heureEvents, :lieuEvents)"; // (0 pour le auto increment)
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':titreEvents', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':descEvents', $desc, PDO::PARAM_STR);
+    $prepare->bindValue(':dateEvents', $date, PDO::PARAM_STR);
+    $prepare->bindValue(':heureEvents', $heure . ':' . $minute . ':00', PDO::PARAM_STR);
+    $prepare->bindValue(':lieuEvents', $lieu, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
     # Enregistrement du fichier PDF.
     $journauxRep = './ressources/journaux/';

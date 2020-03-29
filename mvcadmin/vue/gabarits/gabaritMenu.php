@@ -18,10 +18,13 @@
             <h3>Events</h3>
             <form id="formEvents" action="admin" method="post">
                 <p> <!-- Créer un évent -->
-                    <input type="submit" value="Créer un évent" name="formEvents_creerEvent" disabled>
+                    <input type="submit" value="Créer un évent" name="formEvents_creerEventMenu">
                 </p>
                 <p> <!-- Modifier un évent -->
-                    <input type="submit" value="Modifier un évent" name="formEvents_modifierEvent" disabled>
+                    <input type="submit" value="Modifier un évent" name="formEvents_modifierEventMenu">
+                </p>
+                <p> <!-- Supprimer un évent -->
+                    <input type="submit" value="Supprimer un évent" name="formEvents_supprimerEventMenu">
                 </p>
             </form>
         </fieldset>

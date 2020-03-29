@@ -31,6 +31,10 @@ function CtlConnexionErreur($messageErreur) {
 ########################################################################################################################
 # Gabarit Menu                                                                                                         #
 ########################################################################################################################
+function CtlCreerEventMenu($messageRetour) {
+    afficherCreerEvent($messageRetour);
+}
+
 function CtlAjouterGoodieMenu($messageRetour) {
     afficherAjouterGoodie($messageRetour);
 }
@@ -74,6 +78,28 @@ function CtlDeconnexion($messageRetour) {
 
 function CtlMenuErreur($messageErreur) {
     afficherMenu($messageErreur);
+}
+
+########################################################################################################################
+# Gabarit Créer Évent                                                                                                  #
+########################################################################################################################
+function CtlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
+    if (
+        !empty($titre) &&
+        !empty($date) &&
+        (!empty($heure) || $heure == 0) &&
+        (!empty($minute) || $minute == 0) &&
+        !empty($desc)
+    ) {
+        try {
+            creerEvent($titre, $date, $heure, $minute, $lieu, $desc);
+            afficherCreerEvent('L\'évent "' . $titre . '" a été ajouté avec succès !');
+        } catch (Exception $e) {
+            afficherCreerEvent($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
 }
 
 ########################################################################################################################
