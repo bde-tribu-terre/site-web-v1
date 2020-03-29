@@ -42,7 +42,7 @@ function ajouterJournal($titre, $mois, $annee, $fileImput) {
     $newName = preg_replace('/[\W]/', '', $titre) . time() . '.pdf'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
-        $journauxRep . $newName
+        $journauxRep . '/' .  $newName
     );
 
     # Enregistrement des données dans la BDD SQL.
