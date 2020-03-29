@@ -39,7 +39,7 @@ function infosMembre($id) {
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
     # Enregistrement du fichier PDF.
     $journauxRep = './ressources/journaux/';
-    $newName = preg_replace('/[\W]/', '', $titre) . time() . '.pdf'; # time() => aucun doublon imaginable.
+    $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.pdf'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $journauxRep . $newName
