@@ -62,6 +62,13 @@ function afficherModifierGoodie($messageRetour, $id) {
     require_once('gabarits/gabaritModifierGoodie.php');
 }
 
+function afficherSupprimerImageGoodie($messageRetour, $id) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+
+    require_once('gabarits/gabaritSupprimerImageGoodie.php');
+}
+
 function afficherAjouterJournal($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     require_once('gabarits/gabaritAjouterJournal.php');

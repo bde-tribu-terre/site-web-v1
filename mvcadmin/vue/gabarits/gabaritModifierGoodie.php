@@ -16,6 +16,9 @@
         <fieldset id="formModifierGoodie_fieldset">
             <h3>Modifier un goodie</h3>
             <form id="formModifierGoodie" action="admin" method="post">
+                <p> <!-- Supprimer des images du goodie -->
+                    <input type="submit" value="Supprimer des images du goodie" name="formModifierGoodie_supprimerImages">
+                </p>
                 <p> <!-- ID du goodie -->
                     <label for="formModifierGoodie_idGoodie">ID du goodie :</label>
                     <input id="formModifierGoodie_idGoodie" type="text" value="<?php echo $idGoodie ?>" placeholder="Titre du goodie" name="formModifierGoodie_idGoodie" readonly>

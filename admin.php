@@ -52,6 +52,10 @@ try {
             $_POST['formModifierGoodie_prixNonAdhérentCentimes'],
             $_POST['formModifierGoodie_descGoodie']
         );
+    } elseif (isset($_POST['formModifierGoodie_supprimerImages'])) {
+        CtlAllerSupprimerImageGoodie(
+            $_POST['formModifierGoodie_idGoodie']
+        );
     }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {

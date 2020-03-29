@@ -152,6 +152,18 @@ function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
     }
 }
 
+function CtlAllerSupprimerImageGoodie($id) {
+    if (!empty($id)) {
+        try {
+            afficherSupprimerImageGoodie('', $id);
+        } catch (Exception $e) {
+            afficherModifierGoodie($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
 ########################################################################################################################
 # Gabarit AjouterJournal                                                                                               #
 ########################################################################################################################
