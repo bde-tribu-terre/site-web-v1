@@ -49,6 +49,26 @@ function creerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
     $prepare->closeCursor();
 }
 
+function idTitreEvents() {
+    $connexion = getConnect();
+    $requete = "SELECT idEvents, titreEvents FROM Events ORDER BY dateEvents";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function supprimerEvent($id) {
+    $connexion = getConnect();
+    $requete = "DELETE FROM Events WHERE idEvents=:idEvents";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
     # Enregistrement du fichier PDF.
     $journauxRep = './ressources/journaux/';

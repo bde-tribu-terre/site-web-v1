@@ -35,6 +35,10 @@ function CtlCreerEventMenu($messageRetour) {
     afficherCreerEvent($messageRetour);
 }
 
+function CtlSupprimerEventMenu($messageRetour) {
+    afficherSupprimerEvent($messageRetour);
+}
+
 function CtlAjouterGoodieMenu($messageRetour) {
     afficherAjouterGoodie($messageRetour);
 }
@@ -96,6 +100,22 @@ function CtlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
             afficherCreerEvent('L\'évent "' . $titre . '" a été ajouté avec succès !');
         } catch (Exception $e) {
             afficherCreerEvent($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit Créer Évent                                                                                                  #
+########################################################################################################################
+function CtlSupprimerEvent($id) {
+    if (!empty($id)) {
+        try {
+            supprimerEvent($id);
+            afficherSupprimerEvent('L\'évent a été supprimé avec succès !');
+        } catch (Exception $e) {
+            afficherSupprimerEvent($e);
         }
     } else {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");

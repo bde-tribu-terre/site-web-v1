@@ -11,6 +11,22 @@ function afficherCreerEvent($messageRetour) {
     require_once('gabarits/gabaritCreerEvent.php');
 }
 
+function afficherSupprimerEvent($messageRetour) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+    $lignesEvents = idTitreEvents();
+
+    $events = '';
+    foreach ($lignesEvents as $ligneEvent) {
+        $idEvents = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
+        $titreEvents = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
+        $events .=
+            '<option value="' . $idEvents . '">' . $titreEvents . '</option>';
+    }
+
+    require_once('gabarits/gabaritSupprimerEvent.php');
+}
+
 function afficherAjouterGoodie($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     require_once('gabarits/gabaritAjouterGoodie.php');
