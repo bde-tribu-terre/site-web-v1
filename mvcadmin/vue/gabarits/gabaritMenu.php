@@ -25,6 +25,20 @@
                 </p>
             </form>
         </fieldset>
+        <fieldset id="formGoodies_fieldset">
+            <h3>Goodies</h3>
+            <form id="formGoodies" action="admin" method="post">
+                <p> <!-- Ajouter un goodie -->
+                    <input type="submit" value="Ajouter un goodie" name="formGoodies_ajouterGoodie" disabled>
+                </p>
+                <p> <!-- Modifier un goodie -->
+                    <input type="submit" value="Modifier un goodie" name="formGoodies_modifierGoodie" disabled>
+                </p>
+                <p> <!-- Supprimer un goodie -->
+                    <input type="submit" value="Supprimer un goodie" name="formGoodies_supprimerGoodie" disabled>
+                </p>
+            </form>
+        </fieldset>
         <fieldset id="formJournal_fieldset">
             <h3>Journal</h3>
             <form id="formJournal" action="admin" method="post">
@@ -40,7 +54,7 @@
             <h3>Mon compte</h3>
             <form id="formMonCompte" action="admin" method="post">
                 <p> <!-- Paramètres de mon compte -->
-                    <input type="submit" value="Paramètres de mon compte" name="formMonCompte_parametres">
+                    <input type="submit" value="Paramètres de mon compte" name="formMonCompte_parametres" disabled>
                 </p>
             </form>
         </fieldset>
