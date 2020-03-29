@@ -202,7 +202,7 @@ function supprimerImageGoodie($id) {
     $prepare->setFetchMode(PDO::FETCH_OBJ);
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
-    $image = $ligne->pdfJournaux;
+    $image = $ligne->lienImagesGoodies;
     unlink('./ressources/goodies/' . $image);
 
     # Suppression des données

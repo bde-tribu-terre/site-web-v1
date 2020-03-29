@@ -74,7 +74,7 @@ function afficherSupprimerImageGoodie($messageRetour, $id) {
 
         $images .=
             '<fieldset>' .
-                '<img src="./ressources/goodies/' . $lienImage . '">' .
+                '<img src="./ressources/goodies/' . $lienImage . '" width="200" height="100">' .
                 '<p><input type="checkbox" name="' . $idImage . '" id="' . $idImage . '"></p>';
             '</fieldset>';
     }
