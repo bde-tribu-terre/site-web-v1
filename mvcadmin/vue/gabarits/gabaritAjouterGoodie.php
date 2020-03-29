@@ -23,10 +23,10 @@
                 <p> <!-- Catégorie -->
                     <label for="formAjouterGoodie_categorie">Catégorie :</label>
                     <select id="formAjouterGoodie_categorie" name="formAjouterGoodie_categorie">
-                        <option value="1">Caché</option>
-                        <option value="2">Disponible</option>
-                        <option value="3">Bientôt disponible</option>
-                        <option value="4">En rupture de stock</option>
+                        <option value="0">Caché</option>
+                        <option value="1">Disponible</option>
+                        <option value="2">Bientôt disponible</option>
+                        <option value="3">En rupture de stock</option>
                     </select>
                 </p>
                 <p> <!-- Prix adhérent -->
