@@ -58,6 +58,13 @@ function afficherAccueil($prefixe) {
         '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
     ];
 
+    if (empty($lignesEvents)) {
+        $events .=
+            '<div class="well">' .
+            '<p>Oups ! On dirait qu\'il n\'y a aucun évent de prévu dans le futur 🙈</p>' .
+            '</div>';
+    }
+
     foreach ($lignesEvents as $ligneEvent) {
         $idEvent = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
         $titreEvent = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
