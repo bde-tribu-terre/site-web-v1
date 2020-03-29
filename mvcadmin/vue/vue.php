@@ -22,11 +22,11 @@ function afficherSupprimerEvent($messageRetour) {
         $titreEvents = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
         $dateEvents = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
         $events .=
-            '<option value="' .
+            '<option value="' . $idEvents . '">(' .
             substr($dateEvents, 8, 2) . '/' .
             substr($dateEvents, 5, 2) . '/' .
-            substr($dateEvents, 0, 4) .
-            $idEvents . '">' . $titreEvents . '</option>';
+            substr($dateEvents, 0, 4) . ') ' .
+            $titreEvents . '</option>';
     }
 
     require_once('gabarits/gabaritSupprimerEvent.php');

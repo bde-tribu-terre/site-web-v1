@@ -51,7 +51,7 @@ function creerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
 
 function idTitreEvents() {
     $connexion = getConnect();
-    $requete = "SELECT idEvents, titreEvents, dateEvents FROM Events ORDER BY dateEvents";
+    $requete = "SELECT idEvents, titreEvents, dateEvents FROM Events ORDER BY dateEvents DESC";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
