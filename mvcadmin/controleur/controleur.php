@@ -104,9 +104,9 @@ function CtlAjouterImageGoodie($id, $fileImput) {
         try {
             $titre = titreGoodie($id)->titreGoodies;
             ajouterImageGoodie($id, $titre, $fileImput);
-            afficherAjouterGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
+            afficherAjouterImageGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
         } catch (Exception $e) {
-            afficherAjouterGoodie($e);
+            afficherAjouterImageGoodie($e);
         }
     } else {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");
@@ -157,7 +157,7 @@ function CtlAllerSupprimerImageGoodie($id) {
         try {
             afficherSupprimerImageGoodie('', $id);
         } catch (Exception $e) {
-            afficherModifierGoodie($e);
+            afficherModifierGoodie($e, $id);
         }
     } else {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");
