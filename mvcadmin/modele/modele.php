@@ -56,6 +56,26 @@ function ajouterJournal($titre, $mois, $annee, $fileImput) {
     $prepare->closeCursor();
 }
 
+function idTitreJournaux() {
+    $connexion = getConnect();
+    $requete = "SELECT idJournaux, titreJournaux FROM Journaux";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function supprimerJournal($id) {
+    $connexion = getConnect();
+    $requete = "DELETE FROM Journaux WHERE idJournaux=:idJournaux";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
 function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     # Enregistrement de la miniature.
     $miniatureRep = './ressources/goodies/';

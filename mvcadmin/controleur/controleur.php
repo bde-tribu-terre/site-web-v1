@@ -43,6 +43,10 @@ function CtlAjouterJournalMenu($messageRetour) {
     afficherAjouterJournal($messageRetour);
 }
 
+function CtlSupprimerJournalMenu($messageRetour) {
+    afficherSupprimerJournal($messageRetour);
+}
+
 function CtlMenu($messageRetour) {
     afficherMenu($messageRetour);
 }
@@ -113,6 +117,22 @@ function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
         try {
             ajouterJournal($titre, $mois, $annee, $fileImput);
             afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
+        } catch (Exception $e) {
+            afficherAjouterJournal($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit SupprimerJournal                                                                                             #
+########################################################################################################################
+function CtlSupprimerJournal($id) {
+    if (!empty($id)) {
+        try {
+            supprimerJournal($id);
+            afficherAjouterJournal('Le journal a été supprimé avec succès !');
         } catch (Exception $e) {
             afficherAjouterJournal($e);
         }

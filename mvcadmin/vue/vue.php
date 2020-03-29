@@ -35,6 +35,22 @@ function afficherAjouterJournal($messageRetour) {
     require_once('gabarits/gabaritAjouterJournal.php');
 }
 
+function afficherSupprimerJournal($messageRetour) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+    $lignesJournaux = idTitreJournaux();
+
+    $journaux = '';
+    foreach ($lignesJournaux as $ligneJournal) {
+        $idJournal = htmlentities($ligneJournal->idJournaux, ENT_QUOTES, "UTF-8");
+        $titreJournal = htmlentities($ligneJournal->titreJournaux, ENT_QUOTES, "UTF-8");
+        $journaux .=
+            '<option value="' . $idJournal . '">' . $titreJournal . '</option>';
+    }
+
+    require_once('gabarits/gabaritSupprimerJournal.php');
+}
+
 function afficherMenu($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = $ligneInfoMembre->nomMembre;

@@ -43,6 +43,12 @@ try {
             'formAjouterJournal_fichierPDF'
         );
     }
+    // Gabarit Supprimer Journal
+    elseif (isset($_POST['formSupprimerJournal_supprimer'])) {
+        CtlSupprimerJournal(
+            $_POST['formSupprimerJournal_idJournal']
+        );
+    }
     // Gabarit Menu
     elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
         CtlAjouterGoodieMenu('');
@@ -50,6 +56,8 @@ try {
         CtlAjouterImageGoodieMenu('');
     } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
         CtlAjouterJournalMenu('');
+    } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {
+        CtlSupprimerJournalMenu('');
     } elseif (isset($_POST['formMonCompte_parametres'])) {
         CtlParametresCompte('');
     } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
