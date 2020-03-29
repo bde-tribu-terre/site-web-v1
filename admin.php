@@ -25,6 +25,24 @@ try {
             $_POST['formCreerEvent_desc']
         );
     }
+    // Gabarit Choix Évent
+    elseif (isset($_POST['formChoisirEvent_choisir'])) {
+        CtlChoixEvent(
+            $_POST['formChoisirEvent_idEvent']
+        );
+    }
+    // Gabarit Modifier Évent
+    elseif (isset($_POST['formModifierGoodie_modifierGoodie'])) {
+        CtlModifierEvent(
+            $_POST['formModifierEvent_idEvent'],
+            $_POST['formModifierEvent_titre'],
+            $_POST['formModifierEvent_date'],
+            $_POST['formModifierEvent_heureHeure'],
+            $_POST['formModifierEvent_heureMinute'],
+            $_POST['formModifierEvent_lieu'],
+            $_POST['formModifierEvent_desc']
+        );
+    }
     // Gabarit Supprimer Évent
     elseif (isset($_POST['formSupprimerEvent_supprimer'])) {
         CtlSupprimerEvent(
@@ -107,6 +125,8 @@ try {
     // Gabarit Menu
     elseif (isset($_POST['formEvents_creerEventMenu'])) {
         CtlCreerEventMenu('');
+    } elseif (isset($_POST['formEvents_ModifierEventMenu'])) {
+        CtlChoixEventMenu('');
     } elseif (isset($_POST['formEvents_supprimerEventMenu'])) {
         CtlSupprimerEventMenu('');
     } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {

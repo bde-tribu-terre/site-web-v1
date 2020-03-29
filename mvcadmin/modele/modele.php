@@ -60,6 +60,32 @@ function idTitreEvents() {
     return $ligne;
 }
 
+function infoEvent($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE idEvents=:idEvents";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu) {
+    $connexion = getConnect();
+    $requete = "UPDATE Events SET titreEvents=:titreEvents, descEvents=:descEvents, dateEvents=:dateEvents, heureEvents=:heureEvents, lieuEvents=:lieuEvents WHERE idEvents=:idEvents";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':titreEvents', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':descEvents', $desc, PDO::PARAM_STR);
+    $prepare->bindValue(':dateEvents', $date, PDO::PARAM_STR);
+    $prepare->bindValue(':heureEvents', $heure . ':' . $minute . ':00', PDO::PARAM_STR);
+    $prepare->bindValue(':lieuEvents', $lieu, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
 function supprimerEvent($id) {
     $connexion = getConnect();
     $requete = "DELETE FROM Events WHERE idEvents=:idEvents";

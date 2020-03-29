@@ -35,6 +35,10 @@ function CtlCreerEventMenu($messageRetour) {
     afficherCreerEvent($messageRetour);
 }
 
+function CtlChoixEventMenu($messageRetour) {
+    afficherChoixEvent($messageRetour);
+}
+
 function CtlSupprimerEventMenu($messageRetour) {
     afficherSupprimerEvent($messageRetour);
 }
@@ -107,7 +111,44 @@ function CtlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
 }
 
 ########################################################################################################################
-# Gabarit Créer Évent                                                                                                  #
+# Gabarit Choix Évent                                                                                                  #
+########################################################################################################################
+function CtlChoixEvent($id) {
+    if (!empty($id)) {
+        try {
+            afficherModifierEvent('', $id);
+        } catch (Exception $e) {
+            afficherChoixEvent($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit Modifier Event                                                                                               #
+########################################################################################################################
+function CtlModifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu) {
+    if (
+        !empty($titre) &&
+        !empty($date) &&
+        (!empty($heure) || $heure == 0) &&
+        (!empty($minute) || $minute == 0) &&
+        !empty($desc)
+    ) {
+        try {
+            modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu);
+            afficherModifierEvent('L\'évent "' . $titre . '" a été modifié avec succès !', $id);
+        } catch (Exception $e) {
+            afficherModifierEvent($e, $id);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit Supprimer Évent                                                                                                  #
 ########################################################################################################################
 function CtlSupprimerEvent($id) {
     if (!empty($id)) {

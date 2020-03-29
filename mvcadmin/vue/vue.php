@@ -11,6 +11,45 @@ function afficherCreerEvent($messageRetour) {
     require_once('gabarits/gabaritCreerEvent.php');
 }
 
+function afficherChoixEvent($messageRetour) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+    $lignesEvents = idTitreEvents();
+
+    $events = '';
+    foreach ($lignesEvents as $ligneEvent) {
+        $idEvents = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
+        $titreEvents = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
+        $dateEvents = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
+        $events .=
+            '<option value="' . $idEvents . '">(' .
+            substr($dateEvents, 8, 2) . '/' .
+            substr($dateEvents, 5, 2) . '/' .
+            substr($dateEvents, 0, 4) . ') ' .
+            $titreEvents . '</option>';
+    }
+
+    require_once('gabarits/gabaritChoixGoodie.php');
+}
+
+function afficherModifierEvent($messageRetour, $id) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+    $ligneEvent = infoEvent($id);
+
+    $idEvent = $id;
+    $titreEvents = $ligneEvent->titreEvents;
+    $descEvents = $ligneEvent->descEvents;
+    $dateEvents = $ligneEvent->dateEvents;
+    $heureEvents = $ligneEvent->heureEvents;
+    $lieuEvents = $ligneEvent->lieuEvents;
+
+    $heure = substr($heureEvents, 0, 2);
+    $minute = substr($heureEvents, 3, 2);
+
+    require_once('gabarits/gabaritModifierEvent.php');
+}
+
 function afficherSupprimerEvent($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
