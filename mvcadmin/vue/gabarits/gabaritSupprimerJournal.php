@@ -20,7 +20,7 @@
                     <label for="formSupprimerJournal_idJournal">Goodie :</label>
                     <select id="formSupprimerJournal_idJournal" name="formSupprimerJournal_idJournal">
                         <option value="">--Choisir un journal--</option>
-                        <?php echo $journal ?>
+                        <?php echo $journaux ?>
                     </select>
                 </p>
                 <p>⚠️ Cette action est irréversible ! ⚠️</p>

@@ -68,6 +68,19 @@ function idTitreJournaux() {
 }
 
 function supprimerJournal($id) {
+    # Suppression du journal
+    $connexion = getConnect();
+    $requete = "SELECT pdfJournaux FROM Journaux WHERE idJournaux=:idJournaux";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    $pdf = $ligne->pdfJournaux;
+    unlink('./ressources/journaux/' . $pdf);
+
+    # Suppression des données
     $connexion = getConnect();
     $requete = "DELETE FROM Journaux WHERE idJournaux=:idJournaux";
     $prepare = $connexion->prepare($requete);

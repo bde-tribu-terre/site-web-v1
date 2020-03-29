@@ -132,9 +132,9 @@ function CtlSupprimerJournal($id) {
     if (!empty($id)) {
         try {
             supprimerJournal($id);
-            afficherAjouterJournal('Le journal a été supprimé avec succès !');
+            afficherSupprimerJournal('Le journal a été supprimé avec succès !');
         } catch (Exception $e) {
-            afficherAjouterJournal($e);
+            afficherSupprimerJournal($e);
         }
     } else {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");
