@@ -19,7 +19,7 @@ function afficherAjouterImageGoodie($messageRetour) {
 
     $lignesGoodies = idTitreGoodies();
 
-    $goodies = ';'
+    $goodies = '';
     foreach ($lignesGoodies as $ligneGoodie) {
         $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
         $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
