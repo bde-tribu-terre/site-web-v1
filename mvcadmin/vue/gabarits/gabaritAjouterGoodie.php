@@ -14,7 +14,7 @@
     ?>
     <div id="divActions">
         <fieldset id="formAjouterGoodie_fieldset">
-            <h3>Ajouter un journal</h3>
+            <h3>Ajouter un goodie</h3>
             <form id="formAjouterGoodie" action="admin" method="post" enctype="multipart/form-data">
                 <p> <!-- Titre du goodie -->
                     <label for="formAjouterGoodie_titreGoodie">Titre du goodie :</label>

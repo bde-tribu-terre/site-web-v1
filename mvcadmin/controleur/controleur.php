@@ -35,6 +35,10 @@ function CtlAjouterGoodieMenu($messageRetour) {
     afficherAjouterGoodie($messageRetour);
 }
 
+function CtlAjouterImageGoodieMenu($messageRetour) {
+    afficherAjouterImageGoodie($messageRetour);
+}
+
 function CtlAjouterJournalMenu($messageRetour) {
     afficherAjouterJournal($messageRetour);
 }
@@ -76,6 +80,23 @@ function CtlAjouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $pri
         try {
             ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
             afficherAjouterGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !');
+        } catch (Exception $e) {
+            afficherAjouterGoodie($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit AjouterImageGoodie                                                                                           #
+########################################################################################################################
+function CtlAjouterImageGoodie($id, $fileImput) {
+    if (!empty($id)) {
+        try {
+            $titre = titreGoodie($id)->titreGoodies;
+            ajouterImageGoodie($id, $titre, $fileImput);
+            afficherAjouterGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
         } catch (Exception $e) {
             afficherAjouterGoodie($e);
         }

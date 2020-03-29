@@ -14,6 +14,11 @@ function afficherAjouterGoodie($messageRetour) {
     require_once('gabarits/gabaritAjouterGoodie.php');
 }
 
+function afficherAjouterImageGoodie($messageRetour) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    require_once('gabarits/gabaritAjouterImageGoodie.php');
+}
+
 function afficherAjouterJournal($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     require_once('gabarits/gabaritAjouterJournal.php');

@@ -27,6 +27,13 @@ try {
             'formAjouterGoodie_miniature'
         );
     }
+    // Gabarit Ajouter Image Goodie
+    elseif (isset($_POST['formAjouterImageGoodie_ajouter'])) {
+        CtlAjouterImageGoodie(
+            $_POST['formAjouterImageGoodie_idGoodie'],
+            'formAjouterImageGoodie_image'
+        );
+    }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
         CtlAjouterJournal(
@@ -39,6 +46,8 @@ try {
     // Gabarit Menu
     elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
         CtlAjouterGoodieMenu('');
+    } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
+        CtlAjouterImageGoodieMenu('');
     } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
         CtlAjouterJournalMenu('');
     } elseif (isset($_POST['formMonCompte_parametres'])) {

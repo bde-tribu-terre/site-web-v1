@@ -25,7 +25,7 @@ function afficherAccueil($prefixe) {
         if ($categorieGoodie != 1) {
             continue;
         }
-        $lienMiniature = $prefixe . 'ressources/goodies/miniatures/' . $miniatureGoodie;
+        $lienMiniature = $prefixe . 'ressources/goodies/' . $miniatureGoodie;
 
         $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
         if ($premier) {
@@ -236,7 +236,7 @@ function afficherGoodies($prefixe) {
         if ($categorie == 0) {
             continue;
         }
-        $lienMiniature = $prefixe . 'ressources/goodies/miniatures/' . $miniature;
+        $lienMiniature = $prefixe . 'ressources/goodies/' . $miniature;
 
         $tableGoodies .=
             '<div class="col-sm-6">' .

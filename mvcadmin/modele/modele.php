@@ -58,8 +58,8 @@ function ajouterJournal($titre, $mois, $annee, $fileImput) {
 
 function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     # Enregistrement de la miniature.
-    $miniatureRep = './ressources/goodies/miniatures/';
-    $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
+    $miniatureRep = './ressources/goodies/';
+    $newName = 'm-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $miniatureRep . $newName
@@ -75,6 +75,37 @@ function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNA
     $prepare->bindValue(':descGoodies', $desc, PDO::PARAM_STR);
     $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
     $prepare->bindValue(':miniatureGoodies', $newName, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
+function titreGoodie($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idGoodies, titreGoodies FROM Goodies WHERE idGoodies=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function ajouterImageGoodie($id, $titre, $fileImput) {
+    # Enregistrement de l'image.
+    $imageRep = './ressources/goodies/';
+    $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
+    move_uploaded_file(
+        $_FILES[$fileImput]['tmp_name'],
+        $imageRep . $newName
+    );
+
+    # Enregistrement des données dans la BDD SQL.
+    $connexion = getConnect();
+    $requete = "INSERT INTO ImagesGoodies VALUES (0, :idGoodies, :lienImagesgoodies)"; // (0 pour le auto increment)
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':lienImagesgoodies', $newName, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
 }
