@@ -158,7 +158,7 @@ function afficherEvents($prefixe) {
                     '<div class="collapse" id="event' . $id . '">' .
                         '<div class="card card-body">' .
                             '<h5>' .
-                                preg_replace("/\r|\n/", '<br>', $desc) .
+                                nl2br($desc) .
                             '</h5>' .
                         '</div>' .
                     '</div>' .
@@ -207,7 +207,7 @@ function afficherEventPrecis($prefixe, $event) {
         $nbJoursStr .= '<i><span style="color: darkgray">(Il y a ' . abs($nbJours) . ' jours)</span></i>';
     }
 
-    $descStr = preg_replace("/\r|\n/", '<br>', $desc);
+    $descStr = nl2br($desc);
     $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
     $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
 
@@ -274,7 +274,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
     $lignesImages = imagesGoodie($id);
 
     $carouselGoodie = '';
-    if (empty($listeImages)) {
+    if (empty($lignesImages)) {
         $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $miniature . '" class="imageUniqueGoodiePrecis">';
     } else {
         $nb = 0;
@@ -289,7 +289,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
             '</div>';
 
         # Le reste des images
-        foreach ($listeImages as $ligne) {
+        foreach ($lignesImages as $ligne) {
             $lien = $ligne->lienImagesGoodies;
             $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"></li>';
             $carouselGoodieImages .=
@@ -314,6 +314,8 @@ function afficherGoodiePrecis($prefixe, $goodie) {
                 '</a>' .
             '</div>';
     }
+
+    $descStr = nl2br($descGoodie);
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
