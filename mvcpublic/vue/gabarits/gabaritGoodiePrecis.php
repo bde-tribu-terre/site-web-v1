@@ -23,7 +23,7 @@
             <div class="well">
                 <h3>Quelques mots sur cette merveille...</h3>
                 <p>
-                    <?php echo $descGoodie ?>
+                    <?php echo $descStr ?>
                 </p>
             </div>
         </div>
