@@ -65,6 +65,8 @@ function afficherModifierGoodie($messageRetour, $id) {
 function afficherSupprimerImageGoodie($messageRetour, $id) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
+    $idGoodie = $id;
+
     $lignesImages = imagesGoodie($id);
     $images = '';
 

@@ -64,6 +64,7 @@ try {
                 supprimerImageGoodie($key);
             }
         }
+        CtlAllerSupprimerImageGoodie($_POST['formSupprimerImageGoodie_idGoodie']);
     }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
