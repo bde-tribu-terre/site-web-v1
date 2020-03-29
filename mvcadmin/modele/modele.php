@@ -37,20 +37,22 @@ function infosMembre($id) {
 }
 
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
+    # Enregistrement du fichier PDF.
     $journauxRep = '../ressources/journaux/';
     $nextUpload = file($journauxRep . 'next.txt')[0];
-    $newName = 'file_' . preg_replace('/[\W]/', '', $titre) . '.pdf';
-    mkdir($journauxRep . $nextUpload);
+    $newName = preg_replace('/[\W]/', '', $titre) . time() . '.pdf'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
-        $journauxRep . $nextUpload . '/' . $newName
+        $journauxRep . $newName
     );
-    $descFile = fopen($journauxRep . $nextUpload . '/desc.txt', 'w');
-    fwrite($descFile, $newName . "\n");
-    fwrite($descFile, $annee . '-' . $mois . "\n");
-    fwrite($descFile, $titre);
-    fclose($descFile);
-    $nextUploadFile = fopen($journauxRep . 'next.txt', 'w');
-    fwrite($nextUploadFile, strval(intval($nextUpload) + 1));
-    fclose($nextUploadFile);
+
+    # Enregistrement des données dans la BDD SQL.
+    $connexion = getConnect();
+    $requete = "INSERT INTO Journaux VALUES (0, :titreJournaux, :dateJournaux, :pdfJournaux)"; // (0 pour le auto increment)
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':titreJournaux', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':dateJournaux', $annee . '-' . $mois . '-' . '01', PDO::PARAM_STR);
+    $prepare->bindValue(':pdfJournaux', $newName, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
 }
