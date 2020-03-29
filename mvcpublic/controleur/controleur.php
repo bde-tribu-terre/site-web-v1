@@ -42,7 +42,7 @@ function CtlGoodies($prefixe) {
 
 function CtlGoodiePrecis($prefixe, $id) {
     $goodie = goodiePrecis($id);
-    if (empty($goodie)) {
+    if (!empty($goodie)) {
         afficherGoodiePrecis($prefixe, $goodie);
     } else {
         throw new Exception("Le goodie recherché n'existe pas.");
