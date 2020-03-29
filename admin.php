@@ -41,7 +41,7 @@ try {
         );
     }
     // Gabarit Modifier Goodie
-    elseif (isset($_POST['formModifierGoodie_modifier'])) {
+    elseif (isset($_POST['formModifierGoodie_modifierGoodie'])) {
         CtlModifierGoodie(
             $_POST['formModifierGoodie_idGoodie'],
             $_POST['formModifierGoodie_titreGoodie'],

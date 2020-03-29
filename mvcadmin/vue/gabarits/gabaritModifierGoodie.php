@@ -49,7 +49,7 @@
                 </p>
                 <p>⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé ! ⚠️</p>
                 <p> <!-- Modifier Goodie -->
-                    <input type="submit" value="Ajouter le goodie" name="formModifierGoodie_modifierGoodie">
+                    <input type="submit" value="Modifier le goodie" name="formModifierGoodie_modifierGoodie">
                 </p>
             </form>
         </fieldset>

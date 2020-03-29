@@ -32,6 +32,17 @@ function afficherAjouterImageGoodie($messageRetour) {
 
 function afficherChoixGoodie($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+    $lignesGoodies = idTitreGoodies();
+
+    $goodies = '';
+    foreach ($lignesGoodies as $ligneGoodie) {
+        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
+        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $goodies .=
+            '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
+    }
+
     require_once('gabarits/gabaritChoixGoodie.php');
 }
 
@@ -40,14 +51,15 @@ function afficherModifierGoodie($messageRetour, $id) {
 
     $ligneGoodie = infoGoodie($id);
 
+    $idGoodie = $id;
     $titreGoodie = $ligneGoodie->titreGoodies;
     $prixADEuroGoodie = intval($ligneGoodie->prixADGoodies);
     $prixADCentimesGoodie = $ligneGoodie->prixADGoodies - intval($prixADEuroGoodie);
-    $prixNADEuroGoodie = $ligneGoodie->prixNADGoodies;
+    $prixNADEuroGoodie = intval($ligneGoodie->prixNADGoodies);
     $prixNADCentimesGoodie = $ligneGoodie->prixNADGoodies - intval($prixNADEuroGoodie);
     $descGoodie = $ligneGoodie->descGoodies;
 
-    require_once('gabarits/gabaritChoixGoodie.php');
+    require_once('gabarits/gabaritModifierGoodie.php');
 }
 
 function afficherAjouterJournal($messageRetour) {

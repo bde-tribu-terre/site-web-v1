@@ -78,7 +78,7 @@ function CtlMenuErreur($messageErreur) {
 function CtlAjouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     if (
         !empty($titre) &&
-        !empty($categorie) &&
+        (!empty($categorie) || $categorie == 0) &&
         (!empty($prixADEuro) || $prixADEuro == 0) &&
         (!empty($prixADCentimes) || $prixADCentimes == 0) &&
         (!empty($prixNADEuro) || $prixNADEuro == 0) &&
@@ -134,7 +134,7 @@ function CtlChoixGoodie($id) {
 function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
     if (
         !empty($titre) &&
-        !empty($categorie) &&
+        (!empty($categorie) || $categorie == 0) &&
         (!empty($prixADEuro) || $prixADEuro == 0) &&
         (!empty($prixADCentimes) || $prixADCentimes == 0) &&
         (!empty($prixNADEuro) || $prixNADEuro == 0) &&
@@ -143,7 +143,7 @@ function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
     ) {
         try {
             modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
-            afficherModifierGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !', $id);
+            afficherModifierGoodie('Le goodie "' . $titre . '" a été modifié avec succès !', $id);
         } catch (Exception $e) {
             afficherModifierGoodie($e, $id);
         }
