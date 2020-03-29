@@ -219,51 +219,37 @@ function afficherGoodies($prefixe) {
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php';
 
     $tableGoodies = '';
-    $listeGoodies = scandir($prefixe . 'ressources/goodies');
-    natsort($listeGoodies);
+    $lignesGoodies = goodiesTous();
 
-    $pair = true; // On commence à 0 en informatique.
-    foreach ($listeGoodies as $repertoire) {
-        if (
-            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/desc.txt') &&
-            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt') &&
-            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/img.png')
-        ) {
-            $attr = file($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt');
-            $nomGoodie = preg_replace("/\r|\n/", "", $attr[0]);
-            $prixAdherent = preg_replace("/\r|\n/", "", $attr[1]);
-            $prixNonAdherent = preg_replace("/\r|\n/", "", $attr[2]);
-            $etat = preg_replace("/\r|\n/", "", $attr[3]);
-            // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
-            if ($etat == 0) {
-                continue;
-            }
-            $lienImg = $prefixe . 'ressources/goodies/' . $repertoire . '/img.png';
+    foreach ($lignesGoodies as $ligne) {
+        $id = htmlentities($ligne->idGoodies, ENT_QUOTES, "UTF-8");
+        $titre = htmlentities($ligne->titreGoodies, ENT_QUOTES, "UTF-8");
+        $prixAdherent = htmlentities($ligne->prixADGoodies, ENT_QUOTES, "UTF-8");
+        $prixNonAdherent = htmlentities($ligne->prixNADGoodies, ENT_QUOTES, "UTF-8");
+        $desc = htmlentities($ligne->descGoodies, ENT_QUOTES, "UTF-8");
+        $categorie = htmlentities($ligne->categorieGoodies, ENT_QUOTES, "UTF-8");
+        $miniature = htmlentities($ligne->miniatureGoodies, ENT_QUOTES, "UTF-8");
 
-            if ($pair) {
-                $tableGoodies .= '<div class="row">';
-            }
-            $tableGoodies .=
-                '<div class="col-sm-6">' .
-                    '<div class="well">' .
-                        '<a href="' . $prefixe . 'goodies?id=' . $repertoire . '">' .
-                            '<img src="' . $lienImg . '" class="miniatureGoodies" alt="Miniature">' .
-                        '</a>' .
-                        '<h3>' . $nomGoodie . '</h3>' .
-                        '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
-                        '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
-                        '<a class="btn btn-primary" href="' . $prefixe . 'goodies?id=' . $repertoire . '">' .
-                            'Voir les détails...' .
-                        '</a>' .
-                    '</div>' .
-                '</div>';
-            if (!$pair) {
-                $tableGoodies .= '</div>';
-                $pair = true;
-            } else {
-                $pair = false;
-            }
+        // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
+        if ($categorie == 0) {
+            continue;
         }
+        $lienMiniature = $prefixe . 'ressources/goodies/' . $miniature;
+
+        $tableGoodies .=
+            '<div class="col-sm-6">' .
+                '<div class="well">' .
+                    '<a href="' . $prefixe . 'goodies?id=' . $id . '">' .
+                        '<img src="' . $lienMiniature . '" class="miniatureGoodies" alt="Miniature">' .
+                    '</a>' .
+                    '<h3>' . $titre . '</h3>' .
+                    '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
+                    '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
+                    '<a class="btn btn-primary" href="' . $prefixe . 'goodies?id=' . $id . '">' .
+                        'Voir les détails...' .
+                    '</a>' .
+                '</div>' .
+            '</div>';
     }
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');

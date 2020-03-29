@@ -45,6 +45,20 @@ function eventPrecis($id) {
 }
 
 ########################################################################################################################
+# Goodies                                                                                                              #
+########################################################################################################################
+function goodiesTous() {
+    $connexion = getConnect();
+    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies FROM Goodies";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+########################################################################################################################
 # Journaux                                                                                                             #
 ########################################################################################################################
 function journauxTous() {
