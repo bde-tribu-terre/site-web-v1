@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS MLR-TT;
+DROP DATABASE IF EXISTS TRIBUTERRE;
 
-CREATE DATABASE IF NOT EXISTS MLR-TT;
-USE MLR-TT;
+CREATE DATABASE IF NOT EXISTS TRIBUTERRE;
+USE TRIBUTERRE;
 # -----------------------------------------------------------------------------
 #       TABLE : MEMBRE
 # -----------------------------------------------------------------------------
