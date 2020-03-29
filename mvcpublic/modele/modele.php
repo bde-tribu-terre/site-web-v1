@@ -58,6 +58,30 @@ function goodiesTous() {
     return $ligne;
 }
 
+function goodiePrecis($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies, miniatureGoodies FROM Goodies WHERE idGoodies=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function imagesGoodie($id) {
+    $connexion = getConnect();
+    $requete = "SELECT lienImagesGoodies FROM ImagesGoodies WHERE idGoodies=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
 ########################################################################################################################
 # Journaux                                                                                                             #
 ########################################################################################################################

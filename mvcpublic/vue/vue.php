@@ -261,46 +261,50 @@ function afficherGoodiePrecis($prefixe, $id) {
     // $title = 'Goodies'; Voir ci-après.
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodiePrecis.php';
 
-    $attr = file($prefixe . 'ressources/goodies/' . $id . '/attr.txt');
-    $nomGoodie = preg_replace("/\r|\n/", "", $attr[0]);
-    $prixAdherent = preg_replace("/\r|\n/", "", $attr[1]);
-    $prixNonAdherent = preg_replace("/\r|\n/", "", $attr[2]);
-    $descGoodie = nl2br(file_get_contents($prefixe . 'ressources/goodies/' . $id . '/desc.txt'));
-    $etat = preg_replace("/\r|\n/", "", $attr[3]);
-    // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
+    $goodie = goodiePrecis($id);
 
-    $title = $nomGoodie;
+    $id = htmlentities($goodie->idGoodies, ENT_QUOTES, "UTF-8");
+    $titreGoodie = htmlentities($goodie->titreGoodies, ENT_QUOTES, "UTF-8");
+    $prixAdherent = htmlentities($goodie->prixADGoodies, ENT_QUOTES, "UTF-8");
+    $prixNonAdherent = htmlentities($goodie->prixNADGoodies, ENT_QUOTES, "UTF-8");
+    $categorie = htmlentities($goodie->categorieGoodies, ENT_QUOTES, "UTF-8");
+    $descGoodie = htmlentities($goodie->descGoodies, ENT_QUOTES, "UTF-8");
+    $miniature = htmlentities($goodie->miniatureGoodies, ENT_QUOTES, "UTF-8");
 
-    $listeImages = scandir($prefixe . 'ressources/goodies/' . $id . '/img');
-    natsort($listeImages);
+    $title = $titreGoodie;
+
+    $lignesImages = imagesGoodie($id);
 
     $carouselGoodie = '';
-    if (count($listeImages) == 3) { // Si il n'y a qu'une seule image... (car il y a . et .. )
-        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img.png' . '" class="imageUniqueGoodiePrecis">';
+    if (empty($listeImages)) {
+        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/' . $miniature . '" class="imageUniqueGoodiePrecis">';
     } else {
-        $first = true;
         $nb = 0;
         $carouselGoodieIndicator = '<ol class="carousel-indicators">';
         $carouselGoodieImages = '<div class="carousel-inner" role="listbox">';
+
+        # Image miniature
+        $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '" class="active"></li>';
+        $carouselGoodieImages .=
+            '<div class="item active">' .
+                '<img src="' . $prefixe . 'ressources/goodies/' . $miniature . '" alt="Image">' .
+            '</div>';
+
+        # Le reste des images
         foreach ($listeImages as $image) {
             if ($image != '.' && $image != '..') {
-                $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"';
-                $carouselGoodieImages .= '<div class="item';
-                if ($first) {
-                    $carouselGoodieIndicator .= ' class="active"';
-                    $carouselGoodieImages .= ' active';
-                    $first = false;
-                }
-                $carouselGoodieIndicator .= '></li>';
-                $carouselGoodieImages .= '">' .
-                    '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img/' . $image . '" alt="Image">' .
+                $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"></li>';
+                $carouselGoodieImages .=
+                    '<div class="item">' .
+                        '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img/' . $image . '" alt="Image">' .
                     '</div>';
             }
         }
         $carouselGoodieIndicator .= '</ol>';
         $carouselGoodieImages .= '</div>';
 
-        $carouselGoodie = '<div id="carouselGoodie" class="carousel slide" data-ride="carousel">' .
+        $carouselGoodie =
+            '<div id="carouselGoodie" class="carousel slide" data-ride="carousel">' .
                 $carouselGoodieIndicator .
                 $carouselGoodieImages .
                 '<a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">' .
