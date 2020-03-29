@@ -14,6 +14,19 @@ try {
             $_POST['formConnexion_mdp']
         );
     }
+    // Gabarit Ajouter Goodie
+    elseif (isset($_POST['formAjouterGoodie_ajouterGoodie'])) {
+        CtlAjouterGoodie(
+            $_POST['formAjouterGoodie_titreGoodie'],
+            $_POST['formAjouterGoodie_categorie'],
+            $_POST['formAjouterGoodie_prixAdhérentEuro'],
+            $_POST['formAjouterGoodie_prixAdhérentCentimes'],
+            $_POST['formAjouterGoodie_prixNonAdhérentEuro'],
+            $_POST['formAjouterGoodie_prixNonAdhérentCentimes'],
+            $_POST['formAjouterGoodie_descGoodie'],
+            'formAjouterGoodie_miniature'
+        );
+    }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
         CtlAjouterJournal(
@@ -24,10 +37,11 @@ try {
         );
     }
     // Gabarit Menu
-    elseif (isset($_POST['formJournal_gererJournal'])) {
+    elseif (isset($_POST['formJournal_ajouterGoodieMenu'])) {
+        CtlAjouterGoodieMenu('');
+    } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
         CtlAjouterJournalMenu('');
-    }
-    elseif (isset($_POST['formMonCompte_parametres'])) {
+    } elseif (isset($_POST['formMonCompte_parametres'])) {
         CtlParametresCompte('');
     } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
         CtlDeconnexion('');

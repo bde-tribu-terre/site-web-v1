@@ -31,6 +31,10 @@ function CtlConnexionErreur($messageErreur) {
 ########################################################################################################################
 # Gabarit Menu                                                                                                         #
 ########################################################################################################################
+function CtlAjouterGoodieMenu($messageRetour) {
+    afficherAjouterGoodie($messageRetour);
+}
+
 function CtlAjouterJournalMenu($messageRetour) {
     afficherAjouterJournal($messageRetour);
 }
@@ -57,6 +61,30 @@ function CtlMenuErreur($messageErreur) {
 }
 
 ########################################################################################################################
+# Gabarit AjouterGoodie                                                                                                #
+########################################################################################################################
+function CtlAjouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
+    if (
+        !empty($titre) &&
+        !empty($categorie) &&
+        !empty($prixADEuro) &&
+        !empty($prixADCentimes)&&
+        !empty($prixNADEuro)&&
+        !empty($prixNADCentimes)&&
+        !empty($desc)&&
+        !empty($fileImput)) {
+        try {
+            ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
+            afficherAjouterGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !');
+        } catch (Exception $e) {
+            afficherAjouterGoodie($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
 # Gabarit AjouterJournal                                                                                               #
 ########################################################################################################################
 function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
@@ -71,6 +99,3 @@ function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");
     }
 }
-########################################################################################################################
-# Gabarit Paramètres Compte                                                                                            #
-########################################################################################################################

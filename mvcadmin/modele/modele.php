@@ -55,3 +55,26 @@ function ajouterJournal($titre, $mois, $annee, $fileImput) {
     $prepare->execute();
     $prepare->closeCursor();
 }
+
+function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
+    # Enregistrement de la miniature.
+    $miniatureRep = './ressources/goodies/miniatures/';
+    $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.pdf'; # time() => aucun doublon imaginable.
+    move_uploaded_file(
+        $_FILES[$fileImput]['tmp_name'],
+        $miniatureRep . $newName
+    );
+
+    # Enregistrement des données dans la BDD SQL.
+    $connexion = getConnect();
+    $requete = "INSERT INTO Goodies VALUES (0, :titreGoodies, :prixADGoodies, :prixNADGoodies, :descGoodies, :categorieGoodies, :miniatureGoodies)"; // (0 pour le auto increment)
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':titreGoodies', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), PDO::PARAM_STR);
+    $prepare->bindValue(':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), PDO::PARAM_STR);
+    $prepare->bindValue(':descGoodies', $desc, PDO::PARAM_STR);
+    $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
+    $prepare->bindValue(':miniatureGoodies', $newName, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+}

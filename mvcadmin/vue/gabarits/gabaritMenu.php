@@ -29,7 +29,7 @@
             <h3>Goodies</h3>
             <form id="formGoodies" action="admin" method="post">
                 <p> <!-- Ajouter un goodie -->
-                    <input type="submit" value="Ajouter un goodie" name="formGoodies_ajouterGoodie" disabled>
+                    <input type="submit" value="Ajouter un goodie" name="formGoodies_ajouterGoodieMenu">
                 </p>
                 <p> <!-- Modifier un goodie -->
                     <input type="submit" value="Modifier un goodie" name="formGoodies_modifierGoodie" disabled>
@@ -40,7 +40,7 @@
             <h3>Journal</h3>
             <form id="formJournal" action="admin" method="post">
                 <p> <!-- Ajouter un journal -->
-                    <input type="submit" value="Ajouter un journal" name="formJournal_ajouterJournal">
+                    <input type="submit" value="Ajouter un journal" name="formJournal_ajouterJournalMenu">
                 </p>
                 <p> <!-- Supprimer un journal -->
                     <input type="submit" value="Supprimer un journal" name="formJournal_supprimerJournal" disabled>
