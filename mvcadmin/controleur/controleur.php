@@ -67,12 +67,12 @@ function CtlAjouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $pri
     if (
         !empty($titre) &&
         !empty($categorie) &&
-        !empty($prixADEuro) &&
-        !empty($prixADCentimes)&&
-        !empty($prixNADEuro)&&
-        !empty($prixNADCentimes)&&
-        !empty($desc)&&
-        !empty($fileImput)) {
+        (!empty($prixADEuro) || $prixADEuro == 0) &&
+        (!empty($prixADCentimes) || $prixADCentimes == 0) &&
+        (!empty($prixNADEuro) || $prixNADEuro == 0) &&
+        (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
+        !empty($desc)
+    ) {
         try {
             ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
             afficherAjouterGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !');
