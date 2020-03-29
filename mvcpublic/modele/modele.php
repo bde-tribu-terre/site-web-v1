@@ -6,6 +6,9 @@ function getConnect() {
     return $connexion;
 }
 
+########################################################################################################################
+# Évents                                                                                                               #
+########################################################################################################################
 function eventsFuturs($ajd) {
     $connexion = getConnect();
     $requete = "SELECT idEvents, titreEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE dateEvents>=:ajd ORDER BY dateEvents LIMIT 2";
@@ -37,6 +40,20 @@ function eventPrecis($id) {
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
     $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+########################################################################################################################
+# Journaux                                                                                                             #
+########################################################################################################################
+function journauxTous() {
+    $connexion = getConnect();
+    $requete = "SELECT idJournaux, titreJournaux, dateJournaux, pdfJournaux FROM Journaux ORDER BY dateJournaux DESC";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
     $prepare->closeCursor();
     return $ligne;
 }

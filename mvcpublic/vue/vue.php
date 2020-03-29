@@ -337,9 +337,7 @@ function afficherJournaux($prefixe) {
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritJournaux.php';
 
     $tableJournaux = '';
-    $journaux = scandir($prefixe . 'ressources/journaux');
-    natsort($journaux);
-    array_reverse($journaux);
+    $lignesJournaux = journauxTous();
 
     $arrayMois = [
         '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
@@ -347,24 +345,24 @@ function afficherJournaux($prefixe) {
         '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
         '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
     ];
-    foreach ($journaux as $repertoire) {
-        if (file_exists($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt') && $repertoire != '.' && $repertoire != '..') {
-            $desc = file($prefixe . 'ressources/journaux/' . $repertoire . '/desc.txt');
-            $titre = $desc[2];
-            $nomFichier = $desc[0];
-            $lienJournal = $prefixe . 'ressources/journaux/' . $repertoire . '/' . $nomFichier;
-            $dateParution = $desc[1];
-            $tableJournaux .=
-                '<div class="col-sm-3">' .
-                    '<div class="well">' .
-                        '<h3>' . $titre . '</h3>' .
-                        '<h4>' . $arrayMois[substr($dateParution, 5, 2)] . ' ' . substr($dateParution, 0, 4) . '</h4>' .
-                        '<a href="' . $lienJournal . '">' .
-                            '<h4>Lire en ligne</h4>' .
-                        '</a>' .
-                    '</div>' .
-                '</div>';
-        }
+
+    foreach ($lignesJournaux as $ligne) {
+        $titre = htmlentities($ligne->titreJournaux, ENT_QUOTES, "UTF-8");;
+        $date = htmlentities($ligne->dateJournaux, ENT_QUOTES, "UTF-8");
+        $pdf = htmlentities($ligne->pdfJournaux, ENT_QUOTES, "UTF-8");
+
+        $lienJournal = $prefixe . 'ressources/journaux/' . $pdf;
+
+        $tableJournaux .=
+            '<div class="col-sm-3">' .
+                '<div class="well">' .
+                    '<h3>' . $titre . '</h3>' .
+                    '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
+                    '<a href="' . $lienJournal . '">' .
+                        '<h4>Lire en ligne</h4>' .
+                    '</a>' .
+                '</div>' .
+            '</div>';
     }
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
