@@ -32,12 +32,12 @@
                 <p> <!-- Prix adhérent -->
                     <label for="formAjouterGoodie_prixAdhérentEuro">Prix adhérent :</label>
                     <input id="formAjouterGoodie_prixAdhérentEuro" type="number" min="0" name="formAjouterGoodie_prixAdhérentEuro">€
-                    <input id="formAjouterGoodie_prixAdhérentCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixAdhérentCentimes">centimes
+                    <input id="formAjouterGoodie_prixAdhérentCentimes" type="number" value="0" min="0" max="99" name="formAjouterGoodie_prixAdhérentCentimes">centimes
                 </p>
                 <p> <!-- Prix non-adhérent -->
                     <label for="formAjouterGoodie_prixNonAdhérentEuro">Prix non-adhérent :</label>
                     <input id="formAjouterGoodie_prixNonAdhérentEuro" type="number" min="0" name="formAjouterGoodie_prixNonAdhérentEuro">€
-                    <input id="formAjouterGoodie_prixNonAdhérentCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixNonAdhérentCentimes">centimes
+                    <input id="formAjouterGoodie_prixNonAdhérentCentimes" type="number" value="0" min="0" max="99" name="formAjouterGoodie_prixNonAdhérentCentimes">centimes
                 </p>
                 <p> <!-- Description du goodie -->
                     <label for="formAjouterGoodie_descGoodie">Description du goodie :</label>
