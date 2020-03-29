@@ -44,10 +44,10 @@
                     <textarea id="formAjouterGoodie_descGoodie" placeholder="Description du goodie" name="formAjouterGoodie_descGoodie"></textarea>
                 </p>
                 <p> <!-- Miniature -->
-                    <input type="file" value="Sélectionner la miniature (800px*400px)" name="formAjouterGoodie_miniature" accept="image/png,image/jpg">
+                    <input type="file" value="Sélectionner la miniature (PNG, 800px*400px)" name="formAjouterGoodie_miniature" accept="image/png">
                 </p>
                 <p> <!-- Ajouter Goodie -->
-                    <input type="submit" value="Ajouter le journal" name="formAjouterGoodie_ajouterGoodie">
+                    <input type="submit" value="Ajouter le goodie" name="formAjouterGoodie_ajouterGoodie">
                 </p>
             </form>
         </fieldset>
