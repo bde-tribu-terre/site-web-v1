@@ -37,7 +37,7 @@ try {
         );
     }
     // Gabarit Menu
-    elseif (isset($_POST['formJournal_ajouterGoodieMenu'])) {
+    elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
         CtlAjouterGoodieMenu('');
     } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
         CtlAjouterJournalMenu('');
