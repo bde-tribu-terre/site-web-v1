@@ -44,8 +44,10 @@
                     <textarea id="formAjouterGoodie_descGoodie" placeholder="Description du goodie" name="formAjouterGoodie_descGoodie"></textarea>
                 </p>
                 <p> <!-- Miniature -->
-                    <input type="file" value="Sélectionner la miniature (PNG, 800px*400px)" name="formAjouterGoodie_miniature" accept="image/png">
+                    <label for="formAjouterGoodie_miniature">Sélectionner la miniature (PNG, 800px*400px) :</label>
+                    <input type="file" name="formAjouterGoodie_miniature" accept="image/png">
                 </p>
+                <p>⚠️ Pour ajouter les images qui seront affichées sur la page du goodie, il faut ajouter le goodie, puis retourner sur le menu admin, et aller dans "ajouter une image à un goodie". ⚠️</p>
                 <p> <!-- Ajouter Goodie -->
                     <input type="submit" value="Ajouter le goodie" name="formAjouterGoodie_ajouterGoodie">
                 </p>
