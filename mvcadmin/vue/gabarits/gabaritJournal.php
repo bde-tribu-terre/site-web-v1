@@ -20,8 +20,9 @@
                     <label for="formAjouterJournal_titreJournal">Titre du journal :</label>
                     <input id="formAjouterJournal_titreJournal" type="text" placeholder="Titre du journal" name="formAjouterJournal_titreJournal">
                 </p>
+                <p>Format : Omni-Sciences n°X</p>
                 <p> <!-- Mois de sortie du journal -->
-                    <label for="formAjouterJournal_moisJournal">Mois du sortie du journal :</label>
+                    <label for="formAjouterJournal_moisJournal">Mois de sortie du journal :</label>
                     <select id="formAjouterJournal_moisJournal" name="formAjouterJournal_moisJournal">
                         <option value="01">Janvier</option>
                         <option value="02">Février</option>
@@ -38,7 +39,7 @@
                     </select>
                 </p>
                 <p> <!-- Année de sortie du journal -->
-                    <label for="formAjouterJournal_anneeJournal">Année du sortie du journal :</label>
+                    <label for="formAjouterJournal_anneeJournal">Année de sortie du journal :</label>
                     <input id="formAjouterJournal_anneeJournal" type="number" value="2000" min="2000" max="2050" name="formAjouterJournal_anneeJournal">
                 </p>
                 <p> <!-- Fichier PDF -->
