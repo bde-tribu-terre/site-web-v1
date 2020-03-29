@@ -49,7 +49,7 @@ function eventPrecis($id) {
 ########################################################################################################################
 function goodiesTous() {
     $connexion = getConnect();
-    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies FROM Goodies";
+    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies, miniatureGoodies FROM Goodies";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
