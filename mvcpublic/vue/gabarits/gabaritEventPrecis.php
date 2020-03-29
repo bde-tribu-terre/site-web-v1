@@ -9,7 +9,7 @@
                 <h3><?php echo $nbJoursStr ?></h3>
                 <hr>
                 <h3>Heure ⌚</h3>
-                <h2><?php echo $heure ?></h2>
+                <h2><?php echo $heureStr ?></h2>
                 <hr>
                 <h3>Lieu 📍</h3>
                 <h2><?php echo $lieu ?></h2>
