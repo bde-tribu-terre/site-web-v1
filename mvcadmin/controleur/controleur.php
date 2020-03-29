@@ -128,7 +128,7 @@ function CtlChoixEvent($id) {
 ########################################################################################################################
 # Gabarit Modifier Event                                                                                               #
 ########################################################################################################################
-function CtlModifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu) {
+function CtlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
     if (
         !empty($titre) &&
         !empty($date) &&

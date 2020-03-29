@@ -29,7 +29,7 @@ function afficherChoixEvent($messageRetour) {
             $titreEvents . '</option>';
     }
 
-    require_once('gabarits/gabaritChoixGoodie.php');
+    require_once('gabarits/gabaritChoixEvent.php');
 }
 
 function afficherModifierEvent($messageRetour, $id) {
@@ -37,7 +37,7 @@ function afficherModifierEvent($messageRetour, $id) {
 
     $ligneEvent = infoEvent($id);
 
-    $idEvent = $id;
+    $idEvents = $id;
     $titreEvents = $ligneEvent->titreEvents;
     $descEvents = $ligneEvent->descEvents;
     $dateEvents = $ligneEvent->dateEvents;
