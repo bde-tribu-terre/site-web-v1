@@ -35,7 +35,7 @@
                     <input type="submit" value="Ajouter une image à un goodie" name="formGoodies_ajouterImageGoodieMenu">
                 </p>
                 <p> <!-- Modifier un goodie -->
-                    <input type="submit" value="Modifier un goodie" name="formGoodies_modifierGoodie" disabled>
+                    <input type="submit" value="Modifier un goodie" name="formGoodies_ModifierGoodieMenu">
                 </p>
             </form>
         </fieldset>

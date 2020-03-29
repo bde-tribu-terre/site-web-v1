@@ -135,6 +135,32 @@ function titreGoodie($id) {
     return $ligne;
 }
 
+function infoGoodie($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies FROM Goodies WHERE idGoodies=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
+    $connexion = getConnect();
+    $requete = "UPDATE Goodies SET titreGoodies=:titreGoodies, prixADGoodies=:prixADGoodies, prixNADGoodies=:prixNADGoodies, descGoodies=:descGoodies, categorieGoodies=:categorieGoodies WHERE idGoodies=:idGoodies";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':titreGoodies', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), PDO::PARAM_STR);
+    $prepare->bindValue(':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), PDO::PARAM_STR);
+    $prepare->bindValue(':descGoodies', $desc, PDO::PARAM_STR);
+    $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
 function ajouterImageGoodie($id, $titre, $fileImput) {
     # Enregistrement de l'image.
     $imageRep = './ressources/goodies/';

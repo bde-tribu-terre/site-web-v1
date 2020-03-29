@@ -39,6 +39,10 @@ function CtlAjouterImageGoodieMenu($messageRetour) {
     afficherAjouterImageGoodie($messageRetour);
 }
 
+function CtlChoixGoodieMenu($messageRetour) {
+    afficherChoixGoodie($messageRetour);
+}
+
 function CtlAjouterJournalMenu($messageRetour) {
     afficherAjouterJournal($messageRetour);
 }
@@ -103,6 +107,45 @@ function CtlAjouterImageGoodie($id, $fileImput) {
             afficherAjouterGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
         } catch (Exception $e) {
             afficherAjouterGoodie($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit Choix Goodie                                                                                                 #
+########################################################################################################################
+function CtlChoixGoodie($id) {
+    if (!empty($id)) {
+        try {
+            afficherModifierGoodie('', $id);
+        } catch (Exception $e) {
+            afficherChoixGoodie($e);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit Modifier Goodie                                                                                              #
+########################################################################################################################
+function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
+    if (
+        !empty($titre) &&
+        !empty($categorie) &&
+        (!empty($prixADEuro) || $prixADEuro == 0) &&
+        (!empty($prixADCentimes) || $prixADCentimes == 0) &&
+        (!empty($prixNADEuro) || $prixNADEuro == 0) &&
+        (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
+        !empty($desc)
+    ) {
+        try {
+            modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
+            afficherModifierGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !', $id);
+        } catch (Exception $e) {
+            afficherModifierGoodie($e, $id);
         }
     } else {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");

@@ -34,6 +34,25 @@ try {
             'formAjouterImageGoodie_image'
         );
     }
+    // Gabarit Choix Goodie
+    elseif (isset($_POST['formChoisirGoodie_choisir'])) {
+        CtlChoixGoodie(
+            $_POST['formChoisirGoodie_idGoodie']
+        );
+    }
+    // Gabarit Modifier Goodie
+    elseif (isset($_POST['formModifierGoodie_modifier'])) {
+        CtlModifierGoodie(
+            $_POST['formModifierGoodie_idGoodie'],
+            $_POST['formModifierGoodie_titreGoodie'],
+            $_POST['formModifierGoodie_categorie'],
+            $_POST['formModifierGoodie_prixAdhérentEuro'],
+            $_POST['formModifierGoodie_prixAdhérentCentimes'],
+            $_POST['formModifierGoodie_prixNonAdhérentEuro'],
+            $_POST['formModifierGoodie_prixNonAdhérentCentimes'],
+            $_POST['formModifierGoodie_descGoodie']
+        );
+    }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
         CtlAjouterJournal(
@@ -54,6 +73,8 @@ try {
         CtlAjouterGoodieMenu('');
     } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
         CtlAjouterImageGoodieMenu('');
+    } elseif (isset($_POST['formGoodies_ModifierGoodieMenu'])) {
+        CtlChoixGoodieMenu('');
     } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
         CtlAjouterJournalMenu('');
     } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {

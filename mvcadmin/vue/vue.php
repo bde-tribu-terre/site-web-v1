@@ -30,6 +30,26 @@ function afficherAjouterImageGoodie($messageRetour) {
     require_once('gabarits/gabaritAjouterImageGoodie.php');
 }
 
+function afficherChoixGoodie($messageRetour) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    require_once('gabarits/gabaritChoixGoodie.php');
+}
+
+function afficherModifierGoodie($messageRetour, $id) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+    $ligneGoodie = infoGoodie($id);
+
+    $titreGoodie = $ligneGoodie->titreGoodies;
+    $prixADEuroGoodie = intval($ligneGoodie->prixADGoodies);
+    $prixADCentimesGoodie = $ligneGoodie->prixADGoodies - intval($prixADEuroGoodie);
+    $prixNADEuroGoodie = $ligneGoodie->prixNADGoodies;
+    $prixNADCentimesGoodie = $ligneGoodie->prixNADGoodies - intval($prixNADEuroGoodie);
+    $descGoodie = $ligneGoodie->descGoodies;
+
+    require_once('gabarits/gabaritChoixGoodie.php');
+}
+
 function afficherAjouterJournal($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     require_once('gabarits/gabaritAjouterJournal.php');
