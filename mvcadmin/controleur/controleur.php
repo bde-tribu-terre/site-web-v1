@@ -43,6 +43,10 @@ function CtlChoixGoodieMenu($messageRetour) {
     afficherChoixGoodie($messageRetour);
 }
 
+function CtlSupprimerGoodieMenu($messageRetour) {
+    afficherSupprimerGoodie($messageRetour);
+}
+
 function CtlAjouterJournalMenu($messageRetour) {
     afficherAjouterJournal($messageRetour);
 }
@@ -158,6 +162,22 @@ function CtlAllerSupprimerImageGoodie($id) {
             afficherSupprimerImageGoodie('', $id);
         } catch (Exception $e) {
             afficherModifierGoodie($e, $id);
+        }
+    } else {
+        throw new Exception("Erreur : Veuillez remplir tous les champs.");
+    }
+}
+
+########################################################################################################################
+# Gabarit Supprimer Goodie                                                                                             #
+########################################################################################################################
+function CtlSupprimerGoodie($id) {
+    if (!empty($id)) {
+        try {
+            supprimerGoodie($id);
+            afficherSupprimerGoodie('Le goodie a été supprimé avec succès !');
+        } catch (Exception $e) {
+            afficherSupprimerGoodie($e);
         }
     } else {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");

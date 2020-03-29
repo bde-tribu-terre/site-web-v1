@@ -66,6 +66,12 @@ try {
         }
         CtlAllerSupprimerImageGoodie($_POST['formSupprimerImageGoodie_idGoodie']);
     }
+    // Gabarit Supprimer Goodie
+    elseif (isset($_POST['formSupprimerGoodie_supprimer'])) {
+        CtlSupprimerGoodie(
+            $_POST['formSupprimerGoodie_idGoodie']
+        );
+    }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
         CtlAjouterJournal(
@@ -88,6 +94,8 @@ try {
         CtlAjouterImageGoodieMenu('');
     } elseif (isset($_POST['formGoodies_ModifierGoodieMenu'])) {
         CtlChoixGoodieMenu('');
+    } elseif (isset($_POST['formGoodies_SupprimerGoodieMenu'])) {
+        CtlSupprimerGoodieMenu('');
     } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
         CtlAjouterJournalMenu('');
     } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {

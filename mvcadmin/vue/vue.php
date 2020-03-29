@@ -84,6 +84,22 @@ function afficherSupprimerImageGoodie($messageRetour, $id) {
     require_once('gabarits/gabaritSupprimerImageGoodie.php');
 }
 
+function afficherSupprimerGoodie($messageRetour) {
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+
+    $lignesGoodies = idTitreGoodies();
+
+    $goodies = '';
+    foreach ($lignesGoodies as $ligneGoodie) {
+        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
+        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $goodies .=
+            '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
+    }
+
+    require_once('gabarits/gabaritSupprimerGoodie.php');
+}
+
 function afficherAjouterJournal($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     require_once('gabarits/gabaritAjouterJournal.php');

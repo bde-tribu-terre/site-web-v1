@@ -37,6 +37,9 @@
                 <p> <!-- Modifier un goodie -->
                     <input type="submit" value="Modifier un goodie" name="formGoodies_ModifierGoodieMenu">
                 </p>
+                <p> <!-- Supprimer un goodie -->
+                    <input type="submit" value="Supprimer un goodie" name="formGoodies_SupprimerGoodieMenu">
+                </p>
             </form>
         </fieldset>
         <fieldset id="formJournal_fieldset">
