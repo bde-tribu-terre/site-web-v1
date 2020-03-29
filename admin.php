@@ -14,7 +14,7 @@ try {
             $_POST['formConnexion_mdp']
         );
     }
-    // Gabarit Journal
+    // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
         CtlAjouterJournal(
             $_POST['formAjouterJournal_titreJournal'],
@@ -25,14 +25,13 @@ try {
     }
     // Gabarit Menu
     elseif (isset($_POST['formJournal_gererJournal'])) {
-        CtlJournal('');
+        CtlAjouterJournalMenu('');
     }
     elseif (isset($_POST['formMonCompte_parametres'])) {
         CtlParametresCompte('');
     } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
         CtlDeconnexion('');
     }
-    // Gabarit Paramètres Compte
     // Globaux : apparaissent dans plusieurs gabarits
     elseif (isset($_POST['formRetourMenu_retourMenu'])) {
         CtlMenu('');

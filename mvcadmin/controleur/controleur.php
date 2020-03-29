@@ -31,8 +31,8 @@ function CtlConnexionErreur($messageErreur) {
 ########################################################################################################################
 # Gabarit Menu                                                                                                         #
 ########################################################################################################################
-function CtlJournal($messageRetour) {
-    afficherJournal($messageRetour);
+function CtlAjouterJournalMenu($messageRetour) {
+    afficherAjouterJournal($messageRetour);
 }
 
 function CtlMenu($messageRetour) {
@@ -57,15 +57,15 @@ function CtlMenuErreur($messageErreur) {
 }
 
 ########################################################################################################################
-# Gabarit Journal                                                                                                      #
+# Gabarit AjouterJournal                                                                                               #
 ########################################################################################################################
 function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
     if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($fileImput)) {
         try {
             ajouterJournal($titre, $mois, $annee, $fileImput);
-            afficherJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
+            afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
         } catch (Exception $e) {
-            afficherJournal($e);
+            afficherAjouterJournal($e);
         }
     } else {
         throw new Exception("Erreur : Veuillez remplir tous les champs.");

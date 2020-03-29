@@ -18,18 +18,21 @@
             <h3>Events</h3>
             <form id="formEvents" action="admin" method="post">
                 <p> <!-- Créer un évent -->
-                    <input type="submit" value="Créer un évent" name="formEvents_creerEvent" disabled><!-- Disabled TODO: gabaritCreerEvent -->
+                    <input type="submit" value="Créer un évent" name="formEvents_creerEvent" disabled>
                 </p>
                 <p> <!-- Modifier un évent -->
-                    <input type="submit" value="Modifier un évent" name="formEvents_modifierEvent" disabled><!-- Disabled TODO: gabaritModifierEvent -->
+                    <input type="submit" value="Modifier un évent" name="formEvents_modifierEvent" disabled>
                 </p>
             </form>
         </fieldset>
         <fieldset id="formJournal_fieldset">
             <h3>Journal</h3>
             <form id="formJournal" action="admin" method="post">
-                <p> <!-- Gérer les journaux -->
-                    <input type="submit" value="Gérer les journaux" name="formJournal_gererJournal">
+                <p> <!-- Ajouter un journal -->
+                    <input type="submit" value="Ajouter un journal" name="formJournal_ajouterJournal">
+                </p>
+                <p> <!-- Supprimer un journal -->
+                    <input type="submit" value="Supprimer un journal" name="formJournal_supprimerJournal" disabled>
                 </p>
             </form>
         </fieldset>

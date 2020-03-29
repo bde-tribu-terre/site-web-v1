@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Tribu-Terre | Gérer les journaux.</title>
+    <title>Tribu-Terre | Ajouter un journal.</title>
     <meta charset="UTF-8">
 </head>
 <body>
 <fieldset>
-    <h1>GÉRER LES JOURNAUX</h1>
+    <h1>AJOUTER UN JOURNAL</h1>
     <?php
     if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire un message après avoir bien ou mal envoyé un formulaire, il s'affiche ici.
         echo '<fieldset id="message_fieldset">' . '<legend>Message</legend>' . '<p>' . $messageRetour . '</p>' . '</fieldset>';
@@ -14,13 +14,12 @@
     ?>
     <div id="divActions">
         <fieldset id="formAjouterJournal_fieldset">
-            <h3>Modifier mes infos</h3>
+            <h3>Ajouter un journal</h3>
             <form id="formAjouterJournal" action="admin" method="post" enctype="multipart/form-data">
                 <p> <!-- Titre du journal -->
                     <label for="formAjouterJournal_titreJournal">Titre du journal :</label>
-                    <input id="formAjouterJournal_titreJournal" type="text" placeholder="Titre du journal" name="formAjouterJournal_titreJournal">
+                    <input id="formAjouterJournal_titreJournal" type="text" placeholder="Titre du journal" value="Omni-Sciences n°" name="formAjouterJournal_titreJournal">
                 </p>
-                <p>Format : Omni-Sciences n°X</p>
                 <p> <!-- Mois de sortie du journal -->
                     <label for="formAjouterJournal_moisJournal">Mois de sortie du journal :</label>
                     <select id="formAjouterJournal_moisJournal" name="formAjouterJournal_moisJournal">

@@ -9,9 +9,9 @@ function afficherConnexion($messageRetour) {
 ########################################################################################################################
 # Gabarit Menu                                                                                                         #
 ########################################################################################################################
-function afficherJournal($messageRetour) {
+function afficherAjouterJournal($messageRetour) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
-    require_once('gabarits/gabaritJournal.php');
+    require_once('gabarits/gabaritAjouterJournal.php');
 }
 
 function afficherMenu($messageRetour) {
