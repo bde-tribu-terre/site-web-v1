@@ -65,6 +65,19 @@ function afficherModifierGoodie($messageRetour, $id) {
 function afficherSupprimerImageGoodie($messageRetour, $id) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
+    $lignesImages = imagesGoodie($id);
+    $images = '';
+
+    foreach ($lignesImages as $ligne) {
+        $idImage = $ligne->idImagesGoodies;
+        $lienImage = $ligne->lienImagesGoodies;
+
+        $images .=
+            '<fieldset>' .
+                '<img src="./ressources/goodies/' . $lienImage . '">' .
+                '<p><input type="checkbox" name="' . $idImage . '" id="' . $idImage . '"></p>';
+            '</fieldset>';
+    }
 
     require_once('gabarits/gabaritSupprimerImageGoodie.php');
 }

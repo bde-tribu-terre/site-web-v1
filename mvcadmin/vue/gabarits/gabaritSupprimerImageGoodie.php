@@ -18,7 +18,7 @@
             <form id="formSupprimerImageGoodie" action="admin" method="post">
                 <?php echo $images ?>
                 <p> <!-- Supprimer les images -->
-                    <input type="submit" value="Supprimer les images" name="formSupprimerImageGoodie_ajouter">
+                    <input type="submit" value="Supprimer les images" name="formSupprimerImageGoodie_supprimer">
                 </p>
             </form>
         </fieldset>

@@ -57,6 +57,14 @@ try {
             $_POST['formModifierGoodie_idGoodie']
         );
     }
+    // Gabarit Supprimer Images Goodie
+    elseif (isset($_POST['formSupprimerImageGoodie_supprimer'])) {
+        foreach ($_POST as $key=>$value) {
+            if ($value == 'on') {
+                supprimerImageGoodie($key);
+            }
+        }
+    }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
         CtlAjouterJournal(

@@ -179,3 +179,37 @@ function ajouterImageGoodie($id, $titre, $fileImput) {
     $prepare->execute();
     $prepare->closeCursor();
 }
+
+function imagesGoodie($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idImagesGoodies, lienImagesGoodies FROM ImagesGoodies WHERE idGoodies=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function supprimerImageGoodie($id) {
+    # Suppression de l'image
+    $connexion = getConnect();
+    $requete = "SELECT lienImagesGoodies FROM ImagesGoodies WHERE idImagesGoodies=:idImagesGoodies";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idImagesGoodies', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    $image = $ligne->pdfJournaux;
+    unlink('./ressources/goodies/' . $image);
+
+    # Suppression des données
+    $connexion = getConnect();
+    $requete = "DELETE FROM ImagesGoodies WHERE idImagesGoodies=:idImagesGoodies";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idImagesGoodies', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
