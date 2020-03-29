@@ -38,7 +38,7 @@
                     <textarea id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc"></textarea>
                 </p>
                 <p> <!-- Ajouter Évent -->
-                    <input type="submit" value="Ajouter l'évent'" name="formCreerEvent_ajouter">
+                    <input type="submit" value="Ajouter l'évent" name="formCreerEvent_ajouter">
                 </p>
             </form>
         </fieldset>
