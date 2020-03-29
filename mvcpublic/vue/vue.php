@@ -9,46 +9,42 @@ function afficherAccueil($prefixe) {
     # Goodies
     $goodiesIndicators = '';
     $goodies ='';
-    $listeGoodies = scandir($prefixe . 'ressources/goodies');
-    natsort($listeGoodies);
+    $lignesGoodies = goodiesTous();
 
     $nb = 0;
     $premier = true;
-    foreach ($listeGoodies as $repertoire) {
-        if (
-            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/desc.txt') &&
-            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt') &&
-            file_exists($prefixe . 'ressources/goodies/' . $repertoire . '/img.png') // On élimine implicitement aussi . et ..
-        ) {
-            $attr = file($prefixe . 'ressources/goodies/' . $repertoire . '/attr.txt');
-            $nomGoodie = preg_replace("/\r|\n/", "", $attr[0]);
-            $prixAdherent = preg_replace("/\r|\n/", "", $attr[1]);
-            $prixNonAdherent = preg_replace("/\r|\n/", "", $attr[2]);
-            $etat = preg_replace("/\r|\n/", "", $attr[3]);
-            // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
-            if ($etat != 1) {
-                continue;
-            }
-            $lienImg = $prefixe . 'ressources/goodies/' . $repertoire . '/img.png';
-            $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
-            if ($premier) {
-                $goodiesIndicators .= ' class="active"';
-            }
-            $goodiesIndicators .= '></li>' . "\n";
-            $goodies .= '<div class="item';
-            if ($premier) {
-                $goodies .= ' active';
-                $premier = false;
-            }
-            $goodies .=
-                '">' . "\n" .
-                    '<a href="' . $prefixe . 'goodies?id=' . $repertoire . '"><img src="' . $lienImg . '" alt="Image"></a>' . "\n" .
-                    '<div class="carousel-caption">' . "\n" .
-                        '<a href="' . $prefixe . 'goodies?id=' . $repertoire . '"><h3>' . $nomGoodie . '</h3></a>' . "\n" .
-                        '<p>' . $prixAdherent . '€ Adhérent | ' . $prixNonAdherent . '€ Non-adhérent</p>' . "\n" .
-                    '</div>' . "\n" .
-                '</div>';
+    foreach ($lignesGoodies as $ligne) {
+        $id = htmlentities($ligne->idGoodies, ENT_QUOTES, "UTF-8");
+        $titre = htmlentities($ligne->titreGoodies, ENT_QUOTES, "UTF-8");
+        $prixAdherent = htmlentities($ligne->prixADGoodies, ENT_QUOTES, "UTF-8");
+        $prixNonAdherent = htmlentities($ligne->prixNADGoodies, ENT_QUOTES, "UTF-8");
+        $categorie = htmlentities($ligne->categorieGoodies, ENT_QUOTES, "UTF-8");
+        $miniature = htmlentities($ligne->miniatureGoodies, ENT_QUOTES, "UTF-8");
+
+        // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
+        if ($categorie != 1) {
+            continue;
         }
+        $lienMiniature = $prefixe . 'ressources/goodies/miniatures/' . $miniature;
+
+        $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
+        if ($premier) {
+            $goodiesIndicators .= ' class="active"';
+        }
+        $goodiesIndicators .= '></li>' . "\n";
+        $goodies .= '<div class="item';
+        if ($premier) {
+            $goodies .= ' active';
+            $premier = false;
+        }
+        $goodies .=
+            '">' . "\n" .
+                '<a href="' . $prefixe . 'goodies?id=' . $id . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
+                '<div class="carousel-caption">' . "\n" .
+                    '<a href="' . $prefixe . 'goodies?id=' . $id . '"><h3>' . $titre . '</h3></a>' . "\n" .
+                    '<p>' . $prixAdherent . '€ Adhérent | ' . $prixNonAdherent . '€ Non-adhérent</p>' . "\n" .
+                '</div>' . "\n" .
+            '</div>';
     }
 
     # Events
@@ -226,7 +222,6 @@ function afficherGoodies($prefixe) {
         $titre = htmlentities($ligne->titreGoodies, ENT_QUOTES, "UTF-8");
         $prixAdherent = htmlentities($ligne->prixADGoodies, ENT_QUOTES, "UTF-8");
         $prixNonAdherent = htmlentities($ligne->prixNADGoodies, ENT_QUOTES, "UTF-8");
-        $desc = htmlentities($ligne->descGoodies, ENT_QUOTES, "UTF-8");
         $categorie = htmlentities($ligne->categorieGoodies, ENT_QUOTES, "UTF-8");
         $miniature = htmlentities($ligne->miniatureGoodies, ENT_QUOTES, "UTF-8");
 
@@ -234,7 +229,7 @@ function afficherGoodies($prefixe) {
         if ($categorie == 0) {
             continue;
         }
-        $lienMiniature = $prefixe . 'ressources/goodies/' . $miniature;
+        $lienMiniature = $prefixe . 'ressources/goodies/miniatures/' . $miniature;
 
         $tableGoodies .=
             '<div class="col-sm-6">' .
