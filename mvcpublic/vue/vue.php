@@ -291,14 +291,13 @@ function afficherGoodiePrecis($prefixe, $id) {
             '</div>';
 
         # Le reste des images
-        foreach ($listeImages as $image) {
-            if ($image != '.' && $image != '..') {
-                $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"></li>';
-                $carouselGoodieImages .=
-                    '<div class="item">' .
-                        '<img src="' . $prefixe . 'ressources/goodies/' . $id . '/img/' . $image . '" alt="Image">' .
-                    '</div>';
-            }
+        foreach ($listeImages as $ligne) {
+            $lien = $ligne->lienImagesGoodies;
+            $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"></li>';
+            $carouselGoodieImages .=
+                '<div class="item">' .
+                    '<img src="' . $prefixe . 'ressources/goodies/' . $lien . '" alt="Image">' .
+                '</div>';
         }
         $carouselGoodieIndicator .= '</ol>';
         $carouselGoodieImages .= '</div>';
