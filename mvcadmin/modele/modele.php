@@ -79,6 +79,17 @@ function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNA
     $prepare->closeCursor();
 }
 
+function idTitreGoodies() {
+    $connexion = getConnect();
+    $requete = "SELECT idGoodies, titreGoodies FROM Goodies";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
 function titreGoodie($id) {
     $connexion = getConnect();
     $requete = "SELECT idGoodies, titreGoodies FROM Goodies WHERE idGoodies=:id";

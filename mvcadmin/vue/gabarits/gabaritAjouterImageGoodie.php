@@ -17,8 +17,8 @@
             <h3>Ajouter une image à un goodie</h3>
             <form id="formAjouterImageGoodie" action="admin" method="post" enctype="multipart/form-data">
                 <p> <!-- Goodie en question -->
-                    <label for="formAjouterGoodie_idGoodie">Goodie :</label>
-                    <select id="formAjouterGoodie_idGoodie" name="formAjouterGoodie_idGoodie">
+                    <label for="formAjouterImageGoodie_idGoodie">Goodie :</label>
+                    <select id="formAjouterImageGoodie_idGoodie" name="formAjouterImageGoodie_idGoodie">
                         <option value="">--Choisir un goodie--</option>
                         <?php echo $goodies ?>
                     </select>
