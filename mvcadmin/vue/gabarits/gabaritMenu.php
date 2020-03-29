@@ -46,7 +46,7 @@
                     <input type="submit" value="Ajouter un journal" name="formJournal_ajouterJournalMenu">
                 </p>
                 <p> <!-- Supprimer un journal -->
-                    <input type="submit" value="Supprimer un journal" name="formJournal_supprimerJournal" disabled>
+                    <input type="submit" value="Supprimer un journal" name="formJournal_supprimerJournalMenu">
                 </p>
             </form>
         </fieldset>
