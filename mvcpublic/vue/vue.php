@@ -275,7 +275,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 
     $carouselGoodie = '';
     if (empty($listeImages)) {
-        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/' . $miniature . '" class="imageUniqueGoodiePrecis">';
+        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $miniature . '" class="imageUniqueGoodiePrecis">';
     } else {
         $nb = 0;
         $carouselGoodieIndicator = '<ol class="carousel-indicators">';
