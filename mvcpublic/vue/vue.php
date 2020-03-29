@@ -257,11 +257,9 @@ function afficherGoodies($prefixe) {
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }
 
-function afficherGoodiePrecis($prefixe, $id) {
+function afficherGoodiePrecis($prefixe, $goodie) {
     // $title = 'Goodies'; Voir ci-après.
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodiePrecis.php';
-
-    $goodie = goodiePrecis($id);
 
     $id = htmlentities($goodie->idGoodies, ENT_QUOTES, "UTF-8");
     $titreGoodie = htmlentities($goodie->titreGoodies, ENT_QUOTES, "UTF-8");

@@ -41,8 +41,9 @@ function CtlGoodies($prefixe) {
 }
 
 function CtlGoodiePrecis($prefixe, $id) {
-    if (file_exists($prefixe . 'ressources/goodies/' . $id)) {
-        afficherGoodiePrecis($prefixe, $id);
+    $goodie = goodiePrecis($id);
+    if (empty($goodie)) {
+        afficherGoodiePrecis($prefixe, $goodie);
     } else {
         throw new Exception("Le goodie recherché n'existe pas.");
     }
