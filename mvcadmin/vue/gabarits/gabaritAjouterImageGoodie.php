@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formAjouterImageGoodie_fieldset">
             <h3>Ajouter une image à un goodie</h3>
-            <form id="formAjouterImageGoodie" action="admin/" method="post" enctype="multipart/form-data">
+            <form id="formAjouterImageGoodie" method="post" enctype="multipart/form-data">
                 <p> <!-- Goodie en question -->
                     <label for="formAjouterImageGoodie_idGoodie">Goodie :</label>
                     <select id="formAjouterImageGoodie_idGoodie" name="formAjouterImageGoodie_idGoodie">
@@ -35,7 +35,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin/" method="post">
+            <form id="formRetourMenu" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

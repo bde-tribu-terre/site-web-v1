@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formMettreAJour_fieldset">
             <h3>Modifier mes infos</h3>
-            <form id="formMettreAJour" action="admin/" method="post">
+            <form id="formMettreAJour" method="post">
                 <p> <!-- Login, non modifiable arbitrairement. -->
                     Login = <b><?php echo $loginMembre ?></b>.
                 </p>
@@ -37,7 +37,7 @@
         </fieldset>
         <fieldset id="formChangerMdp_fieldset">
             <h3>Changer mon mot de passe</h3>
-            <form id="formChangerMdp" action="admin/" method="post">
+            <form id="formChangerMdp" method="post">
                 <p>
                     <b>Attention : </b>Le mot de passe est visible par ceux ayant accès à la base de données, c'est à dire les membres du pôle info.<br>
                     De plus, le mot de passe y sera sauvegardé de manière durable, et ce jusqu'à la potentielle disparition du site. Les futurs bureaux y auront aussi accès.<br>
@@ -61,7 +61,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin/" method="post">
+            <form id="formRetourMenu" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

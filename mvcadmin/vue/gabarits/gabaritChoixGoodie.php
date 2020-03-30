@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formChoisirGoodie_fieldset">
             <h3>Choisir un goodie à modifier</h3>
-            <form id="formChoisirGoodie" action="admin/" method="post">
+            <form id="formChoisirGoodie" method="post">
                 <p> <!-- Goodie en question -->
                     <label for="formChoisirGoodie_idGoodie">Goodie :</label>
                     <select id="formChoisirGoodie_idGoodie" name="formChoisirGoodie_idGoodie">
@@ -30,7 +30,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin/" method="post">
+            <form id="formRetourMenu" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

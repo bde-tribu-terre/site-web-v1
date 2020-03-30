@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formCreerEvent_fieldset">
             <h3>Ajouter un évent</h3>
-            <form id="formCreerEvent" action="admin/" method="post">
+            <form id="formCreerEvent" method="post">
                 <p> <!-- Titre de l'évent -->
                     <label for="formCreerEvent_titre">Titre de l'évent :</label>
                     <input id="formCreerEvent_titre" type="text" placeholder="Titre de l'évent" name="formCreerEvent_titre">
@@ -44,7 +44,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin/" method="post">
+            <form id="formRetourMenu" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

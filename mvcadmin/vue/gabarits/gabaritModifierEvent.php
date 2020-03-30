@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formModifierEvent_fieldset">
             <h3>Modifier un évent</h3>
-            <form id="formModifierEvent" action="admin/" method="post">
+            <form id="formModifierEvent" method="post">
                 <p> <!-- ID de l'évent -->
                     <label for="formModifierEvent_idEvent">ID de l'évent :</label>
                     <input id="formModifierEvent_idEvent" type="text" value="<?php echo $idEvents ?>" placeholder="Titre du goodie" name="formModifierEvent_idEvent" readonly>
@@ -48,7 +48,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin/" method="post">
+            <form id="formRetourMenu" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

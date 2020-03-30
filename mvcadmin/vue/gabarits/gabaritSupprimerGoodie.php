@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formSupprimerGoodie_fieldset">
             <h3>Supprimer un goodie</h3>
-            <form id="formSupprimerGoodie" action="admin/" method="post">
+            <form id="formSupprimerGoodie" method="post">
                 <p> <!-- Goodie en question -->
                     <label for="formSupprimerGoodie_idGoodie">Goodie :</label>
                     <select id="formSupprimerGoodie_idGoodie" name="formSupprimerGoodie_idGoodie">
@@ -31,7 +31,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin/" method="post">
+            <form id="formRetourMenu" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>
