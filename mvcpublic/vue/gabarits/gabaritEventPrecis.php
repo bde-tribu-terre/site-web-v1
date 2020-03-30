@@ -24,5 +24,4 @@
             </div>
         </div>
     </div>
-    <hr>
 </div><br>
