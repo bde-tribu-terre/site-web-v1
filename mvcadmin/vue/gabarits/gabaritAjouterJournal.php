@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formAjouterJournal_fieldset">
             <h3>Ajouter un journal</h3>
-            <form id="formAjouterJournal" action="admin" method="post" enctype="multipart/form-data">
+            <form id="formAjouterJournal" action="admin.php" method="post" enctype="multipart/form-data">
                 <p> <!-- Titre du journal -->
                     <label for="formAjouterJournal_titreJournal">Titre du journal :</label>
                     <input id="formAjouterJournal_titreJournal" type="text" placeholder="Titre du journal" value="Omni-Sciences n°" name="formAjouterJournal_titreJournal">
@@ -51,7 +51,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin" method="post">
+            <form id="formRetourMenu" action="admin.php" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

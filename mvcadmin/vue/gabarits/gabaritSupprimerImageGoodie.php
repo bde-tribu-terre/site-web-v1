@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formSupprimerImageGoodie_fieldset">
             <h3>Supprimer des images d'un goodie</h3>
-            <form id="formSupprimerImageGoodie" action="admin" method="post">
+            <form id="formSupprimerImageGoodie" action="admin.php" method="post">
                 <p> <!-- ID du goodie -->
                     <label for="formSupprimerImageGoodie_idGoodie">ID du goodie :</label>
                     <input id="formSupprimerImageGoodie_idGoodie" type="text" value="<?php echo $idGoodie ?>" placeholder="Titre du goodie" name="formSupprimerImageGoodie_idGoodie" readonly>
@@ -28,7 +28,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin" method="post">
+            <form id="formRetourMenu" action="admin.php" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>
