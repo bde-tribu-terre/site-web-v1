@@ -54,6 +54,8 @@
         .carousel-inner img {
             width: 100%; /* Set width to 100% */
             min-height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         /* Hide the carousel text when the screen is less than 600 pixels wide */
