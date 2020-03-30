@@ -104,24 +104,24 @@
                     <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
                         <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
                     </a>
-                    <div class="carousel-caption">
-                        <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
+                    <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
+                        <div class="carousel-caption">
                             <h3>Bar L'Atelier</h3>
-                        </a>
-                        <p>203 rue de Bourgogne, Orléans</p>
-                    </div>
+                            <p>203 rue de Bourgogne, Orléans</p>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="item">
                     <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
                         <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
                     </a>
-                    <div class="carousel-caption">
-                        <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
+                    <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
+                        <div class="carousel-caption">
                             <h3>Bar L'Atelier</h3>
-                        </a>
-                        <p>203 rue de Bourgogne, Orléans</p>
-                    </div>
+                            <p>203 rue de Bourgogne, Orléans</p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
