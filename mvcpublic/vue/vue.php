@@ -171,7 +171,7 @@ function afficherEvents($prefixe) {
             $pair = false;
         }
     }
-    if ($pair) { // Si c'est pair il fait fermer la balise.
+    if (!$pair) { // Si c'est pair il fait fermer la balise.
         $tableEvents .= '</div>';
     }
 
