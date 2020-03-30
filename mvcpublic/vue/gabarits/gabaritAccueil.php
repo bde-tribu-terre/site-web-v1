@@ -36,10 +36,16 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
-            <h3>Le coin cuisine !</h3>
+            <h3>La dernière recette !</h3>
+            <div class="well">
+
+            </div>
         </div>
         <div class="col-sm-6">
-            <h3>Les derniers journaux !</h3>
+            <h3>Le journal le plus récent !</h3>
+            <div class="well">
+
+            </div>
         </div>
     </div>
     <hr>
