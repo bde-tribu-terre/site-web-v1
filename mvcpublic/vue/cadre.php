@@ -82,7 +82,7 @@
     </style>
 </head>
 <body>
-<div class="d-flex flex-column sticky-footer-wrapper">
+<div>
     <header>
         <?php require_once($prefixe . 'global/header.php'); ?>
     </header>
