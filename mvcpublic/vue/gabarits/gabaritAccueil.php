@@ -102,7 +102,7 @@
                 <!-- Ici on liste les partenaires -->
                 <div class="item active">
                     <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                        <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
+                        <img src="<?php echo $prefixe . 'global/images/imgBarAtelier.png' ?>" alt="Image">
                     </a>
                     <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
                         <div class="carousel-caption">
@@ -114,12 +114,12 @@
 
                 <div class="item">
                     <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                        <img src="https://placehold.it/800x400?text=IMAGE" alt="Image">
+                        <img src="<?php echo $prefixe . 'global/images/imgBarKeyWest.png' ?>" alt="Image">
                     </a>
                     <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
                         <div class="carousel-caption">
-                            <h3>Bar L'Atelier</h3>
-                            <p>203 rue de Bourgogne, Orléans</p>
+                            <h3>Bar Le Key West</h3>
+                            <p>208 rue de Bourgogne, Orléans</p>
                         </div>
                     </a>
                 </div>
