@@ -92,21 +92,27 @@ function afficherAccueil($prefixe) {
     }
 
     # Journal
-    $ligneJournal = dernierJournal();
+    $lignesJournaux = derniersJournaux();
+    $journaux ='';
 
-    $titre = htmlentities($ligneJournal->titreJournaux, ENT_QUOTES, "UTF-8");;
-    $date = htmlentities($ligneJournal->dateJournaux, ENT_QUOTES, "UTF-8");
-    $pdf = htmlentities($ligneJournal->pdfJournaux, ENT_QUOTES, "UTF-8");
+    foreach ($lignesJournaux as $ligneJournal) {
+        $titre = htmlentities($ligneJournal->titreJournaux, ENT_QUOTES, "UTF-8");;
+        $date = htmlentities($ligneJournal->dateJournaux, ENT_QUOTES, "UTF-8");
+        $pdf = htmlentities($ligneJournal->pdfJournaux, ENT_QUOTES, "UTF-8");
 
-    $lienJournal = $prefixe . 'ressources/journaux/' . $pdf;
+        $lienJournal = $prefixe . 'ressources/journaux/' . $pdf;
 
-    $journal =
-        '<h3>' . $titre . '</h3>' .
-            '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
-            '<a href="' . $lienJournal . '">' .
-            '<h4><img src="' . $prefixe . 'global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
-        '</a>';
-
+        $journaux =
+            '<div class="col-sm-3">' .
+                '<div class="well">' .
+                    '<h3>' . $titre . '</h3>' .
+                    '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
+                    '<a href="' . $lienJournal . '">' .
+                        '<h4><img src="' . $prefixe . 'global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
+                    '</a>' .
+                '</div>' .
+            '</div>';
+    }
 
     require_once($prefixe . 'mvcpublic/vue/cadre.php');
 }

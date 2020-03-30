@@ -33,7 +33,7 @@
     <hr>
 </div>
 
-<div class="container">
+<div class="container text-center">
     <div class="row">
         <div class="col-sm-6">
             <h3>La dernière recette !</h3>
@@ -41,12 +41,8 @@
                 Partie cuisine encore en chantier...
             </div>
         </div>
-        <div class="col-sm-6">
-            <h3>Le journal le plus récent !</h3>
-            <div class="well text-center">
-                <?php echo $journal ?>
-            </div>
-        </div>
+        <h3>Les journaux les plus récents !</h3>
+        <?php echo $journaux ?>
     </div>
     <hr>
 </div>
