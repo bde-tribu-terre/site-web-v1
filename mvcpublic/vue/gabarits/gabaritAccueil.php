@@ -33,6 +33,18 @@
     <hr>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Le coin cuisine !</h3>
+        </div>
+        <div class="col-sm-6">
+            <h3>Les derniers journaux !</h3>
+        </div>
+    </div>
+    <hr>
+</div>
+
 <div class="container text-center">
     <h3>Retrouvez-nous sur les réseaux !</h3>
     <br>
