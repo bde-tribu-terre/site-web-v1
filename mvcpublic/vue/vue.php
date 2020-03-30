@@ -39,7 +39,7 @@ function afficherAccueil($prefixe) {
         }
         $goodies .=
             '">' . "\n" .
-                '<a href="' . $prefixe . 'goodies?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
+                '<a href="' . $prefixe . 'goodies.php?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
                 '<div class="carousel-caption">' . "\n" .
                     '<a href="' . $prefixe . 'goodies.php?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
                     '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
