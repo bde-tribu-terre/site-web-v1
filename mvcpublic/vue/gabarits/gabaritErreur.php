@@ -12,4 +12,4 @@
             <img src="<?php echo $prefixe . 'global/images/imgGirafeErreur.png' ?>" alt="Girafe" width="100%" style="border-radius: 5px;">
         </div>
     </div>
-</div>
+</div><br>
