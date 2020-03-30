@@ -81,7 +81,7 @@ function afficherAccueil($prefixe) {
             $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
         }
         $events .=
-            '<a href="' . $prefixe . 'events.php?id=' . $idEvent . '">' .
+            '<a href="' . $prefixe . 'events/?id=' . $idEvent . '">' .
                 '<div class="well">' .
                     '<h4>' . $titreEvent . '</h4>' .
                     '<p>📅 ' . substr($dateEvent, 8, 2) . ' ' . $arrayMois[substr($dateEvent, 5, 2)] . $nbJoursStr . '</p>' .
@@ -125,7 +125,7 @@ function afficherErreur($prefixe, $messageErreur) {
 # Gabarit Events                                                                                                       #
 ########################################################################################################################
 function afficherEvents($prefixe) {
-    $title = 'Events';
+    $title = 'Évents';
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritEvents.php';
 
     $tableEvents = '';
