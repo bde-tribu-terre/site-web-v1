@@ -30,6 +30,7 @@
             background-clip: border-box;
             background-repeat: no-repeat;
             background-size: cover;
+            background-position: center;
             margin-bottom: 0;
         }
 
