@@ -82,8 +82,16 @@
     </style>
 </head>
 <body>
-<?php require_once($prefixe . 'global/header.php'); ?>
-<?php require_once($gabarit); ?>
-<?php require_once($prefixe . 'global/footer.php'); ?>
+<div class="d-flex flex-column sticky-footer-wrapper">
+    <header>
+        <?php require_once($prefixe . 'global/header.php'); ?>
+    </header>
+    <main>
+        <?php require_once($gabarit); ?>
+    </main>
+    <footer>
+        <?php require_once($prefixe . 'global/footer.php'); ?>
+    </footer>
+</div>
 </body>
 </html>
