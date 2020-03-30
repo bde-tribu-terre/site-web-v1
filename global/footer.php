@@ -1,4 +1,4 @@
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center fixed-bottom">
     <p><strong>
             Vous avez des questions sur Tribu-Terre ou les derniers évènements ?<br/>
             <a href="<?php echo $prefixe . 'nous-contacter.php' ?>">Contactez nous !</a>
