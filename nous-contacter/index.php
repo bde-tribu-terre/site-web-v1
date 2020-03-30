@@ -1,8 +1,8 @@
 <?php
-$prefixe = './';
+$prefixe = '../';
 require_once($prefixe . 'mvcpublic/controleur/controleur.php');
 try {
-    CtlQuiSommesNous($prefixe);
+    CtlNousContacter($prefixe);
 } catch (Exception $e) {
     CtlErreur($prefixe, $e->getMessage());
 }
