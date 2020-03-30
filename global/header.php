@@ -1,7 +1,7 @@
 <div class="jumbotron">
     <div class="container text-center">
         <a href="<?php echo $prefixe ?>">
-            <img src="<?php echo $prefixe . 'global/images/imgLogo.png' ?>" alt="Logo" height="300">
+            <img src="<?php echo $prefixe . 'global/images/imgLogoMini.png' ?>" alt="Logo" height="300">
         </a>
         <p>Association des étudiants en Science de l'Université d'Orléans</p>
     </div>
