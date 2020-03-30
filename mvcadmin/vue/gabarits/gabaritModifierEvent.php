@@ -17,7 +17,7 @@
             <h3>Modifier un évent</h3>
             <form id="formModifierEvent" action="admin.php" method="post">
                 <p> <!-- ID de l'évent -->
-                    <label for="formModifierEvent_idEvent">ID du goodie :</label>
+                    <label for="formModifierEvent_idEvent">ID de l'évent :</label>
                     <input id="formModifierEvent_idEvent" type="text" value="<?php echo $idEvents ?>" placeholder="Titre du goodie" name="formModifierEvent_idEvent" readonly>
                 </p>
                 <p> <!-- Titre de l'évent -->
@@ -25,7 +25,7 @@
                     <input id="formModifierEvent_titre" type="text" value="<?php echo $titreEvents ?>" placeholder="Titre de l'évent" name="formModifierEvent_titre">
                 </p>
                 <p> <!-- Date -->
-                    <label for="formModifierEvent_date">Catégorie :</label>
+                    <label for="formModifierEvent_date">Date (format "jj/mm/aaaa") :</label>
                     <input id="formModifierEvent_date" type="date" value="<?php echo $dateEvents ?>" name="formModifierEvent_date">
                 </p>
                 <p> <!-- Heure -->
@@ -38,10 +38,9 @@
                     <input id="formModifierEvent_lieu" type="text" value="<?php echo $lieuEvents ?>" name="formModifierEvent_lieu">
                 </p>
                 <p> <!-- Description de l'évent -->
-                    <label for="formModifierEvent_desc">Description du goodie :</label>
+                    <label for="formModifierEvent_desc">Description de l'évent :</label>
                     <textarea id="formModifierEvent_desc" placeholder="Description de l'évent" name="formModifierEvent_desc"><?php echo $descEvents ?></textarea>
                 </p>
-                <p>⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé ! ⚠️</p>
                 <p> <!-- Modifier Évent -->
                     <input type="submit" value="Modifier l'évent" name="formModifierEvent_modifierEvent">
                 </p>

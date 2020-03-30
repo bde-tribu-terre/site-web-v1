@@ -21,7 +21,7 @@
                     <input id="formCreerEvent_titre" type="text" placeholder="Titre de l'évent" name="formCreerEvent_titre">
                 </p>
                 <p> <!-- Date -->
-                    <label for="formCreerEvent_date">Catégorie :</label>
+                    <label for="formCreerEvent_date">Date (format "jj/mm/aaaa") :</label>
                     <input id="formCreerEvent_date" type="date" name="formCreerEvent_date">
                 </p>
                 <p> <!-- Heure -->
@@ -34,7 +34,7 @@
                     <input id="formCreerEvent_lieu" type="text" name="formCreerEvent_lieu">
                 </p>
                 <p> <!-- Description de l'évent -->
-                    <label for="formCreerEvent_desc">Description du goodie :</label>
+                    <label for="formCreerEvent_desc">Description de l'évent :</label>
                     <textarea id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc"></textarea>
                 </p>
                 <p> <!-- Ajouter Évent -->
