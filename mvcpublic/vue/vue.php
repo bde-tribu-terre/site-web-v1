@@ -102,7 +102,7 @@ function afficherAccueil($prefixe) {
 
         $lienJournal = $prefixe . 'ressources/journaux/' . $pdf;
 
-        $journaux =
+        $journaux .=
             '<div class="col-sm-3">' .
                 '<div class="well">' .
                     '<h3>' . $titre . '</h3>' .

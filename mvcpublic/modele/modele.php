@@ -95,7 +95,7 @@ function derniersJournaux() {
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
+    $ligne = $prepare->fetchall();
     $prepare->closeCursor();
     return $ligne;
 }
