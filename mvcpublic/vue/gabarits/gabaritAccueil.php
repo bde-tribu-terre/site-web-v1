@@ -185,7 +185,7 @@
                         </div>
                     </a>
                 </div>
-
+            </div>
             <!-- Left and right controls -->
             <a class="left carousel-control" href="#carouselFederations" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
