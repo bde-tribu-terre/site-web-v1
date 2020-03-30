@@ -1,5 +1,5 @@
 <?php
-$prefixe = './';
+$prefixe = '../';
 require_once($prefixe . 'mvcpublic/controleur/controleur.php');
 try {
     if (isset($_GET['id'])) {
