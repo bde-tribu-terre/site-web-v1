@@ -38,13 +38,13 @@
         <div class="col-sm-6">
             <h3>La dernière recette !</h3>
             <div class="well">
-
+                Partie cuisine encore en chantier...
             </div>
         </div>
         <div class="col-sm-6">
             <h3>Le journal le plus récent !</h3>
-            <div class="well">
-
+            <div class="well text-center">
+                <?php echo $journal ?>
             </div>
         </div>
     </div>

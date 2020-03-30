@@ -88,3 +88,14 @@ function journauxTous() {
     $prepare->closeCursor();
     return $ligne;
 }
+
+function dernierJournal() {
+    $connexion = getConnect();
+    $requete = "SELECT idJournaux, titreJournaux, dateJournaux, pdfJournaux FROM Journaux ORDER BY dateJournaux DESC LIMIT 1";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
