@@ -39,9 +39,9 @@ function afficherAccueil($prefixe) {
         }
         $goodies .=
             '">' . "\n" .
-                '<a href="' . $prefixe . 'goodies.php?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
+                '<a href="' . $prefixe . 'goodies/?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
                 '<div class="carousel-caption">' . "\n" .
-                    '<a href="' . $prefixe . 'goodies.php?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
+                    '<a href="' . $prefixe . 'goodies/?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
                     '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
                 '</div>' . "\n" .
             '</div>';
@@ -261,13 +261,13 @@ function afficherGoodies($prefixe) {
         $tableGoodies .=
             '<div class="col-sm-6">' .
                 '<div class="well">' .
-                    '<a href="' . $prefixe . 'goodies.php?id=' . $id . '">' .
+                    '<a href="' . $prefixe . 'goodies/?id=' . $id . '">' .
                         '<img src="' . $lienMiniature . '" class="miniatureGoodies" alt="Miniature">' .
                     '</a>' .
                     '<h3>' . $titre . '</h3>' .
                     '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
                     '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
-                    '<a class="btn btn-primary" href="' . $prefixe . 'goodies.php?id=' . $id . '">' .
+                    '<a class="btn btn-primary" href="' . $prefixe . 'goodies/?id=' . $id . '">' .
                         'Voir les détails...' .
                     '</a>' .
                 '</div>' .
