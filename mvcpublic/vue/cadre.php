@@ -37,10 +37,10 @@
         /* Lueur blanche autour du texte du jumbotron */
         .jumbotron p {
             text-shadow:
-                5px 5px 5px white,
-                -5px 5px 5px white,
-                5px -5px 5px white,
-                -5px -5px 5px white;
+                5px 5px 5px #f3f3f3,
+                -5px 5px 5px #f3f3f3,
+                5px -5px 5px #f3f3f3,
+                -5px -5px 5px #f3f3f3;
         }
 
         /* Add a gray background color and some padding to the footer */
