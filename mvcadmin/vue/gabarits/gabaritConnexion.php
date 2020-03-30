@@ -13,7 +13,7 @@ if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire u
 <fieldset id="formConnexion_fieldset">
     <!-- Connexion -->
     <legend>Connexion</legend>
-    <form id="formConnexion" action="admin.php" method="post">
+    <form id="formConnexion" action="admin/" method="post">
         <p> <!-- Identifiant -->
             <label for="formConnexion_login">Login :</label>
             <input id="formConnexion_login" type="text" name="formConnexion_login">

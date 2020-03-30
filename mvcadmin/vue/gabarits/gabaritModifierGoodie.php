@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formModifierGoodie_fieldset">
             <h3>Modifier un goodie</h3>
-            <form id="formModifierGoodie" action="admin.php" method="post">
+            <form id="formModifierGoodie" action="admin/" method="post">
                 <p> <!-- Supprimer des images du goodie -->
                     <input type="submit" value="Supprimer des images du goodie" name="formModifierGoodie_supprimerImages">
                 </p>
@@ -58,7 +58,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin.php" method="post">
+            <form id="formRetourMenu" action="admin/" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

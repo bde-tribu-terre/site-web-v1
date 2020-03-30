@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formChoisirEvent_fieldset">
             <h3>Choisir un évent à modifier</h3>
-            <form id="formChoisirEvent" action="admin.php" method="post">
+            <form id="formChoisirEvent" action="admin/" method="post">
                 <p> <!-- Évent en question -->
                     <label for="formChoisirEvent_idEvent">Évent :</label>
                     <select id="formChoisirEvent_idEvent" name="formChoisirEvent_idEvent">
@@ -30,7 +30,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin.php" method="post">
+            <form id="formRetourMenu" action="admin/" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

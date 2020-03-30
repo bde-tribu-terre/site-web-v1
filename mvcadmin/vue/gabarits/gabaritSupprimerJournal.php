@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formSupprimerJournal_fieldset">
             <h3>Supprimer un journal</h3>
-            <form id="formSupprimerJournal" action="admin.php" method="post">
+            <form id="formSupprimerJournal" action="admin/" method="post">
                 <p> <!-- Journal en question -->
                     <label for="formSupprimerJournal_idJournal">Goodie :</label>
                     <select id="formSupprimerJournal_idJournal" name="formSupprimerJournal_idJournal">
@@ -31,7 +31,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin.php" method="post">
+            <form id="formRetourMenu" action="admin/" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>

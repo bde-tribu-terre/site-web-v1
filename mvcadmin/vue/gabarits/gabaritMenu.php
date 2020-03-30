@@ -16,7 +16,7 @@
     <div id="divActions">
         <fieldset id="formEvents_fieldset">
             <h3>Events</h3>
-            <form id="formEvents" action="admin.php" method="post">
+            <form id="formEvents" action="admin/" method="post">
                 <p> <!-- Créer un évent -->
                     <input type="submit" value="Créer un évent" name="formEvents_creerEventMenu">
                 </p>
@@ -30,7 +30,7 @@
         </fieldset>
         <fieldset id="formGoodies_fieldset">
             <h3>Goodies</h3>
-            <form id="formGoodies" action="admin.php" method="post">
+            <form id="formGoodies" action="admin/" method="post">
                 <p> <!-- Ajouter un goodie -->
                     <input type="submit" value="Ajouter un goodie" name="formGoodies_ajouterGoodieMenu">
                 </p>
@@ -47,7 +47,7 @@
         </fieldset>
         <fieldset id="formJournal_fieldset">
             <h3>Journal</h3>
-            <form id="formJournal" action="admin.php" method="post">
+            <form id="formJournal" action="admin/" method="post">
                 <p> <!-- Ajouter un journal -->
                     <input type="submit" value="Ajouter un journal" name="formJournal_ajouterJournalMenu">
                 </p>
@@ -58,7 +58,7 @@
         </fieldset>
         <fieldset id="formMonCompte_fieldset" style="display: none">
             <h3>Mon compte</h3>
-            <form id="formMonCompte" action="admin.php" method="post">
+            <form id="formMonCompte" action="admin/" method="post">
                 <p> <!-- Paramètres de mon compte -->
                     <input type="submit" value="Paramètres de mon compte" name="formMonCompte_parametres" disabled>
                 </p>
@@ -66,7 +66,7 @@
         </fieldset>
         <fieldset id="formDeconnexion_fieldset">
             <h3>Se déconnecter</h3>
-            <form id="formDeconnexion" action="admin.php" method="post">
+            <form id="formDeconnexion" action="admin/" method="post">
                 <p> <!-- Se déconnecter -->
                     <input type="submit" value="Se déconnecter" name="formDeconnexion_deconnexion">
                 </p>

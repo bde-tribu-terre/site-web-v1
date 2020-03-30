@@ -15,7 +15,7 @@
     <div id="divActions">
         <fieldset id="formAjouterGoodie_fieldset">
             <h3>Ajouter un goodie</h3>
-            <form id="formAjouterGoodie" action="admin.php" method="post" enctype="multipart/form-data">
+            <form id="formAjouterGoodie" action="admin/" method="post" enctype="multipart/form-data">
                 <p> <!-- Titre du goodie -->
                     <label for="formAjouterGoodie_titreGoodie">Titre du goodie :</label>
                     <input id="formAjouterGoodie_titreGoodie" type="text" placeholder="Titre du goodie" name="formAjouterGoodie_titreGoodie">
@@ -55,7 +55,7 @@
         </fieldset>
         <fieldset id="formRetourMenu_fieldset">
             <h3>Retour au menu</h3>
-            <form id="formRetourMenu" action="admin.php" method="post">
+            <form id="formRetourMenu" action="admin/" method="post">
                 <p> <!-- Retour au menu -->
                     <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                 </p>
