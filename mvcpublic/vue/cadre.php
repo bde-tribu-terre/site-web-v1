@@ -34,6 +34,15 @@
             margin-bottom: 0;
         }
 
+        /* Lueur blanche autour du texte du jumbotron */
+        .jumbotron p {
+            text-shadow:
+                5px 5px 5px white,
+                -5px 5px 5px white,
+                5px -5px 5px white,
+                -5px -5px 5px white;
+        }
+
         /* Add a gray background color and some padding to the footer */
         footer {
             background-color: #f2f2f2;
