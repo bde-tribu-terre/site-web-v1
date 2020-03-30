@@ -67,12 +67,14 @@
             overflow: hidden;
         }
 
-        /* Hide the carousel text when the screen is less than 600 pixels wide */
+        /*
+        /* Hide the carousel text when the screen is less than 600 pixels wide * /
         @media (max-width: 600px) {
             .carousel-caption {
                 display: none;
             }
         }
+        */
 
         .miniatureGoodies {
             width: 100%;
