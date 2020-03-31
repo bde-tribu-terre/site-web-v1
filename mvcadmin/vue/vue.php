@@ -97,12 +97,20 @@ function afficherChoixGoodie($messageRetour) {
 
     $lignesGoodies = idTitreGoodies();
 
+    $arrayCategories = [
+        0 => 'Caché',
+        1 => 'Disponible',
+        2 => 'Bientôt disponible',
+        3 => 'Rupture de stock'
+    ];
+
     $goodies = '';
     foreach ($lignesGoodies as $ligneGoodie) {
         $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
         $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $categorieGoodie = htmlentities($ligneGoodie->categorieGoodies, ENT_QUOTES, "UTF-8");
         $goodies .=
-            '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
+            '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
     }
 
     require_once('gabarits/gabaritChoixGoodie.php');
@@ -151,12 +159,20 @@ function afficherSupprimerGoodie($messageRetour) {
 
     $lignesGoodies = idTitreGoodies();
 
+    $arrayCategories = [
+        0 => 'Caché',
+        1 => 'Disponible',
+        2 => 'Bientôt disponible',
+        3 => 'Rupture de stock'
+    ];
+
     $goodies = '';
     foreach ($lignesGoodies as $ligneGoodie) {
         $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
         $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $categorieGoodie = htmlentities($ligneGoodie->categorieGoodies, ENT_QUOTES, "UTF-8");
         $goodies .=
-            '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
+            '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
     }
 
     require_once('gabarits/gabaritSupprimerGoodie.php');

@@ -166,7 +166,7 @@ function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNA
 
 function idTitreGoodies() {
     $connexion = getConnect();
-    $requete = "SELECT idGoodies, titreGoodies FROM Goodies";
+    $requete = "SELECT idGoodies, titreGoodies, categorieGoodies FROM Goodies";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
