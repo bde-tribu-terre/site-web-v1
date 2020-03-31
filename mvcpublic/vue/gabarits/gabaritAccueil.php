@@ -87,7 +87,7 @@
 </div>
 
 <div class="container text-center">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <h3>Nos partenaires !</h3>
         <p>Profitez d'avantages sur présentation de votre carte d'adhérent Tribu-Terre !</p>
         <div id="carouselPartenaires" class="carousel slide" data-ride="carousel">
@@ -132,7 +132,7 @@
                     <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
                         <div class="carousel-caption">
                             <h3>Le Maestro</h3>
-                            <p>208 rue de Bourgogne, Orléans</p>
+                            <p>218 rue de Bourgogne, Orléans</p>
                         </div>
                     </a>
                 </div>
@@ -150,7 +150,7 @@
         </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <h3>Fédération !</h3>
         <p>L'association Tribu-Terre adhère à des fédérations d'associations (svp les admins dites moi qui dire là vite def, pis une page entière en plus :o)</p>
         <div id="carouselFederations" class="carousel slide" data-ride="carousel">
@@ -199,7 +199,7 @@
         </div>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <h3>L'Université !</h3>
         <p>L'association Tribu-Terre agit en accord avec l'OSUC et le CoST.</p>
         <div id="carouselUniversite" class="carousel slide" data-ride="carousel">
