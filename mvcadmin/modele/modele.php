@@ -144,7 +144,7 @@ function supprimerJournal($id) {
 function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     # Enregistrement de la miniature.
     $miniatureRep = '../ressources/goodies/';
-    $newName = 'm-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
+    $newName = 'm-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . end(preg_split('/./', $_FILES[$fileImput]['tmp_name'])); # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $miniatureRep . $newName
@@ -216,7 +216,7 @@ function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $
 function ajouterImageGoodie($id, $titre, $fileImput) {
     # Enregistrement de l'image.
     $imageRep = '../ressources/goodies/';
-    $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
+    $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.' . end(preg_split('/./', $_FILES[$fileImput]['tmp_name'])); # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $imageRep . $newName
