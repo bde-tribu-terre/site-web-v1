@@ -142,13 +142,25 @@ function supprimerJournal($id) {
 }
 
 function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
-    # Enregistrement de la miniature.
-    $miniatureRep = '../ressources/goodies/';
-    $newName = 'm-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
+    # Enregistrement de l'image originale.
+    $imageRep = '../ressources/goodies/';
+    $newName = 'm-' . preg_replace('/[\W]/', '', $titre). '-' . time(); # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
-        $miniatureRep . $newName
+        $imageRep . $newName
     );
+
+    # Création de l'image en .jpg.
+    $originale = $imageRep . $newName;
+    $image_pleine = imagecreatetruecolor(960, 720);
+    $image = imagecreatefromjpeg($originale);
+    list($width, $height) = getimagesize($originale);
+    imagecopyresampled($image_pleine, $image, 0, 0, 0, 0, 960, 720, $width, $height);
+    imagejpeg($image_pleine, $imageRep . $newName . '.jpg', 100);
+    imagedestroy($image_pleine);
+
+    # Suppression de l'image originale
+    unlink($imageRep . $newName);
 
     # Enregistrement des données dans la BDD SQL.
     $connexion = getConnect();
@@ -214,38 +226,32 @@ function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $
 }
 
 function ajouterImageGoodie($id, $titre, $fileImput) {
-    $filename = $_FILES[$fileImput]['tmp_name'];
-
-    // Content type
-    header('Content-Type: image/*');
-
-    // Calcul des nouvelles dimensions
-    list($width, $height) = getimagesize($filename);
-    $new_width = 960;
-    $new_height = 720;
-
-    // Redimensionnement
-    $image_p = imagecreatetruecolor($new_width, $new_height);
-    $image = imagecreatefromjpeg($filename);
-    imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-
-    // Affichage
-    imagejpeg($image_p, '../ressources/goodies/text.jpg', 100);
-
-    # Enregistrement de l'image.
+    # Enregistrement de l'image originale.
     $imageRep = '../ressources/goodies/';
-    $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
+    $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time(); # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $imageRep . $newName
     );
+
+    # Création de l'image en .jpg.
+    $originale = $imageRep . $newName;
+    $image_pleine = imagecreatetruecolor(960, 720);
+    $image = imagecreatefromjpeg($originale);
+    list($width, $height) = getimagesize($originale);
+    imagecopyresampled($image_pleine, $image, 0, 0, 0, 0, 960, 720, $width, $height);
+    imagejpeg($image_pleine, $imageRep . $newName . '.jpg', 100);
+    imagedestroy($image_pleine);
+
+    # Suppression de l'image originale
+    unlink($imageRep . $newName);
 
     # Enregistrement des données dans la BDD SQL.
     $connexion = getConnect();
     $requete = "INSERT INTO ImagesGoodies VALUES (0, :idGoodies, :lienImagesgoodies)"; // (0 pour le auto increment)
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-    $prepare->bindValue(':lienImagesgoodies', $newName, PDO::PARAM_STR);
+    $prepare->bindValue(':lienImagesgoodies', $newName . '.jpg', PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
 }
