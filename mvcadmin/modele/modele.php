@@ -90,7 +90,7 @@ function supprimerEvent($id) {
 
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
     # Enregistrement du fichier PDF.
-    $journauxRep = './ressources/journaux/';
+    $journauxRep = '../ressources/journaux/';
     $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.pdf'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
@@ -130,7 +130,7 @@ function supprimerJournal($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $pdf = $ligne->pdfJournaux;
-    unlink('./ressources/journaux/' . $pdf);
+    unlink('../ressources/journaux/' . $pdf);
 
     # Suppression des données
     $connexion = getConnect();
@@ -143,7 +143,7 @@ function supprimerJournal($id) {
 
 function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     # Enregistrement de la miniature.
-    $miniatureRep = './ressources/goodies/';
+    $miniatureRep = '../ressources/goodies/';
     $newName = 'm-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
@@ -215,7 +215,7 @@ function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $
 
 function ajouterImageGoodie($id, $titre, $fileImput) {
     # Enregistrement de l'image.
-    $imageRep = './ressources/goodies/';
+    $imageRep = '../ressources/goodies/';
     $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
@@ -255,7 +255,7 @@ function supprimerImageGoodie($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $image = $ligne->lienImagesGoodies;
-    unlink('./ressources/goodies/' . $image);
+    unlink('../ressources/goodies/' . $image);
 
     # Suppression des données
     $connexion = getConnect();
@@ -290,7 +290,7 @@ function supprimerGoodie($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $miniature = $ligne->miniatureGoodies;
-    unlink('./ressources/goodies/' . $miniature);
+    unlink('../ressources/goodies/' . $miniature);
 
     # Suppression des données
     $connexion = getConnect();
