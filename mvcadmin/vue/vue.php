@@ -124,9 +124,9 @@ function afficherModifierGoodie($messageRetour, $id) {
     $idGoodie = $id;
     $titreGoodie = $ligneGoodie->titreGoodies;
     $prixADEuroGoodie = intval($ligneGoodie->prixADGoodies);
-    $prixADCentimesGoodie = $ligneGoodie->prixADGoodies - intval($prixADEuroGoodie);
+    $prixADCentimesGoodie = intval(($ligneGoodie->prixADGoodies - intval($prixADEuroGoodie)) * 100);
     $prixNADEuroGoodie = intval($ligneGoodie->prixNADGoodies);
-    $prixNADCentimesGoodie = $ligneGoodie->prixNADGoodies - intval($prixNADEuroGoodie);
+    $prixNADCentimesGoodie = intval(($ligneGoodie->prixNADGoodies - intval($prixNADEuroGoodie)) * 100);
     $descGoodie = $ligneGoodie->descGoodies;
 
     require_once('gabarits/gabaritModifierGoodie.php');
