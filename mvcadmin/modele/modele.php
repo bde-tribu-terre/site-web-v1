@@ -144,7 +144,7 @@ function supprimerJournal($id) {
 function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     # Enregistrement de la miniature.
     $miniatureRep = '../ressources/goodies/';
-    $newName = 'm-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . end(preg_split('/./', $_FILES[$fileImput]['tmp_name'])); # time() => aucun doublon imaginable.
+    $newName = 'm-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $miniatureRep . $newName
@@ -214,9 +214,27 @@ function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $
 }
 
 function ajouterImageGoodie($id, $titre, $fileImput) {
+    $filename = $_FILES[$fileImput]['tmp_name'];
+
+    // Content type
+    header('Content-Type: image/*');
+
+    // Calcul des nouvelles dimensions
+    list($width, $height) = getimagesize($filename);
+    $new_width = 960;
+    $new_height = 720;
+
+    // Redimensionnement
+    $image_p = imagecreatetruecolor($new_width, $new_height);
+    $image = imagecreatefromjpeg($filename);
+    imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+
+    // Affichage
+    imagejpeg($image_p, '../ressources/goodies/text.jpg', 100);
+
     # Enregistrement de l'image.
     $imageRep = '../ressources/goodies/';
-    $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.' . end(preg_split('/./', $_FILES[$fileImput]['tmp_name'])); # time() => aucun doublon imaginable.
+    $newName = 'i-' . preg_replace('/[\W]/', '', $titre). '-' . time() . '.png'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $imageRep . $newName
