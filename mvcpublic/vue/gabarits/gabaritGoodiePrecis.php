@@ -2,12 +2,9 @@
     <h3><?php echo $titreGoodie ?></h3>
     <hr>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-8">
             <?php echo $carouselGoodie ?>
         </div>
-    </div>
-    <hr>
-    <div class="row">
         <div class="col-sm-4">
             <div class="well">
                 <h3>Prix pour les adhérents</h3>
@@ -18,8 +15,6 @@
                 <hr>
                 <a href="#">Mais c'est quoi un adhérent ?</a>
             </div>
-        </div>
-        <div class="col-sm-8">
             <div class="well">
                 <h3>Quelques mots sur cette merveille...</h3>
                 <p>
