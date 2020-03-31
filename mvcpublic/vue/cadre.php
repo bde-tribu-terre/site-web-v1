@@ -67,6 +67,20 @@
             overflow: hidden;
         }
 
+        /* Cache le 3e event de l'accueil si la largeur est petite (sinon moche). */
+        @media (max-width: 990px) {
+            .accueilTroisiemeEvent {
+                display: none;
+            }
+        }
+
+        /* Montre le 3e event de l'accueil si la largeur est TRES petite. */
+        @media (max-width: 750px) {
+            .accueilTroisiemeEvent {
+                display: revert;
+            }
+        }
+
         /*
         /* Hide the carousel text when the screen is less than 600 pixels wide * /
         @media (max-width: 600px) {
