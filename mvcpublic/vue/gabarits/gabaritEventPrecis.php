@@ -18,6 +18,7 @@
         <div class="col-sm-8">
             <div class="well">
                 <h3>Informations</h3>
+                <hr>
                 <p>
                     <?php echo $descStr ?>
                 </p>

@@ -181,16 +181,9 @@ function afficherEvents($prefixe) {
                     '<h4>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . $nbJoursStr . '</h4>' .
                     '<h4>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</h4>' .
                     '<h4>📍️ ' . $lieu . '</h4>' .
-                    '<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#event' . $id . '" aria-expanded="false" aria-controls="collapseExample">' .
-                        'En savoir plus...' .
-                    '</button>' .
-                    '<div class="collapse" id="event' . $id . '">' .
-                        '<div class="card card-body">' .
-                            '<h5>' .
-                                nl2br($desc) .
-                            '</h5>' .
-                        '</div>' .
-                    '</div>' .
+                    '<a class="btn btn-primary" href="' . $prefixe . 'events/?id=' . $id . '">' .
+                        'Voir les détails...' .
+                    '</a>' .
                 '</div>' .
             '</div>';
         if (!$pair) {
