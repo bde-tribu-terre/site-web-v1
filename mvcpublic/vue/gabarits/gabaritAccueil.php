@@ -87,7 +87,7 @@
 </div>
 
 <div class="container text-center">
-    <div class="col-sm-6">
+    <div class="col-sm-3">
         <h3>Nos partenaires !</h3>
         <p>Profitez d'avantages sur présentation de votre carte d'adhérent Tribu-Terre !</p>
         <div id="carouselPartenaires" class="carousel slide" data-ride="carousel">
@@ -150,7 +150,7 @@
         </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-sm-3">
         <h3>Fédération !</h3>
         <p>L'association Tribu-Terre adhère à des fédérations d'associations (svp les admins dites moi qui dire là vite def, pis une page entière en plus :o)</p>
         <div id="carouselFederations" class="carousel slide" data-ride="carousel">
@@ -193,6 +193,55 @@
                 <span class="sr-only">Previous</span>
             </a>
             <a class="right carousel-control" href="#carouselFederations" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-sm-3">
+        <h3>L'Université !</h3>
+        <p>L'association Tribu-Terre agit en accord avec l'OSUC et le CoST.</p>
+        <div id="carouselUniversite" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carouselUniversite" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselUniversite" data-slide-to="1"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <!-- Ici on liste les composantes -->
+                <div class="item active">
+                    <a href="http://www.univ-orleans.fr/fr/osuc">
+                        <img src="<?php echo $prefixe . 'global/images/imgOSUC.png' ?>" alt="Image">
+                    </a>
+                    <a href="http://www.univ-orleans.fr/fr/osuc">
+                        <div class="carousel-caption">
+                            <h3>OSUC</h3>
+                            <p>Observatoire Sciences de l'Univers en région Centre</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="item">
+                    <a href="http://www.univ-orleans.fr/fr/sciences-techniques">
+                        <img src="<?php echo $prefixe . 'global/images/imgCoST.png' ?>" alt="Image">
+                    </a>
+                    <a href="http://www.univ-orleans.fr/fr/sciences-techniques">
+                        <div class="carousel-caption">
+                            <h3>CoST</h3>
+                            <p>Collégium Sciences et Techniques</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#carouselUniversite" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carouselUniversite" role="button" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
