@@ -36,8 +36,8 @@ function CtlEventPrecis($prefixe, $id) {
 ########################################################################################################################
 # Gabarit Goodies                                                                                                      #
 ########################################################################################################################
-function CtlGoodies($prefixe) {
-    afficherGoodies($prefixe);
+function CtlGoodies($prefixe, $tri, $disponible, $bientot, $rupture,$rechercheEnCours) {
+    afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture,$rechercheEnCours);
 }
 
 function CtlGoodiePrecis($prefixe, $id) {

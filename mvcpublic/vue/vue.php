@@ -9,7 +9,7 @@ function afficherAccueil($prefixe) {
     # Goodies
     $goodiesIndicators = '';
     $goodies ='';
-    $lignesGoodies = goodiesTous();
+    $lignesGoodies = goodiesTous('', true, false, false);
 
     $nb = 0;
     $premier = true;
@@ -65,7 +65,9 @@ function afficherAccueil($prefixe) {
             '</div>';
     }
 
+    $count = 0;
     foreach ($lignesEvents as $ligneEvent) {
+        $count++;
         $idEvent = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
         $titreEvent = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
         $dateEvent = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
@@ -80,9 +82,13 @@ function afficherAccueil($prefixe) {
         } else {
             $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
         }
+        $hide = '';
+        if ($count == 3) {
+            $hide = ' accueilTroisiemeEvent';
+        }
         $events .=
             '<a href="' . $prefixe . 'events/?id=' . $idEvent . '">' .
-                '<div class="well">' .
+                '<div class="well' . $hide . '">' .
                     '<h4>' . $titreEvent . '</h4>' .
                     '<p>📅 ' . substr($dateEvent, 8, 2) . ' ' . $arrayMois[substr($dateEvent, 5, 2)] . $nbJoursStr . '</p>' .
                     '<p>⌚️ ' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</p>' .
@@ -243,12 +249,37 @@ function afficherEventPrecis($prefixe, $event) {
 ########################################################################################################################
 # Gabarit Goodies                                                                                                      #
 ########################################################################################################################
-function afficherGoodies($prefixe) {
+function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
     $title = 'Goodies';
     $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php';
 
+    if ($rechercheEnCours) {
+        $rechercheEnCoursStr = 'true';
+    } else {
+        $rechercheEnCoursStr = 'false';
+    }
+    if ($disponible) {
+        $checkedDisponible = ' checked';
+    } else {
+        $checkedDisponible = '';
+    }
+    if ($bientot) {
+        $checkedBientot = ' checked';
+    } else {
+        $checkedBientot = '';
+    }
+    if ($rupture) {
+        $checkedRupture = ' checked';
+    } else {
+        $checkedRupture = '';
+    }
+
     $tableGoodies = '';
-    $lignesGoodies = goodiesTous();
+    $lignesGoodies = goodiesTous($tri, $disponible, $bientot, $rupture);
+
+    if (empty($lignesGoodies)) {
+        $tableGoodies = '<h3>Hmmm... On dirait qu\'il n\'y a aucun goodie qui correspond à vos critères de recherches 🤔</h3>';
+    }
 
     foreach ($lignesGoodies as $ligne) {
         $id = htmlentities($ligne->idGoodies, ENT_QUOTES, "UTF-8");
@@ -263,6 +294,20 @@ function afficherGoodies($prefixe) {
             continue;
         }
         $lienMiniature = $prefixe . 'ressources/goodies/' . $miniature;
+        switch ($categorie) {
+            case 1:
+                $categorieStr = '<span style="color: darkgreen">Disponible</span>';
+                break;
+            case 2:
+                $categorieStr = '<span style="color: darkblue">Bientôt disponible</span>';
+                break;
+            case 3:
+                $categorieStr = '<span style="color: darkred">En rupture de stock</span>';
+                break;
+            default:
+                $categorieStr = '<span style="color: red">Une erreur s\'est produite.</span>';
+                break;
+        }
 
         $tableGoodies .=
             '<div class="col-sm-6">' .
@@ -271,6 +316,8 @@ function afficherGoodies($prefixe) {
                         '<img src="' . $lienMiniature . '" class="miniatureGoodies" alt="Miniature">' .
                     '</a>' .
                     '<h3>' . $titre . '</h3>' .
+                    '<hr>' .
+                    '<h4><strong>' . $categorieStr . '</strong></h4>' .
                     '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
                     '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
                     '<a class="btn btn-primary" href="' . $prefixe . 'goodies/?id=' . $id . '">' .
