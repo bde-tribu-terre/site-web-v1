@@ -24,7 +24,7 @@
                     </select>
                 </p>
                 <p> <!-- Choisir Évent -->
-                    <input type="submit" value="Choisir le goodie" name="formChoisirEvent_choisir">
+                    <input type="submit" value="Choisir l'évent" name="formChoisirEvent_choisir">
                 </p>
             </form>
         </fieldset>
