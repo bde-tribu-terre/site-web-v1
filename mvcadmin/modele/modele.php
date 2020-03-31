@@ -191,7 +191,7 @@ function titreGoodie($id) {
 
 function infoGoodie($id) {
     $connexion = getConnect();
-    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies FROM Goodies WHERE idGoodies=:id";
+    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies FROM Goodies WHERE idGoodies=:id";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();

@@ -30,10 +30,10 @@
                 <p> <!-- Catégorie -->
                     <label for="formModifierGoodie_categorie">Catégorie :</label>
                     <select id="formModifierGoodie_categorie" name="formModifierGoodie_categorie">
-                        <option value="0">Caché</option>
-                        <option value="1">Disponible</option>
-                        <option value="2">Bientôt disponible</option>
-                        <option value="3">En rupture de stock</option>
+                        <option value="0"<?php if ($categorieGoodie == 0) { echo ' selected'; } ?>>Caché</option>
+                        <option value="1"<?php if ($categorieGoodie == 1) { echo ' selected'; } ?>>Disponible</option>
+                        <option value="2"<?php if ($categorieGoodie == 2) { echo ' selected'; } ?>>Bientôt disponible</option>
+                        <option value="3"<?php if ($categorieGoodie == 3) { echo ' selected'; } ?>>En rupture de stock</option>
                     </select>
                 </p>
                 <p> <!-- Prix adhérent -->
