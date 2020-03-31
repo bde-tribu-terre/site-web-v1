@@ -47,6 +47,7 @@
                     <label for="formAjouterGoodie_miniature">Sélectionner la miniature (⚠️  format 4:3 pour ne pas que ça soit deg) :</label>
                     <input type="file" name="formAjouterGoodie_miniature" accept="image/*">
                 </p>
+                <p>🙏 Please please please !!!!!! L'image doit faire 960px*720px !!!!</p>
                 <p>⚠️ Pour ajouter les images qui seront affichées sur la page du goodie, il faut ajouter le goodie, puis retourner sur le menu admin, et aller dans "ajouter une image à un goodie". ⚠️</p>
                 <p> <!-- Ajouter Goodie -->
                     <input type="submit" value="Ajouter le goodie" name="formAjouterGoodie_ajouterGoodie">

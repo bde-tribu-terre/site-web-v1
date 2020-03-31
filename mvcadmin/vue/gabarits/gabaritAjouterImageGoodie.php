@@ -27,6 +27,7 @@
                     <label for="formAjouterImageGoodie_image">Sélectionner l'image (⚠️  format 4:3 pour ne pas que ça soit deg) :</label>
                     <input type="file" name="formAjouterImageGoodie_image" accept="image/*">
                 </p>
+                <p>🙏 Please please please !!!!!! L'image doit faire 960px*720px !!!!</p>
                 <p>⚠️ La miniature compte déjà comme une image. Attention aux doublons ! ⚠️</p>
                 <p> <!-- Ajouter Goodie -->
                     <input type="submit" value="Ajouter l'image" name="formAjouterImageGoodie_ajouter">
