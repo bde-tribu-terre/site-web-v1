@@ -169,7 +169,7 @@
                     </a>
                     <a href="https://www.facebook.com/OCampusFederation/">
                         <div class="carousel-caption">
-                            <h3>Ô'Campus</h3>
+                            <h3>ÔCampus</h3>
                             <p>Fédération des associations étudiantes d'Orléans</p>
                         </div>
                     </a>
