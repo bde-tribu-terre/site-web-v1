@@ -1,8 +1,5 @@
 <div class="container-fluid text-center">
-    <p><strong>
-            ADMIN<br/>
-            <a href="<?php echo $prefixe . 'nous-contacter/' ?>">Contactez nous !</a>
-        </strong></p>
+    <p><a href="<?php echo $prefixe ?>">Retourner à l'acceuil</a></p>
     <hr>
     <div class="texteFooter">
         <p>Tribu-Terre est une association étudiante apolitique à but non lucratif régie par la loi du 1er Juillet 1901.</p>

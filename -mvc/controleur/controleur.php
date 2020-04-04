@@ -162,7 +162,7 @@ function CtlAjouterGoodie($prefixe, $titre, $categorie, $prixADEuro, $prixADCent
     try {
         if (
             !empty($titre) &&
-            (!empty($categorie) || $categorie == 0) &&
+            (!empty($categorie) || $categorie == 0) && $categorie != '-1' &&
             (!empty($prixADEuro) || $prixADEuro == 0) &&
             (!empty($prixADCentimes) || $prixADCentimes == 0) &&
             (!empty($prixNADEuro) || $prixNADEuro == 0) &&

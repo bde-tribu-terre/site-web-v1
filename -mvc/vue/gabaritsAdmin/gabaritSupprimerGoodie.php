@@ -1,43 +1,52 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Tribu-Terre | Supprimer un goodie.</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-<fieldset>
-    <h1>SUPPRIMER UN GOODIE</h1>
-    <?php
-    if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire un message après avoir bien ou mal envoyé un formulaire, il s'affiche ici.
-        echo '<fieldset id="message_fieldset">' . '<legend>Message</legend>' . '<p>' . $messageRetour . '</p>' . '</fieldset>';
-    }
-    ?>
-    <div id="divActions">
-        <fieldset id="formSupprimerGoodie_fieldset">
-            <h3>Supprimer un goodie</h3>
-            <form id="formSupprimerGoodie" method="post">
-                <p> <!-- Goodie en question -->
-                    <label for="formSupprimerGoodie_idGoodie">Goodie :</label>
-                    <select id="formSupprimerGoodie_idGoodie" name="formSupprimerGoodie_idGoodie">
-                        <option value="">--Choisir un goodie--</option>
-                        <?php echo $goodies ?>
-                    </select>
-                </p>
-                <p>⚠️ Cette action est irréversible ! ⚠️</p>
-                <p> <!-- Supprimer goodie -->
-                    <input type="submit" value="Supprimer le goodie" name="formSupprimerGoodie_supprimer">
-                </p>
-            </form>
-        </fieldset>
-        <fieldset id="formRetourMenu_fieldset">
-            <h3>Retour au menu</h3>
-            <form id="formRetourMenu" method="post">
-                <p> <!-- Retour au menu -->
-                    <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
-                </p>
-            </form>
-        </fieldset>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Menu principal</h3>
+            <hr>
+            <?php
+            if (!empty($messageRetour)) {
+                echo
+                    '<div class="well">' .
+                    '<h3>Message : </h3>' .
+                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '</div>';
+            }
+            ?>
+        </div>
     </div>
-</fieldset>
-</body>
-</html>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Supprimer un goodie</h3>
+                <hr>
+                <form id="formSupprimerGoodie" method="post">
+                    <div class="form-group"> <!-- Goodie en question -->
+                        <label for="formSupprimerGoodie_idGoodie">Goodie :</label>
+                        <select class="form-control" id="formSupprimerGoodie_idGoodie" name="formSupprimerGoodie_idGoodie">
+                            <option value="">--Choisir un goodie--</option>
+                            <?php echo $goodies ?>
+                        </select>
+                    </div>
+                    <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>
+                    <hr>
+                    <div class="form-group"> <!-- Supprimer goodie -->
+                        <input class="btn btn-primary" type="submit" value="Supprimer le goodie" name="formSupprimerGoodie_supprimer">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Retour au menu</h3>
+                <hr>
+                <form id="formRetourMenu" method="post">
+                    <p> <!-- Retour au menu -->
+                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

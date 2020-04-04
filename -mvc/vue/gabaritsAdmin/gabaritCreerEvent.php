@@ -1,56 +1,69 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Tribu-Terre | Créer un évent.</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-<fieldset>
-    <h1>CRÉER UN ÉVENT</h1>
-    <?php
-    if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire un message après avoir bien ou mal envoyé un formulaire, il s'affiche ici.
-        echo '<fieldset id="message_fieldset">' . '<legend>Message</legend>' . '<p>' . $messageRetour . '</p>' . '</fieldset>';
-    }
-    ?>
-    <div id="divActions">
-        <fieldset id="formCreerEvent_fieldset">
-            <h3>Ajouter un évent</h3>
-            <form id="formCreerEvent" method="post">
-                <p> <!-- Titre de l'évent -->
-                    <label for="formCreerEvent_titre">Titre de l'évent :</label>
-                    <input id="formCreerEvent_titre" type="text" placeholder="Titre de l'évent" name="formCreerEvent_titre">
-                </p>
-                <p> <!-- Date -->
-                    <label for="formCreerEvent_date">Date (format "jj/mm/aaaa") :</label>
-                    <input id="formCreerEvent_date" type="date" name="formCreerEvent_date">
-                </p>
-                <p> <!-- Heure -->
-                    <label for="formCreerEvent_heureHeure">Heure :</label>
-                    <input id="formCreerEvent_heureHeure" type="number" min="0" max="23" name="formCreerEvent_heureHeure">h
-                    <input id="formCreerEvent_heureMinute" type="number" value="0" min="0" max="59" name="formCreerEvent_heureMinute">
-                </p>
-                <p> <!-- Lieu -->
-                    <label for="formCreerEvent_lieu">Lieu :</label>
-                    <input id="formCreerEvent_lieu" type="text" name="formCreerEvent_lieu">
-                </p>
-                <p> <!-- Description de l'évent -->
-                    <label for="formCreerEvent_desc">Description de l'évent :</label>
-                    <textarea id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc"></textarea>
-                </p>
-                <p> <!-- Ajouter Évent -->
-                    <input type="submit" value="Ajouter l'évent" name="formCreerEvent_ajouter">
-                </p>
-            </form>
-        </fieldset>
-        <fieldset id="formRetourMenu_fieldset">
-            <h3>Retour au menu</h3>
-            <form id="formRetourMenu" method="post">
-                <p> <!-- Retour au menu -->
-                    <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
-                </p>
-            </form>
-        </fieldset>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Menu principal</h3>
+            <hr>
+            <?php
+            if (!empty($messageRetour)) {
+                echo
+                    '<div class="well">' .
+                    '<h3>Message : </h3>' .
+                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '</div>';
+            }
+            ?>
+        </div>
     </div>
-</fieldset>
-</body>
-</html>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Ajouter un évent</h3>
+                <hr>
+                <form id="formCreerEvent" method="post">
+                    <div class="form-group"> <!-- Titre de l'évent -->
+                        <label for="formCreerEvent_titre">Titre de l'évent</label>
+                        <input class="form-control" id="formCreerEvent_titre" type="text" placeholder="Titre" name="formCreerEvent_titre">
+                    </div>
+                    <div class="form-group"> <!-- Date -->
+                        <label for="formCreerEvent_date">Date</label>
+                        <input class="form-control" id="formCreerEvent_date" type="date" name="formCreerEvent_date">
+                        <small class="form-text text-muted">Format : "jj/mm/aaaa"</small>
+                    </div>
+                    <div class="form-group"> <!-- Heure -->
+                        <label for="formCreerEvent_heureHeure">Heure</label>
+                        <input class="form-control" id="formCreerEvent_heureHeure" type="number" min="0" max="23" name="formCreerEvent_heureHeure">
+                        <small class="form-text text-muted">Heure</small>
+                        <input class="form-control" id="formCreerEvent_heureMinute" type="number" min="0" max="59" name="formCreerEvent_heureMinute">
+                        <small class="form-text text-muted">Minutes</small>
+                    </div>
+                    <div class="form-group"> <!-- Lieu -->
+                        <label for="formCreerEvent_lieu">Lieu</label>
+                        <input class="form-control" id="formCreerEvent_lieu" type="text" name="formCreerEvent_lieu">
+                    </div>
+                    <div class="form-group"> <!-- Description de l'évent -->
+                        <label for="formCreerEvent_desc">Description de l'évent</label>
+                        <textarea class="form-control" id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc"></textarea>
+                        <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
+                    </div>
+                    <hr>
+                    <div class="form-group"> <!-- Ajouter Évent -->
+                        <input class="btn btn-primary" type="submit" value="Ajouter l'évent" name="formCreerEvent_ajouter">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Retour au menu</h3>
+                <hr>
+                <form id="formRetourMenu" method="post">
+                    <p> <!-- Retour au menu -->
+                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -212,10 +212,11 @@ function afficherSupprimerImageGoodie($prefixe, $messageRetour, $id) {
         $lienImage = $ligne->lienImagesGoodies;
 
         $images .=
-            '<fieldset>' .
-            '<img src="../goodies/' . $lienImage . '" width="200" height="100">' .
-            '<p><input type="checkbox" name="' . $idImage . '" id="' . $idImage . '"></p>' .
-            '</fieldset>';
+            '<div class="form-group">' .
+            '<label for="' . $idImage . '"><img src="../goodies/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
+            '<input class="form-control" type="checkbox" name="' . $idImage . '" id="' . $idImage . '">' .
+            '</div>' .
+            '<br>';
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');

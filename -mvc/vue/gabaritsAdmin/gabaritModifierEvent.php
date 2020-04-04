@@ -1,60 +1,73 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Tribu-Terre | Modifier un évent.</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-<fieldset>
-    <h1>MODIFIER UN ÉVENT</h1>
-    <?php
-    if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire un message après avoir bien ou mal envoyé un formulaire, il s'affiche ici.
-        echo '<fieldset id="message_fieldset">' . '<legend>Message</legend>' . '<p>' . $messageRetour . '</p>' . '</fieldset>';
-    }
-    ?>
-    <div id="divActions">
-        <fieldset id="formModifierEvent_fieldset">
-            <h3>Modifier un évent</h3>
-            <form id="formModifierEvent" method="post">
-                <p> <!-- ID de l'évent -->
-                    <label for="formModifierEvent_idEvent">ID de l'évent :</label>
-                    <input id="formModifierEvent_idEvent" type="text" value="<?php echo $idEvents ?>" placeholder="Titre du goodie" name="formModifierEvent_idEvent" readonly>
-                </p>
-                <p> <!-- Titre de l'évent -->
-                    <label for="formModifierEvent_titre">Titre de l'évent :</label>
-                    <input id="formModifierEvent_titre" type="text" value="<?php echo $titreEvents ?>" placeholder="Titre de l'évent" name="formModifierEvent_titre">
-                </p>
-                <p> <!-- Date -->
-                    <label for="formModifierEvent_date">Date (format "jj/mm/aaaa") :</label>
-                    <input id="formModifierEvent_date" type="date" value="<?php echo $dateEvents ?>" name="formModifierEvent_date">
-                </p>
-                <p> <!-- Heure -->
-                    <label for="formModifierEvent_heureHeure">Heure :</label>
-                    <input id="formModifierEvent_heureHeure" type="number" value="<?php echo $heure ?>" min="0" max="23" name="formModifierEvent_heureHeure">h
-                    <input id="formModifierEvent_heureMinute" type="number" value="<?php echo $minute ?>" min="0" max="59" name="formModifierEvent_heureMinute">
-                </p>
-                <p> <!-- Lieu -->
-                    <label for="formModifierEvent_lieu">Lieu :</label>
-                    <input id="formModifierEvent_lieu" type="text" value="<?php echo $lieuEvents ?>" name="formModifierEvent_lieu">
-                </p>
-                <p> <!-- Description de l'évent -->
-                    <label for="formModifierEvent_desc">Description de l'évent :</label>
-                    <textarea id="formModifierEvent_desc" placeholder="Description de l'évent" name="formModifierEvent_desc"><?php echo $descEvents ?></textarea>
-                </p>
-                <p> <!-- Modifier Évent -->
-                    <input type="submit" value="Modifier l'évent" name="formModifierEvent_modifierEvent">
-                </p>
-            </form>
-        </fieldset>
-        <fieldset id="formRetourMenu_fieldset">
-            <h3>Retour au menu</h3>
-            <form id="formRetourMenu" method="post">
-                <p> <!-- Retour au menu -->
-                    <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
-                </p>
-            </form>
-        </fieldset>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Menu principal</h3>
+            <hr>
+            <?php
+            if (!empty($messageRetour)) {
+                echo
+                    '<div class="well">' .
+                    '<h3>Message : </h3>' .
+                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '</div>';
+            }
+            ?>
+        </div>
     </div>
-</fieldset>
-</body>
-</html>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Modifier un évent</h3>
+                <hr>
+                <form id="formModifierEvent" method="post">
+                    <div class="form-group"> <!-- ID de l'évent -->
+                        <label for="formModifierEvent_idEvent">ID de l'évent</label>
+                        <input class="form-control" id="formModifierEvent_idEvent" type="text" value="<?php echo $idEvents ?>" name="formModifierEvent_idEvent" readonly>
+                    </div>
+                    <div class="form-group"> <!-- Titre de l'évent -->
+                        <label for="formModifierEvent_titre">Titre de l'évent</label>
+                        <input class="form-control" id="formModifierEvent_titre" type="text" value="<?php echo $titreEvents ?>" placeholder="Titre" name="formModifierEvent_titre">
+                    </div>
+                    <div class="form-group"> <!-- Date -->
+                        <label for="formModifierEvent_date">Date</label>
+                        <input class="form-control" id="formModifierEvent_date" type="date" value="<?php echo $dateEvents ?>" name="formModifierEvent_date">
+                        <small class="form-text text-muted">Format : "jj/mm/aaaa"</small>
+                    </div>
+                    <div class="form-group"> <!-- Heure -->
+                        <label for="formModifierEvent_heureHeure">Heure</label>
+                        <input class="form-control" id="formModifierEvent_heureHeure" type="number" value="<?php echo $heure ?>" min="0" max="23" name="formModifierEvent_heureHeure">
+                        <small class="form-text text-muted">Heure</small>
+                        <input class="form-control" id="formModifierEvent_heureMinute" type="number" value="<?php echo $minute ?>" min="0" max="59" name="formModifierEvent_heureMinute">
+                        <small class="form-text text-muted">Minutes</small>
+                    </div>
+                    <div class="form-group"> <!-- Lieu -->
+                        <label for="formModifierEvent_lieu">Lieu</label>
+                        <input class="form-control" id="formModifierEvent_lieu" type="text" value="<?php echo $lieuEvents ?>" name="formModifierEvent_lieu">
+                    </div>
+                    <div class="form-group"> <!-- Description de l'évent -->
+                        <label for="formModifierEvent_desc">Description de l'évent</label>
+                        <textarea class="form-control" id="formModifierEvent_desc" placeholder="Description de l'évent" name="formModifierEvent_desc"><?php echo $descEvents ?></textarea>
+                        <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
+                    </div>
+                    <hr>
+                    <div class="form-group"> <!-- Modifier Évent -->
+                        <input class="btn btn-primary" type="submit" value="Modifier l'évent" name="formModifierEvent_modifierEvent">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Retour au menu</h3>
+                <hr>
+                <form id="formRetourMenu" method="post">
+                    <p> <!-- Retour au menu -->
+                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

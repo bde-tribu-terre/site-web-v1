@@ -1,42 +1,51 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Tribu-Terre | Choisir un goodie à modifier.</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-<fieldset>
-    <h1>CHOISIR UN GOODIE À MODIFIER</h1>
-    <?php
-    if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire un message après avoir bien ou mal envoyé un formulaire, il s'affiche ici.
-        echo '<fieldset id="message_fieldset">' . '<legend>Message</legend>' . '<p>' . $messageRetour . '</p>' . '</fieldset>';
-    }
-    ?>
-    <div id="divActions">
-        <fieldset id="formChoisirGoodie_fieldset">
-            <h3>Choisir un goodie à modifier</h3>
-            <form id="formChoisirGoodie" method="post">
-                <p> <!-- Goodie en question -->
-                    <label for="formChoisirGoodie_idGoodie">Goodie :</label>
-                    <select id="formChoisirGoodie_idGoodie" name="formChoisirGoodie_idGoodie">
-                        <option value="">--Choisir un goodie--</option>
-                        <?php echo $goodies ?>
-                    </select>
-                </p>
-                <p> <!-- Choisir Goodie -->
-                    <input type="submit" value="Choisir le goodie" name="formChoisirGoodie_choisir">
-                </p>
-            </form>
-        </fieldset>
-        <fieldset id="formRetourMenu_fieldset">
-            <h3>Retour au menu</h3>
-            <form id="formRetourMenu" method="post">
-                <p> <!-- Retour au menu -->
-                    <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
-                </p>
-            </form>
-        </fieldset>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Menu principal</h3>
+            <hr>
+            <?php
+            if (!empty($messageRetour)) {
+                echo
+                    '<div class="well">' .
+                    '<h3>Message : </h3>' .
+                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '</div>';
+            }
+            ?>
+        </div>
     </div>
-</fieldset>
-</body>
-</html>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Choisir un goodie à modifier</h3>
+                <hr>
+                <form id="formChoisirGoodie" method="post">
+                    <div class="form-group"> <!-- Goodie en question -->
+                        <label for="formChoisirGoodie_idGoodie">Goodie</label>
+                        <select class="form-control" id="formChoisirGoodie_idGoodie" name="formChoisirGoodie_idGoodie">
+                            <option value="">--Choisir un goodie--</option>
+                            <?php echo $goodies ?>
+                        </select>
+                    </div>
+                    <hr>
+                    <div class="form-group"> <!-- Choisir Goodie -->
+                        <input class="btn btn-primary" type="submit" value="Choisir le goodie" name="formChoisirGoodie_choisir">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Retour au menu</h3>
+                <hr>
+                <form id="formRetourMenu" method="post">
+                    <p> <!-- Retour au menu -->
+                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,70 +1,85 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Tribu-Terre | Modifier un goodie.</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-<fieldset>
-    <h1>MODIFIER UN GOODIE</h1>
-    <?php
-    if (!empty($messageRetour)) { // Si il y a un message de retour, c'est à dire un message après avoir bien ou mal envoyé un formulaire, il s'affiche ici.
-        echo '<fieldset id="message_fieldset">' . '<legend>Message</legend>' . '<p>' . $messageRetour . '</p>' . '</fieldset>';
-    }
-    ?>
-    <div id="divActions">
-        <fieldset id="formModifierGoodie_fieldset">
-            <h3>Modifier un goodie</h3>
-            <form id="formModifierGoodie" method="post">
-                <p> <!-- Supprimer des images du goodie -->
-                    <input type="submit" value="Supprimer des images du goodie" name="formModifierGoodie_supprimerImages">
-                </p>
-                <p> <!-- ID du goodie -->
-                    <label for="formModifierGoodie_idGoodie">ID du goodie :</label>
-                    <input id="formModifierGoodie_idGoodie" type="text" value="<?php echo $idGoodie ?>" placeholder="Titre du goodie" name="formModifierGoodie_idGoodie" readonly>
-                </p>
-                <p> <!-- Titre du goodie -->
-                    <label for="formModifierGoodie_titreGoodie">Titre du goodie :</label>
-                    <input id="formModifierGoodie_titreGoodie" type="text" value="<?php echo $titreGoodie ?>" placeholder="Titre du goodie" name="formModifierGoodie_titreGoodie">
-                </p>
-                <p> <!-- Catégorie -->
-                    <label for="formModifierGoodie_categorie">Catégorie :</label>
-                    <select id="formModifierGoodie_categorie" name="formModifierGoodie_categorie">
-                        <option value="0"<?php if ($categorieGoodie == 0) { echo ' selected'; } ?>>Caché</option>
-                        <option value="1"<?php if ($categorieGoodie == 1) { echo ' selected'; } ?>>Disponible</option>
-                        <option value="2"<?php if ($categorieGoodie == 2) { echo ' selected'; } ?>>Bientôt disponible</option>
-                        <option value="3"<?php if ($categorieGoodie == 3) { echo ' selected'; } ?>>En rupture de stock</option>
-                    </select>
-                </p>
-                <p> <!-- Prix adhérent -->
-                    <label for="formModifierGoodie_prixAdhérentEuro">Prix adhérent :</label>
-                    <input id="formModifierGoodie_prixAdhérentEuro" type="number" value="<?php echo $prixADEuroGoodie ?>" min="0" name="formModifierGoodie_prixAdhérentEuro">€
-                    <input id="formModifierGoodie_prixAdhérentCentimes" type="number" value="<?php echo $prixADCentimesGoodie ?>" min="0" max="99" name="formModifierGoodie_prixAdhérentCentimes">centimes
-                </p>
-                <p> <!-- Prix non-adhérent -->
-                    <label for="formModifierGoodie_prixNonAdhérentEuro">Prix non-adhérent :</label>
-                    <input id="formModifierGoodie_prixNonAdhérentEuro" type="number" value="<?php echo $prixNADEuroGoodie ?>" min="0" name="formModifierGoodie_prixNonAdhérentEuro">€
-                    <input id="formModifierGoodie_prixNonAdhérentCentimes" type="number" value="<?php echo $prixNADCentimesGoodie ?>" min="0" max="99" name="formModifierGoodie_prixNonAdhérentCentimes">centimes
-                </p>
-                <p> <!-- Description du goodie -->
-                    <label for="formModifierGoodie_descGoodie">Description du goodie :</label>
-                    <textarea id="formModifierGoodie_descGoodie" placeholder="Description du goodie" name="formModifierGoodie_descGoodie"><?php echo $descGoodie ?></textarea>
-                </p>
-                <p>⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé ! ⚠️</p>
-                <p> <!-- Modifier Goodie -->
-                    <input type="submit" value="Modifier le goodie" name="formModifierGoodie_modifierGoodie">
-                </p>
-            </form>
-        </fieldset>
-        <fieldset id="formRetourMenu_fieldset">
-            <h3>Retour au menu</h3>
-            <form id="formRetourMenu" method="post">
-                <p> <!-- Retour au menu -->
-                    <input type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
-                </p>
-            </form>
-        </fieldset>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Menu principal</h3>
+            <hr>
+            <?php
+            if (!empty($messageRetour)) {
+                echo
+                    '<div class="well">' .
+                    '<h3>Message : </h3>' .
+                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '</div>';
+            }
+            ?>
+        </div>
     </div>
-</fieldset>
-</body>
-</html>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Modifier un goodie</h3>
+                <hr>
+                <form id="formModifierGoodie" method="post">
+                    <div class="form-group"> <!-- Supprimer des images du goodie -->
+                        <input class="btn btn-primary" type="submit" value="Supprimer des images du goodie" name="formModifierGoodie_supprimerImages">
+                    </div>
+                    <hr>
+                    <div class="form-group"> <!-- ID du goodie -->
+                        <label for="formModifierGoodie_idGoodie">ID du goodie</label>
+                        <input class="form-control" id="formModifierGoodie_idGoodie" type="text" value="<?php echo $idGoodie ?>" name="formModifierGoodie_idGoodie" readonly>
+                    </div>
+                    <div class="form-group"> <!-- Titre du goodie -->
+                        <label for="formModifierGoodie_titreGoodie">Titre du goodie</label>
+                        <input class="form-control" id="formModifierGoodie_titreGoodie" type="text" value="<?php echo $titreGoodie ?>" placeholder="Titre" name="formModifierGoodie_titreGoodie">
+                    </div>
+                    <div class="form-group"> <!-- Catégorie -->
+                        <label for="formModifierGoodie_categorie">Catégorie</label>
+                        <select class="form-control" id="formModifierGoodie_categorie" name="formModifierGoodie_categorie">
+                            <option value="0"<?php if ($categorieGoodie == 0) { echo ' selected'; } ?>>Caché</option>
+                            <option value="1"<?php if ($categorieGoodie == 1) { echo ' selected'; } ?>>Disponible</option>
+                            <option value="2"<?php if ($categorieGoodie == 2) { echo ' selected'; } ?>>Bientôt disponible</option>
+                            <option value="3"<?php if ($categorieGoodie == 3) { echo ' selected'; } ?>>En rupture de stock</option>
+                        </select>
+                    </div>
+                    <div class="form-group"> <!-- Prix adhérent -->
+                        <label for="formModifierGoodie_prixAdhérentEuro">Prix adhérent</label>
+                        <input class="form-control" id="formModifierGoodie_prixAdhérentEuro" type="number" value="<?php echo $prixADEuroGoodie ?>" min="0" name="formModifierGoodie_prixAdhérentEuro" placeholder="Euros">
+                        <small class="form-text text-muted">Euros</small>
+                        <input class="form-control" id="formModifierGoodie_prixAdhérentCentimes" type="number" value="<?php echo $prixADCentimesGoodie ?>" min="0" max="99" name="formModifierGoodie_prixAdhérentCentimes" placeholder="Centimes">
+                        <small class="form-text text-muted">Centimes</small>
+                    </div>
+                    <div class="form-group"> <!-- Prix non-adhérent -->
+                        <label for="formModifierGoodie_prixNonAdhérentEuro">Prix non-adhérent</label>
+                        <input class="form-control" id="formModifierGoodie_prixNonAdhérentEuro" type="number" value="<?php echo $prixNADEuroGoodie ?>" min="0" name="formModifierGoodie_prixNonAdhérentEuro" placeholder="Euros">
+                        <small class="form-text text-muted">Euros</small>
+                        <input class="form-control" id="formModifierGoodie_prixNonAdhérentCentimes" type="number" value="<?php echo $prixNADCentimesGoodie ?>" min="0" max="99" name="formModifierGoodie_prixNonAdhérentCentimes" placeholder="Centimes">
+                        <small class="form-text text-muted">Centimes</small>
+                    </div>
+                    <div class="form-group"> <!-- Description du goodie -->
+                        <label for="formModifierGoodie_descGoodie">Description du goodie</label>
+                        <textarea class="form-control" id="formModifierGoodie_descGoodie" placeholder="Description du goodie" name="formModifierGoodie_descGoodie"><?php echo $descGoodie ?></textarea>
+                        <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
+                    </div>
+                    <small class="form-text text-muted">⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé !</small>
+                    <hr>
+                    <div class="form-group"> <!-- Modifier Goodie -->
+                        <input class="btn btn-primary" type="submit" value="Modifier le goodie" name="formModifierGoodie_modifierGoodie">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well">
+                <h3>Retour au menu</h3>
+                <hr>
+                <form id="formRetourMenu" method="post">
+                    <p> <!-- Retour au menu -->
+                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

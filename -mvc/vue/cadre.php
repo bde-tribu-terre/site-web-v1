@@ -35,7 +35,7 @@
         }
 
         /* Lueur blanche autour du texte du jumbotron */
-        .jumbotron p {
+        .jumbotron p, .jumbotron h1, .jumbotron h2, .jumbotron h3, .jumbotron h4, .jumbotron h5 {
             text-shadow:
                 5px 5px 5px #f3f3f3,
                 -5px 5px 5px #f3f3f3,
