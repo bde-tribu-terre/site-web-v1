@@ -1,4 +1,7 @@
 <?php
+########################################################################################################################
+# Système                                                                                                              #
+########################################################################################################################
 function verifConnexion($login, $mdp) {
     $connexion = getConnect();
     $requete = "SELECT idMembre, loginMembre, mdpMembre FROM Membre WHERE loginMembre=:login";
@@ -20,6 +23,50 @@ function verifConnexion($login, $mdp) {
 function infosMembre($id) {
     $connexion = getConnect();
     $requete = "SELECT idMembre, loginMembre, nomMembre, descMembre FROM Membre WHERE idMembre=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+########################################################################################################################
+# Évents                                                                                                               #
+########################################################################################################################
+function eventsTous($tri, $aVenir, $passes) {
+    $ajd = date('Y-m-d');
+    switch ($tri) {
+        case 'FP':
+            $triSQL = ' ORDER BY dateEvents DESC';
+            break;
+        case 'PF':
+            $triSQL = ' ORDER BY dateEvents';
+            break;
+        default:
+            $triSQL = ''; // Normalement jamais atteint.
+    }
+    $where = " WHERE 1=2"; // Condition useless pour concaténer après.
+    if ($aVenir) {
+        $where .= " OR dateEvents>='" . $ajd . "'";
+    }
+    if ($passes) {
+        $where .= " OR dateEvents<'" . $ajd . "'";
+    }
+    $connexion = getConnect();
+    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events" . $where . $triSQL;
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function eventPrecis($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE idEvents=:id";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();
@@ -53,18 +100,6 @@ function idTitreEvents() {
     return $ligne;
 }
 
-function infoEvent($id) {
-    $connexion = getConnect();
-    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events WHERE idEvents=:idEvents";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
-    $prepare->closeCursor();
-    return $ligne;
-}
-
 function modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu) {
     $connexion = getConnect();
     $requete = "UPDATE Events SET titreEvents=:titreEvents, descEvents=:descEvents, dateEvents=:dateEvents, heureEvents=:heureEvents, lieuEvents=:lieuEvents WHERE idEvents=:idEvents";
@@ -88,29 +123,41 @@ function supprimerEvent($id) {
     $prepare->closeCursor();
 }
 
-function ajouterJournal($titre, $mois, $annee, $fileImput) {
-    # Enregistrement du fichier PDF.
-    $journauxRep = '../journaux/';
-    $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.pdf'; # time() => aucun doublon imaginable.
-    move_uploaded_file(
-        $_FILES[$fileImput]['tmp_name'],
-        $journauxRep . $newName
-    );
-
-    # Enregistrement des données dans la BDD SQL.
+########################################################################################################################
+# Goodies                                                                                                              #
+########################################################################################################################
+function goodiesTous($tri, $disponible, $bientot, $rupture) {
+    switch ($tri) {
+        case 'nom':
+            $triSQL = ' ORDER BY titreGoodies';
+            break;
+        case 'prixAD':
+            $triSQL = ' ORDER BY prixADGoodies';
+            break;
+        case 'prixADD':
+            $triSQL = ' ORDER BY prixADGoodies DESC';
+            break;
+        case 'prixNAD':
+            $triSQL = ' ORDER BY prixNADGoodies';
+            break;
+        case 'prixNADD':
+            $triSQL = ' ORDER BY prixNADGoodies DESC';
+            break;
+        default:
+            $triSQL = '';
+    }
+    $where = " WHERE 1=2"; // Condition useless pour concaténer après.
+    if ($disponible) {
+        $where .= " OR categorieGoodies=1";
+    }
+    if ($bientot) {
+        $where .= " OR categorieGoodies=2";
+    }
+    if ($rupture) {
+        $where .= " OR categorieGoodies=3";
+    }
     $connexion = getConnect();
-    $requete = "INSERT INTO Journaux VALUES (0, :titreJournaux, :dateJournaux, :pdfJournaux)"; // (0 pour le auto increment)
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':titreJournaux', $titre, PDO::PARAM_STR);
-    $prepare->bindValue(':dateJournaux', $annee . '-' . $mois . '-' . '01', PDO::PARAM_STR);
-    $prepare->bindValue(':pdfJournaux', $newName, PDO::PARAM_STR);
-    $prepare->execute();
-    $prepare->closeCursor();
-}
-
-function idTitreJournaux() {
-    $connexion = getConnect();
-    $requete = "SELECT idJournaux, titreJournaux FROM Journaux ORDER BY dateJournaux";
+    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies, miniatureGoodies FROM Goodies" . $where . $triSQL;
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
@@ -119,26 +166,28 @@ function idTitreJournaux() {
     return $ligne;
 }
 
-function supprimerJournal($id) {
-    # Suppression du journal
+function goodiePrecis($id) {
     $connexion = getConnect();
-    $requete = "SELECT pdfJournaux FROM Journaux WHERE idJournaux=:idJournaux";
+    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies, miniatureGoodies FROM Goodies WHERE idGoodies=:id";
     $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
-    $pdf = $ligne->pdfJournaux;
-    unlink('../journaux/' . $pdf);
+    return $ligne;
+}
 
-    # Suppression des données
+function imagesGoodie($id) {
     $connexion = getConnect();
-    $requete = "DELETE FROM Journaux WHERE idJournaux=:idJournaux";
+    $requete = "SELECT idImagesGoodies, lienImagesGoodies FROM ImagesGoodies WHERE idGoodies=:id";
     $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
     $prepare->closeCursor();
+    return $ligne;
 }
 
 function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
@@ -177,44 +226,6 @@ function idTitreGoodies() {
     return $ligne;
 }
 
-function titreGoodie($id) {
-    $connexion = getConnect();
-    $requete = "SELECT idGoodies, titreGoodies FROM Goodies WHERE idGoodies=:id";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
-    $prepare->closeCursor();
-    return $ligne;
-}
-
-function infoGoodie($id) {
-    $connexion = getConnect();
-    $requete = "SELECT idGoodies, titreGoodies, prixADGoodies, prixNADGoodies, descGoodies, categorieGoodies FROM Goodies WHERE idGoodies=:id";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
-    $prepare->closeCursor();
-    return $ligne;
-}
-
-function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
-    $connexion = getConnect();
-    $requete = "UPDATE Goodies SET titreGoodies=:titreGoodies, prixADGoodies=:prixADGoodies, prixNADGoodies=:prixNADGoodies, descGoodies=:descGoodies, categorieGoodies=:categorieGoodies WHERE idGoodies=:idGoodies";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-    $prepare->bindValue(':titreGoodies', $titre, PDO::PARAM_STR);
-    $prepare->bindValue(':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), PDO::PARAM_STR);
-    $prepare->bindValue(':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), PDO::PARAM_STR);
-    $prepare->bindValue(':descGoodies', $desc, PDO::PARAM_STR);
-    $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->closeCursor();
-}
-
 function ajouterImageGoodie($id, $titre, $fileImput) {
     # Enregistrement de la miniature.
     $infosFichier = pathinfo($_FILES[$fileImput]['name']);
@@ -236,16 +247,18 @@ function ajouterImageGoodie($id, $titre, $fileImput) {
     $prepare->closeCursor();
 }
 
-function imagesGoodie($id) {
+function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
     $connexion = getConnect();
-    $requete = "SELECT idImagesGoodies, lienImagesGoodies FROM ImagesGoodies WHERE idGoodies=:id";
+    $requete = "UPDATE Goodies SET titreGoodies=:titreGoodies, prixADGoodies=:prixADGoodies, prixNADGoodies=:prixNADGoodies, descGoodies=:descGoodies, categorieGoodies=:categorieGoodies WHERE idGoodies=:idGoodies";
     $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':titreGoodies', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), PDO::PARAM_STR);
+    $prepare->bindValue(':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), PDO::PARAM_STR);
+    $prepare->bindValue(':descGoodies', $desc, PDO::PARAM_STR);
+    $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
     $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetchall();
     $prepare->closeCursor();
-    return $ligne;
 }
 
 function supprimerImageGoodie($id) {
@@ -301,6 +314,84 @@ function supprimerGoodie($id) {
     $requete = "DELETE FROM Goodies WHERE idGoodies=:idGoodies";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
+########################################################################################################################
+# Journaux                                                                                                             #
+########################################################################################################################
+function journauxTous() {
+    $connexion = getConnect();
+    $requete = "SELECT idJournaux, titreJournaux, dateJournaux, pdfJournaux FROM Journaux ORDER BY dateJournaux DESC";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function derniersJournaux() {
+    $connexion = getConnect();
+    $requete = "SELECT idJournaux, titreJournaux, dateJournaux, pdfJournaux FROM Journaux ORDER BY dateJournaux DESC LIMIT 2";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function ajouterJournal($titre, $mois, $annee, $fileImput) {
+    # Enregistrement du fichier PDF.
+    $journauxRep = '../journaux/';
+    $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.pdf'; # time() => aucun doublon imaginable.
+    move_uploaded_file(
+        $_FILES[$fileImput]['tmp_name'],
+        $journauxRep . $newName
+    );
+
+    # Enregistrement des données dans la BDD SQL.
+    $connexion = getConnect();
+    $requete = "INSERT INTO Journaux VALUES (0, :titreJournaux, :dateJournaux, :pdfJournaux)"; // (0 pour le auto increment)
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':titreJournaux', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':dateJournaux', $annee . '-' . $mois . '-' . '01', PDO::PARAM_STR);
+    $prepare->bindValue(':pdfJournaux', $newName, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
+function idTitreJournaux() {
+    $connexion = getConnect();
+    $requete = "SELECT idJournaux, titreJournaux FROM Journaux ORDER BY dateJournaux";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function supprimerJournal($id) {
+    # Suppression du journal
+    $connexion = getConnect();
+    $requete = "SELECT pdfJournaux FROM Journaux WHERE idJournaux=:idJournaux";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    $pdf = $ligne->pdfJournaux;
+    unlink('../journaux/' . $pdf);
+
+    # Suppression des données
+    $connexion = getConnect();
+    $requete = "DELETE FROM Journaux WHERE idJournaux=:idJournaux";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->closeCursor();
 }

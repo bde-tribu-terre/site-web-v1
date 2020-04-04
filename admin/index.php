@@ -1,15 +1,12 @@
 <?php
-// /!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
-// /!\                                                                                                               /!\
-// /!\ CETTE PAGE EST GÉRÉE PAR LE MVC ADMIN                                                                         /!\
-// /!\                                                                                                               /!\
-// /!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
 if (strlen(session_id()) < 1) session_start();
-require_once('../-mvc-admin/controleur/controleur.php');
+$prefixe = '../';
+require_once($prefixe . '-mvc/controleur/controleur.php');
 try {
     // Gabarit Connexion
     if (isset($_POST['formConnexion_seConnecter'])) {
         CtlVerifConnexion(
+            $prefixe,
             $_POST['formConnexion_login'],
             $_POST['formConnexion_mdp']
         );
@@ -17,6 +14,7 @@ try {
     // Gabarit Créer Évent
     elseif (isset($_POST['formCreerEvent_ajouter'])) {
         CtlCreerEvent(
+            $prefixe,
             $_POST['formCreerEvent_titre'],
             $_POST['formCreerEvent_date'],
             $_POST['formCreerEvent_heureHeure'],
@@ -28,12 +26,14 @@ try {
     // Gabarit Choix Évent
     elseif (isset($_POST['formChoisirEvent_choisir'])) {
         CtlChoixEvent(
+            $prefixe,
             $_POST['formChoisirEvent_idEvent']
         );
     }
     // Gabarit Modifier Évent
     elseif (isset($_POST['formModifierEvent_modifierEvent'])) {
         CtlModifierEvent(
+            $prefixe,
             $_POST['formModifierEvent_idEvent'],
             $_POST['formModifierEvent_titre'],
             $_POST['formModifierEvent_date'],
@@ -46,12 +46,14 @@ try {
     // Gabarit Supprimer Évent
     elseif (isset($_POST['formSupprimerEvent_supprimer'])) {
         CtlSupprimerEvent(
+            $prefixe,
             $_POST['formSupprimerEvent_idEvent']
         );
     }
     // Gabarit Ajouter Goodie
     elseif (isset($_POST['formAjouterGoodie_ajouterGoodie'])) {
         CtlAjouterGoodie(
+            $prefixe,
             $_POST['formAjouterGoodie_titreGoodie'],
             $_POST['formAjouterGoodie_categorie'],
             $_POST['formAjouterGoodie_prixAdhérentEuro'],
@@ -65,6 +67,7 @@ try {
     // Gabarit Ajouter Image Goodie
     elseif (isset($_POST['formAjouterImageGoodie_ajouter'])) {
         CtlAjouterImageGoodie(
+            $prefixe,
             $_POST['formAjouterImageGoodie_idGoodie'],
             'formAjouterImageGoodie_image'
         );
@@ -72,12 +75,14 @@ try {
     // Gabarit Choix Goodie
     elseif (isset($_POST['formChoisirGoodie_choisir'])) {
         CtlChoixGoodie(
+            $prefixe,
             $_POST['formChoisirGoodie_idGoodie']
         );
     }
     // Gabarit Modifier Goodie
     elseif (isset($_POST['formModifierGoodie_modifierGoodie'])) {
         CtlModifierGoodie(
+            $prefixe,
             $_POST['formModifierGoodie_idGoodie'],
             $_POST['formModifierGoodie_titreGoodie'],
             $_POST['formModifierGoodie_categorie'],
@@ -89,6 +94,7 @@ try {
         );
     } elseif (isset($_POST['formModifierGoodie_supprimerImages'])) {
         CtlAllerSupprimerImageGoodie(
+            $prefixe,
             $_POST['formModifierGoodie_idGoodie']
         );
     }
@@ -99,17 +105,22 @@ try {
                 supprimerImageGoodie($key);
             }
         }
-        CtlAllerSupprimerImageGoodie($_POST['formSupprimerImageGoodie_idGoodie']);
+        CtlAllerSupprimerImageGoodie(
+            $prefixe,
+            $_POST['formSupprimerImageGoodie_idGoodie']
+        );
     }
     // Gabarit Supprimer Goodie
     elseif (isset($_POST['formSupprimerGoodie_supprimer'])) {
         CtlSupprimerGoodie(
+            $prefixe,
             $_POST['formSupprimerGoodie_idGoodie']
         );
     }
     // Gabarit Ajouter Journal
     elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
         CtlAjouterJournal(
+            $prefixe,
             $_POST['formAjouterJournal_titreJournal'],
             $_POST['formAjouterJournal_moisJournal'],
             $_POST['formAjouterJournal_anneeJournal'],
@@ -119,47 +130,48 @@ try {
     // Gabarit Supprimer Journal
     elseif (isset($_POST['formSupprimerJournal_supprimer'])) {
         CtlSupprimerJournal(
+            $prefixe,
             $_POST['formSupprimerJournal_idJournal']
         );
     }
     // Gabarit Menu
     elseif (isset($_POST['formEvents_creerEventMenu'])) {
-        CtlCreerEventMenu('');
+        CtlCreerEventMenu($prefixe, '');
     } elseif (isset($_POST['formEvents_modifierEventMenu'])) {
-        CtlChoixEventMenu('');
+        CtlChoixEventMenu($prefixe, '');
     } elseif (isset($_POST['formEvents_supprimerEventMenu'])) {
-        CtlSupprimerEventMenu('');
+        CtlSupprimerEventMenu($prefixe, '');
     } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
-        CtlAjouterGoodieMenu('');
+        CtlAjouterGoodieMenu($prefixe, '');
     } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
-        CtlAjouterImageGoodieMenu('');
+        CtlAjouterImageGoodieMenu($prefixe, '');
     } elseif (isset($_POST['formGoodies_ModifierGoodieMenu'])) {
-        CtlChoixGoodieMenu('');
+        CtlChoixGoodieMenu($prefixe, '');
     } elseif (isset($_POST['formGoodies_SupprimerGoodieMenu'])) {
-        CtlSupprimerGoodieMenu('');
+        CtlSupprimerGoodieMenu($prefixe, '');
     } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
-        CtlAjouterJournalMenu('');
+        CtlAjouterJournalMenu($prefixe, '');
     } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {
-        CtlSupprimerJournalMenu('');
+        CtlSupprimerJournalMenu($prefixe, '');
     } elseif (isset($_POST['formMonCompte_parametres'])) {
-        CtlParametresCompte('');
+        CtlParametresCompte($prefixe, '');
     } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
-        CtlDeconnexion('');
+        CtlDeconnexion($prefixe, '');
     }
-    // Globaux : apparaissent dans plusieurs gabarits
+    // Globaux : apparaissent dans plusieurs gabaritsPublic
     elseif (isset($_POST['formRetourMenu_retourMenu'])) {
-        CtlMenu('');
+        CtlMenu($prefixe, '');
     }
     // Par défaut
     elseif (isset($_SESSION['id'])) { // On vient d'arriver sur le menu.
-        CtlMenu('');
+        CtlMenu($prefixe, '');
     } else { // On vient d'arriver sur la page.
-        CtlConnexion('');
+        CtlConnexion($prefixe, '');
     }
 } catch (Exception $e) {
     if (isset($_SESSION['id'])) {
-        CtlMenuErreur($e->getMessage());
+        CtlMenuErreur($prefixe, $e->getMessage());
     } else {
-        CtlConnexionErreur($e->getMessage());
+        CtlConnexionErreur($prefixe, $e->getMessage());
     }
 }

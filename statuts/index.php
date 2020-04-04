@@ -1,6 +1,6 @@
 <?php
 $prefixe = '../';
-require_once($prefixe . '-mvc-public/controleur/controleur.php');
+require_once($prefixe . '-mvc/controleur/controleur.php');
 try {
     CtlStatuts($prefixe);
 } catch (Exception $e) {

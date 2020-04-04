@@ -1,10 +1,265 @@
 <?php
 ########################################################################################################################
-# Gabarit Accueil                                                                                                      #
+# Admin                                                                                                                #
+########################################################################################################################
+# Système
+function afficherConnexion($prefixe, $messageRetour) {
+    $title = 'Connexion';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritConnexion.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherMenu($prefixe, $messageRetour) {
+    $title = 'Menu administrateur';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritMenu.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+# Events
+function afficherCreerEvent($prefixe, $messageRetour) {
+    $title = 'Créer un évent';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritCreerEvent.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherChoixEvent($prefixe, $messageRetour) {
+    $title = 'Créer un évent';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixEvent.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesEvents = idTitreEvents();
+
+    $events = '';
+    foreach ($lignesEvents as $ligneEvent) {
+        $idEvents = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
+        $titreEvents = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
+        $dateEvents = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
+        $events .=
+            '<option value="' . $idEvents . '">(' .
+            substr($dateEvents, 8, 2) . '/' .
+            substr($dateEvents, 5, 2) . '/' .
+            substr($dateEvents, 0, 4) . ') ' .
+            $titreEvents . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherModifierEvent($prefixe, $messageRetour, $id) {
+    $title = 'Créer un évent';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierEvent.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $ligneEvent = eventPrecis($id);
+
+    $idEvents = $id;
+    $titreEvents = $ligneEvent->titreEvents;
+    $descEvents = $ligneEvent->descEvents;
+    $dateEvents = $ligneEvent->dateEvents;
+    $heureEvents = $ligneEvent->heureEvents;
+    $lieuEvents = $ligneEvent->lieuEvents;
+
+    $heure = substr($heureEvents, 0, 2);
+    $minute = substr($heureEvents, 3, 2);
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherSupprimerEvent($prefixe, $messageRetour) {
+    $title = 'Créer un évent';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerEvent.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesEvents = idTitreEvents();
+
+    $events = '';
+    foreach ($lignesEvents as $ligneEvent) {
+        $idEvents = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
+        $titreEvents = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
+        $dateEvents = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
+        $events .=
+            '<option value="' . $idEvents . '">(' .
+            substr($dateEvents, 8, 2) . '/' .
+            substr($dateEvents, 5, 2) . '/' .
+            substr($dateEvents, 0, 4) . ') ' .
+            $titreEvents . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+# Goodies
+function afficherAjouterGoodie($prefixe, $messageRetour) {
+    $title = 'Ajouter un goodie';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterGoodie.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherAjouterImageGoodie($prefixe, $messageRetour) {
+    $title = 'Ajouter une image à un goodie';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterImageGoodie.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesGoodies = idTitreGoodies();
+
+    $goodies = '';
+    foreach ($lignesGoodies as $ligneGoodie) {
+        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
+        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $goodies .=
+            '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherChoixGoodie($prefixe, $messageRetour) {
+    $title = 'Choisir un goodie';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixGoodie.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesGoodies = idTitreGoodies();
+
+    $arrayCategories = [
+        0 => 'Caché',
+        1 => 'Disponible',
+        2 => 'Bientôt disponible',
+        3 => 'Rupture de stock'
+    ];
+
+    $goodies = '';
+    foreach ($lignesGoodies as $ligneGoodie) {
+        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
+        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $categorieGoodie = htmlentities($ligneGoodie->categorieGoodies, ENT_QUOTES, "UTF-8");
+        $goodies .=
+            '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherModifierGoodie($prefixe, $messageRetour, $id) {
+    $title = 'Modifier un goodie';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierGoodie.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $ligneGoodie = goodiePrecis($id);
+
+    $idGoodie = $id;
+    $titreGoodie = $ligneGoodie->titreGoodies;
+    $prixADEuroGoodie = intval($ligneGoodie->prixADGoodies);
+    $prixADCentimesGoodie = intval(($ligneGoodie->prixADGoodies - intval($prixADEuroGoodie)) * 100);
+    $prixNADEuroGoodie = intval($ligneGoodie->prixNADGoodies);
+    $prixNADCentimesGoodie = intval(($ligneGoodie->prixNADGoodies - intval($prixNADEuroGoodie)) * 100);
+    $categorieGoodie = $ligneGoodie->categorieGoodies;
+    $descGoodie = $ligneGoodie->descGoodies;
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherSupprimerImageGoodie($prefixe, $messageRetour, $id) {
+    $title = 'Supprimer une image d\'un goodie';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerImageGoodie.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $idGoodie = $id;
+
+    $lignesImages = imagesGoodie($id);
+    $images = '';
+
+    foreach ($lignesImages as $ligne) {
+        $idImage = $ligne->idImagesGoodies;
+        $lienImage = $ligne->lienImagesGoodies;
+
+        $images .=
+            '<fieldset>' .
+            '<img src="../goodies/' . $lienImage . '" width="200" height="100">' .
+            '<p><input type="checkbox" name="' . $idImage . '" id="' . $idImage . '"></p>' .
+            '</fieldset>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherSupprimerGoodie($prefixe, $messageRetour) {
+    $title = 'Supprimer un goodie';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerGoodie.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesGoodies = idTitreGoodies();
+
+    $arrayCategories = [
+        0 => 'Caché',
+        1 => 'Disponible',
+        2 => 'Bientôt disponible',
+        3 => 'Rupture de stock'
+    ];
+
+    $goodies = '';
+    foreach ($lignesGoodies as $ligneGoodie) {
+        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
+        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+        $categorieGoodie = htmlentities($ligneGoodie->categorieGoodies, ENT_QUOTES, "UTF-8");
+        $goodies .=
+            '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+# Journaux
+function afficherAjouterJournal($prefixe, $messageRetour) {
+    $title = 'Ajouter un journal';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterJournal.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherSupprimerJournal($prefixe, $messageRetour) {
+    $title = 'Supprimer un journal';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerJournal.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesJournaux = idTitreJournaux();
+
+    $journaux = '';
+    foreach ($lignesJournaux as $ligneJournal) {
+        $idJournal = htmlentities($ligneJournal->idJournaux, ENT_QUOTES, "UTF-8");
+        $titreJournal = htmlentities($ligneJournal->titreJournaux, ENT_QUOTES, "UTF-8");
+        $journaux .=
+            '<option value="' . $idJournal . '">' . $titreJournal . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+########################################################################################################################
+# Accueil                                                                                                              #
 ########################################################################################################################
 function afficherAccueil($prefixe) {
     $title = 'Accueil';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritAccueil.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritAccueil.php';
 
     # Goodies
     $goodiesIndicators = '';
@@ -120,25 +375,25 @@ function afficherAccueil($prefixe) {
             '</div>';
     }
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Erreur                                                                                                       #
+# Erreur                                                                                                               #
 ########################################################################################################################
 function afficherErreur($prefixe, $messageErreur) {
     $title = 'Une erreur s\'est produite';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritErreur.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritErreur.php';
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Events                                                                                                       #
+# Events                                                                                                               #
 ########################################################################################################################
 function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
     $title = 'Évents';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritEvents.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEvents.php';
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -217,12 +472,12 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
         $tableEvents .= '</div>';
     }
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 function afficherEventPrecis($prefixe, $event) {
     // $title = 'Event'; Voir ci-après.
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritEventPrecis.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
 
     $arrayMois = [
         '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
@@ -256,15 +511,15 @@ function afficherEventPrecis($prefixe, $event) {
     $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
     $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Goodies                                                                                                      #
+# Goodies                                                                                                              #
 ########################################################################################################################
 function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
     $title = 'Goodies';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritGoodies.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodies.php';
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -340,12 +595,12 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
             '</div>';
     }
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 function afficherGoodiePrecis($prefixe, $goodie) {
     // $title = 'Goodies'; Voir ci-après.
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritGoodiePrecis.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodiePrecis.php';
 
     $id = htmlentities($goodie->idGoodies, ENT_QUOTES, "UTF-8");
     $titreGoodie = htmlentities($goodie->titreGoodies, ENT_QUOTES, "UTF-8");
@@ -403,15 +658,15 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 
     $descStr = nl2br($descGoodie);
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Journaux                                                                                                     #
+# Journaux                                                                                                             #
 ########################################################################################################################
 function afficherJournaux($prefixe) {
     $title = 'Journaux';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritJournaux.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritJournaux.php';
 
     $tableJournaux = '';
     $lignesJournaux = journauxTous();
@@ -442,35 +697,35 @@ function afficherJournaux($prefixe) {
             '</div>';
     }
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Nous contacter                                                                                               #
+# Nous contacter                                                                                                       #
 ########################################################################################################################
 function afficherNousContacter($prefixe) {
     $title = 'Nous contacter';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritNousContacter.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritNousContacter.php';
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Qui sommes-nous ?                                                                                            #
+# Qui sommes-nous ?                                                                                                    #
 ########################################################################################################################
 function afficherQuiSommesNous($prefixe) {
     $title = 'Qui sommes-nous ?';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritQuiSommesNous.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritQuiSommesNous.php';
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
-# Gabarit Statuts                                                                                                      #
+# Statuts                                                                                                              #
 ########################################################################################################################
 function afficherStatuts($prefixe) {
     $title = 'Statuts';
-    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritStatuts.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritStatuts.php';
 
-    require_once($prefixe . '-mvc-public/vue/cadre.php');
+    require_once($prefixe . '-mvc/vue/cadre.php');
 }
