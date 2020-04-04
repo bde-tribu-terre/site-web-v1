@@ -48,7 +48,7 @@ function afficherAccueil($prefixe) {
     }
 
     # Events
-    $lignesEvents = eventsFuturs(date('Y-m-d'));
+    $lignesEvents = eventsTous('PF', true, false);
     $events = '';
 
     $arrayMois = [
@@ -136,12 +136,32 @@ function afficherErreur($prefixe, $messageErreur) {
 ########################################################################################################################
 # Gabarit Events                                                                                                       #
 ########################################################################################################################
-function afficherEvents($prefixe) {
+function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
     $title = 'Évents';
     $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritEvents.php';
 
+    if ($rechercheEnCours) {
+        $rechercheEnCoursStr = 'true';
+    } else {
+        $rechercheEnCoursStr = 'false';
+    }
+    if ($aVenir) {
+        $checkedAVenir = ' checked';
+    } else {
+        $checkedAVenir = '';
+    }
+    if ($passes) {
+        $checkedPasses = ' checked';
+    } else {
+        $checkedPasses = '';
+    }
+
     $tableEvents = '';
-    $lignesEvents = eventsTous();
+    $lignesEvents = eventsTous($tri, $aVenir, $passes);
+
+    if (empty($lignesEvents)) {
+        $tableEvents = '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>';
+    }
 
     $arrayMois = [
         '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',

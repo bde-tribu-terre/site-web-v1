@@ -14,9 +14,27 @@ function eventsFuturs($ajd) {
     return $ligne;
 }
 
-function eventsTous() {
+function eventsTous($tri, $aVenir, $passes) {
+    $ajd = date('Y-m-d');
+    switch ($tri) {
+        case 'FP':
+            $triSQL = ' ORDER BY dateEvents DESC';
+            break;
+        case 'PF':
+            $triSQL = ' ORDER BY dateEvents';
+            break;
+        default:
+            $triSQL = ''; // Normalement jamais atteint.
+    }
+    $where = " WHERE 1=2"; // Condition useless pour concaténer après.
+    if ($aVenir) {
+        $where .= " OR dateEvents>='" . $ajd . "'";
+    }
+    if ($passes) {
+        $where .= " OR dateEvents<'" . $ajd . "'";
+    }
     $connexion = getConnect();
-    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events ORDER BY dateEvents DESC";
+    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events" . $where . $triSQL;
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);

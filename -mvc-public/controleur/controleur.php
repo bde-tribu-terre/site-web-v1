@@ -20,8 +20,8 @@ function CtlErreur($prefixe, $messageErreur) {
 ########################################################################################################################
 # Gabarit Events                                                                                                       #
 ########################################################################################################################
-function CtlEvents($prefixe) {
-    afficherEvents($prefixe);
+function CtlEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
+    afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours);
 }
 
 function CtlEventPrecis($prefixe, $id) {
