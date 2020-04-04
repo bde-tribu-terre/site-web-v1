@@ -90,7 +90,7 @@ function supprimerEvent($id) {
 
 function ajouterJournal($titre, $mois, $annee, $fileImput) {
     # Enregistrement du fichier PDF.
-    $journauxRep = '../ressources/journaux/';
+    $journauxRep = '../journaux/';
     $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.pdf'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
@@ -110,7 +110,7 @@ function ajouterJournal($titre, $mois, $annee, $fileImput) {
 
 function idTitreJournaux() {
     $connexion = getConnect();
-    $requete = "SELECT idJournaux, titreJournaux FROM Journaux";
+    $requete = "SELECT idJournaux, titreJournaux FROM Journaux ORDER BY dateJournaux";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
@@ -130,7 +130,7 @@ function supprimerJournal($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $pdf = $ligne->pdfJournaux;
-    unlink('../ressources/journaux/' . $pdf);
+    unlink('../journaux/' . $pdf);
 
     # Suppression des données
     $connexion = getConnect();
@@ -145,8 +145,8 @@ function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNA
     # Enregistrement de la miniature.
     $infosFichier = pathinfo($_FILES[$fileImput]['name']);
     $extension = $infosFichier['extension'];
-    $miniatureRep = '../ressources/goodies/';
-    $newName = 'm-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
+    $miniatureRep = '../goodies/';
+    $newName = 'img-m-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $miniatureRep . $newName
@@ -219,8 +219,8 @@ function ajouterImageGoodie($id, $titre, $fileImput) {
     # Enregistrement de la miniature.
     $infosFichier = pathinfo($_FILES[$fileImput]['name']);
     $extension = $infosFichier['extension'];
-    $miniatureRep = '../ressources/goodies/';
-    $newName = 'i-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
+    $miniatureRep = '../goodies/';
+    $newName = 'img-i-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
         $miniatureRep . $newName
@@ -259,7 +259,7 @@ function supprimerImageGoodie($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $image = $ligne->lienImagesGoodies;
-    unlink('../ressources/goodies/' . $image);
+    unlink('../goodies/' . $image);
 
     # Suppression des données
     $connexion = getConnect();
@@ -294,7 +294,7 @@ function supprimerGoodie($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $miniature = $ligne->miniatureGoodies;
-    unlink('../ressources/goodies/' . $miniature);
+    unlink('../goodies/' . $miniature);
 
     # Suppression des données
     $connexion = getConnect();

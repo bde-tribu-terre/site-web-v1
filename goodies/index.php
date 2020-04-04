@@ -1,6 +1,6 @@
 <?php
 $prefixe = '../';
-require_once($prefixe . 'mvcpublic/controleur/controleur.php');
+require_once($prefixe . '-mvc-public/controleur/controleur.php');
 try {
     if (isset($_GET['id'])) {
         CtlGoodiePrecis($prefixe, $_GET['id']);

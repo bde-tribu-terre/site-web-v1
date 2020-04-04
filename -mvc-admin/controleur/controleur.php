@@ -1,7 +1,7 @@
 <?php
 require_once('../global/connect.php');
-require_once('../mvcadmin/modele/modele.php');
-require_once('../mvcadmin/vue/vue.php');
+require_once('../-mvc-admin/modele/modele.php');
+require_once('../-mvc-admin/vue/vue.php');
 
 ########################################################################################################################
 # Gabarit Connexion                                                                                                    #

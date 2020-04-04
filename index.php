@@ -2,7 +2,7 @@
 # C'est l'accueil.
 # Si un navigateur essaye d'accéder à un répertoire rep, il ira au fichier rep/index.php
 $prefixe = './';
-require_once($prefixe . 'mvcpublic/controleur/controleur.php');
+require_once($prefixe . '-mvc-public/controleur/controleur.php');
 try {
     CtlAccueil($prefixe);
 } catch (Exception $e) {

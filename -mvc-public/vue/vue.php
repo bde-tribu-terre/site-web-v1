@@ -4,7 +4,7 @@
 ########################################################################################################################
 function afficherAccueil($prefixe) {
     $title = 'Accueil';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritAccueil.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritAccueil.php';
 
     # Goodies
     $goodiesIndicators = '';
@@ -25,7 +25,7 @@ function afficherAccueil($prefixe) {
         if ($categorieGoodie != 1) {
             continue;
         }
-        $lienMiniature = $prefixe . 'ressources/goodies/' . $miniatureGoodie;
+        $lienMiniature = $prefixe . 'goodies/' . $miniatureGoodie;
 
         $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
         if ($premier) {
@@ -106,7 +106,7 @@ function afficherAccueil($prefixe) {
         $date = htmlentities($ligneJournal->dateJournaux, ENT_QUOTES, "UTF-8");
         $pdf = htmlentities($ligneJournal->pdfJournaux, ENT_QUOTES, "UTF-8");
 
-        $lienJournal = $prefixe . 'ressources/journaux/' . $pdf;
+        $lienJournal = $prefixe . 'journaux/' . $pdf;
 
         $journaux .=
             '<div class="col-sm-3">' .
@@ -120,7 +120,7 @@ function afficherAccueil($prefixe) {
             '</div>';
     }
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -128,9 +128,9 @@ function afficherAccueil($prefixe) {
 ########################################################################################################################
 function afficherErreur($prefixe, $messageErreur) {
     $title = 'Une erreur s\'est produite';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritErreur.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritErreur.php';
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -138,7 +138,7 @@ function afficherErreur($prefixe, $messageErreur) {
 ########################################################################################################################
 function afficherEvents($prefixe) {
     $title = 'Évents';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritEvents.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritEvents.php';
 
     $tableEvents = '';
     $lignesEvents = eventsTous();
@@ -197,12 +197,12 @@ function afficherEvents($prefixe) {
         $tableEvents .= '</div>';
     }
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 function afficherEventPrecis($prefixe, $event) {
     // $title = 'Event'; Voir ci-après.
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritEventPrecis.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritEventPrecis.php';
 
     $arrayMois = [
         '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
@@ -236,7 +236,7 @@ function afficherEventPrecis($prefixe, $event) {
     $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
     $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -244,7 +244,7 @@ function afficherEventPrecis($prefixe, $event) {
 ########################################################################################################################
 function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
     $title = 'Goodies';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodies.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritGoodies.php';
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -286,7 +286,7 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
         if ($categorie == 0) {
             continue;
         }
-        $lienMiniature = $prefixe . 'ressources/goodies/' . $miniature;
+        $lienMiniature = $prefixe . 'goodies/' . $miniature;
         switch ($categorie) {
             case 1:
                 $categorieStr = '<span style="color: darkgreen">Disponible</span>';
@@ -320,12 +320,12 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
             '</div>';
     }
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 function afficherGoodiePrecis($prefixe, $goodie) {
     // $title = 'Goodies'; Voir ci-après.
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritGoodiePrecis.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritGoodiePrecis.php';
 
     $id = htmlentities($goodie->idGoodies, ENT_QUOTES, "UTF-8");
     $titreGoodie = htmlentities($goodie->titreGoodies, ENT_QUOTES, "UTF-8");
@@ -341,7 +341,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 
     $carouselGoodie = '';
     if (empty($lignesImages)) {
-        $carouselGoodie .= '<img src="' . $prefixe . 'ressources/goodies/' . $miniature . '" class="imageUniqueGoodiePrecis">';
+        $carouselGoodie .= '<img src="' . $prefixe . 'goodies/' . $miniature . '" class="imageUniqueGoodiePrecis">';
     } else {
         $nb = 0;
         $carouselGoodieIndicator = '<ol class="carousel-indicators">';
@@ -351,7 +351,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
         $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '" class="active"></li>';
         $carouselGoodieImages .=
             '<div class="item active">' .
-                '<img src="' . $prefixe . 'ressources/goodies/' . $miniature . '" alt="Image">' .
+                '<img src="' . $prefixe . 'goodies/' . $miniature . '" alt="Image">' .
             '</div>';
 
         # Le reste des images
@@ -360,7 +360,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
             $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"></li>';
             $carouselGoodieImages .=
                 '<div class="item">' .
-                    '<img src="' . $prefixe . 'ressources/goodies/' . $lien . '" alt="Image">' .
+                    '<img src="' . $prefixe . 'goodies/' . $lien . '" alt="Image">' .
                 '</div>';
         }
         $carouselGoodieIndicator .= '</ol>';
@@ -383,7 +383,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 
     $descStr = nl2br($descGoodie);
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -391,7 +391,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 ########################################################################################################################
 function afficherJournaux($prefixe) {
     $title = 'Journaux';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritJournaux.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritJournaux.php';
 
     $tableJournaux = '';
     $lignesJournaux = journauxTous();
@@ -408,7 +408,7 @@ function afficherJournaux($prefixe) {
         $date = htmlentities($ligne->dateJournaux, ENT_QUOTES, "UTF-8");
         $pdf = htmlentities($ligne->pdfJournaux, ENT_QUOTES, "UTF-8");
 
-        $lienJournal = $prefixe . 'ressources/journaux/' . $pdf;
+        $lienJournal = $prefixe . 'journaux/' . $pdf;
 
         $tableJournaux .=
             '<div class="col-sm-3">' .
@@ -422,7 +422,7 @@ function afficherJournaux($prefixe) {
             '</div>';
     }
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -430,9 +430,9 @@ function afficherJournaux($prefixe) {
 ########################################################################################################################
 function afficherNousContacter($prefixe) {
     $title = 'Nous contacter';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritNousContacter.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritNousContacter.php';
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -440,9 +440,9 @@ function afficherNousContacter($prefixe) {
 ########################################################################################################################
 function afficherQuiSommesNous($prefixe) {
     $title = 'Qui sommes-nous ?';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritQuiSommesNous.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritQuiSommesNous.php';
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -450,7 +450,7 @@ function afficherQuiSommesNous($prefixe) {
 ########################################################################################################################
 function afficherStatuts($prefixe) {
     $title = 'Statuts';
-    $gabarit = $prefixe . 'mvcpublic/vue/gabarits/gabaritStatuts.php';
+    $gabarit = $prefixe . '-mvc-public/vue/gabarits/gabaritStatuts.php';
 
-    require_once($prefixe . 'mvcpublic/vue/cadre.php');
+    require_once($prefixe . '-mvc-public/vue/cadre.php');
 }

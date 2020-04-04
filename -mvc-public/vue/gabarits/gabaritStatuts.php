@@ -11,5 +11,5 @@
     Les statuts actuels de l'association, modifiés pour la dernière fois le 12 Mars 2019, sont disponibles ici :
 </h3>
 <h3>
-    <a href="<?php echo $prefixe . 'ressources/statuts/2019-03-12-Statuts.pdf' ?>">Consulter les statuts.</a>
+    <a href="<?php echo $prefixe . 'statuts/2019-03-12-Statuts.pdf' ?>">Consulter les statuts.</a>
 </h3>

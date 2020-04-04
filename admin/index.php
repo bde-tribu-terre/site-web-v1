@@ -5,7 +5,7 @@
 // /!\                                                                                                               /!\
 // /!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
 if (strlen(session_id()) < 1) session_start();
-require_once('../mvcadmin/controleur/controleur.php');
+require_once('../-mvc-admin/controleur/controleur.php');
 try {
     // Gabarit Connexion
     if (isset($_POST['formConnexion_seConnecter'])) {

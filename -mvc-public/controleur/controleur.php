@@ -1,7 +1,7 @@
 <?php
 require_once($prefixe . 'global/connect.php');
-require_once($prefixe . 'mvcpublic/modele/modele.php');
-require_once($prefixe . 'mvcpublic/vue/vue.php');
+require_once($prefixe . '-mvc-public/modele/modele.php');
+require_once($prefixe . '-mvc-public/vue/vue.php');
 
 ########################################################################################################################
 # Gabarit Accueil                                                                                                      #
