@@ -156,7 +156,7 @@ try {
     } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
         CtlDeconnexion($prefixe, '');
     }
-    // Globaux : apparaissent dans plusieurs gabaritsPublic
+    // Globaux : apparaissent dans plusieurs gabarits
     elseif (isset($_POST['formRetourMenu_retourMenu'])) {
         CtlMenu($prefixe, '');
     }
