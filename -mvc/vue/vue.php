@@ -5,14 +5,18 @@
 # Système
 function afficherConnexion($prefixe, $messageRetour) {
     $title = 'Connexion';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritConnexion.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
 function afficherMenu($prefixe, $messageRetour) {
     $title = 'Menu administrateur';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritMenu.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -22,7 +26,9 @@ function afficherMenu($prefixe, $messageRetour) {
 # Events
 function afficherCreerEvent($prefixe, $messageRetour) {
     $title = 'Créer un évent';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritCreerEvent.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -31,7 +37,9 @@ function afficherCreerEvent($prefixe, $messageRetour) {
 
 function afficherChoixEvent($prefixe, $messageRetour) {
     $title = 'Créer un évent';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixEvent.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -55,7 +63,9 @@ function afficherChoixEvent($prefixe, $messageRetour) {
 
 function afficherModifierEvent($prefixe, $messageRetour, $id) {
     $title = 'Créer un évent';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierEvent.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -76,7 +86,9 @@ function afficherModifierEvent($prefixe, $messageRetour, $id) {
 
 function afficherSupprimerEvent($prefixe, $messageRetour) {
     $title = 'Créer un évent';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerEvent.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -101,7 +113,9 @@ function afficherSupprimerEvent($prefixe, $messageRetour) {
 # Goodies
 function afficherAjouterGoodie($prefixe, $messageRetour) {
     $title = 'Ajouter un goodie';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterGoodie.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -110,7 +124,9 @@ function afficherAjouterGoodie($prefixe, $messageRetour) {
 
 function afficherAjouterImageGoodie($prefixe, $messageRetour) {
     $title = 'Ajouter une image à un goodie';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterImageGoodie.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -129,7 +145,9 @@ function afficherAjouterImageGoodie($prefixe, $messageRetour) {
 
 function afficherChoixGoodie($prefixe, $messageRetour) {
     $title = 'Choisir un goodie';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixGoodie.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -156,7 +174,9 @@ function afficherChoixGoodie($prefixe, $messageRetour) {
 
 function afficherModifierGoodie($prefixe, $messageRetour, $id) {
     $title = 'Modifier un goodie';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierGoodie.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -176,7 +196,9 @@ function afficherModifierGoodie($prefixe, $messageRetour, $id) {
 
 function afficherSupprimerImageGoodie($prefixe, $messageRetour, $id) {
     $title = 'Supprimer une image d\'un goodie';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerImageGoodie.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -201,7 +223,9 @@ function afficherSupprimerImageGoodie($prefixe, $messageRetour, $id) {
 
 function afficherSupprimerGoodie($prefixe, $messageRetour) {
     $title = 'Supprimer un goodie';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerGoodie.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -229,7 +253,9 @@ function afficherSupprimerGoodie($prefixe, $messageRetour) {
 # Journaux
 function afficherAjouterJournal($prefixe, $messageRetour) {
     $title = 'Ajouter un journal';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterJournal.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -238,7 +264,9 @@ function afficherAjouterJournal($prefixe, $messageRetour) {
 
 function afficherSupprimerJournal($prefixe, $messageRetour) {
     $title = 'Supprimer un journal';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerJournal.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -259,7 +287,9 @@ function afficherSupprimerJournal($prefixe, $messageRetour) {
 ########################################################################################################################
 function afficherAccueil($prefixe) {
     $title = 'Accueil';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritAccueil.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     # Goodies
     $goodiesIndicators = '';
@@ -383,7 +413,9 @@ function afficherAccueil($prefixe) {
 ########################################################################################################################
 function afficherErreur($prefixe, $messageErreur) {
     $title = 'Une erreur s\'est produite';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritErreur.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
@@ -393,7 +425,9 @@ function afficherErreur($prefixe, $messageErreur) {
 ########################################################################################################################
 function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
     $title = 'Évents';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEvents.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -477,7 +511,9 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
 
 function afficherEventPrecis($prefixe, $event) {
     // $title = 'Event'; Voir ci-après.
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     $arrayMois = [
         '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
@@ -519,7 +555,9 @@ function afficherEventPrecis($prefixe, $event) {
 ########################################################################################################################
 function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
     $title = 'Goodies';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodies.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -600,7 +638,9 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
 
 function afficherGoodiePrecis($prefixe, $goodie) {
     // $title = 'Goodies'; Voir ci-après.
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodiePrecis.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     $id = htmlentities($goodie->idGoodies, ENT_QUOTES, "UTF-8");
     $titreGoodie = htmlentities($goodie->titreGoodies, ENT_QUOTES, "UTF-8");
@@ -666,7 +706,9 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 ########################################################################################################################
 function afficherJournaux($prefixe) {
     $title = 'Journaux';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritJournaux.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     $tableJournaux = '';
     $lignesJournaux = journauxTous();
@@ -705,7 +747,9 @@ function afficherJournaux($prefixe) {
 ########################################################################################################################
 function afficherNousContacter($prefixe) {
     $title = 'Nous contacter';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritNousContacter.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
@@ -715,7 +759,9 @@ function afficherNousContacter($prefixe) {
 ########################################################################################################################
 function afficherQuiSommesNous($prefixe) {
     $title = 'Qui sommes-nous ?';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritQuiSommesNous.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
@@ -725,7 +771,9 @@ function afficherQuiSommesNous($prefixe) {
 ########################################################################################################################
 function afficherStatuts($prefixe) {
     $title = 'Statuts';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritStatuts.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }

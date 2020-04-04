@@ -111,13 +111,13 @@
 <body>
 <div>
     <header>
-        <?php require_once($prefixe . '-global/header.php'); ?>
+        <?php require_once($header); ?>
     </header>
     <main>
         <?php require_once($gabarit); ?>
     </main>
     <footer>
-        <?php require_once($prefixe . '-global/footer.php'); ?>
+        <?php require_once($footer); ?>
     </footer>
 </div>
 </body>
