@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <img src="<?php echo $prefixe . '-global/images/imgGirafeErreur.png' ?>" alt="Girafe" width="100%" style="border-radius: 5px;">
+            <img src="<?php echo $prefixe . '-images/imgGirafeErreur.png' ?>" alt="Girafe" width="100%" style="border-radius: 5px;">
         </div>
     </div>
 </div><br>

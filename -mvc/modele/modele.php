@@ -284,7 +284,7 @@ function supprimerImageGoodie($id) {
 }
 
 function supprimerGoodie($id) {
-    # Suppression des images
+    # Suppression des -images
     $connexion = getConnect();
     $requete = "SELECT idImagesGoodies, lienImagesGoodies FROM ImagesGoodies WHERE idGoodies=:id";
     $prepare = $connexion->prepare($requete);

@@ -399,7 +399,7 @@ function afficherAccueil($prefixe) {
                     '<h3>' . $titre . '</h3>' .
                     '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
                     '<a href="' . $lienJournal . '">' .
-                        '<h4><img src="' . $prefixe . '-global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
+                        '<h4><img src="' . $prefixe . '-images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
@@ -669,7 +669,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
                 '<img src="' . $prefixe . 'goodies/' . $miniature . '" alt="Image">' .
             '</div>';
 
-        # Le reste des images
+        # Le reste des -images
         foreach ($lignesImages as $ligne) {
             $lien = $ligne->lienImagesGoodies;
             $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"></li>';
@@ -733,7 +733,7 @@ function afficherJournaux($prefixe) {
                     '<h3>' . $titre . '</h3>' .
                     '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
                     '<a href="' . $lienJournal . '">' .
-                        '<h4><img src="' . $prefixe . '-global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
+                        '<h4><img src="' . $prefixe . '-images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';

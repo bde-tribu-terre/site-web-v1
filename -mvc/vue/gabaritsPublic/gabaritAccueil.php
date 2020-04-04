@@ -56,7 +56,7 @@
                 <div class="well">
                     <h4>Notre page Facebook</h4>
                     <p>
-                        <img src="<?php echo $prefixe . '-global/images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
+                        <img src="<?php echo $prefixe . '-images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
                     </p>
                 </div>
             </a>
@@ -66,7 +66,7 @@
                 <div class="well">
                 <h4>Notre compte Instagram</h4>
                     <p>
-                        <img src="<?php echo $prefixe . '-global/images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
+                        <img src="<?php echo $prefixe . '-images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
                     </p>
 
                 </div>
@@ -77,7 +77,7 @@
                 <div class="well">
                     <h4>Notre compte Twitter</h4>
                     <p>
-                        <img src="<?php echo $prefixe . '-global/images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
+                        <img src="<?php echo $prefixe . '-images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
                     </p>
                 </div>
             </a>
@@ -103,7 +103,7 @@
                 <!-- Ici on liste les partenaires -->
                 <div class="item active">
                     <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                        <img src="<?php echo $prefixe . '-global/images/imgBarAtelier.png' ?>" alt="Image">
+                        <img src="<?php echo $prefixe . '-images/imgBarAtelier.png' ?>" alt="Image">
                     </a>
                     <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
                         <div class="carousel-caption">
@@ -115,7 +115,7 @@
 
                 <div class="item">
                     <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                        <img src="<?php echo $prefixe . '-global/images/imgBarKeyWest.png' ?>" alt="Image">
+                        <img src="<?php echo $prefixe . '-images/imgBarKeyWest.png' ?>" alt="Image">
                     </a>
                     <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
                         <div class="carousel-caption">
@@ -127,7 +127,7 @@
 
                 <div class="item">
                     <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
-                        <img src="<?php echo $prefixe . '-global/images/imgLeMaestro.png' ?>" alt="Image">
+                        <img src="<?php echo $prefixe . '-images/imgLeMaestro.png' ?>" alt="Image">
                     </a>
                     <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
                         <div class="carousel-caption">
@@ -165,7 +165,7 @@
                 <!-- Ici on liste les fédérations -->
                 <div class="item active">
                     <a href="https://www.facebook.com/OCampusFederation/">
-                        <img src="<?php echo $prefixe . '-global/images/imgOCampus.png' ?>" alt="Image">
+                        <img src="<?php echo $prefixe . '-images/imgOCampus.png' ?>" alt="Image">
                     </a>
                     <a href="https://www.facebook.com/OCampusFederation/">
                         <div class="carousel-caption">
@@ -177,7 +177,7 @@
 
                 <div class="item">
                     <a href="http://www.fneb.fr">
-                        <img src="<?php echo $prefixe . '-global/images/imgFNEB.png' ?>" alt="Image">
+                        <img src="<?php echo $prefixe . '-images/imgFNEB.png' ?>" alt="Image">
                     </a>
                     <a href="http://www.fneb.fr">
                         <div class="carousel-caption">
@@ -214,7 +214,7 @@
                 <!-- Ici on liste les composantes -->
                 <div class="item active">
                     <a href="http://www.univ-orleans.fr/fr/osuc">
-                        <img src="<?php echo $prefixe . '-global/images/imgOSUC.png' ?>" alt="Image">
+                        <img src="<?php echo $prefixe . '-images/imgOSUC.png' ?>" alt="Image">
                     </a>
                     <a href="http://www.univ-orleans.fr/fr/osuc">
                         <div class="carousel-caption">
@@ -226,7 +226,7 @@
 
                 <div class="item">
                     <a href="http://www.univ-orleans.fr/fr/sciences-techniques">
-                        <img src="<?php echo $prefixe . '-global/images/imgCoST.png' ?>" alt="Image">
+                        <img src="<?php echo $prefixe . '-images/imgCoST.png' ?>" alt="Image">
                     </a>
                     <a href="http://www.univ-orleans.fr/fr/sciences-techniques">
                         <div class="carousel-caption">
