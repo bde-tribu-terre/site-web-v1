@@ -1,5 +1,5 @@
 <?php
-require_once($prefixe . '-global/connect.php');
+require_once($prefixe . '-mvc/modele/connect.php');
 require_once($prefixe . '-mvc/modele/modele.php');
 require_once($prefixe . '-mvc/vue/vue.php');
 ########################################################################################################################
