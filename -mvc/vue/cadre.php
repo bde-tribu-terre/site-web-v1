@@ -10,7 +10,7 @@
     <style>
         /* Background en marbre qui est fixe (parallax).
         body {
-            background: url("<?php echo $prefixe . 'global/images/imgFondMarbre.png' ?>") no-repeat center center fixed;
+            background: url("<?php echo $prefixe . '-global/images/imgFondMarbre.png' ?>") no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             background-size: cover;
@@ -26,7 +26,7 @@
 
         /* Remove the jumbotron's default bottom margin */
         .jumbotron {
-            background-image: url("<?php echo $prefixe . 'global/images/imgFondMarbre.png' ?>");
+            background-image: url("<?php echo $prefixe . '-global/images/imgFondMarbre.png' ?>");
             background-clip: border-box;
             background-repeat: no-repeat;
             background-size: cover;
@@ -111,13 +111,13 @@
 <body>
 <div>
     <header>
-        <?php require_once($prefixe . 'global/header.php'); ?>
+        <?php require_once($prefixe . '-global/header.php'); ?>
     </header>
     <main>
         <?php require_once($gabarit); ?>
     </main>
     <footer>
-        <?php require_once($prefixe . 'global/footer.php'); ?>
+        <?php require_once($prefixe . '-global/footer.php'); ?>
     </footer>
 </div>
 </body>

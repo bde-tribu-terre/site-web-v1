@@ -369,7 +369,7 @@ function afficherAccueil($prefixe) {
                     '<h3>' . $titre . '</h3>' .
                     '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
                     '<a href="' . $lienJournal . '">' .
-                        '<h4><img src="' . $prefixe . 'global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
+                        '<h4><img src="' . $prefixe . '-global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
@@ -691,7 +691,7 @@ function afficherJournaux($prefixe) {
                     '<h3>' . $titre . '</h3>' .
                     '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
                     '<a href="' . $lienJournal . '">' .
-                        '<h4><img src="' . $prefixe . 'global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
+                        '<h4><img src="' . $prefixe . '-global/images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
