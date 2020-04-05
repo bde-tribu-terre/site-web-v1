@@ -756,6 +756,29 @@ function afficherNousContacter($prefixe) {
 }
 
 ########################################################################################################################
+# Plan du site                                                                                                         #
+########################################################################################################################
+function afficherPlanDuSite($prefixe) {
+    $title = 'Qui sommes-nous ?';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPlanDuSite.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    $plan = '';
+
+    // https://www.php.net/manual/fr/class.recursivedirectoryiterator.php <- infos.
+    $directory = new RecursiveDirectoryIterator($prefixe);
+    $iterator = new RecursiveIteratorIterator($directory);
+    $regex = new RegexIterator($iterator, '/^.+\index.php$/i', RecursiveRegexIterator::GET_MATCH);
+
+    foreach ($regex as $fichier) {
+        $plan .= $fichier;
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
 # Qui sommes-nous ?                                                                                                    #
 ########################################################################################################################
 function afficherQuiSommesNous($prefixe) {
