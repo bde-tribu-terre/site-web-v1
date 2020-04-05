@@ -1,4 +1,5 @@
 <div class="container text-center">
+    <h3>Évents</h3>
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#recherche" aria-expanded="<?php echo $rechercheEnCoursStr ?>">
         Options de recherche...
     </button>

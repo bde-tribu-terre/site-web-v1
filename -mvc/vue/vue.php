@@ -759,21 +759,67 @@ function afficherNousContacter($prefixe) {
 # Plan du site                                                                                                         #
 ########################################################################################################################
 function afficherPlanDuSite($prefixe) {
-    $title = 'Qui sommes-nous ?';
+    $title = 'Plan du site';
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPlanDuSite.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
-    $plan = '';
-
-    // https://www.php.net/manual/fr/class.recursivedirectoryiterator.php <- infos.
-    $directory = new RecursiveDirectoryIterator($prefixe);
-    $iterator = new RecursiveIteratorIterator($directory);
-    $regex = new RegexIterator($iterator, '/^.+\index.php$/i', RecursiveRegexIterator::GET_MATCH);
-
-    foreach ($regex as $fichier) {
-        $plan .= $fichier;
+    function chercherTousLesEnfants($cheminParent) {
+        if (!is_dir($cheminParent)) {
+            return $cheminParent;
+        }
+        $enfants = array_diff(scandir($cheminParent), ['.', '..']);
+        if ($enfants == NULL) {
+            return $cheminParent;
+        } else {
+            $arrayEnfants = [];
+            foreach ($enfants as $enfant) {
+                $arrayEnfants[] = chercherTousLesEnfants($cheminParent . $enfant . '/');
+            }
+            sort($arrayEnfants);
+            return $arrayEnfants;
+        }
     }
+
+    function construireListe($array) {
+        if (gettype($array) == 'string') {
+            $chemin = explode('/', $array);
+            $cheminInverse = array_reverse($chemin);
+            $lien = implode('/', array_diff($chemin, ['index.php', '']));
+            if ($cheminInverse[1] == 'index.php') {
+                if ($cheminInverse[2] == '..') {
+                    return '<a href="' . $lien . '" class="list-group-item list-group-item-info">' . 'accueil' . '</a>';
+                }
+                return '<a href="' . $lien . '" class="list-group-item list-group-item-info">' . $cheminInverse[2] . '</a>';
+            }
+            return '';
+        } else {
+            $str = '<div class="list-group-item"><div class="list-group">';
+            foreach ($array as $value) {
+                $str .= construireListe($value);
+            }
+            $str .= '</div></div>';
+            return $str;
+        }
+    }
+
+    function optimiserListe($liste) {
+        $oldListe = '';
+        while ($oldListe != $liste) {
+            $oldListe = $liste;
+            $liste = preg_replace('/<div class="list-group-item"><\/div>/', '', $liste);
+            $liste = preg_replace('/<div class="list-group"><\/div>/', '', $liste);
+        }
+        return $liste;
+    }
+
+    function retirerDivEnglobant($liste) {
+        $liste = preg_replace('/^<div class="list-group-item">/', '', $liste);
+        $liste = preg_replace('/<\/div>$/', '', $liste);
+        return $liste;
+    }
+
+    $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants($prefixe))));
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
