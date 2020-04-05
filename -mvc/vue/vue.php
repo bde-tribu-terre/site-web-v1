@@ -334,7 +334,7 @@ function afficherAccueil($prefixe) {
     }
 
     # Events
-    $lignesEvents = eventsTous('PF', true, false);
+    $lignesEvents = eventsTous('PF', true, false, 3);
     $events = '';
 
     $arrayMois = [
@@ -384,7 +384,7 @@ function afficherAccueil($prefixe) {
     }
 
     # Journal
-    $lignesJournaux = derniersJournaux();
+    $lignesJournaux = journauxTous(2);
     $journaux ='';
 
     foreach ($lignesJournaux as $ligneJournal) {
@@ -447,7 +447,7 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
     }
 
     $tableEvents = '';
-    $lignesEvents = eventsTous($tri, $aVenir, $passes);
+    $lignesEvents = eventsTous($tri, $aVenir, $passes, -1);
 
     if (empty($lignesEvents)) {
         $tableEvents = '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>';
@@ -712,7 +712,7 @@ function afficherJournaux($prefixe) {
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     $tableJournaux = '';
-    $lignesJournaux = journauxTous();
+    $lignesJournaux = journauxTous(-1);
 
     $arrayMois = [
         '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',

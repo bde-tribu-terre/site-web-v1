@@ -35,7 +35,7 @@ function infosMembre($id) {
 ########################################################################################################################
 # Évents                                                                                                               #
 ########################################################################################################################
-function eventsTous($tri, $aVenir, $passes) {
+function eventsTous($tri, $aVenir, $passes, $maxi) {
     $ajd = date('Y-m-d');
     switch ($tri) {
         case 'FP':
@@ -47,6 +47,14 @@ function eventsTous($tri, $aVenir, $passes) {
         default:
             $triSQL = ''; // Normalement jamais atteint.
     }
+    switch ($maxi) {
+        case -1:
+            $maxiSQL = '';
+            break;
+        default:
+            $maxiSQL = ' LIMIT' . $maxi;
+            break;
+    }
     $where = " WHERE 1=2"; // Condition useless pour concaténer après.
     if ($aVenir) {
         $where .= " OR dateEvents>='" . $ajd . "'";
@@ -55,7 +63,7 @@ function eventsTous($tri, $aVenir, $passes) {
         $where .= " OR dateEvents<'" . $ajd . "'";
     }
     $connexion = getConnect();
-    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events" . $where . $triSQL;
+    $requete = "SELECT idEvents, titreEvents, descEvents, dateEvents, heureEvents, lieuEvents FROM Events" . $where . $triSQL . $maxiSQL;
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
@@ -321,20 +329,17 @@ function supprimerGoodie($id) {
 ########################################################################################################################
 # Journaux                                                                                                             #
 ########################################################################################################################
-function journauxTous() {
+function journauxTous($maxi) {
+    switch ($maxi) {
+        case -1:
+            $maxiSQL = '';
+            break;
+        default:
+            $maxiSQL = ' LIMIT' . $maxi;
+            break;
+    }
     $connexion = getConnect();
-    $requete = "SELECT idJournaux, titreJournaux, dateJournaux, pdfJournaux FROM Journaux ORDER BY dateJournaux DESC";
-    $prepare = $connexion->prepare($requete);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetchall();
-    $prepare->closeCursor();
-    return $ligne;
-}
-
-function derniersJournaux() {
-    $connexion = getConnect();
-    $requete = "SELECT idJournaux, titreJournaux, dateJournaux, pdfJournaux FROM Journaux ORDER BY dateJournaux DESC LIMIT 2";
+    $requete = "SELECT idJournaux, titreJournaux, dateJournaux, pdfJournaux FROM Journaux ORDER BY dateJournaux DESC" . $maxiSQL;
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
