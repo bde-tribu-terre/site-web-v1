@@ -52,7 +52,7 @@ function eventsTous($tri, $aVenir, $passes, $maxi) {
             $maxiSQL = '';
             break;
         default:
-            $maxiSQL = ' LIMIT' . $maxi;
+            $maxiSQL = ' LIMIT ' . $maxi;
             break;
     }
     $where = " WHERE 1=2"; // Condition useless pour concaténer après.
@@ -335,7 +335,7 @@ function journauxTous($maxi) {
             $maxiSQL = '';
             break;
         default:
-            $maxiSQL = ' LIMIT' . $maxi;
+            $maxiSQL = ' LIMIT ' . $maxi;
             break;
     }
     $connexion = getConnect();
