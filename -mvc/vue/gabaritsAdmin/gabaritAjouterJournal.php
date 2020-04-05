@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group"> <!-- Année de sortie du journal -->
                         <label for="formAjouterJournal_anneeJournal">Année de sortie du journal :</label>
-                        <input class="form-control" id="formAjouterJournal_anneeJournal" type="number" value="2000" min="2000" max="2050" name="formAjouterJournal_anneeJournal">
+                        <input class="form-control" id="formAjouterJournal_anneeJournal" type="number" value="2000" min="2000" max="2050" name="formAjouterJournal_anneeJournal" placeholder="Année">
                     </div>
                     <div class="form-group"> <!-- Fichier PDF -->
                         <label for="formAjouterJournal_anneeJournal">Sélectionner le journal</label>

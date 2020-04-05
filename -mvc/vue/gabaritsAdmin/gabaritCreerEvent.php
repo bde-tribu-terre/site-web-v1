@@ -26,19 +26,19 @@
                     </div>
                     <div class="form-group"> <!-- Date -->
                         <label for="formCreerEvent_date">Date</label>
-                        <input class="form-control" id="formCreerEvent_date" type="date" name="formCreerEvent_date">
+                        <input class="form-control" id="formCreerEvent_date" type="date" name="formCreerEvent_date" placeholder="Date">
                         <small class="form-text text-muted">Format : "jj/mm/aaaa"</small>
                     </div>
                     <div class="form-group"> <!-- Heure -->
                         <label for="formCreerEvent_heureHeure">Heure</label>
-                        <input class="form-control" id="formCreerEvent_heureHeure" type="number" min="0" max="23" name="formCreerEvent_heureHeure">
+                        <input class="form-control" id="formCreerEvent_heureHeure" type="number" min="0" max="23" name="formCreerEvent_heureHeure" placeholder="Heure">
                         <small class="form-text text-muted">Heure</small>
-                        <input class="form-control" id="formCreerEvent_heureMinute" type="number" min="0" max="59" name="formCreerEvent_heureMinute">
+                        <input class="form-control" id="formCreerEvent_heureMinute" type="number" min="0" max="59" name="formCreerEvent_heureMinute" placeholder="Minutes">
                         <small class="form-text text-muted">Minutes</small>
                     </div>
                     <div class="form-group"> <!-- Lieu -->
                         <label for="formCreerEvent_lieu">Lieu</label>
-                        <input class="form-control" id="formCreerEvent_lieu" type="text" name="formCreerEvent_lieu">
+                        <input class="form-control" id="formCreerEvent_lieu" type="text" name="formCreerEvent_lieu" placeholder="Lieu">
                     </div>
                     <div class="form-group"> <!-- Description de l'évent -->
                         <label for="formCreerEvent_desc">Description de l'évent</label>
