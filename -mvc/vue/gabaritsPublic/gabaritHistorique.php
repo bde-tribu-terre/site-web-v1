@@ -187,16 +187,22 @@
                         <h3>Assemblée Générale du 20 avril 2016</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
                         <hr>
-                        <h3>Composition du bureau</h3>
-                        <hr>
-                        <ul class="text-left">
-                            <li>Corentin <span class="pc">Veys</span> (Président)</li>
-                            <li>Joséphine <span class="pc">Bartolo</span> (Vice-Président)</li>
-                            <li>Florian <span class="pc">Jarry</span> (Secrétaire)</li>
-                            <li>Dylan <span class="pc">Chateigner</span> (Vice-Secrétaire)</li>
-                            <li>Killian <span class="pc">Chevalier</span> (Trésorier)</li>
-                            <li>Raphael <span class="pc">Tur</span> (Vice-Trésorier)</li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Composition du bureau</h3>
+                                <hr>
+                                <ul class="text-left">
+                                    <li>Corentin <span class="pc">Veys</span> (Président)</li>
+                                    <li>Joséphine <span class="pc">Bartolo</span> (Vice-Président)</li>
+                                    <li>Florian <span class="pc">Jarry</span> (Secrétaire)</li>
+                                    <li>Dylan <span class="pc">Chateigner</span> (Vice-Secrétaire)</li>
+                                    <li>Killian <span class="pc">Chevalier</span> (Trésorier)</li>
+                                    <li>Raphael <span class="pc">Tur</span> (Vice-Trésorier)</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,23 +221,29 @@
                         <h3>Assemblée Générale du 23 avril 2015</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
                         <hr>
-                        <h3>Composition du bureau</h3>
-                        <hr>
-                        <ul class="text-left">
-                            <li>Antoine <span class="pc">Saucray</span> (Président)</li>
-                            <li>Zoé <span class="pc">Lecoeuche</span> (Vice-Présidente)</li>
-                            <li>Maëlys <span class="pc">Cadel</span> (Secrétaire)</li>
-                            <li>Saloua <span class="pc">OUGGAHI</span> (Vice-Secrétaire)</li>
-                            <li>Maëlys <span class="pc">Tessier</span> (Trésorière)</li>
-                            <li>Camille <span class="pc">Rouvroy</span> (Vice-Trésorière)</li>
-                            <li>Arnaud <span class="pc">Clavier</span></li>
-                            <li>Sarah <span class="pc">Ouggahi</span></li>
-                            <li>Corentin <span class="pc">Veys</span></li>
-                            <li>Clément <span class="pc">Mennecart</span></li>
-                            <li>Sébastien <span class="pc">Coquil</span></li>
-                            <li>Romain <span class="pc">Pinguet</span></li>
-                            <li>Maxime <span class="pc">Zimmermann</span></li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Composition du bureau</h3>
+                                <hr>
+                                <ul class="text-left">
+                                    <li>Antoine <span class="pc">Saucray</span> (Président)</li>
+                                    <li>Zoé <span class="pc">Lecoeuche</span> (Vice-Présidente)</li>
+                                    <li>Maëlys <span class="pc">Cadel</span> (Secrétaire)</li>
+                                    <li>Saloua <span class="pc">OUGGAHI</span> (Vice-Secrétaire)</li>
+                                    <li>Maëlys <span class="pc">Tessier</span> (Trésorière)</li>
+                                    <li>Camille <span class="pc">Rouvroy</span> (Vice-Trésorière)</li>
+                                    <li>Arnaud <span class="pc">Clavier</span></li>
+                                    <li>Sarah <span class="pc">Ouggahi</span></li>
+                                    <li>Corentin <span class="pc">Veys</span></li>
+                                    <li>Clément <span class="pc">Mennecart</span></li>
+                                    <li>Sébastien <span class="pc">Coquil</span></li>
+                                    <li>Romain <span class="pc">Pinguet</span></li>
+                                    <li>Maxime <span class="pc">Zimmermann</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
                     </div>
                 </div>
             </div>
