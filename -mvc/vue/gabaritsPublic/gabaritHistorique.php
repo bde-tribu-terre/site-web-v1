@@ -197,9 +197,8 @@
                             <h3>Composition du bureau</h3>
                             <hr>
                             <ul class="text-left">
-                                <li>Corentin <span class="pc">Veys</span> (Président)</li>
+                                <li>Quentin <span class="pc">Baju</span> (Président)</li>
                                 <li>Héronne <span class="pc">Edouard</span></li>
-                                <li>Quentin <span class="pc">Baju</span></li>
                                 <li>???</li>
                             </ul>
                         </div>
