@@ -744,12 +744,12 @@ function afficherJournaux($prefixe) {
 }
 
 ########################################################################################################################
-# Nous contacter                                                                                                       #
+# Mentions légales                                                                                                     #
 ########################################################################################################################
-function afficherNousContacter($prefixe) {
-    $title = 'Nous contacter';
+function afficherMentionsLegales($prefixe) {
+    $title = 'Mentions légales';
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritNousContacter.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritMentionsLegales.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
@@ -842,18 +842,6 @@ function afficherPlanDuSite($prefixe) {
     }
 
     $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants($prefixe))));
-
-    require_once($prefixe . '-mvc/vue/cadre.php');
-}
-
-########################################################################################################################
-# Qui sommes-nous ?                                                                                                    #
-########################################################################################################################
-function afficherQuiSommesNous($prefixe) {
-    $title = 'Qui sommes-nous ?';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritQuiSommesNous.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
