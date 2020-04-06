@@ -1,8 +1,8 @@
 <?php
-$prefixe = '../';
+$prefixe = '../../';
 require_once($prefixe . '-mvc/controleur/controleur.php');
 try {
-    CtlStatuts($prefixe);
+    CtlOuNousTrouver($prefixe);
 } catch (Exception $e) {
     CtlErreur($prefixe, $e->getMessage());
 }

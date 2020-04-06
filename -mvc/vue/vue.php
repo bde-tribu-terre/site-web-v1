@@ -422,6 +422,30 @@ function afficherErreur($prefixe, $messageErreur) {
 }
 
 ########################################################################################################################
+# Association (Présentation)                                                                                           #
+########################################################################################################################
+function afficherPresentation($prefixe) {
+    $title = 'Présentation';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPresentation.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Où nous trouver ?                                                                                      #
+########################################################################################################################
+function afficherOuNousTrouver($prefixe) {
+    $title = 'Où nous trouver ?';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritOuNousTrouver.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
 # Events                                                                                                               #
 ########################################################################################################################
 function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
@@ -842,18 +866,6 @@ function afficherPlanDuSite($prefixe) {
     }
 
     $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants($prefixe))));
-
-    require_once($prefixe . '-mvc/vue/cadre.php');
-}
-
-########################################################################################################################
-# Statuts                                                                                                              #
-########################################################################################################################
-function afficherStatuts($prefixe) {
-    $title = 'Statuts';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritStatuts.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
