@@ -20,8 +20,8 @@
                 dans le but d'étendre son réseau en France.
             </p>
             <p>
-                <!--Le 19 février 2018 = 1e AG-->En octobre 2017, sous la présidence de Corentin
-                <span class="pc">Veys</span>, Tribu-Terre s'associe avec les associations étudiantes de la ville
+                <!--Le 19 février 2018 = 1e AG-->En octobre 2017, sous la présidence de Quentin
+                <span class="pc">Baju</span>, Tribu-Terre s'associe avec les associations étudiantes de la ville
                 d'Orléans pour fonder la fédération ÔCampus, dont les missions sont de faciliter la communication entre
                 les associations, d'organiser des événements inter-filières ainsi et de contribuer à la vie étudiante
                 Orléanaise et la favorisation d'événements inter-filières.
