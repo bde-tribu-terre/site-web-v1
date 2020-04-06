@@ -117,6 +117,11 @@
             border: 1px solid #e3e3e3;
             box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
         }
+
+        /* Petites capitales */
+        .pc {
+            font-variant: small-caps;
+        }
     </style>
 </head>
 <body>
