@@ -5,7 +5,7 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <p>
-                L'association Tribu-Terre fut fondée en 2004 par des étudiants en géologie à l'OSUC, en tant
+                L'association Tribu-Terre fut fondée en 2003 par des étudiants en géologie à l'OSUC, en tant
                 qu'association des acteurs en géosciences d'Orléans. Elle a pendant des années pour objectif
                 d'accompagner les étudiants à l'OSUC dans leurs études, par exemple en partageant des publications et
                 des magasines scientifiques et en invitant des conférenciers spécialistes en géoscience présenter leur
@@ -20,15 +20,16 @@
                 dans le but d'étendre son réseau en France.
             </p>
             <p>
+                <!--Le 19 février 2018 = 1e AG-->En octobre 2017, sous la présidence de Corentin
+                <span class="pc">Veys</span>, Tribu-Terre s'associe avec les associations étudiantes de la ville
+                d'Orléans pour fonder la fédération ÔCampus, dont les missions sont de faciliter la communication entre
+                les associations, d'organiser des événements inter-filières ainsi et de contribuer à la vie étudiante
+                Orléanaise et la favorisation d'événements inter-filières.
+            </p>
+            <p>
                 C'est le 18 avril 2018, lors de l'Assemblée Générale qui voit l'élection de Quentin
                 <span class="pc">Baju</span> comme président que l'association Tribu-Terre s'ouvre aux autres filières
                 scientifiques du campus d'Orléans.
-            </p>
-            <p>
-                Le 19 février 2018, sous la présidence de Quentin <span class="pc">Baju</span>, Tribu-Terre s'associe
-                avec les associations étudiantes de la ville d'Orléans pour fonder la fédération ÔCampus, dont les
-                missions sont la représentation et la protection des étudiants d'Orléans ainsi que l'amélioration de
-                la vie étudiante Orléanaise et la favorisation d'événements inter-filières.
             </p>
         <div class="col-sm-1"></div>
     </div>
@@ -196,6 +197,7 @@
                             <h3>Composition du bureau</h3>
                             <hr>
                             <ul class="text-left">
+                                <li>Corentin <span class="pc">Veys</span> (Président)</li>
                                 <li>Héronne <span class="pc">Edouard</span></li>
                                 <li>Quentin <span class="pc">Baju</span></li>
                                 <li>???</li>

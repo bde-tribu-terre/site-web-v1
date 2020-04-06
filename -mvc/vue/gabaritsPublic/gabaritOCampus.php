@@ -7,7 +7,6 @@
             <div class="text-justify">
                 <p>
                     C'est quoi ÔCampus, notre engagement auprès d'eux, le leur auprès des étudiants, etc...<br>
-                    En plus y'a pas de site ÔCampus.
                     Il peut y avoir des liens, des images, des trucs dans le texte etc...
                 </p>
             </div>
