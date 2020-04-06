@@ -164,10 +164,10 @@
             <div class="carousel-inner" role="listbox">
                 <!-- Ici on liste les fédérations -->
                 <div class="item active">
-                    <a href="https://www.facebook.com/OCampusFederation/">
+                    <a href="https://ocampus.fr/">
                         <img src="<?php echo $prefixe . '-images/imgOCampus.png' ?>" alt="Image">
                     </a>
-                    <a href="https://www.facebook.com/OCampusFederation/">
+                    <a href="https://ocampus.fr/">
                         <div class="carousel-caption">
                             <h3>ÔCampus</h3>
                             <p>Fédération des associations étudiantes d'Orléans</p>
@@ -176,10 +176,10 @@
                 </div>
 
                 <div class="item">
-                    <a href="http://www.fneb.fr">
+                    <a href="http://www.fneb.fr/">
                         <img src="<?php echo $prefixe . '-images/imgFNEB.png' ?>" alt="Image">
                     </a>
-                    <a href="http://www.fneb.fr">
+                    <a href="http://www.fneb.fr/">
                         <div class="carousel-caption">
                             <h3>FNEB</h3>
                             <p>Fédération Nationale des Étudiants en sciences exactes naturelles et techniques</p>
