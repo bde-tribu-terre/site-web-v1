@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navigationHeader"> <!-- Et ça c'est quand l'écran est assez grand -->
             <ul class="nav navbar-nav">
                 <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritAccueil.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe ?>">Accueil</a></li>
-                <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritQuiSommesNous.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'qui-sommes-nous/' ?>">Qui sommes-nous ?</a></li>
+                <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritPresentation.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'association/' ?>">Qui sommes-nous ?</a></li>
                 <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritEvents.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'events/' ?>">Évents</a></li>
                 <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodies.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'goodies/' ?>">Goodies</a></li>
                 <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritJournaux.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'journaux/' ?>">Journaux</a></li>

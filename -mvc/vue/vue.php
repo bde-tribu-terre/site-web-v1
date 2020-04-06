@@ -434,12 +434,132 @@ function afficherPresentation($prefixe) {
 }
 
 ########################################################################################################################
+# Association - Contact                                                                                                #
+########################################################################################################################
+function afficherContact($prefixe) {
+    $title = 'Contact';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritContact.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Fonctionnement                                                                                         #
+########################################################################################################################
+function afficherFonctionnement($prefixe) {
+    $title = 'Fonctionnement de l\'association';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritFonctionnement.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Historique                                                                                             #
+########################################################################################################################
+function afficherHistorique($prefixe) {
+    $title = 'Historique de l\'association';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritHistorique.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
 # Association - Où nous trouver ?                                                                                      #
 ########################################################################################################################
 function afficherOuNousTrouver($prefixe) {
     $title = 'Où nous trouver ?';
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritOuNousTrouver.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Partenaires                                                                                            #
+########################################################################################################################
+function afficherPartenaires($prefixe) {
+    $title = 'Partenaires';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPartenaires.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Pôles                                                                                                  #
+########################################################################################################################
+function afficherPoles($prefixe) {
+    $title = 'Pôles';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPoles.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Pourquoi adhérer ?                                                                                     #
+########################################################################################################################
+function afficherPourquoiAdherer($prefixe) {
+    $title = 'Pourquoi adhérer ?';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPourquoiAdherer.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Réseau associatif                                                                                      #
+########################################################################################################################
+function afficherReseauAssociatif($prefixe) {
+    $title = 'Réseau associatif';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritReseauAssociatif.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Réseau associatif - ÔCampus                                                                            #
+########################################################################################################################
+function afficherOCampus($prefixe) {
+    $title = 'ÔCampus';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritOCampus.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Réseau associatif - FNEB                                                                               #
+########################################################################################################################
+function afficherFneb($prefixe) {
+    $title = 'FNEB';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritOuNousTrouver.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Université                                                                                             #
+########################################################################################################################
+function afficherUniversite($prefixe) {
+    $title = 'Université d\'Orléans';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritUniversite.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
@@ -763,6 +883,18 @@ function afficherJournaux($prefixe) {
                 '</div>' .
             '</div>';
     }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Journaux - Contribuer                                                                                                #
+########################################################################################################################
+function afficherContribuer($prefixe) {
+    $title = 'Contribuer au journal';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritContribuer.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }

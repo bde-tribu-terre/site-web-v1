@@ -5,7 +5,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <div class="container text-left">
-                <h4>Mentions légales du site <i>asso-tribu-terre.fr</i></h4>
+                <h3>Association Tribu-Terre</h3>
                 <p>
                     <strong>Tribu-Terre</strong><br>
                     1A Rue de la Férollerie<br>
@@ -16,14 +16,14 @@
                 <p>
                     Courriel : tributerre0@gmail.com
                 </p><br>
-                <h4>Directeur/trice de publication</h4>
+                <h3>Directeur/trice de publication</h3>
                 <p>
                     NOM PRENOM
                 </p>
                 <p>
                     EMAIL
                 </p><br>
-                <h4>Hébergeur</h4>
+                <h3>Hébergeur</h3>
                 <p>
                     <strong>Société OVH</strong><br>
                     2 rue Kellermann<br>
