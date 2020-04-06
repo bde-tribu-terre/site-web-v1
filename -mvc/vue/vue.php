@@ -764,6 +764,28 @@ function afficherPlanDuSite($prefixe) {
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPlanDuSite.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
+    function allerChercherString($a) {
+        if (gettype($a) == 'string') {
+            return $a;
+        }
+        return allerChercherString($a[0]);
+    }
+
+    function trierEnfants($e1, $e2) {
+        return strcmp(
+            preg_replace(
+                '/index.php\//',
+                '',
+                allerChercherString($e1)
+            ),
+            preg_replace(
+                '/index.php\//',
+                '',
+                allerChercherString($e2)
+            )
+        );
+    }
+
     function chercherTousLesEnfants($cheminParent) {
         if (!is_dir($cheminParent)) {
             return $cheminParent;
@@ -776,7 +798,7 @@ function afficherPlanDuSite($prefixe) {
             foreach ($enfants as $enfant) {
                 $arrayEnfants[] = chercherTousLesEnfants($cheminParent . $enfant . '/');
             }
-            sort($arrayEnfants);
+            usort($arrayEnfants, "trierEnfants");
             return $arrayEnfants;
         }
     }
