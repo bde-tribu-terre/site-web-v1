@@ -250,4 +250,46 @@
         </div>
         <hr>
     </div>
+    <!-- \/ AG 2014 \/ -->
+    <div>
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2014">
+            Assemblée Générale du 29 Septembre 2014
+        </button>
+        <div class="collapse" id="2014">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du 29 Septembre 2014</h3>
+                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Composition du bureau</h3>
+                                <hr>
+                                <ul class="text-left">
+                                    <li>Etienne <span class="pc">Marceau</span> (Président)</li>
+                                    <li>Antoine <span class="pc">Saucray</span> (Vice-Président)</li>
+                                    <li>Gabrielle <span class="pc">Prouteau</span> (Secrétaire)</li>
+                                    <li>Tiphaine <span class="pc">Penchenat</span> (Vice-Secrétaire)</li>
+                                    <li>Thomas <span class="pc">Baillet</span> (Trésorière)</li>
+                                    <li>Rémi <span class="pc">Carrio</span> (Vice-Trésorière)</li>
+                                    <li>Jean-Baptiste <span class="pc">Douard</span></li>
+                                    <li>Marc <span class="pc">Villie</span></li>
+                                    <li>Zoé <span class="pc">Lecoeuche</span></li>
+                                    <li>Sarah <span class="pc">Ouggahi</span></li>
+                                    <li>Renaud <span class="pc">Gendreau</span></li>
+                                    <li>Julia <span class="pc">Roux</span></li>
+                                    <li>Pierre <span class="pc">Verdon</span></li>
+                                    <li>Arnaud <span class="pc">Clavier</span></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
 </div><br>
