@@ -60,7 +60,7 @@
                             <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2019.png' ?>" alt="imgAG2019">
                         </div>
                         <div class="col-sm-6">
-                            <h4>Composition du bureau</h4>
+                            <h3>Composition du bureau</h3>
                             <hr>
                             <ul class="text-left">
                                 <li>Riad <span class="pc">Benchekra</span> (Président)</li>
@@ -117,7 +117,7 @@
                             <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2018.png' ?>" alt="imgAG2018">
                         </div>
                         <div class="col-sm-6">
-                            <h4>Composition du bureau</h4>
+                            <h3>Composition du bureau</h3>
                             <hr>
                             <ul class="text-left">
                                 <li>Quentin <span class="pc">Baju</span> (Président)</li>
@@ -161,7 +161,7 @@
                             <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgPlaceholder.png' ?>" alt="imgAG2018">
                         </div>
                         <div class="col-sm-6">
-                            <h4>Composition du bureau</h4>
+                            <h3>Composition du bureau</h3>
                             <hr>
                             <ul class="text-left">
                                 <li>Héronne <span class="pc">Edouard</span></li>
@@ -183,29 +183,56 @@
         <div class="collapse" id="2016">
             <div style="margin: 15px" class="card card-body">
                 <div class="well">
-                <div class="row">
-                    <h3>Assemblée Générale du 20 avril 2016</h3>
-                    <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                    <hr>
-                    <div class="text-justify retrait">
-                        <p>Description du bureau et résumé de l'année.</p>
-                    </div>
-                    <hr>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgPlaceholder.png' ?>" alt="imgAG2018">
-                    </div>
-                    <div class="col-sm-6">
-                        <h4>Composition du bureau</h4>
+                    <div class="row">
+                        <h3>Assemblée Générale du 20 avril 2016</h3>
+                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                        <hr>
+                        <h3>Composition du bureau</h3>
                         <hr>
                         <ul class="text-left">
-                            <li>Héronne <span class="pc">Edouard</span></li>
-                            <li>Quentin <span class="pc">Baju</span></li>
-                            <li>???</li>
+                            <li>Corentin <span class="pc">Veys</span> (Président)</li>
+                            <li>Joséphine <span class="pc">Bartolo</span> (Vice-Président)</li>
+                            <li>Florian <span class="pc">Jarry</span> (Secrétaire)</li>
+                            <li>Dylan <span class="pc">Chateigner</span> (Vice-Secrétaire)</li>
+                            <li>Killian <span class="pc">Chevalier</span> (Trésorier)</li>
+                            <li>Raphael <span class="pc">Tur</span> (Vice-Trésorier)</li>
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <!-- \/ AG 2015 \/ -->
+    <div>
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2015">
+            Assemblée Générale du 23 avril 2015
+        </button>
+        <div class="collapse" id="2015">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du 23 avril 2015</h3>
+                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                        <hr>
+                        <h3>Composition du bureau</h3>
+                        <hr>
+                        <ul class="text-left">
+                            <li>Antoine <span class="pc">Saucray</span> (Président)</li>
+                            <li>Zoé <span class="pc">Lecoeuche</span> (Vice-Présidente)</li>
+                            <li>Maëlys <span class="pc">Cadel</span> (Secrétaire)</li>
+                            <li>Saloua <span class="pc">OUGGAHI</span> (Vice-Secrétaire)</li>
+                            <li>Maëlys <span class="pc">Tessier</span> (Trésorière)</li>
+                            <li>Camille <span class="pc">Rouvroy</span> (Vice-Trésorière)</li>
+                            <li>Arnaud <span class="pc">Clavier</span></li>
+                            <li>Sarah <span class="pc">Ouggahi</span></li>
+                            <li>Corentin <span class="pc">Veys</span></li>
+                            <li>Clément <span class="pc">Mennecart</span></li>
+                            <li>Sébastien <span class="pc">Coquil</span></li>
+                            <li>Romain <span class="pc">Pinguet</span></li>
+                            <li>Maxime <span class="pc">Zimmermann</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
