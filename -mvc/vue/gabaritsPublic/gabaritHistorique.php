@@ -27,6 +27,7 @@
     </div>
     <hr>
     <!-- Ici vont les bureaux -->
+    <!-- \/ AG 2019 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2019">
             Assemblée Générale du 12 mars 2019
@@ -63,19 +64,75 @@
                             <h4>Composition du bureau</h4>
                             <hr>
                             <ul class="text-left">
-                                <li>Riad BENCHEKRA (Président)</li>
-                                <li>Arthur CHAMPENOIS (Vice Président Général)</li>
-                                <li>Jade BEAUMONT (Secrétaire)</li>
-                                <li>Léa LUCIDOR (Vice Secrétaire)</li>
-                                <li>Jimi MARIE-SAINTE (Trésorier)</li>
-                                <li>Alan LE QUELLENEC (Vice Trésorier)</li>
-                                <li>Lina BERRADA (VP Communication)</li>
-                                <li>Emma CAILLET (VP Photo-Communication)</li>
-                                <li>Chloë ROLLAND (VP Evénementiel)</li>
-                                <li>William ABESSOLO (VP Partenariats)</li>
-                                <li>Simon MEDELLI (VP Culture)</li>
-                                <li>Kevin TILLAY (VP Jardin)</li>
-                                <li>Laure GILET (CM Conférences)</li>
+                                <li>Riad <span class="pc">Benchekra</span> (Président)</li>
+                                <li>Arthur <span class="pc">Champenois</span> (Vice-Président Général)</li>
+                                <li>Jade <span class="pc">Beaumont</span> (Secrétaire)</li>
+                                <li>Léa <span class="pc">Lucidor</span> (Vice-Secrétaire)</li>
+                                <li>Jimi <span class="pc">Marie-Sainte</span> (Trésorier)</li>
+                                <li>Alan <span class="pc">Le Quellenec</span> (Vice-Trésorier)</li>
+                                <li>Lina <span class="pc">Berrada</span> (VP Communication)</li>
+                                <li>Emma <span class="pc">Caillet</span> (VP Photo-Communication)</li>
+                                <li>Chloë <span class="pc">Rolland</span> (VP Événementiel)</li>
+                                <li>William <span class="pc">Abessolo</span> (VP Partenariats)</li>
+                                <li>Simon <span class="pc">Medelli</span> (VP Culture)</li>
+                                <li>Kevin <span class="pc">Tillay</span> (VP Jardin)</li>
+                                <li>Laure <span class="pc">Gilet</span> (CM Conférences)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <!-- \/ AG 2018 \/ -->
+    <div>
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2018">
+            Assemblée Générale du 18 avril 2018
+        </button>
+        <div class="collapse" id="2018">
+            <div style="margin: 15px" class="card card-body">
+                <div class="row">
+                    <div class="well">
+                        <h3>Assemblée Générale du 18 avril 2018</h3>
+                        <h4>Tribu-Terre, Association des étudiants scientifiques de l'Université d'Orléans</h4>
+                        <hr>
+                        <div class="text-justify retrait">
+                            <p>Bureau encore en fonction</p>
+                        </div>
+                        <hr>
+                        <div class="text-center">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#FB2018">
+                                Voir le post Facebook
+                            </button>
+                            <div class="collapse" id="FB2018">
+                                <div style="margin: 15px" class="card card-body">
+                                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FbdeTribuTerre%2Fposts%2F327675007759774&width=500" width="500" height="568" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2018' ?>" alt="imgAG2018">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h4>Composition du bureau</h4>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Quentin <span class="pc">Baju</span> (Président)</li>
+                                <li>Rémi <span class="pc">Bizeul</span> (Vice-Président Général)</li>
+                                <li>Florian <span class="pc">Jarry</span> (Secrétaire)</li>
+                                <li>Valentin <span class="pc">Simon</span> (Trésorier)</li>
+                                <li>Thomas <span class="pc">De Faria</span> (Vice-Trésorier)</li>
+                                <li>Emilie <span class="pc">Suchet</span> (VP Événementiel)</li>
+                                <li>Pierre <span class="pc">Gruget</span> (VP Événementiel)</li>
+                                <li>Emmanuel <span class="pc">Kante-Cordier</span> (VP Culture)</li>
+                                <li>Louis <span class="pc">Lefrançois</span> (VP Communication)</li>
+                                <li>Riad <span class="pc">Benchekra</span> (VP Communication)</li>
+                                <li>Arthur <span class="pc">Champenois</span> (CM Communication)</li>
                             </ul>
                         </div>
                     </div>
