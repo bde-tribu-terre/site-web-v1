@@ -34,8 +34,8 @@
         </button>
         <div class="collapse" id="2019">
             <div style="margin: 15px" class="card card-body">
-                <div class="row">
-                    <div class="well">
+                <div class="well">
+                    <div class="row">
                         <h3>Assemblée Générale du 12 mars 2019</h3>
                         <h4>Tribu-Terre, Association des étudiants scientifiques de l'Université d'Orléans</h4>
                         <hr>
@@ -54,13 +54,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2019.png' ?>" alt="imgAG2019">
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="well">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2019.png' ?>" alt="imgAG2019">
+                        </div>
+                        <div class="col-sm-6">
                             <h4>Composition du bureau</h4>
                             <hr>
                             <ul class="text-left">
@@ -92,8 +90,8 @@
         </button>
         <div class="collapse" id="2018">
             <div style="margin: 15px" class="card card-body">
-                <div class="row">
-                    <div class="well">
+                <div class="well">
+                    <div class="row">
                         <h3>Assemblée Générale du 18 avril 2018</h3>
                         <h4>Tribu-Terre, Association des étudiants scientifiques de l'Université d'Orléans</h4>
                         <hr>
@@ -112,13 +110,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2018.png' ?>" alt="imgAG2018">
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="well">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2018.png' ?>" alt="imgAG2018">
+                        </div>
+                        <div class="col-sm-6">
                             <h4>Composition du bureau</h4>
                             <hr>
                             <ul class="text-left">
@@ -148,8 +144,8 @@
         </button>
         <div class="collapse" id="2017">
             <div style="margin: 15px" class="card card-body">
-                <div class="row">
-                    <div class="well">
+                <div class="well">
+                    <div class="row">
                         <h3>Assemblée Générale du 28 mars 2017</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
                         <hr>
@@ -157,13 +153,11 @@
                             <p>Description du bureau et résumé de l'année.</p>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgPlaceholder.png' ?>" alt="imgAG2018">
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="well">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgPlaceholder.png' ?>" alt="imgAG2018">
+                        </div>
+                        <div class="col-sm-6">
                             <h4>Composition du bureau</h4>
                             <hr>
                             <ul class="text-left">
@@ -178,34 +172,35 @@
         </div>
         <hr>
     </div>
-    <!-- \/ AG 2017 \/ -->
+    <!-- \/ AG 2016 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2017">
-            Assemblée Générale du 28 mars 2017
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2016">
+            Assemblée Générale du 20 avril 2016
         </button>
-        <div class="collapse" id="2017">
+        <div class="collapse" id="2016">
             <div style="margin: 15px" class="card card-body">
                 <div class="well">
                 <div class="row">
-                        <h3>Assemblée Générale du 28 mars 2017</h3>
-                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="text-justify retrait">
-                            <p>Description du bureau et résumé de l'année.</p>
-                        </div>
+                    <h3>Assemblée Générale du 20 avril 2016</h3>
+                    <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                    <hr>
+                    <div class="text-justify retrait">
+                        <p>Description du bureau et résumé de l'année.</p>
+                    </div>
+                    <hr>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgPlaceholder.png' ?>" alt="imgAG2018">
                     </div>
                     <div class="col-sm-6">
-                            <h4>Composition du bureau</h4>
-                            <hr>
-                            <ul class="text-left">
-                                <li>Héronne <span class="pc">Edouard</span></li>
-                                <li>Quentin <span class="pc">Baju</span></li>
-                                <li>???</li>
-                            </ul>
+                        <h4>Composition du bureau</h4>
+                        <hr>
+                        <ul class="text-left">
+                            <li>Héronne <span class="pc">Edouard</span></li>
+                            <li>Quentin <span class="pc">Baju</span></li>
+                            <li>???</li>
+                        </ul>
                     </div>
                 </div>
                 </div>
