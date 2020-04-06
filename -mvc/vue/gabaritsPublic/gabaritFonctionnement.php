@@ -2,9 +2,9 @@
     <h3>Fonctionnement de l'association</h3>
     <hr>
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
-            <div class="container text-left">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="text-justify">
                 <p>
                     Comment fonctionne l'association ?
                     Comment est-elle gérée ?
@@ -21,7 +21,8 @@
                     Il s'agit d'un ensemble d'articles à valeur légale qui détaillent comment doit s'organiser la direction de
                     Tribu-Terre par ses membres actifs.<br>
                     Ils sont consultables à tout moment par n'importe qui. Ils ne peuvent cependant être modifiés que lors d'une
-                    Assemblée Générale Extraordinaire (ce qui est détaillé dans les statuts eux-mêmes).
+                    Assemblée Générale Extraordinaire<br>
+                    (ce qui est détaillé dans les statuts eux-mêmes).
                 </p>
                 <h3>
                     Les statuts actuels de l'association, modifiés pour la dernière fois le 12 Mars 2019, sont disponibles ici :
@@ -31,6 +32,6 @@
                 </h3>
             </div>
         </div>
-        <div class="col-sm-2"></div>
+        <div class="col-sm-1"></div>
     </div>
 </div><br>

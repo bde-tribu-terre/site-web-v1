@@ -547,7 +547,19 @@ function afficherOCampus($prefixe) {
 function afficherFneb($prefixe) {
     $title = 'FNEB';
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritOuNousTrouver.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritFneb.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Association - Réseaus sociaux                                                                                        #
+########################################################################################################################
+function afficherReseauxSociaux($prefixe) {
+    $title = 'Réseaux sociaux';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritReseauxSociaux.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     require_once($prefixe . '-mvc/vue/cadre.php');

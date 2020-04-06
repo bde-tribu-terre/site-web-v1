@@ -1,7 +1,7 @@
 <div class="container-fluid text-center">
     <p><strong>
             Vous avez des questions sur Tribu-Terre ou les derniers évènements ?<br/>
-            <a href="<?php echo $prefixe . 'nous-contacter/' ?>">Contactez nous !</a>
+            <a href="<?php echo $prefixe . 'association/contact/' ?>">Contactez nous !</a>
         </strong></p>
     <hr>
     <div class="texteFooter">

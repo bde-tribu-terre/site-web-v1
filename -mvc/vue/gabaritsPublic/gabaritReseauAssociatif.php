@@ -2,9 +2,9 @@
     <h3>Réseau associatif</h3>
     <hr>
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
-            <div class="container text-left">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="text-justify">
                 <p>
                     Quel est notre engagement dans les différentes associations ?
                     Pourquoi ça sert même à quelque chose d'adhérer à des fédés d'assos ?
@@ -13,6 +13,6 @@
                 </p>
             </div>
         </div>
-        <div class="col-sm-2"></div>
+        <div class="col-sm-1"></div>
     </div>
 </div><br>
