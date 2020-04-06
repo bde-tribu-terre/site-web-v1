@@ -6,21 +6,35 @@
         <div class="col-sm-8">
             <div class="container text-left">
                 <h4>Mentions légales du site <i>asso-tribu-terre.fr</i></h4>
-                <p><strong>Tribu-Terre</strong></p>
-                <p>1A Rue de la Férollerie</p>
-                <p>45071 Orléans Cedex 2</p>
-                <p>Tél. : 01 23 45 67 89</p>
-                <p>Courriel : tributerre0@gmail.com</p>
-                <br>
+                <p>
+                    <strong>Tribu-Terre</strong><br>
+                    1A Rue de la Férollerie<br>
+                    45071 Orléans Cedex 2, France
+                <p>
+                    Tél. : 01 23 45 67 89
+                </p>
+                <p>
+                    Courriel : tributerre0@gmail.com
+                </p><br>
                 <h4>Directeur/trice de publication</h4>
-                <p>NOM PRENOM</p>
-                <p>EMAIL</p>
-                <br>
+                <p>
+                    NOM PRENOM
+                </p>
+                <p>
+                    EMAIL
+                </p><br>
                 <h4>Hébergeur</h4>
-                <p><strong>Société OVH</strong></p>
-                <p>Siège social : 2 rue Kellermann - 59100 Roubaix, France</p>
-                <p>Tél. : +33 (0)8 99 70 17 61</p>
-                <p>Site web : <a href="www.ovh.com">www.ovh.com</a></p>
+                <p>
+                    <strong>Société OVH</strong><br>
+                    2 rue Kellermann<br>
+                    59100 Roubaix, France
+                </p>
+                <p>
+                    Tél. : +33 (0)8 99 70 17 61
+                </p>
+                <p>
+                    Site web : <a href="www.ovh.com">www.ovh.com</a>
+                </p>
             </div>
         </div>
         <div class="col-sm-2"></div>
