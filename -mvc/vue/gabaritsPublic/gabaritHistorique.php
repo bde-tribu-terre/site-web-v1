@@ -27,7 +27,7 @@
                 Orléanaise et la favorisation d'événements inter-filières.
             </p>
             <p>
-                C'est le 18 avril 2018, lors de l'Assemblée Générale qui voit l'élection de Quentin
+                C'est le 18 avril 2018, lors de l'Assemblée Générale qui voit la réélection de Quentin
                 <span class="pc">Baju</span> comme président que l'association Tribu-Terre s'ouvre aux autres filières
                 scientifiques du campus d'Orléans.
             </p>
