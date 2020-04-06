@@ -52,6 +52,7 @@
                                     <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.524805124713427%26type%3D3&width=500" width="500" height="814" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                                 </div>
                             </div>
+                            <hr>
                         </div>
                     </div>
                     <div class="row">
@@ -108,6 +109,7 @@
                                     <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FbdeTribuTerre%2Fposts%2F327675007759774&width=500" width="500" height="568" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                                 </div>
                             </div>
+                            <hr>
                         </div>
                     </div>
                     <div class="row">
@@ -152,6 +154,7 @@
                         <div class="text-justify retrait">
                             <p>Description du bureau et résumé de l'année.</p>
                         </div>
+                        <hr>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
