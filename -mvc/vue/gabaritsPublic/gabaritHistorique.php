@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <div class="text-justify">
+            <div class="text-justify retrait">
                 <p>
                     Comme toute association étudiante, le bureau de Tribu-Terre évolue régulièrement grâce à
                     l'implication de nouveaux membres ! Tous les ans, une Assemblée Générale est organisée dans laquelle

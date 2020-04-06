@@ -106,6 +106,10 @@
             font-size: 10px;
             line-height: 10px;
         }
+
+        .retrait {
+            text-indent: 4em;
+        }
     </style>
 </head>
 <body>
