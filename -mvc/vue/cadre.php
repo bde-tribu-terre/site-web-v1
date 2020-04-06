@@ -110,6 +110,13 @@
         .retrait {
             text-indent: 4em;
         }
+
+        .imageAGbordure {
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #e3e3e3;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+        }
     </style>
 </head>
 <body>
