@@ -1,5 +1,38 @@
 <div class="container text-center">
-    <h3>Historique de l'association</h3>
+    <h3>Histoire de l'association</h3>
+    <hr>
+    <div class="row text-justify retrait">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <p>
+                L'association Tribu-Terre fut fondée en 2004 par des étudiants en géologie à l'OSUC, en tant
+                qu'association des acteurs en géosciences d'Orléans. Elle a pendant des années pour objectif
+                d'accompagner les étudiants à l'OSUC dans leurs études, par exemple en partageant des publications et
+                des magasines scientifiques et en invitant des conférenciers spécialistes en géoscience présenter leur
+                discipline (les "causeries Tribu-Terre"). Elle organise également des soirées et des apéros pour
+                dynamiser la vie étudiante en géologie, ainsi que des excursions dans des régions à signification
+                géologique importante. Elle entre en contact avec l'administration de l'OSUC pour obtenir une salle de
+                repos pour les étudiants qui deviendra très vite le local de l'association.
+            </p>
+            <p>
+                Le 13 Juin 2015, sous la présidence d'Antoine <span class="pc">Saucray</span>, l'association Tribu-Terre
+                adhère à la Fédération Nationale des étudiants en Sciences Exactes, Naturelles et Techniques (FNEB),
+                dans le but d'étendre son réseau en France.
+            </p>
+            <p>
+                C'est le 18 avril 2018, lors de l'Assemblée Générale qui voit l'élection de Quentin
+                <span class="pc">Baju</span> comme président que l'association Tribu-Terre s'ouvre aux autres filières
+                scientifiques du campus d'Orléans.
+            </p>
+            <p>
+                Le 19 février 2018, sous la présidence de Quentin <span class="pc">Baju</span>, Tribu-Terre s'associe
+                avec les associations étudiantes de la ville d'Orléans pour fonder la fédération ÔCampus, dont les
+                missions sont la représentation et la protection des étudiants d'Orléans ainsi que l'amélioration de
+                la vie étudiante Orléanaise et la favorisation d'événements inter-filières.
+            </p>
+        <div class="col-sm-1"></div>
+    </div>
+    <h3>Historique des bureaux</h3>
     <hr>
     <div class="row text-justify retrait">
         <div class="col-sm-1"></div>
@@ -8,10 +41,9 @@
                 Comme toute association étudiante, le bureau de Tribu-Terre évolue régulièrement grâce à
                 l'implication de nouveaux membres ! Tous les ans, une Assemblée Générale est organisée dans laquelle
                 les personnes composant le bureau de l'année passée démissionnent. Un vote est alors organisé et les
-                adhérents de l'association élisent leur nouveau bureau parmi les étudiants qui souhaitent se
-                présenter (ou se représenter) comme membre du prochain bureau. L'ensemble des personnes ainsi élues
-                composeront le bureau de Tribu-Terre pendant un an, jusqu'à la date de la prochaine Assemblée
-                Générale.
+                adhérents de l'association élisent leur nouveau bureau parmi les étudiants qui souhaitent se présenter
+                (ou se représenter) comme membre du prochain bureau. L'ensemble des personnes ainsi élues composeront le
+                bureau de Tribu-Terre pendant un an, jusqu'à la date de la prochaine Assemblée Générale.
             </p>
             <p>
                 <a href="<?php echo $prefixe . 'association/fonctionnement/' ?>">
@@ -290,6 +322,5 @@
                 </div>
             </div>
         </div>
-        <hr>
     </div>
 </div><br>
