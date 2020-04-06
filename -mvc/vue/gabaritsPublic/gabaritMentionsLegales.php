@@ -12,7 +12,9 @@
                 <p>Tél. : 01 23 45 67 89</p>
                 <p>Courriel : tributerre0@gmail.com</p>
                 <br>
-                <p>Directeur/trice de publication : XXXXXXXX</p>
+                <h4>Directeur/trice de publication</h4>
+                <p>NOM PRENOM</p>
+                <p>EMAIL</p>
                 <br>
                 <h4>Hébergeur</h4>
                 <p><strong>Société OVH</strong></p>
