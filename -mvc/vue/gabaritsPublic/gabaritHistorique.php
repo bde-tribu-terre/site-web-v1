@@ -73,7 +73,7 @@
                         <h4>Tribu-Terre, Association des étudiants scientifiques de l'Université d'Orléans</h4>
                         <hr>
                         <div class="text-justify retrait">
-                            <p>Description du bureau et résumé de l'année.</p>
+                            <p>Bureau encore en fonction</p>
                         </div>
                         <hr>
                         <div class="text-center">
@@ -130,7 +130,7 @@
                         <h4>Tribu-Terre, Association des étudiants scientifiques de l'Université d'Orléans</h4>
                         <hr>
                         <div class="text-justify retrait">
-                            <p>Bureau encore en fonction</p>
+                            <p>Description du bureau et résumé de l'année.</p>
                         </div>
                         <hr>
                         <div class="text-center">
