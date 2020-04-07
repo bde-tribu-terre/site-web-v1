@@ -39,7 +39,7 @@
             </p>
             <p>
                 Pour sauver Tribu-Terre, le bureau décide lors de l'Assemblée Générale du 18 avril 2018, qui voit la
-                réélection de Quentin<span class="pc">Baju</span> comme président, d'ouvrir l'association aux autres
+                réélection de Quentin <span class="pc">Baju</span> comme président, d'ouvrir l'association aux autres
                 filières scientifiques du campus d'Orléans. C'est alors que Tribu-Terre devient officiellement
                 l'Association des Étudiants Scientifiques de l'Université d'Orléans, et son bureau se compose rapidement
                 d'étudiants en différentes disciplines scientifiques.
