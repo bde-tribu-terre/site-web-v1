@@ -31,6 +31,7 @@
                 <span class="pc">Baju</span> comme président que l'association Tribu-Terre s'ouvre aux autres filières
                 scientifiques du campus d'Orléans.
             </p>
+        </div>
         <div class="col-sm-1"></div>
     </div>
     <h3>Historique des bureaux</h3>
