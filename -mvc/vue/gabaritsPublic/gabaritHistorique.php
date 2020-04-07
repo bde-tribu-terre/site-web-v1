@@ -28,9 +28,25 @@
                 Orléanaise.
             </p>
             <p>
-                C'est le 18 avril 2018, lors de l'Assemblée Générale qui voit la réélection de Quentin
-                <span class="pc">Baju</span> comme président que l'association Tribu-Terre s'ouvre aux autres filières
-                scientifiques du campus d'Orléans.
+                En 2018, le bureau présidé par Quentin <span class="pc">Baju</span> présent que trop peu de nouveaux
+                étudiants ont la volonté de s'inverstir dans le futur de l'association. Dans le même temps,
+                l'Université d'Orléans met en place pour l'année suivante le système de portails pour les étudiants en
+                première année scientifique : trois disciplines sont suivies en parallèle pendant un an, avant de
+                choisir parmi ces trois dernières celle qui constituera le reste des études à partir de la deuxième
+                année. En conséquence de ce changement, l'OSUC n'accueille les étudiants qu'à partir de leur deuxième
+                année, ce qui à terme priverait l'association de beaucoup de potentiels nouveaux membres du bureau.
+            </p>
+            <p>
+                Pour sauver Tribu-Terre, le bureau décide lors de l'Assemblée Générale du 18 avril 2018, qui voit la
+                réélection de Quentin<span class="pc">Baju</span> comme président, d'ouvrir l'association aux autres
+                filières scientifiques du campus d'Orléans. C'est alors que Tribu-Terre devient officiellement
+                l'Association des Étudiants Scientifiques de l'Université d'Orléans, et son bureau se compose rapidement
+                d'étudiants en différentes disciplines scientifiques.
+            </p>
+            <p>
+                Malgré tout, la géologie reste un domaine dans lequel Tribu-Terre s'investit en priorité, et l'OSUC
+                reste son plus grand soutient. L'histoire de l'association est une valeur importante pour ses membres,
+                et l'association s'engage à ne pas tourner le dos à ses origines.
             </p>
         </div>
         <div class="col-sm-1"></div>
@@ -72,7 +88,7 @@
                 <div class="well">
                     <div class="row">
                         <h3>Assemblée Générale du 12 mars 2019</h3>
-                        <h4>Tribu-Terre, Association des étudiants scientifiques de l'Université d'Orléans</h4>
+                        <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
                         <hr>
                         <div class="text-justify retrait">
                             <p>Bureau encore en fonction</p>
@@ -129,7 +145,7 @@
                 <div class="well">
                     <div class="row">
                         <h3>Assemblée Générale du 18 avril 2018</h3>
-                        <h4>Tribu-Terre, Association des étudiants scientifiques de l'Université d'Orléans</h4>
+                        <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
                         <hr>
                         <div class="text-justify retrait">
                             <p>Description du bureau et résumé de l'année.</p>
