@@ -7,7 +7,7 @@
             <p>
                 L'association Tribu-Terre fut fondée en 2003 par des étudiants en géologie à l'OSUC, en tant
                 qu'association des acteurs en géosciences d'Orléans. Elle a pendant des années pour objectif
-                d'accompagner les étudiants à l'OSUC dans leurs études, par exemple en partageant des publications et
+                d'accompagner les étudiants à l'OSUC dans leurs études, en partageant par exemple des publications et
                 des magasines scientifiques et en invitant des conférenciers spécialistes en géoscience présenter leur
                 discipline (les "causeries Tribu-Terre"). Elle organise également des soirées et des apéros pour
                 dynamiser la vie étudiante en géologie, ainsi que des excursions dans des régions à signification
@@ -15,16 +15,17 @@
                 repos pour les étudiants qui deviendra très vite le local de l'association.
             </p>
             <p>
-                Le 13 Juin 2015, sous la présidence d'Antoine <span class="pc">Saucray</span>, l'association Tribu-Terre
-                adhère à la Fédération Nationale des étudiants en Sciences Exactes, Naturelles et Techniques (FNEB),
-                dans le but d'étendre son réseau en France.
+                Au cours de l'année 2014 et à l'initiative du président Etienne <span class="pc">Marceau</span>,
+                Tribu-Terre se rapproche de la Fédération Nationale des étudiants en Sciences Exactes, Naturelles et
+                Techniques (FNEB) dans le but d'étendre son réseau en France. Elle devient officiellement membre à part
+                entière de la fédération le 13 Juin 2015, sous la présidence d'Antoine <span class="pc">Saucray</span>.
             </p>
             <p>
                 <!--Le 19 février 2018 = 1e AG-->En octobre 2017, sous la présidence de Quentin
                 <span class="pc">Baju</span>, Tribu-Terre s'associe avec les associations étudiantes de la ville
                 d'Orléans pour fonder la fédération ÔCampus, dont les missions sont de faciliter la communication entre
-                les associations, d'organiser des événements inter-filières ainsi et de contribuer à la vie étudiante
-                Orléanaise et la favorisation d'événements inter-filières.
+                les associations, d'organiser des événements inter-filières et de contribuer à la vie étudiante
+                Orléanaise.
             </p>
             <p>
                 C'est le 18 avril 2018, lors de l'Assemblée Générale qui voit la réélection de Quentin
@@ -49,7 +50,7 @@
             </p>
             <p>
                 <a href="<?php echo $prefixe . 'association/fonctionnement/' ?>">
-                    En savoir plus sur le fonctionnement de l'association
+                    En savoir plus sur le fonctionnement de l'association.
                 </a>
             </p>
             <p>
@@ -64,7 +65,7 @@
     <!-- \/ AG 2019 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2019">
-            Assemblée Générale du 12 mars 2019
+            Assemblée Générale du 12 mars 2019 (Complet)
         </button>
         <div class="collapse" id="2019">
             <div style="margin: 15px" class="card card-body">
@@ -77,7 +78,7 @@
                             <p>Bureau encore en fonction</p>
                         </div>
                         <hr>
-                        <div class="text-center">
+                        <div class="text-center" style="display: none">
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#FB2019">
                                 Voir le post Facebook
                             </button>
@@ -121,7 +122,7 @@
     <!-- \/ AG 2018 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2018">
-            Assemblée Générale du 18 avril 2018
+            Assemblée Générale du 18 avril 2018 (Complet)
         </button>
         <div class="collapse" id="2018">
             <div style="margin: 15px" class="card card-body">
@@ -176,7 +177,7 @@
     <!-- \/ AG 2017 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2017">
-            Assemblée Générale du 28 mars 2017
+            Assemblée Générale du 28 mars 2017 (Bureau restreint)
         </button>
         <div class="collapse" id="2017">
             <div style="margin: 15px" class="card card-body">
@@ -199,8 +200,10 @@
                             <hr>
                             <ul class="text-left">
                                 <li>Quentin <span class="pc">Baju</span> (Président)</li>
-                                <li>Héronne <span class="pc">Edouard</span></li>
-                                <li>???</li>
+                                <li>Florian <span class="pc">Jarry</span> (Vice-Président)</li>
+                                <li>Héronne <span class="pc">Edouard</span> (Secrétaire)</li>
+                                <li>Nancia <span class="pc">Loemba</span> (Trésorière)</li>
+                                <li>Valentin <span class="pc">Simon</span> (Vice-Trésorier)</li>
                             </ul>
                         </div>
                     </div>
@@ -212,7 +215,7 @@
     <!-- \/ AG 2016 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2016">
-            Assemblée Générale du 20 avril 2016
+            Assemblée Générale du 20 avril 2016 (Bureau restreint)
         </button>
         <div class="collapse" id="2016">
             <div style="margin: 15px" class="card card-body">
@@ -232,7 +235,7 @@
                                     <li>Florian <span class="pc">Jarry</span> (Secrétaire)</li>
                                     <li>Dylan <span class="pc">Chateigner</span> (Vice-Secrétaire)</li>
                                     <li>Killian <span class="pc">Chevalier</span> (Trésorier)</li>
-                                    <li>Raphael <span class="pc">Tur</span> (Vice-Trésorier)</li>
+                                    <li>Raphaël <span class="pc">Tur</span> (Vice-Trésorier)</li>
                                 </ul>
                             </div>
                             <div class="col-sm-3"></div>
@@ -246,7 +249,7 @@
     <!-- \/ AG 2015 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2015">
-            Assemblée Générale du 23 avril 2015
+            Assemblée Générale du 23 avril 2015 (Bureau restreint + CA)
         </button>
         <div class="collapse" id="2015">
             <div style="margin: 15px" class="card card-body">
@@ -287,7 +290,7 @@
     <!-- \/ AG 2014 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2014">
-            Assemblée Générale du 29 Septembre 2014
+            Assemblée Générale du 29 Septembre 2014 (Complet)
         </button>
         <div class="collapse" id="2014">
             <div style="margin: 15px" class="card card-body">
@@ -308,14 +311,14 @@
                                     <li>Tiphaine <span class="pc">Penchenat</span> (Vice-Secrétaire)</li>
                                     <li>Thomas <span class="pc">Baillet</span> (Trésorière)</li>
                                     <li>Rémi <span class="pc">Carrio</span> (Vice-Trésorière)</li>
-                                    <li>Jean-Baptiste <span class="pc">Douard</span></li>
-                                    <li>Marc <span class="pc">Villie</span></li>
-                                    <li>Zoé <span class="pc">Lecoeuche</span></li>
-                                    <li>Sarah <span class="pc">Ouggahi</span></li>
+                                    <li>Jean-Baptiste <span class="pc">Douard</span> (CM Collaboration Inter-Asso)</li>
+                                    <li>Arnaud <span class="pc">Clavier</span> (CM Communication et Gestion Informatique)</li>
+                                    <li>Zoé <span class="pc">Lecoeuche</span> (CM Photographe Événementiel)</li>
+                                    <li>Sarah <span class="pc">Ouggahi</span> (CM Gestion Des Collections)</li>
                                     <li>Renaud <span class="pc">Gendreau</span></li>
                                     <li>Julia <span class="pc">Roux</span></li>
                                     <li>Pierre <span class="pc">Verdon</span></li>
-                                    <li>Arnaud <span class="pc">Clavier</span></li>
+                                    <li>Marc <span class="pc">Villie</span></li>
                                 </ul>
                             </div>
                             <div class="col-sm-3"></div>
@@ -324,5 +327,130 @@
                 </div>
             </div>
         </div>
+        <hr>
+    </div>
+    <!-- \/ AG 2013 \/ -->
+    <div>
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2013">
+            Assemblée Générale du 23 septembre 2013 (Bureau restreint)
+        </button>
+        <div class="collapse" id="2013">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du 23 septembre 2013</h3>
+                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Composition du bureau</h3>
+                                <hr>
+                                <ul class="text-left">
+                                    <li>Thomas <span class="pc">Bailet</span> (Président)</li>
+                                    <li>Etienne <span class="pc">Marceau</span> (Vice-Président)</li>
+                                    <li>Gabrielle <span class="pc">Prouteau</span> (Secrétaire)</li>
+                                    <li>Paul-Ary <span class="pc">Bruand</span> (Vice-Secrétaire)</li>
+                                    <li>Barbara <span class="pc">Maetracci</span> (Trésorière)</li>
+                                    <li>Thomas <span class="pc">Thiebault</span> (Vice-Trésorier)</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <!-- \/ AG 2012 \/ -->
+    <div>
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2012">
+            Assemblée Générale du ??? 2012 (Bureau restreint)
+        </button>
+        <div class="collapse" id="2012">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du ??? 2012</h3>
+                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Composition du bureau</h3>
+                                <hr>
+                                <ul class="text-left">
+                                    <li>Paul-Ary <span class="pc">Bruand</span> (Président)</li>
+                                    <li>Sarah <span class="pc">Deveaud</span> (Vice-Président)</li>
+                                    <li>Fanny <span class="pc">Dissard</span> (Secrétaire)</li>
+                                    <li>Justine <span class="pc">Négrel</span> (Vice-Secrétaire)</li>
+                                    <li>Thomas <span class="pc">Thiebault</span> (Trésorier)</li>
+                                    <li>Gilles <span class="pc">Dhenain</span> (Vice-Trésorier)</li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <!-- \/ AG 2011 \/ -->
+    <div>
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2011">
+            Assemblée Générale du 28 septembre 2011 (Inconnu)
+        </button>
+        <div class="collapse" id="2011">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du 28 septembre 2011</h3>
+                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Composition du bureau</h3>
+                                <hr>
+                                <ul class="text-left">
+                                    <li>? <span class="pc">?</span> (Président)</li>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <!-- \/ AG 2010 \/ -->
+    <div>
+        <button style="width: fit-content" class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#2010">
+            Assemblée Générale du 29? septembre? 2010 (Inconnu)
+        </button>
+        <div class="collapse" id="2010">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du 29? septembre? 2010</h3>
+                        <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Composition du bureau</h3>
+                                <hr>
+                                <ul class="text-left">
+                                    <li>? <span class="pc">?</span> (Président)</li>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
     </div>
 </div><br>
