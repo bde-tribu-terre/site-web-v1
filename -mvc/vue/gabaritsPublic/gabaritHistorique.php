@@ -42,7 +42,7 @@
                 réélection de Quentin <span class="pc">Baju</span> comme président, d'ouvrir l'association aux autres
                 filières scientifiques du campus d'Orléans. C'est alors que Tribu-Terre devient officiellement
                 l'Association des Étudiants Scientifiques de l'Université d'Orléans, et son bureau se compose rapidement
-                d'étudiants en différentes disciplines scientifiques.
+                d'étudiants de différentes disciplines scientifiques.
             </p>
             <p>
                 Malgré tout, la géologie reste un domaine dans lequel Tribu-Terre s'investit en priorité, et l'OSUC
