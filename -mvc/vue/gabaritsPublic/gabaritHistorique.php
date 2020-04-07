@@ -34,7 +34,8 @@
                 première année scientifique : trois disciplines sont suivies en parallèle pendant un an, avant de
                 choisir parmi ces trois dernières celle qui constituera le reste des études à partir de la deuxième
                 année. En conséquence de ce changement, l'OSUC n'accueille les étudiants qu'à partir de leur deuxième
-                année, ce qui à terme priverait l'association de beaucoup de potentiels nouveaux membres du bureau.
+                année, ce qui à terme priverait l'association de beaucoup de potentiels nouveaux adhérents et futurs
+                membres du bureau.
             </p>
             <p>
                 Pour sauver Tribu-Terre, le bureau décide lors de l'Assemblée Générale du 18 avril 2018, qui voit la
