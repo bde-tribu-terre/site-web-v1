@@ -29,7 +29,7 @@
                     <div class="form-group"> <!-- Date -->
                         <label for="formModifierEvent_date">Date</label>
                         <input class="form-control" id="formModifierEvent_date" type="date" value="<?php echo $dateEvents ?>" name="formModifierEvent_date" placeholder="Date">
-                        <small class="form-text text-muted">Format : "jj/mm/aaaa"</small>
+                        <small class="form-text text-muted">S'il n'y a pas de petit menu qui s'ouvre, alors saisir une date sous le format "aaaa-mm-jj"</small>
                     </div>
                     <div class="form-group"> <!-- Heure -->
                         <label for="formModifierEvent_heureHeure">Heure</label>

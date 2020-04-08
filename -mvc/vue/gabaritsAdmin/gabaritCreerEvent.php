@@ -25,7 +25,7 @@
                     <div class="form-group"> <!-- Date -->
                         <label for="formCreerEvent_date">Date</label>
                         <input class="form-control" id="formCreerEvent_date" type="date" name="formCreerEvent_date" placeholder="Date">
-                        <small class="form-text text-muted">Format : "jj/mm/aaaa"</small>
+                        <small class="form-text text-muted">S'il n'y a pas de petit menu qui s'ouvre, alors saisir une date sous le format "aaaa-mm-jj"</small>
                     </div>
                     <div class="form-group"> <!-- Heure -->
                         <label for="formCreerEvent_heureHeure">Heure</label>
