@@ -1,8 +1,6 @@
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-12">
-            <h3>Menu principal</h3>
-            <hr>
             <?php
             if (!empty($messageRetour)) {
                 echo
