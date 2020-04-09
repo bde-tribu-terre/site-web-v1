@@ -151,7 +151,7 @@
     </div>
 
     <div class="col-sm-4">
-        <h3>Fédération !</h3>
+        <h3>Réseau associatif</h3>
         <p>L'association Tribu-Terre adhère à des fédérations d'associations (svp les admins dites moi qui dire là vite def, pis une page entière en plus :o)</p>
         <div id="carouselFederations" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -200,7 +200,7 @@
     </div>
 
     <div class="col-sm-4">
-        <h3>L'Université !</h3>
+        <h3>Université</h3>
         <p>L'association Tribu-Terre agit en accord avec l'OSUC et le CoST.</p>
         <div id="carouselUniversite" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
