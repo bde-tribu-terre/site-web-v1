@@ -604,3 +604,14 @@ function supprimerArticle($rep, $id) {
     $prepare->closeCursor();
     ajouterLog(403, 'Suppression d\'un article (ID : ' . $id . ').');
 }
+
+function articlesTous() {
+    $connexion = getConnect();
+    $requete = "SELECT idArticles, titreArticles, titreCategoriesArticles, visibiliteArticles, texteArticles, nomMembre, dateCreationArticles, dateModificationArticles FROM Articles NATURAL JOIN Membre NATURAL JOIN CategoriesArticles ORDER BY dateCreationArticles DESC";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}

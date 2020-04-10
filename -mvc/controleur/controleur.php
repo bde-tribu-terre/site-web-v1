@@ -423,6 +423,22 @@ function CtlSupprimerArticle($prefixe, $id) {
 }
 
 ########################################################################################################################
+# Articles                                                                                                             #
+########################################################################################################################
+function CtlArticles($prefixe) {
+    afficherArticles($prefixe);
+}
+
+function CtlArticlePrecis($prefixe, $id) {
+    $article = articlePrecis($id);
+    if ($article != false) {
+        afficherArticlePrecis($prefixe, $article);
+    } else {
+        throw new Exception('L\'article recherché n\'existe pas.');
+    }
+}
+
+########################################################################################################################
 # Association (Présentation)                                                                                           #
 ########################################################################################################################
 function CtlPresentation($prefixe) {

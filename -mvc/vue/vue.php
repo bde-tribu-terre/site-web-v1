@@ -638,6 +638,99 @@ function afficherAccueil($prefixe) {
 }
 
 ########################################################################################################################
+# Articles                                                                                                             #
+########################################################################################################################
+function afficherArticles($prefixe) {
+    $title = 'Articles';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticles.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    $tableArticles = '';
+    $lignesArticles = articlesTous();
+
+    if (empty($lignesArticles)) {
+        $tableArticles = '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>';
+    }
+
+    $arrayMois = [
+        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
+        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
+        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
+        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+    ];
+
+    foreach ($lignesArticles as $ligne) {
+        $id = htmlentities($ligne->idArticles, ENT_QUOTES, "UTF-8");
+        $titre = htmlentities($ligne->titreArticles, ENT_QUOTES, "UTF-8");
+        $categorie = htmlentities($ligne->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $visibilite = htmlentities($ligne->visibiliteArticles, ENT_QUOTES, "UTF-8");
+        $dateCreation = htmlentities($ligne->dateCreationArticles, ENT_QUOTES, "UTF-8");
+        $dateModification = htmlentities($ligne->dateModificationArticles, ENT_QUOTES, "UTF-8");
+        $texte = htmlentities($ligne->texteArticles, ENT_QUOTES, "UTF-8");
+        $auteur = htmlentities($ligne->nomMembre, ENT_QUOTES, "UTF-8");
+
+        $tableArticles .=
+            '<div class="col-sm-1"></div>' .
+                '<div class="col-sm-10">' .
+                    '<div class="well">' .
+                        '<h4 class="pc">' . $categorie . '</h4>' .
+                        '<h3>' . $titre . '</h3>' .
+                        '<small>' . $dateCreation . '</small>' .
+                        '<a class="btn btn-primary" href="' . $prefixe . 'articles/?id=' . $id . '">' .
+                            'Lire l\'article' .
+                        '</a>' .
+                    '</div>' .
+                '</div>' .
+            '<div class="col-sm-1"></div>';
+
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherArticlePrecis($prefixe, $event) {
+    // $title = 'Event'; Voir ci-après.
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    $arrayMois = [
+        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
+        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
+        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
+        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+    ];
+
+    $id = htmlentities($event->idEvents, ENT_QUOTES, "UTF-8");
+    $titre = htmlentities($event->titreEvents, ENT_QUOTES, "UTF-8");
+    $desc = htmlentities($event->descEvents, ENT_QUOTES, "UTF-8");
+    $date = htmlentities($event->dateEvents, ENT_QUOTES, "UTF-8");
+    $heure = htmlentities($event->heureEvents, ENT_QUOTES, "UTF-8");
+    $lieu = htmlentities($event->lieuEvents, ENT_QUOTES, "UTF-8");
+    $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+
+    $title = $titre;
+
+    $nbJoursStr = '';
+    if ($nbJours == 0) {
+        $nbJoursStr .= '<strong><span style="color: red">(Aujourd\'hui)</span></strong>';
+    } elseif ($nbJours == 1) {
+        $nbJoursStr .= '<strong><span style="color: red">(Demain)</span></strong>';
+    } elseif ($nbJours > 0) {
+        $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+    } else {
+        $nbJoursStr .= '<i><span style="color: darkgray">(Il y a ' . abs($nbJours) . ' jours)</span></i>';
+    }
+
+    $descStr = nl2br($desc);
+    $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
+    $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
 # Erreur                                                                                                               #
 ########################################################################################################################
 function afficherErreur($prefixe, $messageErreur) {
