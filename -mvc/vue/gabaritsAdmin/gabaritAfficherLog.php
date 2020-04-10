@@ -14,7 +14,19 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <?php echo $log ?>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Date et heure</th>
+                    <th scope="col">Code log</th>
+                    <th scope="col">Membre</th>
+                    <th scope="col">Message</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php echo $log ?>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="row">

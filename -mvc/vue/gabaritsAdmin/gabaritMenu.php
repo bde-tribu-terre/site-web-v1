@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="well">
                 <h3>Events</h3>
                 <hr>
@@ -32,7 +32,9 @@
                 </form>
             </div>
         </div>
-        <div class="col-sm-6">
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="well">
                 <h3>Goodies</h3>
                 <hr>
@@ -52,7 +54,9 @@
                 </form>
             </div>
         </div>
-        <div class="col-sm-6">
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="well">
                 <h3>Journal</h3>
                 <hr>
@@ -66,9 +70,11 @@
                 </form>
             </div>
         </div>
-        <div class="col-sm-6">
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="well">
-                <h3>Journal</h3>
+                <h3>Log</h3>
                 <hr>
                 <form id="formLog" method="post">
                     <p> <!-- Voir le log -->
@@ -77,7 +83,9 @@
                 </form>
             </div>
         </div>
-        <div class="col-sm-6">
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="well">
                 <h3>Se déconnecter</h3>
                 <hr>

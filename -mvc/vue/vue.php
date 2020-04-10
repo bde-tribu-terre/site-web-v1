@@ -303,10 +303,12 @@ function afficherAfficherLog($prefixe, $messageRetour) {
         $descLogActions = htmlentities($ligneLog->descLogActions, ENT_QUOTES, "UTF-8");
 
         $log .=
-            '<div class="well">' .
-                $dateLogActions . ' | ' . $codeLogActions . ' | ' . $nomMembre . '<br>' .
-                $descLogActions .
-            '</div>';
+            '<tr>' .
+                '<th scope="row">' . $dateLogActions . '</th>' .
+                '<th>' . $codeLogActions . '</th>' .
+                '<th>' . $nomMembre . '</th>' .
+                '<th>' . $descLogActions . '</th>' .
+            '</tr>>';
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');
