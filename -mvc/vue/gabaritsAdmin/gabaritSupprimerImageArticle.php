@@ -25,7 +25,7 @@
                     <?php echo $images ?>
                     <hr>
                     <div class="form-group"> <!-- Supprimer les images -->
-                        <input class="btn btn-primary" type="submit" value="Supprimer les images" name="formSupprimerImageArticle_supprimer">
+                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer les images" name="formSupprimerImageArticle_supprimer">
                     </div>
                 </form>
             </div>
@@ -38,7 +38,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-primary btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                     </p>
                 </form>
             </div>

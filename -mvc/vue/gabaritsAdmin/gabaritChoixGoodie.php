@@ -27,7 +27,7 @@
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Choisir Goodie -->
-                        <input class="btn btn-primary" type="submit" value="Choisir le goodie" name="formChoisirGoodie_choisir">
+                        <input class="btn btn-primary btn-block" type="submit" value="Choisir le goodie" name="formChoisirGoodie_choisir">
                     </div>
                 </form>
             </div>
@@ -40,7 +40,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-primary btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                     </p>
                 </form>
             </div>
