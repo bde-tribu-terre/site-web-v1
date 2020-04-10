@@ -32,6 +32,17 @@ function infosMembre($id) {
     return $ligne;
 }
 
+function ajouterLog($message) {
+    $connexion = getConnect();
+    $requete = "INSERT INTO LogActions VALUES (0, :idMembre, :dateLogActions, :descLogActions)";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
+    $prepare->bindValue(':dateLogActions', date("Y-m-d H:i:s"), PDO::PARAM_STR);
+    $prepare->bindValue(':descLogActions', $message, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
 ########################################################################################################################
 # Évents                                                                                                               #
 ########################################################################################################################
