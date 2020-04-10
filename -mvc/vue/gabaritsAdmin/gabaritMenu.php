@@ -68,6 +68,17 @@
         </div>
         <div class="col-sm-6">
             <div class="well">
+                <h3>Journal</h3>
+                <hr>
+                <form id="formLog" method="post">
+                    <p> <!-- Voir le log -->
+                        <input class="btn btn-primary" type="submit" value="Voir le log" name="formLog_afficherLog">
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="well">
                 <h3>Se déconnecter</h3>
                 <hr>
                 <form id="formDeconnexion" method="post">
