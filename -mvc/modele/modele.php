@@ -44,12 +44,16 @@ function logTous() {
 }
 
 function ajouterLog($code, $message) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+
     $connexion = getConnect();
     $requete = "INSERT INTO LogActions VALUES (0, :idMembre, :codeLogActions, :dateLogActions, :descLogActions)";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
     $prepare->bindValue(':codeLogActions', $code, PDO::PARAM_INT);
-    $prepare->bindValue(':dateLogActions', date('Y-m-d H:i:s'), PDO::PARAM_STR);
+    $prepare->bindValue(':dateLogActions', $dt->format('Y-m-d'), PDO::PARAM_STR);
     $prepare->bindValue(':descLogActions', $message, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
@@ -59,7 +63,11 @@ function ajouterLog($code, $message) {
 # Évents                                                                                                               #
 ########################################################################################################################
 function eventsTous($tri, $aVenir, $passes, $maxi) {
-    $ajd = date('Y-m-d');
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+
+    $ajd = $dt->format('Y-m-d');
     switch ($tri) {
         case 'FP':
             $triSQL = ' ORDER BY dateEvents DESC';
@@ -109,7 +117,7 @@ function eventPrecis($id) {
 
 function creerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
     $connexion = getConnect();
-    $requete = "INSERT INTO Events VALUES (0, :titreEvents, :descEvents, :dateEvents, :heureEvents, :lieuEvents)"; // (0 pour le auto increment)
+    $requete = "INSERT INTO Events VALUES (0, :titreEvents, :descEvents, :dateEvents, :heureEvents, :lieuEvents)";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':titreEvents', $titre, PDO::PARAM_STR);
     $prepare->bindValue(':descEvents', $desc, PDO::PARAM_STR);
@@ -449,6 +457,10 @@ function idTitreCategoriesArticles() {
 }
 
 function ajouterArticle($titre, $categorie, $visibilite, $texte) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+
     $connexion = getConnect();
     $requete = "INSERT INTO Articles VALUES (0, :idMembre, :idCategorieArticles, :titreArticles, :texteArticles, :visibiliteArticles, :dateCreationArticles, :dateModificationArticles)";
     $prepare = $connexion->prepare($requete);
@@ -457,7 +469,7 @@ function ajouterArticle($titre, $categorie, $visibilite, $texte) {
     $prepare->bindValue(':titreArticles', $titre, PDO::PARAM_STR);
     $prepare->bindValue(':texteArticles', $texte, PDO::PARAM_STR);
     $prepare->bindValue(':visibiliteArticles', $visibilite, PDO::PARAM_INT);
-    $prepare->bindValue(':dateCreationArticles', date('Y-m-d'), PDO::PARAM_STR);
+    $prepare->bindValue(':dateCreationArticles', $dt->format('Y-m-d'), PDO::PARAM_STR);
     $prepare->bindValue(':dateModificationArticles', NULL, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
@@ -509,14 +521,19 @@ function articlePrecis($id) {
 }
 
 function modifierArticle($id, $titre, $categorie, $visibilite, $texte) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+
     $connexion = getConnect();
-    $requete = "UPDATE Articles SET idCategoriesArticles=:idCategoriesArticles, titreArticles=:titreArticles, visibiliteArticles=:visibiliteArticles, texteArticles=:texteArticles WHERE idArticles=:idArticles";
+    $requete = "UPDATE Articles SET idCategoriesArticles=:idCategoriesArticles, titreArticles=:titreArticles, visibiliteArticles=:visibiliteArticles, texteArticles=:texteArticles, dateModificationArticles=:dateModificationArticles WHERE idArticles=:idArticles";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idCategoriesArticles', $categorie, PDO::PARAM_INT);
     $prepare->bindValue(':titreArticles', $titre, PDO::PARAM_STR);
     $prepare->bindValue(':visibiliteArticles', $visibilite, PDO::PARAM_INT);
     $prepare->bindValue(':texteArticles', $texte, PDO::PARAM_STR);
     $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':dateModificationArticles', $dt->format('Y-m-d'), PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
     ajouterLog(402, 'Modification de l\'article "' . $titre . '".');

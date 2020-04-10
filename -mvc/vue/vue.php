@@ -670,20 +670,32 @@ function afficherArticles($prefixe) {
         $texte = htmlentities($ligne->texteArticles, ENT_QUOTES, "UTF-8");
         $auteur = htmlentities($ligne->nomMembre, ENT_QUOTES, "UTF-8");
 
-        $tableArticles .=
-            '<div class="col-sm-1"></div>' .
-                '<div class="col-sm-10">' .
-                    '<div class="well">' .
-                        '<h4 class="pc">' . $categorie . '</h4>' .
-                        '<h3>' . $titre . '</h3>' .
-                        '<small>' . $dateCreation . '</small>' .
-                        '<a class="btn btn-primary" href="' . $prefixe . 'articles/?id=' . $id . '">' .
-                            'Lire l\'article' .
-                        '</a>' .
-                    '</div>' .
-                '</div>' .
-            '<div class="col-sm-1"></div>';
+        if ($visibilite == 0) {
+            continue;
+        }
 
+        $texteNonFormate = preg_replace('/&sect;!?L(\[.*\])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $texte)));
+        $texteNonFormateMini = substr($texteNonFormate, 0, 100);
+
+        $tableArticles .=
+            '<div class="row">' .
+                '<div class="col-sm-2"></div>' .
+                    '<div class="col-sm-8">' .
+                        '<div class="well">' .
+                            '<h4 class="pc">' . $categorie . '</h4>' .
+                            '<hr>' .
+                            '<h2>' . $titre . '</h2>' .
+                            '<small>Publié le ' . substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4) . '</small>' .
+                            '<hr>' .
+                            '<p class="text-left retrait">' . $texteNonFormate . (strlen($texte) > 100 ? '[...]' : '')  . '</p>' .
+                            '<hr>' .
+                            '<a class="btn btn-primary btn-block" href="' . $prefixe . 'articles/?id=' . $id . '">' .
+                                'Lire l\'article' .
+                            '</a>' .
+                        '</div>' .
+                    '</div>' .
+                '<div class="col-sm-2"></div>' .
+            '</div>';
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');
