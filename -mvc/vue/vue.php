@@ -308,7 +308,7 @@ function afficherAfficherLog($prefixe, $messageRetour) {
                 '<th>' . $codeLogActions . '</th>' .
                 '<th>' . $nomMembre . '</th>' .
                 '<th>' . $descLogActions . '</th>' .
-            '</tr>>';
+            '</tr>';
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');

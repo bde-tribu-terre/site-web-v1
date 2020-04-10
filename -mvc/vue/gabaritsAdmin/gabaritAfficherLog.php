@@ -14,11 +14,11 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <table class="table">
+            <table class="well table table-striped table-hover" style="background-color: white">
                 <thead>
                 <tr>
                     <th scope="col">Date et heure</th>
-                    <th scope="col">Code log</th>
+                    <th scope="col">Code</th>
                     <th scope="col">Membre</th>
                     <th scope="col">Message</th>
                 </tr>

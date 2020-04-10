@@ -34,7 +34,7 @@ function infosMembre($id) {
 
 function logTous() {
     $connexion = getConnect();
-    $requete = "SELECT idMembre, nomMembre, codeLogActions, dateLogActions, descLogActions FROM LogActions NATURAL JOIN Membre ORDER BY dateLogActions";
+    $requete = "SELECT idMembre, nomMembre, codeLogActions, dateLogActions, descLogActions FROM LogActions NATURAL JOIN Membre ORDER BY dateLogActions DESC";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
