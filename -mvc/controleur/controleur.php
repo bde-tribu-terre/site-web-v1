@@ -23,6 +23,7 @@ function CtlVerifConnexion($prefixe, $login, $mdp) {
             $id = verifConnexion($login, $mdp);
             if ($id != false) {
                 $_SESSION['id'] = $id;
+                ajouterLog(001, 'Connexion');
                 CtlMenu($prefixe, '');
             } else {
                 throw new Exception("Erreur : Login ou mot de passe invalide.");
@@ -87,6 +88,7 @@ function CtlMenu($prefixe, $messageRetour) {
 function CtlDeconnexion($prefixe, $messageRetour) {
     $_SESSION = array();
     if (isset($COOKIE[session_name()])) {
+        ajouterLog(002, 'Déconnexion');
         setcookie(session_name(), '', time()-42000, '/');
     }
     session_destroy();

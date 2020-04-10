@@ -118,6 +118,7 @@ function creerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
     $prepare->bindValue(':lieuEvents', $lieu, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(101, 'Ajout de l\'évent "' . $titre . '".');
 }
 
 function idTitreEvents() {
@@ -143,6 +144,7 @@ function modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu) {
     $prepare->bindValue(':lieuEvents', $lieu, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(102, 'Modification de l\'évent "' . $titre . '".');
 }
 
 function supprimerEvent($id) {
@@ -152,6 +154,7 @@ function supprimerEvent($id) {
     $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(103, 'Suppression d\'un évent (ID : ' . $id . ').');
 }
 
 ########################################################################################################################
@@ -244,6 +247,7 @@ function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNA
     $prepare->bindValue(':miniatureGoodies', $newName, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(201, 'Ajout du goodie "' . $titre . '".');
 }
 
 function idTitreGoodies() {
@@ -276,6 +280,7 @@ function ajouterImageGoodie($id, $titre, $fileImput) {
     $prepare->bindValue(':lienImagesgoodies', $newName, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(204, 'Ajout d\'une image d\'un goodie (ID : ' . $id . ').');
 }
 
 function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
@@ -290,9 +295,10 @@ function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $
     $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(202, 'Modification du goodie "' . $titre . '".');
 }
 
-function supprimerImageGoodie($id) {
+function supprimerImageGoodie($id, $logguer) {
     # Suppression de l'image
     $connexion = getConnect();
     $requete = "SELECT lienImagesGoodies FROM ImagesGoodies WHERE idImagesGoodies=:idImagesGoodies";
@@ -312,6 +318,10 @@ function supprimerImageGoodie($id) {
     $prepare->bindValue(':idImagesGoodies', $id, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->closeCursor();
+
+    if ($logguer) {
+        ajouterLog(205, 'Suppression d\'une image d\'un goodie (ID : ' . $id . ').');
+    }
 }
 
 function supprimerGoodie($id) {
@@ -325,7 +335,7 @@ function supprimerGoodie($id) {
     $lignes = $prepare->fetchall();
     $prepare->closeCursor();
     foreach ($lignes as $ligne) {
-        supprimerImageGoodie($ligne->idImagesGoodies);
+        supprimerImageGoodie($ligne->idImagesGoodies, false);
     }
 
     # Suppression du goodie
@@ -347,6 +357,7 @@ function supprimerGoodie($id) {
     $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(203, 'Suppression d\'un goodie (ID : ' . $id . ').');
 }
 
 ########################################################################################################################
@@ -389,6 +400,7 @@ function ajouterJournal($titre, $mois, $annee, $fileImput) {
     $prepare->bindValue(':pdfJournaux', $newName, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(301, 'Ajout du journal "' . $titre . '".');
 }
 
 function idTitreJournaux() {
@@ -422,4 +434,5 @@ function supprimerJournal($id) {
     $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->closeCursor();
+    ajouterLog(302, 'Suppression d\'un journal (ID : ' . $id . ').');
 }

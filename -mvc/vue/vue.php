@@ -305,7 +305,7 @@ function afficherAfficherLog($prefixe, $messageRetour) {
         $log .=
             '<tr>' .
                 '<th scope="row">' . $dateLogActions . '</th>' .
-                '<th>' . $codeLogActions . '</th>' .
+                '<th>' . sprintf('%03d', $codeLogActions) . '</th>' .
                 '<th>' . $nomMembre . '</th>' .
                 '<th>' . $descLogActions . '</th>' .
             '</tr>';
