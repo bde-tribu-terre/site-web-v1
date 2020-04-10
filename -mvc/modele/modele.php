@@ -48,7 +48,7 @@ function ajouterLog($code, $message) {
     $requete = "INSERT INTO LogActions VALUES (0, :idMembre, :codeLogActions, :dateLogActions, :descLogActions)";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
-    $prepare->bindValue(':dateLogActions', $code, PDO::PARAM_INT);
+    $prepare->bindValue(':codeLogActions', $code, PDO::PARAM_INT);
     $prepare->bindValue(':dateLogActions', date("Y-m-d H:i:s"), PDO::PARAM_STR);
     $prepare->bindValue(':descLogActions', $message, PDO::PARAM_STR);
     $prepare->execute();
