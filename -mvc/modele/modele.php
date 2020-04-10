@@ -577,7 +577,7 @@ function supprimerImageArticle($rep, $id, $logguer) {
     $prepare->closeCursor();
 
     if ($logguer) {
-        ajouterLog(205, 'Suppression d\'une image d\'un article (ID : ' . $id . ').');
+        ajouterLog(405, 'Suppression d\'une image d\'un article (ID : ' . $id . ').');
     }
 }
 
@@ -602,5 +602,5 @@ function supprimerArticle($rep, $id) {
     $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
     $prepare->execute();
     $prepare->closeCursor();
-    ajouterLog(203, 'Suppression d\'un article (ID : ' . $id . ').');
+    ajouterLog(403, 'Suppression d\'un article (ID : ' . $id . ').');
 }
