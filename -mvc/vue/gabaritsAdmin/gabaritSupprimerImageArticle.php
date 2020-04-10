@@ -15,20 +15,17 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Supprimer un goodie</h3>
+                <h3>Supprimer des images d'un goodie</h3>
                 <hr>
-                <form id="formSupprimerGoodie" method="post">
-                    <div class="form-group"> <!-- Goodie en question -->
-                        <label for="formSupprimerGoodie_idGoodie">Goodie</label>
-                        <select class="form-control" id="formSupprimerGoodie_idGoodie" name="formSupprimerGoodie_idGoodie">
-                            <option value="">--Choisir un goodie--</option>
-                            <?php echo $goodies ?>
-                        </select>
+                <form id="formSupprimerImageArticle" method="post">
+                    <div class="form-group"> <!-- ID du goodie -->
+                        <label for="formSupprimerImageArticle_idArticle">ID de l'article</label>
+                        <input class="form-control" id="formSupprimerImageArticle_idArticle" type="text" value="<?php echo $idArticle ?>" name="formSupprimerImageArticle_idArticle" readonly>
                     </div>
-                    <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>
+                    <?php echo $images ?>
                     <hr>
-                    <div class="form-group"> <!-- Supprimer goodie -->
-                        <input class="btn btn-primary" type="submit" value="Supprimer le goodie" name="formSupprimerGoodie_supprimer">
+                    <div class="form-group"> <!-- Supprimer les images -->
+                        <input class="btn btn-primary" type="submit" value="Supprimer les images" name="formSupprimerImageArticle_supprimer">
                     </div>
                 </form>
             </div>

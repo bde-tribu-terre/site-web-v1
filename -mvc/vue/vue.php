@@ -213,7 +213,7 @@ function afficherSupprimerImageGoodie($prefixe, $messageRetour, $id) {
 
         $images .=
             '<div class="form-group">' .
-            '<label for="' . $idImage . '"><img src="../goodies/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
+            '<label for="' . $idImage . '"><img src="' . $prefixe . 'goodies/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
             '<input class="form-control" type="checkbox" name="' . $idImage . '" id="' . $idImage . '">' .
             '</div>' .
             '<br>';
@@ -306,8 +306,36 @@ function afficherAjouterArticle($prefixe, $messageRetour) {
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
+function afficherAjouterImageArticle($prefixe, $messageRetour) {
+    $title = 'Ajouter une image à un article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterImageArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesArticles = idTitreArticles();
+
+    $articles = '';
+    foreach ($lignesArticles as $ligneArticle) {
+        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
+        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
+        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
+        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $articles .=
+            '<option value="' . $idArticle . '">(' .
+            substr($dateArticle, 8, 2) . '/' .
+            substr($dateArticle, 5, 2) . '/' .
+            substr($dateArticle, 0, 4) .
+            ' | ' . $categorieArticle . ') ' .
+            $titreArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
 function afficherChoixArticle($prefixe, $messageRetour) {
-    $title = 'Choisir un évent';
+    $title = 'Choisir un article';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixArticle.php';
     $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
@@ -364,6 +392,34 @@ function afficherModifierArticle($prefixe, $messageRetour, $id) {
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
+function afficherSupprimerImageArticle($prefixe, $messageRetour, $id) {
+    $title = 'Supprimer une image d\'un article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerImageArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $idArticle = $id;
+
+    $lignesImages = imagesArticle($id);
+    $images = '';
+
+    foreach ($lignesImages as $ligne) {
+        $idImage = $ligne->idImagesArticles;
+        $lienImage = $ligne->lienImagesArticles;
+
+        $images .=
+            '<div class="form-group">' .
+            '<label for="' . $idImage . '"><img src="' . $prefixe . 'articles/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
+            '<input class="form-control" type="checkbox" name="' . $idImage . '" id="' . $idImage . '">' .
+            '</div>' .
+            '<br>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
 function afficherAjouterCategorieArticle($prefixe, $messageRetour) {
     $title = 'Ajouter une catégorie d\'article';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
@@ -396,9 +452,37 @@ function afficherRenommerCategorieArticle($prefixe, $messageRetour) {
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
+function afficherSupprimerArticle($prefixe, $messageRetour) {
+    $title = 'Supprimer un article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesArticles = idTitreArticles();
+
+    $articles = '';
+    foreach ($lignesArticles as $ligneArticle) {
+        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
+        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
+        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
+        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $articles .=
+            '<option value="' . $idArticle . '">(' .
+            substr($dateArticle, 8, 2) . '/' .
+            substr($dateArticle, 5, 2) . '/' .
+            substr($dateArticle, 0, 4) .
+            ' | ' . $categorieArticle . ') ' .
+            $titreArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
 # Log
 function afficherAfficherLog($prefixe, $messageRetour) {
-    $title = 'Ajouter un journal';
+    $title = 'Log';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAfficherLog.php';
     $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';

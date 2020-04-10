@@ -81,8 +81,16 @@ function CtlAjouterArticleMenu($prefixe, $messageRetour) {
     afficherAjouterArticle($prefixe, $messageRetour);
 }
 
+function CtlAjouterImageArticleMenu($prefixe, $messageRetour) {
+    afficherAjouterImageArticle($prefixe, $messageRetour);
+}
+
 function CtlChoixArticleMenu($prefixe, $messageRetour) {
     afficherChoixArticle($prefixe, $messageRetour);
+}
+
+function CtlSupprimerArticleMenu($prefixe, $messageRetour) {
+    afficherSupprimerArticle($prefixe, $messageRetour);
 }
 
 function CtlAjouterCategorieArticleMenu($prefixe, $messageRetour) {
@@ -191,7 +199,7 @@ function CtlAjouterGoodie($prefixe, $titre, $categorie, $prixADEuro, $prixADCent
             !empty($desc) &&
             !empty($_FILES[$fileImput]['name'])
         ) {
-            ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
+            ajouterGoodie($prefixe . 'goodies/', $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
             afficherAjouterGoodie($prefixe, 'Le goodie "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une miniature.');
@@ -205,7 +213,7 @@ function CtlAjouterImageGoodie($prefixe, $id, $fileImput) {
     try {
         if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
             $titre = goodiePrecis($id)->titreGoodies;
-            ajouterImageGoodie($id, $titre, $fileImput);
+            ajouterImageGoodie($prefixe . 'goodies/', $id, $titre, $fileImput);
             afficherAjouterImageGoodie($prefixe, 'L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
@@ -263,7 +271,7 @@ function CtlAllerSupprimerImageGoodie($prefixe, $id) {
 function CtlSupprimerGoodie($prefixe, $id) {
     try {
         if (!empty($id)) {
-            supprimerGoodie($id);
+            supprimerGoodie($prefixe . 'goodies/', $id);
             afficherSupprimerGoodie($prefixe, 'Le goodie a été supprimé avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un goodie.');
@@ -277,7 +285,7 @@ function CtlSupprimerGoodie($prefixe, $id) {
 function CtlAjouterJournal($prefixe, $titre, $mois, $annee, $fileImput) {
     try {
         if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($_FILES[$fileImput]['name'])) {
-            ajouterJournal($titre, $mois, $annee, $fileImput);
+            ajouterJournal($prefixe . 'journaux/', $titre, $mois, $annee, $fileImput);
             afficherAjouterJournal($prefixe, 'Le journal "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner un PDF.');
@@ -290,7 +298,7 @@ function CtlAjouterJournal($prefixe, $titre, $mois, $annee, $fileImput) {
 function CtlSupprimerJournal($prefixe, $id) {
     try {
         if (!empty($id)) {
-            supprimerJournal($id);
+            supprimerJournal($prefixe . 'journaux/', $id);
             afficherSupprimerJournal($prefixe, 'Le journal a été supprimé avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un journal.');
@@ -316,6 +324,20 @@ function CtlAjouterArticle($prefixe, $titre, $categorie, $visibilite, $texte) {
         }
     } catch (Exception $e) {
         afficherAjouterArticle($prefixe, $e->getMessage());
+    }
+}
+
+function CtlAjouterImageArticle($prefixe, $id, $fileImput) {
+    try {
+        if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
+            $titre = articlePrecis($id)->titreArticles;
+            ajouterImageArticle($prefixe . 'articles/', $id, $titre, $fileImput);
+            afficherAjouterImageArticle($prefixe, 'L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
+        }
+    } catch (Exception $e) {
+        afficherAjouterImageArticle($prefixe, $e->getMessage());
     }
 }
 
@@ -345,6 +367,18 @@ function CtlModifierArticle($prefixe, $id, $titre, $categorie, $visibilite, $tex
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
+        afficherSupprimerArticle($prefixe, $e->getMessage());
+    }
+}
+
+function CtlAllerSupprimerImageArticle($prefixe, $id) {
+    try {
+        if (!empty($id)) {
+            afficherSupprimerImageArticle($prefixe, '', $id);
+        } else {
+            throw new Exception('Erreur : Identifiant invalide.');
+        }
+    } catch (Exception $e) {
         afficherModifierArticle($prefixe, $e->getMessage(), $id);
     }
 }
@@ -372,6 +406,19 @@ function CtlRenommerCategorieArticle($prefixe, $id, $titre) {
         }
     } catch (Exception $e) {
         afficherRenommerCategorieArticle($prefixe, $e->getMessage());
+    }
+}
+
+function CtlSupprimerArticle($prefixe, $id) {
+    try {
+        if (!empty($id)) {
+            supprimerArticle($prefixe . 'articles/', $id);
+            afficherSupprimerGoodie($prefixe, 'L\'article a été supprimé avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez sélectionner un article.');
+        }
+    } catch (Exception $e) {
+        afficherModifierArticle($prefixe, $e->getMessage(), $id);
     }
 }
 

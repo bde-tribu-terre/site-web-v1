@@ -102,7 +102,7 @@ try {
     elseif (isset($_POST['formSupprimerImageGoodie_supprimer'])) {
         foreach ($_POST as $key=>$value) {
             if ($value == 'on') {
-                supprimerImageGoodie($key, true);
+                supprimerImageGoodie($prefixe . '/goodies/', $key, true);
             }
         }
         CtlAllerSupprimerImageGoodie(
@@ -151,7 +151,7 @@ try {
             $_POST['formChoisirArticle_idArticle']
         );
     }
-    // Gabarit Ajouter Article
+    // Gabarit Modifier Article
     elseif (isset($_POST['formModifierArticle_modifier'])) {
         CtlModifierArticle(
             $prefixe,
@@ -160,6 +160,38 @@ try {
             $_POST['formModifierArticle_categorie'],
             $_POST['formModifierArticle_visibilite'],
             $_POST['formModifierArticle_texte']
+        );
+    } elseif (isset($_POST['formModifierArticle_supprimerImages'])) {
+        CtlAllerSupprimerImageArticle(
+            $prefixe,
+            $_POST['formModifierArticle_idArticle']
+        );
+    }
+    // Gabarit Supprimer Images Article
+    elseif (isset($_POST['formSupprimerImageArticle_supprimer'])) {
+        foreach ($_POST as $key=>$value) {
+            if ($value == 'on') {
+                supprimerImageArticle($prefixe . 'articles/', $key, true);
+            }
+        }
+        CtlAllerSupprimerImageArticle(
+            $prefixe,
+            $_POST['formSupprimerImageArticle_idArticle']
+        );
+    }
+    // Gabarit Supprimer Goodie
+    elseif (isset($_POST['formSupprimerArticle_supprimer'])) {
+        CtlSupprimerArticle(
+            $prefixe,
+            $_POST['formSupprimerArticle_idArticle']
+        );
+    }
+    // Gabarit Ajouter Image Article
+    elseif (isset($_POST['formAjouterImageArticle_ajouter'])) {
+        CtlAjouterImageArticle(
+            $prefixe,
+            $_POST['formAjouterImageArticle_idArticle'],
+            'formAjouterImageArticle_image'
         );
     }
     // Gabarit Ajouter Catégorie Article
@@ -184,7 +216,8 @@ try {
         CtlChoixEventMenu($prefixe, '');
     } elseif (isset($_POST['formEvents_supprimerEventMenu'])) {
         CtlSupprimerEventMenu($prefixe, '');
-    } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
+    }
+    elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
         CtlAjouterGoodieMenu($prefixe, '');
     } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
         CtlAjouterImageGoodieMenu($prefixe, '');
@@ -192,21 +225,29 @@ try {
         CtlChoixGoodieMenu($prefixe, '');
     } elseif (isset($_POST['formGoodies_SupprimerGoodieMenu'])) {
         CtlSupprimerGoodieMenu($prefixe, '');
-    } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
+    }
+    elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
         CtlAjouterJournalMenu($prefixe, '');
     } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {
         CtlSupprimerJournalMenu($prefixe, '');
-    } elseif (isset($_POST['formArticles_ajouterArticleMenu'])) {
+    }
+    elseif (isset($_POST['formArticles_ajouterArticleMenu'])) {
         CtlAjouterArticleMenu($prefixe, '');
+    } elseif (isset($_POST['formArticles_ajouterImageArticleMenu'])) {
+        CtlAjouterImageArticleMenu($prefixe, '');
     } elseif (isset($_POST['formArticles_modifierArticleMenu'])) {
         CtlChoixArticleMenu($prefixe, '');
+    } elseif (isset($_POST['formArticles_supprimerArticleMenu'])) {
+        CtlSupprimerArticleMenu($prefixe, '');
     } elseif (isset($_POST['formArticles_ajouterCategorieArticleMenu'])) {
         CtlAjouterCategorieArticleMenu($prefixe, '');
     } elseif (isset($_POST['formArticles_renommerCategorieArticleMenu'])) {
         CtlRenommerCategorieArticleMenu($prefixe, '');
-    } elseif (isset($_POST['formLog_afficherLog'])) {
+    }
+    elseif (isset($_POST['formLog_afficherLog'])) {
         CtlAfficherLog($prefixe, '');
-    } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
+    }
+    elseif (isset($_POST['formDeconnexion_deconnexion'])) {
         CtlDeconnexion($prefixe, '');
     }
     // Globaux : apparaissent dans plusieurs gabarits

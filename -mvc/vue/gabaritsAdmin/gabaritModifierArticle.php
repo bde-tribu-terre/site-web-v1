@@ -18,6 +18,9 @@
                 <h3>Ajouter un article</h3>
                 <hr>
                 <form id="formModifierArticle" method="post">
+                    <div class="form-group"> <!-- Supprimer des images de l'article -->
+                        <input class="btn btn-primary" type="submit" value="Supprimer des images de l'article" name="formModifierArticle_supprimerImages">
+                    </div>
                     <div class="form-group"> <!-- ID de l'article -->
                         <label for="formModifierArticle_idArticle">ID de l'article</label>
                         <input class="form-control" id="formModifierArticle_idArticle" type="text" value="<?php echo $idArticle ?>" name="formModifierArticle_idArticle" readonly>

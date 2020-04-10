@@ -224,15 +224,14 @@ function imagesGoodie($id) {
     return $ligne;
 }
 
-function ajouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
+function ajouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     # Enregistrement de la miniature.
     $infosFichier = pathinfo($_FILES[$fileImput]['name']);
     $extension = $infosFichier['extension'];
-    $miniatureRep = '../goodies/';
     $newName = 'img-m-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
-        $miniatureRep . $newName
+        $rep . $newName
     );
 
     # Enregistrement des données dans la BDD SQL.
@@ -261,15 +260,14 @@ function idTitreGoodies() {
     return $ligne;
 }
 
-function ajouterImageGoodie($id, $titre, $fileImput) {
+function ajouterImageGoodie($rep, $id, $titre, $fileImput) {
     # Enregistrement de la miniature.
     $infosFichier = pathinfo($_FILES[$fileImput]['name']);
     $extension = $infosFichier['extension'];
-    $miniatureRep = '../goodies/';
     $newName = 'img-i-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
-        $miniatureRep . $newName
+        $rep . $newName
     );
 
     # Enregistrement des données dans la BDD SQL.
@@ -298,7 +296,7 @@ function modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $
     ajouterLog(202, 'Modification du goodie "' . $titre . '".');
 }
 
-function supprimerImageGoodie($id, $logguer) {
+function supprimerImageGoodie($rep, $id, $logguer) {
     # Suppression de l'image
     $connexion = getConnect();
     $requete = "SELECT lienImagesGoodies FROM ImagesGoodies WHERE idImagesGoodies=:idImagesGoodies";
@@ -309,7 +307,7 @@ function supprimerImageGoodie($id, $logguer) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $image = $ligne->lienImagesGoodies;
-    unlink('../goodies/' . $image);
+    unlink($rep . $image);
 
     # Suppression des données
     $connexion = getConnect();
@@ -324,7 +322,7 @@ function supprimerImageGoodie($id, $logguer) {
     }
 }
 
-function supprimerGoodie($id) {
+function supprimerGoodie($rep, $id) {
     # Suppression des -images
     $connexion = getConnect();
     $requete = "SELECT idImagesGoodies, lienImagesGoodies FROM ImagesGoodies WHERE idGoodies=:id";
@@ -335,7 +333,7 @@ function supprimerGoodie($id) {
     $lignes = $prepare->fetchall();
     $prepare->closeCursor();
     foreach ($lignes as $ligne) {
-        supprimerImageGoodie($ligne->idImagesGoodies, false);
+        supprimerImageGoodie($rep, $ligne->idImagesGoodies, false);
     }
 
     # Suppression du goodie
@@ -348,7 +346,7 @@ function supprimerGoodie($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $miniature = $ligne->miniatureGoodies;
-    unlink('../goodies/' . $miniature);
+    unlink($rep . $miniature);
 
     # Suppression des données
     $connexion = getConnect();
@@ -382,13 +380,12 @@ function journauxTous($maxi) {
     return $ligne;
 }
 
-function ajouterJournal($titre, $mois, $annee, $fileImput) {
+function ajouterJournal($rep, $titre, $mois, $annee, $fileImput) {
     # Enregistrement du fichier PDF.
-    $journauxRep = '../journaux/';
     $newName = preg_replace('/[\W]/', '', $titre). '-' . time() . '.pdf'; # time() => aucun doublon imaginable.
     move_uploaded_file(
         $_FILES[$fileImput]['tmp_name'],
-        $journauxRep . $newName
+        $rep . $newName
     );
 
     # Enregistrement des données dans la BDD SQL.
@@ -414,7 +411,7 @@ function idTitreJournaux() {
     return $ligne;
 }
 
-function supprimerJournal($id) {
+function supprimerJournal($rep, $id) {
     # Suppression du journal
     $connexion = getConnect();
     $requete = "SELECT pdfJournaux FROM Journaux WHERE idJournaux=:idJournaux";
@@ -425,7 +422,7 @@ function supprimerJournal($id) {
     $ligne = $prepare->fetch();
     $prepare->closeCursor();
     $pdf = $ligne->pdfJournaux;
-    unlink('../journaux/' . $pdf);
+    unlink($rep . $pdf);
 
     # Suppression des données
     $connexion = getConnect();
@@ -523,4 +520,87 @@ function modifierArticle($id, $titre, $categorie, $visibilite, $texte) {
     $prepare->execute();
     $prepare->closeCursor();
     ajouterLog(402, 'Modification de l\'article "' . $titre . '".');
+}
+
+function ajouterImageArticle($rep, $id, $titre, $fileImput) {
+    # Enregistrement de l'image.
+    $infosFichier = pathinfo($_FILES[$fileImput]['name']);
+    $extension = $infosFichier['extension'];
+    $newName = 'img-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
+    move_uploaded_file(
+        $_FILES[$fileImput]['tmp_name'],
+        $rep . $newName
+    );
+
+    # Enregistrement des données dans la BDD SQL.
+    $connexion = getConnect();
+    $requete = "INSERT INTO ImagesArticles VALUES (0, :idArticles, :lienImagesArticles)";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':lienImagesArticles', $newName, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(404, 'Ajout d\'une image d\'un article (ID : ' . $id . ').');
+}
+
+function imagesArticle($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idImagesArticles, lienImagesArticles FROM ImagesArticles WHERE idArticles=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function supprimerImageArticle($rep, $id, $logguer) {
+    # Suppression de l'image
+    $connexion = getConnect();
+    $requete = "SELECT lienImagesArticles FROM ImagesArticles WHERE idImagesArticles=:idImagesArticles";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idImagesArticles', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    $image = $ligne->lienImagesArticles;
+    unlink($rep . $image);
+
+    # Suppression des données
+    $connexion = getConnect();
+    $requete = "DELETE FROM ImagesArticles WHERE idImagesArticles=:idImagesArticles";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idImagesArticles', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+
+    if ($logguer) {
+        ajouterLog(205, 'Suppression d\'une image d\'un article (ID : ' . $id . ').');
+    }
+}
+
+function supprimerArticle($rep, $id) {
+    # Suppression des images
+    $connexion = getConnect();
+    $requete = "SELECT idImagesArticles, lienImagesArticles FROM ImagesArticles WHERE idArticles=:id";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $lignes = $prepare->fetchall();
+    $prepare->closeCursor();
+    foreach ($lignes as $ligne) {
+        supprimerImageArticle($rep, $ligne->idImagesArticles, false);
+    }
+
+    # Suppression des données
+    $connexion = getConnect();
+    $requete = "DELETE FROM Articles WHERE idArticles=:idArticles";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(203, 'Suppression d\'un article (ID : ' . $id . ').');
 }

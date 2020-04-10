@@ -87,14 +87,14 @@
                     <p> <!-- Ajouter un article -->
                         <input class="btn btn-primary" type="submit" value="Ajouter un article" name="formArticles_ajouterArticleMenu">
                     </p>
+                    <p> <!-- Ajouter une image à un article -->
+                        <input class="btn btn-primary" type="submit" value="Ajouter une image à un article" name="formArticles_ajouterImageArticleMenu">
+                    </p>
                     <p> <!-- Modifier un article -->
                         <input class="btn btn-primary" type="submit" value="Modifier un article" name="formArticles_modifierArticleMenu">
                     </p>
                     <p> <!-- Supprimer un article -->
                         <input class="btn btn-primary" type="submit" value="Supprimer un article" name="formArticles_supprimerArticleMenu">
-                    </p>
-                    <p> <!-- Ajouter une image à un article -->
-                        <input class="btn btn-primary" type="submit" value="Ajouter une image à un article" name="formArticles_ajouterImageArticleMenu">
                     </p>
                     <p> <!-- Ajouter une catégorie d'article -->
                         <input class="btn btn-primary" type="submit" value="Ajouter une catégorie d'article" name="formArticles_ajouterCategorieArticleMenu">
