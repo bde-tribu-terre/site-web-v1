@@ -36,7 +36,7 @@ function afficherCreerEvent($prefixe, $messageRetour) {
 }
 
 function afficherChoixEvent($prefixe, $messageRetour) {
-    $title = 'Créer un évent';
+    $title = 'Choisir un évent';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixEvent.php';
     $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
@@ -62,7 +62,7 @@ function afficherChoixEvent($prefixe, $messageRetour) {
 }
 
 function afficherModifierEvent($prefixe, $messageRetour, $id) {
-    $title = 'Créer un évent';
+    $title = 'Modifier un évent';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierEvent.php';
     $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
@@ -85,7 +85,7 @@ function afficherModifierEvent($prefixe, $messageRetour, $id) {
 }
 
 function afficherSupprimerEvent($prefixe, $messageRetour) {
-    $title = 'Créer un évent';
+    $title = 'Supprimer un évent';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerEvent.php';
     $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
@@ -284,6 +284,119 @@ function afficherSupprimerJournal($prefixe, $messageRetour) {
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
+# Articles
+function afficherAjouterArticle($prefixe, $messageRetour) {
+    $title = 'Ajouter un article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesCategoriesArticle = idTitreCategoriesArticles();
+
+    $categories = '';
+    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
+        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $categories .=
+            '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherChoixArticle($prefixe, $messageRetour) {
+    $title = 'Choisir un évent';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesArticles = idTitreArticles();
+
+    $articles = '';
+    foreach ($lignesArticles as $ligneArticle) {
+        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
+        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
+        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
+        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $articles .=
+            '<option value="' . $idArticle . '">(' .
+            substr($dateArticle, 8, 2) . '/' .
+            substr($dateArticle, 5, 2) . '/' .
+            substr($dateArticle, 0, 4) .
+            ' | ' . $categorieArticle . ') ' .
+            $titreArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherModifierArticle($prefixe, $messageRetour, $id) {
+    $title = 'Modifier un Article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $ligneArticle = articlePrecis($id);
+
+    $idArticle = $id;
+    $titreArticle = $ligneArticle->titreArticles;
+    $categorieArticle = $ligneArticle->idCategoriesArticles;
+    $visibiliteArticle = $ligneArticle->visibiliteArticles;
+    $texteArticle = $ligneArticle->texteArticles;
+
+    $lignesCategoriesArticle = idTitreCategoriesArticles();
+
+    $categories = '';
+    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
+        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $selected = $categorieArticle == $idCategorieArticle ? ' selected' : '';
+        $categories .=
+            '<option value="' . $idCategorieArticle . '"' . $selected . '>' . $titreCategorieArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherAjouterCategorieArticle($prefixe, $messageRetour) {
+    $title = 'Ajouter une catégorie d\'article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterCategorieArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherRenommerCategorieArticle($prefixe, $messageRetour) {
+    $title = 'Renommer une catégorie d\'article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritRenommerCategorieArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesCategoriesArticle = idTitreCategoriesArticles();
+
+    $categories = '';
+    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
+        $idGoodie = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $titreGoodie = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $categories .=
+            '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+# Log
 function afficherAfficherLog($prefixe, $messageRetour) {
     $title = 'Ajouter un journal';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
@@ -304,15 +417,16 @@ function afficherAfficherLog($prefixe, $messageRetour) {
 
         $log .=
             '<tr>' .
-                '<th scope="row">' . $dateLogActions . '</th>' .
-                '<th>' . sprintf('%03d', $codeLogActions) . '</th>' .
-                '<th>' . $nomMembre . '</th>' .
-                '<th>' . $descLogActions . '</th>' .
+            '<th scope="row">' . $dateLogActions . '</th>' .
+            '<th>' . sprintf('%03d', $codeLogActions) . '</th>' .
+            '<th>' . $nomMembre . '</th>' .
+            '<th>' . $descLogActions . '</th>' .
             '</tr>';
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
+
 ########################################################################################################################
 # Accueil                                                                                                              #
 ########################################################################################################################

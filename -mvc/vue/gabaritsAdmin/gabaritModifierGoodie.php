@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group"> <!-- Description du goodie -->
                         <label for="formModifierGoodie_descGoodie">Description du goodie</label>
-                        <textarea class="form-control" id="formModifierGoodie_descGoodie" placeholder="Description du goodie" name="formModifierGoodie_descGoodie"><?php echo $descGoodie ?></textarea>
+                        <textarea class="form-control" id="formModifierGoodie_descGoodie" placeholder="Description du goodie" name="formModifierGoodie_descGoodie" rows="20"><?php echo $descGoodie ?></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <small class="form-text text-muted">⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé !</small>

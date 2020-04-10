@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group"> <!-- Description de l'évent -->
                         <label for="formModifierEvent_desc">Description de l'évent</label>
-                        <textarea class="form-control" id="formModifierEvent_desc" placeholder="Description de l'évent" name="formModifierEvent_desc"><?php echo $descEvents ?></textarea>
+                        <textarea class="form-control" id="formModifierEvent_desc" placeholder="Description de l'évent" name="formModifierEvent_desc" rows="20"><?php echo $descEvents ?></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>

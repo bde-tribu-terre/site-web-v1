@@ -48,7 +48,7 @@
                     </div>
                     <div class="form-group"> <!-- Description du goodie -->
                         <label for="formAjouterGoodie_descGoodie">Description du goodie</label>
-                        <textarea class="form-control" id="formAjouterGoodie_descGoodie" placeholder="Description du goodie" name="formAjouterGoodie_descGoodie"></textarea>
+                        <textarea class="form-control" id="formAjouterGoodie_descGoodie" placeholder="Description du goodie" name="formAjouterGoodie_descGoodie" rows="20"></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <div class="form-group"> <!-- Miniature -->

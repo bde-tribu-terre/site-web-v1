@@ -49,7 +49,7 @@ function ajouterLog($code, $message) {
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
     $prepare->bindValue(':codeLogActions', $code, PDO::PARAM_INT);
-    $prepare->bindValue(':dateLogActions', date("Y-m-d H:i:s"), PDO::PARAM_STR);
+    $prepare->bindValue(':dateLogActions', date('Y-m-d H:i:s'), PDO::PARAM_STR);
     $prepare->bindValue(':descLogActions', $message, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
@@ -435,4 +435,92 @@ function supprimerJournal($id) {
     $prepare->execute();
     $prepare->closeCursor();
     ajouterLog(302, 'Suppression d\'un journal (ID : ' . $id . ').');
+}
+
+########################################################################################################################
+# Articles                                                                                                             #
+########################################################################################################################
+function idTitreCategoriesArticles() {
+    $connexion = getConnect();
+    $requete = "SELECT idCategoriesArticles, titreCategoriesArticles FROM CategoriesArticles ORDER BY titreCategoriesArticles";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function ajouterArticle($titre, $categorie, $visibilite, $texte) {
+    $connexion = getConnect();
+    $requete = "INSERT INTO Articles VALUES (0, :idMembre, :idCategorieArticles, :titreArticles, :texteArticles, :visibiliteArticles, :dateCreationArticles, :dateModificationArticles)";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_INT);
+    $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
+    $prepare->bindValue(':titreArticles', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':texteArticles', $texte, PDO::PARAM_STR);
+    $prepare->bindValue(':visibiliteArticles', $visibilite, PDO::PARAM_INT);
+    $prepare->bindValue(':dateCreationArticles', date('Y-m-d'), PDO::PARAM_STR);
+    $prepare->bindValue(':dateModificationArticles', NULL, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(401, 'Ajout de l\'article "' . $titre . '".');
+}
+
+function ajouterCategorieArticle($titre) {
+    $connexion = getConnect();
+    $requete = "INSERT INTO CategoriesArticles VALUES (0, :titreCategoriesArticles)";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':titreCategoriesArticles', $titre, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(406, 'Ajout de la catégorie d\'articles "' . $titre . '".');
+}
+
+function renommerCategorieArticle($id, $titre) {
+    $connexion = getConnect();
+    $requete = "UPDATE CategoriesArticles SET titreCategoriesArticles=:titreCategoriesArticles WHERE idCategoriesArticles=:idCategoriesArticles";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idCategoriesArticles', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':titreCategoriesArticles', $titre, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(407, 'Renommage de la catégorie d\'article en "' . $titre . '" (ID : ' . $id .  ').');
+}
+
+function idTitreArticles() {
+    $connexion = getConnect();
+    $requete = "SELECT idArticles, titreArticles, dateCreationArticles, titreCategoriesArticles FROM Articles NATURAL JOIN CategoriesArticles ORDER BY dateCreationArticles DESC";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function articlePrecis($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idArticles, idCategoriesArticles, titreArticles, texteArticles, visibiliteArticles FROM Articles WHERE idArticles=:idArticles";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function modifierArticle($id, $titre, $categorie, $visibilite, $texte) {
+    $connexion = getConnect();
+    $requete = "UPDATE Articles SET idCategoriesArticles=:idCategoriesArticles, titreArticles=:titreArticles, visibiliteArticles=:visibiliteArticles, texteArticles=:texteArticles WHERE idArticles=:idArticles";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idCategoriesArticles', $categorie, PDO::PARAM_INT);
+    $prepare->bindValue(':titreArticles', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':visibiliteArticles', $visibilite, PDO::PARAM_INT);
+    $prepare->bindValue(':texteArticles', $texte, PDO::PARAM_STR);
+    $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(402, 'Modification de l\'article "' . $titre . '".');
 }

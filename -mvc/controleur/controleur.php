@@ -77,6 +77,22 @@ function CtlSupprimerJournalMenu($prefixe, $messageRetour) {
     afficherSupprimerJournal($prefixe, $messageRetour);
 }
 
+function CtlAjouterArticleMenu($prefixe, $messageRetour) {
+    afficherAjouterArticle($prefixe, $messageRetour);
+}
+
+function CtlChoixArticleMenu($prefixe, $messageRetour) {
+    afficherChoixArticle($prefixe, $messageRetour);
+}
+
+function CtlAjouterCategorieArticleMenu($prefixe, $messageRetour) {
+    afficherAjouterCategorieArticle($prefixe, $messageRetour);
+}
+
+function CtlRenommerCategorieArticleMenu($prefixe, $messageRetour) {
+    afficherRenommerCategorieArticle($prefixe, $messageRetour);
+}
+
 function CtlAfficherLog($prefixe, $messageRetour) {
     afficherAfficherLog($prefixe, $messageRetour);
 }
@@ -281,6 +297,81 @@ function CtlSupprimerJournal($prefixe, $id) {
         }
     } catch (Exception $e) {
         afficherSupprimerJournal($prefixe, $e->getMessage());
+    }
+}
+
+# Articles
+function CtlAjouterArticle($prefixe, $titre, $categorie, $visibilite, $texte) {
+    try {
+        if (
+            !empty($titre) &&
+            $categorie != '-1' &&
+            $visibilite != '-1' &&
+            !empty($texte)
+        ) {
+            ajouterArticle($titre, $categorie, $visibilite, $texte);
+            afficherAjouterArticle($prefixe, 'L\'article "' . $titre . '" a été ajouté avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+        }
+    } catch (Exception $e) {
+        afficherAjouterArticle($prefixe, $e->getMessage());
+    }
+}
+
+function CtlChoixArticle($prefixe, $id) {
+    try {
+        if (!empty($id)) {
+            afficherModifierArticle($prefixe, '', $id);
+        } else {
+            throw new Exception('Erreur : Veuillez sélectionner un article.');
+        }
+    } catch (Exception $e) {
+        afficherChoixArticle($prefixe, $e->getMessage());
+    }
+}
+
+function CtlModifierArticle($prefixe, $id, $titre, $categorie, $visibilite, $texte) {
+    try {
+        if (
+            !empty($titre) &&
+            (!empty($visibilite) || $visibilite == 0) &&
+            (!empty($visibilite) || $visibilite == 0) &&
+            !empty($texte)
+        ) {
+            modifierArticle($id, $titre, $categorie, $visibilite, $texte);
+            afficherModifierArticle($prefixe, 'L\'article "' . $titre . '" a été modifié avec succès !', $id);
+        } else {
+            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+        }
+    } catch (Exception $e) {
+        afficherModifierArticle($prefixe, $e->getMessage(), $id);
+    }
+}
+
+function CtlAjouterCategorieArticle($prefixe, $titre) {
+    try {
+        if (!empty($titre)) {
+            ajouterCategorieArticle($titre);
+            afficherAjouterCategorieArticle($prefixe, 'La catégorie "' . $titre . '" a été ajoutée avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+        }
+    } catch (Exception $e) {
+        afficherAjouterCategorieArticle($prefixe, $e->getMessage());
+    }
+}
+
+function CtlRenommerCategorieArticle($prefixe, $id, $titre) {
+    try {
+        if (!empty($id) && !empty($titre)) {
+            renommerCategorieArticle($id, $titre);
+            afficherRenommerCategorieArticle($prefixe, 'La catégorie a été renommée en "' . $titre . '" avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+        }
+    } catch (Exception $e) {
+        afficherRenommerCategorieArticle($prefixe, $e->getMessage());
     }
 }
 

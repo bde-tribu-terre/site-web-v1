@@ -40,7 +40,7 @@
                     </div>
                     <div class="form-group"> <!-- Description de l'évent -->
                         <label for="formCreerEvent_desc">Description de l'évent</label>
-                        <textarea class="form-control" id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc"></textarea>
+                        <textarea class="form-control" id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc" rows="20"></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>

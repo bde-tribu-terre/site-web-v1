@@ -63,7 +63,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <div class="well">
-                <h3>Journal</h3>
+                <h3>Journaux</h3>
                 <hr>
                 <form id="formJournal" method="post">
                     <p> <!-- Ajouter un journal -->
@@ -71,6 +71,36 @@
                     </p>
                     <p> <!-- Supprimer un journal -->
                         <input class="btn btn-primary" type="submit" value="Supprimer un journal" name="formJournal_supprimerJournalMenu">
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="well">
+                <h3>Articles</h3>
+                <hr>
+                <form id="formArticles" method="post">
+                    <p> <!-- Ajouter un article -->
+                        <input class="btn btn-primary" type="submit" value="Ajouter un article" name="formArticles_ajouterArticleMenu">
+                    </p>
+                    <p> <!-- Modifier un article -->
+                        <input class="btn btn-primary" type="submit" value="Modifier un article" name="formArticles_modifierArticleMenu">
+                    </p>
+                    <p> <!-- Supprimer un article -->
+                        <input class="btn btn-primary" type="submit" value="Supprimer un article" name="formArticles_supprimerArticleMenu">
+                    </p>
+                    <p> <!-- Ajouter une image à un article -->
+                        <input class="btn btn-primary" type="submit" value="Ajouter une image à un article" name="formArticles_ajouterImageArticleMenu">
+                    </p>
+                    <p> <!-- Ajouter une catégorie d'article -->
+                        <input class="btn btn-primary" type="submit" value="Ajouter une catégorie d'article" name="formArticles_ajouterCategorieArticleMenu">
+                    </p>
+                    <p> <!-- Renommer une catégorie d'article -->
+                        <input class="btn btn-primary" type="submit" value="Renommer une catégorie d'article" name="formArticles_renommerCategorieArticleMenu">
                     </p>
                 </form>
             </div>
