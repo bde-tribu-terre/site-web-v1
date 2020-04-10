@@ -32,11 +32,23 @@ function infosMembre($id) {
     return $ligne;
 }
 
-function ajouterLog($message) {
+function logTous() {
     $connexion = getConnect();
-    $requete = "INSERT INTO LogActions VALUES (0, :idMembre, :dateLogActions, :descLogActions)";
+    $requete = "SELECT idMembre, nomMembre, codeLogActions, dateLogActions, descLogActions FROM LogActions NATURAL JOIN Membre";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function ajouterLog($code, $message) {
+    $connexion = getConnect();
+    $requete = "INSERT INTO LogActions VALUES (0, :idMembre, :codeLogActions, :dateLogActions, :descLogActions)";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
+    $prepare->bindValue(':dateLogActions', $code, PDO::PARAM_INT);
     $prepare->bindValue(':dateLogActions', date("Y-m-d H:i:s"), PDO::PARAM_STR);
     $prepare->bindValue(':descLogActions', $message, PDO::PARAM_STR);
     $prepare->execute();

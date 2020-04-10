@@ -283,6 +283,34 @@ function afficherSupprimerJournal($prefixe, $messageRetour) {
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
+
+function afficherAfficherLog($prefixe, $messageRetour) {
+    $title = 'Ajouter un journal';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAfficherLog.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesLog = logTous();
+
+    $log = '';
+    foreach ($lignesLog as $ligneLog) {
+        $idMembre = htmlentities($ligneLog->idMembre, ENT_QUOTES, "UTF-8");
+        $nomMembre = htmlentities($ligneLog->nomMembre, ENT_QUOTES, "UTF-8");
+        $codeLogActions = htmlentities($ligneLog->codeLogActions, ENT_QUOTES, "UTF-8");
+        $dateLogActions = htmlentities($ligneLog->dateLogActions, ENT_QUOTES, "UTF-8");
+        $descLogActions = htmlentities($ligneLog->descLogActions, ENT_QUOTES, "UTF-8");
+
+        $log .=
+            '<div class="well">' .
+                $dateLogActions . ' | ' . $codeLogActions . ' | ' . $nomMembre . '<br>' .
+                $descLogActions .
+            '</div>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
 ########################################################################################################################
 # Accueil                                                                                                              #
 ########################################################################################################################

@@ -153,6 +153,8 @@ try {
         CtlAjouterJournalMenu($prefixe, '');
     } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {
         CtlSupprimerJournalMenu($prefixe, '');
+    } elseif (isset($_POST['formLog_afficherLog'])) {
+        CtlAfficherLog($prefixe, '');
     } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
         CtlDeconnexion($prefixe, '');
     }

@@ -76,6 +76,10 @@ function CtlSupprimerJournalMenu($prefixe, $messageRetour) {
     afficherSupprimerJournal($prefixe, $messageRetour);
 }
 
+function CtlAfficherLog($prefixe, $messageRetour) {
+    afficherAfficherLog($prefixe, $messageRetour);
+}
+
 function CtlMenu($prefixe, $messageRetour) {
     afficherMenu($prefixe, $messageRetour);
 }
