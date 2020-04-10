@@ -28,7 +28,7 @@
                     </p>
                     <hr>
                     <p> <!-- Se connecter -->
-                        <input class="btn btn-primary" type="submit" value="Se connecter" name="formConnexion_seConnecter">
+                        <input class="btn btn-primary btn-block" type="submit" value="Se connecter" name="formConnexion_seConnecter">
                     </p>
                 </form>
             </div>

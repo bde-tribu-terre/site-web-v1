@@ -61,7 +61,7 @@
                     <small class="form-text text-muted">⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé !</small>
                     <hr>
                     <div class="form-group"> <!-- Modifier Goodie -->
-                        <input class="btn btn-primary" type="submit" value="Modifier le goodie" name="formModifierGoodie_modifierGoodie">
+                        <input class="btn btn-primary btn-block" type="submit" value="Modifier le goodie" name="formModifierGoodie_modifierGoodie">
                     </div>
                 </form>
             </div>
@@ -74,7 +74,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-primary" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-primary btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                     </p>
                 </form>
             </div>
