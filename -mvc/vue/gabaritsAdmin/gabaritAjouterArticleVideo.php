@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Ajouter un article</h3>
+                <h3>Ajouter un article vidéo</h3>
                 <hr>
                 <form id="formAjouterArticleVideo" method="post">
                     <div class="form-group"> <!-- Titre de l'article -->

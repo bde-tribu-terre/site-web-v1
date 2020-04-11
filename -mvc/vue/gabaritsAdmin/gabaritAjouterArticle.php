@@ -15,36 +15,36 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Ajouter un article vidéo</h3>
+                <h3>Ajouter un article</h3>
                 <hr>
                 <form id="formAjouterArticleVideo" method="post">
                     <div class="form-group"> <!-- Titre de l'article -->
-                        <label for="formAjouterArticleVideo_titre">Titre de l'article</label>
-                        <input class="form-control" id="formAjouterArticleVideo_titre" type="text" placeholder="Titre" name="formAjouterArticleVideo_titre">
+                        <label for="formAjouterArticle_titre">Titre de l'article</label>
+                        <input class="form-control" id="formAjouterArticle_titre" type="text" placeholder="Titre" name="formAjouterArticle_titre">
                     </div>
                     <div class="form-group"> <!-- Catégorie -->
-                        <label for="formAjouterArticleVideo_categorie">Catégorie</label>
-                        <select class="form-control" id="formAjouterArticleVideo_categorie" name="formAjouterArticleVideo_categorie">
+                        <label for="formAjouterArticle_categorie">Catégorie</label>
+                        <select class="form-control" id="formAjouterArticle_categorie" name="formAjouterArticle_categorie">
                             <option value="-1">--Choisir--</option>
                             <?php echo $categories ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Visibilité -->
-                        <label for="formAjouterArticleVideo_visibilite">Visibilité</label>
-                        <select class="form-control" id="formAjouterArticleVideo_visibilite" name="formAjouterArticleVideo_visibilite">
+                        <label for="formAjouterArticle_visibilite">Visibilité</label>
+                        <select class="form-control" id="formAjouterArticle_visibilite" name="formAjouterArticle_visibilite">
                             <option value="-1">--Choisir--</option>
                             <option value="0">Invisible</option>
                             <option value="1">Visible</option>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Texte -->
-                        <label for="formAjouterArticleVideo_texte">Texte de l'article</label>
-                        <textarea class="form-control" id="formAjouterArticleVideo_texte" placeholder="Texte de l'article" name="formAjouterArticleVideo_texte" rows="20"></textarea>
+                        <label for="formAjouterArticle_texte">Texte de l'article</label>
+                        <textarea class="form-control" id="formAjouterArticle_texte" placeholder="Texte de l'article" name="formAjouterArticle_texte" rows="20"></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Ajouter l'article vidéo-->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter l'article video" name="formAjouterArticleVideo_ajouter">
+                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter l'article" name="formAjouterArticle_ajouter">
                     </div>
                 </form>
             </div>

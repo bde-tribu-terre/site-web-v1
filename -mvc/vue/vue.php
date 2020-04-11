@@ -752,26 +752,30 @@ function afficherAccueil($prefixe) {
     asort($arrayID);
     $arrayID = array_reverse($arrayID);
 
-    function array_key_first_de_secours($array) { // Car la fonction n'est pas là dans ma version de PHP :(
-        foreach ($array as $key => $value) {
-            return $key;
+    if (empty($arrayID)) {
+        $article = 'Il semble qu\'il n\'y ait aucun article sur le site...';
+    } else {
+        function array_key_first_de_secours($array) { // Car la fonction n'est pas là dans ma version de PHP :(
+            foreach ($array as $key => $value) {
+                return $key;
+            }
+            return NULL;
         }
-        return NULL;
-    }
-    $ligneArticle = $arrayArticles[array_key_first_de_secours($arrayID)];
+        $ligneArticle = $arrayArticles[array_key_first_de_secours($arrayID)];
 
-    $article =
-        '<p>' .
+        $article =
+            '<p>' .
             '<small>' .
-                '<span class="pc">' . $ligneArticle->categorie . '</span><br>' .
-                genererDate($ligneArticle->dateCreation) .
+            '<span class="pc">' . $ligneArticle->categorie . '</span><br>' .
+            genererDate($ligneArticle->dateCreation) .
             '</small>' .
-        '</p>' .
-        '<h3>' . $ligneArticle->titre . '</h3>' .
-        '<hr>' .
-        '<a href="' . $prefixe . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-primary btn-block">' .
+            '</p>' .
+            '<h3>' . $ligneArticle->titre . '</h3>' .
+            '<hr>' .
+            '<a href="' . $prefixe . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-primary btn-block">' .
             '<h4>Lire l\'article</h4>' .
-        '</a>';
+            '</a>';
+    }
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
