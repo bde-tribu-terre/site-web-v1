@@ -53,7 +53,7 @@ function ajouterLog($code, $message) {
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
     $prepare->bindValue(':codeLogActions', $code, PDO::PARAM_INT);
-    $prepare->bindValue(':dateLogActions', $dt->format('Y-m-d'), PDO::PARAM_STR);
+    $prepare->bindValue(':dateLogActions', $dt->format('Y-m-d H-i-s'), PDO::PARAM_STR);
     $prepare->bindValue(':descLogActions', $message, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->closeCursor();
