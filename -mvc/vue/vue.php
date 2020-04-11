@@ -728,8 +728,15 @@ function afficherArticlePrecis($prefixe, $article) {
     $lignesImages = imagesArticle($id);
 
     $carouselArticle = '';
-    if (!empty($lignesImages) && count($lignesImages) == 1) {
-        $carouselArticle .= '<img src="' . $prefixe . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="imageUniqueArticlePrecis">';
+    if (!empty($lignesImages) && count($lignesImages) <= 1) {
+        $carouselArticle =
+            '<div class="row">' .
+                '<div class="col-sm-2"></div>'.
+                    '<div class="col-sm-8">' .
+                        '<img src="' . $prefixe . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="imageUniqueArticlePrecis" alt="Image">' .
+                    '</div>' .
+                '<div class="col-sm-2"></div>' .
+            '</div><br>';;
     } elseif (!empty($lignesImages)) {
         $nb = 0;
         $carouselArticleIndicator = '<ol class="carousel-indicators">';
@@ -738,10 +745,10 @@ function afficherArticlePrecis($prefixe, $article) {
         # Le reste des -images
         foreach ($lignesImages as $ligne) {
             $lien = $ligne->lienImagesArticles;
-            $carouselArticleIndicator .= '<li data-target="#carouselArticle" data-slide-to="' . $nb++ . '"></li>';
+            $carouselArticleIndicator .= '<li data-target="#carouselArticle" data-slide-to="' . $nb++ . '"' . ($nb == 1 ? ' class="active"' : '') . '></li>';
             $carouselArticleImages .=
-                '<div class="item">' .
-                '<img src="' . $prefixe . 'articles/' . $lien . '" alt="Image">' .
+                '<div class="item' . ($nb == 1 ? ' active' : '') . '">' .
+                    '<img src="' . $prefixe . 'articles/' . $lien . '" alt="Image">' .
                 '</div>';
         }
         $carouselArticleIndicator .= '</ol>';
@@ -749,8 +756,8 @@ function afficherArticlePrecis($prefixe, $article) {
 
         $carouselArticle =
             '<div class="row">' .
-                '<div class="col-sm-2"></div>'.
-                '<div class="col-sm-8">'.
+                '<div class="col-sm-2"></div>' .
+                '<div class="col-sm-8">' .
                     '<div id="carouselArticle" class="carousel slide" data-ride="carousel">' .
                         $carouselArticleIndicator .
                         $carouselArticleImages .

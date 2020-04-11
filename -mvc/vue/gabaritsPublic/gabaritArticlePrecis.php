@@ -1,5 +1,5 @@
 <div class="container text-center">
-    <h3><?php echo $titreArticle ?></h3>
+    <h3><?php echo $titre ?></h3>
     <hr>
     <?php echo $carouselArticle ?>
     <div class="row text-left retrait">

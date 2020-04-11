@@ -510,7 +510,7 @@ function idTitreArticles() {
 
 function articlePrecis($id) {
     $connexion = getConnect();
-    $requete = "SELECT idArticles, idCategoriesArticles, titreArticles, texteArticles, visibiliteArticles FROM Articles WHERE idArticles=:idArticles";
+    $requete = "SELECT idArticles, titreArticles, idCategoriesArticles, titreCategoriesArticles, visibiliteArticles, texteArticles, nomMembre, dateCreationArticles, dateModificationArticles FROM Articles NATURAL JOIN Membre NATURAL JOIN CategoriesArticles WHERE idArticles=:idArticles";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
     $prepare->execute();
