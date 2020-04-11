@@ -704,7 +704,7 @@ function afficherArticles($prefixe) {
 function afficherArticlePrecis($prefixe, $article) {
     // $title = 'Article'; Voir ci-après.
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticlePrecis.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
     $arrayMois = [
