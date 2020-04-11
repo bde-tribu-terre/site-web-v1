@@ -775,7 +775,9 @@ function afficherArticlePrecis($prefixe, $article) {
             '</div><br>';
     }
 
-    $texteFormate = preg_replace('/\n(\n)*/', "\n", $texte);
+    $texteFormate = preg_replace('/&sect;T/', "\n<h3>", $texte);
+    $texteFormate = preg_replace('/&sect;!T/', "</h3>\n", $texteFormate);
+    $texteFormate = preg_replace('/\n(\n)*/', "\n", $texteFormate);
     $texteFormate = preg_replace('/\n/', '</p><p>', $texteFormate);
     $texteFormate = preg_replace('/\n/', '<p>', $texteFormate);
     $texteFormate = '<p>' . $texteFormate . '</p>';
