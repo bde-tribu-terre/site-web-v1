@@ -35,6 +35,13 @@
             margin-bottom: 0;
         }
 
+        /* Pour que le fond s'affiche joliement sur mobile */
+        @media handheld {
+            .jumbotron {
+                background-attachment: inherit;
+            }
+        }
+
         /* Lueur blanche autour du texte du jumbotron */
         .jumbotron p, .jumbotron h1, .jumbotron h2, .jumbotron h3, .jumbotron h4, .jumbotron h5 {
             text-shadow:
