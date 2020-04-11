@@ -363,7 +363,7 @@ function afficherChoixArticle($prefixe, $messageRetour) {
 }
 
 function afficherModifierArticle($prefixe, $messageRetour, $id) {
-    $title = 'Modifier un Article';
+    $title = 'Modifier un article';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierArticle.php';
     $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
@@ -420,6 +420,142 @@ function afficherSupprimerImageArticle($prefixe, $messageRetour, $id) {
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
+function afficherSupprimerArticle($prefixe, $messageRetour) {
+    $title = 'Supprimer un article';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticle.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesArticles = idTitreArticles();
+
+    $articles = '';
+    foreach ($lignesArticles as $ligneArticle) {
+        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
+        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
+        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
+        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $articles .=
+            '<option value="' . $idArticle . '">(' .
+            substr($dateArticle, 8, 2) . '/' .
+            substr($dateArticle, 5, 2) . '/' .
+            substr($dateArticle, 0, 4) .
+            ' | ' . $categorieArticle . ') ' .
+            $titreArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherAjouterArticleVideo($prefixe, $messageRetour) {
+    $title = 'Ajouter un article vidéo';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterArticleVideo.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesCategoriesArticle = idTitreCategoriesArticles();
+
+    $categories = '';
+    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
+        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $categories .=
+            '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherChoixArticleVideo($prefixe, $messageRetour) {
+    $title = 'Choisir un article vidéo';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixArticleVideo.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesArticles = idTitreArticlesVideo();
+
+    $articlesVideo = '';
+    foreach ($lignesArticles as $ligneArticle) {
+        $idArticle = htmlentities($ligneArticle->idArticlesYouTube, ENT_QUOTES, "UTF-8");
+        $titreArticle = htmlentities($ligneArticle->titreArticlesYouTube, ENT_QUOTES, "UTF-8");
+        $dateArticle = htmlentities($ligneArticle->dateCreationArticlesYouTube, ENT_QUOTES, "UTF-8");
+        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $articlesVideo .=
+            '<option value="' . $idArticle . '">(' .
+            substr($dateArticle, 8, 2) . '/' .
+            substr($dateArticle, 5, 2) . '/' .
+            substr($dateArticle, 0, 4) .
+            ' | ' . $categorieArticle . ') ' .
+            $titreArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherModifierArticleVideo($prefixe, $messageRetour, $id) {
+    $title = 'Modifier un article vidéo';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierArticleVideo.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $ligneArticle = articleVideoPrecis($id);
+
+    $idArticle = $id;
+    $titreArticle = $ligneArticle->titreArticlesYouTube;
+    $categorieArticle = $ligneArticle->idCategoriesArticles;
+    $visibiliteArticle = $ligneArticle->visibiliteArticlesYouTube;
+    $lienArticle = $ligneArticle->lienArticlesYouTube;
+    $texteArticle = $ligneArticle->texteArticlesYouTube;
+
+    $lignesCategoriesArticle = idTitreCategoriesArticles();
+
+    $categories = '';
+    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
+        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $selected = $categorieArticle == $idCategorieArticle ? ' selected' : '';
+        $categories .=
+            '<option value="' . $idCategorieArticle . '"' . $selected . '>' . $titreCategorieArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherSupprimerArticleVideo($prefixe, $messageRetour) {
+    $title = 'Supprimer un article vidéo';
+    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticleVideo.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $lignesArticles = idTitreArticlesVideo();
+
+    $articlesVideo = '';
+    foreach ($lignesArticles as $ligneArticle) {
+        $idArticle = htmlentities($ligneArticle->idArticlesYouTube, ENT_QUOTES, "UTF-8");
+        $titreArticle = htmlentities($ligneArticle->titreArticlesYouTube, ENT_QUOTES, "UTF-8");
+        $dateArticle = htmlentities($ligneArticle->dateCreationArticlesYouTube, ENT_QUOTES, "UTF-8");
+        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+        $articlesVideo .=
+            '<option value="' . $idArticle . '">(' .
+            substr($dateArticle, 8, 2) . '/' .
+            substr($dateArticle, 5, 2) . '/' .
+            substr($dateArticle, 0, 4) .
+            ' | ' . $categorieArticle . ') ' .
+            $titreArticle . '</option>';
+    }
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
 function afficherAjouterCategorieArticle($prefixe, $messageRetour) {
     $title = 'Ajouter une catégorie d\'article';
     $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
@@ -447,34 +583,6 @@ function afficherRenommerCategorieArticle($prefixe, $messageRetour) {
         $titreGoodie = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
         $categories .=
             '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
-    }
-
-    require_once($prefixe . '-mvc/vue/cadre.php');
-}
-
-function afficherSupprimerArticle($prefixe, $messageRetour) {
-    $title = 'Supprimer un article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
-
-    $lignesArticles = idTitreArticles();
-
-    $articles = '';
-    foreach ($lignesArticles as $ligneArticle) {
-        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
-        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
-        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
-        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $articles .=
-            '<option value="' . $idArticle . '">(' .
-            substr($dateArticle, 8, 2) . '/' .
-            substr($dateArticle, 5, 2) . '/' .
-            substr($dateArticle, 0, 4) .
-            ' | ' . $categorieArticle . ') ' .
-            $titreArticle . '</option>';
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');

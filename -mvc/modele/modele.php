@@ -632,3 +632,80 @@ function articlesTous() {
     $prepare->closeCursor();
     return $ligne;
 }
+
+########################################################################################################################
+# Articles vidéo                                                                                                       #
+########################################################################################################################
+function ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+
+    $connexion = getConnect();
+    $requete = "INSERT INTO ArticlesYouTube VALUES (0, :idCategorieArticles, :idMembre, :titreArticlesYouTube, :texteArticlesYouTube, :lienArticlesYouTube, :visibiliteArticlesYouTube, :dateCreationArticlesYouTube, :dateModificationArticlesYouTube)";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_INT);
+    $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
+    $prepare->bindValue(':titreArticlesYouTube', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':lienArticlesYouTube', $lien, PDO::PARAM_STR);
+    $prepare->bindValue(':texteArticlesYouTube', $texte, PDO::PARAM_STR);
+    $prepare->bindValue(':visibiliteArticlesYouTube', $visibilite, PDO::PARAM_INT);
+    $prepare->bindValue(':dateCreationArticlesYouTube', $dt->format('Y-m-d'), PDO::PARAM_STR);
+    $prepare->bindValue(':dateModificationArticlesYouTube', NULL, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(501, 'Ajout de l\'article vidéo "' . $titre . '".');
+}
+
+function idTitreArticlesVideo() {
+    $connexion = getConnect();
+    $requete = "SELECT idArticlesYouTube, titreArticlesYouTube, dateCreationArticlesYouTube, titreCategoriesArticles FROM ArticlesYouTube NATURAL JOIN CategoriesArticles ORDER BY dateCreationArticlesYouTube DESC";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function articleVideoPrecis($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idArticlesYouTube, titreArticlesYouTube, idCategoriesArticles, titreCategoriesArticles, visibiliteArticlesYouTube, lienArticlesYouTube, texteArticlesYouTube, nomMembre, dateCreationArticlesYouTube, dateModificationArticlesYouTube FROM ArticlesYouTube NATURAL JOIN Membre NATURAL JOIN CategoriesArticles WHERE idArticlesYouTube=:idArticlesYouTube";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
+function modifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+
+    $connexion = getConnect();
+    $requete = "UPDATE ArticlesYouTube SET idCategoriesArticles=:idCategoriesArticles, titreArticlesYouTube=:titreArticlesYouTube, visibiliteArticlesYouTube=:visibiliteArticlesYouTube, lienArticlesYouTube=:lienArticlesYouTube, texteArticlesYouTube=:texteArticlesYouTube, dateModificationArticlesYouTube=:dateModificationArticlesYouTube WHERE idArticlesYouTube=:idArticlesYouTube";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idCategoriesArticles', $categorie, PDO::PARAM_INT);
+    $prepare->bindValue(':titreArticlesYouTube', $titre, PDO::PARAM_STR);
+    $prepare->bindValue(':visibiliteArticlesYouTube', $visibilite, PDO::PARAM_INT);
+    $prepare->bindValue(':texteArticlesYouTube', $texte, PDO::PARAM_STR);
+    $prepare->bindValue(':lienArticlesYouTube', $lien, PDO::PARAM_STR);
+    $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
+    $prepare->bindValue(':dateModificationArticlesYouTube', $dt->format('Y-m-d'), PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(502, 'Modification de l\'article vidéo "' . $titre . '".');
+}
+
+function supprimerArticleVideo($id) {
+    $connexion = getConnect();
+    $requete = "DELETE FROM ArticlesYouTube WHERE idArticlesYouTube=:idArticlesYouTube";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->closeCursor();
+    ajouterLog(503, 'Suppression d\'un article vidéo (ID : ' . $id . ').');
+}

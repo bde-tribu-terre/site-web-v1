@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Ajouter un article vidéo</h3>
+                <h3>Ajouter un article</h3>
                 <hr>
                 <form id="formAjouterArticleVideo" method="post">
                     <div class="form-group"> <!-- Titre de l'article -->
@@ -37,14 +37,19 @@
                             <option value="1">Visible</option>
                         </select>
                     </div>
+                    <div class="form-group"> <!-- Lien de la vidéo -->
+                        <label for="formAjouterArticleVideo_lien">Lien de la vidéo</label>
+                        <input class="form-control" id="formAjouterArticleVideo_lien" type="text" placeholder="Lien" name="formAjouterArticleVideo_lien">
+                        <small class="form-text text-muted">Exemple : http://www.youtube.com/watch?v=B4CRkpBGQzU</small>
+                    </div>
                     <div class="form-group"> <!-- Texte -->
                         <label for="formAjouterArticleVideo_texte">Texte de l'article</label>
                         <textarea class="form-control" id="formAjouterArticleVideo_texte" placeholder="Texte de l'article" name="formAjouterArticleVideo_texte" rows="20"></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>
-                    <div class="form-group"> <!-- Ajouter l'article vidéo-->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter l'article video" name="formAjouterArticleVideo_ajouter">
+                    <div class="form-group"> <!-- Ajouter l'article -->
+                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter l'article" name="formAjouterArticleVideo_ajouter">
                     </div>
                 </form>
             </div>

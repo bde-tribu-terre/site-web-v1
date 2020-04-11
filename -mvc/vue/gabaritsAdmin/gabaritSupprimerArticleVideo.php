@@ -15,16 +15,20 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Ajouter une catégorie d'article</h3>
+                <h3>Supprimer un article vidéo</h3>
                 <hr>
-                <form id="formAjouterCategorieArticle" method="post">
-                    <div class="form-group"> <!-- Titre de la catégorie -->
-                        <label for="formAjouterCategorieArticle_titre">Titre de la catégorie</label>
-                        <input class="form-control" id="formAjouterCategorieArticle_titre" type="text" placeholder="Titre" name="formAjouterCategorieArticle_titre">
+                <form id="formSupprimerArticleVideo" method="post">
+                    <div class="form-group"> <!-- Article en question -->
+                        <label for="formSupprimerArticleVideo_idArticle">Article vidéo</label>
+                        <select class="form-control" id="formSupprimerArticleVideo_idArticle" name="formSupprimerArticleVideo_idArticle">
+                            <option value="">--Choisir un article vidéo--</option>
+                            <?php echo $articlesVideo ?>
+                        </select>
                     </div>
+                    <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>
                     <hr>
-                    <div class="form-group"> <!-- Ajouter la catégorie -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter la catégorie" name="formAjouterCategorieArticle_ajouter">
+                    <div class="form-group"> <!-- Supprimer article -->
+                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer l'article vidéo" name="formSupprimerArticleVideo_supprimer">
                     </div>
                 </form>
             </div>

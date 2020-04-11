@@ -144,7 +144,7 @@ try {
             $_POST['formAjouterArticle_texte']
         );
     }
-    // Gabarit Choix Goodie
+    // Gabarit Choix Article
     elseif (isset($_POST['formChoisirArticle_choisir'])) {
         CtlChoixArticle(
             $prefixe,
@@ -179,7 +179,7 @@ try {
             $_POST['formSupprimerImageArticle_idArticle']
         );
     }
-    // Gabarit Supprimer Goodie
+    // Gabarit Supprimer Article
     elseif (isset($_POST['formSupprimerArticle_supprimer'])) {
         CtlSupprimerArticle(
             $prefixe,
@@ -193,9 +193,45 @@ try {
             $_POST['formAjouterImageArticle_idArticle'],
             'formAjouterImageArticle_image'
         );
+    }// Gabarit Ajouter Article Video
+    elseif (isset($_POST['formAjouterArticleVideo_ajouter'])) {
+        CtlAjouterArticleVideo(
+            $prefixe,
+            $_POST['formAjouterArticleVideo_titre'],
+            $_POST['formAjouterArticleVideo_categorie'],
+            $_POST['formAjouterArticleVideo_visibilite'],
+            $_POST['formAjouterArticleVideo_lien'],
+            $_POST['formAjouterArticleVideo_texte']
+        );
+    }
+    // Gabarit Choix Article Video
+    elseif (isset($_POST['formChoisirArticleVideo_choisir'])) {
+        CtlChoixArticleVideo(
+            $prefixe,
+            $_POST['formChoisirArticleVideo_idArticle']
+        );
+    }
+    // Gabarit Modifier Article Video
+    elseif (isset($_POST['formModifierArticleVideo_modifier'])) {
+        CtlModifierArticleVideo(
+            $prefixe,
+            $_POST['formModifierArticleVideo_idArticle'],
+            $_POST['formModifierArticleVideo_titre'],
+            $_POST['formModifierArticleVideo_categorie'],
+            $_POST['formModifierArticleVideo_visibilite'],
+            $_POST['formModifierArticleVideo_lien'],
+            $_POST['formModifierArticleVideo_texte']
+        );
+    }
+    // Gabarit Supprimer Article Video
+    elseif (isset($_POST['formSupprimerArticleVideo_supprimer'])) {
+        CtlSupprimerArticleVideo(
+            $prefixe,
+            $_POST['formSupprimerArticleVideo_idArticle']
+        );
     }
     // Gabarit Ajouter Catégorie Article
-    elseif (isset($_POST['formAjouterCategorieArticle_titre'])) {
+    elseif (isset($_POST['formAjouterCategorieArticle_ajouter'])) {
         CtlAjouterCategorieArticle(
             $prefixe,
             $_POST['formAjouterCategorieArticle_titre']
@@ -239,6 +275,12 @@ try {
         CtlChoixArticleMenu($prefixe, '');
     } elseif (isset($_POST['formArticles_supprimerArticleMenu'])) {
         CtlSupprimerArticleMenu($prefixe, '');
+    } elseif (isset($_POST['formArticles_ajouterArticleVideoMenu'])) {
+        CtlAjouterArticleVideoMenu($prefixe, '');
+    } elseif (isset($_POST['formArticles_modifierArticleVideoMenu'])) {
+        CtlChoixArticleVideoMenu($prefixe, '');
+    } elseif (isset($_POST['formArticles_supprimerArticleVideoMenu'])) {
+        CtlSupprimerArticleVideoMenu($prefixe, '');
     } elseif (isset($_POST['formArticles_ajouterCategorieArticleMenu'])) {
         CtlAjouterCategorieArticleMenu($prefixe, '');
     } elseif (isset($_POST['formArticles_renommerCategorieArticleMenu'])) {

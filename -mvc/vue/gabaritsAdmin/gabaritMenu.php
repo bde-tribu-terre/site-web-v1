@@ -96,6 +96,17 @@
                     <p> <!-- Supprimer un article -->
                         <input class="btn btn-primary btn-block" type="submit" value="Supprimer un article" name="formArticles_supprimerArticleMenu">
                     </p>
+                    <hr>
+                    <p> <!-- Ajouter un article vidéo -->
+                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter un article vidéo" name="formArticles_ajouterArticleVideoMenu">
+                    </p>
+                    <p> <!-- Modifier un article vidéo -->
+                        <input class="btn btn-primary btn-block" type="submit" value="Modifier un article vidéo" name="formArticles_modifierArticleVideoMenu">
+                    </p>
+                    <p> <!-- Supprimer un article vidéo -->
+                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer un article vidéo" name="formArticles_supprimerArticleVideoMenu">
+                    </p>
+                    <hr>
                     <p> <!-- Ajouter une catégorie d'article -->
                         <input class="btn btn-primary btn-block" type="submit" value="Ajouter une catégorie d'article" name="formArticles_ajouterCategorieArticleMenu">
                     </p>

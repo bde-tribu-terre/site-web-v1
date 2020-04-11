@@ -93,6 +93,18 @@ function CtlSupprimerArticleMenu($prefixe, $messageRetour) {
     afficherSupprimerArticle($prefixe, $messageRetour);
 }
 
+function CtlAjouterArticleVideoMenu($prefixe, $messageRetour) {
+    afficherAjouterArticleVideo($prefixe, $messageRetour);
+}
+
+function CtlChoixArticleVideoMenu($prefixe, $messageRetour) {
+    afficherChoixArticleVideo($prefixe, $messageRetour);
+}
+
+function CtlSupprimerArticleVideoMenu($prefixe, $messageRetour) {
+    afficherSupprimerArticleVideo($prefixe, $messageRetour);
+}
+
 function CtlAjouterCategorieArticleMenu($prefixe, $messageRetour) {
     afficherAjouterCategorieArticle($prefixe, $messageRetour);
 }
@@ -367,7 +379,7 @@ function CtlModifierArticle($prefixe, $id, $titre, $categorie, $visibilite, $tex
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherSupprimerArticle($prefixe, $e->getMessage());
+        afficherModifierArticle($prefixe, $e->getMessage(), $id);
     }
 }
 
@@ -380,6 +392,82 @@ function CtlAllerSupprimerImageArticle($prefixe, $id) {
         }
     } catch (Exception $e) {
         afficherModifierArticle($prefixe, $e->getMessage(), $id);
+    }
+}
+
+function CtlSupprimerArticle($prefixe, $id) {
+    try {
+        if (!empty($id)) {
+            supprimerArticle($prefixe . 'articles/', $id);
+            afficherSupprimerArticle($prefixe, 'L\'article a été supprimé avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez sélectionner un article.');
+        }
+    } catch (Exception $e) {
+        afficherSupprimerArticle($prefixe, $e->getMessage());
+    }
+}
+
+function CtlAjouterArticleVideo($prefixe, $titre, $categorie, $visibilite, $lien, $texte) {
+    try {
+        if (
+            !empty($titre) &&
+            $categorie != '-1' &&
+            $visibilite != '-1' &&
+            !empty($lien) &&
+            !empty($texte)
+        ) {
+            ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte);
+            afficherAjouterArticleVideo($prefixe, 'L\'article vidéo "' . $titre . '" a été ajouté avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+        }
+    } catch (Exception $e) {
+        afficherAjouterArticleVideo($prefixe, $e->getMessage());
+    }
+}
+
+function CtlChoixArticleVideo($prefixe, $id) {
+    try {
+        if (!empty($id)) {
+            afficherModifierArticleVideo($prefixe, '', $id);
+        } else {
+            throw new Exception('Erreur : Veuillez sélectionner un article.');
+        }
+    } catch (Exception $e) {
+        afficherChoixArticleVideo($prefixe, $e->getMessage());
+    }
+}
+
+function CtlModifierArticleVideo($prefixe, $id, $titre, $categorie, $visibilite, $lien, $texte) {
+    try {
+        if (
+            !empty($titre) &&
+            (!empty($visibilite) || $visibilite == 0) &&
+            (!empty($visibilite) || $visibilite == 0) &&
+            !empty($lien) &&
+            !empty($texte)
+        ) {
+            modifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte);
+            afficherModifierArticleVideo($prefixe, 'L\'article "' . $titre . '" a été modifié avec succès !', $id);
+        } else {
+            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+        }
+    } catch (Exception $e) {
+        afficherModifierArticleVideo($prefixe, $e->getMessage(), $id);
+    }
+}
+
+function CtlSupprimerArticleVideo($prefixe, $id) {
+    try {
+        if (!empty($id)) {
+            supprimerArticleVideo($id);
+            afficherSupprimerArticleVideo($prefixe, 'L\'article vidéo a été supprimé avec succès !');
+        } else {
+            throw new Exception('Erreur : Veuillez sélectionner un article.');
+        }
+    } catch (Exception $e) {
+        afficherSupprimerArticleVideo($prefixe, $e->getMessage(), $id);
     }
 }
 
@@ -406,19 +494,6 @@ function CtlRenommerCategorieArticle($prefixe, $id, $titre) {
         }
     } catch (Exception $e) {
         afficherRenommerCategorieArticle($prefixe, $e->getMessage());
-    }
-}
-
-function CtlSupprimerArticle($prefixe, $id) {
-    try {
-        if (!empty($id)) {
-            supprimerArticle($prefixe . 'articles/', $id);
-            afficherSupprimerGoodie($prefixe, 'L\'article a été supprimé avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un article.');
-        }
-    } catch (Exception $e) {
-        afficherModifierArticle($prefixe, $e->getMessage(), $id);
     }
 }
 
