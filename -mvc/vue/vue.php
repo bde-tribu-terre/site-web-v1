@@ -701,8 +701,8 @@ function afficherArticles($prefixe) {
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
 
-function afficherArticlePrecis($prefixe, $event) {
-    // $title = 'Event'; Voir ci-après.
+function afficherArticlePrecis($prefixe, $article) {
+    // $title = 'Article'; Voir ci-après.
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
@@ -714,30 +714,61 @@ function afficherArticlePrecis($prefixe, $event) {
         '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
     ];
 
-    $id = htmlentities($event->idEvents, ENT_QUOTES, "UTF-8");
-    $titre = htmlentities($event->titreEvents, ENT_QUOTES, "UTF-8");
-    $desc = htmlentities($event->descEvents, ENT_QUOTES, "UTF-8");
-    $date = htmlentities($event->dateEvents, ENT_QUOTES, "UTF-8");
-    $heure = htmlentities($event->heureEvents, ENT_QUOTES, "UTF-8");
-    $lieu = htmlentities($event->lieuEvents, ENT_QUOTES, "UTF-8");
-    $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+    $id = htmlentities($article->idArticles, ENT_QUOTES, "UTF-8");
+    $titre = htmlentities($article->titreArticles, ENT_QUOTES, "UTF-8");
+    $categorie = htmlentities($article->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    $visibilite = htmlentities($article->visibiliteArticles, ENT_QUOTES, "UTF-8");
+    $dateCreation = htmlentities($article->dateCreationArticles, ENT_QUOTES, "UTF-8");
+    $dateModification = htmlentities($article->dateModificationArticles, ENT_QUOTES, "UTF-8");
+    $texte = htmlentities($article->texteArticles, ENT_QUOTES, "UTF-8");
+    $auteur = htmlentities($article->nomMembre, ENT_QUOTES, "UTF-8");
 
     $title = $titre;
 
-    $nbJoursStr = '';
-    if ($nbJours == 0) {
-        $nbJoursStr .= '<strong><span style="color: red">(Aujourd\'hui)</span></strong>';
-    } elseif ($nbJours == 1) {
-        $nbJoursStr .= '<strong><span style="color: red">(Demain)</span></strong>';
-    } elseif ($nbJours > 0) {
-        $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
-    } else {
-        $nbJoursStr .= '<i><span style="color: darkgray">(Il y a ' . abs($nbJours) . ' jours)</span></i>';
+    $lignesImages = imagesArticle($id);
+
+    $carouselArticle = '';
+    if (!empty($lignesImages) && count($lignesImages) == 1) {
+        $carouselArticle .= '<img src="' . $prefixe . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="imageUniqueArticlePrecis">';
+    } elseif (!empty($lignesImages)) {
+        $nb = 0;
+        $carouselArticleIndicator = '<ol class="carousel-indicators">';
+        $carouselArticleImages = '<div class="carousel-inner" role="listbox">';
+
+        # Le reste des -images
+        foreach ($lignesImages as $ligne) {
+            $lien = $ligne->lienImagesArticles;
+            $carouselArticleIndicator .= '<li data-target="#carouselArticle" data-slide-to="' . $nb++ . '"></li>';
+            $carouselArticleImages .=
+                '<div class="item">' .
+                '<img src="' . $prefixe . 'articles/' . $lien . '" alt="Image">' .
+                '</div>';
+        }
+        $carouselArticleIndicator .= '</ol>';
+        $carouselArticleImages .= '</div>';
+
+        $carouselArticle =
+            '<div class="row">' .
+                '<div class="col-sm-2"></div>'.
+                '<div class="col-sm-8">'.
+                    '<div id="carouselArticle" class="carousel slide" data-ride="carousel">' .
+                        $carouselArticleIndicator .
+                        $carouselArticleImages .
+                        '<a class="left carousel-control" href="#carouselArticle" role="button" data-slide="prev">' .
+                            '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>' .
+                            '<span class="sr-only">Previous</span>' .
+                        '</a>' .
+                        '<a class="right carousel-control" href="#carouselArticle" role="button" data-slide="next">' .
+                            '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' .
+                            '<span class="sr-only">Next</span>' .
+                        '</a>' .
+                    '</div>' .
+                '</div>' .
+                '<div class="col-sm-2"></div>' .
+            '</div><br>';
     }
 
-    $descStr = nl2br($desc);
-    $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
-    $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
+    $texteFormate = $texte;
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
@@ -1153,7 +1184,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
         $carouselGoodieImages = '<div class="carousel-inner" role="listbox">';
 
         # Image miniature
-        $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '" class="active"></li>';
+        $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '" class="active"></li>';
         $carouselGoodieImages .=
             '<div class="item active">' .
                 '<img src="' . $prefixe . 'goodies/' . $miniature . '" alt="Image">' .
@@ -1162,7 +1193,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
         # Le reste des -images
         foreach ($lignesImages as $ligne) {
             $lien = $ligne->lienImagesGoodies;
-            $carouselGoodieIndicator .= '<li data-target="#myCarousel" data-slide-to="' . $nb++ . '"></li>';
+            $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '"></li>';
             $carouselGoodieImages .=
                 '<div class="item">' .
                     '<img src="' . $prefixe . 'goodies/' . $lien . '" alt="Image">' .
