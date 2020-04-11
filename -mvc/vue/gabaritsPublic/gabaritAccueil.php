@@ -152,7 +152,7 @@
 
     <div class="col-sm-4">
         <h3>Réseau associatif</h3>
-        <p>L'association Tribu-Terre adhère à des fédérations d'associations (svp les admins dites moi qui dire là vite def, pis une page entière en plus :o)</p>
+        <p>L'association Tribu-Terre adhère à des fédérations d'associations locale et régionale.</p>
         <div id="carouselFederations" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
