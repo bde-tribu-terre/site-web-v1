@@ -674,7 +674,7 @@ function afficherArticles($prefixe) {
             continue;
         }
 
-        $texteNonFormate = preg_replace('/&sect;!?L(\[.*\])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $texte)));
+        $texteNonFormate = preg_replace('/&sect;!?L(\[.*])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $texte)));
         $texteNonFormateMini = substr($texteNonFormate, 0, 100);
 
         $tableArticles .=
@@ -775,22 +775,15 @@ function afficherArticlePrecis($prefixe, $article) {
             '</div><br>';
     }
 
-    $texteFormate = preg_replace('/&sect;T/', "\n<h3>", $texte);
-    $texteFormate = preg_replace('/&sect;!T/', "</h3>\n", $texteFormate);
+    $texteFormate = preg_replace('/&sect;T(.*)&sect;!T/', "\n<h3>$1</h3>\n", $texte);
     $texteFormate = preg_replace('/\n(\n)*/', "\n", $texteFormate);
-    $texteFormate = preg_replace('/\n/', '</p><p>', $texteFormate);
-    $texteFormate = preg_replace('/\n/', '<p>', $texteFormate);
-    $texteFormate = '<p>' . $texteFormate . '</p>';
-    $texteFormate = preg_replace('/&sect;G/', '<strong>', $texteFormate);
-    $texteFormate = preg_replace('/&sect;!G/', '</strong>', $texteFormate);
-    $texteFormate = preg_replace('/&sect;I/', '<i>', $texteFormate);
-    $texteFormate = preg_replace('/&sect;!I/', '</i>', $texteFormate);
-    $texteFormate = preg_replace('/&sect;S/', '<u>', $texteFormate);
-    $texteFormate = preg_replace('/&sect;!S/', '</u>', $texteFormate);
-    $texteFormate = preg_replace('/&sect;B/', '<span style="text-decoration: line-through;">', $texteFormate);
-    $texteFormate = preg_replace('/&sect;!B/', '</span>', $texteFormate);
-    $texteFormate = preg_replace('/&sect;C/', '<span class="pc">', $texteFormate);
-    $texteFormate = preg_replace('/&sect;!C/', '</span>', $texteFormate);
+    $texteFormate = '<p>' . preg_replace('/\n/', '</p><p>', $texteFormate) . '</p>';
+    $texteFormate = preg_replace('/&sect;G(.*)&sect;!G/', '<strong>$1</strong>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;I(.*)&sect;!I/', '<i>$1</i>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;S(.*)&sect;!S/', '<u>$1</u>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;B(.*)&sect;!B/', '<span style="text-decoration: line-through;">$1</span>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;C(.*)&sect;!C/', '<span class="pc">$1</span>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;L(.*)&sect;!L\[(.*)]/', '<a href="$2">$1</a>', $texteFormate);
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
