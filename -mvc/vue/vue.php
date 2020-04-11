@@ -673,13 +673,6 @@ function afficherAccueil($prefixe) {
     $lignesEvents = eventsTous('PF', true, false, 3);
     $events = '';
 
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
-
     if (empty($lignesEvents)) {
         $events .=
             '<div class="well">' .
@@ -712,7 +705,7 @@ function afficherAccueil($prefixe) {
             '<a href="' . $prefixe . 'events/?id=' . $idEvent . '">' .
                 '<div class="well' . $hide . '">' .
                     '<h4>' . $titreEvent . '</h4>' .
-                    '<p>📅 ' . substr($dateEvent, 8, 2) . ' ' . $arrayMois[substr($dateEvent, 5, 2)] . $nbJoursStr . '</p>' .
+                    '<p>📅 ' . preg_replace('/ [^ ]*$/', '', genererDate($dateEvent)) . $nbJoursStr . '</p>' .
                     '<p>⌚️ ' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</p>' .
                     '<p>📍 ' . $lieuEvent . '</p>' .
                 '</div>' .
@@ -734,13 +727,51 @@ function afficherAccueil($prefixe) {
             '<div class="col-sm-3">' .
                 '<div class="well">' .
                     '<h3>' . $titre . '</h3>' .
-                    '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
-                    '<a href="' . $lienJournal . '">' .
+                    '<h4>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h4>' .
+                    '<a href="' . $lienJournal . '" class="btn btn-primary btn-block">' .
                         '<h4><img src="' . $prefixe . '-images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
     }
+
+    # Article
+    $lignesArticles = articlesTous();
+    $lignesArticlesVideo = articlesVideoTous();
+
+    $arrayID = [];
+    $arrayArticles = [];
+    foreach ($lignesArticles as $ligneArticle) {
+        $arrayID['T' . $ligneArticle->id] = $ligneArticle->dateCreation;
+        $arrayArticles['T' . $ligneArticle->id] = $ligneArticle;
+    }
+    foreach ($lignesArticlesVideo as $ligneArticleVideo) {
+        $arrayID['V' . $ligneArticleVideo->id] = $ligneArticleVideo->dateCreation;
+        $arrayArticles['V' . $ligneArticleVideo->id] = $ligneArticleVideo;
+    }
+    asort($arrayID);
+    $arrayID = array_reverse($arrayID);
+
+    function array_key_first_de_secours($array) { // Car la fonction n'est pas là dans ma version de PHP :(
+        foreach ($array as $key => $value) {
+            return $key;
+        }
+        return NULL;
+    }
+    $ligneArticle = $arrayArticles[array_key_first_de_secours($arrayID)];
+
+    $article =
+        '<p>' .
+            '<small>' .
+                '<span class="pc">' . $ligneArticle->categorie . '</span><br>' .
+                genererDate($ligneArticle->dateCreation) .
+            '</small>' .
+        '</p>' .
+        '<h3>' . $ligneArticle->titre . '</h3>' .
+        '<hr>' .
+        '<a href="' . $prefixe . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-primary btn-block">' .
+            '<h4>Lire l\'article</h4>' .
+        '</a>';
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
@@ -753,13 +784,6 @@ function afficherArticles($prefixe) {
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticles.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
-
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
 
     $tableArticles = '';
     $lignesArticles = articlesTous();
@@ -777,9 +801,6 @@ function afficherArticles($prefixe) {
     }
     asort($arrayID);
     $arrayID = array_reverse($arrayID);
-
-    //print_r($arrayID);
-    //print_r($arrayArticles);
 
     if (empty($arrayArticles)) {
         $tableArticles = '<h3>Hmmm... On dirait qu\'il n\'y a aucun article qui correspond à vos critères de recherches 🤔</h3>';
@@ -823,7 +844,7 @@ function afficherArticles($prefixe) {
                         '<h4 class="pc">' . $categorie . '</h4>' .
                         '<hr>' .
                         '<h2>' . $titre . '</h2>' .
-                        '<p><small>Publié le ' . substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4) . '</small></p>' .
+                        '<p><small>' . genererDate($dateCreation) . '</small></p>' .
                         $miniature .
                         '<hr>' .
                         '<p class="text-left retrait">' . $texteNonFormateMini . (strlen($texte) > 256 ? '[...]' : '')  . '</p>' .
@@ -846,13 +867,6 @@ function afficherArticlePrecis($prefixe, $article) {
     $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticlePrecis.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
-
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
 
     $id = htmlentities($article->idArticles, ENT_QUOTES, "UTF-8");
     $titre = htmlentities($article->titreArticles, ENT_QUOTES, "UTF-8");
@@ -934,13 +948,6 @@ function afficherArticleVideoPrecis($prefixe, $article) {
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticleVideoPrecis.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
-
     $id = htmlentities($article->idArticlesYouTube, ENT_QUOTES, "UTF-8");
     $titre = htmlentities($article->titreArticlesYouTube, ENT_QUOTES, "UTF-8");
     $lien = htmlentities($article->lienArticlesYouTube, ENT_QUOTES, "UTF-8");
@@ -976,8 +983,8 @@ function afficherArticleVideoPrecis($prefixe, $article) {
     $texteFormate = preg_replace('/&sect;C(.*)&sect;!C/', '<span class="pc">$1</span>', $texteFormate);
     $texteFormate = preg_replace('/&sect;L(.*)&sect;!L\[(.*)]/', '<a href="$2">$1</a>', $texteFormate);
 
-    $dateCreationStr = substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4);
-    $dateModificationStr = $dateModification ? substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4) : '';
+    $dateCreationStr = genererDate($dateCreation);
+    $dateModificationStr = $dateModification ? genererDate($dateModification) : '';
     $auteurNoms = explode(' ', $auteur);
     $auteurStr = array_shift($auteurNoms);
     foreach ($auteurNoms as $auteurNom) {
@@ -1187,13 +1194,6 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
         $tableEvents = '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>';
     }
 
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
-
     $pair = true; // On commence à 0 en informatique.
     foreach ($lignesEvents as $ligne) {
         $id = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
@@ -1222,7 +1222,7 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
             '<div class="col-sm-6">' .
                 '<div class="well"' . $couleur . '>' .
                     '<h3>' . $titre . '</h3>' .
-                    '<h4>📅 ' . substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . $nbJoursStr . '</h4>' .
+                    '<h4>📅 ' . genererDate($date) . $nbJoursStr . '</h4>' .
                     '<h4>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</h4>' .
                     '<h4>📍️ ' . $lieu . '</h4>' .
                     '<a class="btn btn-primary" href="' . $prefixe . 'events/?id=' . $id . '">' .
@@ -1250,13 +1250,6 @@ function afficherEventPrecis($prefixe, $event) {
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
-
     $id = htmlentities($event->idEvents, ENT_QUOTES, "UTF-8");
     $titre = htmlentities($event->titreEvents, ENT_QUOTES, "UTF-8");
     $desc = htmlentities($event->descEvents, ENT_QUOTES, "UTF-8");
@@ -1279,7 +1272,7 @@ function afficherEventPrecis($prefixe, $event) {
     }
 
     $descStr = nl2br($desc);
-    $dateStr = substr($date, 8, 2) . ' ' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4);
+    $dateStr = genererDate($date);
     $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
 
     require_once($prefixe . '-mvc/vue/cadre.php');
@@ -1448,13 +1441,6 @@ function afficherJournaux($prefixe) {
     $tableJournaux = '';
     $lignesJournaux = journauxTous(-1);
 
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
-
     foreach ($lignesJournaux as $ligne) {
         $titre = htmlentities($ligne->titreJournaux, ENT_QUOTES, "UTF-8");;
         $date = htmlentities($ligne->dateJournaux, ENT_QUOTES, "UTF-8");
@@ -1466,7 +1452,7 @@ function afficherJournaux($prefixe) {
             '<div class="col-sm-3">' .
                 '<div class="well">' .
                     '<h3>' . $titre . '</h3>' .
-                    '<h4>' . $arrayMois[substr($date, 5, 2)] . ' ' . substr($date, 0, 4) . '</h4>' .
+                    '<h4>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h4>' .
                     '<a href="' . $lienJournal . '">' .
                         '<h4><img src="' . $prefixe . '-images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
                     '</a>' .
@@ -1590,4 +1576,23 @@ function afficherPlanDuSite($prefixe) {
     $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants($prefixe))));
 
     require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
+# Fonctions d'affichage                                                                                                #
+########################################################################################################################
+function genererDate($date) {
+    $arrayMois = [
+        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
+        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
+        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
+        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+    ];
+
+    return
+        (substr($date, 8, 2) == '01' ? '1<sup>er</sup>' : intval(substr($date, 8, 2))) .
+        ' ' .
+        $arrayMois[substr($date, 5, 2)] .
+        ' ' .
+        substr($date, 0, 4);
 }

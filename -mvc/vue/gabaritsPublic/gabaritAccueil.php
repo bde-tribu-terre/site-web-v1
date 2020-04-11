@@ -36,9 +36,9 @@
 <div class="container text-center">
     <div class="row">
         <div class="col-sm-6">
-            <h3>Un peu de cuisine</h3>
+            <h3>Le dernier article !</h3>
             <div class="well">
-                Partie cuisine encore en chantier...
+                <?php echo $article ?>
             </div>
         </div>
         <h3>Les journaux les plus récents !</h3>

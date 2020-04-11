@@ -663,7 +663,8 @@ function articlesTous() {
                     Membre
                         NATURAL JOIN
                     CategoriesArticles
-                ORDER BY dateCreationArticles DESC
+                ORDER BY
+                    dateCreationArticles DESC
             ) AS T";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
@@ -790,7 +791,8 @@ function articlesVideoTous() {
                     Membre
                         NATURAL JOIN
                     CategoriesArticles
-                ORDER BY dateCreationArticlesYouTube DESC
+                ORDER BY
+                    dateCreationArticlesYouTube DESC
             ) AS T";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
