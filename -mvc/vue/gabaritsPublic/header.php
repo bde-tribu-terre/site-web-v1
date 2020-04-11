@@ -23,6 +23,7 @@
                 <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritEvents.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'events/' ?>">Évents</a></li>
                 <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodies.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'goodies/' ?>">Goodies</a></li>
                 <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritJournaux.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'journaux/' ?>">Journaux</a></li>
+                <li<?php if ($gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticles.php') { echo ' class="active"'; } ?>><a href="<?php echo $prefixe . 'articles/' ?>">Articles</a></li>
             </ul>
             <!-- Bouton se connecter
             <ul class="nav navbar-nav navbar-right">
