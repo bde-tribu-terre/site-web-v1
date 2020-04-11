@@ -118,6 +118,10 @@
             box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
         }
 
+        .plan-du-site .list-group {
+            margin-bottom: 0;
+        }
+
         /* Petites capitales */
         .pc {
             font-variant: small-caps;
