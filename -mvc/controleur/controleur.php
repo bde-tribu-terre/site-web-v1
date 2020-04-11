@@ -467,7 +467,7 @@ function CtlSupprimerArticleVideo($prefixe, $id) {
             throw new Exception('Erreur : Veuillez sélectionner un article.');
         }
     } catch (Exception $e) {
-        afficherSupprimerArticleVideo($prefixe, $e->getMessage(), $id);
+        afficherSupprimerArticleVideo($prefixe, $e->getMessage());
     }
 }
 
