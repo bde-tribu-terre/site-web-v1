@@ -675,7 +675,7 @@ function afficherArticles($prefixe) {
         }
 
         $texteNonFormate = preg_replace('/&sect;!?L(\[.*])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $texte)));
-        $texteNonFormateMini = substr($texteNonFormate, 0, 100);
+        $texteNonFormateMini = substr($texteNonFormate, 0, 256);
 
         $tableArticles .=
             '<div class="row">' .
@@ -687,7 +687,7 @@ function afficherArticles($prefixe) {
                             '<h2>' . $titre . '</h2>' .
                             '<small>Publié le ' . substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4) . '</small>' .
                             '<hr>' .
-                            '<p class="text-left retrait">' . $texteNonFormate . (strlen($texte) > 100 ? '[...]' : '')  . '</p>' .
+                            '<p class="text-left retrait">' . $texteNonFormateMini . (strlen($texte) > 256 ? '[...]' : '')  . '</p>' .
                             '<hr>' .
                             '<a class="btn btn-primary btn-block" href="' . $prefixe . 'articles/?id=' . $id . '">' .
                                 'Lire l\'article' .
