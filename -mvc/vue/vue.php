@@ -775,7 +775,11 @@ function afficherArticlePrecis($prefixe, $article) {
             '</div><br>';
     }
 
-    $texteFormate = $texte;
+    $texteFormate = preg_replace('/\n(\n)*/', '\n', $texte);
+    $texteFormate = preg_replace('/\n/', '</p><p>', $texteFormate);
+    $texteFormate = preg_replace('/\n/', '<p>', $texteFormate);
+    $texteFormate = '<p>' . $texteFormate . '</p>';
+
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
