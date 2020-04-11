@@ -102,6 +102,18 @@
             overflow: hidden;
         }
 
+        .imageMiniatureArticlesDiv {
+            max-width: 480px;
+            display: inline-block;
+        }
+
+        .imageMiniatureArticles {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
         .texteFooter {
             font-size: 10px;
             line-height: 10px;

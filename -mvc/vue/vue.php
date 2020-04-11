@@ -754,13 +754,6 @@ function afficherArticles($prefixe) {
     $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticles.php';
     $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
 
-    $tableArticles = '';
-    $lignesArticles = articlesTous();
-
-    if (empty($lignesArticles)) {
-        $tableArticles = '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>';
-    }
-
     $arrayMois = [
         '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
         '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
@@ -768,42 +761,81 @@ function afficherArticles($prefixe) {
         '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
     ];
 
-    foreach ($lignesArticles as $ligne) {
-        $id = htmlentities($ligne->idArticles, ENT_QUOTES, "UTF-8");
-        $titre = htmlentities($ligne->titreArticles, ENT_QUOTES, "UTF-8");
-        $categorie = htmlentities($ligne->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $visibilite = htmlentities($ligne->visibiliteArticles, ENT_QUOTES, "UTF-8");
-        $dateCreation = htmlentities($ligne->dateCreationArticles, ENT_QUOTES, "UTF-8");
-        $dateModification = htmlentities($ligne->dateModificationArticles, ENT_QUOTES, "UTF-8");
-        $texte = htmlentities($ligne->texteArticles, ENT_QUOTES, "UTF-8");
-        $auteur = htmlentities($ligne->nomMembre, ENT_QUOTES, "UTF-8");
+    $tableArticles = '';
+    $lignesArticles = articlesTous();
+    $lignesArticlesVideo = articlesVideoTous();
 
-        if ($visibilite == 0) {
-            continue;
-        }
+    $arrayID = [];
+    $arrayArticles = [];
+    foreach ($lignesArticles as $ligneArticle) {
+        $arrayID['T' . $ligneArticle->id] = $ligneArticle->dateCreation;
+        $arrayArticles['T' . $ligneArticle->id] = $ligneArticle;
+    }
+    foreach ($lignesArticlesVideo as $ligneArticleVideo) {
+        $arrayID['V' . $ligneArticleVideo->id] = $ligneArticleVideo->dateCreation;
+        $arrayArticles['V' . $ligneArticleVideo->id] = $ligneArticleVideo;
+    }
+    asort($arrayID);
+    $arrayID = array_reverse($arrayID);
 
-        $texteNonFormate = preg_replace('/&sect;!?L(\[.*])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $texte)));
-        $texteNonFormateMini = substr($texteNonFormate, 0, 256);
+    //print_r($arrayID);
+    //print_r($arrayArticles);
 
-        $tableArticles .=
-            '<div class="row">' .
+    if (empty($arrayArticles)) {
+        $tableArticles = '<h3>Hmmm... On dirait qu\'il n\'y a aucun article qui correspond à vos critères de recherches 🤔</h3>';
+    } else {
+        foreach ($arrayID as $ID => $dateCreation) {
+            $id = htmlentities($arrayArticles[$ID]->id, ENT_QUOTES, "UTF-8");
+            $titre = htmlentities($arrayArticles[$ID]->titre, ENT_QUOTES, "UTF-8");
+            $categorie = htmlentities($arrayArticles[$ID]->categorie, ENT_QUOTES, "UTF-8");
+            $visibilite = htmlentities($arrayArticles[$ID]->visibilite, ENT_QUOTES, "UTF-8");
+            $texte = htmlentities($arrayArticles[$ID]->texte, ENT_QUOTES, "UTF-8");
+
+            if ($visibilite == 0) {
+                continue;
+            }
+
+            $cadreMiniature = '<div class="imageMiniatureArticlesDiv"><img class="img-fluid imageMiniatureArticles" src="--EMPLACEMENT--" alt="Miniature"></div>';
+            switch (substr($ID, 0, 1)) {
+                case 'T':
+                    $lienArticle = $prefixe . 'articles/?id=' . $id;
+                    $premiereImage = premiereImageArticle($id);
+                    $miniature = $premiereImage ? preg_replace('/--EMPLACEMENT--/', $premiereImage->lienImagesArticles, $cadreMiniature) : '';
+                    break;
+                case 'V':
+                    $lienArticle = $prefixe . 'articles/?id=-' . $id;
+                    $miniature = preg_replace('/--EMPLACEMENT--/', obtenirInfoYouTube($arrayArticles[$ID]->lien)['thumbnail_url'], $cadreMiniature);
+                    break;
+                default:
+                    $lienArticle = '#';
+                    $miniature = '';
+                    break;
+            }
+
+            $texteNonFormate = preg_replace('/&sect;!?L(\[.*])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $texte)));
+            $texteNonFormateMini = substr($texteNonFormate, 0, 256);
+
+            $tableArticles .=
+                '<div class="row">' .
                 '<div class="col-sm-2"></div>' .
-                    '<div class="col-sm-8">' .
-                        '<div class="well">' .
-                            '<h4 class="pc">' . $categorie . '</h4>' .
-                            '<hr>' .
-                            '<h2>' . $titre . '</h2>' .
-                            '<small>Publié le ' . substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4) . '</small>' .
-                            '<hr>' .
-                            '<p class="text-left retrait">' . $texteNonFormateMini . (strlen($texte) > 256 ? '[...]' : '')  . '</p>' .
-                            '<hr>' .
-                            '<a class="btn btn-primary btn-block" href="' . $prefixe . 'articles/?id=' . $id . '">' .
-                                'Lire l\'article' .
-                            '</a>' .
-                        '</div>' .
+                '<div class="col-sm-8">' .
+                    '<div class="well">' .
+                        '<h4 class="pc">' . $categorie . '</h4>' .
+                        '<hr>' .
+                        '<h2>' . $titre . '</h2>' .
+                        '<p><small>Publié le ' . substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4) . '</small></p>' .
+                        $miniature .
+                        '<hr>' .
+                        '<p class="text-left retrait">' . $texteNonFormateMini . (strlen($texte) > 256 ? '[...]' : '')  . '</p>' .
+                        '<hr>' .
+                        '<a class="btn btn-primary btn-block" href="' . $lienArticle . '">' .
+                            'Lire l\'article' .
+                        '</a>' .
                     '</div>' .
+                '</div>' .
                 '<div class="col-sm-2"></div>' .
-            '</div>';
+                '</div>';
+        }
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');

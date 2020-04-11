@@ -572,6 +572,18 @@ function imagesArticle($id) {
     return $ligne;
 }
 
+function premiereImageArticle($id) {
+    $connexion = getConnect();
+    $requete = "SELECT idImagesArticles, lienImagesArticles FROM ImagesArticles WHERE idArticles=:id LIMIT 1";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+    return $ligne;
+}
+
 function supprimerImageArticle($rep, $id, $logguer) {
     # Suppression de l'image
     $connexion = getConnect();
@@ -624,7 +636,35 @@ function supprimerArticle($rep, $id) {
 
 function articlesTous() {
     $connexion = getConnect();
-    $requete = "SELECT idArticles, titreArticles, titreCategoriesArticles, visibiliteArticles, texteArticles, nomMembre, dateCreationArticles, dateModificationArticles FROM Articles NATURAL JOIN Membre NATURAL JOIN CategoriesArticles ORDER BY dateCreationArticles DESC";
+    $requete =
+        "SELECT
+            idArticles AS id,
+            titreArticles AS titre,
+            titreCategoriesArticles AS categorie,
+            visibiliteArticles AS visibilite,
+            texteArticles AS texte,
+            nomMembre AS auteur,
+            dateCreationArticles AS dateCreation,
+            dateModificationArticles AS dateModification
+        FROM
+            (
+                SELECT
+                    idArticles,
+                    titreArticles,
+                    titreCategoriesArticles,
+                    visibiliteArticles,
+                    texteArticles,
+                    nomMembre,
+                    dateCreationArticles,
+                    dateModificationArticles
+                FROM
+                    Articles
+                        NATURAL JOIN
+                    Membre
+                        NATURAL JOIN
+                    CategoriesArticles
+                ORDER BY dateCreationArticles DESC
+            ) AS T";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
@@ -717,4 +757,45 @@ function obtenirInfoYouTube($url) {
     $return = curl_exec($curl);
     curl_close($curl);
     return json_decode($return, true);
+}
+
+function articlesVideoTous() {
+    $connexion = getConnect();
+    $requete =
+        "SELECT
+            idArticlesYouTube AS id,
+            titreArticlesYouTube AS titre,
+            titreCategoriesArticles AS categorie,
+            visibiliteArticlesYouTube AS visibilite,
+            lienArticlesYouTube AS lien,
+            texteArticlesYouTube AS texte,
+            nomMembre AS auteur,
+            dateCreationArticlesYouTube AS dateCreation,
+            dateModificationArticlesYouTube AS dateModification
+        FROM
+            (
+                SELECT
+                    idArticlesYouTube,
+                    titreArticlesYouTube,
+                    titreCategoriesArticles,
+                    visibiliteArticlesYouTube,
+                    lienArticlesYouTube,
+                    texteArticlesYouTube,
+                    nomMembre,
+                    dateCreationArticlesYouTube,
+                    dateModificationArticlesYouTube
+                FROM
+                    ArticlesYouTube
+                        NATURAL JOIN
+                    Membre
+                        NATURAL JOIN
+                    CategoriesArticles
+                ORDER BY dateCreationArticlesYouTube DESC
+            ) AS T";
+    $prepare = $connexion->prepare($requete);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetchall();
+    $prepare->closeCursor();
+    return $ligne;
 }
