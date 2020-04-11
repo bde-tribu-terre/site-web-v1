@@ -28,7 +28,7 @@
                     <div class="div-group"> <!-- Image -->
                         <label for="formAjouterImageArticle_image">Sélectionner l'image</label>
                         <input class="form-control" type="file" name="formAjouterImageArticle_image" accept="image/*">
-                        <small class="form-text text-muted">⚠️ Format : 4:3, pour éviter que ça nique la mise en page.<br>🙏 Taille : 960px*720px.<br>⚠️ La miniature compte déjà comme une image. Attention aux doublons !</small>
+                        <small class="form-text text-muted">⚠️ Format : 4:3, pour éviter que ça nique la mise en page.<br>🙏 Taille : 960px*720px.</small>
                     </div>
                     <hr>
                     <p> <!-- Ajouter l'image de l'article -->
