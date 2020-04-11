@@ -709,3 +709,12 @@ function supprimerArticleVideo($id) {
     $prepare->closeCursor();
     ajouterLog(503, 'Suppression d\'un article vidéo (ID : ' . $id . ').');
 }
+
+function obtenirInfoYouTube($url) {
+    $youtube = "http://www.youtube.com/oembed?url=". $url ."&format=json";
+    $curl = curl_init($youtube);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $return = curl_exec($curl);
+    curl_close($curl);
+    return json_decode($return, true);
+}

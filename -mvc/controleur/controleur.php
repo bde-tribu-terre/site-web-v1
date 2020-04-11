@@ -505,11 +505,20 @@ function CtlArticles($prefixe) {
 }
 
 function CtlArticlePrecis($prefixe, $id) {
-    $article = articlePrecis($id);
-    if ($article != false) {
-        afficherArticlePrecis($prefixe, $article);
+    if ($id >= 0) {
+        $article = articlePrecis($id);
+        if ($article != false) {
+            afficherArticlePrecis($prefixe, $article);
+        } else {
+            throw new Exception('L\'article recherché n\'existe pas.');
+        }
     } else {
-        throw new Exception('L\'article recherché n\'existe pas.');
+        $article = articleVideoPrecis(-$id);
+        if ($article != false) {
+            afficherArticleVideoPrecis($prefixe, $article);
+        } else {
+            throw new Exception('L\'article vidéo recherché n\'existe pas.');
+        }
     }
 }
 

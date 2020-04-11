@@ -96,7 +96,7 @@
             overflow: hidden;
         }
 
-        .imageUniqueGoodiePrecis, .imageUniqueArticlePrecis {
+        .imageUniqueGoodiePrecis, .imageUniqueArticlePrecis, .integrationArticleVideoPrecis {
             width: 100%;
             border-radius: 10px;
             overflow: hidden;

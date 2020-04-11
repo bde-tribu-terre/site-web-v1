@@ -844,7 +844,7 @@ function afficherArticlePrecis($prefixe, $article) {
                         '<img src="' . $prefixe . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="imageUniqueArticlePrecis" alt="Image">' .
                     '</div>' .
                 '<div class="col-sm-2"></div>' .
-            '</div><br>';;
+            '</div><hr>';;
     } elseif (!empty($lignesImages)) {
         $nb = 0;
         $carouselArticleIndicator = '<ol class="carousel-indicators">';
@@ -880,7 +880,7 @@ function afficherArticlePrecis($prefixe, $article) {
                     '</div>' .
                 '</div>' .
                 '<div class="col-sm-2"></div>' .
-            '</div><br>';
+            '</div><hr>';
     }
 
     $texteFormate = preg_replace('/&sect;T(.*)&sect;!T/', "\n<h3>$1</h3>\n", $texte);
@@ -892,6 +892,65 @@ function afficherArticlePrecis($prefixe, $article) {
     $texteFormate = preg_replace('/&sect;B(.*)&sect;!B/', '<span style="text-decoration: line-through;">$1</span>', $texteFormate);
     $texteFormate = preg_replace('/&sect;C(.*)&sect;!C/', '<span class="pc">$1</span>', $texteFormate);
     $texteFormate = preg_replace('/&sect;L(.*)&sect;!L\[(.*)]/', '<a href="$2">$1</a>', $texteFormate);
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+function afficherArticleVideoPrecis($prefixe, $article) {
+    // $title = 'Article'; Voir ci-après.
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticleVideoPrecis.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    $arrayMois = [
+        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
+        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
+        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
+        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+    ];
+
+    $id = htmlentities($article->idArticlesYouTube, ENT_QUOTES, "UTF-8");
+    $titre = htmlentities($article->titreArticlesYouTube, ENT_QUOTES, "UTF-8");
+    $lien = htmlentities($article->lienArticlesYouTube, ENT_QUOTES, "UTF-8");
+    $categorie = htmlentities($article->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    $visibilite = htmlentities($article->visibiliteArticlesYouTube, ENT_QUOTES, "UTF-8");
+    $dateCreation = htmlentities($article->dateCreationArticlesYouTube, ENT_QUOTES, "UTF-8");
+    $dateModification = htmlentities($article->dateModificationArticlesYouTube, ENT_QUOTES, "UTF-8");
+    $texte = htmlentities($article->texteArticlesYouTube, ENT_QUOTES, "UTF-8");
+    $auteur = htmlentities($article->nomMembre, ENT_QUOTES, "UTF-8");
+
+    $title = $titre;
+
+    $infoYouTube = obtenirInfoYouTube($lien);
+
+    $integrationVideo =
+        '<div class="row">' .
+            '<div class="col-sm-2"></div>' .
+                '<div class="col-sm-8">' .
+                    '<div class="embed-responsive embed-responsive-16by9 integrationArticleVideoPrecis">' .
+                        preg_replace('/width="459" height="344"/', 'class="embed-responsive-item"', $infoYouTube['html']) .
+                    '</div>' .
+                '</div>' .
+            '<div class="col-sm-2"></div>' .
+        '</div><hr>';
+
+    $texteFormate = preg_replace('/&sect;T(.*)&sect;!T/', "\n<h3>$1</h3>\n", $texte);
+    $texteFormate = preg_replace('/\n(\n)*/', "\n", $texteFormate);
+    $texteFormate = '<p>' . preg_replace('/\n/', '</p><p>', $texteFormate) . '</p>';
+    $texteFormate = preg_replace('/&sect;G(.*)&sect;!G/', '<strong>$1</strong>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;I(.*)&sect;!I/', '<i>$1</i>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;S(.*)&sect;!S/', '<u>$1</u>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;B(.*)&sect;!B/', '<span style="text-decoration: line-through;">$1</span>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;C(.*)&sect;!C/', '<span class="pc">$1</span>', $texteFormate);
+    $texteFormate = preg_replace('/&sect;L(.*)&sect;!L\[(.*)]/', '<a href="$2">$1</a>', $texteFormate);
+
+    $dateCreationStr = substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4);
+    $dateModificationStr = $dateModification ? substr($dateCreation, 8, 2) . ' ' . $arrayMois[substr($dateCreation, 5, 2)] . ' ' . substr($dateCreation, 0, 4) : '';
+    $auteurNoms = explode(' ', $auteur);
+    $auteurStr = array_shift($auteurNoms);
+    foreach ($auteurNoms as $auteurNom) {
+        $auteurStr .= ' <span class="pc">' . $auteurNom . '</span>';
+    }
 
     require_once($prefixe . '-mvc/vue/cadre.php');
 }
