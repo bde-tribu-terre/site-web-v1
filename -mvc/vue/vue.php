@@ -916,7 +916,7 @@ function afficherArticlePrecis($prefixe, $article) {
             '<div class="row">' .
                 '<div class="col-sm-2"></div>' .
                 '<div class="col-sm-8">' .
-                    '<div id="carouselArticle" class="carousel slide" data-ride="carousel">' .
+                    '<div id="carouselArticle" class="carousel carouselImages slide" data-ride="carousel">' .
                         $carouselArticleIndicator .
                         $carouselArticleImages .
                         '<a class="left carousel-control" href="#carouselArticle" role="button" data-slide="prev">' .
@@ -1414,7 +1414,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
         $carouselGoodieImages .= '</div>';
 
         $carouselGoodie =
-            '<div id="carouselGoodie" class="carousel slide" data-ride="carousel">' .
+            '<div id="carouselGoodie" class="carousel carouselImages slide" data-ride="carousel">' .
                 $carouselGoodieIndicator .
                 $carouselGoodieImages .
                 '<a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">' .

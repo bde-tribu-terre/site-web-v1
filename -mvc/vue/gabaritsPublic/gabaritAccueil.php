@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-8">
             <h3>Tous nos goodies !</h3>
-            <div id="carouselGoodies" class="carousel slide" data-ride="carousel">
+            <div id="carouselGoodies" class="carousel carouselImages slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <?php echo $goodiesIndicators ?>
@@ -87,164 +87,205 @@
 </div>
 
 <div class="container text-center">
-    <div class="col-sm-4">
-        <h3>Nos partenaires !</h3>
-        <p>Profitez d'avantages sur présentation de votre carte d'adhérent Tribu-Terre !</p>
-        <div id="carouselPartenaires" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carouselPartenaires" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselPartenaires" data-slide-to="1"></li>
-                <li data-target="#carouselPartenaires" data-slide-to="3"></li>
-            </ol>
+    <script>
+        function activerBoutonInfo(nb) {
+            document.getElementById('boutonInfo1').classList.remove('active');
+            document.getElementById('boutonInfo2').classList.remove('active');
+            document.getElementById('boutonInfo3').classList.remove('active');
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <!-- Ici on liste les partenaires -->
-                <div class="item active">
-                    <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                        <img src="<?php echo $prefixe . '-images/imgBarAtelier.png' ?>" alt="Image">
-                    </a>
-                    <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                        <div class="carousel-caption">
-                            <h3>Bar L'Atelier</h3>
-                            <p>203 rue de Bourgogne, Orléans</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                        <img src="<?php echo $prefixe . '-images/imgBarKeyWest.png' ?>" alt="Image">
-                    </a>
-                    <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                        <div class="carousel-caption">
-                            <h3>Bar Le Key West</h3>
-                            <p>208 rue de Bourgogne, Orléans</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
-                        <img src="<?php echo $prefixe . '-images/imgLeMaestro.png' ?>" alt="Image">
-                    </a>
-                    <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
-                        <div class="carousel-caption">
-                            <h3>Le Maestro</h3>
-                            <p>218 rue de Bourgogne, Orléans</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#carouselPartenaires" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+            document.getElementById('boutonInfo' + nb).classList.add('active');
+        }
+    </script>
+    <div class="row"> <!-- Boutons pour choisir -->
+        <div class="col-sm-4">
+            <a id="boutonInfo1" class="btn btn-danger btn-block btn-exterieur active" type="button" data-slide-to="0" data-target="#carouselInfos" onclick="activerBoutonInfo('1')">
+                <h4>Partenaires</h4>
             </a>
-            <a class="right carousel-control" href="#carouselPartenaires" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+            <br>
+        </div>
+        <div class="col-sm-4">
+            <a id="boutonInfo2" class="btn btn-danger btn-block btn-exterieur" type="button" data-slide-to="1" data-target="#carouselInfos" onclick="activerBoutonInfo('2')">
+                <h4>Réseau associatif</h4>
             </a>
+            <br>
+        </div>
+        <div class="col-sm-4">
+            <a id="boutonInfo3" class="btn btn-danger btn-block btn-exterieur" type="button" data-slide-to="2" data-target="#carouselInfos" onclick="activerBoutonInfo('3')">
+                <h4>Université</h4>
+            </a>
+            <br>
         </div>
     </div>
-
-    <div class="col-sm-4">
-        <h3>Réseau associatif</h3>
-        <p>L'association Tribu-Terre adhère à des fédérations d'associations locale et régionale.</p>
-        <div id="carouselFederations" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carouselFederations" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselFederations" data-slide-to="1"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <!-- Ici on liste les fédérations -->
-                <div class="item active">
-                    <a href="https://ocampus.fr/">
-                        <img src="<?php echo $prefixe . '-images/imgOCampus.png' ?>" alt="Image">
-                    </a>
-                    <a href="https://ocampus.fr/">
-                        <div class="carousel-caption">
-                            <h3>ÔCampus</h3>
-                            <p>Fédération des associations étudiantes d'Orléans</p>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="carouselInfos" class="carousel carousel-infos slide" data-ride="carousel" data-interval="false">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Partenaires</h3>
+                                <p>Tribu-Terre est actuellement partenaire avec trois établissements Rue de Bourgogne.</p>
+                                <p>Profitez de tarifs préférentiels sur présentation de votre carte d'adhérent Tribu-Terre !</p>
+                                <p>
+                                    <a href="<?php echo $prefixe . 'association/pourquoi-adherer/' ?>">Comment adhérer ?</a> |
+                                    <a href="<?php echo $prefixe . 'association/partenaires/' ?>">Voir les tarifs préférentiels</a>
+                                </p>
+                            </div>
+                            <div class="col-sm-3"></div>
                         </div>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <a href="http://www.fneb.fr/">
-                        <img src="<?php echo $prefixe . '-images/imgFNEB.png' ?>" alt="Image">
-                    </a>
-                    <a href="http://www.fneb.fr/">
-                        <div class="carousel-caption">
-                            <h3>FNEB</h3>
-                            <p>Fédération Nationale des Étudiants en sciences exactes naturelles et techniques</p>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4>Bar l'Atelier</h4>
+                                <p>203 Rue de Bourgogne, Orléans</p>
+                                <p>
+                                    <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
+                                        Page Facebook
+                                    </a>
+                                </p>
+                                <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
+                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgBarAtelier.png' ?>" alt="Bar l'Atelier">
+                                </a>
+                                <hr class="alterneur-mini">
+                            </div>
+                            <div class="col-sm-4">
+                                <h4>Bar Le Key West</h4>
+                                <p>208 Rue de Bourgogne, Orléans</p>
+                                <p>
+                                    <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
+                                        Page Facebook
+                                    </a>
+                                </p>
+                                <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
+                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgBarKeyWest.png' ?>" alt="Bar le Key West">
+                                </a>
+                                <hr class="alterneur-mini">
+                            </div>
+                            <div class="col-sm-4">
+                                <h4>Restaurant Le Maestro</h4>
+                                <p>218 Rue de Bourgogne, Orléans</p>
+                                <p>
+                                    <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
+                                        Site Web
+                                    </a>
+                                </p>
+                                <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
+                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
+                                </a>
+                                <hr class="alterneur-mini">
+                            </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Réseau associatif</h3>
+                                <p>L'association Tribu-Terre est adhérente à deux fédérations d'associations étudiantes.</p>
+                                <p>
+                                    Elles permettent une mise en relation des étudiants à l'échelle locale pour
+                                    l'une et à l'échelle nationale pour l'autre, dans l'objectif d'organiser des
+                                    événements et des projets communs.
+                                </p>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>ÔCampus</h4>
+                                <h5>Fédération des Associations Etudiantes d'Orléans</h5>
+                                <p>
+                                    <a href="https://fr-fr.facebook.com/OCampusFederation/">
+                                        Page Facebook
+                                    </a> |
+                                    <a href="https://ocampus.fr/index.php">
+                                        Site Web
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="<?php echo $prefixe . '-images/association/reseau-associatif/ocampus/' ?>">
+                                        Plus d'information sur ÔCampus
+                                    </a>
+                                </p>
+                                <a href="https://ocampus.fr/index.php">
+                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgOCampus.png' ?>" alt="ÔCampus">
+                                </a>
+                                <hr class="alterneur-mini">
+                            </div>
+                            <div class="col-sm-6">
+                                <h4>FNEB</h4>
+                                <h5>Fédération Nationale des Étudiants en sciences exactes naturelles et techniques</h5>
+                                <p>
+                                    <a href="https://www.facebook.com/FNEBmono">
+                                        Page Facebook
+                                    </a> |
+                                    <a href="https://www.ocampus.fr/">
+                                        Site Web
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="<?php echo $prefixe . '-images/association/reseau-associatif/fneb/' ?>">
+                                        Plus d'information sur la FNEB
+                                    </a>
+                                </p>
+                                <a href="https://www.fneb.fr/">
+                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgFNEB.png' ?>" alt="FNEB">
+                                </a>
+                                <hr class="alterneur-mini">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <h3>Université</h3>
+                                <p>
+                                    L'association Tribu-Terre agit en accord avec les composantes géologique
+                                    (OSUC) et scientifique (CoST) de l'Université d'Orléans.
+                                </p>
+                                <p>
+                                    <a href="<?php echo $prefixe . '-images/association/universite/' ?>">
+                                        Plus d'informations sur l'Université d'Orléans.
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4>OSUC</h4>
+                                <h5>Observatoire des Sciences de l’Univers en région Centre</h5>
+                                <p>
+                                    <a href="http://www.univ-orleans.fr/fr/osuc">
+                                        Site Web
+                                    </a>
+                                </p>
+                                <a href="http://www.univ-orleans.fr/fr/osuc">
+                                    <img src="<?php echo $prefixe . '-images/imgOSUC2.png' ?>" alt="OSUC">
+                                </a>
+                                <hr class="alterneur-mini">
+                            </div>
+                            <div class="col-sm-6">
+                                <h4>CoST</h4>
+                                <h5>Collégium Sciences et Techniques</h5>
+                                <p>
+                                    <a href="http://www.univ-orleans.fr/fr/sciences-techniques/">
+                                        Site Web
+                                    </a>
+                                </p>
+                                <a href="http://www.univ-orleans.fr/fr/sciences-techniques/">
+                                    <img src="<?php echo $prefixe . '-images/imgCoST2.png' ?>" alt="CoST">
+                                </a>
+                                <hr class="alterneur-mini">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#carouselFederations" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carouselFederations" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="col-sm-4">
-        <h3>Université</h3>
-        <p>L'association Tribu-Terre agit en accord avec l'OSUC et le CoST.</p>
-        <div id="carouselUniversite" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carouselUniversite" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselUniversite" data-slide-to="1"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <!-- Ici on liste les composantes -->
-                <div class="item active">
-                    <a href="http://www.univ-orleans.fr/fr/osuc">
-                        <img src="<?php echo $prefixe . '-images/imgOSUC.png' ?>" alt="Image">
-                    </a>
-                    <a href="http://www.univ-orleans.fr/fr/osuc">
-                        <div class="carousel-caption">
-                            <h3>OSUC</h3>
-                            <p>Observatoire Sciences de l'Univers en région Centre</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="item">
-                    <a href="http://www.univ-orleans.fr/fr/sciences-techniques">
-                        <img src="<?php echo $prefixe . '-images/imgCoST.png' ?>" alt="Image">
-                    </a>
-                    <a href="http://www.univ-orleans.fr/fr/sciences-techniques">
-                        <div class="carousel-caption">
-                            <h3>CoST</h3>
-                            <p>Collégium Sciences et Techniques</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#carouselUniversite" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carouselUniversite" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
     </div>
 </div><br>
