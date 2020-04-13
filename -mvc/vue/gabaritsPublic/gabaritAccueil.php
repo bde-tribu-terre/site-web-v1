@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-8">
             <h3>Tous nos goodies !</h3>
-            <div id="carouselGoodies" class="carousel carouselImages slide" data-ride="carousel">
+            <div id="carouselGoodies" class="carousel carousel-images slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <?php echo $goodiesIndicators ?>
@@ -37,53 +37,55 @@
     <div class="row">
         <div class="col-sm-6">
             <h3>Le dernier article !</h3>
-            <div class="well">
-                <?php echo $article ?>
-            </div>
+            <?php echo $article ?>
         </div>
-        <h3>Les journaux les plus récents !</h3>
-        <?php echo $journaux ?>
+        <div class="col-sm-6">
+            <h3>Les journaux les plus récents !</h3>
+            <?php echo $journaux ?>
+        </div>
     </div>
     <hr>
 </div>
 
 <div class="container text-center">
-    <h3>Retrouvez-nous sur les réseaux !</h3>
-    <br>
     <div class="row">
-        <div class="col-sm-4">
-            <a href="https://www.facebook.com/bdeTribuTerre/">
-                <div class="well">
-                    <h4>Notre page Facebook</h4>
-                    <p>
-                        <img src="<?php echo $prefixe . '-images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
-                    </p>
-                </div>
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a href="https://www.instagram.com/tribu.terre/">
-                <div class="well">
-                <h4>Notre compte Instagram</h4>
-                    <p>
-                        <img src="<?php echo $prefixe . '-images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
-                    </p>
+        <div class="col-sm-12">
+            <h3>Retrouvez-nous sur les réseaux !</h3>
+            <br>
+            <div class="col-sm-4">
+                <a href="https://www.facebook.com/bdeTribuTerre/">
+                    <div class="well">
+                        <h4>Notre page Facebook</h4>
+                        <p>
+                            <img src="<?php echo $prefixe . '-images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="https://www.instagram.com/tribu.terre/">
+                    <div class="well">
+                        <h4>Notre compte Instagram</h4>
+                        <p>
+                            <img src="<?php echo $prefixe . '-images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
+                        </p>
 
-                </div>
-            </a>
-        </div>
-        <div class="col-sm-4">
-            <a href="https://twitter.com/Tributerre45/">
-                <div class="well">
-                    <h4>Notre compte Twitter</h4>
-                    <p>
-                        <img src="<?php echo $prefixe . '-images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
-                    </p>
-                </div>
-            </a>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="https://twitter.com/Tributerre45/">
+                    <div class="well">
+                        <h4>Notre compte Twitter</h4>
+                        <p>
+                            <img src="<?php echo $prefixe . '-images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <hr>
         </div>
     </div>
-    <hr>
 </div>
 
 <div class="container text-center">
@@ -205,7 +207,7 @@
                                     </a>
                                 </p>
                                 <p>
-                                    <a href="<?php echo $prefixe . '-images/association/reseau-associatif/ocampus/' ?>">
+                                    <a href="<?php echo $prefixe . 'association/reseau-associatif/ocampus/' ?>">
                                         Plus d'information sur ÔCampus
                                     </a>
                                 </p>
@@ -226,7 +228,7 @@
                                     </a>
                                 </p>
                                 <p>
-                                    <a href="<?php echo $prefixe . '-images/association/reseau-associatif/fneb/' ?>">
+                                    <a href="<?php echo $prefixe . 'association/reseau-associatif/fneb/' ?>">
                                         Plus d'information sur la FNEB
                                     </a>
                                 </p>
@@ -247,7 +249,7 @@
                                     (OSUC) et scientifique (CoST) de l'Université d'Orléans.
                                 </p>
                                 <p>
-                                    <a href="<?php echo $prefixe . '-images/association/universite/' ?>">
+                                    <a href="<?php echo $prefixe . 'association/universite/' ?>">
                                         Plus d'informations sur l'Université d'Orléans.
                                     </a>
                                 </p>

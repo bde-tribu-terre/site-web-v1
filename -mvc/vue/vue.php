@@ -724,12 +724,13 @@ function afficherAccueil($prefixe) {
         $lienJournal = $prefixe . 'journaux/' . $pdf;
 
         $journaux .=
-            '<div class="col-sm-3">' .
+            '<div class="col-sm-6">' .
                 '<div class="well">' .
                     '<h3>' . $titre . '</h3>' .
-                    '<h4>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h4>' .
-                    '<a href="' . $lienJournal . '" class="btn btn-primary btn-block">' .
-                        '<h4><img src="' . $prefixe . '-images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
+                    '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
+                    '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
+                        '<h4 class="alterneur-grand-tres-petit"><img src="' . $prefixe . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
+                        '<h4 class="alterneur-petit">Lire</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
@@ -764,17 +765,16 @@ function afficherAccueil($prefixe) {
         $ligneArticle = $arrayArticles[array_key_first_de_secours($arrayID)];
 
         $article =
-            '<p>' .
-            '<small>' .
-            '<span class="pc">' . $ligneArticle->categorie . '</span><br>' .
-            genererDate($ligneArticle->dateCreation) .
-            '</small>' .
-            '</p>' .
-            '<h3>' . $ligneArticle->titre . '</h3>' .
-            '<hr>' .
-            '<a href="' . $prefixe . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-primary btn-block">' .
-            '<h4>Lire l\'article</h4>' .
-            '</a>';
+            '<div class="well">' .
+                '<h5>' .
+                    '<span class="pc">' . $ligneArticle->categorie . '</span>' .
+                '</h5>' .
+                '<h3>' . $ligneArticle->titre . '</h3>' .
+                '<h5>' . genererDate($ligneArticle->dateCreation) . '</h5>' .
+                '<a href="' . $prefixe . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-danger btn-block">' .
+                    '<h4>Lire l\'article</h4>' .
+                '</a>' .
+            '</div>';
     }
 
     require_once($prefixe . '-mvc/vue/cadre.php');
