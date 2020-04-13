@@ -28,6 +28,7 @@
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritPartenaires.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/partenaires/' ?>">Partenaires</a></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritReseauAssociatif.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/reseau-associatif/' ?>">Réseau associatif</a></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritUniversite.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/universite/' ?>">Université d'Orléans</a></li>
+                    <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritPoles.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/poles/' ?>">Pôles</a></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritFonctionnement.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/fonctionnement/' ?>">Fonctionnement de l'association</a></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritHistorique.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/historique/' ?>">Historique de l'association</a></li>
