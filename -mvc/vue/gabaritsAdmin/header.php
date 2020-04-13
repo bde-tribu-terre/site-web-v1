@@ -5,5 +5,5 @@
     </div>
 </div>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-tribu-terre">
 </nav>

@@ -22,13 +22,13 @@
                 <hr>
                 <form id="formEvents" method="post">
                     <p> <!-- Créer un évent -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Créer un évent" name="formEvents_creerEventMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Créer un évent" name="formEvents_creerEventMenu">
                     </p>
                     <p> <!-- Modifier un évent -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Modifier un évent" name="formEvents_modifierEventMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier un évent" name="formEvents_modifierEventMenu">
                     </p>
                     <p> <!-- Supprimer un évent -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer un évent" name="formEvents_supprimerEventMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer un évent" name="formEvents_supprimerEventMenu">
                     </p>
                 </form>
             </div>
@@ -43,16 +43,16 @@
                 <hr>
                 <form id="formGoodies" method="post">
                     <p> <!-- Ajouter un goodie -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter un goodie" name="formGoodies_ajouterGoodieMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter un goodie" name="formGoodies_ajouterGoodieMenu">
                     </p>
                     <p> <!-- Ajouter une image à un goodie -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter une image à un goodie" name="formGoodies_ajouterImageGoodieMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter une image à un goodie" name="formGoodies_ajouterImageGoodieMenu">
                     </p>
                     <p> <!-- Modifier un goodie -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Modifier un goodie" name="formGoodies_ModifierGoodieMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier un goodie" name="formGoodies_ModifierGoodieMenu">
                     </p>
                     <p> <!-- Supprimer un goodie -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer un goodie" name="formGoodies_SupprimerGoodieMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer un goodie" name="formGoodies_SupprimerGoodieMenu">
                     </p>
                 </form>
             </div>
@@ -67,10 +67,10 @@
                 <hr>
                 <form id="formJournal" method="post">
                     <p> <!-- Ajouter un journal -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter un journal" name="formJournal_ajouterJournalMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter un journal" name="formJournal_ajouterJournalMenu">
                     </p>
                     <p> <!-- Supprimer un journal -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer un journal" name="formJournal_supprimerJournalMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer un journal" name="formJournal_supprimerJournalMenu">
                     </p>
                 </form>
             </div>
@@ -85,33 +85,33 @@
                 <hr>
                 <form id="formArticles" method="post">
                     <p> <!-- Ajouter un article -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter un article" name="formArticles_ajouterArticleMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter un article" name="formArticles_ajouterArticleMenu">
                     </p>
                     <p> <!-- Ajouter une image à un article -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter une image à un article" name="formArticles_ajouterImageArticleMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter une image à un article" name="formArticles_ajouterImageArticleMenu">
                     </p>
                     <p> <!-- Modifier un article -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Modifier un article" name="formArticles_modifierArticleMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier un article" name="formArticles_modifierArticleMenu">
                     </p>
                     <p> <!-- Supprimer un article -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer un article" name="formArticles_supprimerArticleMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer un article" name="formArticles_supprimerArticleMenu">
                     </p>
                     <hr>
                     <p> <!-- Ajouter un article vidéo -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter un article vidéo" name="formArticles_ajouterArticleVideoMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter un article vidéo" name="formArticles_ajouterArticleVideoMenu">
                     </p>
                     <p> <!-- Modifier un article vidéo -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Modifier un article vidéo" name="formArticles_modifierArticleVideoMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier un article vidéo" name="formArticles_modifierArticleVideoMenu">
                     </p>
                     <p> <!-- Supprimer un article vidéo -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer un article vidéo" name="formArticles_supprimerArticleVideoMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer un article vidéo" name="formArticles_supprimerArticleVideoMenu">
                     </p>
                     <hr>
                     <p> <!-- Ajouter une catégorie d'article -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter une catégorie d'article" name="formArticles_ajouterCategorieArticleMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter une catégorie d'article" name="formArticles_ajouterCategorieArticleMenu">
                     </p>
                     <p> <!-- Renommer une catégorie d'article -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Renommer une catégorie d'article" name="formArticles_renommerCategorieArticleMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Renommer une catégorie d'article" name="formArticles_renommerCategorieArticleMenu">
                     </p>
                 </form>
             </div>
@@ -126,7 +126,7 @@
                 <hr>
                 <form id="formLog" method="post">
                     <p> <!-- Voir le log -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Voir le log" name="formLog_afficherLog">
+                        <input class="btn btn-danger btn-block" type="submit" value="Voir le log" name="formLog_afficherLog">
                     </p>
                 </form>
             </div>
@@ -141,7 +141,7 @@
                 <hr>
                 <form id="formDeconnexion" method="post">
                     <p> <!-- Se déconnecter -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Se déconnecter" name="formDeconnexion_deconnexion">
+                        <input class="btn btn-danger btn-block" type="submit" value="Se déconnecter" name="formDeconnexion_deconnexion">
                     </p>
                 </form>
             </div>

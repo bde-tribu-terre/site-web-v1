@@ -28,7 +28,7 @@
                     <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>
                     <hr>
                     <div class="form-group"> <!-- Supprimer goodie -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Supprimer le goodie" name="formSupprimerGoodie_supprimer">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer le goodie" name="formSupprimerGoodie_supprimer">
                     </div>
                 </form>
             </div>
@@ -41,7 +41,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                     </p>
                 </form>
             </div>

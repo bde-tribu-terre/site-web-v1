@@ -59,7 +59,7 @@
                     <small  class="form-text text-muted">Pour ajouter les images qui seront affichées sur la page du goodie, il faut ajouter le goodie, puis retourner sur le menu admin, et aller dans "ajouter une image à un goodie".</small>
                     <hr>
                     <div class="form-group"> <!-- Ajouter Goodie -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Ajouter le goodie" name="formAjouterGoodie_ajouterGoodie">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter le goodie" name="formAjouterGoodie_ajouterGoodie">
                     </div>
                 </form>
             </div>
@@ -72,7 +72,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                     </p>
                 </form>
             </div>

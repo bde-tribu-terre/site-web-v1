@@ -49,7 +49,7 @@
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Modifier Évent -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Modifier l'évent" name="formModifierEvent_modifierEvent">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier l'évent" name="formModifierEvent_modifierEvent">
                     </div>
                 </form>
             </div>
@@ -62,7 +62,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                     </p>
                 </form>
             </div>

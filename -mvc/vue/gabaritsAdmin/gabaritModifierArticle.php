@@ -19,7 +19,7 @@
                 <hr>
                 <form id="formModifierArticle" method="post">
                     <div class="form-group"> <!-- Supprimer des images de l'article -->
-                        <input class="btn btn-primary" type="submit" value="Supprimer des images de l'article" name="formModifierArticle_supprimerImages">
+                        <input class="btn btn-danger" type="submit" value="Supprimer des images de l'article" name="formModifierArticle_supprimerImages">
                     </div>
                     <div class="form-group"> <!-- ID de l'article -->
                         <label for="formModifierArticle_idArticle">ID de l'article</label>
@@ -49,7 +49,7 @@
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Modifier l'article -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Modifier l'article" name="formModifierArticle_modifier">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier l'article" name="formModifierArticle_modifier">
                     </div>
                 </form>
             </div>
@@ -62,7 +62,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-primary btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
                     </p>
                 </form>
             </div>
