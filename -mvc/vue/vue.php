@@ -1461,9 +1461,10 @@ function afficherJournaux($prefixe) {
             '<div class="col-sm-3">' .
                 '<div class="well">' .
                     '<h3>' . $titre . '</h3>' .
-                    '<h4>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h4>' .
-                    '<a href="' . $lienJournal . '">' .
-                        '<h4><img src="' . $prefixe . '-images/imgPdf.svg" width="32" height="32" alt="(PDF)"> Lire en ligne</h4>' .
+                    '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
+                    '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
+                        '<h4 class="alterneur-grand-tres-petit"><img src="' . $prefixe . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
+                        '<h4 class="alterneur-petit">Lire</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
