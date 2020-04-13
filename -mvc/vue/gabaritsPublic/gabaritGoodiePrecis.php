@@ -13,7 +13,7 @@
                 <h3>Prix pour les non-adhérents</h3>
                 <h1><?php echo $prixNonAdherent ?>€</h1>
                 <hr>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adherent" aria-expanded="false">
+                <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#adherent" aria-expanded="false">
                     Qu'est-ce qu'un adhérent ?
                 </button>
                 <div class="collapse" id="adherent">
@@ -27,7 +27,7 @@
                 </div>
                 <br>
                 <br>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#recherche" aria-expanded="false">
+                <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#recherche" aria-expanded="false">
                     Comment acheter ?
                 </button>
                 <div class="collapse" id="recherche"">

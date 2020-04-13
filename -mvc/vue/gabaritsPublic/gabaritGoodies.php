@@ -1,6 +1,6 @@
 <div class="container text-center">
     <h3>Goodies</h3>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#recherche" aria-expanded="<?php echo $rechercheEnCoursStr ?>">
+    <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#recherche" aria-expanded="<?php echo $rechercheEnCoursStr ?>">
         Options de recherche...
     </button>
     <div class="collapse<?php if ($rechercheEnCours) { echo ' in'; } ?>" id="recherche" aria-expanded="<?php echo $rechercheEnCoursStr ?>">

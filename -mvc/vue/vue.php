@@ -858,8 +858,8 @@ function afficherArticles($prefixe) {
                         '<hr>' .
                         '<p class="text-left retrait">' . $texteNonFormateMini . (strlen($texte) > 256 ? '[...]' : '')  . '</p>' .
                         '<hr>' .
-                        '<a class="btn btn-primary btn-block" href="' . $lienArticle . '">' .
-                            'Lire l\'article' .
+                        '<a class="btn btn-danger btn-block" href="' . $lienArticle . '">' .
+                            '<h4>Lire l\'article</h4>' .
                         '</a>' .
                     '</div>' .
                 '</div>' .
@@ -1234,8 +1234,8 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
                     '<h4>📅 ' . genererDate($date) . $nbJoursStr . '</h4>' .
                     '<h4>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</h4>' .
                     '<h4>📍️ ' . $lieu . '</h4>' .
-                    '<a class="btn btn-primary" href="' . $prefixe . 'events/?id=' . $id . '">' .
-                        'Voir les détails...' .
+                    '<a class="btn btn-danger btn-block" href="' . $prefixe . 'events/?id=' . $id . '">' .
+                        '<h4>Détails</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
@@ -1363,8 +1363,8 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
                     '<h4><strong>' . $categorieStr . '</strong></h4>' .
                     '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
                     '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
-                    '<a class="btn btn-primary" href="' . $prefixe . 'goodies/?id=' . $id . '">' .
-                        'Voir les détails...' .
+                    '<a class="btn btn-danger btn-block" href="' . $prefixe . 'goodies/?id=' . $id . '">' .
+                        '<h4>Détails</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
