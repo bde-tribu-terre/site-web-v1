@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
-            <h3>Tous nos goodies !</h3>
+            <h3 class="text-center">Tous nos goodies !</h3>
             <div id="carouselGoodies" class="carousel carousel-images slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <h3>Prochains évents !</h3>
+            <h3 class="text-center">Prochains évents !</h3>
             <?php echo $events ?>
         </div>
     </div>
