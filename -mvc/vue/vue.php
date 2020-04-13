@@ -671,7 +671,7 @@ function afficherAccueil($prefixe) {
 
     # Events
     $lignesEvents = eventsTous('PF', true, false, 3);
-    $events = '';
+    $events = '<div class="well">';
 
     if (empty($lignesEvents)) {
         $events .=
@@ -699,18 +699,21 @@ function afficherAccueil($prefixe) {
         }
         $hide = '';
         if ($count == 3) {
-            $hide = ' accueilTroisiemeEvent';
+            $events .= '<div class="alterneur-grand-moyen">';
         }
         $events .=
-            '<a href="' . $prefixe . 'events/?id=' . $idEvent . '">' .
-                '<div class="well' . $hide . '">' .
-                    '<h4>' . $titreEvent . '</h4>' .
-                    '<p>📅 ' . preg_replace('/ [^ ]*$/', '', genererDate($dateEvent)) . $nbJoursStr . '</p>' .
-                    '<p>⌚️ ' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</p>' .
-                    '<p>📍 ' . $lieuEvent . '</p>' .
-                '</div>' .
+            '<h3 class="text-center">' . $titreEvent . '</h3>' .
+            '<h5>📅&emsp;' . preg_replace('/ [^ ]*$/', '', genererDate($dateEvent)) . $nbJoursStr . '</h5>' .
+            '<h5>⌚️&emsp;' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</h5>' .
+            '<h5>📍&emsp;' . $lieuEvent . '</h5>' .
+            '<a class="btn btn-danger btn-block" href="' . $prefixe . 'events/?id=' . $idEvent . '">' .
+                '<h4>Détails</h4>' .
             '</a>';
+        if ($count == 3) {
+            $events .= '</div>';
+        }
     }
+    $events .= '</div>';
 
     # Journal
     $lignesJournaux = journauxTous(2);
