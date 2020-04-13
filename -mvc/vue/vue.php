@@ -697,7 +697,9 @@ function afficherAccueil($prefixe) {
         } else {
             $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
         }
-        $hide = '';
+        if ($count !=1 ) {
+            $events .= '<hr>';
+        }
         if ($count == 3) {
             $events .= '<div class="alterneur-grand-moyen">';
         }
