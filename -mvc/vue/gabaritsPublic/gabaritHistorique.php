@@ -82,7 +82,7 @@
     <!-- \/ AG 2019 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2019">
-            Assemblée Générale du 12 mars 2019 (Complet)
+            Assemblée Générale du 12 mars 2019<!-- (Complet) -->
         </button>
         <div class="collapse" id="2019">
             <div style="margin: 15px" class="card card-body">
@@ -91,10 +91,10 @@
                         <h3>Assemblée Générale du 12 mars 2019</h3>
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
                         <hr>
-                        <div class="text-justify retrait">
+                        <div class="text-justify retrait" style="display: none;">
                             <p>Bureau encore en fonction</p>
+                            <hr>
                         </div>
-                        <hr>
                         <div class="text-center" style="display: none">
                             <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#FB2019">
                                 Voir le post Facebook
@@ -139,7 +139,7 @@
     <!-- \/ AG 2018 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2018">
-            Assemblée Générale du 18 avril 2018 (Complet)
+            Assemblée Générale du 18 avril 2018<!-- (Complet) -->
         </button>
         <div class="collapse" id="2018">
             <div style="margin: 15px" class="card card-body">
@@ -148,11 +148,11 @@
                         <h3>Assemblée Générale du 18 avril 2018</h3>
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
                         <hr>
-                        <div class="text-justify retrait">
+                        <div class="text-justify retrait" style="display: none">
                             <p>Description du bureau et résumé de l'année.</p>
+                            <hr>
                         </div>
-                        <hr>
-                        <div class="text-center">
+                        <div class="text-center" style="display: none">
                             <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#FB2018">
                                 Voir le post Facebook
                             </button>
@@ -194,7 +194,7 @@
     <!-- \/ AG 2017 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2017">
-            Assemblée Générale du 28 mars 2017 (Bureau restreint)
+            Assemblée Générale du 28 mars 2017<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2017">
             <div style="margin: 15px" class="card card-body">
@@ -203,15 +203,13 @@
                         <h3>Assemblée Générale du 28 mars 2017</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
                         <hr>
-                        <div class="text-justify retrait">
+                        <div class="text-justify retrait" style="display: none;">
                             <p>Description du bureau et résumé de l'année.</p>
+                            <hr>
                         </div>
-                        <hr>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6">
-                            <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgPlaceholder.png' ?>" alt="imgAG2018">
-                        </div>
+                        <div class="col-sm-3"></div>
                         <div class="col-sm-6">
                             <h3>Composition du bureau</h3>
                             <hr>
@@ -223,6 +221,7 @@
                                 <li>Valentin <span class="pc">Simon</span> (Vice-Trésorier)</li>
                             </ul>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -232,7 +231,7 @@
     <!-- \/ AG 2016 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2016">
-            Assemblée Générale du 20 avril 2016 (Bureau restreint)
+            Assemblée Générale du 20 avril 2016<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2016">
             <div style="margin: 15px" class="card card-body">
@@ -266,7 +265,7 @@
     <!-- \/ AG 2015 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2015">
-            Assemblée Générale du 23 avril 2015 (Bureau restreint + CA)
+            Assemblée Générale du 23 avril 2015<!-- (Bureau restreint + CA) -->
         </button>
         <div class="collapse" id="2015">
             <div style="margin: 15px" class="card card-body">
@@ -307,7 +306,7 @@
     <!-- \/ AG 2014 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2014">
-            Assemblée Générale du 29 Septembre 2014 (Complet)
+            Assemblée Générale du 29 Septembre 2014<!-- (Complet) -->
         </button>
         <div class="collapse" id="2014">
             <div style="margin: 15px" class="card card-body">
@@ -349,7 +348,7 @@
     <!-- \/ AG 2013 \/ -->
     <div>
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2013">
-            Assemblée Générale du 23 septembre 2013 (Bureau restreint)
+            Assemblée Générale du 23 septembre 2013<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2013">
             <div style="margin: 15px" class="card card-body">
@@ -381,9 +380,9 @@
         <hr>
     </div>
     <!-- \/ AG 2012 \/ -->
-    <div>
+    <div style="display: none;">
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2012">
-            Assemblée Générale du ??? 2012 (Bureau restreint)
+            Assemblée Générale du ??? 2012<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2012">
             <div style="margin: 15px" class="card card-body">
@@ -415,9 +414,9 @@
         <hr>
     </div>
     <!-- \/ AG 2011 \/ -->
-    <div>
+    <div style="display: none">
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2011">
-            Assemblée Générale du 28 septembre 2011 (Inconnu)
+            Assemblée Générale du 28 septembre 2011<!-- (Inconnu) -->
         </button>
         <div class="collapse" id="2011">
             <div style="margin: 15px" class="card card-body">
@@ -443,9 +442,9 @@
         <hr>
     </div>
     <!-- \/ AG 2010 \/ -->
-    <div>
+    <div style="display: none;">
         <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2010">
-            Assemblée Générale du 29? septembre? 2010 (Inconnu)
+            Assemblée Générale du 29? septembre? 2010<!-- (Inconnu) -->
         </button>
         <div class="collapse" id="2010">
             <div style="margin: 15px" class="card card-body">
