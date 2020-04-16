@@ -1,5 +1,6 @@
 <div class="container text-center">
     <h3><?php echo $titre ?></h3>
+    <h4 class="pc"><?php echo $categorie ?></h4>
     <h5>📅 <?php echo genererDate($dateCreation) ?> | ✏️ <?php echo $auteur ?></h5>
     <hr>
     <?php echo $carouselArticle ?>
