@@ -1,6 +1,6 @@
 <div class="container text-center">
     <h3><?php echo $titre ?></h3>
-    <h4></h4>
+    <h5>Date de publication : <?php echo genererDate($dateCreation) ?> | Auteur : <?php echo $auteur ?></h5>
     <hr>
     <?php echo $carouselArticle ?>
     <div class="row text-left retrait">
