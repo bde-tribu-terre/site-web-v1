@@ -62,7 +62,7 @@
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                class="twitter-share-button"
                data-size="large"
-               data-text="Ce goodie de Tribu-Terre a l'air d'être de qualité : <?php echo $titre ?> !"
+               data-text="Ce goodie de Tribu-Terre a l'air d'être de qualité : <?php echo $titreGoodie ?> !"
                data-via="Tributerre45"
                data-show-count="false">
                 Tweet
