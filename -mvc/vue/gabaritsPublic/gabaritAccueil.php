@@ -69,7 +69,6 @@
                         <p>
                             <img src="<?php echo $prefixe . '-images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
                         </p>
-
                     </div>
                 </a>
             </div>
