@@ -13,11 +13,18 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Cet article de Tribu-Terre est très intéressant : <?php echo $titre ?>" data-via="Tributerre45" data-show-count="false">
+            <!-- Twitter -->
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Cet article de Tribu-Terre est très intéressant : <?php echo $titre ?> !" data-via="Tributerre45" data-show-count="false">
                 Tweet
             </a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+            <!-- Facebook -->
+            <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
+            <meta property="og:type"          content="website" />
+            <meta property="og:title"         content="Your Website Title" />
+            <meta property="og:description"   content="Your description" />
+            <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
             <div id="fb-root"></div>
             <script>
                 (function(d, s, id) {
@@ -29,7 +36,7 @@
                 }(document, 'script', 'facebook-jssdk'));
             </script>
             <div class="fb-share-button"
-                 data-href="https://www.your-domain.com/your-page.html"
+                 data-href="http://barodine.fr/tribu-terre/articles?id=<?php echo $id ?>"
                  data-layout="button_count">
             </div>
 
