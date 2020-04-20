@@ -1552,9 +1552,9 @@ function afficherPlanDuSite($prefixe) {
             $lien = implode('/', array_diff($chemin, ['index.php', '']));
             if ($cheminInverse[1] == 'index.php') {
                 if ($cheminInverse[2] == '..') {
-                    return '<a href="' . $lien . '" class="list-group-item list-group-item-info">' . 'accueil' . '</a>';
+                    return '<a href="' . $lien . '" class="list-group-item list-group-item-danger">' . 'accueil' . '</a>';
                 }
-                return '<a href="' . $lien . '" class="list-group-item list-group-item-info">' . $cheminInverse[2] . '</a>';
+                return '<a href="' . $lien . '" class="list-group-item list-group-item-danger">' . $cheminInverse[2] . '</a>';
             }
             return '';
         } else {
