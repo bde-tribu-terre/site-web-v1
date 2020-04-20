@@ -665,7 +665,8 @@ function articlesTous() {
                     CategoriesArticles
                 ORDER BY
                     dateCreationArticles DESC
-            ) AS T";
+            ) AS T
+        WHERE visibiliteArticles<>0";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
@@ -793,7 +794,8 @@ function articlesVideoTous() {
                     CategoriesArticles
                 ORDER BY
                     dateCreationArticlesYouTube DESC
-            ) AS T";
+            ) AS T
+        WHERE visibiliteArticlesYouTube<>0";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);

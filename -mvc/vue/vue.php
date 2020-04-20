@@ -821,10 +821,6 @@ function afficherArticles($prefixe) {
             $visibilite = htmlentities($arrayArticles[$ID]->visibilite, ENT_QUOTES, "UTF-8");
             $texte = htmlentities($arrayArticles[$ID]->texte, ENT_QUOTES, "UTF-8");
 
-            if ($visibilite == 0) {
-                continue;
-            }
-
             $cadreMiniature = '<div class="imageMiniatureArticlesDiv"><img class="img-fluid imageMiniatureArticles" src="--EMPLACEMENT--" alt="Miniature"></div>';
             switch (substr($ID, 0, 1)) {
                 case 'T':
@@ -1332,10 +1328,6 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
         $categorie = htmlentities($ligne->categorieGoodies, ENT_QUOTES, "UTF-8");
         $miniature = htmlentities($ligne->miniatureGoodies, ENT_QUOTES, "UTF-8");
 
-        // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
-        if ($categorie == 0) {
-            continue;
-        }
         $lienMiniature = $prefixe . 'goodies/' . $miniature;
         switch ($categorie) {
             case 1:
