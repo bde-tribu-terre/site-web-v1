@@ -81,7 +81,7 @@
     <!-- Ici vont les bureaux -->
     <!-- \/ AG 2019 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2019">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2019">
             Assemblée Générale du 12 mars 2019<!-- (Complet) -->
         </button>
         <div class="collapse" id="2019">
@@ -138,7 +138,7 @@
     </div>
     <!-- \/ AG 2018 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2018">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2018">
             Assemblée Générale du 18 avril 2018<!-- (Complet) -->
         </button>
         <div class="collapse" id="2018">
@@ -193,7 +193,7 @@
     </div>
     <!-- \/ AG 2017 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2017">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2017">
             Assemblée Générale du 28 mars 2017<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2017">
@@ -230,7 +230,7 @@
     </div>
     <!-- \/ AG 2016 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2016">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2016">
             Assemblée Générale du 20 avril 2016<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2016">
@@ -264,7 +264,7 @@
     </div>
     <!-- \/ AG 2015 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2015">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2015">
             Assemblée Générale du 23 avril 2015<!-- (Bureau restreint + CA) -->
         </button>
         <div class="collapse" id="2015">
@@ -305,7 +305,7 @@
     </div>
     <!-- \/ AG 2014 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2014">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2014">
             Assemblée Générale du 29 Septembre 2014<!-- (Complet) -->
         </button>
         <div class="collapse" id="2014">
@@ -347,7 +347,7 @@
     </div>
     <!-- \/ AG 2013 \/ -->
     <div>
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2013">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2013">
             Assemblée Générale du 23 septembre 2013<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2013">
@@ -381,7 +381,7 @@
     </div>
     <!-- \/ AG 2012 \/ -->
     <div style="display: none;">
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2012">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2012">
             Assemblée Générale du ??? 2012<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2012">
@@ -415,7 +415,7 @@
     </div>
     <!-- \/ AG 2011 \/ -->
     <div style="display: none">
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2011">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2011">
             Assemblée Générale du 28 septembre 2011<!-- (Inconnu) -->
         </button>
         <div class="collapse" id="2011">
@@ -443,7 +443,7 @@
     </div>
     <!-- \/ AG 2010 \/ -->
     <div style="display: none;">
-        <button style="width: fit-content" class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2010">
+        <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#2010">
             Assemblée Générale du 29? septembre? 2010<!-- (Inconnu) -->
         </button>
         <div class="collapse" id="2010">
