@@ -9,7 +9,7 @@
         */
 
 /* Ombre sur plein d'éléments */
-.well, .carousel-images, .btn-exterieur, .img-exterieur {
+.well, .carousel-images, .btn-exterieur, .img-exterieur, .imageUniqueGoodiePrecis, .imageUniqueArticlePrecis, .integrationArticleVideoPrecis {
     -moz-box-shadow: 0 0 5px 0 #656565;
     -webkit-box-shadow: 0 0 5px 0 #656565;
     -o-box-shadow: 0 0 5px 0 #656565;
