@@ -78,6 +78,7 @@
         <div class="col-sm-1"></div>
     </div>
     <hr>
+    <!-- TODO: https://getbootstrap.com/docs/4.3/components/collapse/ -->
     <!-- Ici vont les bureaux -->
     <!-- \/ AG 2019 \/ -->
     <div>
