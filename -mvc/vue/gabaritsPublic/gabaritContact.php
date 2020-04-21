@@ -1,7 +1,7 @@
 <div class="container text-center">
     <h3>Contact</h3>
     <hr>
-    <div class="row">
+    <div class="row text-justify retrait">
         <!-- Auteur : Jade BEAUMONT. -->
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
