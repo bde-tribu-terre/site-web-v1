@@ -6,6 +6,7 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <h4 class="text-center">Tribu-Terre, une association pour les étudiants par des étudiants !</h4>
+            <br>
             <p>
                 Tribu-terre est une association d’étudiants ayant pour but de représenter les étudiants du CoST et de
                 l'OSUC, de dynamiser la vie étudiante et de d'offfrir une dimension culturelle, évènementielle, ou
