@@ -2,9 +2,10 @@
     <h3>Histoire de l'association</h3>
     <hr>
     <div class="row text-justify retrait">
+        <!-- Auteur : Anaël BARODINE. -->
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <p><!-- Auteur : Anaël BARODINE. -->
+            <p>
                 L'association Tribu-Terre fut fondée en 2003 par des étudiants en géologie à l'OSUC, en tant
                 qu'association des acteurs en géosciences d'Orléans. Elle a pendant des années pour objectif
                 d'accompagner les étudiants à l'OSUC dans leurs études, en partageant par exemple des publications et
