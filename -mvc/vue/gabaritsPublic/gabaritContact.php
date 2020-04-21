@@ -3,15 +3,15 @@
     <hr>
     <div class="row text-justify retrait">
         <!-- Auteur : Jade BEAUMONT. -->
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
             <p>
                 Vous découvrez Tribu-Terre et voulez en savoir plus ? Vous avez simplement une question pour votre
                 bureau ? Vous pouvez contacter chacun de nos pôles sur leurs adresses mails respectives mais aussi notre
                 adresse mail générale.
             </p>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-1"></div>
     </div>
     <hr>
     <div class="row">
