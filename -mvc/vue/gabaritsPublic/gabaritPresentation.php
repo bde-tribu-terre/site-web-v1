@@ -12,13 +12,13 @@
                 encore écologique aux étudiants d’Orléans autour des sciences.
             </p>
             <p>
+                Votre association vous représente auprès de l'administration universitaire du CoST et de l’OSUC depuis
+                quelques années et veille chaque jour à faire évoluer ses projets pour l'ensemble des étudiants.
+            </p>
+            <p>
                 <a href="<?php echo $prefixe . 'association/universite/' ?>">
                     En savoir plus sur l'Université d'Orléans.
                 </a>
-            </p>
-            <p>
-                Votre association vous représente auprès de l'administration universitaire du CoST et de l’OSUC depuis
-                quelques années et veille chaque jour à faire évoluer ses projets pour l'ensemble des étudiants.
             </p>
             <br>
             <p>
