@@ -232,12 +232,13 @@ footer {
 }
 
 .liste-retrait {
-    text-indent: 0;
-    padding-left: 1em;
+    text-indent: 1em;
+    padding-left: 3em;
     margin-bottom: 0;
 }
 
 .liste-retrait li {
+    padding-left: 1em;
     margin-bottom: 10px;
 }
 
