@@ -12,6 +12,28 @@
         <div class="col-sm-1"></div>
     </div>
     <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="well">
+                <h3>Pôle Culture</h3>
+                <hr>
+                <p>
+                    Texte pôle culture.
+                </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="well">
+                <h3>Pôle Machin</h3>
+                <hr>
+                <p>
+                    Texte pôle culture.
+                </p>
+            </div>
+        </div>
+        </div>
+    </div>
     <!-- \/ Pôle Culture \/ -->
     <div>
         <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#culture">
