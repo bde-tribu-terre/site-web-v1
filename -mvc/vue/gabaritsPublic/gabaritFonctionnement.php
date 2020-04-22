@@ -10,8 +10,9 @@
                 bureau restreint , de membres actifs et de membres adhérents.
             </p>
             <p>
-                Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos (statuts). Mais voici
-                une petite explication plus « pratique » :
+                Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos
+                <a href="<?php echo $prefixe . 'association/contact/' ?>">statuts</a>. Mais voici une petite explication
+                plus « pratique » :
             </p>
             <ul style="text-indent: 0">
                 <li>

@@ -31,6 +31,7 @@
                     <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritPoles.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/poles/' ?>">Pôles</a></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritFonctionnement.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/fonctionnement/' ?>">Fonctionnement de l'association</a></li>
+                    <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritStatuts.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/fonctionnement/statuts' ?>">Statuts</a></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritHistorique.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/historique/' ?>">Historique de l'association</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item<?php echo $gabarit == $prefixe . '-mvc/vue/gabaritsPublic/gabaritContact.php' ? ' active' : ''; ?>" href="<?php echo $prefixe . 'association/contact/' ?>">Contact</a></li>
