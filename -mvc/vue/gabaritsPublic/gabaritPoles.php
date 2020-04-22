@@ -99,10 +99,10 @@
                 <div class="text-justify retrait">
                     <!-- Auteur : Jade BEAUMONT. -->
                     <p>
-                        L'association Tribu-Terre possède son propre journal, <strong>Omni-Sciences</strong>. Il s'agit
-                        d'un journal écrit par des étudiants et pour des étudiants. Son but est d'être une plateforme de
-                        diffusion de vulgarisation scientifique mais aussi de promotion de la vie étudiante. Le projet
-                        est né en Janvier 2019 et depuis, nous sortons un numéro tous les mois.
+                        L'association Tribu-Terre possède son propre journal, Omni-Sciences. Il s'agit d'un journal
+                        écrit par des étudiants et pour des étudiants. Son but est d'être une plateforme de diffusion de
+                        vulgarisation scientifique mais aussi de promotion de la vie étudiante. Le projet est né en
+                        Janvier 2019 et depuis, nous sortons un numéro tous les mois.
                     </p>
                     <p>
                         Ces journaux sont disponibles à la fois en version papier dans divers points de distributions
@@ -115,7 +115,7 @@
                         que ce soit pour une seule fois ou régulièrement, alors contactez notre équipe à l'adresse mail
                         suivante :
                     </p>
-                    <p class="text-center">
+                    <p>
                         tributerre.journal@gmail.com
                     </p>
                     <p>
