@@ -98,7 +98,7 @@
                     <p>
                         Ces journaux sont disponibles à la fois en version papier dans divers points de distributions
                         (BU, Bâtiment S, local de l'association, etc...) mais aussi en version numérique, publiée sur
-                        les réseaux sociaux et<a href="<?php echo $prefixe . 'association/fonctionnement/' ?>">dans la
+                        les réseaux sociaux et <a href="<?php echo $prefixe . 'association/fonctionnement/' ?>">dans la
                         rubrique "Journaux" du site internet</a>.
                     </p>
                     <p>
@@ -122,6 +122,7 @@
                 <h3>Pôle Informatique</h3>
                 <hr>
                 <div class="text-justify retrait">
+                    <!-- Auteur : Romain MARTINS & Anaël BARODINE. -->
                     <p>
                         Le pôle informatique de votre association a pour but d’apporter un soutien par la mise en place
                         d’outils numériques aux différentes activités de l’association. C'est ce dernier qui œuvre
