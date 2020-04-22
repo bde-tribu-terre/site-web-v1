@@ -142,8 +142,8 @@
                         Mais ce pôle est encore très jeune ! Il a été créé en 2019, portant des projets encore vagues,
                         mais qui ont su se concrétiser au cours des mois qui suivirent. Les objectifs du pôle
                         informatique sont voués à changer en dépendant des besoins du bureau de Tribu-Terre, ainsi que
-                        des compétences de développement des membres le composant. Mais quels qu'ils soient les
-                        objectifs se ramèneront toujours à apporter plus à nos chers camarades étudiants !
+                        des compétences de développement des membres le composant. Mais quels que soient les objectifs,
+                        ils se ramèneront toujours à apporter plus à nos chers camarades étudiants !
                     </p>
                     <p>
                         Enfin, il permet d'ouvrir un accès vers l’associatif aux étudiants en informatique. Tribu-Terre
