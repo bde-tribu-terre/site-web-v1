@@ -11,7 +11,7 @@
             </p>
             <p>
                 Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos
-                <a href="<?php echo $prefixe . 'association/contact/' ?>">statuts</a>. Mais voici une petite explication
+                <a href="<?php echo $prefixe . 'association/statuts/' ?>">statuts</a>. Mais voici une petite explication
                 plus « pratique » :
             </p>
             <ul style="text-indent: 0">
