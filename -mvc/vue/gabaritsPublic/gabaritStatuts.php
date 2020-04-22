@@ -2,6 +2,7 @@
     <h3>Statuts</h3>
     <hr>
     <div class="row text-justify retrait">
+        <!-- Auteur : Jade BEAUMONT. -->
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <p>
