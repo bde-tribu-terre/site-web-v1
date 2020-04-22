@@ -237,6 +237,7 @@ footer {
 }
 
 .liste-retrait li {
+    text-indent: 0;
     padding-left: 1em;
     margin-bottom: 10px;
 }
