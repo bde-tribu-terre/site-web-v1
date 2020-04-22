@@ -6,7 +6,16 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <p>
-                Ici un paragraphe par pôle, avec des images et un sommaire où on clique sur le pôle.
+                La plupart des membres du bureau de Tribu-Terre sont assignés à un pôle, ce qui sert à définir
+                le rôle et les tâches de chacun. Actuellement, il existe huit pôles au sein de l'association
+                Tribu-Terre, mais ces derniers peuvent changer à l'occasion d'une Assemblée Générale, ou bien au cours
+                de l'année si un besoin ou une opportunité apparaît.
+            </p>
+            <p>
+                Ainsi, certains pôles se révèlent nécessaires par nature du fait du statut d'association étudiante,
+                comme le Pôle Communication ou le Pôle Événementiel, alors que d'autres relèvent de l'envie d'étudiants
+                membres du bureau de créer des projets en particuliers au nom de l'association, comme le Pôle Journal ou
+                le Pôle Informatique !
             </p>
         </div>
         <div class="col-sm-1"></div>

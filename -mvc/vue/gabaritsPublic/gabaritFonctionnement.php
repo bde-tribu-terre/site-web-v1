@@ -58,7 +58,7 @@
                 Régulièrement, tous ces membres se réunissent pour faire un bilan des projets passés et futurs des
                 <a href="<?php echo $prefixe . 'association/poles/' ?>">différents pôles</a>, prendre des décisions
                 importantes, voter de nouveaux membres mais aussi faire un bilan trésorerie où les trésorier et
-                vice-trésorier réccapitulent les dépenses effectuées et à venir. C'est ce que l'on appelle un Conseil
+                vice-trésorier récapitulent les dépenses effectuées et à venir. C'est ce que l'on appelle un Conseil
                 d'Administration.
             </p>
             <p>
