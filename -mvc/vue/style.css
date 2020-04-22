@@ -231,6 +231,16 @@ footer {
     text-indent: 4em;
 }
 
+.liste-retrait {
+    text-indent: 0;
+    padding-left: 1em;
+    margin-bottom: 0;
+}
+
+.liste-retrait li {
+    margin-bottom: 10px;
+}
+
 .imageAGbordure {
     border-radius: 5px;
     overflow: hidden;

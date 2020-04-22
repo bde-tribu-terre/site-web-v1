@@ -14,7 +14,7 @@
                 <a href="<?php echo $prefixe . 'association/fonctionnement/statuts/' ?>">statuts</a>. Mais voici une
                 petite explication plus « pratique » :
             </p>
-            <ul style="text-indent: 0">
+            <ul class="liste-retrait">
                 <li>
                     Vous pouvez intégrer l’association en adhérant au cours de l'année universitaire, ce qui permet de
                     profiter de nombreux avantages. Actuellement, le montant de la côtisation des adhérents est de 5€.
@@ -28,13 +28,13 @@
             <p>
                 Vous souhaitez vous investir plus concrètement dans l'association et devenir membre du bureau ?
             </p>
-            <ul style="text-indent: 0">
+            <ul class="liste-retrait">
                 <li>
                     Vous pouvez participer à l’activité de différents pôles en devenant membre actif.
                 </li>
                 <li>
-                    Certains membres actifs peuvent aussi être nommés « responsable d'activité » par le  Conseil
-                    d'Administration et devenir des Chargés de mission ou des Vice-présidents affiliés à des pôles en
+                    Certains membres actifs peuvent aussi être nommés « responsable d'activité » par le Conseil
+                    d'Administration et devenir des Chargés de Mission ou des Vice-présidents affiliés à des pôles en
                     particulier.
                 </li>
             </ul>
@@ -44,7 +44,7 @@
                 d’administration pour se présenter et annoncer sa candidature. Lors de la prochaine réunion, un vote
                 aura lieu pour vous intégrer officiellement à votre nouveau poste.
             </p>
-            <ul style="text-indent: 0">
+            <ul class="liste-retrait">
                 <li>
                     Enfin, chaque association est composé d'un bureau restreint. Il s'agit du Président, du
                     Vice-Président Général, du Trésorier, du Vice-Trésorier, du Secrétaire et du Vice-Secrétaire. Ils
