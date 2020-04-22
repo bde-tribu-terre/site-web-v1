@@ -16,7 +16,7 @@
         <div class="col-sm-6">
             <!-- \/ Pôle Culture \/ -->
             <div class="well">
-                <h3>Pôle Culture</h3>
+                <h3>Pôle Culture 🔬</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
@@ -26,7 +26,7 @@
             </div>
             <!-- \/ Pôle Cuisine \/ -->
             <div class="well">
-                <h3>Pôle Cuisine</h3>
+                <h3>Pôle Cuisine 🍳</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
@@ -36,7 +36,7 @@
             </div>
             <!-- \/ Pôle Partenariat \/ -->
             <div class="well">
-                <h3>Pôle Partenariat</h3>
+                <h3>Pôle Partenariat 🤝</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
@@ -46,7 +46,7 @@
             </div>
             <!-- \/ Pôle Goodies \/ -->
             <div class="well">
-                <h3>Pôle Goodies</h3>
+                <h3>Pôle Goodies 👕</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
@@ -58,7 +58,7 @@
         <div class="col-sm-6">
             <!-- \/ Pôle Événementiel \/ -->
             <div class="well">
-                <h3>Pôle Événementiel</h3>
+                <h3>Pôle Événementiel 🎫</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
@@ -68,7 +68,7 @@
             </div>
             <!-- \/ Pôle Communication \/ -->
             <div class="well">
-                <h3>Pôle Communication</h3>
+                <h3>Pôle Communication 🎤</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
@@ -78,7 +78,7 @@
             </div>
             <!-- \/ Pôle Journal \/ -->
             <div class="well">
-                <h3>Pôle Journal</h3>
+                <h3>Pôle Journal 🗞️</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
@@ -88,7 +88,7 @@
             </div>
             <!-- \/ Pôle Informatique \/ -->
             <div class="well">
-                <h3>Pôle Informatique</h3>
+                <h3>Pôle Informatique 💻</h3>
                 <hr>
                 <div class="text-justify retrait">
                     <p>
