@@ -20,7 +20,6 @@
                 <p>
                     Texte pôle culture.
                 </p>
-                </div>
             </div>
         </div>
         <div class="col-sm-6">
@@ -31,7 +30,6 @@
                     Texte pôle culture.
                 </p>
             </div>
-        </div>
         </div>
     </div>
     <!-- \/ Pôle Culture \/ -->
