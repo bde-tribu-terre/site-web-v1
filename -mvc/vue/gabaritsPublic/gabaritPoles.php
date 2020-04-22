@@ -107,8 +107,8 @@
                     <p>
                         Ces journaux sont disponibles à la fois en version papier dans divers points de distributions
                         (BU, Bâtiment S, local de l'association, etc...) mais aussi en version numérique, publiée sur
-                        les réseaux sociaux et <a href="<?php echo $prefixe . 'association/fonctionnement/' ?>">dans la
-                        rubrique "Journaux" du site internet</a>.
+                        les réseaux sociaux et <a href="<?php echo $prefixe . 'journaux/' ?>">dans la rubrique
+                        "Journaux" du site internet</a>.
                     </p>
                     <p>
                         Si vous aussi vous souhaitez mettre la main à la pâte et apporter votre contribution au journal,
