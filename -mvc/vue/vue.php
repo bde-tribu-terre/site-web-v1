@@ -1048,6 +1048,18 @@ function afficherFonctionnement($prefixe) {
 }
 
 ########################################################################################################################
+# Association - Fonctionnement - Statuts                                                                               #
+########################################################################################################################
+function afficherStatuts($prefixe) {
+    $title = 'Statuts';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritStatuts.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
 # Association - Historique                                                                                             #
 ########################################################################################################################
 function afficherHistorique($prefixe) {
