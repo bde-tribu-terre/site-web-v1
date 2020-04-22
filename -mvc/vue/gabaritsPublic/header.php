@@ -3,7 +3,7 @@
         <a href="<?php echo $prefixe ?>">
             <img src="<?php echo $prefixe . '-images/imgLogoMini.png' ?>" alt="Logo" height="300">
         </a>
-        <p>Association des étudiants en Science de l'Université d'Orléans</p>
+        <p>Association des Étudiants en Science de l'Université d'Orléans</p>
     </div>
 </div>
 
