@@ -45,7 +45,7 @@ a, a:hover {
 }
 
 .navbar-tribu-terre {
-    background-color: #dc3545;
+    background-color: #d9534f;
 }
 
 .navbar-tribu-terre .icon-bar {
@@ -69,20 +69,20 @@ a, a:hover {
 .navbar-tribu-terre .dropdown-item:hover,
 .navbar-tribu-terre .dropdown-item:focus {
     color: #ffffff;
-    background-color: #742332;
+    background-color: #c9302c;
 }
 
 .navbar-tribu-terre .nav-item.active:hover .nav-link,
 .navbar-tribu-terre .dropdown-item.active:hover,
 .navbar-tribu-terre .dropdown-item.active:focus,
 .navbar-tribu-terre .dropdown a:focus:hover {
-    background-color: #5d222e;
+    background-color: #ac2925;
 }
 
 .nav .open > a,
 .nav .open > a:focus,
 .nav .open > a:hover {
-    background-color: #742332;
+    background-color: #c9302c;
 }
 
 .navbar-tribu-terre .dropdown-toggle {
@@ -90,7 +90,7 @@ a, a:hover {
 }
 
 .navbar-tribu-terre .dropdown-menu {
-    background-color: #dc3545;
+    background-color: #d9534f;
 }
 .navbar-tribu-terre .dropdown-item {
     color: #ffffff;
@@ -251,6 +251,22 @@ footer {
 
 .plan-du-site .list-group {
     margin-bottom: 0;
+}
+
+.plan-du-site .list-group-item-danger {
+    color: white;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.plan-du-site .list-group-item-danger:hover {
+    color: white;
+    background-color:#c9302c;
+    border-color:#761c19
+}
+
+.plan-du-site .list-group-item:not(.list-group-item-danger){
+    padding: 15px 50px 15px 50px;
 }
 
 /* Petites capitales */
