@@ -686,3 +686,10 @@ function CtlMentionsLegales($prefixe) {
 function CtlPlanDuSite($prefixe) {
     afficherPlanDuSite($prefixe);
 }
+
+########################################################################################################################
+# Riad (temporaire)                                                                                                    #
+########################################################################################################################
+function CtlRiad($prefixe) {
+    afficherRiad($prefixe);
+}

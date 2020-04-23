@@ -1593,6 +1593,18 @@ function afficherPlanDuSite($prefixe) {
 }
 
 ########################################################################################################################
+# Riad (temporaire)                                                                                                    #
+########################################################################################################################
+function afficherRiad($prefixe) {
+    $title = 'Riad';
+    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritRiad.php';
+    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+
+    require_once($prefixe . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
 # Fonctions d'affichage                                                                                                #
 ########################################################################################################################
 function genererDate($date) {
