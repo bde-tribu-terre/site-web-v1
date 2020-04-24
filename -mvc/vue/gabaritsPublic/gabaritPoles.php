@@ -63,7 +63,19 @@
                 <hr>
                 <div class="text-justify retrait">
                     <p>
-                        Texte pôle goodies.
+                        Tribu-Terre propose plusieurs types de goodies au nom de l’association comme des pulls,
+                        des pins, des stickers et même des goodies à destination des étudiants comme des trousses à
+                        dissection ou des marteaux de géologue.
+                    </p>
+                    <p>
+                        Les membres de ce pôle ont comme rôle de démarcher des entreprises, comparer les devis et
+                        choisir avec qui travailler, au meilleur prix et à la meilleure qualité. De plus ils sont en
+                        recherche constante de nouveaux goodies à proposer aux étudiants.
+                    </p>
+                    <p>
+                        <a href="<?php echo $prefixe . 'goodies/' ?>">
+                            La liste complète ainsi que les prix des goodies est disponible sur le site internet.
+                        </a>
                     </p>
                 </div>
             </div>
