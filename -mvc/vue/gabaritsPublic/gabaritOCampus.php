@@ -4,10 +4,17 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <div class="text-justify">
+            <div class="text-justify retrait">
+                <!-- Auteur : Simon MEDELLI. -->
                 <p>
-                    C'est quoi ÔCampus, notre engagement auprès d'eux, le leur auprès des étudiants, etc...<br>
-                    Il peut y avoir des liens, des images, des trucs dans le texte etc...
+                    La fédération ÔCampus a pour objectif de représenter l’ensemble des étudiants auprès des
+                    associations du campus et de la métropole d’Orléans. Celle-ci, à l’aide des 32 associations
+                    (dont Tribu-Terre) qui la composent, dynamise le campus par leurs actions préventives, formatives,
+                    festives ou bien culturelles afin de contribuer à la vie étudiante.
+                </p>
+                <p>
+                    Par ailleurs, l’association étant soucieuse de nos conditions de vie, a la capacité d’intervenir
+                    auprès des différents conseils universitaires par le biais de leurs élus.
                 </p>
             </div>
         </div>
