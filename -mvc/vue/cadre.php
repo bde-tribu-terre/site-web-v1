@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $title ?> | Tribu-Terre</title>
+    <title><?php echo TITLE ?> | Tribu-Terre</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -12,13 +12,13 @@
 <body>
 <div>
     <header>
-        <?php require_once($header); ?>
+        <?php require_once(PATH_TO_HEADER); ?>
     </header>
     <main>
-        <?php require_once($gabarit); ?>
+        <?php require_once PATH_TO_GABARIT; ?>
     </main>
     <footer>
-        <?php require_once($footer); ?>
+        <?php require_once PATH_TO_FOOTER; ?>
     </footer>
 </div>
 </body>

@@ -623,10 +623,8 @@ function afficherAfficherLog($messageRetour) {
 # Accueil                                                                                                              #
 ########################################################################################################################
 function afficherAccueil() {
-    $title = 'Accueil';
-    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritAccueil.php';
-    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
+    define('TITLE', 'Menu administrateur');
+    define('GABARIT', 'gabaritAccueil.php');
 
     # Goodies
     $goodiesIndicators = '';
@@ -661,13 +659,34 @@ function afficherAccueil() {
         }
         $goodies .=
             '">' . "\n" .
-                '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
-                '<div class="carousel-caption">' . "\n" .
-                    '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
-                    '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
-                '</div>' . "\n" .
+            '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
+            '<div class="carousel-caption">' . "\n" .
+            '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
+            '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
+            '</div>' . "\n" .
             '</div>';
     }
+    $carouselGoodies =
+        '<div id="carouselGoodies" class="carousel carousel-images slide" data-ride="carousel">' .
+            '<!-- Indicators -->' .
+            '<ol class="carousel-indicators">' .
+                $goodiesIndicators .
+            '</ol>' .
+            '<!-- Wrapper for slides -->' .
+                '<div class="carousel-inner" role="listbox">' .
+                '<!-- Ici on liste les goodies -->' .
+                $goodies .
+            '</div>' .
+            '<!-- Left and right controls -->' .
+            '<a class="left carousel-control" href="#carouselGoodies" role="button" data-slide="prev">' .
+            '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>' .
+            '<span class="sr-only">Previous</span>' .
+            '</a>' .
+            '<a class="right carousel-control" href="#carouselGoodies" role="button" data-slide="next">' .
+            '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' .
+            '<span class="sr-only">Next</span>' .
+            '</a>' .
+        '</div>';
 
     # Events
     $lignesEvents = eventsTous('PF', true, false, 3);
@@ -709,7 +728,7 @@ function afficherAccueil() {
             '<h5>⌚️&emsp;' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</h5>' .
             '<h5>📍&emsp;' . $lieuEvent . '</h5>' .
             '<a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $idEvent . '">' .
-                '<h4>Détails</h4>' .
+            '<h4>Détails</h4>' .
             '</a>';
         if ($count == 3) {
             $events .= '</div>';
@@ -730,14 +749,14 @@ function afficherAccueil() {
 
         $journaux .=
             '<div class="col-sm-6">' .
-                '<div class="well">' .
-                    '<h3>' . $titre . '</h3>' .
-                    '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
-                    '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
-                        '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
-                        '<h4 class="alterneur-petit">Lire</h4>' .
-                    '</a>' .
-                '</div>' .
+            '<div class="well">' .
+            '<h3>' . $titre . '</h3>' .
+            '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
+            '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
+            '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
+            '<h4 class="alterneur-petit">Lire</h4>' .
+            '</a>' .
+            '</div>' .
             '</div>';
     }
 
@@ -771,18 +790,23 @@ function afficherAccueil() {
 
         $article =
             '<div class="well">' .
-                '<h5>' .
-                    '<span class="pc">' . $ligneArticle->categorie . '</span>' .
-                '</h5>' .
-                '<h3>' . $ligneArticle->titre . '</h3>' .
-                '<h5>' . genererDate($ligneArticle->dateCreation) . '</h5>' .
-                '<a href="' . RACINE . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-danger btn-block">' .
-                    '<h4>Lire l\'article</h4>' .
-                '</a>' .
+            '<h5>' .
+            '<span class="pc">' . $ligneArticle->categorie . '</span>' .
+            '</h5>' .
+            '<h3>' . $ligneArticle->titre . '</h3>' .
+            '<h5>' . genererDate($ligneArticle->dateCreation) . '</h5>' .
+            '<a href="' . RACINE . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-danger btn-block">' .
+            '<h4>Lire l\'article</h4>' .
+            '</a>' .
             '</div>';
     }
 
-    require_once(RACINE . '-mvc/vue/cadre.php');
+    define('CAROUSEL_GOODIES', $carouselGoodies);
+    define('EVENTS', $events);
+    define('JOURNAUX', $journaux);
+    define('ARTICLE', $article);
+
+    afficherCadre('PUBLIC');
 }
 
 ########################################################################################################################

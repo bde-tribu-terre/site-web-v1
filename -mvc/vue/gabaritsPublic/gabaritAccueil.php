@@ -2,32 +2,11 @@
     <div class="row">
         <div class="col-sm-8">
             <h3 class="text-center">Tous nos goodies !</h3>
-            <div id="carouselGoodies" class="carousel carousel-images slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <?php echo $goodiesIndicators ?>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <!-- Ici on liste les goodies -->
-                    <?php echo $goodies ?>
-                </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#carouselGoodies" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#carouselGoodies" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
+            <?php echo CAROUSEL_GOODIES ?>
         </div>
         <div class="col-sm-4">
             <h3 class="text-center">Prochains évents !</h3>
-            <?php echo $events ?>
+            <?php echo EVENTS ?>
         </div>
     </div>
     <hr>
@@ -37,11 +16,11 @@
     <div class="row">
         <div class="col-sm-6">
             <h3>Le dernier article !</h3>
-            <?php echo $article ?>
+            <?php echo ARTICLE ?>
         </div>
         <div class="col-sm-6">
             <h3>Les journaux les plus récents !</h3>
-            <?php echo $journaux ?>
+            <?php echo JOURNAUX ?>
         </div>
     </div>
     <hr>
