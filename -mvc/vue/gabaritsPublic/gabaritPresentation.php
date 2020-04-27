@@ -17,7 +17,7 @@
                 quelques années et veille chaque jour à faire évoluer ses projets pour l'ensemble des étudiants.
             </p>
             <p>
-                <a href="<?php echo $prefixe . 'association/universite/' ?>">
+                <a href="<?php echo RACINE . 'association/universite/' ?>">
                     En savoir plus sur l'Université d'Orléans.
                 </a>
             </p>
@@ -27,7 +27,7 @@
                 ont été créés et œuvrent actuellement.
             </p>
             <p>
-                <a href="<?php echo $prefixe . 'association/poles/' ?>">
+                <a href="<?php echo RACINE . 'association/poles/' ?>">
                     Plus d'information sur les pôles actuels de Tribu-Terre
                 </a>
             </p>
@@ -40,12 +40,12 @@
                 représente des associations scientifiques de France.
             </p>
             <p>
-                <a href="<?php echo $prefixe . 'association/reseau-associatif/ocampus/' ?>">
+                <a href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">
                     Qu'est-ce qu'ÔCampus ?
                 </a>
             </p>
             <p>
-                <a href="<?php echo $prefixe . 'association/reseau-associatif/fneb/' ?>">
+                <a href="<?php echo RACINE . 'association/reseau-associatif/fneb/' ?>">
                     Qu'est-ce que la FNEB ?
                 </a>
             </p>
@@ -57,12 +57,12 @@
                 l’actualité de votre association préférée !
             </p>
             <p>
-                <a href="<?php echo $prefixe . 'association/ou-nous-trouver/' ?>">
+                <a href="<?php echo RACINE . 'association/ou-nous-trouver/' ?>">
                     Où nous trouver ?
                 </a>
             </p>
             <p>
-                <a href="<?php echo $prefixe . 'association/reseaux-sociaux/' ?>">
+                <a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">
                     Quels sont nos réseaux sociaux ?
                 </a>
             </p>

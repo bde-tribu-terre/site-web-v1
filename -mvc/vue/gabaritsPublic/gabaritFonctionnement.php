@@ -13,14 +13,14 @@
             <br>
             <p>
                 Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos
-                <a href="<?php echo $prefixe . 'association/fonctionnement/statuts/' ?>">statuts</a>. Mais voici une
+                <a href="<?php echo RACINE . 'association/fonctionnement/statuts/' ?>">statuts</a>. Mais voici une
                 petite explication plus « pratique » :
             </p>
             <ul class="liste-retrait">
                 <li>
                     Vous pouvez intégrer l’association en adhérant au cours de l'année universitaire, ce qui permet de
                     profiter de nombreux avantages. Actuellement, le montant de la côtisation des adhérents est de 5€.
-                    <a href="<?php echo $prefixe . 'association/pourquoi-adherer/' ?>">Pourquoi adhérer ?</a>
+                    <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">Pourquoi adhérer ?</a>
                 </li>
                 <li>
                     Vous pouvez aussi faire un quelconque don financier ou matériel à l’association et devenir membre
@@ -42,7 +42,7 @@
             </ul>
             <p>
                 Pour cela, il suffit d’être adhérent, de
-                <a href="<?php echo $prefixe . 'association/contact/' ?>">nous contacter</a> et de venir à un conseil
+                <a href="<?php echo RACINE . 'association/contact/' ?>">nous contacter</a> et de venir à un conseil
                 d’administration pour se présenter et annoncer sa candidature. Lors de la prochaine réunion, un vote
                 aura lieu pour vous intégrer officiellement à votre nouveau poste.
             </p>
@@ -56,7 +56,7 @@
             <br>
             <p>
                 Régulièrement, tous ces membres se réunissent pour faire un bilan des projets passés et futurs des
-                <a href="<?php echo $prefixe . 'association/poles/' ?>">différents pôles</a>, prendre des décisions
+                <a href="<?php echo RACINE . 'association/poles/' ?>">différents pôles</a>, prendre des décisions
                 importantes, voter de nouveaux membres mais aussi faire un bilan trésorerie où les trésorier et
                 vice-trésorier récapitulent les dépenses effectuées et à venir. C'est ce que l'on appelle un Conseil
                 d'Administration.

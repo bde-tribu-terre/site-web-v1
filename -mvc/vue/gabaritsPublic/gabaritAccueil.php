@@ -57,7 +57,7 @@
                     <div class="well">
                         <h4>Notre page Facebook</h4>
                         <p>
-                            <img src="<?php echo $prefixe . '-images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
+                            <img src="<?php echo RACINE . '-images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
                         </p>
                     </div>
                 </a>
@@ -67,7 +67,7 @@
                     <div class="well">
                         <h4>Notre compte Instagram</h4>
                         <p>
-                            <img src="<?php echo $prefixe . '-images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
+                            <img src="<?php echo RACINE . '-images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
                         </p>
                     </div>
                 </a>
@@ -77,7 +77,7 @@
                     <div class="well">
                         <h4>Notre compte Twitter</h4>
                         <p>
-                            <img src="<?php echo $prefixe . '-images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
+                            <img src="<?php echo RACINE . '-images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
                         </p>
                     </div>
                 </a>
@@ -129,8 +129,8 @@
                                 <p>Tribu-Terre est actuellement partenaire avec trois établissements Rue de Bourgogne.</p>
                                 <p>Profitez de tarifs préférentiels sur présentation de votre carte d'adhérent Tribu-Terre !</p>
                                 <p>
-                                    <a href="<?php echo $prefixe . 'association/pourquoi-adherer/' ?>">Comment adhérer ?</a> |
-                                    <a href="<?php echo $prefixe . 'association/partenaires/' ?>">Voir les tarifs préférentiels</a>
+                                    <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">Comment adhérer ?</a> |
+                                    <a href="<?php echo RACINE . 'association/partenaires/' ?>">Voir les tarifs préférentiels</a>
                                 </p>
                             </div>
                             <div class="col-sm-3"></div>
@@ -146,7 +146,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgBarAtelier.png' ?>" alt="Bar l'Atelier">
+                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgBarAtelier.png' ?>" alt="Bar l'Atelier">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -159,7 +159,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgBarKeyWest.png' ?>" alt="Bar le Key West">
+                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgBarKeyWest.png' ?>" alt="Bar le Key West">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -172,7 +172,7 @@
                                     </a>
                                 </p>
                                 <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
-                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
+                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -206,12 +206,12 @@
                                     </a>
                                 </p>
                                 <p>
-                                    <a href="<?php echo $prefixe . 'association/reseau-associatif/ocampus/' ?>">
+                                    <a href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">
                                         Plus d'information sur ÔCampus
                                     </a>
                                 </p>
                                 <a href="https://ocampus.fr/index.php">
-                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgOCampus.png' ?>" alt="ÔCampus">
+                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgOCampus.png' ?>" alt="ÔCampus">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -227,12 +227,12 @@
                                     </a>
                                 </p>
                                 <p>
-                                    <a href="<?php echo $prefixe . 'association/reseau-associatif/fneb/' ?>">
+                                    <a href="<?php echo RACINE . 'association/reseau-associatif/fneb/' ?>">
                                         Plus d'information sur la FNEB
                                     </a>
                                 </p>
                                 <a href="https://www.fneb.fr/">
-                                    <img class="img-exterieur" src="<?php echo $prefixe . '-images/imgFNEB.png' ?>" alt="FNEB">
+                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgFNEB.png' ?>" alt="FNEB">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -248,7 +248,7 @@
                                     (OSUC) et scientifique (CoST) de l'Université d'Orléans.
                                 </p>
                                 <p>
-                                    <a href="<?php echo $prefixe . 'association/universite/' ?>">
+                                    <a href="<?php echo RACINE . 'association/universite/' ?>">
                                         Plus d'informations sur l'Université d'Orléans.
                                     </a>
                                 </p>
@@ -266,7 +266,7 @@
                                     </a>
                                 </p>
                                 <a href="http://www.univ-orleans.fr/fr/osuc">
-                                    <img src="<?php echo $prefixe . '-images/imgOSUC2.png' ?>" alt="OSUC">
+                                    <img src="<?php echo RACINE . '-images/imgOSUC2.png' ?>" alt="OSUC">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -279,7 +279,7 @@
                                     </a>
                                 </p>
                                 <a href="http://www.univ-orleans.fr/fr/sciences-techniques/">
-                                    <img src="<?php echo $prefixe . '-images/imgCoST2.png' ?>" alt="CoST">
+                                    <img src="<?php echo RACINE . '-images/imgCoST2.png' ?>" alt="CoST">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>

@@ -90,7 +90,7 @@
                         recherche constante de nouveaux goodies à proposer aux étudiants.
                     </p>
                     <p>
-                        <a href="<?php echo $prefixe . 'goodies/' ?>">
+                        <a href="<?php echo RACINE . 'goodies/' ?>">
                             La liste complète ainsi que les prix des goodies est disponible sur le site internet.
                         </a>
                     </p>
@@ -136,7 +136,7 @@
                     <p>
                         Ces journaux sont disponibles à la fois en version papier dans divers points de distributions
                         (BU, Bâtiment S, local de l'association, etc...) mais aussi en version numérique, publiée sur
-                        les réseaux sociaux et <a href="<?php echo $prefixe . 'journaux/' ?>">dans la rubrique
+                        les réseaux sociaux et <a href="<?php echo RACINE . 'journaux/' ?>">dans la rubrique
                         "Journaux" du site internet</a>.
                     </p>
                     <p>

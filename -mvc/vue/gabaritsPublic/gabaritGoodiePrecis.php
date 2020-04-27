@@ -22,7 +22,7 @@
                         <p>Un adhérent est une personne ayant payé le prix d'adhésion auprès du bureau de Tribu-Terre.</p>
                         <p>Le prix de l'adhésion est fixé à 5€. L'adhésion est valable pour toute la durée de l'année universitaire.</p>
                         <p>Devenir adhérent à Tribu-Terre, c'est non seulement pouvoir acheter les goodies à prix réduit, mais c'est aussi bénéficier de tarifs préférentiels chez nos partenaires !</p>
-                        <a href="<?php echo $prefixe . 'association/pourquoi-adherer/' ?>"><p>En savoir plus sur les avantages de l'adhésion !</p></a>
+                        <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>"><p>En savoir plus sur les avantages de l'adhésion !</p></a>
                     </div>
                 </div>
                 <br>
@@ -34,13 +34,13 @@
                     <div class="card card-body">
                         <br>
                         <p>Pour acheter ce goodie, rendez-vous au local Tribu-Terre !</p>
-                        <a href="<?php echo $prefixe . 'association/ou-nous-trouver/' ?>"><p>Où est notre local ?</p></a>
+                        <a href="<?php echo RACINE . 'association/ou-nous-trouver/' ?>"><p>Où est notre local ?</p></a>
                         <br>
                         <p>Nous organisons également régulièrement des permanences dans le hall du bâtiment S !</p>
-                        <a href="<?php echo $prefixe . 'association/reseaux-sociaux/' ?>"><p>Tenez-vous informé sur nos réseaux !</p></a>
+                        <a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>"><p>Tenez-vous informé sur nos réseaux !</p></a>
                         <br>
                         <p>Certains de nos goodies peuvent être achetés pendant nos évents !</p>
-                        <a href="<?php echo $prefixe . 'events/' ?>"><p>Quels sont les prochains events ?</p></a>
+                        <a href="<?php echo RACINE . 'events/' ?>"><p>Quels sont les prochains events ?</p></a>
                     </div>
                 </div>
             </div>
