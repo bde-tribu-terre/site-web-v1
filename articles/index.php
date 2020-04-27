@@ -1,12 +1,12 @@
 <?php
-$prefixe = '../';
-require_once($prefixe . '-mvc/controleur/controleur.php');
+define('RACINE', '../');
+require_once(RACINE . '-mvc/controleur/controleur.php');
 try {
     if (isset($_GET['id'])) {
-        CtlArticlePrecis($prefixe, $_GET['id']);
+        CtlArticlePrecis($_GET['id']);
     } else {
-        CtlArticles($prefixe);
+        CtlArticles();
     }
 } catch (Exception $e) {
-    CtlErreur($prefixe, $e->getMessage());
+    CtlErreur($e->getMessage());
 }

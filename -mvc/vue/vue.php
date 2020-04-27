@@ -3,43 +3,43 @@
 # Admin                                                                                                                #
 ########################################################################################################################
 # Système
-function afficherConnexion($prefixe, $messageRetour) {
+function afficherConnexion($messageRetour) {
     $title = 'Connexion';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritConnexion.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritConnexion.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherMenu($prefixe, $messageRetour) {
+function afficherMenu($messageRetour) {
     $title = 'Menu administrateur';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritMenu.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritMenu.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 # Events
-function afficherCreerEvent($prefixe, $messageRetour) {
+function afficherCreerEvent($messageRetour) {
     $title = 'Créer un évent';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritCreerEvent.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritCreerEvent.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherChoixEvent($prefixe, $messageRetour) {
+function afficherChoixEvent($messageRetour) {
     $title = 'Choisir un évent';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixEvent.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritChoixEvent.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -58,14 +58,14 @@ function afficherChoixEvent($prefixe, $messageRetour) {
             $titreEvents . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherModifierEvent($prefixe, $messageRetour, $id) {
+function afficherModifierEvent($messageRetour, $id) {
     $title = 'Modifier un évent';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierEvent.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritModifierEvent.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -81,14 +81,14 @@ function afficherModifierEvent($prefixe, $messageRetour, $id) {
     $heure = substr($heureEvents, 0, 2);
     $minute = substr($heureEvents, 3, 2);
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherSupprimerEvent($prefixe, $messageRetour) {
+function afficherSupprimerEvent($messageRetour) {
     $title = 'Supprimer un évent';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerEvent.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritSupprimerEvent.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -107,26 +107,26 @@ function afficherSupprimerEvent($prefixe, $messageRetour) {
             $titreEvents . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 # Goodies
-function afficherAjouterGoodie($prefixe, $messageRetour) {
+function afficherAjouterGoodie($messageRetour) {
     $title = 'Ajouter un goodie';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterGoodie.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAjouterGoodie.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherAjouterImageGoodie($prefixe, $messageRetour) {
+function afficherAjouterImageGoodie($messageRetour) {
     $title = 'Ajouter une image à un goodie';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterImageGoodie.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAjouterImageGoodie.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -140,14 +140,14 @@ function afficherAjouterImageGoodie($prefixe, $messageRetour) {
             '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherChoixGoodie($prefixe, $messageRetour) {
+function afficherChoixGoodie($messageRetour) {
     $title = 'Choisir un goodie';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixGoodie.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritChoixGoodie.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -169,14 +169,14 @@ function afficherChoixGoodie($prefixe, $messageRetour) {
             '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherModifierGoodie($prefixe, $messageRetour, $id) {
+function afficherModifierGoodie($messageRetour, $id) {
     $title = 'Modifier un goodie';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierGoodie.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritModifierGoodie.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -191,14 +191,14 @@ function afficherModifierGoodie($prefixe, $messageRetour, $id) {
     $categorieGoodie = $ligneGoodie->categorieGoodies;
     $descGoodie = $ligneGoodie->descGoodies;
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherSupprimerImageGoodie($prefixe, $messageRetour, $id) {
+function afficherSupprimerImageGoodie($messageRetour, $id) {
     $title = 'Supprimer une image d\'un goodie';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerImageGoodie.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritSupprimerImageGoodie.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -213,20 +213,20 @@ function afficherSupprimerImageGoodie($prefixe, $messageRetour, $id) {
 
         $images .=
             '<div class="form-group">' .
-            '<label for="' . $idImage . '"><img src="' . $prefixe . 'goodies/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
+            '<label for="' . $idImage . '"><img src="' . RACINE . 'goodies/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
             '<input class="form-control" type="checkbox" name="' . $idImage . '" id="' . $idImage . '">' .
             '</div>' .
             '<br>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherSupprimerGoodie($prefixe, $messageRetour) {
+function afficherSupprimerGoodie($messageRetour) {
     $title = 'Supprimer un goodie';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerGoodie.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritSupprimerGoodie.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -248,26 +248,26 @@ function afficherSupprimerGoodie($prefixe, $messageRetour) {
             '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 # Journaux
-function afficherAjouterJournal($prefixe, $messageRetour) {
+function afficherAjouterJournal($messageRetour) {
     $title = 'Ajouter un journal';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterJournal.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAjouterJournal.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherSupprimerJournal($prefixe, $messageRetour) {
+function afficherSupprimerJournal($messageRetour) {
     $title = 'Supprimer un journal';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerJournal.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritSupprimerJournal.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -281,15 +281,15 @@ function afficherSupprimerJournal($prefixe, $messageRetour) {
             '<option value="' . $idJournal . '">' . $titreJournal . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 # Articles
-function afficherAjouterArticle($prefixe, $messageRetour) {
+function afficherAjouterArticle($messageRetour) {
     $title = 'Ajouter un article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAjouterArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -303,14 +303,14 @@ function afficherAjouterArticle($prefixe, $messageRetour) {
             '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherAjouterImageArticle($prefixe, $messageRetour) {
+function afficherAjouterImageArticle($messageRetour) {
     $title = 'Ajouter une image à un article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterImageArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAjouterImageArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -331,14 +331,14 @@ function afficherAjouterImageArticle($prefixe, $messageRetour) {
             $titreArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherChoixArticle($prefixe, $messageRetour) {
+function afficherChoixArticle($messageRetour) {
     $title = 'Choisir un article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritChoixArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -359,14 +359,14 @@ function afficherChoixArticle($prefixe, $messageRetour) {
             $titreArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherModifierArticle($prefixe, $messageRetour, $id) {
+function afficherModifierArticle($messageRetour, $id) {
     $title = 'Modifier un article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritModifierArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -389,14 +389,14 @@ function afficherModifierArticle($prefixe, $messageRetour, $id) {
             '<option value="' . $idCategorieArticle . '"' . $selected . '>' . $titreCategorieArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherSupprimerImageArticle($prefixe, $messageRetour, $id) {
+function afficherSupprimerImageArticle($messageRetour, $id) {
     $title = 'Supprimer une image d\'un article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerImageArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritSupprimerImageArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -411,20 +411,20 @@ function afficherSupprimerImageArticle($prefixe, $messageRetour, $id) {
 
         $images .=
             '<div class="form-group">' .
-            '<label for="' . $idImage . '"><img src="' . $prefixe . 'articles/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
+            '<label for="' . $idImage . '"><img src="' . RACINE . 'articles/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
             '<input class="form-control" type="checkbox" name="' . $idImage . '" id="' . $idImage . '">' .
             '</div>' .
             '<br>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherSupprimerArticle($prefixe, $messageRetour) {
+function afficherSupprimerArticle($messageRetour) {
     $title = 'Supprimer un article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -445,14 +445,14 @@ function afficherSupprimerArticle($prefixe, $messageRetour) {
             $titreArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherAjouterArticleVideo($prefixe, $messageRetour) {
+function afficherAjouterArticleVideo($messageRetour) {
     $title = 'Ajouter un article vidéo';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterArticleVideo.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAjouterArticleVideo.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -466,14 +466,14 @@ function afficherAjouterArticleVideo($prefixe, $messageRetour) {
             '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherChoixArticleVideo($prefixe, $messageRetour) {
+function afficherChoixArticleVideo($messageRetour) {
     $title = 'Choisir un article vidéo';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritChoixArticleVideo.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritChoixArticleVideo.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -494,14 +494,14 @@ function afficherChoixArticleVideo($prefixe, $messageRetour) {
             $titreArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherModifierArticleVideo($prefixe, $messageRetour, $id) {
+function afficherModifierArticleVideo($messageRetour, $id) {
     $title = 'Modifier un article vidéo';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritModifierArticleVideo.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritModifierArticleVideo.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -525,14 +525,14 @@ function afficherModifierArticleVideo($prefixe, $messageRetour, $id) {
             '<option value="' . $idCategorieArticle . '"' . $selected . '>' . $titreCategorieArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherSupprimerArticleVideo($prefixe, $messageRetour) {
+function afficherSupprimerArticleVideo($messageRetour) {
     $title = 'Supprimer un article vidéo';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticleVideo.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritSupprimerArticleVideo.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -553,25 +553,25 @@ function afficherSupprimerArticleVideo($prefixe, $messageRetour) {
             $titreArticle . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherAjouterCategorieArticle($prefixe, $messageRetour) {
+function afficherAjouterCategorieArticle($messageRetour) {
     $title = 'Ajouter une catégorie d\'article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAjouterCategorieArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAjouterCategorieArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherRenommerCategorieArticle($prefixe, $messageRetour) {
+function afficherRenommerCategorieArticle($messageRetour) {
     $title = 'Renommer une catégorie d\'article';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritRenommerCategorieArticle.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritRenommerCategorieArticle.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -585,15 +585,15 @@ function afficherRenommerCategorieArticle($prefixe, $messageRetour) {
             '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 # Log
-function afficherAfficherLog($prefixe, $messageRetour) {
+function afficherAfficherLog($messageRetour) {
     $title = 'Log';
-    $header = $prefixe . '-mvc/vue/gabaritsAdmin/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsAdmin/gabaritAfficherLog.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsAdmin/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsAdmin/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsAdmin/gabaritAfficherLog.php';
+    $footer = RACINE . '-mvc/vue/gabaritsAdmin/footer.php';
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $nomMembre = htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8");
 
@@ -616,17 +616,17 @@ function afficherAfficherLog($prefixe, $messageRetour) {
             '</tr>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Accueil                                                                                                              #
 ########################################################################################################################
-function afficherAccueil($prefixe) {
+function afficherAccueil() {
     $title = 'Accueil';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritAccueil.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritAccueil.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     # Goodies
     $goodiesIndicators = '';
@@ -647,7 +647,7 @@ function afficherAccueil($prefixe) {
         if ($categorieGoodie != 1) {
             continue;
         }
-        $lienMiniature = $prefixe . 'goodies/' . $miniatureGoodie;
+        $lienMiniature = RACINE . 'goodies/' . $miniatureGoodie;
 
         $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
         if ($premier) {
@@ -661,9 +661,9 @@ function afficherAccueil($prefixe) {
         }
         $goodies .=
             '">' . "\n" .
-                '<a href="' . $prefixe . 'goodies/?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
+                '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
                 '<div class="carousel-caption">' . "\n" .
-                    '<a href="' . $prefixe . 'goodies/?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
+                    '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
                     '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
                 '</div>' . "\n" .
             '</div>';
@@ -708,7 +708,7 @@ function afficherAccueil($prefixe) {
             '<h5>📅&emsp;' . preg_replace('/ [^ ]*$/', '', genererDate($dateEvent)) . $nbJoursStr . '</h5>' .
             '<h5>⌚️&emsp;' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</h5>' .
             '<h5>📍&emsp;' . $lieuEvent . '</h5>' .
-            '<a class="btn btn-danger btn-block" href="' . $prefixe . 'events/?id=' . $idEvent . '">' .
+            '<a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $idEvent . '">' .
                 '<h4>Détails</h4>' .
             '</a>';
         if ($count == 3) {
@@ -726,7 +726,7 @@ function afficherAccueil($prefixe) {
         $date = htmlentities($ligneJournal->dateJournaux, ENT_QUOTES, "UTF-8");
         $pdf = htmlentities($ligneJournal->pdfJournaux, ENT_QUOTES, "UTF-8");
 
-        $lienJournal = $prefixe . 'journaux/' . $pdf;
+        $lienJournal = RACINE . 'journaux/' . $pdf;
 
         $journaux .=
             '<div class="col-sm-6">' .
@@ -734,7 +734,7 @@ function afficherAccueil($prefixe) {
                     '<h3>' . $titre . '</h3>' .
                     '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
                     '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
-                        '<h4 class="alterneur-grand-tres-petit"><img src="' . $prefixe . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
+                        '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
                         '<h4 class="alterneur-petit">Lire</h4>' .
                     '</a>' .
                 '</div>' .
@@ -776,23 +776,23 @@ function afficherAccueil($prefixe) {
                 '</h5>' .
                 '<h3>' . $ligneArticle->titre . '</h3>' .
                 '<h5>' . genererDate($ligneArticle->dateCreation) . '</h5>' .
-                '<a href="' . $prefixe . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-danger btn-block">' .
+                '<a href="' . RACINE . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-danger btn-block">' .
                     '<h4>Lire l\'article</h4>' .
                 '</a>' .
             '</div>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Articles                                                                                                             #
 ########################################################################################################################
-function afficherArticles($prefixe) {
+function afficherArticles() {
     $title = 'Articles';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticles.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritArticles.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     $tableArticles = '';
     $lignesArticles = articlesTous();
@@ -824,12 +824,12 @@ function afficherArticles($prefixe) {
             $cadreMiniature = '<div class="imageMiniatureArticlesDiv"><img class="img-fluid imageMiniatureArticles" src="--EMPLACEMENT--" alt="Miniature"></div>';
             switch (substr($ID, 0, 1)) {
                 case 'T':
-                    $lienArticle = $prefixe . 'articles/?id=' . $id;
+                    $lienArticle = RACINE . 'articles/?id=' . $id;
                     $premiereImage = premiereImageArticle($id);
                     $miniature = $premiereImage ? preg_replace('/--EMPLACEMENT--/', $premiereImage->lienImagesArticles, $cadreMiniature) : '';
                     break;
                 case 'V':
-                    $lienArticle = $prefixe . 'articles/?id=-' . $id;
+                    $lienArticle = RACINE . 'articles/?id=-' . $id;
                     $miniature = preg_replace('/--EMPLACEMENT--/', obtenirInfoYouTube($arrayArticles[$ID]->lien)['thumbnail_url'], $cadreMiniature);
                     break;
                 default:
@@ -864,14 +864,14 @@ function afficherArticles($prefixe) {
         }
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherArticlePrecis($prefixe, $article) {
+function afficherArticlePrecis($article) {
     // $title = 'Article'; Voir ci-après.
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticlePrecis.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritArticlePrecis.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     $id = htmlentities($article->idArticles, ENT_QUOTES, "UTF-8");
     $titre = htmlentities($article->titreArticles, ENT_QUOTES, "UTF-8");
@@ -892,7 +892,7 @@ function afficherArticlePrecis($prefixe, $article) {
             '<div class="row">' .
                 '<div class="col-sm-2"></div>'.
                     '<div class="col-sm-8">' .
-                        '<img src="' . $prefixe . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="imageUniqueArticlePrecis" alt="Image">' .
+                        '<img src="' . RACINE . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="imageUniqueArticlePrecis" alt="Image">' .
                     '</div>' .
                 '<div class="col-sm-2"></div>' .
             '</div><hr>';;
@@ -907,7 +907,7 @@ function afficherArticlePrecis($prefixe, $article) {
             $carouselArticleIndicator .= '<li data-target="#carouselArticle" data-slide-to="' . $nb++ . '"' . ($nb == 1 ? ' class="active"' : '') . '></li>';
             $carouselArticleImages .=
                 '<div class="item' . ($nb == 1 ? ' active' : '') . '">' .
-                    '<img src="' . $prefixe . 'articles/' . $lien . '" alt="Image">' .
+                    '<img src="' . RACINE . 'articles/' . $lien . '" alt="Image">' .
                 '</div>';
         }
         $carouselArticleIndicator .= '</ol>';
@@ -944,14 +944,14 @@ function afficherArticlePrecis($prefixe, $article) {
     $texteFormate = preg_replace('/&sect;C(.*)&sect;!C/', '<span class="pc">$1</span>', $texteFormate);
     $texteFormate = preg_replace('/&sect;L(.*)&sect;!L\[(.*)]/', '<a href="$2">$1</a>', $texteFormate);
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherArticleVideoPrecis($prefixe, $article) {
+function afficherArticleVideoPrecis($article) {
     // $title = 'Article'; Voir ci-après.
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritArticleVideoPrecis.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritArticleVideoPrecis.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     $id = htmlentities($article->idArticlesYouTube, ENT_QUOTES, "UTF-8");
     $titre = htmlentities($article->titreArticlesYouTube, ENT_QUOTES, "UTF-8");
@@ -996,197 +996,197 @@ function afficherArticleVideoPrecis($prefixe, $article) {
         $auteurStr .= ' <span class="pc">' . $auteurNom . '</span>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Erreur                                                                                                               #
 ########################################################################################################################
-function afficherErreur($prefixe, $messageErreur) {
+function afficherErreur($messageErreur) {
     $title = 'Une erreur s\'est produite';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritErreur.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritErreur.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association (Présentation)                                                                                           #
 ########################################################################################################################
-function afficherPresentation($prefixe) {
+function afficherPresentation() {
     $title = 'Présentation';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPresentation.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritPresentation.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Contact                                                                                                #
 ########################################################################################################################
-function afficherContact($prefixe) {
+function afficherContact() {
     $title = 'Contact';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritContact.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritContact.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Fonctionnement                                                                                         #
 ########################################################################################################################
-function afficherFonctionnement($prefixe) {
+function afficherFonctionnement() {
     $title = 'Fonctionnement de l\'association';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritFonctionnement.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritFonctionnement.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Fonctionnement - Statuts                                                                               #
 ########################################################################################################################
-function afficherStatuts($prefixe) {
+function afficherStatuts() {
     $title = 'Statuts';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritStatuts.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritStatuts.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Historique                                                                                             #
 ########################################################################################################################
-function afficherHistorique($prefixe) {
+function afficherHistorique() {
     $title = 'Historique de l\'association';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritHistorique.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritHistorique.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Où nous trouver ?                                                                                      #
 ########################################################################################################################
-function afficherOuNousTrouver($prefixe) {
+function afficherOuNousTrouver() {
     $title = 'Où nous trouver ?';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritOuNousTrouver.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritOuNousTrouver.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Partenaires                                                                                            #
 ########################################################################################################################
-function afficherPartenaires($prefixe) {
+function afficherPartenaires() {
     $title = 'Partenaires';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPartenaires.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritPartenaires.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Pôles                                                                                                  #
 ########################################################################################################################
-function afficherPoles($prefixe) {
+function afficherPoles() {
     $title = 'Pôles';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPoles.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritPoles.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Pourquoi adhérer ?                                                                                     #
 ########################################################################################################################
-function afficherPourquoiAdherer($prefixe) {
+function afficherPourquoiAdherer() {
     $title = 'Pourquoi adhérer ?';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPourquoiAdherer.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritPourquoiAdherer.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Réseau associatif                                                                                      #
 ########################################################################################################################
-function afficherReseauAssociatif($prefixe) {
+function afficherReseauAssociatif() {
     $title = 'Réseau associatif';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritReseauAssociatif.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritReseauAssociatif.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Réseau associatif - ÔCampus                                                                            #
 ########################################################################################################################
-function afficherOCampus($prefixe) {
+function afficherOCampus() {
     $title = 'ÔCampus';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritOCampus.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritOCampus.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Réseau associatif - FNEB                                                                               #
 ########################################################################################################################
-function afficherFneb($prefixe) {
+function afficherFneb() {
     $title = 'FNEB';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritFneb.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritFneb.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Réseaus sociaux                                                                                        #
 ########################################################################################################################
-function afficherReseauxSociaux($prefixe) {
+function afficherReseauxSociaux() {
     $title = 'Réseaux sociaux';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritReseauxSociaux.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritReseauxSociaux.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Association - Université                                                                                             #
 ########################################################################################################################
-function afficherUniversite($prefixe) {
+function afficherUniversite() {
     $title = 'Université d\'Orléans';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritUniversite.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritUniversite.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Events                                                                                                               #
 ########################################################################################################################
-function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
+function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
     $title = 'Évents';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEvents.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritEvents.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -1242,7 +1242,7 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
                     '<h4>📅 ' . genererDate($date) . $nbJoursStr . '</h4>' .
                     '<h4>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</h4>' .
                     '<h4>📍️ ' . $lieu . '</h4>' .
-                    '<a class="btn btn-danger btn-block" href="' . $prefixe . 'events/?id=' . $id . '">' .
+                    '<a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $id . '">' .
                         '<h4>Détails</h4>' .
                     '</a>' .
                 '</div>' .
@@ -1258,14 +1258,14 @@ function afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
         $tableEvents .= '</div>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherEventPrecis($prefixe, $event) {
+function afficherEventPrecis($event) {
     // $title = 'Event'; Voir ci-après.
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritEventPrecis.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     $id = htmlentities($event->idEvents, ENT_QUOTES, "UTF-8");
     $titre = htmlentities($event->titreEvents, ENT_QUOTES, "UTF-8");
@@ -1292,17 +1292,17 @@ function afficherEventPrecis($prefixe, $event) {
     $dateStr = genererDate($date);
     $heureStr = substr($heure, 0, 2) . 'h' . substr($heure, 3, 2);
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Goodies                                                                                                              #
 ########################################################################################################################
-function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
+function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
     $title = 'Goodies';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodies.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritGoodies.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -1340,7 +1340,7 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
         $categorie = htmlentities($ligne->categorieGoodies, ENT_QUOTES, "UTF-8");
         $miniature = htmlentities($ligne->miniatureGoodies, ENT_QUOTES, "UTF-8");
 
-        $lienMiniature = $prefixe . 'goodies/' . $miniature;
+        $lienMiniature = RACINE . 'goodies/' . $miniature;
         switch ($categorie) {
             case 1:
                 $categorieStr = '<span style="color: darkgreen">Disponible</span>';
@@ -1359,7 +1359,7 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
         $tableGoodies .=
             '<div class="col-sm-6">' .
                 '<div class="well">' .
-                    '<a href="' . $prefixe . 'goodies/?id=' . $id . '">' .
+                    '<a href="' . RACINE . 'goodies/?id=' . $id . '">' .
                         '<img src="' . $lienMiniature . '" class="miniatureGoodies" alt="Miniature">' .
                     '</a>' .
                     '<h3>' . $titre . '</h3>' .
@@ -1367,21 +1367,21 @@ function afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture, $reche
                     '<h4><strong>' . $categorieStr . '</strong></h4>' .
                     '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
                     '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
-                    '<a class="btn btn-danger btn-block" href="' . $prefixe . 'goodies/?id=' . $id . '">' .
+                    '<a class="btn btn-danger btn-block" href="' . RACINE . 'goodies/?id=' . $id . '">' .
                         '<h4>Détails</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
-function afficherGoodiePrecis($prefixe, $goodie) {
+function afficherGoodiePrecis($goodie) {
     // $title = 'Goodies'; Voir ci-après.
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritGoodiePrecis.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritGoodiePrecis.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     $id = htmlentities($goodie->idGoodies, ENT_QUOTES, "UTF-8");
     $titreGoodie = htmlentities($goodie->titreGoodies, ENT_QUOTES, "UTF-8");
@@ -1397,7 +1397,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 
     $carouselGoodie = '';
     if (empty($lignesImages)) {
-        $carouselGoodie .= '<img src="' . $prefixe . 'goodies/' . $miniature . '" class="imageUniqueGoodiePrecis">';
+        $carouselGoodie .= '<img src="' . RACINE . 'goodies/' . $miniature . '" class="imageUniqueGoodiePrecis">';
     } else {
         $nb = 0;
         $carouselGoodieIndicator = '<ol class="carousel-indicators">';
@@ -1407,7 +1407,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
         $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '" class="active"></li>';
         $carouselGoodieImages .=
             '<div class="item active">' .
-                '<img src="' . $prefixe . 'goodies/' . $miniature . '" alt="Image">' .
+                '<img src="' . RACINE . 'goodies/' . $miniature . '" alt="Image">' .
             '</div>';
 
         # Le reste des -images
@@ -1416,7 +1416,7 @@ function afficherGoodiePrecis($prefixe, $goodie) {
             $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '"></li>';
             $carouselGoodieImages .=
                 '<div class="item">' .
-                    '<img src="' . $prefixe . 'goodies/' . $lien . '" alt="Image">' .
+                    '<img src="' . RACINE . 'goodies/' . $lien . '" alt="Image">' .
                 '</div>';
         }
         $carouselGoodieIndicator .= '</ol>';
@@ -1439,17 +1439,17 @@ function afficherGoodiePrecis($prefixe, $goodie) {
 
     $descStr = nl2br($descGoodie);
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Journaux                                                                                                             #
 ########################################################################################################################
-function afficherJournaux($prefixe) {
+function afficherJournaux() {
     $title = 'Journaux';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritJournaux.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritJournaux.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     $tableJournaux = '';
     $lignesJournaux = journauxTous(-1);
@@ -1459,7 +1459,7 @@ function afficherJournaux($prefixe) {
         $date = htmlentities($ligne->dateJournaux, ENT_QUOTES, "UTF-8");
         $pdf = htmlentities($ligne->pdfJournaux, ENT_QUOTES, "UTF-8");
 
-        $lienJournal = $prefixe . 'journaux/' . $pdf;
+        $lienJournal = RACINE . 'journaux/' . $pdf;
 
         $tableJournaux .=
             '<div class="col-sm-3">' .
@@ -1467,36 +1467,36 @@ function afficherJournaux($prefixe) {
                     '<h3>' . $titre . '</h3>' .
                     '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
                     '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
-                        '<h4 class="alterneur-grand-tres-petit"><img src="' . $prefixe . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
+                        '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
                         '<h4 class="alterneur-petit">Lire</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
     }
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Mentions légales                                                                                                     #
 ########################################################################################################################
-function afficherMentionsLegales($prefixe) {
+function afficherMentionsLegales() {
     $title = 'Mentions légales';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritMentionsLegales.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritMentionsLegales.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Plan du site                                                                                                         #
 ########################################################################################################################
-function afficherPlanDuSite($prefixe) {
+function afficherPlanDuSite() {
     $title = 'Plan du site';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritPlanDuSite.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritPlanDuSite.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
     function allerChercherString($a) {
         if (gettype($a) == 'string') {
@@ -1575,21 +1575,21 @@ function afficherPlanDuSite($prefixe) {
         return $liste;
     }
 
-    $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants($prefixe))));
+    $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants())));
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
 # Riad (temporaire)                                                                                                    #
 ########################################################################################################################
-function afficherRiad($prefixe) {
+function afficherRiad() {
     $title = 'Riad';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritRiad.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
+    $header = RACINE . '-mvc/vue/gabaritsPublic/header.php';
+    $gabarit = RACINE . '-mvc/vue/gabaritsPublic/gabaritRiad.php';
+    $footer = RACINE . '-mvc/vue/gabaritsPublic/footer.php';
 
-    require_once($prefixe . '-mvc/vue/cadre.php');
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################

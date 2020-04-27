@@ -1,30 +1,30 @@
 <?php
-require_once($prefixe . '-mvc/modele/connect.php');
-require_once($prefixe . '-mvc/modele/modele.php');
-require_once($prefixe . '-mvc/vue/vue.php');
+require_once(RACINE . '-mvc/modele/connect.php');
+require_once(RACINE . '-mvc/modele/modele.php');
+require_once(RACINE . '-mvc/vue/vue.php');
 ########################################################################################################################
 # Erreur (public, tous les C. Frontaux)                                                                                #
 ########################################################################################################################
-function CtlErreur($prefixe, $messageErreur) {
-    afficherErreur($prefixe, $messageErreur);
+function CtlErreur($messageErreur) {
+    afficherErreur($messageErreur);
 }
 
 ########################################################################################################################
 # Admin                                                                                                                #
 ########################################################################################################################
 # Connexion
-function CtlConnexion($prefixe, $messageRetour) {
-    afficherConnexion($prefixe, $messageRetour);
+function CtlConnexion($messageRetour) {
+    afficherConnexion($messageRetour);
 }
 
-function CtlVerifConnexion($prefixe, $login, $mdp) {
+function CtlVerifConnexion($login, $mdp) {
     try {
         if (!empty($login) && !empty($mdp)) {
             $id = verifConnexion($login, $mdp);
             if ($id != false) {
                 $_SESSION['id'] = $id;
                 // ajouterLog(001, 'Connexion'); C'est bcp trop stressant d'être autant pisté omg !!!!
-                CtlMenu($prefixe, '');
+                CtlMenu('');
             } else {
                 throw new Exception("Erreur : Login ou mot de passe invalide.");
             }
@@ -32,110 +32,110 @@ function CtlVerifConnexion($prefixe, $login, $mdp) {
             throw new Exception("Erreur : Veuillez remplir tous les champs.");
         }
     } catch (Exception $e) {
-        afficherConnexion($prefixe, $e->getMessage());
+        afficherConnexion($e->getMessage());
     }
 }
 
-function CtlConnexionErreur($prefixe, $messageErreur) {
-    afficherConnexion($prefixe, $messageErreur);
+function CtlConnexionErreur($messageErreur) {
+    afficherConnexion($messageErreur);
 }
 
 # Menu
-function CtlCreerEventMenu($prefixe, $messageRetour) {
-    afficherCreerEvent($prefixe, $messageRetour);
+function CtlCreerEventMenu($messageRetour) {
+    afficherCreerEvent($messageRetour);
 }
 
-function CtlChoixEventMenu($prefixe, $messageRetour) {
-    afficherChoixEvent($prefixe, $messageRetour);
+function CtlChoixEventMenu($messageRetour) {
+    afficherChoixEvent($messageRetour);
 }
 
-function CtlSupprimerEventMenu($prefixe, $messageRetour) {
-    afficherSupprimerEvent($prefixe, $messageRetour);
+function CtlSupprimerEventMenu($messageRetour) {
+    afficherSupprimerEvent($messageRetour);
 }
 
-function CtlAjouterGoodieMenu($prefixe, $messageRetour) {
-    afficherAjouterGoodie($prefixe, $messageRetour);
+function CtlAjouterGoodieMenu($messageRetour) {
+    afficherAjouterGoodie($messageRetour);
 }
 
-function CtlAjouterImageGoodieMenu($prefixe, $messageRetour) {
-    afficherAjouterImageGoodie($prefixe, $messageRetour);
+function CtlAjouterImageGoodieMenu($messageRetour) {
+    afficherAjouterImageGoodie($messageRetour);
 }
 
-function CtlChoixGoodieMenu($prefixe, $messageRetour) {
-    afficherChoixGoodie($prefixe, $messageRetour);
+function CtlChoixGoodieMenu($messageRetour) {
+    afficherChoixGoodie($messageRetour);
 }
 
-function CtlSupprimerGoodieMenu($prefixe, $messageRetour) {
-    afficherSupprimerGoodie($prefixe, $messageRetour);
+function CtlSupprimerGoodieMenu($messageRetour) {
+    afficherSupprimerGoodie($messageRetour);
 }
 
-function CtlAjouterJournalMenu($prefixe, $messageRetour) {
-    afficherAjouterJournal($prefixe, $messageRetour);
+function CtlAjouterJournalMenu($messageRetour) {
+    afficherAjouterJournal($messageRetour);
 }
 
-function CtlSupprimerJournalMenu($prefixe, $messageRetour) {
-    afficherSupprimerJournal($prefixe, $messageRetour);
+function CtlSupprimerJournalMenu($messageRetour) {
+    afficherSupprimerJournal($messageRetour);
 }
 
-function CtlAjouterArticleMenu($prefixe, $messageRetour) {
-    afficherAjouterArticle($prefixe, $messageRetour);
+function CtlAjouterArticleMenu($messageRetour) {
+    afficherAjouterArticle($messageRetour);
 }
 
-function CtlAjouterImageArticleMenu($prefixe, $messageRetour) {
-    afficherAjouterImageArticle($prefixe, $messageRetour);
+function CtlAjouterImageArticleMenu($messageRetour) {
+    afficherAjouterImageArticle($messageRetour);
 }
 
-function CtlChoixArticleMenu($prefixe, $messageRetour) {
-    afficherChoixArticle($prefixe, $messageRetour);
+function CtlChoixArticleMenu($messageRetour) {
+    afficherChoixArticle($messageRetour);
 }
 
-function CtlSupprimerArticleMenu($prefixe, $messageRetour) {
-    afficherSupprimerArticle($prefixe, $messageRetour);
+function CtlSupprimerArticleMenu($messageRetour) {
+    afficherSupprimerArticle($messageRetour);
 }
 
-function CtlAjouterArticleVideoMenu($prefixe, $messageRetour) {
-    afficherAjouterArticleVideo($prefixe, $messageRetour);
+function CtlAjouterArticleVideoMenu($messageRetour) {
+    afficherAjouterArticleVideo($messageRetour);
 }
 
-function CtlChoixArticleVideoMenu($prefixe, $messageRetour) {
-    afficherChoixArticleVideo($prefixe, $messageRetour);
+function CtlChoixArticleVideoMenu($messageRetour) {
+    afficherChoixArticleVideo($messageRetour);
 }
 
-function CtlSupprimerArticleVideoMenu($prefixe, $messageRetour) {
-    afficherSupprimerArticleVideo($prefixe, $messageRetour);
+function CtlSupprimerArticleVideoMenu($messageRetour) {
+    afficherSupprimerArticleVideo($messageRetour);
 }
 
-function CtlAjouterCategorieArticleMenu($prefixe, $messageRetour) {
-    afficherAjouterCategorieArticle($prefixe, $messageRetour);
+function CtlAjouterCategorieArticleMenu($messageRetour) {
+    afficherAjouterCategorieArticle($messageRetour);
 }
 
-function CtlRenommerCategorieArticleMenu($prefixe, $messageRetour) {
-    afficherRenommerCategorieArticle($prefixe, $messageRetour);
+function CtlRenommerCategorieArticleMenu($messageRetour) {
+    afficherRenommerCategorieArticle($messageRetour);
 }
 
-function CtlAfficherLog($prefixe, $messageRetour) {
-    afficherAfficherLog($prefixe, $messageRetour);
+function CtlAfficherLog($messageRetour) {
+    afficherAfficherLog($messageRetour);
 }
 
-function CtlMenu($prefixe, $messageRetour) {
-    afficherMenu($prefixe, $messageRetour);
+function CtlMenu($messageRetour) {
+    afficherMenu($messageRetour);
 }
 
-function CtlDeconnexion($prefixe, $messageRetour) {
+function CtlDeconnexion($messageRetour) {
     $_SESSION = array();
     if (isset($COOKIE[session_name()])) {
         setcookie(session_name(), '', time()-42000, '/');
     }
     session_destroy();
-    CtlConnexion($prefixe, $messageRetour);
+    CtlConnexion($messageRetour);
 }
 
-function CtlMenuErreur($prefixe, $messageErreur) {
-    afficherMenu($prefixe, $messageErreur);
+function CtlMenuErreur($messageErreur) {
+    afficherMenu($messageErreur);
 }
 
 # Events
-function CtlCreerEvent($prefixe, $titre, $date, $heure, $minute, $lieu, $desc) {
+function CtlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
     try {
         if (
             !empty($titre) &&
@@ -145,28 +145,28 @@ function CtlCreerEvent($prefixe, $titre, $date, $heure, $minute, $lieu, $desc) {
             !empty($desc)
         ) {
             creerEvent($titre, $date, $heure, $minute, $lieu, $desc);
-            afficherCreerEvent($prefixe, 'L\'évent "' . $titre . '" a été ajouté avec succès !');
+            afficherCreerEvent('L\'évent "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherCreerEvent($prefixe, $e->getMessage());
+        afficherCreerEvent($e->getMessage());
     }
 }
 
-function CtlChoixEvent($prefixe, $id) {
+function CtlChoixEvent($id) {
     try {
         if (!empty($id)) {
-            afficherModifierEvent($prefixe, '', $id);
+            afficherModifierEvent('', $id);
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un évent.');
         }
     } catch (Exception $e) {
-        afficherChoixEvent($prefixe, $e->getMessage());
+        afficherChoixEvent($e->getMessage());
     }
 }
 
-function CtlModifierEvent($prefixe, $id, $titre, $date, $heure, $minute, $lieu, $desc) {
+function CtlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
     try {
         if (
             !empty($titre) &&
@@ -176,30 +176,30 @@ function CtlModifierEvent($prefixe, $id, $titre, $date, $heure, $minute, $lieu, 
             !empty($desc)
         ) {
             modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu);
-            afficherModifierEvent($prefixe, 'L\'évent "' . $titre . '" a été modifié avec succès !', $id);
+            afficherModifierEvent('L\'évent "' . $titre . '" a été modifié avec succès !', $id);
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherModifierEvent($prefixe, $e->getMessage(), $id);
+        afficherModifierEvent($e->getMessage(), $id);
     }
 }
 
-function CtlSupprimerEvent($prefixe, $id) {
+function CtlSupprimerEvent($id) {
     try {
         if (!empty($id)) {
             supprimerEvent($id);
-            afficherSupprimerEvent($prefixe, 'L\'évent a été supprimé avec succès !');
+            afficherSupprimerEvent('L\'évent a été supprimé avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un évent.');
         }
     } catch (Exception $e) {
-        afficherSupprimerEvent($prefixe, $e->getMessage());
+        afficherSupprimerEvent($e->getMessage());
     }
 }
 
 # Goodies
-function CtlAjouterGoodie($prefixe, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
+function CtlAjouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     try {
         if (
             !empty($titre) &&
@@ -211,43 +211,43 @@ function CtlAjouterGoodie($prefixe, $titre, $categorie, $prixADEuro, $prixADCent
             !empty($desc) &&
             !empty($_FILES[$fileImput]['name'])
         ) {
-            ajouterGoodie($prefixe . 'goodies/', $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
-            afficherAjouterGoodie($prefixe, 'Le goodie "' . $titre . '" a été ajouté avec succès !');
+            ajouterGoodie(RACINE . 'goodies/', $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
+            afficherAjouterGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une miniature.');
         }
     } catch (Exception $e) {
-        afficherAjouterGoodie($prefixe, $e->getMessage());
+        afficherAjouterGoodie($e->getMessage());
     }
 }
 
-function CtlAjouterImageGoodie($prefixe, $id, $fileImput) {
+function CtlAjouterImageGoodie($id, $fileImput) {
     try {
         if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
             $titre = goodiePrecis($id)->titreGoodies;
-            ajouterImageGoodie($prefixe . 'goodies/', $id, $titre, $fileImput);
-            afficherAjouterImageGoodie($prefixe, 'L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
+            ajouterImageGoodie(RACINE . 'goodies/', $id, $titre, $fileImput);
+            afficherAjouterImageGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
         }
     } catch (Exception $e) {
-        afficherAjouterImageGoodie($prefixe, $e->getMessage());
+        afficherAjouterImageGoodie($e->getMessage());
     }
 }
 
-function CtlChoixGoodie($prefixe, $id) {
+function CtlChoixGoodie($id) {
     try {
         if (!empty($id)) {
-            afficherModifierGoodie($prefixe, '', $id);
+            afficherModifierGoodie('', $id);
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un goodie.');
         }
     } catch (Exception $e) {
-        afficherChoixGoodie($prefixe, $e->getMessage());
+        afficherChoixGoodie($e->getMessage());
     }
 }
 
-function CtlModifierGoodie($prefixe, $id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
+function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
     try {
         if (
             !empty($titre) &&
@@ -259,69 +259,69 @@ function CtlModifierGoodie($prefixe, $id, $titre, $categorie, $prixADEuro, $prix
             !empty($desc)
         ) {
             modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
-            afficherModifierGoodie($prefixe, 'Le goodie "' . $titre . '" a été modifié avec succès !', $id);
+            afficherModifierGoodie('Le goodie "' . $titre . '" a été modifié avec succès !', $id);
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherModifierGoodie($prefixe, $e->getMessage(), $id);
+        afficherModifierGoodie($e->getMessage(), $id);
     }
 }
 
-function CtlAllerSupprimerImageGoodie($prefixe, $id) {
+function CtlAllerSupprimerImageGoodie($id) {
     try {
         if (!empty($id)) {
-            afficherSupprimerImageGoodie($prefixe, '', $id);
+            afficherSupprimerImageGoodie('', $id);
         } else {
             throw new Exception('Erreur : Identifiant invalide.');
         }
     } catch (Exception $e) {
-        afficherModifierGoodie($prefixe, $e->getMessage(), $id);
+        afficherModifierGoodie($e->getMessage(), $id);
     }
 }
 
-function CtlSupprimerGoodie($prefixe, $id) {
+function CtlSupprimerGoodie($id) {
     try {
         if (!empty($id)) {
-            supprimerGoodie($prefixe . 'goodies/', $id);
-            afficherSupprimerGoodie($prefixe, 'Le goodie a été supprimé avec succès !');
+            supprimerGoodie(RACINE . 'goodies/', $id);
+            afficherSupprimerGoodie('Le goodie a été supprimé avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un goodie.');
         }
     } catch (Exception $e) {
-        afficherSupprimerGoodie($prefixe, $e->getMessage());
+        afficherSupprimerGoodie($e->getMessage());
     }
 }
 
 # Journaux
-function CtlAjouterJournal($prefixe, $titre, $mois, $annee, $fileImput) {
+function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
     try {
         if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($_FILES[$fileImput]['name'])) {
             ajouterJournal($prefixe . 'journaux/', $titre, $mois, $annee, $fileImput);
-            afficherAjouterJournal($prefixe, 'Le journal "' . $titre . '" a été ajouté avec succès !');
+            afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner un PDF.');
         }
     } catch (Exception $e) {
-        afficherAjouterJournal($prefixe, $e->getMessage());
+        afficherAjouterJournal($e->getMessage());
     }
 }
 
-function CtlSupprimerJournal($prefixe, $id) {
+function CtlSupprimerJournal($id) {
     try {
         if (!empty($id)) {
-            supprimerJournal($prefixe . 'journaux/', $id);
-            afficherSupprimerJournal($prefixe, 'Le journal a été supprimé avec succès !');
+            supprimerJournal(RACINE . 'journaux/', $id);
+            afficherSupprimerJournal('Le journal a été supprimé avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un journal.');
         }
     } catch (Exception $e) {
-        afficherSupprimerJournal($prefixe, $e->getMessage());
+        afficherSupprimerJournal($e->getMessage());
     }
 }
 
 # Articles
-function CtlAjouterArticle($prefixe, $titre, $categorie, $visibilite, $texte) {
+function CtlAjouterArticle($titre, $categorie, $visibilite, $texte) {
     try {
         if (
             !empty($titre) &&
@@ -330,42 +330,42 @@ function CtlAjouterArticle($prefixe, $titre, $categorie, $visibilite, $texte) {
             !empty($texte)
         ) {
             ajouterArticle($titre, $categorie, $visibilite, $texte);
-            afficherAjouterArticle($prefixe, 'L\'article "' . $titre . '" a été ajouté avec succès !');
+            afficherAjouterArticle('L\'article "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherAjouterArticle($prefixe, $e->getMessage());
+        afficherAjouterArticle($e->getMessage());
     }
 }
 
-function CtlAjouterImageArticle($prefixe, $id, $fileImput) {
+function CtlAjouterImageArticle($id, $fileImput) {
     try {
         if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
             $titre = articlePrecis($id)->titreArticles;
-            ajouterImageArticle($prefixe . 'articles/', $id, $titre, $fileImput);
-            afficherAjouterImageArticle($prefixe, 'L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
+            ajouterImageArticle(RACINE . 'articles/', $id, $titre, $fileImput);
+            afficherAjouterImageArticle('L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
         }
     } catch (Exception $e) {
-        afficherAjouterImageArticle($prefixe, $e->getMessage());
+        afficherAjouterImageArticle($e->getMessage());
     }
 }
 
-function CtlChoixArticle($prefixe, $id) {
+function CtlChoixArticle($id) {
     try {
         if (!empty($id)) {
-            afficherModifierArticle($prefixe, '', $id);
+            afficherModifierArticle('', $id);
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un article.');
         }
     } catch (Exception $e) {
-        afficherChoixArticle($prefixe, $e->getMessage());
+        afficherChoixArticle($e->getMessage());
     }
 }
 
-function CtlModifierArticle($prefixe, $id, $titre, $categorie, $visibilite, $texte) {
+function CtlModifierArticle($id, $titre, $categorie, $visibilite, $texte) {
     try {
         if (
             !empty($titre) &&
@@ -374,41 +374,41 @@ function CtlModifierArticle($prefixe, $id, $titre, $categorie, $visibilite, $tex
             !empty($texte)
         ) {
             modifierArticle($id, $titre, $categorie, $visibilite, $texte);
-            afficherModifierArticle($prefixe, 'L\'article "' . $titre . '" a été modifié avec succès !', $id);
+            afficherModifierArticle('L\'article "' . $titre . '" a été modifié avec succès !', $id);
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherModifierArticle($prefixe, $e->getMessage(), $id);
+        afficherModifierArticle($e->getMessage(), $id);
     }
 }
 
-function CtlAllerSupprimerImageArticle($prefixe, $id) {
+function CtlAllerSupprimerImageArticle($id) {
     try {
         if (!empty($id)) {
-            afficherSupprimerImageArticle($prefixe, '', $id);
+            afficherSupprimerImageArticle('', $id);
         } else {
             throw new Exception('Erreur : Identifiant invalide.');
         }
     } catch (Exception $e) {
-        afficherModifierArticle($prefixe, $e->getMessage(), $id);
+        afficherModifierArticle($e->getMessage(), $id);
     }
 }
 
-function CtlSupprimerArticle($prefixe, $id) {
+function CtlSupprimerArticle($id) {
     try {
         if (!empty($id)) {
-            supprimerArticle($prefixe . 'articles/', $id);
-            afficherSupprimerArticle($prefixe, 'L\'article a été supprimé avec succès !');
+            supprimerArticle(RACINE . 'articles/', $id);
+            afficherSupprimerArticle('L\'article a été supprimé avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un article.');
         }
     } catch (Exception $e) {
-        afficherSupprimerArticle($prefixe, $e->getMessage());
+        afficherSupprimerArticle($e->getMessage());
     }
 }
 
-function CtlAjouterArticleVideo($prefixe, $titre, $categorie, $visibilite, $lien, $texte) {
+function CtlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
     try {
         if (
             !empty($titre) &&
@@ -418,28 +418,28 @@ function CtlAjouterArticleVideo($prefixe, $titre, $categorie, $visibilite, $lien
             !empty($texte)
         ) {
             ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte);
-            afficherAjouterArticleVideo($prefixe, 'L\'article vidéo "' . $titre . '" a été ajouté avec succès !');
+            afficherAjouterArticleVideo('L\'article vidéo "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherAjouterArticleVideo($prefixe, $e->getMessage());
+        afficherAjouterArticleVideo($e->getMessage());
     }
 }
 
-function CtlChoixArticleVideo($prefixe, $id) {
+function CtlChoixArticleVideo($id) {
     try {
         if (!empty($id)) {
-            afficherModifierArticleVideo($prefixe, '', $id);
+            afficherModifierArticleVideo('', $id);
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un article.');
         }
     } catch (Exception $e) {
-        afficherChoixArticleVideo($prefixe, $e->getMessage());
+        afficherChoixArticleVideo($e->getMessage());
     }
 }
 
-function CtlModifierArticleVideo($prefixe, $id, $titre, $categorie, $visibilite, $lien, $texte) {
+function CtlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte) {
     try {
         if (
             !empty($titre) &&
@@ -449,51 +449,51 @@ function CtlModifierArticleVideo($prefixe, $id, $titre, $categorie, $visibilite,
             !empty($texte)
         ) {
             modifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte);
-            afficherModifierArticleVideo($prefixe, 'L\'article "' . $titre . '" a été modifié avec succès !', $id);
+            afficherModifierArticleVideo('L\'article "' . $titre . '" a été modifié avec succès !', $id);
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherModifierArticleVideo($prefixe, $e->getMessage(), $id);
+        afficherModifierArticleVideo($e->getMessage(), $id);
     }
 }
 
-function CtlSupprimerArticleVideo($prefixe, $id) {
+function CtlSupprimerArticleVideo($id) {
     try {
         if (!empty($id)) {
             supprimerArticleVideo($id);
-            afficherSupprimerArticleVideo($prefixe, 'L\'article vidéo a été supprimé avec succès !');
+            afficherSupprimerArticleVideo('L\'article vidéo a été supprimé avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez sélectionner un article.');
         }
     } catch (Exception $e) {
-        afficherSupprimerArticleVideo($prefixe, $e->getMessage());
+        afficherSupprimerArticleVideo($e->getMessage());
     }
 }
 
-function CtlAjouterCategorieArticle($prefixe, $titre) {
+function CtlAjouterCategorieArticle($titre) {
     try {
         if (!empty($titre)) {
             ajouterCategorieArticle($titre);
-            afficherAjouterCategorieArticle($prefixe, 'La catégorie "' . $titre . '" a été ajoutée avec succès !');
+            afficherAjouterCategorieArticle('La catégorie "' . $titre . '" a été ajoutée avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherAjouterCategorieArticle($prefixe, $e->getMessage());
+        afficherAjouterCategorieArticle($e->getMessage());
     }
 }
 
-function CtlRenommerCategorieArticle($prefixe, $id, $titre) {
+function CtlRenommerCategorieArticle($id, $titre) {
     try {
         if (!empty($id) && !empty($titre)) {
             renommerCategorieArticle($id, $titre);
-            afficherRenommerCategorieArticle($prefixe, 'La catégorie a été renommée en "' . $titre . '" avec succès !');
+            afficherRenommerCategorieArticle('La catégorie a été renommée en "' . $titre . '" avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs.');
         }
     } catch (Exception $e) {
-        afficherRenommerCategorieArticle($prefixe, $e->getMessage());
+        afficherRenommerCategorieArticle($e->getMessage());
     }
 }
 
@@ -504,18 +504,18 @@ function CtlArticles($prefixe) {
     afficherArticles($prefixe);
 }
 
-function CtlArticlePrecis($prefixe, $id) {
+function CtlArticlePrecis($id) {
     if ($id >= 0) {
         $article = articlePrecis($id);
         if ($article != false) {
-            afficherArticlePrecis($prefixe, $article);
+            afficherArticlePrecis($article);
         } else {
             throw new Exception('L\'article recherché n\'existe pas.');
         }
     } else {
         $article = articleVideoPrecis(-$id);
         if ($article != false) {
-            afficherArticleVideoPrecis($prefixe, $article);
+            afficherArticleVideoPrecis($article);
         } else {
             throw new Exception('L\'article vidéo recherché n\'existe pas.');
         }
@@ -630,14 +630,14 @@ function CtlAccueil($prefixe) {
 ########################################################################################################################
 # Events                                                                                                               #
 ########################################################################################################################
-function CtlEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours) {
-    afficherEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours);
+function CtlEvents($tri, $aVenir, $passes, $rechercheEnCours) {
+    afficherEvents($tri, $aVenir, $passes, $rechercheEnCours);
 }
 
-function CtlEventPrecis($prefixe, $id) {
+function CtlEventPrecis($id) {
     $event = eventPrecis($id);
     if ($event != false) {
-        afficherEventPrecis($prefixe, $event);
+        afficherEventPrecis($event);
     } else {
         throw new Exception('L\'évent recherché n\'existe pas.');
     }
@@ -646,14 +646,14 @@ function CtlEventPrecis($prefixe, $id) {
 ########################################################################################################################
 # Goodies                                                                                                              #
 ########################################################################################################################
-function CtlGoodies($prefixe, $tri, $disponible, $bientot, $rupture,$rechercheEnCours) {
-    afficherGoodies($prefixe, $tri, $disponible, $bientot, $rupture,$rechercheEnCours);
+function CtlGoodies($tri, $disponible, $bientot, $rupture,$rechercheEnCours) {
+    afficherGoodies($tri, $disponible, $bientot, $rupture,$rechercheEnCours);
 }
 
-function CtlGoodiePrecis($prefixe, $id) {
+function CtlGoodiePrecis($id) {
     $goodie = goodiePrecis($id);
     if (!empty($goodie)) {
-        afficherGoodiePrecis($prefixe, $goodie);
+        afficherGoodiePrecis($goodie);
     } else {
         throw new Exception("Le goodie recherché n'existe pas.");
     }

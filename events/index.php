@@ -1,9 +1,9 @@
 <?php
-$prefixe = '../';
-require_once($prefixe . '-mvc/controleur/controleur.php');
+define('RACINE', '../');
+require_once(RACINE . '-mvc/controleur/controleur.php');
 try {
     if (isset($_GET['id'])) {
-        CtlEventPrecis($prefixe, $_GET['id']);
+        CtlEventPrecis($_GET['id']);
     } else {
         $tri = 'FP';
         $aVenir = true;
@@ -21,8 +21,8 @@ try {
             $passes = true;
             $rechercheEnCours = true;
         }
-        CtlEvents($prefixe, $tri, $aVenir, $passes, $rechercheEnCours);
+        CtlEvents($tri, $aVenir, $passes, $rechercheEnCours);
     }
 } catch (Exception $e) {
-    CtlErreur($prefixe, $e->getMessage());
+    CtlErreur($e->getMessage());
 }
