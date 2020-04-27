@@ -1478,18 +1478,6 @@ function afficherJournaux($prefixe) {
 }
 
 ########################################################################################################################
-# Journaux - Contribuer                                                                                                #
-########################################################################################################################
-function afficherContribuer($prefixe) {
-    $title = 'Contribuer au journal';
-    $header = $prefixe . '-mvc/vue/gabaritsPublic/header.php';
-    $gabarit = $prefixe . '-mvc/vue/gabaritsPublic/gabaritContribuer.php';
-    $footer = $prefixe . '-mvc/vue/gabaritsPublic/footer.php';
-
-    require_once($prefixe . '-mvc/vue/cadre.php');
-}
-
-########################################################################################################################
 # Mentions légales                                                                                                     #
 ########################################################################################################################
 function afficherMentionsLegales($prefixe) {
