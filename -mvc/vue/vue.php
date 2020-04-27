@@ -1,5 +1,29 @@
 <?php
 ########################################################################################################################
+# Constantes Générales                                                                                                 #
+########################################################################################################################
+define('IMAGES', RACINE . '-images/');
+
+########################################################################################################################
+# Fonction d'Initialisation des Constantes Spécifiques & Affichage du Cadre                                            #
+########################################################################################################################
+function afficherCadre($quelCadre) {
+    switch ($quelCadre) {
+        case 'ADMIN':
+            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsAdmin/' . 'header.php');
+            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsAdmin/' . 'footer.php');
+            define('PATH_TO_GABARIT', RACINE . '-mvc/vue/gabaritsAdmin/' . GABARIT);
+            break;
+        case 'PUBLIC':
+            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsPublic/' . 'header.php');
+            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsPublic/' . 'footer.php');
+            define('PATH_TO_GABARIT', RACINE . '-mvc/vue/gabaritsPublic/' . GABARIT);
+    }
+
+    require_once(RACINE . '-mvc/vue/cadre.php');
+}
+
+########################################################################################################################
 # Admin                                                                                                                #
 ########################################################################################################################
 # Système
