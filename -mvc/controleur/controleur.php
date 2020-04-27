@@ -297,7 +297,7 @@ function CtlSupprimerGoodie($id) {
 function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
     try {
         if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($_FILES[$fileImput]['name'])) {
-            ajouterJournal($prefixe . 'journaux/', $titre, $mois, $annee, $fileImput);
+            ajouterJournal(RACINE . 'journaux/', $titre, $mois, $annee, $fileImput);
             afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
         } else {
             throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner un PDF.');
@@ -500,8 +500,8 @@ function CtlRenommerCategorieArticle($id, $titre) {
 ########################################################################################################################
 # Articles                                                                                                             #
 ########################################################################################################################
-function CtlArticles($prefixe) {
-    afficherArticles($prefixe);
+function CtlArticles() {
+    afficherArticles();
 }
 
 function CtlArticlePrecis($id) {
@@ -525,106 +525,106 @@ function CtlArticlePrecis($id) {
 ########################################################################################################################
 # Association (Présentation)                                                                                           #
 ########################################################################################################################
-function CtlPresentation($prefixe) {
-    afficherPresentation($prefixe);
+function CtlPresentation() {
+    afficherPresentation();
 }
 
 ########################################################################################################################
 # Association - Contact                                                                                                #
 ########################################################################################################################
-function CtlContact($prefixe) {
-    afficherContact($prefixe);
+function CtlContact() {
+    afficherContact();
 }
 
 ########################################################################################################################
 # Association - Fonctionnement                                                                                         #
 ########################################################################################################################
-function CtlFonctionnement($prefixe) {
-    afficherFonctionnement($prefixe);
+function CtlFonctionnement() {
+    afficherFonctionnement();
 }
 
 ########################################################################################################################
 # Association - Fonctionnement - Statuts                                                                               #
 ########################################################################################################################
-function CtlStatuts($prefixe) {
-    afficherStatuts($prefixe);
+function CtlStatuts() {
+    afficherStatuts();
 }
 
 ########################################################################################################################
 # Association - Historique                                                                                             #
 ########################################################################################################################
-function CtlHistorique($prefixe) {
-    afficherHistorique($prefixe);
+function CtlHistorique() {
+    afficherHistorique();
 }
 
 ########################################################################################################################
 # Association - Où nous trouver ?                                                                                      #
 ########################################################################################################################
-function CtlOuNousTrouver($prefixe) {
-    afficherOuNousTrouver($prefixe);
+function CtlOuNousTrouver() {
+    afficherOuNousTrouver();
 }
 
 ########################################################################################################################
 # Association - Partenaires                                                                                            #
 ########################################################################################################################
-function CtlPartenaires($prefixe) {
-    afficherPartenaires($prefixe);
+function CtlPartenaires() {
+    afficherPartenaires();
 }
 
 ########################################################################################################################
 # Association - Pôles                                                                                                  #
 ########################################################################################################################
-function CtlPoles($prefixe) {
-    afficherPoles($prefixe);
+function CtlPoles() {
+    afficherPoles();
 }
 
 ########################################################################################################################
 # Association - Pourquoi adhérer ?                                                                                     #
 ########################################################################################################################
-function CtlPourquoiAdherer($prefixe) {
-    afficherPourquoiAdherer($prefixe);
+function CtlPourquoiAdherer() {
+    afficherPourquoiAdherer();
 }
 
 ########################################################################################################################
 # Association - Réseau associatif                                                                                      #
 ########################################################################################################################
-function CtlReseauAssociatif($prefixe) {
-    afficherReseauAssociatif($prefixe);
+function CtlReseauAssociatif() {
+    afficherReseauAssociatif();
 }
 
 ########################################################################################################################
 # Association - Réseau associatif - ÔCampus                                                                            #
 ########################################################################################################################
-function CtlOCampus($prefixe) {
-    afficherOCampus($prefixe);
+function CtlOCampus() {
+    afficherOCampus();
 }
 
 ########################################################################################################################
 # Association - Réseau associatif - FNEB                                                                               #
 ########################################################################################################################
-function CtlFneb($prefixe) {
-    afficherFneb($prefixe);
+function CtlFneb() {
+    afficherFneb();
 }
 
 ########################################################################################################################
 # Association - Réseaus sociaux                                                                                        #
 ########################################################################################################################
-function CtlReseauxSociaux($prefixe) {
-    afficherReseauxSociaux($prefixe);
+function CtlReseauxSociaux() {
+    afficherReseauxSociaux();
 }
 
 ########################################################################################################################
 # Association - Université                                                                                             #
 ########################################################################################################################
-function CtlUniversite($prefixe) {
-    afficherUniversite($prefixe);
+function CtlUniversite() {
+    afficherUniversite();
 }
 
 ########################################################################################################################
 # Accueil                                                                                                              #
 ########################################################################################################################
-function CtlAccueil($prefixe) {
-    afficherAccueil($prefixe);
+function CtlAccueil() {
+    afficherAccueil();
 }
 
 ########################################################################################################################
@@ -662,27 +662,27 @@ function CtlGoodiePrecis($id) {
 ########################################################################################################################
 # Journaux                                                                                                             #
 ########################################################################################################################
-function CtlJournaux($prefixe) {
-    afficherJournaux($prefixe);
+function CtlJournaux() {
+    afficherJournaux();
 }
 
 ########################################################################################################################
 # Mentions légales                                                                                                     #
 ########################################################################################################################
-function CtlMentionsLegales($prefixe) {
-    afficherMentionsLegales($prefixe);
+function CtlMentionsLegales() {
+    afficherMentionsLegales();
 }
 
 ########################################################################################################################
 # Plan du site                                                                                                         #
 ########################################################################################################################
-function CtlPlanDuSite($prefixe) {
-    afficherPlanDuSite($prefixe);
+function CtlPlanDuSite() {
+    afficherPlanDuSite();
 }
 
 ########################################################################################################################
 # Riad (temporaire)                                                                                                    #
 ########################################################################################################################
-function CtlRiad($prefixe) {
-    afficherRiad($prefixe);
+function CtlRiad() {
+    afficherRiad();
 }
