@@ -1,3 +1,20 @@
+<script type="text/javascript">
+    function decoder(target) {
+        let elementBase64 = document.getElementById(target + '_base64');
+        let strBase64 = elementBase64.innerText;
+        let strMail = atob(strBase64);
+        let elementDiv = document.getElementById(target + '_div');
+        elementDiv.removeChild(elementBase64);
+
+        let elementMail = document.createElement('p');
+        elementMail.setAttribute('id', target + '_mail');
+        elementMail.innerText = strMail;
+        elementDiv.appendChild(elementMail);
+
+        let elementButton = document.getElementById(target + '_button');
+        elementButton.setAttribute('disabled', '');
+    }
+</script>
 <div class="container text-center">
     <h3>Pôles</h3>
     <hr>
@@ -127,9 +144,12 @@
                         que ce soit pour une seule fois ou régulièrement, alors contactez notre équipe à l'adresse mail
                         suivante :
                     </p>
-                    <p>
-                        tributerre.journal@gmail.com
-                    </p>
+                    <div id="mailJournal_div" style="word-wrap: break-word;">
+                        <p id="mailJournal_base64">dHJpYnV0ZXJyZS5qb3VybmFsQGdtYWlsLmNvbQ==</p>
+                    </div>
+                    <div class="text-center">
+                        <button id="mailJournal_button" class="btn btn-danger text-center" onclick="decoder('mailJournal');">Cliquer pour décrypter</button>
+                    </div>
                     <p>
                         Vous pouvez écrire sur n'importe quel sujet qui ait un rapport avec la vulgarisation
                         scientifique ou la vie étudiante. Et si jamais vous avez besoin d'aide pour trouver un sujet ou
