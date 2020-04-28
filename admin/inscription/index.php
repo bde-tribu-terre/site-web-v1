@@ -1,4 +1,11 @@
 <?php
+$salt = '';
+for ($i = 0; $i <= 32; $i++) {
+    $salt .= chr(rand(33, 126));
+}
+echo $salt;
+echo '<br>';
+echo strlen($salt);
 define('RACINE', '../../');
 require_once(RACINE . '-mvc/controleur/controleur.php');
 try {
