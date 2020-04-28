@@ -22,7 +22,7 @@ function verifConnexion($login, $mdp) {
 
 function infosMembre($id) {
     $connexion = getConnect();
-    $requete = "SELECT idMembre, loginMembre, nomMembre, descMembre FROM Membre WHERE idMembre=:id";
+    $requete = "SELECT idMembres, loginMembres, prenomMembres, nomMembres, descMembres FROM Membres WHERE idMembres=:id";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();
@@ -34,7 +34,7 @@ function infosMembre($id) {
 
 function logTous() {
     $connexion = getConnect();
-    $requete = "SELECT idMembre, nomMembre, codeLogActions, dateLogActions, descLogActions FROM LogActions NATURAL JOIN Membre ORDER BY dateLogActions DESC";
+    $requete = "SELECT idMembres, prenomMembres, nomMembres, codeLogActions, dateLogActions, descLogActions FROM LogActions NATURAL JOIN Membres ORDER BY dateLogActions DESC";
     $prepare = $connexion->prepare($requete);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
@@ -49,7 +49,7 @@ function ajouterLog($code, $message) {
     $dt->setTimestamp($timestamp);
 
     $connexion = getConnect();
-    $requete = "INSERT INTO LogActions VALUES (0, :idMembre, :codeLogActions, :dateLogActions, :descLogActions)";
+    $requete = "INSERT INTO LogActions VALUES (0, :idMembres, :codeLogActions, :dateLogActions, :descLogActions)";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
     $prepare->bindValue(':codeLogActions', $code, PDO::PARAM_INT);
@@ -462,7 +462,7 @@ function ajouterArticle($titre, $categorie, $visibilite, $texte) {
     $dt->setTimestamp($timestamp);
 
     $connexion = getConnect();
-    $requete = "INSERT INTO Articles VALUES (0, :idMembre, :idCategorieArticles, :titreArticles, :texteArticles, :visibiliteArticles, :dateCreationArticles, :dateModificationArticles)";
+    $requete = "INSERT INTO Articles VALUES (0, :idMembres, :idCategorieArticles, :titreArticles, :texteArticles, :visibiliteArticles, :dateCreationArticles, :dateModificationArticles)";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_INT);
     $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
@@ -510,7 +510,7 @@ function idTitreArticles() {
 
 function articlePrecis($id) {
     $connexion = getConnect();
-    $requete = "SELECT idArticles, titreArticles, idCategoriesArticles, titreCategoriesArticles, visibiliteArticles, texteArticles, nomMembre, dateCreationArticles, dateModificationArticles FROM Articles NATURAL JOIN Membre NATURAL JOIN CategoriesArticles WHERE idArticles=:idArticles";
+    $requete = "SELECT idArticles, titreArticles, idCategoriesArticles, titreCategoriesArticles, visibiliteArticles, texteArticles, prenomMembres, nomMembres, dateCreationArticles, dateModificationArticles FROM Articles NATURAL JOIN Membres NATURAL JOIN CategoriesArticles WHERE idArticles=:idArticles";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
     $prepare->execute();
@@ -643,7 +643,8 @@ function articlesTous() {
             titreCategoriesArticles AS categorie,
             visibiliteArticles AS visibilite,
             texteArticles AS texte,
-            nomMembre AS auteur,
+            prenomMembres AS prenomAuteur,
+            nomMembres AS nomAuteur,
             dateCreationArticles AS dateCreation,
             dateModificationArticles AS dateModification
         FROM
@@ -654,13 +655,14 @@ function articlesTous() {
                     titreCategoriesArticles,
                     visibiliteArticles,
                     texteArticles,
-                    nomMembre,
+                    prenomMembres,
+                    nomMembres,
                     dateCreationArticles,
                     dateModificationArticles
                 FROM
                     Articles
                         NATURAL JOIN
-                    Membre
+                    Membres
                         NATURAL JOIN
                     CategoriesArticles
                 ORDER BY
@@ -684,7 +686,7 @@ function ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
     $dt->setTimestamp($timestamp);
 
     $connexion = getConnect();
-    $requete = "INSERT INTO ArticlesYouTube VALUES (0, :idCategorieArticles, :idMembre, :titreArticlesYouTube, :texteArticlesYouTube, :lienArticlesYouTube, :visibiliteArticlesYouTube, :dateCreationArticlesYouTube, :dateModificationArticlesYouTube)";
+    $requete = "INSERT INTO ArticlesYouTube VALUES (0, :idCategorieArticles, :idMembres, :titreArticlesYouTube, :texteArticlesYouTube, :lienArticlesYouTube, :visibiliteArticlesYouTube, :dateCreationArticlesYouTube, :dateModificationArticlesYouTube)";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_INT);
     $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
@@ -712,7 +714,7 @@ function idTitreArticlesVideo() {
 
 function articleVideoPrecis($id) {
     $connexion = getConnect();
-    $requete = "SELECT idArticlesYouTube, titreArticlesYouTube, idCategoriesArticles, titreCategoriesArticles, visibiliteArticlesYouTube, lienArticlesYouTube, texteArticlesYouTube, nomMembre, dateCreationArticlesYouTube, dateModificationArticlesYouTube FROM ArticlesYouTube NATURAL JOIN Membre NATURAL JOIN CategoriesArticles WHERE idArticlesYouTube=:idArticlesYouTube";
+    $requete = "SELECT idArticlesYouTube, titreArticlesYouTube, idCategoriesArticles, titreCategoriesArticles, visibiliteArticlesYouTube, lienArticlesYouTube, texteArticlesYouTube, nomMembre, dateCreationArticlesYouTube, dateModificationArticlesYouTube FROM ArticlesYouTube NATURAL JOIN Membres NATURAL JOIN CategoriesArticles WHERE idArticlesYouTube=:idArticlesYouTube";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
     $prepare->execute();
@@ -771,7 +773,8 @@ function articlesVideoTous() {
             visibiliteArticlesYouTube AS visibilite,
             lienArticlesYouTube AS lien,
             texteArticlesYouTube AS texte,
-            nomMembre AS auteur,
+            prenomMembres AS prenomAuteur,
+            nomMembre AS nomAuteur,
             dateCreationArticlesYouTube AS dateCreation,
             dateModificationArticlesYouTube AS dateModification
         FROM
@@ -783,13 +786,14 @@ function articlesVideoTous() {
                     visibiliteArticlesYouTube,
                     lienArticlesYouTube,
                     texteArticlesYouTube,
-                    nomMembre,
+                    prenomMembres,
+                    nomMembres,
                     dateCreationArticlesYouTube,
                     dateModificationArticlesYouTube
                 FROM
                     ArticlesYouTube
                         NATURAL JOIN
-                    Membre
+                    Membres
                         NATURAL JOIN
                     CategoriesArticles
                 ORDER BY
