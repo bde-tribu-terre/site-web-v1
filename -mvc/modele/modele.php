@@ -4,15 +4,18 @@
 ########################################################################################################################
 function verifConnexion($login, $mdp) {
     $connexion = getConnect();
-    $requete = "SELECT idMembre, loginMembre, mdpMembre FROM Membre WHERE loginMembre=:login";
+    $requete = "SELECT idMembres, loginMembres, mdpHashMembres, mdpSaltMembres FROM Membres WHERE loginMembres=:login";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':login', $login, PDO::PARAM_STR);
     $prepare->execute();
     $prepare->setFetchMode(PDO::FETCH_OBJ);
     $ligne = $prepare->fetch();
+
     $return = false;
     if ($ligne) {
-        if ($ligne->mdpMembre == $mdp) {
+        // https://youtu.be/8ZtInClXe1Q pour des explicayions.
+        $mdpSaisieHash = hash('whirlpool', $ligne->mdpSaltMembre, $mdp);
+        if ($ligne->mdpHashMembre == $mdpSaisieHash) {
             $return = $ligne->idMembre;
         }
     }
