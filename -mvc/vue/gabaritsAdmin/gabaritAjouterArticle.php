@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-12">
             <?php
-            if (!empty($messageRetour)) {
+            if (!empty(MESSAGE_RETOUR)) {
                 echo
                     '<div class="well">' .
                     '<h3>Message : </h3>' .
-                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '<p><strong>' . MESSAGE_RETOUR . '</strong></p>' .
                     '</div>';
             }
             ?>
@@ -26,7 +26,7 @@
                         <label for="formAjouterArticle_categorie">Catégorie</label>
                         <select class="form-control" id="formAjouterArticle_categorie" name="formAjouterArticle_categorie">
                             <option value="-1">--Choisir--</option>
-                            <?php echo $categories ?>
+                            <?php echo CATEGORIES ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Visibilité -->

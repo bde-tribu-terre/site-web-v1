@@ -1,13 +1,13 @@
 <div class="container text-center">
-    <h4 class="pc"><?php echo $categorie ?></h4>
-    <h3><?php echo $titre ?></h3>
-    <h5>📅 <?php echo genererDate($dateCreation) ?> | ✏️ <?php echo $auteur ?></h5>
+    <h4 class="pc"><?php echo CATEGORIE ?></h4>
+    <h3><?php echo TITRE ?></h3>
+    <h5>📅 <?php echo genererDate(DATE_CREATION) ?> | ✏️ <?php echo AUTEUR ?></h5>
     <hr>
-    <?php echo $carouselArticle ?>
+    <?php echo CAROUSEL_ARTICLES ?>
     <div class="row text-left retrait">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <?php echo $texteFormate ?>
+            <?php echo TEXTE ?>
         </div>
         <div class="col-sm-1"></div>
     </div>
@@ -19,7 +19,7 @@
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                class="twitter-share-button"
                data-size="large"
-               data-text="Cet article de Tribu-Terre est très intéressant : <?php echo $titre ?> !"
+               data-text="Cet article de Tribu-Terre est très intéressant : <?php echo TITRE ?> !"
                data-via="Tributerre45"
                data-show-count="false">
                 Tweet
@@ -42,7 +42,7 @@
                 );
             </script>
             <div class="fb-share-button"
-                 data-href="http://barodine.fr/tribu-terre/articles?id=<?php echo $id ?>"
+                 data-href="http://barodine.fr/tribu-terre/articles?id=<?php echo ID ?>"
                  data-layout="button"
                  data-size="large">
                 <a target="_blank"

@@ -1,17 +1,17 @@
 <div class="container text-center">
-    <h3><?php echo $titreGoodie ?></h3>
+    <h3><?php echo TITRE ?></h3>
     <hr>
     <div class="row">
         <div class="col-sm-8">
-            <?php echo $carouselGoodie ?>
+            <?php echo CAROUSEL_GOODIES ?>
         </div>
         <div class="col-sm-4">
             <div class="well">
                 <h3>Prix pour les adhérents</h3>
-                <h1><?php echo $prixAdherent ?>€</h1>
+                <h1><?php echo PRIX_AD ?>€</h1>
                 <hr>
                 <h3>Prix pour les non-adhérents</h3>
-                <h1><?php echo $prixNonAdherent ?>€</h1>
+                <h1><?php echo PRIX_NAD ?>€</h1>
                 <hr>
                 <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#adherent" aria-expanded="false">
                     Qu'est-ce qu'un adhérent ?
@@ -50,7 +50,7 @@
         <div class="well">
             <h3>Quelques mots sur cette merveille...</h3>
             <p>
-                <?php echo $descStr ?>
+                <?php echo DESC ?>
             </p>
         </div>
     </div>
@@ -62,7 +62,7 @@
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                class="twitter-share-button"
                data-size="large"
-               data-text="Ce goodie de Tribu-Terre a l'air d'être de qualité : <?php echo $titreGoodie ?> !"
+               data-text="Ce goodie de Tribu-Terre a l'air d'être de qualité : <?php echo TITRE ?> !"
                data-via="Tributerre45"
                data-show-count="false">
                 Tweet
@@ -85,7 +85,7 @@
                 );
             </script>
             <div class="fb-share-button"
-                 data-href="http://barodine.fr/tribu-terre/goodies?id=<?php echo $id ?>"
+                 data-href="http://barodine.fr/tribu-terre/goodies?id=<?php echo ID ?>"
                  data-layout="button"
                  data-size="large">
                 <a target="_blank"

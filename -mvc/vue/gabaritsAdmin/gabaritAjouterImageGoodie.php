@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-12">
             <?php
-            if (!empty($messageRetour)) {
+            if (!empty(MESSAGE_RETOUR)) {
                 echo
                     '<div class="well">' .
                     '<h3>Message : </h3>' .
-                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '<p><strong>' . MESSAGE_RETOUR . '</strong></p>' .
                     '</div>';
             }
             ?>
@@ -22,7 +22,7 @@
                         <label for="formAjouterImageGoodie_idGoodie">Goodie</label>
                         <select class="form-control" id="formAjouterImageGoodie_idGoodie" name="formAjouterImageGoodie_idGoodie">
                             <option value="">--Choisir un goodie--</option>
-                            <?php echo $goodies ?>
+                            <?php echo GOODIES ?>
                         </select>
                     </div>
                     <div class="div-group"> <!-- Image -->

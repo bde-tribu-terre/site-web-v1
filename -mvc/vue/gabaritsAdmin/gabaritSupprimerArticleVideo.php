@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-12">
             <?php
-            if (!empty($messageRetour)) {
+            if (!empty(MESSAGE_RETOUR)) {
                 echo
                     '<div class="well">' .
                     '<h3>Message : </h3>' .
-                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '<p><strong>' . MESSAGE_RETOUR . '</strong></p>' .
                     '</div>';
             }
             ?>
@@ -22,7 +22,7 @@
                         <label for="formSupprimerArticleVideo_idArticle">Article vidéo</label>
                         <select class="form-control" id="formSupprimerArticleVideo_idArticle" name="formSupprimerArticleVideo_idArticle">
                             <option value="">--Choisir un article vidéo--</option>
-                            <?php echo $articlesVideo ?>
+                            <?php echo ARTICLES_VIDEO ?>
                         </select>
                     </div>
                     <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>

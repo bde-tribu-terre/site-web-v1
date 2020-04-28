@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-12">
             <?php
-            if (!empty($messageRetour)) {
+            if (!empty(MESSAGE_RETOUR)) {
                 echo
                     '<div class="well">' .
                     '<h3>Message : </h3>' .
-                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '<p><strong>' . MESSAGE_RETOUR . '</strong></p>' .
                     '</div>';
             }
             ?>
@@ -20,33 +20,33 @@
                 <form id="formModifierArticleVideo" method="post">
                     <div class="form-group"> <!-- ID de l'article -->
                         <label for="formModifierArticleVideo_idArticle">ID de l'article vidéo</label>
-                        <input class="form-control" id="formModifierArticleVideo_idArticle" type="text" value="<?php echo $idArticle ?>" name="formModifierArticleVideo_idArticle" readonly>
+                        <input class="form-control" id="formModifierArticleVideo_idArticle" type="text" value="<?php echo ID ?>" name="formModifierArticleVideo_idArticle" readonly>
                     </div>
                     <div class="form-group"> <!-- Titre de l'article -->
                         <label for="formModifierArticleVideo_titre">Titre de l'article vidéo</label>
-                        <input class="form-control" id="formModifierArticleVideo_titre" type="text" value="<?php echo $titreArticle ?>" placeholder="Titre" name="formModifierArticleVideo_titre">
+                        <input class="form-control" id="formModifierArticleVideo_titre" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierArticleVideo_titre">
                     </div>
                     <div class="form-group"> <!-- Catégorie -->
                         <label for="formModifierArticleVideo_categorie">Catégorie</label>
                         <select class="form-control" id="formModifierArticleVideo_categorie" name="formModifierArticleVideo_categorie">
-                            <?php echo $categories ?>
+                            <?php echo CATEGORIES ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Visibilité -->
                         <label for="formModifierArticleVideo_visibilite">Visibilité</label>
                         <select class="form-control" id="formModifierArticleVideo_visibilite" name="formModifierArticleVideo_visibilite">
-                            <option value="0"<?php echo $visibiliteArticle == 0 ? ' selected' : ''; ?>>Invisible</option>
-                            <option value="1"<?php echo $visibiliteArticle == 1 ? ' selected' : ''; ?>>Visible</option>
+                            <option value="0"<?php echo VISIBILITE == 0 ? ' selected' : ''; ?>>Invisible</option>
+                            <option value="1"<?php echo VISIBILITE == 1 ? ' selected' : ''; ?>>Visible</option>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Lien de la vidéo -->
                         <label for="formModifierArticleVideo_lien">Lien de la vidéo</label>
-                        <input class="form-control" id="formModifierArticleVideo_lien" type="text" value="<?php echo $lienArticle ?>" placeholder="Lien" name="formModifierArticleVideo_lien">
+                        <input class="form-control" id="formModifierArticleVideo_lien" type="text" value="<?php echo LIEN ?>" placeholder="Lien" name="formModifierArticleVideo_lien">
                         <small class="form-text text-muted">Exemple : http://www.youtube.com/watch?v=B4CRkpBGQzU</small>
                     </div>
                     <div class="form-group"> <!-- Texte -->
                         <label for="formModifierArticleVideo_texte">Texte de l'article vidéo</label>
-                        <textarea class="form-control" id="formModifierArticleVideo_texte" placeholder="Texte de l'article" name="formModifierArticleVideo_texte" rows="20"><?php echo $texteArticle ?></textarea>
+                        <textarea class="form-control" id="formModifierArticleVideo_texte" placeholder="Texte de l'article" name="formModifierArticleVideo_texte" rows="20"><?php echo TEXTE ?></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>

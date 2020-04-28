@@ -67,7 +67,7 @@
                 bureau de Tribu-Terre pendant un an, jusqu'à la date de la prochaine Assemblée Générale.
             </p>
             <p>
-                <a href="<?php echo $prefixe . 'association/fonctionnement/' ?>">
+                <a href="<?php echo RACINE . 'association/fonctionnement/' ?>">
                     En savoir plus sur le fonctionnement de l'association.
                 </a>
             </p>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2019.png' ?>" alt="imgAG2019">
+                            <img class="img-responsive imageAGbordure" src="<?php echo RACINE . '-images/imgAG2019.png' ?>" alt="imgAG2019">
                         </div>
                         <div class="col-sm-6">
                             <h3>Composition du bureau</h3>

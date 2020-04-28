@@ -2,11 +2,11 @@
     <div class="row">
         <div class="col-sm-12">
             <?php
-            if (!empty($messageRetour)) {
+            if (!empty(MESSAGE_RETOUR)) {
                 echo
                     '<div class="well">' .
                     '<h3>Message : </h3>' .
-                    '<p><strong>' . $messageRetour . '</strong></p>' .
+                    '<p><strong>' . MESSAGE_RETOUR . '</strong></p>' .
                     '</div>';
             }
             ?>
@@ -20,9 +20,9 @@
                 <form id="formSupprimerImageArticle" method="post">
                     <div class="form-group"> <!-- ID du goodie -->
                         <label for="formSupprimerImageArticle_idArticle">ID de l'article</label>
-                        <input class="form-control" id="formSupprimerImageArticle_idArticle" type="text" value="<?php echo $idArticle ?>" name="formSupprimerImageArticle_idArticle" readonly>
+                        <input class="form-control" id="formSupprimerImageArticle_idArticle" type="text" value="<?php echo ID ?>" name="formSupprimerImageArticle_idArticle" readonly>
                     </div>
-                    <?php echo $images ?>
+                    <?php echo IMAGES_ARTICLE ?>
                     <hr>
                     <div class="form-group"> <!-- Supprimer les images -->
                         <input class="btn btn-danger btn-block" type="submit" value="Supprimer les images" name="formSupprimerImageArticle_supprimer">

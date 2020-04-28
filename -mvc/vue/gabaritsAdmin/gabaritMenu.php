@@ -4,11 +4,11 @@
             <h3>Menu principal</h3>
             <hr>
             <?php
-            if (!empty($messageRetour)) {
+            if (!empty(MESSAGE_RETOUR)) {
                 echo
                     '<div class="well">' .
                         '<h3>Message : </h3>' .
-                        '<p><strong>' . $messageRetour . '</strong></p>' .
+                        '<p><strong>' . MESSAGE_RETOUR . '</strong></p>' .
                     '</div>';
             }
             ?>

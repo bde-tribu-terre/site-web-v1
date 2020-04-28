@@ -1,18 +1,18 @@
 <div class="container text-center">
-    <h3><?php echo $titre ?></h3>
+    <h3><?php echo TITRE ?></h3>
     <hr>
     <div class="row">
         <div class="col-sm-4">
             <div class="well">
                 <h3>Date 📅</h3>
-                <h2><?php echo $dateStr ?></h2>
-                <h3><?php echo $nbJoursStr ?></h3>
+                <h2><?php echo DATE ?></h2>
+                <h3><?php echo NB_JOURS ?></h3>
                 <hr>
                 <h3>Heure ⌚</h3>
-                <h2><?php echo $heureStr ?></h2>
+                <h2><?php echo HEURE ?></h2>
                 <hr>
                 <h3>Lieu 📍</h3>
-                <h2><?php echo $lieu ?></h2>
+                <h2><?php echo LIEU ?></h2>
             </div>
         </div>
         <div class="col-sm-8">
@@ -20,7 +20,7 @@
                 <h3>Informations</h3>
                 <hr>
                 <p>
-                    <?php echo $descStr ?>
+                    <?php echo DESC ?>
                 </p>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                class="twitter-share-button"
                data-size="large"
-               data-text="Cet évent organisé par Tribu-Terre va être cool : <?php echo $titre ?> !"
+               data-text="Cet évent organisé par Tribu-Terre va être cool : <?php echo TITRE ?> !"
                data-via="Tributerre45"
                data-show-count="false">
                 Tweet
@@ -56,7 +56,7 @@
                 );
             </script>
             <div class="fb-share-button"
-                 data-href="http://barodine.fr/tribu-terre/events?id=<?php echo $id ?>"
+                 data-href="http://barodine.fr/tribu-terre/events?id=<?php echo ID ?>"
                  data-layout="button"
                  data-size="large">
                 <a target="_blank"

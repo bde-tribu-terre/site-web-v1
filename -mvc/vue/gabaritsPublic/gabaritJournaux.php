@@ -2,6 +2,6 @@
     <h3>Journaux</h3>
     <hr>
     <div class="row">
-        <?php echo $tableJournaux ?>
+        <?php echo JOURNAUX ?>
     </div>
 </div><br>
