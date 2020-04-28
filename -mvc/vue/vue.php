@@ -69,6 +69,14 @@ function formaterTexte($texte) {
     return $texteFormate;
 }
 
+function genererNom($membre) {
+    return
+        htmlentities($membre->prenomMembres, ENT_QUOTES, "UTF-8") .
+        ' <span class="pc">' .
+        htmlentities($membre->nomMembres, ENT_QUOTES, "UTF-8") .
+        '</span>';
+}
+
 ########################################################################################################################
 ########################################################################################################################
 ###                                                     -- B --                                                      ###
@@ -97,7 +105,7 @@ function afficherMenu($messageRetour) {
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
 
     afficherCadre('ADMIN');
@@ -110,7 +118,7 @@ function afficherCreerEvent($messageRetour) {
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
 
     afficherCadre('ADMIN');
@@ -136,7 +144,7 @@ function afficherChoixEvent($messageRetour) {
             $titreEvents . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('EVENTS', $events);
 
@@ -150,7 +158,7 @@ function afficherModifierEvent($messageRetour, $id) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $ligneEvent = eventPrecis($id);
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ID', $id);
     define('TITRE', $ligneEvent->titreEvents);
@@ -183,7 +191,7 @@ function afficherSupprimerEvent($messageRetour) {
             $titreEvents . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('EVENTS', $events);
 
@@ -197,7 +205,7 @@ function afficherAjouterGoodie($messageRetour) {
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
 
     afficherCadre('ADMIN');
@@ -218,7 +226,7 @@ function afficherAjouterImageGoodie($messageRetour) {
             '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('GOODIES', $goodies);
 
@@ -248,7 +256,7 @@ function afficherChoixGoodie($messageRetour) {
             '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('GOODIES', $goodies);
 
@@ -262,7 +270,7 @@ function afficherModifierGoodie($messageRetour, $id) {
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $ligneGoodie = goodiePrecis($id);
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ID', $id);
     define('TITRE', $ligneGoodie->titreGoodies);
@@ -296,7 +304,7 @@ function afficherSupprimerImageGoodie($messageRetour, $id) {
             '<br>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ID', $id);
     define('IMAGES_GOODIE', $images); // Car la constante IMAGES existe déjà...
@@ -327,7 +335,7 @@ function afficherSupprimerGoodie($messageRetour) {
             '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('GOODIES', $goodies);
 
@@ -341,7 +349,7 @@ function afficherAjouterJournal($messageRetour) {
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
 
     afficherCadre('ADMIN');
@@ -362,7 +370,7 @@ function afficherSupprimerJournal($messageRetour) {
             '<option value="' . $idJournal . '">' . $titreJournal . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('JOURNAUX', $journaux);
 
@@ -385,7 +393,7 @@ function afficherAjouterArticle($messageRetour) {
             '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('CATEGORIES', $categories);
 
@@ -414,7 +422,7 @@ function afficherAjouterImageArticle($messageRetour) {
             $titreArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES', $articles);
 
@@ -443,7 +451,7 @@ function afficherChoixArticle($messageRetour) {
             $titreArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES', $articles);
 
@@ -468,7 +476,7 @@ function afficherModifierArticle($messageRetour, $id) {
             '<option value="' . $idCategorieArticle . '" ' . $selected . '>' . $titreCategorieArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ID', $id);
     define('TITRE', $ligneArticle->titreArticles);
@@ -500,7 +508,7 @@ function afficherSupprimerImageArticle($messageRetour, $id) {
             '<br>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ID', $id);
     define('IMAGES_ARTICLE', $images); // Car la constante IMAGES existe déjà...
@@ -530,7 +538,7 @@ function afficherSupprimerArticle($messageRetour) {
             $titreArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES', $articles);
 
@@ -552,7 +560,7 @@ function afficherAjouterArticleVideo($messageRetour) {
             '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('CATEGORIES', $categories);
 
@@ -582,7 +590,7 @@ function afficherChoixArticleVideo($messageRetour) {
             $titreArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES_VIDEO', $articlesVideo);
 
@@ -607,7 +615,7 @@ function afficherModifierArticleVideo($messageRetour, $id) {
             '<option value="' . $idCategorieArticle . '" ' . $selected . '>' . $titreCategorieArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ID', $id);
     define('TITRE', $ligneArticle->titreArticlesYouTube);
@@ -641,7 +649,7 @@ function afficherSupprimerArticleVideo($messageRetour) {
             $titreArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES_VIDEO', $articlesVideo);
 
@@ -654,7 +662,7 @@ function afficherAjouterCategorieArticle($messageRetour) {
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
 
     afficherCadre('ADMIN');
@@ -675,7 +683,7 @@ function afficherRenommerCategorieArticle($messageRetour) {
             '<option value="' . $idCategorieArticle . '>' . $titreCategorieArticle . '</option>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('CATEGORIES', $categories);
 
@@ -706,7 +714,7 @@ function afficherAfficherLog($messageRetour) {
             '</tr>';
     }
 
-    define('NOM_MEMBRE', htmlentities($ligneInfoMembre->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
     define('LOG', $log);
 
@@ -1047,7 +1055,7 @@ function afficherArticlePrecis($article) {
     define('DATE_CREATION', genererDate(htmlentities($article->dateCreationArticles, ENT_QUOTES, "UTF-8")));
     // define('DATE_MODIFICATION', genererDate(htmlentities($article->dateModificationArticles, ENT_QUOTES, "UTF-8")));
     define('TEXTE', formaterTexte(htmlentities($article->texteArticles)));
-    define('AUTEUR', htmlentities($article->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('AUTEUR', genererNom($article));
     define('CAROUSEL_ARTICLES', $carouselArticle);
     define('TITLE', TITRE); // Ici.
 
@@ -1081,7 +1089,7 @@ function afficherArticleVideoPrecis($article) {
     define('DATE_CREATION', genererDate(htmlentities($article->dateCreationArticlesYouTube, ENT_QUOTES, "UTF-8")));
     // define('DATE_MODIFICATION', genererDate(htmlentities($article->dateModificationArticlesYouTube, ENT_QUOTES, "UTF-8")));
     define('TEXTE', formaterTexte(htmlentities($article->texteArticlesYouTube)));
-    define('AUTEUR', htmlentities($article->nomMembre, ENT_QUOTES, "UTF-8"));
+    define('AUTEUR', genererNom($article));
     define('INTEGRATION_VIDEO', $integrationVideo);
     define('TITLE', TITRE); // Ici.
 
