@@ -517,7 +517,7 @@ function CtlSInscrire($cle, $prenom, $nom, $login, $mdp) {
             afficherInscription("Erreur : Veuillez remplir tous les champs.");
         }
     } catch (Exception $e) {
-        afficherConnexion($e->getMessage());
+        afficherInscription($e->getMessage());
     }
 }
 
