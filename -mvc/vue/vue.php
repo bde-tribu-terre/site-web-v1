@@ -475,6 +475,7 @@ function afficherModifierArticle($messageRetour, $id) {
     define('CATEGORIE', $categorie);
     define('VISIBILITE', $ligneArticle->visibiliteArticles);
     define('TEXTE', $ligneArticle->texteArticles);
+    define('CATEGORIES', $categories);
 
     afficherCadre('ADMIN');
 }
@@ -1346,7 +1347,7 @@ function afficherEventPrecis($event) {
     define('ID', $event->idEvents);
     define('TITRE', htmlentities($event->titreEvents, ENT_QUOTES, "UTF-8"));
     define('DESC', nl2br(htmlentities($event->descEvents, ENT_QUOTES, "UTF-8")));
-    define('DATE', genererDate($event->idEvents));
+    define('DATE', genererDate($event->dateEvents));
     define('HEURE', $heureStr);
     define('LIEU', htmlentities($event->lieuEvents, ENT_QUOTES, "UTF-8"));
     define('NB_JOURS', $nbJoursStr);

@@ -22,7 +22,7 @@
                         <label for="formRenommerCategorieArticle_idCategorieArticle">Catégorie à renommer</label>
                         <select class="form-control" id="formRenommerCategorieArticle_idCategorieArticle" name="formRenommerCategorieArticle_idCategorieArticle">
                             <option value="">--Choisir--</option>
-                            <?php echo CATEGORIE ?>
+                            <?php echo CATEGORIES ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Nouveau titre de la catégorie -->
