@@ -796,9 +796,7 @@ function afficherAccueil() {
 
     if (empty($lignesEvents)) {
         $events .=
-            '<div class="well">' .
-            '<p>Oups ! On dirait qu\'il n\'y a aucun évent de prévu dans le futur 🙈</p>' .
-            '</div>';
+            '<p>Oups ! On dirait qu\'il n\'y a aucun évent de prévu dans le futur 🙈</p>';
     }
 
     $count = 0;
@@ -1664,8 +1662,8 @@ function afficherRiad() {
 # B.XXIV - Erreur                                                                                                      #
 ########################################################################################################################
 function afficherErreur($messageErreur) {
-    define('TITLE', 'Une erreur s\'est produite');
-    define('GABARIT', 'erreur.php');
     define('MESSAGE_ERREUR', $messageErreur);
+    define('GABARIT', 'erreur.php');
+    define('TITLE', 'Erreur');
     afficherCadre('PUBLIC');
 }

@@ -14,9 +14,9 @@ function verifConnexion($login, $mdp) {
     $return = false;
     if ($ligne) {
         // https://youtu.be/8ZtInClXe1Q pour des explications.
-        $mdpSaisieHash = hash('whirlpool', $ligne->mdpSaltMembre, $mdp);
-        if ($ligne->mdpHashMembre == $mdpSaisieHash) {
-            $return = $ligne->idMembre;
+        $mdpSaisieHash = hash('whirlpool', $ligne->mdpSaltMembres . $mdp);
+        if ($ligne->mdpHashMembres == $mdpSaisieHash) {
+            $return = $ligne->idMembres;
         }
     }
     $prepare->closeCursor();
@@ -25,7 +25,7 @@ function verifConnexion($login, $mdp) {
 
 function infosMembre($id) {
     $connexion = getConnect();
-    $requete = "SELECT idMembres, loginMembres, prenomMembres, nomMembres, descMembres FROM Membres WHERE idMembres=:id";
+    $requete = "SELECT idMembres, loginMembres, prenomMembres, nomMembres FROM Membres WHERE idMembres=:id";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':id', $id, PDO::PARAM_INT);
     $prepare->execute();
@@ -777,7 +777,7 @@ function articlesVideoTous() {
             lienArticlesYouTube AS lien,
             texteArticlesYouTube AS texte,
             prenomMembres AS prenomAuteur,
-            nomMembre AS nomAuteur,
+            nomMembres AS nomAuteur,
             dateCreationArticlesYouTube AS dateCreation,
             dateModificationArticlesYouTube AS dateModification
         FROM
