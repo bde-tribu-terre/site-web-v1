@@ -1,3 +1,5 @@
+/* https://css-tricks.com/css-variables-with-php/ */
+
 /* Background en marbre qui est fixe (parallax).
         body {
             background: url("../../-images/imgFondMarbre.png") no-repeat center center fixed;
