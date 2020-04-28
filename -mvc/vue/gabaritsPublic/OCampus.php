@@ -3,7 +3,10 @@
     <hr>
     <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-4">
+            <img class="img-responsive imageBordure" src="<?php echo RACINE . '-images/imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
+        </div>
+        <div class="col-sm-6">
             <div class="text-justify retrait">
                 <!-- Auteur : Simon MEDELLI. -->
                 <p>
@@ -24,5 +27,12 @@
             </div>
         </div>
         <div class="col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <img class="img-responsive imageBordure" src="<?php echo RACINE . '-images/imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
+        </div>
+        <div class="col-sm-2"></div>
     </div>
 </div><br>
