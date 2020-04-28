@@ -1,6 +1,6 @@
 <?php
 ########################################################################################################################
-# Système                                                                                                              #
+# Membres                                                                                                              #
 ########################################################################################################################
 function verifConnexion($login, $mdp) {
     $connexion = getConnect();
@@ -34,6 +34,55 @@ function infosMembre($id) {
     $prepare->closeCursor();
     return $ligne;
 }
+
+function ajouterMembre($prenom, $nom, $login, $mdp) {
+    $salt = '';
+    for ($i = 0; $i <= 32; $i++) {
+        $salt .= chr(rand(33, 126));
+    }
+    $mdpHash = hash('whirlpool', $salt . $mdp);
+
+    $connexion = getConnect();
+    $requete = "INSERT INTO Membres VALUES (0, :login, :mdpHash, :mdpSalt, :prenom, :nom)";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':login', $login, PDO::PARAM_STR);
+    $prepare->bindValue(':mdpHash', $mdpHash, PDO::PARAM_STR);
+    $prepare->bindValue(':mdpSalt', $salt, PDO::PARAM_STR);
+    $prepare->bindValue(':prenom', $prenom, PDO::PARAM_STR);
+    $prepare->bindValue(':nom', $nom, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->closeCursor();
+}
+
+########################################################################################################################
+# Clés d'inscription                                                                                                   #
+########################################################################################################################
+function cleExiste($cle) {
+    $connexion = getConnect();
+    $requete = "SELECT idClesInscription, strClesInscriptions FROM ClesInscriptions WHERE strClesInscriptions=:cle";
+    $prepare = $connexion->prepare($requete);
+    $prepare->bindValue(':cle', $cle, PDO::PARAM_STR);
+    $prepare->execute();
+    $prepare->setFetchMode(PDO::FETCH_OBJ);
+    $ligne = $prepare->fetch();
+    $prepare->closeCursor();
+
+    if ($ligne) {
+        $connexion = getConnect();
+        $requete = "DELETE FROM ClesInscriptions WHERE idClesInscriptions=:id";
+        $prepare = $connexion->prepare($requete);
+        $prepare->bindValue(':id', $ligne->idClesInscriptions, PDO::PARAM_STR);
+        $prepare->execute();
+        $prepare->closeCursor();
+        return true;
+    } else {
+        return false;
+    }
+}
+
+########################################################################################################################
+# Log des actions                                                                                                      #
+########################################################################################################################
 
 function logTous() {
     $connexion = getConnect();

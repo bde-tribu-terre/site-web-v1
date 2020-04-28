@@ -505,7 +505,20 @@ function CtlInscription($messageRetour) {
 }
 
 function CtlSInscrire($cle, $prenom, $nom, $login, $mdp) {
-
+    try {
+        if (!empty($cle) && !empty($prenom) && !empty($nom) && !empty($login) && !empty($mdp)) {
+            if (cleExiste($cle)) { // Si trouvée, alors elle est détruite.
+                ajouterMembre($prenom, $nom, $login, $mdp);
+                afficherInscription('L\'inscription a bien été enregistrée.');
+            } else {
+                throw new Exception("Erreur : La clé d'inscription saisie n'existe pas.");
+            }
+        } else {
+            throw new Exception("Erreur : Veuillez remplir tous les champs.");
+        }
+    } catch (Exception $e) {
+        afficherConnexion($e->getMessage());
+    }
 }
 
 ########################################################################################################################
