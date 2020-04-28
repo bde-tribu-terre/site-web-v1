@@ -17,6 +17,18 @@ CREATE TABLE IF NOT EXISTS JOURNAUX
  comment = "";
 
 # -----------------------------------------------------------------------------
+#       TABLE : CLESINSCRIPTIONS
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS CLESINSCRIPTIONS
+ (
+   IDCLESINSCRIPTIONS INTEGER NOT NULL AUTO_INCREMENT  ,
+   STRCLESINSCRIPITIONS VARCHAR(128) NOT NULL  
+   , PRIMARY KEY (IDCLESINSCRIPTIONS) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
 #       TABLE : MEMBRES
 # -----------------------------------------------------------------------------
 
