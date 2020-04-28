@@ -1,4 +1,11 @@
-/* https://css-tricks.com/css-variables-with-php/ */
+/*
+element {
+    --couleur: #dc3545;
+    background-color: var(--couleur);
+}
+ */
+
+
 
 /* Background en marbre qui est fixe (parallax).
         body {
