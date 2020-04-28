@@ -37,7 +37,7 @@ function infosMembre($id) {
 
 function ajouterMembre($prenom, $nom, $login, $mdp) {
     $salt = '';
-    for ($i = 0; $i <= 32; $i++) {
+    for ($i = 0; $i < 32; $i++) {
         $salt .= chr(rand(33, 126));
     }
     $mdpHash = hash('whirlpool', $salt . $mdp);
