@@ -69,7 +69,7 @@ function cleExiste($cle) {
 
     if ($ligne) {
         $connexion = getConnect();
-        $requete = "DELETE FROM ClesInscriptions WHERE idClesInscription=:id";
+        $requete = "DELETE FROM ClesInscriptions WHERE idClesInscriptions=:id";
         $prepare = $connexion->prepare($requete);
         $prepare->bindValue(':id', $ligne->idClesInscriptions, PDO::PARAM_STR);
         $prepare->execute();
