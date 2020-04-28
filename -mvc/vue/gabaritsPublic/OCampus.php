@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
-            <img class="img-responsive imageBordure" src="<?php echo RACINE . '-images/imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
+            <img class="img-responsive" src="<?php echo RACINE . '-images/imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
+            <br>
         </div>
         <div class="col-sm-6">
             <div class="text-justify retrait">
