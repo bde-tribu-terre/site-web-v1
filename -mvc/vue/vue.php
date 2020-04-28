@@ -727,6 +727,9 @@ function afficherAfficherLog($messageRetour) {
 function afficherInscription($messageRetour) {
     define('TITLE', 'Inscription');
     define('GABARIT', 'inscription.php');
+
+    define('MESSAGE_RETOUR', $messageRetour);
+
     afficherCadre('ADMIN');
 }
 
