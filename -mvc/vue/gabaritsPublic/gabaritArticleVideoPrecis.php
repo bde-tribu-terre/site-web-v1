@@ -1,8 +1,7 @@
 <div class="container text-center">
     <h4 class="pc"><?php echo CATEGORIE ?></h4>
     <h3><?php echo TITRE ?></h3>
-    <h5>📅 <?php echo genererDate(DATE_CREATION) ?> | ✏️ <?php echo AUTEUR ?></h5>
-    <hr>
+    <h5>📅 <?php echo DATE_CREATION ?> | ✏️ <?php echo AUTEUR ?></h5>
     <hr>
     <?php echo INTEGRATION_VIDEO ?>
     <div class="row text-left retrait">
@@ -43,7 +42,7 @@
                 );
             </script>
             <div class="fb-share-button"
-                 data-href="http://barodine.fr/tribu-terre/articles?id=-<?php echo $id ?>"
+                 data-href="http://barodine.fr/tribu-terre/articles?id=-<?php echo ID ?>"
                  data-layout="button"
                  data-size="large">
                 <a target="_blank"
