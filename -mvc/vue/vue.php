@@ -594,7 +594,7 @@ function afficherModifierArticleVideo($messageRetour, $id) {
     define('GABARIT', 'gabaritModifierArticleVideo.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $ligneArticle = articlePrecis($id);
+    $ligneArticle = articleVideoPrecis($id);
     $categorie = $ligneArticle->idCategoriesArticles;
     $lignesCategoriesArticle = idTitreCategoriesArticles();
 
