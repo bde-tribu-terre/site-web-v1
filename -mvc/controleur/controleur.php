@@ -26,10 +26,10 @@ function CtlVerifConnexion($login, $mdp) {
                 // ajouterLog(001, 'Connexion'); C'est bcp trop stressant d'être autant pisté omg !!!!
                 CtlMenu('');
             } else {
-                throw new Exception("Erreur : Login ou mot de passe invalide.");
+                afficherConnexion("Erreur : Login ou mot de passe invalide.");
             }
         } else {
-            throw new Exception("Erreur : Veuillez remplir tous les champs.");
+            afficherConnexion("Erreur : Veuillez remplir tous les champs.");
         }
     } catch (Exception $e) {
         afficherConnexion($e->getMessage());
@@ -511,10 +511,10 @@ function CtlSInscrire($cle, $prenom, $nom, $login, $mdp) {
                 ajouterMembre($prenom, $nom, $login, $mdp);
                 afficherInscription('L\'inscription a bien été enregistrée.');
             } else {
-                throw new Exception("Erreur : La clé d'inscription saisie n'existe pas.");
+                afficherInscription("Erreur : La clé d'inscription saisie n'existe pas.");
             }
         } else {
-            throw new Exception("Erreur : Veuillez remplir tous les champs.");
+            afficherInscription("Erreur : Veuillez remplir tous les champs.");
         }
     } catch (Exception $e) {
         afficherConnexion($e->getMessage());

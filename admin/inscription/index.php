@@ -14,9 +14,5 @@ try {
         CtlInscription('');
     }
 } catch (Exception $e) {
-    if (isset($_SESSION['id'])) {
-        CtlMenuErreur($e->getMessage());
-    } else {
-        CtlConnexionErreur($e->getMessage());
-    }
+    CtlInscription($e->getMessage());
 }
