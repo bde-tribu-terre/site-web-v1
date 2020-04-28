@@ -988,7 +988,7 @@ function afficherArticlePrecis($article) {
     // define('TITLE', 'Articles'); Voir ci-après.
     define('GABARIT', 'gabaritArticlePrecis.php');
 
-    $id = $article->id;
+    $id = $article->idArticles;
     $lignesImages = imagesArticle($id);
 
     $carouselArticle = '';
