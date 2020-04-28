@@ -18,13 +18,13 @@ define('IMAGES', RACINE . '-images/');
 function afficherCadre($quelCadre) {
     switch ($quelCadre) {
         case 'ADMIN':
-            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsAdmin/' . 'header.php');
-            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsAdmin/' . 'footer.php');
+            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsAdmin/' . '--header.php');
+            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsAdmin/' . '--footer.php');
             define('PATH_TO_GABARIT', RACINE . '-mvc/vue/gabaritsAdmin/' . GABARIT);
             break;
         case 'PUBLIC':
-            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsPublic/' . 'header.php');
-            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsPublic/' . 'footer.php');
+            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsPublic/' . '--header.php');
+            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsPublic/' . '--footer.php');
             define('PATH_TO_GABARIT', RACINE . '-mvc/vue/gabaritsPublic/' . GABARIT);
     }
 
@@ -84,7 +84,7 @@ function formaterTexte($texte) {
 # Système
 function afficherConnexion($messageRetour) {
     define('TITLE', 'Connexion');
-    define('GABARIT', 'gabaritConnexion.php');
+    define('GABARIT', 'connexion.php');
 
     define('MESSAGE_RETOUR', $messageRetour);
 
@@ -93,7 +93,7 @@ function afficherConnexion($messageRetour) {
 
 function afficherMenu($messageRetour) {
     define('TITLE', 'Menu administrateur');
-    define('GABARIT', 'gabaritMenu.php');
+    define('GABARIT', 'menu.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
@@ -106,7 +106,7 @@ function afficherMenu($messageRetour) {
 # Events
 function afficherCreerEvent($messageRetour) {
     define('TITLE', 'Créer un évent');
-    define('GABARIT', 'gabaritCreerEvent.php');
+    define('GABARIT', 'creerEvent.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
@@ -118,7 +118,7 @@ function afficherCreerEvent($messageRetour) {
 
 function afficherChoixEvent($messageRetour) {
     define('TITLE', 'Choisir un évent');
-    define('GABARIT', 'gabaritChoixEvent.php');
+    define('GABARIT', 'choixEvent.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesEvents = idTitreEvents();
@@ -145,7 +145,7 @@ function afficherChoixEvent($messageRetour) {
 
 function afficherModifierEvent($messageRetour, $id) {
     define('TITLE', 'Modifier un évent');
-    define('GABARIT', 'gabaritModifierEvent.php');
+    define('GABARIT', 'modifierEvent.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $ligneEvent = eventPrecis($id);
@@ -165,7 +165,7 @@ function afficherModifierEvent($messageRetour, $id) {
 
 function afficherSupprimerEvent($messageRetour) {
     define('TITLE', 'Supprimer un évent');
-    define('GABARIT', 'gabaritSupprimerEvent.php');
+    define('GABARIT', 'supprimerEvent.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesEvents = idTitreEvents();
@@ -193,7 +193,7 @@ function afficherSupprimerEvent($messageRetour) {
 # Goodies
 function afficherAjouterGoodie($messageRetour) {
     define('TITLE', 'Ajouter un goodie');
-    define('GABARIT', 'gabaritAjouterGoodie.php');
+    define('GABARIT', 'ajouterGoodie.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
@@ -205,7 +205,7 @@ function afficherAjouterGoodie($messageRetour) {
 
 function afficherAjouterImageGoodie($messageRetour) {
     define('TITLE', 'Ajouter une image à un goodie');
-    define('GABARIT', 'gabaritAjouterImageGoodie.php');
+    define('GABARIT', 'ajouterImageGoodie.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesGoodies = idTitreGoodies();
@@ -227,7 +227,7 @@ function afficherAjouterImageGoodie($messageRetour) {
 
 function afficherChoixGoodie($messageRetour) {
     define('TITLE', 'Choisir un goodie');
-    define('GABARIT', 'gabaritChoixGoodie.php');
+    define('GABARIT', 'choixGoodie.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesGoodies = idTitreGoodies();
@@ -257,7 +257,7 @@ function afficherChoixGoodie($messageRetour) {
 
 function afficherModifierGoodie($messageRetour, $id) {
     define('TITLE', 'Modifier un goodie');
-    define('GABARIT', 'gabaritModifierGoodie.php');
+    define('GABARIT', 'modifierGoodie.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $ligneGoodie = goodiePrecis($id);
@@ -278,7 +278,7 @@ function afficherModifierGoodie($messageRetour, $id) {
 
 function afficherSupprimerImageGoodie($messageRetour, $id) {
     define('TITLE', 'Supprimer une image d\'un goodie');
-    define('GABARIT', 'gabaritSupprimerImageGoodie.php');
+    define('GABARIT', 'supprimerImageGoodie.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesImages = imagesGoodie($id);
@@ -306,7 +306,7 @@ function afficherSupprimerImageGoodie($messageRetour, $id) {
 
 function afficherSupprimerGoodie($messageRetour) {
     define('TITLE', 'Supprimer un goodie');
-    define('GABARIT', 'gabaritSupprimerGoodie.php');
+    define('GABARIT', 'supprimerGoodie.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesGoodies = idTitreGoodies();
@@ -337,7 +337,7 @@ function afficherSupprimerGoodie($messageRetour) {
 # Journaux
 function afficherAjouterJournal($messageRetour) {
     define('TITLE', 'Ajouter un journal');
-    define('GABARIT', 'gabaritAjouterJournal.php');
+    define('GABARIT', 'ajouterJournal.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
@@ -349,7 +349,7 @@ function afficherAjouterJournal($messageRetour) {
 
 function afficherSupprimerJournal($messageRetour) {
     define('TITLE', 'Supprimer un journal');
-    define('GABARIT', 'gabaritSupprimerJournal.php');
+    define('GABARIT', 'supprimerJournal.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesJournaux = idTitreJournaux();
@@ -372,7 +372,7 @@ function afficherSupprimerJournal($messageRetour) {
 # Articles
 function afficherAjouterArticle($messageRetour) {
     define('TITLE', 'Ajouter un article');
-    define('GABARIT', 'gabaritAjouterArticle.php');
+    define('GABARIT', 'ajouterArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesCategoriesArticle = idTitreCategoriesArticles();
@@ -394,7 +394,7 @@ function afficherAjouterArticle($messageRetour) {
 
 function afficherAjouterImageArticle($messageRetour) {
     define('TITLE', 'Ajouter une image à un article');
-    define('GABARIT', 'gabaritAjouterImageArticle.php');
+    define('GABARIT', 'ajouterImageArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticles();
@@ -423,7 +423,7 @@ function afficherAjouterImageArticle($messageRetour) {
 
 function afficherChoixArticle($messageRetour) {
     define('TITLE', 'Choisir un article');
-    define('GABARIT', 'gabaritChoixArticle.php');
+    define('GABARIT', 'choixArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticles();
@@ -452,7 +452,7 @@ function afficherChoixArticle($messageRetour) {
 
 function afficherModifierArticle($messageRetour, $id) {
     define('TITLE', 'Modifier un article');
-    define('GABARIT', 'gabaritModifierArticle.php');
+    define('GABARIT', 'modifierArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $ligneArticle = articlePrecis($id);
@@ -482,7 +482,7 @@ function afficherModifierArticle($messageRetour, $id) {
 
 function afficherSupprimerImageArticle($messageRetour, $id) {
     define('TITLE', 'Supprimer une image d\'un article');
-    define('GABARIT', 'gabaritSupprimerImageArticle.php');
+    define('GABARIT', 'supprimerImageArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesImages = imagesArticle($id);
@@ -510,7 +510,7 @@ function afficherSupprimerImageArticle($messageRetour, $id) {
 
 function afficherSupprimerArticle($messageRetour) {
     define('TITLE', 'Supprimer un article');
-    define('GABARIT', 'gabaritSupprimerArticle.php');
+    define('GABARIT', 'supprimerArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticles();
@@ -539,7 +539,7 @@ function afficherSupprimerArticle($messageRetour) {
 
 function afficherAjouterArticleVideo($messageRetour) {
     define('TITLE', 'Ajouter un article vidéo');
-    define('GABARIT', 'gabaritAjouterArticleVideo.php');
+    define('GABARIT', 'ajouterArticleVideo.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesCategoriesArticle = idTitreCategoriesArticles();
@@ -562,7 +562,7 @@ function afficherAjouterArticleVideo($messageRetour) {
 function afficherChoixArticleVideo($messageRetour) {
 
     define('TITLE', 'Choisir un article vidéo');
-    define('GABARIT', 'gabaritChoixArticleVideo.php');
+    define('GABARIT', 'choixArticleVideo.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticlesVideo();
@@ -591,7 +591,7 @@ function afficherChoixArticleVideo($messageRetour) {
 
 function afficherModifierArticleVideo($messageRetour, $id) {
     define('TITLE', 'Modifier un article vidéo');
-    define('GABARIT', 'gabaritModifierArticleVideo.php');
+    define('GABARIT', 'modifierArticleVideo.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $ligneArticle = articleVideoPrecis($id);
@@ -621,7 +621,7 @@ function afficherModifierArticleVideo($messageRetour, $id) {
 
 function afficherSupprimerArticleVideo($messageRetour) {
     define('TITLE', 'Supprimer un article vidéo');
-    define('GABARIT', 'gabaritSupprimerArticleVideo.php');
+    define('GABARIT', 'supprimerArticleVideo.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticlesVideo();
@@ -650,7 +650,7 @@ function afficherSupprimerArticleVideo($messageRetour) {
 
 function afficherAjouterCategorieArticle($messageRetour) {
     define('TITLE', 'Ajouter une catégorie d\'article');
-    define('GABARIT', 'gabaritAjouterCategorieArticle.php');
+    define('GABARIT', 'ajouterCategorieArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
 
@@ -662,7 +662,7 @@ function afficherAjouterCategorieArticle($messageRetour) {
 
 function afficherRenommerCategorieArticle($messageRetour) {
     define('TITLE', 'Renommer une catégorie d\'article');
-    define('GABARIT', 'gabaritRenommerCategorieArticle.php');
+    define('GABARIT', 'renommerCategorieArticle.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesCategoriesArticle = idTitreCategoriesArticles();
@@ -685,7 +685,7 @@ function afficherRenommerCategorieArticle($messageRetour) {
 # Log
 function afficherAfficherLog($messageRetour) {
     define('TITLE', 'Log');
-    define('GABARIT', 'gabaritAfficherLog.php');
+    define('GABARIT', 'afficherLog.php');
 
     $ligneInfoMembre = infosMembre($_SESSION['id']);
     $lignesLog = logTous();
@@ -718,7 +718,7 @@ function afficherAfficherLog($messageRetour) {
 ########################################################################################################################
 function afficherAccueil() {
     define('TITLE', 'Accueil');
-    define('GABARIT', 'gabaritAccueil.php');
+    define('GABARIT', 'accueil.php');
 
     # Goodies
     $goodiesIndicators = '';
@@ -908,7 +908,7 @@ function afficherAccueil() {
 ########################################################################################################################
 function afficherArticles() {
     define('TITLE', 'Articles');
-    define('GABARIT', 'gabaritArticles.php');
+    define('GABARIT', 'articles.php');
 
     $tableArticles = '';
     $lignesArticles = articlesTous();
@@ -987,7 +987,7 @@ function afficherArticles() {
 
 function afficherArticlePrecis($article) {
     // define('TITLE', 'Articles'); Voir ci-après.
-    define('GABARIT', 'gabaritArticlePrecis.php');
+    define('GABARIT', 'articlePrecis.php');
 
     $id = $article->idArticles;
     $lignesImages = imagesArticle($id);
@@ -1056,7 +1056,7 @@ function afficherArticlePrecis($article) {
 
 function afficherArticleVideoPrecis($article) {
     // define('TITLE', 'Articles'); Voir ci-après.
-    define('GABARIT', 'gabaritArticleVideoPrecis.php');
+    define('GABARIT', 'articleVideoPrecis.php');
 
     $lien = $article->lienArticlesYouTube;
     $infoYouTube = obtenirInfoYouTube($lien);
@@ -1094,7 +1094,7 @@ function afficherPresentation() {
     afficherPageFixe(
         'PUBLIC',
         'Présentation',
-        'gabaritPresentation.php'
+        'presentation.php'
     );
 }
 
@@ -1105,7 +1105,7 @@ function afficherContact() {
     afficherPageFixe(
         'PUBLIC',
         'Contact',
-        'gabaritContact.php'
+        'contact.php'
     );
 }
 
@@ -1116,7 +1116,7 @@ function afficherFonctionnement() {
     afficherPageFixe(
         'PUBLIC',
         'Fonctionnement de l\'association',
-        'gabaritFonctionnement.php'
+        'fonctionnement.php'
     );
 }
 
@@ -1127,7 +1127,7 @@ function afficherStatuts() {
     afficherPageFixe(
         'PUBLIC',
         'Statuts',
-        'gabaritStatuts.php'
+        'statuts.php'
     );
 }
 
@@ -1138,7 +1138,7 @@ function afficherHistorique() {
     afficherPageFixe(
         'PUBLIC',
         'Historique de l\'association',
-        'gabaritHistorique.php'
+        'historique.php'
     );
 }
 
@@ -1149,7 +1149,7 @@ function afficherOuNousTrouver() {
     afficherPageFixe(
         'PUBLIC',
         'Où nous trouver ?',
-        'gabaritOuNousTrouver.php'
+        'ouNousTrouver.php'
     );
 }
 
@@ -1160,7 +1160,7 @@ function afficherPartenaires() {
     afficherPageFixe(
         'PUBLIC',
         'Partenaires',
-        'gabaritPartenaires.php'
+        'partenaires.php'
     );
 }
 
@@ -1171,7 +1171,7 @@ function afficherPoles() {
     afficherPageFixe(
         'PUBLIC',
         'Pôles',
-        'gabaritPoles.php'
+        'poles.php'
     );
 }
 
@@ -1182,7 +1182,7 @@ function afficherPourquoiAdherer() {
     afficherPageFixe(
         'PUBLIC',
         'Pourquoi adhérer ?',
-        'gabaritPourquoiAdherer.php'
+        'pourquoiAdherer.php'
     );
 }
 
@@ -1193,7 +1193,7 @@ function afficherReseauAssociatif() {
     afficherPageFixe(
         'PUBLIC',
         'Réseau associatif',
-        'gabaritReseauAssociatif.php'
+        'reseauAssociatif.php'
     );
 }
 
@@ -1204,7 +1204,7 @@ function afficherOCampus() {
     afficherPageFixe(
         'PUBLIC',
         'ÔCampus',
-        'gabaritOCampus.php'
+        'oCampus.php'
     );
 }
 
@@ -1215,7 +1215,7 @@ function afficherFneb() {
     afficherPageFixe(
         'PUBLIC',
         'FNEB',
-        'gabaritFneb.php'
+        'fneb.php'
     );
 }
 
@@ -1226,7 +1226,7 @@ function afficherReseauxSociaux() {
     afficherPageFixe(
         'PUBLIC',
         'Réseaux sociaux',
-        'gabaritReseauxSociaux.php'
+        'reseauxSociaux.php'
     );
 }
 
@@ -1237,7 +1237,7 @@ function afficherUniversite() {
     afficherPageFixe(
         'PUBLIC',
         'Université d\'Orléans',
-        'gabaritUniversite.php'
+        'universite.php'
     );
 }
 
@@ -1246,7 +1246,7 @@ function afficherUniversite() {
 ########################################################################################################################
 function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
     define('TITLE', 'Évents');
-    define('GABARIT', 'gabaritEvents.php');
+    define('GABARIT', 'events.php');
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -1328,7 +1328,7 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
 
 function afficherEventPrecis($event) {
     // define('TITLE', 'Évents');
-    define('GABARIT', 'gabaritEventPrecis.php');
+    define('GABARIT', 'eventPrecis.php');
 
     $date = $event->idEvents;
     $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
@@ -1361,7 +1361,7 @@ function afficherEventPrecis($event) {
 ########################################################################################################################
 function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
     define('TITLE', 'Goodies');
-    define('GABARIT', 'gabaritGoodies.php');
+    define('GABARIT', 'goodies.php');
 
     if ($rechercheEnCours) {
         $rechercheEnCoursStr = 'true';
@@ -1444,7 +1444,7 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
 
 function afficherGoodiePrecis($goodie) {
     // define('TITLE', 'Évents');
-    define('GABARIT', 'gabaritGoodiePrecis.php');
+    define('GABARIT', 'goodiePrecis.php');
 
     $id = $goodie->idGoodies;
     $miniature = $goodie->miniatureGoodies;
@@ -1509,7 +1509,7 @@ function afficherGoodiePrecis($goodie) {
 ########################################################################################################################
 function afficherJournaux() {
     define('TITLE', 'Journaux');
-    define('GABARIT', 'gabaritJournaux.php');
+    define('GABARIT', 'journaux.php');
 
     $tableJournaux = '';
     $lignesJournaux = journauxTous(-1);
@@ -1546,7 +1546,7 @@ function afficherMentionsLegales() {
     afficherPageFixe(
         'PUBLIC',
         'Mentions légales',
-        'gabaritMentionsLegales.php'
+        'mentionsLegales.php'
     );
 }
 
@@ -1555,7 +1555,7 @@ function afficherMentionsLegales() {
 ########################################################################################################################
 function afficherPlanDuSite() {
     define('TITLE', 'Plan du site');
-    define('GABARIT', 'gabaritPlanDuSite.php');
+    define('GABARIT', 'planDuSite.php');
 
     function allerChercherString($a) {
         if (gettype($a) == 'string') {
@@ -1647,7 +1647,7 @@ function afficherRiad() {
     afficherPageFixe(
         'PUBLIC',
         'Riad',
-        'gabaritRiad.php'
+        'riad.php'
     );
 }
 
@@ -1656,7 +1656,7 @@ function afficherRiad() {
 ########################################################################################################################
 function afficherErreur($messageErreur) {
     define('TITLE', 'Une erreur s\'est produite');
-    define('GABARIT', 'gabaritErreur.php');
+    define('GABARIT', 'erreur.php');
     define('MESSAGE_ERREUR', $messageErreur);
     afficherCadre('PUBLIC');
 }
