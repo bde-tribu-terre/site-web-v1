@@ -13,7 +13,7 @@ function verifConnexion($login, $mdp) {
 
     $return = false;
     if ($ligne) {
-        // https://youtu.be/8ZtInClXe1Q pour des explicayions.
+        // https://youtu.be/8ZtInClXe1Q pour des explications.
         $mdpSaisieHash = hash('whirlpool', $ligne->mdpSaltMembre, $mdp);
         if ($ligne->mdpHashMembre == $mdpSaisieHash) {
             $return = $ligne->idMembre;
