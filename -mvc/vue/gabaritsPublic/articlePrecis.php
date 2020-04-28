@@ -1,7 +1,7 @@
 <div class="container text-center">
     <h4 class="pc"><?php echo CATEGORIE ?></h4>
     <h3><?php echo TITRE ?></h3>
-    <h5>📅 <?php echo genererDate(DATE_CREATION) ?> | ✏️ <?php echo AUTEUR ?></h5>
+    <h5>📅 <?php echo DATE_CREATION ?> | ✏️ <?php echo AUTEUR ?></h5>
     <hr>
     <?php echo CAROUSEL_ARTICLES ?>
     <div class="row text-left retrait">
