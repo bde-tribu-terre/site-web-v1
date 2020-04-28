@@ -59,7 +59,7 @@ function ajouterMembre($prenom, $nom, $login, $mdp) {
 ########################################################################################################################
 function cleExiste($cle) {
     $connexion = getConnect();
-    $requete = "SELECT idClesInscription, strClesInscriptions FROM ClesInscriptions WHERE strClesInscriptions=:cle";
+    $requete = "SELECT idClesInscriptions, strClesInscriptions FROM ClesInscriptions WHERE strClesInscriptions=:cle";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':cle', $cle, PDO::PARAM_STR);
     $prepare->execute();
@@ -69,7 +69,7 @@ function cleExiste($cle) {
 
     if ($ligne) {
         $connexion = getConnect();
-        $requete = "DELETE FROM ClesInscriptions WHERE idClesInscriptions=:id";
+        $requete = "DELETE FROM ClesInscriptions WHERE idClesInscription=:id";
         $prepare = $connexion->prepare($requete);
         $prepare->bindValue(':id', $ligne->idClesInscriptions, PDO::PARAM_STR);
         $prepare->execute();
