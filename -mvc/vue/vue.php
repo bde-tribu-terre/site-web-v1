@@ -611,7 +611,7 @@ function afficherModifierArticleVideo($messageRetour, $id) {
     define('MESSAGE_RETOUR', $messageRetour);
     define('ID', $id);
     define('TITRE', $ligneArticle->titreArticlesYouTube);
-    define('CATEGORIE', $categorie);
+    define('CATEGORIES', $categories);
     define('VISIBILITE', $ligneArticle->visibiliteArticlesYouTube);
     define('LIEN', $ligneArticle->lienArticlesYouTube);
     define('TEXTE', $ligneArticle->texteArticlesYouTube);
