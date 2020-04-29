@@ -1223,7 +1223,7 @@ function afficherOCampus() {
     afficherPageFixe(
         'PUBLIC',
         'ÔCampus',
-        'oCampus.php'
+        'OCampus.php'
     );
 }
 
