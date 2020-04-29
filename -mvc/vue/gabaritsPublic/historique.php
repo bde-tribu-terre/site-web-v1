@@ -168,7 +168,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <img class="img-responsive imageAGbordure" src="<?php echo $prefixe . '-images/imgAG2018.png' ?>" alt="imgAG2018">
+                            <img class="img-responsive imageAGbordure" src="<?php echo RACINE . '-images/imgAG2018.png' ?>" alt="imgAG2018">
                         </div>
                         <div class="col-sm-6">
                             <h3>Composition du bureau</h3>
