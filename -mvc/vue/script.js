@@ -12,7 +12,7 @@ function verifForm(form) {
     let elements = form.elements
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].type !== 'submit') {
-            elements[i].onblur;
+            elements[i].onblur(elements[i]);
         }
     }
 
