@@ -20,6 +20,9 @@ function verifForm(form) {
     let tousOk = true;
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].type !== 'submit' && !elements[i].classList.contains('input-valide')) {
+            if (elements[i].labels[0] === undefined) {
+                alert(elements[i].name);
+            }
             strInvalides += '\n- ' + elements[i].labels[0].innerText;
             tousOk = false;
         }

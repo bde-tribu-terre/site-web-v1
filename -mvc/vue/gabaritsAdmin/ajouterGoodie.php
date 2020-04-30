@@ -34,6 +34,7 @@
                     </div>
                     <div class="form-group"> <!-- Prix adhérent -->
                         <label for="formAjouterGoodie_prixAdhérentEuro">Prix adhérent</label>
+                        <label for="formAjouterGoodie_prixAdhérentCentimes" style="display: none;">Prix adhérent (centimes)</label>
                         <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixAdhérentEuro" type="number" min="0" name="formAjouterGoodie_prixAdhérentEuro" placeholder="Euros">
                         <small class="form-text text-muted">Euros</small>
                         <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixAdhérentCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixAdhérentCentimes" placeholder="Centimes">
@@ -41,6 +42,7 @@
                     </div>
                     <div class="form-group"> <!-- Prix non-adhérent -->
                         <label for="formAjouterGoodie_prixNonAdhérentEuro">Prix non-adhérent</label>
+                        <label for="formAjouterGoodie_prixNonAdhérentCentimes" style="display: none;">Prix adhérent (centimes)</label>
                         <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixNonAdhérentEuro" type="number" min="0" name="formAjouterGoodie_prixNonAdhérentEuro" placeholder="Euros">
                         <small class="form-text text-muted">Euros</small>
                         <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixNonAdhérentCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixNonAdhérentCentimes" placeholder="Centimes">
@@ -53,7 +55,7 @@
                     </div>
                     <div class="form-group"> <!-- Miniature -->
                         <label for="formAjouterGoodie_miniature">Sélectionner la miniature</label>
-                        <input onblur="verifNonVide(this);" class="form-control" type="file" name="formAjouterGoodie_miniature" accept="image/*">
+                        <input onblur="verifNonVide(this);" class="form-control" type="file" id="formAjouterGoodie_miniature" name="formAjouterGoodie_miniature" accept="image/*">
                         <small class="form-text text-muted">⚠️ Format : 4:3, pour éviter que ça nique la mise en page.<br>🙏 Taille : 960px*720px.</small>
                     </div>
                     <small class="form-text text-muted">Pour ajouter les images qui seront affichées sur la page du goodie, il faut ajouter le goodie, puis retourner sur le menu admin, et aller dans "ajouter une image à un goodie".</small>
