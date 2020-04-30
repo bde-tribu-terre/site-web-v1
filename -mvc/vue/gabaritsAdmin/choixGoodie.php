@@ -21,7 +21,7 @@
                     <div class="form-group"> <!-- Goodie en question -->
                         <label for="formChoisirGoodie_idGoodie">Goodie</label>
                         <select onblur="verifNonVide(this);" class="form-control" id="formChoisirGoodie_idGoodie" name="formChoisirGoodie_idGoodie">
-                            <optionvalue="">--Choisir un goodie--</option>
+                            <option value="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>
                     </div>
