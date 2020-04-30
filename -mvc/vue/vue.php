@@ -680,7 +680,7 @@ function afficherRenommerCategorieArticle($messageRetour) {
         $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
         $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
         $categories .=
-            '<option value="' . $idCategorieArticle . '>' . $titreCategorieArticle . '</option>';
+            '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
     }
 
     define('NOM_MEMBRE', genererNom($ligneInfoMembre));
