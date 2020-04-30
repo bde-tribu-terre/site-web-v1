@@ -17,14 +17,14 @@
             <div class="well">
                 <h3>Connexion</h3>
                 <hr>
-                <form id="formConnexion" method="post">
+                <form id="formConnexion" method="post" onsubmit="verifForm(this)">
                     <p> <!-- Identifiant -->
                         <label for="formConnexion_login">Identifiant</label>
-                        <input class="form-control" id="formConnexion_login" type="text" name="formConnexion_login" placeholder="Saisir votre identifiant">
+                        <input onblur="verifNonVide(this)" oninput="garderMinuscules(this);" class="form-control" id="formConnexion_login" type="text" name="formConnexion_login" placeholder="Saisir votre identifiant">
                     </p>
                     <p> <!-- Mot de passe -->
                         <label for="formConnexion_mdp">Mot de passe</label>
-                        <input class="form-control" id="formConnexion_mdp" type="password" name="formConnexion_mdp" placeholder="Saisir votre mot de passe">
+                        <input onblur="verifNonVide(this)" class="form-control" id="formConnexion_mdp" type="password" name="formConnexion_mdp" placeholder="Saisir votre mot de passe">
                     </p>
                     <hr>
                     <p> <!-- Se connecter -->
