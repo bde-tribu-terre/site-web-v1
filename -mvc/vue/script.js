@@ -29,5 +29,15 @@ function verifForm(form) {
 }
 
 function verifNonVide(input) {
-    surligne(input, input.value === '');
+    surligne(
+        input,
+        input.value === ''
+    );
+}
+
+function verifMdpIdentique(input) {
+    surligne(
+        input,
+        input.value === '' && input.value === document.getElementById(input.value.id.replace('_verif', '')).value
+    );
 }
