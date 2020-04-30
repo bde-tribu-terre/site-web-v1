@@ -16,12 +16,15 @@ function verifForm(form) {
         }
     }
 
+    let strInvalides = '';
     let tousOk = true;
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].type !== 'submit' && !elements[i].classList.contains('input-valide')) {
+            strInvalides += '\n' + elements[i].labels[0];
             tousOk = false;
         }
     }
+    alert('Certain champs n\'ont pas été saisis correctement :' + strInvalides)
     return tousOk;
 }
 
