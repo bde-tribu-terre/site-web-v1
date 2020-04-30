@@ -38,7 +38,7 @@ function verifNonVide(input) {
 function verifMdpIdentique(input) {
     surligne(
         input,
-        input.value === '' && input.value === document.getElementById(input.value.id.replace('_verif', '')).value
+        input.value === '' || input.value !== document.getElementById(input.id.replace('_verif', '')).value
     );
 }
 
