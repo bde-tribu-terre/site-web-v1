@@ -44,8 +44,8 @@
                         <small class="form-text text-muted">Peut contenir n'importe quel caractère (mais il faut bien s'en souvenir !!!).</small>
                     </p>
                     <p> <!-- Valider le mot de passe -->
-                        <label for="formInscription_validerMdp">Recopier le mot de passe</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formInscription_validerMdp" type="password" name="formInscription_validerMdp" placeholder="Recopier le mot de passe">
+                        <label for="formInscription_mdp_verif">Recopier le mot de passe</label>
+                        <input onblur="verifMdpIdentique(this);" class="form-control" id="formInscription_mdp_verif" type="password" name="formInscription_mdp_verif" placeholder="Recopier le mot de passe">
                         <small class="form-text text-muted">
                             Les mots de passe sont encryptés avant d'être enregistrés dans la base de données. Le pôle
                             informatique de l'association vous assure qu'ils sont illisibles et indécryptables même pour
