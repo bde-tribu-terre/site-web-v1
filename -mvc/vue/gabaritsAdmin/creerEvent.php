@@ -20,7 +20,7 @@
                 <form id="formCreerEvent" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Titre de l'évent -->
                         <label for="formCreerEvent_titre">Titre de l'évent</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 64);" class="form-control" id="formCreerEvent_titre" type="text" placeholder="Titre" name="formCreerEvent_titre">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formCreerEvent_titre" type="text" placeholder="Titre" name="formCreerEvent_titre">
                     </div>
                     <div class="form-group"> <!-- Date -->
                         <label for="formCreerEvent_date">Date</label>
@@ -37,11 +37,11 @@
                     </div>
                     <div class="form-group"> <!-- Lieu -->
                         <label for="formCreerEvent_lieu">Lieu</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 32);" class="form-control" id="formCreerEvent_lieu" type="text" name="formCreerEvent_lieu" placeholder="Lieu">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 32);" class="form-control" id="formCreerEvent_lieu" type="text" name="formCreerEvent_lieu" placeholder="Lieu">
                     </div>
                     <div class="form-group"> <!-- Description de l'évent -->
                         <label for="formCreerEvent_desc">Description de l'évent</label>
-                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(input, 7999);" class="form-control" id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc" rows="20"></textarea>
+                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(this, 7999);" class="form-control" id="formCreerEvent_desc" placeholder="Description de l'évent" name="formCreerEvent_desc" rows="20"></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>

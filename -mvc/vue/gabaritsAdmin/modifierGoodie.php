@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group"> <!-- Titre du goodie -->
                         <label for="formModifierGoodie_titreGoodie">Titre du goodie</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 64);" class="form-control" id="formModifierGoodie_titreGoodie" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierGoodie_titreGoodie">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formModifierGoodie_titreGoodie" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierGoodie_titreGoodie">
                     </div>
                     <div class="form-group"> <!-- Catégorie -->
                         <label for="formModifierGoodie_categorie">Catégorie</label>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group"> <!-- Description du goodie -->
                         <label for="formModifierGoodie_descGoodie">Description du goodie</label>
-                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(input, 7999);" class="form-control" id="formModifierGoodie_descGoodie" placeholder="Description du goodie" name="formModifierGoodie_descGoodie" rows="20"><?php echo DESC ?></textarea>
+                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(this, 7999);" class="form-control" id="formModifierGoodie_descGoodie" placeholder="Description du goodie" name="formModifierGoodie_descGoodie" rows="20"><?php echo DESC ?></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <small class="form-text text-muted">⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé !</small>

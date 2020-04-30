@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group"> <!-- Titre de l'évent -->
                         <label for="formModifierEvent_titre">Titre de l'évent</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 64);" class="form-control" id="formModifierEvent_titre" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierEvent_titre">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formModifierEvent_titre" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierEvent_titre">
                     </div>
                     <div class="form-group"> <!-- Date -->
                         <label for="formModifierEvent_date">Date</label>
@@ -41,11 +41,11 @@
                     </div>
                     <div class="form-group"> <!-- Lieu -->
                         <label for="formModifierEvent_lieu">Lieu</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 32);" class="form-control" id="formModifierEvent_lieu" type="text" value="<?php echo LIEU ?>" name="formModifierEvent_lieu" placeholder="Lieu">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 32);" class="form-control" id="formModifierEvent_lieu" type="text" value="<?php echo LIEU ?>" name="formModifierEvent_lieu" placeholder="Lieu">
                     </div>
                     <div class="form-group"> <!-- Description de l'évent -->
                         <label for="formModifierEvent_desc">Description de l'évent</label>
-                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(input, 7999);" class="form-control" id="formModifierEvent_desc" placeholder="Description de l'évent" name="formModifierEvent_desc" rows="20"><?php echo DESC ?></textarea>
+                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(this, 7999);" class="form-control" id="formModifierEvent_desc" placeholder="Description de l'évent" name="formModifierEvent_desc" rows="20"><?php echo DESC ?></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>

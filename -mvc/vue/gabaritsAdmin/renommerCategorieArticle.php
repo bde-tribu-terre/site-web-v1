@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group"> <!-- Nouveau titre de la catégorie -->
                         <label for="formRenommerCategorieArticle_titre">Nouveau titre de la catégorie</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 128);" class="form-control" id="formRenommerCategorieArticle_titre" type="text" placeholder="Titre" name="formRenommerCategorieArticle_titre">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 128);" class="form-control" id="formRenommerCategorieArticle_titre" type="text" placeholder="Titre" name="formRenommerCategorieArticle_titre">
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Supprimer évent -->
