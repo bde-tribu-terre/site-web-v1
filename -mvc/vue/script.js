@@ -41,3 +41,13 @@ function verifMdpIdentique(input) {
         input.value === '' && input.value === document.getElementById(input.value.id.replace('_verif', '')).value
     );
 }
+
+function garderMinuscules(input) {
+    input.value = input.value.toLowerCase();
+}
+
+function garderMoins64(input) {
+    if (input.value.length > 64) {
+        input.value = input.value.substr(0, 64);
+    }
+}
