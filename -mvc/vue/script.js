@@ -24,7 +24,9 @@ function verifForm(form) {
             tousOk = false;
         }
     }
-    alert('Certain champs n\'ont pas été saisis correctement :' + strInvalides)
+    if (!tousOk) {
+        alert('Certain champs n\'ont pas été saisis correctement :' + strInvalides)
+    }
     return tousOk;
 }
 
