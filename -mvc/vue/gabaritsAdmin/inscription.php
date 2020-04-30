@@ -35,7 +35,7 @@
                     </p>
                     <p> <!-- Login -->
                         <label for="formInscription_login">Login</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formInscription_login" type="text" name="formInscription_login" placeholder="Choisir le login">
+                        <input onblur="verifNonVide(this);" onchange="this.value.toLowerCase();" class="form-control" id="formInscription_login" type="text" name="formInscription_login" placeholder="Choisir le login">
                         <small class="form-text text-muted">Uniquement en minuscules.</small>
                     </p>
                     <p> <!-- Mot de passe -->
