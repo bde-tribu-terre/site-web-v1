@@ -1,17 +1,19 @@
 <script type="text/javascript">
-    function surligne(champ, erreur) {
+    function surligne(element, erreur) {
         if (erreur) {
-            champ.style.backgroundColor = "#ff9898";
+            element.classList.remove('input-valide');
+            element.classList.add('input-invalide')
         } else {
-            champ.style.backgroundColor = "";
+            element.classList.remove('input-invalide');
+            element.classList.add('input-valide')
         }
     }
 
     function verifForm(form) {
         let elements = form.elements
         for (let i = 0; i < elements.length; i++) {
-            if (elements[i].type === 'text' || elements[i].type === 'password') {
-                alert(elements[i].name + '\n' + elements.classList.contains('valide'));
+            if (elements[i].type !== 'submit') {
+                alert(elements[i].name + '\n' + elements[i].classList.contains('input-valide'));
             }
         }
         return false;
