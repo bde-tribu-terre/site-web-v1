@@ -766,7 +766,7 @@ function idTitreArticlesVideo() {
 
 function articleVideoPrecis($id) {
     $connexion = getConnect();
-    $requete = "SELECT idArticlesYouTube, titreArticlesYouTube, idCategoriesArticles, titreCategoriesArticles, visibiliteArticlesYouTube, lienArticlesYouTube, texteArticlesYouTube, nomMembre, dateCreationArticlesYouTube, dateModificationArticlesYouTube FROM ArticlesYouTube NATURAL JOIN Membres NATURAL JOIN CategoriesArticles WHERE idArticlesYouTube=:idArticlesYouTube";
+    $requete = "SELECT idArticlesYouTube, titreArticlesYouTube, idCategoriesArticles, titreCategoriesArticles, visibiliteArticlesYouTube, lienArticlesYouTube, texteArticlesYouTube, prenomMembres, nomMembres, dateCreationArticlesYouTube, dateModificationArticlesYouTube FROM ArticlesYouTube NATURAL JOIN Membres NATURAL JOIN CategoriesArticles WHERE idArticlesYouTube=:idArticlesYouTube";
     $prepare = $connexion->prepare($requete);
     $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
     $prepare->execute();
