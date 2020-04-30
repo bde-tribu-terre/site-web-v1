@@ -5,42 +5,33 @@ element {
 }
  */
 
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- A --                                                      ###
+###                                                                                                                  ###
+###                                                      NAVBAR                                                      ###
+########################################################################################################################
+######################################################################################################################*/
 
-
-/* Background en marbre qui est fixe (parallax).
-        body {
-            background: url("../../-images/imgFondMarbre.png") no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            background-size: cover;
-            -o-background-size: cover;
-        }
-        */
-
-/* Ombre sur plein d'éléments */
-.well, .carousel-images, .btn-exterieur, .img-exterieur, .imageUniqueGoodiePrecis, .imageUniqueArticlePrecis, .integrationArticleVideoPrecis {
-    -moz-box-shadow: 0 0 5px 0 #656565;
-    -webkit-box-shadow: 0 0 5px 0 #656565;
-    -o-box-shadow: 0 0 5px 0 #656565;
-    box-shadow: 0 0 5px 0 #656565;
+/*######################################################################################################################
+# I - Variables                                                                                                        #
+######################################################################################################################*/
+html {
+    --navbar-couleur-1: #d9534f;
+    --navbar-couleur-2: #c9302c;
+    --navbar-couleur-3: #ac2925;
+    --navbar-couleur-4: white;
 }
 
-.well > h1, .well > h2, .well > h3, .well > h4, .well > h5 {
-    margin-top: 0;
+/*######################################################################################################################
+# II - Navbar en général                                                                                               #
+######################################################################################################################*/
+.navbar { /* Navbar entière */
+    margin-bottom: 50px; /* Espace sous la navbar */
+    border-radius: 0; /* Les coins ne sont pas arrondis */
 }
 
-a, a:hover {
-    color: #dc3545;
-}
-
-/* Remove the navbar's default rounded borders and increase the bottom margin */
-.navbar {
-    margin-bottom: 50px;
-    border-radius: 0;
-}
-
-/* Ombre après la navbar */
-.navbar:before{
+.navbar:before{ /* Entourloupe pour pouvoir poser une ombre qui s'étente en dessous à droite et à gauche de la navbar */
     content: " ";
     position:absolute;
     width: 150%;
@@ -53,21 +44,27 @@ a, a:hover {
     box-shadow: 0 5px 4px #656565;
 }
 
-.navbar-tribu-terre {
-    background-color: #d9534f;
+/*######################################################################################################################
+# III - Navbar Tribu-Terre                                                                                             #
+######################################################################################################################*/
+.navbar-tribu-terre { /* Couleur de fond de base */
+    background-color: var(--navbar-couleur-1);
 }
 
-.navbar-tribu-terre .icon-bar {
-    background-color: #ffffff;
+.navbar-tribu-terre .nav .open > a,
+.navbar-tribu-terre .nav .open > a:focus,
+.navbar-tribu-terre .nav .open > a:hover { /* Couleur des boutons quand sélectionnés ou survolés */
+    background-color: var(--navbar-couleur-2);
 }
 
-/* change the link color and padding  */
-.navbar-tribu-terre .navbar-nav .nav-link {
-    color: rgb(255, 255, 255);
+.navbar-tribu-terre .icon-bar { /* Couleur des ||| trois barres horizontales quand l'écran est trop petit pour ouvrir */
+    background-color: var(--navbar-couleur-4);
 }
 
-.navbar-tribu-terre .dropdown a:focus {
-    background-color: transparent;
+.navbar-tribu-terre .navbar-nav .nav-link, /* Couleur du texte qui est affiché de base dans la navbar */
+.navbar-tribu-terre .dropdown-toggle, /* Couleur du texte du menu d'ouverture du menu déroulant */
+.navbar-tribu-terre .dropdown-item { /* Couleur de texte des items du menu déroulant */
+    color: var(--navbar-couleur-4);
 }
 
 .navbar-tribu-terre .nav-item.active .nav-link,
@@ -76,37 +73,30 @@ a, a:hover {
 .navbar-tribu-terre .dropdown a:focus,
 .navbar-tribu-terre .dropdown-item.active,
 .navbar-tribu-terre .dropdown-item:hover,
-.navbar-tribu-terre .dropdown-item:focus {
-    color: #ffffff;
-    background-color: #c9302c;
+.navbar-tribu-terre .dropdown-item:focus { /* Couleur et background si un menu est survolé ou sélectionné */
+    color: var(--navbar-couleur-4);
+    background-color: var(--navbar-couleur-2);
 }
 
 .navbar-tribu-terre .nav-item.active:hover .nav-link,
 .navbar-tribu-terre .dropdown-item.active:hover,
 .navbar-tribu-terre .dropdown-item.active:focus,
-.navbar-tribu-terre .dropdown a:focus:hover {
-    background-color: #ac2925;
+.navbar-tribu-terre .dropdown a:focus:hover { /* Background si un menu est sélectionné ET survolé */
+    background-color: var(--navbar-couleur-3);
 }
 
-.nav .open > a,
-.nav .open > a:focus,
-.nav .open > a:hover {
-    background-color: #c9302c;
+.navbar-tribu-terre .dropdown-menu { /* Couleur de background de l'intérieur du menu déroulant */
+    background-color: var(--navbar-couleur-1);
 }
 
-.navbar-tribu-terre .dropdown-toggle {
-    color: #ffffff;
-}
-
-.navbar-tribu-terre .dropdown-menu {
-    background-color: #d9534f;
-}
-.navbar-tribu-terre .dropdown-item {
-    color: #ffffff;
-}
-
-/* Remove the jumbotron's default bottom margin */
-.jumbotron {
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- B --                                                      ###
+###                                                                                                                  ###
+###                                                    JUMBOTRON                                                     ###
+########################################################################################################################
+######################################################################################################################*/
+.jumbotron { /* Retire la marge par défaut (vu qu'il faut coller la navbar) */
     background-image: url("../../-images/imgFondMarbre.png");
     background-clip: border-box;
     background-repeat: no-repeat;
@@ -116,13 +106,12 @@ a, a:hover {
     margin-bottom: 0;
 }
 
-/* Lueur blanche autour du texte du jumbotron */
 .jumbotron p,
 .jumbotron h1,
 .jumbotron h2,
 .jumbotron h3,
 .jumbotron h4,
-.jumbotron h5 {
+.jumbotron h5 { /* Lueur blanche autour du texte du jumbotron */
     text-shadow:
             5px 5px 5px #f3f3f3,
             -5px 5px 5px #f3f3f3,
@@ -130,30 +119,36 @@ a, a:hover {
             -5px -5px 5px #f3f3f3;
 }
 
-/* Add a gray background color and some padding to the footer */
-footer {
-    background-color: #f2f2f2;
-    padding: 25px;
+@media (max-width: 767px) { /* Le jumbotron ne sera pas fixe sur mobile (problèmes de performances) */
+    .jumbotron {
+        background-attachment: inherit;
+    }
 }
 
-/* Arrondit les bords du carousel. */
-.carousel {
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-/* Les liens du carousel restent en blanc. */
-.carousel-images a {
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- C --                                                      ###
+###                                                                                                                  ###
+###                                                    CAROUSELS                                                     ###
+########################################################################################################################
+######################################################################################################################*/
+.carousel-images a,
+.carousel-images a:hover { /* Les liens du carousel restent en blanc. */
     color: white;
 }
 
-.carousel-inner img {
-    width: 100%; /* Set width to 100% */
+.carousel-inner img { /* Images du carousel */
+    width: 100%;
     min-height: 200px;
-    border-radius: 10px;
-    overflow: hidden;
 }
 
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- D --                                                      ###
+###                                                                                                                  ###
+###                                                   ALTERNATEURS                                                   ###
+########################################################################################################################
+######################################################################################################################*/
 @media (max-width: 991px) {
     .alterneur-grand-tres-petit {
         display: none;
@@ -186,10 +181,6 @@ footer {
     .alterneur-petit {
         display: none;
     }
-    /* Pour que le fond s'affiche joliement sur mobile */
-    .jumbotron {
-        background-attachment: inherit;
-    }
 }
 
 @media (min-width: 767px) {
@@ -198,73 +189,30 @@ footer {
     }
 }
 
-/*
-/* Hide the carousel text when the screen is less than 600 pixels wide * /
-@media (max-width: 600px) {
-    .carousel-caption {
-        display: none;
-    }
-}
-*/
-
-.miniatureGoodies {
-    width: 100%;
-    border-radius: 5px;
-    overflow: hidden;
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- E --                                                      ###
+###                                                                                                                  ###
+###                                                      FOOTER                                                      ###
+########################################################################################################################
+######################################################################################################################*/
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
 }
 
-.imageUniqueGoodiePrecis, .imageUniqueArticlePrecis, .integrationArticleVideoPrecis {
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.imageMiniatureArticlesDiv {
-    max-width: 480px;
-    display: inline-block;
-}
-
-.imageMiniatureArticles {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.texteFooter {
+.texte-footer {
     font-size: 10px;
     line-height: 10px;
 }
 
-.retrait {
-    text-indent: 4em;
-}
-
-.liste-retrait {
-    padding-left: 3em;
-    margin-bottom: 0;
-}
-
-.liste-retrait li {
-    text-indent: 0;
-    padding-left: 1em;
-    margin-bottom: 10px;
-}
-
-.imageAGbordure {
-    border-radius: 5px;
-    overflow: hidden;
-    border: 1px solid #e3e3e3;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-}
-
-.imageBordure {
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #e3e3e3;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-}
-
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- F --                                                      ###
+###                                                                                                                  ###
+###                                                   PLAN DU SITE                                                   ###
+########################################################################################################################
+######################################################################################################################*/
 .plan-du-site .list-group {
     margin-bottom: 0;
 }
@@ -285,7 +233,91 @@ footer {
     padding: 15px 50px 15px 50px;
 }
 
-/* Petites capitales */
-.pc {
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- G --                                                      ###
+###                                                                                                                  ###
+###                                                     ARRONDIS                                                     ###
+########################################################################################################################
+######################################################################################################################*/
+.arrondi {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.arrondi-mini {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.img-arrondi {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.img-arrondi-mini {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- H --                                                      ###
+###                                                                                                                  ###
+###                                                      OMBRE                                                       ###
+########################################################################################################################
+######################################################################################################################*/
+.well, .ombre {
+    -moz-box-shadow: 0 0 5px 0 #656565;
+    -webkit-box-shadow: 0 0 5px 0 #656565;
+    -o-box-shadow: 0 0 5px 0 #656565;
+    box-shadow: 0 0 5px 0 #656565;
+}
+
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- I --                                                      ###
+###                                                                                                                  ###
+###                                              MISE EN PAGE DU TEXTE                                               ###
+########################################################################################################################
+######################################################################################################################*/
+.retrait {
+    text-indent: 4em;
+}
+
+.liste-retrait {
+    padding-left: 3em;
+    margin-bottom: 0;
+}
+
+.liste-retrait li {
+    text-indent: 0;
+    padding-left: 1em;
+    margin-bottom: 10px;
+}
+
+.pc { /* Petites capitales */
     font-variant: small-caps;
+}
+
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- J --                                                      ###
+###                                                                                                                  ###
+###                                              MISE EN PAGE DU TEXTE                                               ###
+########################################################################################################################
+######################################################################################################################*/
+.well > h1, .well > h2, .well > h3, .well > h4, .well > h5 { /* On retire la marge sous les titres dans les wells */
+    margin-top: 0;
+}
+
+a, a:hover { /* On change la couleur des liens vers du rouge */
+    color: #dc3545;
+}
+
+.div-miniature-articles { /* Limite la largeur de la miniature des articles dans la page articles */
+    max-width: 480px;
+    display: inline-block;
 }

@@ -5,7 +5,6 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-4">
             <img class="img-responsive" src="<?php echo RACINE . '-images/imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
-            <br>
         </div>
         <div class="col-sm-6">
             <div class="text-justify retrait">
@@ -29,10 +28,11 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
+    <br>
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <img class="img-responsive imageBordure" src="<?php echo RACINE . '-images/imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
+            <img class="img-arrondi" src="<?php echo RACINE . '-images/imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
         </div>
         <div class="col-sm-2"></div>
     </div>

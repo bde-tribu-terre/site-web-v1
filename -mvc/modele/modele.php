@@ -103,7 +103,7 @@ function ajouterLog($code, $message) {
     $connexion = getConnect();
     $requete = "INSERT INTO LogActions VALUES (0, :idMembres, :codeLogActions, :dateLogActions, :descLogActions)";
     $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_STR);
+    $prepare->bindValue(':idMembres', $_SESSION['id'], PDO::PARAM_STR);
     $prepare->bindValue(':codeLogActions', $code, PDO::PARAM_INT);
     $prepare->bindValue(':dateLogActions', $dt->format('Y-m-d H-i-s'), PDO::PARAM_STR);
     $prepare->bindValue(':descLogActions', $message, PDO::PARAM_STR);
@@ -516,7 +516,7 @@ function ajouterArticle($titre, $categorie, $visibilite, $texte) {
     $connexion = getConnect();
     $requete = "INSERT INTO Articles VALUES (0, :idMembres, :idCategorieArticles, :titreArticles, :texteArticles, :visibiliteArticles, :dateCreationArticles, :dateModificationArticles)";
     $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_INT);
+    $prepare->bindValue(':idMembres', $_SESSION['id'], PDO::PARAM_INT);
     $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
     $prepare->bindValue(':titreArticles', $titre, PDO::PARAM_STR);
     $prepare->bindValue(':texteArticles', $texte, PDO::PARAM_STR);
@@ -740,7 +740,7 @@ function ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
     $connexion = getConnect();
     $requete = "INSERT INTO ArticlesYouTube VALUES (0, :idCategorieArticles, :idMembres, :titreArticlesYouTube, :texteArticlesYouTube, :lienArticlesYouTube, :visibiliteArticlesYouTube, :dateCreationArticlesYouTube, :dateModificationArticlesYouTube)";
     $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idMembre', $_SESSION['id'], PDO::PARAM_INT);
+    $prepare->bindValue(':idMembres', $_SESSION['id'], PDO::PARAM_INT);
     $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
     $prepare->bindValue(':titreArticlesYouTube', $titre, PDO::PARAM_STR);
     $prepare->bindValue(':lienArticlesYouTube', $lien, PDO::PARAM_STR);

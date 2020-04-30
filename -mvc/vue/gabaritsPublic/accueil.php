@@ -78,19 +78,19 @@
     </script>
     <div class="row"> <!-- Boutons pour choisir -->
         <div class="col-sm-4">
-            <a id="boutonInfo1" class="btn btn-danger btn-block btn-exterieur active" type="button" data-slide-to="0" data-target="#carouselInfos" onclick="activerBoutonInfo('1')">
+            <a id="boutonInfo1" class="btn btn-danger btn-block ombre active" type="button" data-slide-to="0" data-target="#carouselInfos" onclick="activerBoutonInfo('1')">
                 <h4>Partenaires</h4>
             </a>
             <br>
         </div>
         <div class="col-sm-4">
-            <a id="boutonInfo2" class="btn btn-danger btn-block btn-exterieur" type="button" data-slide-to="1" data-target="#carouselInfos" onclick="activerBoutonInfo('2')">
+            <a id="boutonInfo2" class="btn btn-danger btn-block ombre" type="button" data-slide-to="1" data-target="#carouselInfos" onclick="activerBoutonInfo('2')">
                 <h4>Réseau associatif</h4>
             </a>
             <br>
         </div>
         <div class="col-sm-4">
-            <a id="boutonInfo3" class="btn btn-danger btn-block btn-exterieur" type="button" data-slide-to="2" data-target="#carouselInfos" onclick="activerBoutonInfo('3')">
+            <a id="boutonInfo3" class="btn btn-danger btn-block ombre" type="button" data-slide-to="2" data-target="#carouselInfos" onclick="activerBoutonInfo('3')">
                 <h4>Université</h4>
             </a>
             <br>
@@ -125,7 +125,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgBarAtelier.png' ?>" alt="Bar l'Atelier">
+                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgBarAtelier.png' ?>" alt="Bar l'Atelier">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -138,7 +138,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgBarKeyWest.png' ?>" alt="Bar le Key West">
+                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgBarKeyWest.png' ?>" alt="Bar le Key West">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -151,7 +151,7 @@
                                     </a>
                                 </p>
                                 <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
-                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
+                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -190,7 +190,7 @@
                                     </a>
                                 </p>
                                 <a href="https://ocampus.fr/index.php">
-                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgOCampus.png' ?>" alt="ÔCampus">
+                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgOCampus.png' ?>" alt="ÔCampus">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -211,7 +211,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.fneb.fr/">
-                                    <img class="img-exterieur" src="<?php echo RACINE . '-images/imgFNEB.png' ?>" alt="FNEB">
+                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgFNEB.png' ?>" alt="FNEB">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>

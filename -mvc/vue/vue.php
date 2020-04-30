@@ -773,7 +773,7 @@ function afficherAccueil() {
         }
         $goodies .=
             '">' . "\n" .
-            '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><img src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
+            '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><img class="arrondi" src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
             '<div class="carousel-caption">' . "\n" .
             '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
             '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
@@ -781,7 +781,7 @@ function afficherAccueil() {
             '</div>';
     }
     $carouselGoodies =
-        '<div id="carouselGoodies" class="carousel carousel-images slide" data-ride="carousel">' .
+        '<div id="carouselGoodies" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">' .
             '<!-- Indicators -->' .
             '<ol class="carousel-indicators">' .
                 $goodiesIndicators .
@@ -952,10 +952,9 @@ function afficherArticles() {
             $id = htmlentities($arrayArticles[$ID]->id, ENT_QUOTES, "UTF-8");
             $titre = htmlentities($arrayArticles[$ID]->titre, ENT_QUOTES, "UTF-8");
             $categorie = htmlentities($arrayArticles[$ID]->categorie, ENT_QUOTES, "UTF-8");
-            $visibilite = htmlentities($arrayArticles[$ID]->visibilite, ENT_QUOTES, "UTF-8");
             $texte = htmlentities($arrayArticles[$ID]->texte, ENT_QUOTES, "UTF-8");
 
-            $cadreMiniature = '<div class="imageMiniatureArticlesDiv"><img class="img-fluid imageMiniatureArticles" src="--EMPLACEMENT--" alt="Miniature"></div>';
+            $cadreMiniature = '<div class="div-miniature-articles"><img class="img-fluid img-arrondi" src="--EMPLACEMENT--" alt="Miniature"></div>';
             switch (substr($ID, 0, 1)) {
                 case 'T':
                     $lienArticle = RACINE . 'articles/?id=' . $id;
@@ -1016,7 +1015,7 @@ function afficherArticlePrecis($article) {
             '<div class="row">' .
                 '<div class="col-sm-2"></div>'.
                     '<div class="col-sm-8">' .
-                        '<img src="' . RACINE . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="imageUniqueArticlePrecis" alt="Image">' .
+                        '<img class="img-arrondi ombre" src="' . RACINE . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="img-arrondi ombre" alt="Image">' .
                     '</div>' .
                 '<div class="col-sm-2"></div>' .
             '</div><hr>';
@@ -1041,7 +1040,7 @@ function afficherArticlePrecis($article) {
             '<div class="row">' .
                 '<div class="col-sm-2"></div>' .
                 '<div class="col-sm-8">' .
-                    '<div id="carouselArticle" class="carousel carouselImages slide" data-ride="carousel">' .
+                    '<div id="carouselArticle" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">' .
                         $carouselArticleIndicator .
                         $carouselArticleImages .
                         '<a class="left carousel-control" href="#carouselArticle" role="button" data-slide="prev">' .
@@ -1083,7 +1082,7 @@ function afficherArticleVideoPrecis($article) {
         '<div class="row">' .
             '<div class="col-sm-2"></div>' .
                 '<div class="col-sm-8">' .
-                    '<div class="embed-responsive embed-responsive-16by9 integrationArticleVideoPrecis">' .
+                    '<div class="embed-responsive embed-responsive-16by9 arrondi ombre">' .
                         preg_replace('/width="459" height="344"/', 'class="embed-responsive-item"', $infoYouTube['html']) .
                     '</div>' .
                 '</div>' .
@@ -1438,7 +1437,7 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
             '<div class="col-sm-6">' .
                 '<div class="well">' .
                     '<a href="' . RACINE . 'goodies/?id=' . $id . '">' .
-                        '<img src="' . $lienMiniature . '" class="miniatureGoodies" alt="Miniature">' .
+                        '<img src="' . $lienMiniature . '" class="img-arrondi-mini" alt="Miniature">' .
                     '</a>' .
                     '<h3>' . $titre . '</h3>' .
                     '<hr>' .
@@ -1471,7 +1470,7 @@ function afficherGoodiePrecis($goodie) {
 
     $carouselGoodie = '';
     if (empty($lignesImages)) {
-        $carouselGoodie .= '<img src="' . RACINE . 'goodies/' . $miniature . '" class="imageUniqueGoodiePrecis">';
+        $carouselGoodie .= '<img src="' . RACINE . 'goodies/' . $miniature . '" class="img-arrondi ombre">';
     } else {
         $nb = 0;
         $carouselGoodieIndicator = '<ol class="carousel-indicators">';
@@ -1481,7 +1480,7 @@ function afficherGoodiePrecis($goodie) {
         $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '" class="active"></li>';
         $carouselGoodieImages .=
             '<div class="item active">' .
-                '<img src="' . RACINE . 'goodies/' . $miniature . '" alt="Image">' .
+                '<img class="arrondi" src="' . RACINE . 'goodies/' . $miniature . '" alt="Image">' .
             '</div>';
 
         # Le reste des -images
@@ -1490,14 +1489,14 @@ function afficherGoodiePrecis($goodie) {
             $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '"></li>';
             $carouselGoodieImages .=
                 '<div class="item">' .
-                    '<img src="' . RACINE . 'goodies/' . $lien . '" alt="Image">' .
+                    '<img class="arrondi" src="' . RACINE . 'goodies/' . $lien . '" alt="Image">' .
                 '</div>';
         }
         $carouselGoodieIndicator .= '</ol>';
         $carouselGoodieImages .= '</div>';
 
         $carouselGoodie =
-            '<div id="carouselGoodie" class="carousel carouselImages slide" data-ride="carousel">' .
+            '<div id="carouselGoodie" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">' .
                 $carouselGoodieIndicator .
                 $carouselGoodieImages .
                 '<a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">' .
