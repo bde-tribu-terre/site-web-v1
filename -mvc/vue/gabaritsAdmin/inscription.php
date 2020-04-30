@@ -8,11 +8,16 @@
     }
 
     function verifForm(form) {
+        alert('SSSS');
         let s = '';
-        for let e in form.elements {
-            s += e . '\n';
+        let elements = form.elements
+        for (let i = 0; i < elements.length; i++) {
+            if (elements[i].type === 'text' || elements[i].type === 'password') {
+                alert(elements[i].name);
+            }
         }
         alert(s);
+        return false;
     }
 </script>
 <div class="container text-center">
@@ -34,7 +39,7 @@
             <div class="well">
                 <h3>Inscription</h3>
                 <hr>
-                <form id="formConnexion" method="post" onsubmit="verifForm(this)">
+                <form id="formConnexion" method="post" onsubmit="return verifForm(this);">
                     <p> <!-- Clé d'inscription -->
                         <label for="formInscription_cleInscription">Clé d'inscription</label>
                         <input class="form-control" id="formInscription_cleInscription" type="password" name="formInscription_cleInscription" placeholder="Saisir la clé d'inscription">
@@ -53,6 +58,7 @@
                     <p> <!-- Login -->
                         <label for="formInscription_login">Login</label>
                         <input class="form-control" id="formInscription_login" type="text" name="formInscription_login" placeholder="Choisir le login">
+                        <small class="form-text text-muted">Uniquement en minuscules.</small>
 
                     </p>
                     <p> <!-- Mot de passe -->
