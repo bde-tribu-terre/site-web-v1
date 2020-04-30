@@ -44,6 +44,13 @@ function verifMdpIdentique(input) {
     );
 }
 
+function verifNonMoins1(input) {
+    surligne(
+        input,
+        input.value === '-1'
+    );
+}
+
 function garderMinuscules(input) {
     input.value = input.value.toLowerCase();
 }
@@ -51,5 +58,11 @@ function garderMinuscules(input) {
 function garderMoins64(input) {
     if (input.value.length > 64) {
         input.value = input.value.substr(0, 64);
+    }
+}
+
+function garderMoins7999(input) {
+    if (input.value.length > 7999) {
+        input.value = input.value.substr(0, 7999);
     }
 }
