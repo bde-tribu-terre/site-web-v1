@@ -20,7 +20,7 @@ function verifForm(form) {
     let tousOk = true;
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].type !== 'submit' && !elements[i].classList.contains('input-valide')) {
-            strInvalides += '\n' + elements[i].labels[0];
+            strInvalides += '\n' + elements[i].labels[0].innerText;
             tousOk = false;
         }
     }
