@@ -20,8 +20,8 @@
                 <form id="formChoisirGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Goodie en question -->
                         <label for="formChoisirGoodie_idGoodie">Goodie</label>
-                        <select class="form-control" id="formChoisirGoodie_idGoodie" name="formChoisirGoodie_idGoodie">
-                            <option onblur="verifNonVide(this);" value="">--Choisir un goodie--</option>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formChoisirGoodie_idGoodie" name="formChoisirGoodie_idGoodie">
+                            <optionvalue="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>
                     </div>
