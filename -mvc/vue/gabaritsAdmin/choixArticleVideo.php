@@ -17,10 +17,10 @@
             <div class="well">
                 <h3>Choisir un article vidéo à modifier</h3>
                 <hr>
-                <form id="formChoisirArticleVideo" method="post">
+                <form id="formChoisirArticleVideo" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Article en question -->
                         <label for="formChoisirArticleVideo_idArticle">Article vidéo</label>
-                        <select class="form-control" id="formChoisirArticleVideo_idArticle" name="formChoisirArticleVideo_idArticle">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formChoisirArticleVideo_idArticle" name="formChoisirArticleVideo_idArticle">
                             <option value="">--Choisir un article vidéo--</option>
                             <?php echo ARTICLES_VIDEO ?>
                         </select>

@@ -17,10 +17,10 @@
             <div class="well">
                 <h3>Supprimer un goodie</h3>
                 <hr>
-                <form id="formSupprimerGoodie" method="post">
+                <form id="formSupprimerGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Goodie en question -->
                         <label for="formSupprimerGoodie_idGoodie">Goodie</label>
-                        <select class="form-control" id="formSupprimerGoodie_idGoodie" name="formSupprimerGoodie_idGoodie">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerGoodie_idGoodie" name="formSupprimerGoodie_idGoodie">
                             <option value="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>

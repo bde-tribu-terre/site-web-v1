@@ -17,11 +17,11 @@
             <div class="well">
                 <h3>Choisir un goodie à modifier</h3>
                 <hr>
-                <form id="formChoisirGoodie" method="post">
+                <form id="formChoisirGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Goodie en question -->
                         <label for="formChoisirGoodie_idGoodie">Goodie</label>
                         <select class="form-control" id="formChoisirGoodie_idGoodie" name="formChoisirGoodie_idGoodie">
-                            <option value="">--Choisir un goodie--</option>
+                            <option onblur="verifNonVide(this);" value="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>
                     </div>

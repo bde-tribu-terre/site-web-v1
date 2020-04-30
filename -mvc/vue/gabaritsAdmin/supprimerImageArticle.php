@@ -17,10 +17,10 @@
             <div class="well">
                 <h3>Supprimer des images d'un goodie</h3>
                 <hr>
-                <form id="formSupprimerImageArticle" method="post">
+                <form id="formSupprimerImageArticle" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- ID du goodie -->
                         <label for="formSupprimerImageArticle_idArticle">ID de l'article</label>
-                        <input class="form-control" id="formSupprimerImageArticle_idArticle" type="text" value="<?php echo ID ?>" name="formSupprimerImageArticle_idArticle" readonly>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formSupprimerImageArticle_idArticle" type="text" value="<?php echo ID ?>" name="formSupprimerImageArticle_idArticle" readonly>
                     </div>
                     <?php echo IMAGES_ARTICLE ?>
                     <hr>

@@ -17,17 +17,17 @@
             <div class="well">
                 <h3>Ajouter une image à un goodie</h3>
                 <hr>
-                <form id="formAjouterImageGoodie" method="post" enctype="multipart/form-data">
+                <form id="formAjouterImageGoodie" method="post" enctype="multipart/form-data" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Goodie en question -->
                         <label for="formAjouterImageGoodie_idGoodie">Goodie</label>
-                        <select class="form-control" id="formAjouterImageGoodie_idGoodie" name="formAjouterImageGoodie_idGoodie">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formAjouterImageGoodie_idGoodie" name="formAjouterImageGoodie_idGoodie">
                             <option value="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>
                     </div>
                     <div class="div-group"> <!-- Image -->
                         <label for="formAjouterImageGoodie_image">Sélectionner l'image</label>
-                        <input class="form-control" type="file" name="formAjouterImageGoodie_image" accept="image/*">
+                        <input onblur="verifNonVide(this);" class="form-control" type="file" id="formAjouterImageGoodie_image" name="formAjouterImageGoodie_image" accept="image/*">
                         <small class="form-text text-muted">⚠️ Format : 4:3, pour éviter que ça nique la mise en page.<br>🙏 Taille : 960px*720px.<br>⚠️ La miniature compte déjà comme une image. Attention aux doublons !</small>
                     </div>
                     <hr>

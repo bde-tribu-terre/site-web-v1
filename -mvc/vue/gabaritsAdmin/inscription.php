@@ -25,17 +25,17 @@
                     </p>
                     <p> <!-- Prénom -->
                         <label for="formInscription_prenom">Prénom</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins64(this);" class="form-control" id="formInscription_prenom" type="text" name="formInscription_prenom" placeholder="Saisir votre prénom">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formInscription_prenom" type="text" name="formInscription_prenom" placeholder="Saisir votre prénom">
                         <small class="form-text text-muted">Première lettre en majuscule, le reste en minuscule (normal quoi...).</small>
                     </p>
                     <p> <!-- Nom -->
                         <label for="formInscription_nom">Nom</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins64(this);" class="form-control" id="formInscription_nom" type="text" name="formInscription_nom" placeholder="Saisir votre nom de famille">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formInscription_nom" type="text" name="formInscription_nom" placeholder="Saisir votre nom de famille">
                         <small class="form-text text-muted">Première lettre en majuscule, le reste en minuscule (pareil).</small>
                     </p>
                     <p> <!-- Login -->
                         <label for="formInscription_login">Login</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMinuscules(this); garderMoins64(this);" class="form-control" id="formInscription_login" type="text" name="formInscription_login" placeholder="Choisir le login">
+                        <input onblur="verifNonVide(this);" oninput="garderMinuscules(this); garderMoins(this, 64);" class="form-control" id="formInscription_login" type="text" name="formInscription_login" placeholder="Choisir le login">
                         <small class="form-text text-muted">Uniquement en minuscules.</small>
                     </p>
                     <p> <!-- Mot de passe -->

@@ -17,17 +17,17 @@
             <div class="well">
                 <h3>Ajouter une image à un article</h3>
                 <hr>
-                <form id="formAjouterImageArticle" method="post" enctype="multipart/form-data">
+                <form id="formAjouterImageArticle" method="post" enctype="multipart/form-data" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Article en question -->
                         <label for="formAjouterImageArticle_idArticle">Article</label>
-                        <select class="form-control" id="formAjouterImageArticle_idArticle" name="formAjouterImageArticle_idArticle">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formAjouterImageArticle_idArticle" name="formAjouterImageArticle_idArticle">
                             <option value="">--Choisir un article--</option>
                             <?php echo ARTICLES ?>
                         </select>
                     </div>
                     <div class="div-group"> <!-- Image -->
                         <label for="formAjouterImageArticle_image">Sélectionner l'image</label>
-                        <input class="form-control" type="file" name="formAjouterImageArticle_image" accept="image/*">
+                        <input onblur="verifNonVide(this);" class="form-control" type="file" id="formAjouterImageArticle_image" name="formAjouterImageArticle_image" accept="image/*">
                         <small class="form-text text-muted">⚠️ Format : 4:3, pour éviter que ça nique la mise en page.<br>🙏 Taille : 960px*720px.</small>
                     </div>
                     <hr>

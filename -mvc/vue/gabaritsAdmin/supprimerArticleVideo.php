@@ -17,10 +17,10 @@
             <div class="well">
                 <h3>Supprimer un article vidéo</h3>
                 <hr>
-                <form id="formSupprimerArticleVideo" method="post">
+                <form id="formSupprimerArticleVideo" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Article en question -->
                         <label for="formSupprimerArticleVideo_idArticle">Article vidéo</label>
-                        <select class="form-control" id="formSupprimerArticleVideo_idArticle" name="formSupprimerArticleVideo_idArticle">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerArticleVideo_idArticle" name="formSupprimerArticleVideo_idArticle">
                             <option value="">--Choisir un article vidéo--</option>
                             <?php echo ARTICLES_VIDEO ?>
                         </select>

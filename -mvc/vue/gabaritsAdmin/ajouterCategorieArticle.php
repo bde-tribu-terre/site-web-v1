@@ -17,10 +17,10 @@
             <div class="well">
                 <h3>Ajouter une catégorie d'article</h3>
                 <hr>
-                <form id="formAjouterCategorieArticle" method="post">
+                <form id="formAjouterCategorieArticle" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Titre de la catégorie -->
                         <label for="formAjouterCategorieArticle_titre">Titre de la catégorie</label>
-                        <input class="form-control" id="formAjouterCategorieArticle_titre" type="text" placeholder="Titre" name="formAjouterCategorieArticle_titre">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 128);" class="form-control" id="formAjouterCategorieArticle_titre" type="text" placeholder="Titre" name="formAjouterCategorieArticle_titre">
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Ajouter la catégorie -->

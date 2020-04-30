@@ -17,36 +17,36 @@
             <div class="well">
                 <h3>Modifier un article vidéo</h3>
                 <hr>
-                <form id="formModifierArticleVideo" method="post">
+                <form id="formModifierArticleVideo" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- ID de l'article -->
                         <label for="formModifierArticleVideo_idArticle">ID de l'article vidéo</label>
-                        <input class="form-control" id="formModifierArticleVideo_idArticle" type="text" value="<?php echo ID ?>" name="formModifierArticleVideo_idArticle" readonly>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierArticleVideo_idArticle" type="text" value="<?php echo ID ?>" name="formModifierArticleVideo_idArticle" readonly>
                     </div>
                     <div class="form-group"> <!-- Titre de l'article -->
                         <label for="formModifierArticleVideo_titre">Titre de l'article vidéo</label>
-                        <input class="form-control" id="formModifierArticleVideo_titre" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierArticleVideo_titre">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 128);" class="form-control" id="formModifierArticleVideo_titre" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierArticleVideo_titre">
                     </div>
                     <div class="form-group"> <!-- Catégorie -->
                         <label for="formModifierArticleVideo_categorie">Catégorie</label>
-                        <select class="form-control" id="formModifierArticleVideo_categorie" name="formModifierArticleVideo_categorie">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formModifierArticleVideo_categorie" name="formModifierArticleVideo_categorie">
                             <?php echo CATEGORIES ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Visibilité -->
                         <label for="formModifierArticleVideo_visibilite">Visibilité</label>
-                        <select class="form-control" id="formModifierArticleVideo_visibilite" name="formModifierArticleVideo_visibilite">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formModifierArticleVideo_visibilite" name="formModifierArticleVideo_visibilite">
                             <option value="0"<?php echo VISIBILITE == 0 ? ' selected' : ''; ?>>Invisible</option>
                             <option value="1"<?php echo VISIBILITE == 1 ? ' selected' : ''; ?>>Visible</option>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Lien de la vidéo -->
                         <label for="formModifierArticleVideo_lien">Lien de la vidéo</label>
-                        <input class="form-control" id="formModifierArticleVideo_lien" type="text" value="<?php echo LIEN ?>" placeholder="Lien" name="formModifierArticleVideo_lien">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(input, 256);" class="form-control" id="formModifierArticleVideo_lien" type="text" value="<?php echo LIEN ?>" placeholder="Lien" name="formModifierArticleVideo_lien">
                         <small class="form-text text-muted">Exemple : http://www.youtube.com/watch?v=B4CRkpBGQzU</small>
                     </div>
                     <div class="form-group"> <!-- Texte -->
                         <label for="formModifierArticleVideo_texte">Texte de l'article vidéo</label>
-                        <textarea class="form-control" id="formModifierArticleVideo_texte" placeholder="Texte de l'article" name="formModifierArticleVideo_texte" rows="20"><?php echo TEXTE ?></textarea>
+                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(input, 7999);" class="form-control" id="formModifierArticleVideo_texte" placeholder="Texte de l'article" name="formModifierArticleVideo_texte" rows="20"><?php echo TEXTE ?></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <hr>

@@ -17,10 +17,10 @@
             <div class="well">
                 <h3>Supprimer un évent</h3>
                 <hr>
-                <form id="formSupprimerEvent" method="post">
+                <form id="formSupprimerEvent" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Évent en question -->
                         <label for="formSupprimerEvent_idEvent">Évent</label>
-                        <select class="form-control" id="formSupprimerEvent_idEvent" name="formSupprimerEvent_idEvent">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerEvent_idEvent" name="formSupprimerEvent_idEvent">
                             <option value="">--Choisir un évent--</option>
                             <?php echo EVENTS ?>
                         </select>

@@ -20,7 +20,7 @@
                 <form id="formAjouterGoodie" method="post" enctype="multipart/form-data" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Titre du goodie -->
                         <label for="formAjouterGoodie_titreGoodie">Titre du goodie</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins64(this);" class="form-control" id="formAjouterGoodie_titreGoodie" type="text" name="formAjouterGoodie_titreGoodie" placeholder="Titre">
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formAjouterGoodie_titreGoodie" type="text" name="formAjouterGoodie_titreGoodie" placeholder="Titre">
                     </div>
                     <div class="form-group"> <!-- Catégorie -->
                         <label for="formAjouterGoodie_categorie">Catégorie</label>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group"> <!-- Description du goodie -->
                         <label for="formAjouterGoodie_descGoodie">Description du goodie</label>
-                        <textarea onblur="verifNonVide(this);" oninput="garderMoins7999(this);" class="form-control" id="formAjouterGoodie_descGoodie" placeholder="Description du goodie" name="formAjouterGoodie_descGoodie" rows="20"></textarea>
+                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(this, 7999);" class="form-control" id="formAjouterGoodie_descGoodie" placeholder="Description du goodie" name="formAjouterGoodie_descGoodie" rows="20"></textarea>
                         <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
                     </div>
                     <div class="form-group"> <!-- Miniature -->

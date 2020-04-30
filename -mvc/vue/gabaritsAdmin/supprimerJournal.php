@@ -17,10 +17,10 @@
             <div class="well">
                 <h3>Supprimer un journal</h3>
                 <hr>
-                <form id="formSupprimerJournal" method="post">
+                <form id="formSupprimerJournal" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Journal en question -->
                         <label for="formSupprimerJournal_idJournal">Goodie :</label>
-                        <select class="form-control" id="formSupprimerJournal_idJournal" name="formSupprimerJournal_idJournal">
+                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerJournal_idJournal" name="formSupprimerJournal_idJournal">
                             <option value="">--Choisir un journal--</option>
                             <?php echo JOURNAUX ?>
                         </select>
