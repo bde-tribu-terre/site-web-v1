@@ -8,15 +8,12 @@
     }
 
     function verifForm(form) {
-        alert('SSSS');
-        let s = '';
         let elements = form.elements
         for (let i = 0; i < elements.length; i++) {
             if (elements[i].type === 'text' || elements[i].type === 'password') {
-                alert(elements[i].name);
+                alert(elements[i].name + '\n' + elements.classList.contains('valide'));
             }
         }
-        alert(s);
         return false;
     }
 </script>
