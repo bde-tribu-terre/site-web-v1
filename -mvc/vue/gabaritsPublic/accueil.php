@@ -36,7 +36,7 @@
                     <div class="well">
                         <h4>Notre page Facebook</h4>
                         <p>
-                            <img src="<?php echo RACINE . '-images/imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
+                            <img src="<?php echo IMAGES . 'imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
                         </p>
                     </div>
                 </a>
@@ -46,7 +46,7 @@
                     <div class="well">
                         <h4>Notre compte Instagram</h4>
                         <p>
-                            <img src="<?php echo RACINE . '-images/imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
+                            <img src="<?php echo IMAGES . 'imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
                         </p>
                     </div>
                 </a>
@@ -56,7 +56,7 @@
                     <div class="well">
                         <h4>Notre compte Twitter</h4>
                         <p>
-                            <img src="<?php echo RACINE . '-images/imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
+                            <img src="<?php echo IMAGES . 'imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
                         </p>
                     </div>
                 </a>
@@ -125,7 +125,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgBarAtelier.png' ?>" alt="Bar l'Atelier">
+                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgBarAtelier.png' ?>" alt="Bar l'Atelier">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -138,7 +138,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgBarKeyWest.png' ?>" alt="Bar le Key West">
+                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgBarKeyWest.png' ?>" alt="Bar le Key West">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -151,7 +151,7 @@
                                     </a>
                                 </p>
                                 <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
-                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
+                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -190,7 +190,7 @@
                                     </a>
                                 </p>
                                 <a href="https://ocampus.fr/index.php">
-                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgOCampus.png' ?>" alt="ÔCampus">
+                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgOCampus.png' ?>" alt="ÔCampus">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -211,7 +211,7 @@
                                     </a>
                                 </p>
                                 <a href="https://www.fneb.fr/">
-                                    <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgFNEB.png' ?>" alt="FNEB">
+                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgFNEB.png' ?>" alt="FNEB">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -245,7 +245,7 @@
                                     </a>
                                 </p>
                                 <a href="http://www.univ-orleans.fr/fr/osuc">
-                                    <img src="<?php echo RACINE . '-images/imgOSUC2.png' ?>" alt="OSUC">
+                                    <img src="<?php echo IMAGES . 'imgOSUC2.png' ?>" alt="OSUC">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -258,7 +258,7 @@
                                     </a>
                                 </p>
                                 <a href="http://www.univ-orleans.fr/fr/sciences-techniques/">
-                                    <img src="<?php echo RACINE . '-images/imgCoST2.png' ?>" alt="CoST">
+                                    <img src="<?php echo IMAGES . 'imgCoST2.png' ?>" alt="CoST">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>

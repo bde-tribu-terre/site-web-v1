@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <img class="img-arrondi ombre" src="<?php echo RACINE . '-images/imgGirafeErreur.png' ?>" alt="Girafe">
+            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgGirafeErreur.png' ?>" alt="Girafe">
         </div>
     </div>
 </div><br>

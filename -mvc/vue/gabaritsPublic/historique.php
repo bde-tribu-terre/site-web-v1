@@ -111,7 +111,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <img class="img-arrondi-mini" src="<?php echo RACINE . '-images/imgAG2019.png' ?>" alt="imgAG2019">
+                            <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2019.png' ?>" alt="imgAG2019">
                         </div>
                         <div class="col-sm-6">
                             <h3>Composition du bureau</h3>
@@ -168,7 +168,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
-                            <img class="img-arrondi-mini" src="<?php echo RACINE . '-images/imgAG2018.png' ?>" alt="imgAG2018">
+                            <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2018.png' ?>" alt="imgAG2018">
                         </div>
                         <div class="col-sm-6">
                             <h3>Composition du bureau</h3>

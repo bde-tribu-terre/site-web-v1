@@ -7,7 +7,7 @@
                 <h3>Facebook</h3>
                 <hr>
                 <a href="https://www.facebook.com/bdeTribuTerre/">
-                    <img src="<?php echo RACINE . '-images/imgFacebook.svg' ?>" height="100" alt="Facebook">
+                    <img src="<?php echo IMAGES . 'imgFacebook.svg' ?>" height="100" alt="Facebook">
                     <h4>https://www.facebook.com/bdeTribuTerre/</h4>
                 </a>
             </div>
@@ -17,7 +17,7 @@
                 <h3>Instagram</h3>
                 <hr>
                 <a href="https://www.instagram.com/tribu.terre/">
-                    <img src="<?php echo RACINE . '-images/imgInstagram.svg' ?>" height="100" alt="Instagram">
+                    <img src="<?php echo IMAGES . 'imgInstagram.svg' ?>" height="100" alt="Instagram">
                     <h4>https://www.instagram.com/tribu.terre/</h4>
                 </a>
             </div>
@@ -27,7 +27,7 @@
                 <h3>Twitter</h3>
                 <hr>
                 <a href="https://twitter.com/Tributerre45/">
-                    <img src="<?php echo RACINE . '-images/imgTwitter.svg' ?>" height="100" alt="Twitter">
+                    <img src="<?php echo IMAGES . 'imgTwitter.svg' ?>" height="100" alt="Twitter">
                     <h4>https://twitter.com/Tributerre45/</h4>
                 </a>
             </div>
