@@ -42,83 +42,163 @@ function CtlConnexionErreur($messageErreur) {
 
 # Menu
 function CtlCreerEventMenu($messageRetour) {
-    afficherCreerEvent($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherCreerEvent($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlChoixEventMenu($messageRetour) {
-    afficherChoixEvent($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherChoixEvent($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlSupprimerEventMenu($messageRetour) {
-    afficherSupprimerEvent($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherSupprimerEvent($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAjouterGoodieMenu($messageRetour) {
-    afficherAjouterGoodie($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAjouterGoodie($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAjouterImageGoodieMenu($messageRetour) {
-    afficherAjouterImageGoodie($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAjouterImageGoodie($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlChoixGoodieMenu($messageRetour) {
-    afficherChoixGoodie($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherChoixGoodie($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlSupprimerGoodieMenu($messageRetour) {
-    afficherSupprimerGoodie($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherSupprimerGoodie($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAjouterJournalMenu($messageRetour) {
-    afficherAjouterJournal($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAjouterJournal($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlSupprimerJournalMenu($messageRetour) {
-    afficherSupprimerJournal($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherSupprimerJournal($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAjouterArticleMenu($messageRetour) {
-    afficherAjouterArticle($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAjouterArticle($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAjouterImageArticleMenu($messageRetour) {
-    afficherAjouterImageArticle($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAjouterImageArticle($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlChoixArticleMenu($messageRetour) {
-    afficherChoixArticle($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherChoixArticle($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlSupprimerArticleMenu($messageRetour) {
-    afficherSupprimerArticle($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherSupprimerArticle($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAjouterArticleVideoMenu($messageRetour) {
-    afficherAjouterArticleVideo($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAjouterArticleVideo($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlChoixArticleVideoMenu($messageRetour) {
-    afficherChoixArticleVideo($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherChoixArticleVideo($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlSupprimerArticleVideoMenu($messageRetour) {
-    afficherSupprimerArticleVideo($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherSupprimerArticleVideo($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAjouterCategorieArticleMenu($messageRetour) {
-    afficherAjouterCategorieArticle($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAjouterCategorieArticle($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlRenommerCategorieArticleMenu($messageRetour) {
-    afficherRenommerCategorieArticle($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherRenommerCategorieArticle($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlAfficherLog($messageRetour) {
-    afficherAfficherLog($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherAfficherLog($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlMenu($messageRetour) {
-    afficherMenu($messageRetour);
+    if (isset($_SESSION['id'])) {
+        afficherMenu($messageRetour);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 function CtlDeconnexion($messageRetour) {
@@ -131,369 +211,469 @@ function CtlDeconnexion($messageRetour) {
 }
 
 function CtlMenuErreur($messageErreur) {
-    afficherMenu($messageErreur);
+    if (isset($_SESSION['id'])) {
+        afficherMenu($messageErreur);
+    } else {
+        CtlConnexion('La session a expiré.');
+    }
 }
 
 # Events
 function CtlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
-    try {
-        if (
-            !empty($titre) &&
-            !empty($date) &&
-            (!empty($heure) || $heure == 0) &&
-            (!empty($minute) || $minute == 0) &&
-            !empty($desc)
-        ) {
-            creerEvent($titre, $date, $heure, $minute, $lieu, $desc);
-            afficherCreerEvent('L\'évent "' . $titre . '" a été ajouté avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                !empty($date) &&
+                (!empty($heure) || $heure == 0) &&
+                (!empty($minute) || $minute == 0) &&
+                !empty($desc)
+            ) {
+                creerEvent($titre, $date, $heure, $minute, $lieu, $desc);
+                afficherCreerEvent('L\'évent "' . $titre . '" a été ajouté avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherCreerEvent($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherCreerEvent($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlChoixEvent($id) {
-    try {
-        if (!empty($id)) {
-            afficherModifierEvent('', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un évent.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                afficherModifierEvent('', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un évent.');
+            }
+        } catch (Exception $e) {
+            afficherChoixEvent($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherChoixEvent($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
-    try {
-        if (
-            !empty($titre) &&
-            !empty($date) &&
-            (!empty($heure) || $heure == 0) &&
-            (!empty($minute) || $minute == 0) &&
-            !empty($desc)
-        ) {
-            modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu);
-            afficherModifierEvent('L\'évent "' . $titre . '" a été modifié avec succès !', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                !empty($date) &&
+                (!empty($heure) || $heure == 0) &&
+                (!empty($minute) || $minute == 0) &&
+                !empty($desc)
+            ) {
+                modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu);
+                afficherModifierEvent('L\'évent "' . $titre . '" a été modifié avec succès !', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherModifierEvent($e->getMessage(), $id);
         }
-    } catch (Exception $e) {
-        afficherModifierEvent($e->getMessage(), $id);
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlSupprimerEvent($id) {
-    try {
-        if (!empty($id)) {
-            supprimerEvent($id);
-            afficherSupprimerEvent('L\'évent a été supprimé avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un évent.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                supprimerEvent($id);
+                afficherSupprimerEvent('L\'évent a été supprimé avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un évent.');
+            }
+        } catch (Exception $e) {
+            afficherSupprimerEvent($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherSupprimerEvent($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 # Goodies
 function CtlAjouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
-    try {
-        if (
-            !empty($titre) &&
-            (!empty($categorie) || $categorie == 0) && $categorie != '-1' &&
-            (!empty($prixADEuro) || $prixADEuro == 0) &&
-            (!empty($prixADCentimes) || $prixADCentimes == 0) &&
-            (!empty($prixNADEuro) || $prixNADEuro == 0) &&
-            (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
-            !empty($desc) &&
-            !empty($_FILES[$fileImput]['name'])
-        ) {
-            ajouterGoodie(RACINE . 'goodies/', $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
-            afficherAjouterGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une miniature.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                (!empty($categorie) || $categorie == 0) && $categorie != '-1' &&
+                (!empty($prixADEuro) || $prixADEuro == 0) &&
+                (!empty($prixADCentimes) || $prixADCentimes == 0) &&
+                (!empty($prixNADEuro) || $prixNADEuro == 0) &&
+                (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
+                !empty($desc) &&
+                !empty($_FILES[$fileImput]['name'])
+            ) {
+                ajouterGoodie(RACINE . 'goodies/', $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
+                afficherAjouterGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une miniature.');
+            }
+        } catch (Exception $e) {
+            afficherAjouterGoodie($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherAjouterGoodie($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlAjouterImageGoodie($id, $fileImput) {
-    try {
-        if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
-            $titre = goodiePrecis($id)->titreGoodies;
-            ajouterImageGoodie(RACINE . 'goodies/', $id, $titre, $fileImput);
-            afficherAjouterImageGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
+                $titre = goodiePrecis($id)->titreGoodies;
+                ajouterImageGoodie(RACINE . 'goodies/', $id, $titre, $fileImput);
+                afficherAjouterImageGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
+            }
+        } catch (Exception $e) {
+            afficherAjouterImageGoodie($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherAjouterImageGoodie($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlChoixGoodie($id) {
-    try {
-        if (!empty($id)) {
-            afficherModifierGoodie('', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un goodie.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                afficherModifierGoodie('', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un goodie.');
+            }
+        } catch (Exception $e) {
+            afficherChoixGoodie($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherChoixGoodie($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
-    try {
-        if (
-            !empty($titre) &&
-            (!empty($categorie) || $categorie == 0) &&
-            (!empty($prixADEuro) || $prixADEuro == 0) &&
-            (!empty($prixADCentimes) || $prixADCentimes == 0) &&
-            (!empty($prixNADEuro) || $prixNADEuro == 0) &&
-            (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
-            !empty($desc)
-        ) {
-            modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
-            afficherModifierGoodie('Le goodie "' . $titre . '" a été modifié avec succès !', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                (!empty($categorie) || $categorie == 0) &&
+                (!empty($prixADEuro) || $prixADEuro == 0) &&
+                (!empty($prixADCentimes) || $prixADCentimes == 0) &&
+                (!empty($prixNADEuro) || $prixNADEuro == 0) &&
+                (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
+                !empty($desc)
+            ) {
+                modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
+                afficherModifierGoodie('Le goodie "' . $titre . '" a été modifié avec succès !', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherModifierGoodie($e->getMessage(), $id);
         }
-    } catch (Exception $e) {
-        afficherModifierGoodie($e->getMessage(), $id);
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlAllerSupprimerImageGoodie($id) {
-    try {
-        if (!empty($id)) {
-            afficherSupprimerImageGoodie('', $id);
-        } else {
-            throw new Exception('Erreur : Identifiant invalide.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                afficherSupprimerImageGoodie('', $id);
+            } else {
+                throw new Exception('Erreur : Identifiant invalide.');
+            }
+        } catch (Exception $e) {
+            afficherModifierGoodie($e->getMessage(), $id);
         }
-    } catch (Exception $e) {
-        afficherModifierGoodie($e->getMessage(), $id);
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlSupprimerGoodie($id) {
-    try {
-        if (!empty($id)) {
-            supprimerGoodie(RACINE . 'goodies/', $id);
-            afficherSupprimerGoodie('Le goodie a été supprimé avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un goodie.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                supprimerGoodie(RACINE . 'goodies/', $id);
+                afficherSupprimerGoodie('Le goodie a été supprimé avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un goodie.');
+            }
+        } catch (Exception $e) {
+            afficherSupprimerGoodie($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherSupprimerGoodie($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 # Journaux
 function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
-    try {
-        if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($_FILES[$fileImput]['name'])) {
-            ajouterJournal(RACINE . 'journaux/', $titre, $mois, $annee, $fileImput);
-            afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner un PDF.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($_FILES[$fileImput]['name'])) {
+                ajouterJournal(RACINE . 'journaux/', $titre, $mois, $annee, $fileImput);
+                afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner un PDF.');
+            }
+        } catch (Exception $e) {
+            afficherAjouterJournal($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherAjouterJournal($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlSupprimerJournal($id) {
-    try {
-        if (!empty($id)) {
-            supprimerJournal(RACINE . 'journaux/', $id);
-            afficherSupprimerJournal('Le journal a été supprimé avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un journal.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                supprimerJournal(RACINE . 'journaux/', $id);
+                afficherSupprimerJournal('Le journal a été supprimé avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un journal.');
+            }
+        } catch (Exception $e) {
+            afficherSupprimerJournal($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherSupprimerJournal($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 # Articles
 function CtlAjouterArticle($titre, $categorie, $visibilite, $texte) {
-    try {
-        if (
-            !empty($titre) &&
-            $categorie != '-1' &&
-            $visibilite != '-1' &&
-            !empty($texte)
-        ) {
-            ajouterArticle($titre, $categorie, $visibilite, $texte);
-            afficherAjouterArticle('L\'article "' . $titre . '" a été ajouté avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                $categorie != '-1' &&
+                $visibilite != '-1' &&
+                !empty($texte)
+            ) {
+                ajouterArticle($titre, $categorie, $visibilite, $texte);
+                afficherAjouterArticle('L\'article "' . $titre . '" a été ajouté avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherAjouterArticle($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherAjouterArticle($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlAjouterImageArticle($id, $fileImput) {
-    try {
-        if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
-            $titre = articlePrecis($id)->titreArticles;
-            ajouterImageArticle(RACINE . 'articles/', $id, $titre, $fileImput);
-            afficherAjouterImageArticle('L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
+                $titre = articlePrecis($id)->titreArticles;
+                ajouterImageArticle(RACINE . 'articles/', $id, $titre, $fileImput);
+                afficherAjouterImageArticle('L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
+            }
+        } catch (Exception $e) {
+            afficherAjouterImageArticle($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherAjouterImageArticle($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlChoixArticle($id) {
-    try {
-        if (!empty($id)) {
-            afficherModifierArticle('', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un article.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                afficherModifierArticle('', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un article.');
+            }
+        } catch (Exception $e) {
+            afficherChoixArticle($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherChoixArticle($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlModifierArticle($id, $titre, $categorie, $visibilite, $texte) {
-    try {
-        if (
-            !empty($titre) &&
-            (!empty($visibilite) || $visibilite == 0) &&
-            (!empty($visibilite) || $visibilite == 0) &&
-            !empty($texte)
-        ) {
-            modifierArticle($id, $titre, $categorie, $visibilite, $texte);
-            afficherModifierArticle('L\'article "' . $titre . '" a été modifié avec succès !', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                (!empty($visibilite) || $visibilite == 0) &&
+                (!empty($visibilite) || $visibilite == 0) &&
+                !empty($texte)
+            ) {
+                modifierArticle($id, $titre, $categorie, $visibilite, $texte);
+                afficherModifierArticle('L\'article "' . $titre . '" a été modifié avec succès !', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherModifierArticle($e->getMessage(), $id);
         }
-    } catch (Exception $e) {
-        afficherModifierArticle($e->getMessage(), $id);
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlAllerSupprimerImageArticle($id) {
-    try {
-        if (!empty($id)) {
-            afficherSupprimerImageArticle('', $id);
-        } else {
-            throw new Exception('Erreur : Identifiant invalide.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                afficherSupprimerImageArticle('', $id);
+            } else {
+                throw new Exception('Erreur : Identifiant invalide.');
+            }
+        } catch (Exception $e) {
+            afficherModifierArticle($e->getMessage(), $id);
         }
-    } catch (Exception $e) {
-        afficherModifierArticle($e->getMessage(), $id);
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlSupprimerArticle($id) {
-    try {
-        if (!empty($id)) {
-            supprimerArticle(RACINE . 'articles/', $id);
-            afficherSupprimerArticle('L\'article a été supprimé avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un article.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                supprimerArticle(RACINE . 'articles/', $id);
+                afficherSupprimerArticle('L\'article a été supprimé avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un article.');
+            }
+        } catch (Exception $e) {
+            afficherSupprimerArticle($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherSupprimerArticle($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
-    try {
-        if (
-            !empty($titre) &&
-            $categorie != '-1' &&
-            $visibilite != '-1' &&
-            !empty($lien) &&
-            !empty($texte)
-        ) {
-            ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte);
-            afficherAjouterArticleVideo('L\'article vidéo "' . $titre . '" a été ajouté avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                $categorie != '-1' &&
+                $visibilite != '-1' &&
+                !empty($lien) &&
+                !empty($texte)
+            ) {
+                ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte);
+                afficherAjouterArticleVideo('L\'article vidéo "' . $titre . '" a été ajouté avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherAjouterArticleVideo($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherAjouterArticleVideo($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlChoixArticleVideo($id) {
-    try {
-        if (!empty($id)) {
-            afficherModifierArticleVideo('', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un article.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                afficherModifierArticleVideo('', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un article.');
+            }
+        } catch (Exception $e) {
+            afficherChoixArticleVideo($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherChoixArticleVideo($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte) {
-    try {
-        if (
-            !empty($titre) &&
-            (!empty($visibilite) || $visibilite == 0) &&
-            (!empty($visibilite) || $visibilite == 0) &&
-            !empty($lien) &&
-            !empty($texte)
-        ) {
-            modifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte);
-            afficherModifierArticleVideo('L\'article "' . $titre . '" a été modifié avec succès !', $id);
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (
+                !empty($titre) &&
+                (!empty($visibilite) || $visibilite == 0) &&
+                (!empty($visibilite) || $visibilite == 0) &&
+                !empty($lien) &&
+                !empty($texte)
+            ) {
+                modifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte);
+                afficherModifierArticleVideo('L\'article "' . $titre . '" a été modifié avec succès !', $id);
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherModifierArticleVideo($e->getMessage(), $id);
         }
-    } catch (Exception $e) {
-        afficherModifierArticleVideo($e->getMessage(), $id);
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlSupprimerArticleVideo($id) {
-    try {
-        if (!empty($id)) {
-            supprimerArticleVideo($id);
-            afficherSupprimerArticleVideo('L\'article vidéo a été supprimé avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez sélectionner un article.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id)) {
+                supprimerArticleVideo($id);
+                afficherSupprimerArticleVideo('L\'article vidéo a été supprimé avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez sélectionner un article.');
+            }
+        } catch (Exception $e) {
+            afficherSupprimerArticleVideo($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherSupprimerArticleVideo($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlAjouterCategorieArticle($titre) {
-    try {
-        if (!empty($titre)) {
-            ajouterCategorieArticle($titre);
-            afficherAjouterCategorieArticle('La catégorie "' . $titre . '" a été ajoutée avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($titre)) {
+                ajouterCategorieArticle($titre);
+                afficherAjouterCategorieArticle('La catégorie "' . $titre . '" a été ajoutée avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherAjouterCategorieArticle($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherAjouterCategorieArticle($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
 function CtlRenommerCategorieArticle($id, $titre) {
-    try {
-        if (!empty($id) && !empty($titre)) {
-            renommerCategorieArticle($id, $titre);
-            afficherRenommerCategorieArticle('La catégorie a été renommée en "' . $titre . '" avec succès !');
-        } else {
-            throw new Exception('Erreur : Veuillez remplir tous les champs.');
+    if (isset($_SESSION['id'])) {
+        try {
+            if (!empty($id) && !empty($titre)) {
+                renommerCategorieArticle($id, $titre);
+                afficherRenommerCategorieArticle('La catégorie a été renommée en "' . $titre . '" avec succès !');
+            } else {
+                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+            }
+        } catch (Exception $e) {
+            afficherRenommerCategorieArticle($e->getMessage());
         }
-    } catch (Exception $e) {
-        afficherRenommerCategorieArticle($e->getMessage());
+    } else {
+        CtlConnexion('La session a expiré.');
     }
 }
 
