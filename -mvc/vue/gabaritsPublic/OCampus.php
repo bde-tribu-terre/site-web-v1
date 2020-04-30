@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <img class="img-arrondi" src="<?php echo RACINE . '-images/imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
+            <img class="img-arrondi" src="<?php echo IMAGES . 'imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
         </div>
         <div class="col-sm-2"></div>
     </div>
