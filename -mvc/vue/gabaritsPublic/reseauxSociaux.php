@@ -32,5 +32,15 @@
                 </a>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="well">
+                <h3>Discord</h3>
+                <hr>
+                <a href="https://discord.gg/EfkUuC2">
+                    <img src="<?php echo IMAGES . 'imgDiscord.svg' ?>" height="100" alt="Discord">
+                    <h4>https://discord.gg/EfkUuC2</h4>
+                </a>
+            </div>
+        </div>
     </div>
 </div><br>

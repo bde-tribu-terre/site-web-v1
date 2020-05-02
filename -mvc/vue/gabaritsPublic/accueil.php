@@ -31,7 +31,7 @@
         <div class="col-sm-12">
             <h3>Retrouvez-nous sur les réseaux !</h3>
             <br>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <a href="https://www.facebook.com/bdeTribuTerre/">
                     <div class="well">
                         <h4>Notre page Facebook</h4>
@@ -41,7 +41,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <a href="https://www.instagram.com/tribu.terre/">
                     <div class="well">
                         <h4>Notre compte Instagram</h4>
@@ -51,12 +51,22 @@
                     </div>
                 </a>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <a href="https://twitter.com/Tributerre45/">
                     <div class="well">
                         <h4>Notre compte Twitter</h4>
                         <p>
                             <img src="<?php echo IMAGES . 'imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
+                        </p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a href="https://discord.gg/EfkUuC2">
+                    <div class="well">
+                        <h4>Notre serveur Discord</h4>
+                        <p>
+                            <img src="<?php echo IMAGES . 'imgDiscord.svg' ?>" height="64" width="64" alt="Twitter">
                         </p>
                     </div>
                 </a>
