@@ -9,8 +9,8 @@
             <br>
             <p>
                 Tribu-terre est une association d’étudiants ayant pour but de représenter les étudiants du CoST et de
-                l'OSUC, de dynamiser la vie étudiante et de d'offfrir une dimension culturelle, évènementielle, ou
-                encore écologique aux étudiants d’Orléans autour des sciences.
+                l'OSUC, de dynamiser la vie étudiante et d'offrir une dimension culturelle, évènementielle, ou encore
+                écologique aux étudiants d’Orléans autour des sciences.
             </p>
             <p>
                 Votre association vous représente auprès de l'administration universitaire du CoST et de l’OSUC depuis
