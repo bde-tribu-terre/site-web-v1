@@ -9,7 +9,7 @@ function surligne(input, erreur) {
 }
 
 function verifForm(form) {
-    let elements = form.elements
+    let elements = form.elements;
     for (let i = 0; i < elements.length; i++) {
         if (elements[i].type !== 'submit') {
             elements[i].onblur(elements[i]);
