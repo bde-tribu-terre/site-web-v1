@@ -79,6 +79,7 @@
                 <h3>Pôle Goodies</h3>
                 <hr>
                 <div class="text-justify retrait">
+                    <!-- Auteur : Maxence PIAT. -->
                     <p>
                         Tribu-Terre propose plusieurs types de goodies au nom de l’association comme des pulls,
                         des pins, des stickers et même des goodies à destination des étudiants comme des trousses à
@@ -115,8 +116,26 @@
                 <h3>Pôle Communication</h3>
                 <hr>
                 <div class="text-justify retrait">
+                    <!-- Auteur : Lia-May DECOBECQ. -->
                     <p>
-                        Texte pôle communication.
+                        Notre rôle, en tant que pôle communication, est de vous transmettre nos informations pour que
+                        vous soyez toujours au courant des nouveautés de Tribu-Terre. Nous essayons au mieux de vous
+                        divertir et d’être présents pour vous afin de relayer les actualités du CoST et de nos divers
+                        évènements (soirées, conférences...), vous proposer des contenus variés et des partages qui
+                        pourraient vous intéresser, ainsi que tout ce qui est bon à savoir sur Tribu-Terre.
+                    </p>
+                    <p>
+                        Nous sommes présents sur trois réseaux :
+                        <a href="https://www.facebook.com/bdeTribuTerre/">Facebook</a>,
+                        <a href="https://instagram.com/tribu.terre?igshid=1nskuzt0d9nhb">Instagram</a> et
+                        <a href="https://twitter.com/Tributerre45?s=09">Twitter</a>.
+                    </p>
+                    <p>
+                        Ce pôle est essentiel à toute association, il est le lien entre vous, chers étudiants et les
+                        membres de votre association dévouée. Il vous ouvre à un monde d’activités variées : affiches,
+                        stories Instagram et Twitter et publications de tous types. De quoi prendre plaisir à faire de
+                        beaux textes et visuels et échanger un peu de nos idées, nos inspirations, nos passions avec
+                        vous.
                     </p>
                 </div>
             </div>
