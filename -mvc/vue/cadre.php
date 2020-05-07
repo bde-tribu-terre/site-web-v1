@@ -11,7 +11,7 @@
     <script src="<?php echo RACINE . '-mvc/vue/script.js' ?>"></script>
 </head>
 <body>
-<div>
+<div class="page-complete">
     <header>
         <?php require_once(PATH_TO_HEADER); ?>
     </header>
