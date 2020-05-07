@@ -96,7 +96,7 @@ html {
 ###                                                    JUMBOTRON                                                     ###
 ########################################################################################################################
 ######################################################################################################################*/
-.jumbotron { /* Retire la marge par défaut (vu qu'il faut coller la navbar) */
+.jumbotron-tribu-terre { /* Retire la marge par défaut (vu qu'il faut coller la navbar) */
     background-image: url("../../-images/imgFondMarbre.png");
     background-clip: border-box;
     background-repeat: no-repeat;
@@ -106,17 +106,24 @@ html {
     margin-bottom: 0;
 }
 
-.jumbotron p,
-.jumbotron h1,
-.jumbotron h2,
-.jumbotron h3,
-.jumbotron h4,
-.jumbotron h5 { /* Lueur blanche autour du texte du jumbotron */
+.jumbotron-tribu-terre p,
+.jumbotron-tribu-terre h1,
+.jumbotron-tribu-terre h2,
+.jumbotron-tribu-terre h3,
+.jumbotron-tribu-terre h4,
+.jumbotron-tribu-terre h5 { /* Lueur blanche autour du texte du jumbotron */
     text-shadow:
             5px 5px 5px #f3f3f3,
             -5px 5px 5px #f3f3f3,
             5px -5px 5px #f3f3f3,
             -5px -5px 5px #f3f3f3;
+}
+
+.jumbotron-admin { /* Retire la marge par défaut (vu qu'il faut coller la navbar) */
+    background-color: var(--navbar-couleur-1);
+    color: var(--navbar-couleur-4);
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 @media (max-width: 767px) { /* Le jumbotron ne sera pas fixe sur mobile (problèmes de performances) */
@@ -196,9 +203,25 @@ html {
 ###                                                      FOOTER                                                      ###
 ########################################################################################################################
 ######################################################################################################################*/
-footer {
-    background-color: #f2f2f2;
+.footer-tribu-terre {
     padding: 25px;
+    background-color: #f2f2f2;
+}
+
+.footer-admin {
+    padding: 25px;
+    background-color: var(--navbar-couleur-1);
+    color: var(--navbar-couleur-4);
+}
+
+.footer-admin a { /* Les liens restent blancs même survolés */
+    text-decoration: underline;
+    color: white;
+}
+
+.footer-admin a:hover {
+    font-weight: bold;
+    color: white;
 }
 
 .texte-footer {

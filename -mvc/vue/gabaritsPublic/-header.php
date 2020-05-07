@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron jumbotron-tribu-terre">
     <div class="container text-center">
         <a href="<?php echo RACINE ?>">
             <img src="<?php echo IMAGES .'imgLogoMini.png' ?>" alt="Logo" height="300">
