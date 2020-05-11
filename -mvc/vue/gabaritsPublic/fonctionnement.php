@@ -10,7 +10,6 @@
                 confondre avec les corporations ou les syndicats par exemple), c'est-à-dire qu'elle se compose d'un
                 bureau restreint, de membres actifs et de membres adhérents.
             </p>
-            <br>
             <p>
                 Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos
                 <a href="<?php echo RACINE . 'association/fonctionnement/statuts/' ?>">statuts</a>. Mais voici une
@@ -53,7 +52,6 @@
                     sont les responsables législatifs et financiers de l'association.
                 </li>
             </ul>
-            <br>
             <p>
                 Régulièrement, tous ces membres se réunissent pour faire un bilan des projets passés et futurs des
                 <a href="<?php echo RACINE . 'association/poles/' ?>">différents pôles</a>, prendre des décisions
@@ -73,7 +71,6 @@
                 les statuts, ou modifier le Conseil d'Administration (par exemple lors de la dissolution de
                 l'association).
             </p>
-            <br>
             <p>
                 Tribu-Terre est une association à but non lucratif. Cela signifie que tout l'argent récupéré par
                 l'association par l'intermédiaire des adhésions, des divers ventes ou encore de subventions est
@@ -81,5 +78,14 @@
             </p>
         </div>
         <div class="col-sm-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <br>
+            <img class="img-arrondi" src="<?php echo IMAGES . 'imgAG.png' ?>" alt="imgOrlinzCup">
+            <br>
+        </div>
+        <div class="col-sm-2"></div>
     </div>
 </div><br>
