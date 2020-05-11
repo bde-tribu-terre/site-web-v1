@@ -3,7 +3,7 @@
     <hr>
     <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-sm-3 text-center">
+        <div class="col-sm-3">
             <img class="img-responsive" src="<?php echo IMAGES . 'imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
         </div>
         <div class="col-sm-7">
