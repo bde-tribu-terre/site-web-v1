@@ -23,6 +23,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item<?php echo GABARIT == 'presentation.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/' ?>">Qui sommes-nous ?</a></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'pourquoiAdherer.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">Pourquoi adhérer ?</a></li>
+                    <li><a class="dropdown-item<?php echo GABARIT == 'ouNousTrouver.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/ou-nous-trouver/' ?>">Où nous trouver ?</a></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'reseauxSociaux.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">Réseaux sociaux</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'partenaires.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/partenaires/' ?>">Partenaires</a></li>
