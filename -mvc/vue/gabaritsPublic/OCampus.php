@@ -3,10 +3,10 @@
     <hr>
     <div class="row">
         <div class="col-sm-1"></div>
-        <div class="col-sm-4">
+        <div class="col-sm-3 text-center">
             <img class="img-responsive" src="<?php echo IMAGES . 'imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-7">
             <div class="text-justify retrait">
                 <!-- Auteur : Simon MEDELLI. -->
                 <p>
