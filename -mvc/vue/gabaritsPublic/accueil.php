@@ -211,7 +211,7 @@
                                     <a href="https://www.facebook.com/FNEBmono">
                                         Page Facebook
                                     </a> |
-                                    <a href="https://www.ocampus.fr/">
+                                    <a href="https://www.fneb.fr/">
                                         Site Web
                                     </a>
                                 </p>
