@@ -35,7 +35,7 @@
                 associations scientifiques de France.
             </p>
             <p>
-                Nous disposons aussi d’<a href="<?php echo RACINE . 'association/ou-nous-trouver/' ?>">un local à l’OSUC
+                Nous disposons aussi <a href="<?php echo RACINE . 'association/ou-nous-trouver/' ?>">d’un local à l’OSUC
                 </a> dans lequel vous êtes les bienvenus et où vous pouvez d’ailleurs retrouver les membres de notre
                 bureau grâce à nos évènements et permanences. Et si vous ne pouvez pas venir au local, alors vous pouvez
                 nous suivre sur <a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">nos réseaux</a> où vous
