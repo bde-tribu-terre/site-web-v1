@@ -13,7 +13,7 @@
 <body>
 <div class="page-complete">
     <header>
-        <?php require_once(PATH_TO_HEADER); ?>
+        <?php require_once PATH_TO_HEADER; ?>
     </header>
     <main>
         <?php require_once PATH_TO_GABARIT; ?>
