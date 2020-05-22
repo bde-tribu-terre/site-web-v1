@@ -20,7 +20,7 @@
             </p>
             <p class="text-justify retrait">
                 <a href="<?php echo RACINE . 'association/partenaires/' ?>">
-                    Plus de détails sur les partenaires et les tarifs.
+                    Plus de détails sur les partenaires et les tarifs préférentiels.
                 </a>
             </p>
             <h4 class="text-center">Pour nos événements</h4>
