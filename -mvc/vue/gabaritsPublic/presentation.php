@@ -29,7 +29,7 @@
                 Mais il ne s’agit pas uniquement de se refermer sur nous-même et c'est dans ce but que Tribu-Terre vous
                 représente aussi au sein de fédérations afin d'échanger avec d'autres associations, de débattre de
                 divers sujets et de toujours vous apporter le meilleur. Pour cela, nous adhérons à deux fédérations :
-                d'une part <a href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">ÔCampus ?</a>,
+                d'une part <a href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">ÔCampus</a>,
                 fédération regroupant les associations orléanaises, et d'autre part la
                 <a href="<?php echo RACINE . 'association/reseau-associatif/fneb/' ?>">FNEB</a>, qui représente des
                 associations scientifiques de France.
@@ -38,7 +38,7 @@
                 Nous disposons aussi d’<a href="<?php echo RACINE . 'association/ou-nous-trouver/' ?>">un local à l’OSUC
                 </a> dans lequel vous êtes les bienvenus et où vous pouvez d’ailleurs retrouver les membres de notre
                 bureau grâce à nos évènements et permanences. Et si vous ne pouvez pas venir au local, alors vous pouvez
-                nous suivre sur<a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">nos réseaux</a> où vous
+                nous suivre sur <a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">nos réseaux</a> où vous
                 retrouverez toute l’actualité de votre association préférée !
             </p>
         </div>
