@@ -36,15 +36,12 @@
                 <li>
                     Certains membres actifs peuvent aussi être nommés « responsable d'activité » par le Conseil
                     d'Administration et devenir des Chargés de Mission ou des Vice-présidents affiliés à des pôles en
-                    particulier.
+                    particulier. Pour cela, il suffit d’être adhérent, de
+                    <a href="<?php echo RACINE . 'association/contact/' ?>">nous contacter</a> et de venir à un conseil
+                    d’administration pour se présenter et annoncer sa candidature. Lors de la prochaine réunion, un vote
+                    aura lieu pour vous intégrer officiellement à votre nouveau poste.
                 </li>
             </ul>
-            <p>
-                Pour cela, il suffit d’être adhérent, de
-                <a href="<?php echo RACINE . 'association/contact/' ?>">nous contacter</a> et de venir à un conseil
-                d’administration pour se présenter et annoncer sa candidature. Lors de la prochaine réunion, un vote
-                aura lieu pour vous intégrer officiellement à votre nouveau poste.
-            </p>
             <ul class="liste-retrait">
                 <li>
                     Enfin, chaque association est composé d'un bureau restreint. Il s'agit du Président, du
