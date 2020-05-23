@@ -68,7 +68,7 @@
                 les statuts, ou modifier le Conseil d'Administration (par exemple lors de la dissolution de
                 l'association).
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Tribu-Terre est une association à but non lucratif. Cela signifie que tout l'argent récupéré par
                 l'association par l'intermédiaire des adhésions, des divers ventes ou encore de subventions est
                 obligatoirement réutilisé pour les étudiants.
@@ -80,7 +80,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <br>
-            <img class="img-arrondi" src="<?php echo IMAGES . 'imgAG.png' ?>" alt="imgOrlinzCup">
+            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgAG.png' ?>" alt="imgOrlinzCup">
             <br>
         </div>
         <div class="col-sm-2"></div>

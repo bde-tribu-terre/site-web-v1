@@ -5,7 +5,7 @@
         <!-- Auteur : Simon MEDELLI. -->
         <div class="col-sm-1"></div>
         <div class="col-sm-3">
-            <img class="img-responsive" src="<?php echo IMAGES . 'imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
+            <img class="img-responsive ombre" src="<?php echo IMAGES . 'imgLogoOCampus.png' ?>" alt="imgLogoOCampus">
         </div>
         <div class="col-sm-7">
             <p class="text-justify retrait">
@@ -30,7 +30,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <br>
-            <img class="img-arrondi" src="<?php echo IMAGES . 'imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
+            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
         </div>
         <div class="col-sm-2"></div>
     </div>
