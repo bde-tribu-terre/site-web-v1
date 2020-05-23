@@ -62,4 +62,12 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <br>
+            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgCarteAdherent.png' ?>" alt="imgCarteAdherent">
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
 </div><br>
