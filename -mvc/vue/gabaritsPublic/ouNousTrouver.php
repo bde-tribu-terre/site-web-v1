@@ -4,8 +4,8 @@
     <div class="row">
         <!-- Auteur : Anaël BARODINE. -->
         <div class="col-sm-1"></div>
-        <div class="col-sm-10 text-justify retrait">
-            <p>
+        <div class="col-sm-10">
+            <p class="text-justify retrait">
                 En plus d'une présence en ligne sur nos
                 <a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">réseaux sociaux</a>, Tribu-Terre
                 dispose aussi d'un local se situant à l'OSUC. Il se trouve dans la salle 4 après la cafétéria. Le
@@ -26,8 +26,8 @@
     <div class="row">
         <!-- Auteur : Anaël BARODINE. -->
         <div class="col-sm-1"></div>
-        <div class="col-sm-10 text-justify retrait">
-            <p>
+        <div class="col-sm-10">
+            <p class="text-justify retrait">
                 Il s'agit d'une salle de repos ouverte à tous, dans laquelle vous pourrez rencontrer des membres du
                 bureau de l'association qui seront en capacité de vous renseigner sur cette dernière, ses différentes
                 actions ou ses différents événements. Vous pourrez ainsi demander à
@@ -37,7 +37,7 @@
                 totalement gratuit), ou bien acheter un de
                 <a href="<?php echo RACINE . 'goodies/' ?>">nos goodies</a> (en fonction des disponibilités).
             </p>
-            <p>
+            <p class="text-justify retrait">
                 En outre, le local a également une fonction de salle de pause. Vous pourrez y trouver trois
                 micro-ondes en libre utilisation, une bouilloire, du thé et du café gratuits, des tables et des
                 canapés qui feraient oublier qu'on est à la fac pour travailler. C'est le rendez-vous méridien

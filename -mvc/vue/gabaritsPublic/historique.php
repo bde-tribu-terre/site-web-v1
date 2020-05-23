@@ -1,11 +1,11 @@
 <div class="container text-center">
     <h3>Histoire de l'association</h3>
     <hr>
-    <div class="row text-justify retrait">
+    <div class="row">
         <!-- Auteur : Anaël BARODINE. -->
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <p>
+            <p class="text-justify retrait">
                 L'association Tribu-Terre fut fondée en 2003 par des étudiants en géologie à l'OSUC, en tant
                 qu'association des acteurs en géosciences d'Orléans. Elle a pendant des années pour objectif
                 d'accompagner les étudiants à l'OSUC dans leurs études, en partageant par exemple des publications et
@@ -15,20 +15,20 @@
                 géologique importante. Elle entre en contact avec l'administration de l'OSUC pour obtenir une salle de
                 repos pour les étudiants qui deviendra très vite le local de l'association.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Au cours de l'année 2014 et à l'initiative du président Etienne <span class="pc">Marceau</span>,
                 Tribu-Terre se rapproche de la Fédération Nationale des étudiants en Sciences Exactes, Naturelles et
                 Techniques (FNEB) dans le but d'étendre son réseau en France. Elle devient officiellement membre à part
                 entière de la fédération le 13 Juin 2015, sous la présidence d'Antoine <span class="pc">Saucray</span>.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 <!--Le 19 février 2018 = 1e AG-->En octobre 2017, sous la présidence de Quentin
                 <span class="pc">Baju</span>, Tribu-Terre s'associe avec les associations étudiantes de la ville
                 d'Orléans pour fonder la fédération ÔCampus, dont les missions sont de faciliter la communication entre
                 les associations, d'organiser des événements inter-filières et de contribuer à la vie étudiante
                 Orléanaise.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 En 2018, le bureau présidé par Quentin <span class="pc">Baju</span> présent que trop peu de nouveaux
                 étudiants ont la volonté de s'inverstir dans le futur de l'association. Dans le même temps,
                 l'Université d'Orléans met en place pour l'année suivante le système de portails pour les étudiants en
@@ -38,14 +38,14 @@
                 année, ce qui à terme priverait l'association de beaucoup de potentiels nouveaux adhérents et futurs
                 membres du bureau.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Pour sauver Tribu-Terre, le bureau décide lors de l'Assemblée Générale du 18 avril 2018, qui voit la
                 réélection de Quentin <span class="pc">Baju</span> comme président, d'ouvrir l'association aux autres
                 filières scientifiques du campus d'Orléans. C'est alors que Tribu-Terre devient officiellement
                 l'Association des Étudiants Scientifiques de l'Université d'Orléans, et son bureau se compose rapidement
                 d'étudiants de différentes disciplines scientifiques.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Malgré tout, la géologie reste un domaine dans lequel Tribu-Terre s'investit en priorité, et l'OSUC
                 reste son plus grand soutient. L'histoire de l'association est une valeur importante pour ses membres,
                 et l'association s'engage à ne pas tourner le dos à ses origines.
@@ -55,10 +55,11 @@
     </div>
     <h3>Historique des bureaux</h3>
     <hr>
-    <div class="row text-justify retrait">
+    <div class="row">
+        <!-- Auteur : Anaël BARODINE. -->
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <p>
+            <p class="text-justify retrait">
                 Comme toute association étudiante, le bureau de Tribu-Terre évolue régulièrement grâce à
                 l'implication de nouveaux membres ! Tous les ans, une Assemblée Générale est organisée dans laquelle
                 les personnes composant le bureau de l'année passée démissionnent. Un vote est alors organisé et les
@@ -66,12 +67,12 @@
                 (ou se représenter) comme membre du prochain bureau. L'ensemble des personnes ainsi élues composeront le
                 bureau de Tribu-Terre pendant un an, jusqu'à la date de la prochaine Assemblée Générale.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 <a href="<?php echo RACINE . 'association/fonctionnement/' ?>">
                     En savoir plus sur le fonctionnement de l'association.
                 </a>
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Ci-dessous la liste des bureaux votés à chacune des Assemblées Générales, qui tous ont su faire
                 évoluer Tribu-Terre pour la transformer en ce qu'elle est aujourd'hui.
             </p>
@@ -79,7 +80,6 @@
         <div class="col-sm-1"></div>
     </div>
     <hr>
-    <!-- TODO: https://getbootstrap.com/docs/4.3/components/collapse/ -->
     <!-- Ici vont les bureaux -->
     <!-- \/ AG 2019 \/ -->
     <div>

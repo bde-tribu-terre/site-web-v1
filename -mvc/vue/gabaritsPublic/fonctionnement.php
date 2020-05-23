@@ -1,21 +1,21 @@
 <div class="container text-center">
     <h3>Fonctionnement de l'association</h3>
     <hr>
-    <div class="row text-justify retrait">
+    <div class="row">
         <!-- Auteur : Jade BEAUMONT. -->
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <p>
+            <p class="text-justify retrait">
                 Tribu-Terre fonctionne de la même manière que la pluparts des associations étudiantes (à ne pas
                 confondre avec les corporations ou les syndicats par exemple), c'est-à-dire qu'elle se compose d'un
                 bureau restreint, de membres actifs et de membres adhérents.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos
                 <a href="<?php echo RACINE . 'association/fonctionnement/statuts/' ?>">statuts</a>. Mais voici une
                 petite explication plus « pratique » :
             </p>
-            <ul class="liste-retrait">
+            <ul class="text-justify liste-retrait">
                 <li>
                     Vous pouvez intégrer l’association en adhérant au cours de l'année universitaire, ce qui permet de
                     profiter de nombreux avantages. Actuellement, le montant de la côtisation des adhérents est de 5€.
@@ -26,10 +26,10 @@
                     bienfaiteur.
                 </li>
             </ul>
-            <p>
+            <p class="text-justify retrait">
                 Vous souhaitez vous investir plus concrètement dans l'association et devenir membre du bureau ?
             </p>
-            <ul class="liste-retrait">
+            <ul class="text-justify liste-retrait">
                 <li>
                     Vous pouvez participer à l’activité de différents pôles en devenant membre actif.
                 </li>
@@ -42,28 +42,28 @@
                     aura lieu pour vous intégrer officiellement à votre nouveau poste.
                 </li>
             </ul>
-            <ul class="liste-retrait">
+            <ul class="text-justify liste-retrait">
                 <li>
                     Enfin, chaque association est composé d'un bureau restreint. Il s'agit du Président, du
                     Vice-Président Général, du Trésorier, du Vice-Trésorier, du Secrétaire et du Vice-Secrétaire. Ils
                     sont les responsables législatifs et financiers de l'association.
                 </li>
             </ul>
-            <p>
+            <p class="text-justify retrait">
                 Régulièrement, tous ces membres se réunissent pour faire un bilan des projets passés et futurs des
                 <a href="<?php echo RACINE . 'association/poles/' ?>">différents pôles</a>, prendre des décisions
                 importantes, voter de nouveaux membres mais aussi faire un bilan trésorerie où les trésorier et
                 vice-trésorier récapitulent les dépenses effectuées et à venir. C'est ce que l'on appelle un Conseil
                 d'Administration.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Une fois par an, nous organison aussi une Assemblée Générale Ordinaire. Au cours de celle-ci, les
                 membres du Conseil d'Administration (adhérents, membres bienfaiteurs, membres actifs et bureau
                 restreint) se réunissent pour faire le bilan des activités de l’association sur l’année, valider les
                 dépenses du mandat et en général, procéder au renouvellement  complet des membres du Conseil
                 d'Administration.
             </p>
-            <p>
+            <p class="text-justify retrait">
                 Cependant, il est aussi possible de faire une Assemblée Générale Extraordinaire, lorsqu'il faut modifier
                 les statuts, ou modifier le Conseil d'Administration (par exemple lors de la dissolution de
                 l'association).
