@@ -11,6 +11,7 @@
 # A.I - Constantes Générales                                                                                           #
 ########################################################################################################################
 define('IMAGES', RACINE . '-images/');
+define('VERSION_SITE', file_get_contents(RACINE . '-mvc/vue/version.txt'));
 
 ########################################################################################################################
 # A.II - Fonction d'Initialisation des Constantes Spécifiques & Affichage du Cadre                                     #
