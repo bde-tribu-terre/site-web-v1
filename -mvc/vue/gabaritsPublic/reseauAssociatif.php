@@ -11,6 +11,12 @@
                 C'est le texte général qui renvoie vers la page FNEB et ÔCampus.
                 Il peut y avoir des liens, des images, des trucs dans le texte etc...
             </p>
+            <p>
+                <a href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">ÔCampus</a>
+            </p>
+            <p>
+                <a href="<?php echo RACINE . 'association/reseau-associatif/fneb/' ?>">FNEB</a>
+            </p>
         </div>
         <div class="col-sm-1"></div>
     </div>
