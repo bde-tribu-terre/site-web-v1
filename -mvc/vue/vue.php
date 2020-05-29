@@ -73,7 +73,7 @@ function formaterTexte($texte) {
 function genererNom($membre) {
     return
         htmlentities($membre->prenomMembres, ENT_QUOTES, "UTF-8") .
-        ' <span class="pc">' .
+        '<span class="pc">' .
         htmlentities($membre->nomMembres, ENT_QUOTES, "UTF-8") .
         '</span>';
 }
@@ -788,7 +788,7 @@ function afficherAccueil() {
                 $goodiesIndicators .
             '</ol>' .
             '<!-- Wrapper for slides -->' .
-                '<div class="carousel-inner" role="listbox">' .
+            '<div class="carousel-inner" role="listbox">' .
                 '<!-- Ici on liste les goodies -->' .
                 $goodies .
             '</div>' .
@@ -1025,7 +1025,6 @@ function afficherArticlePrecis($article) {
         $carouselArticleIndicator = '<ol class="carousel-indicators">';
         $carouselArticleImages = '<div class="carousel-inner" role="listbox">';
 
-        # Le reste des images
         foreach ($lignesImages as $ligne) {
             $lien = $ligne->lienImagesArticles;
             $carouselArticleIndicator .= '<li data-target="#carouselArticle" data-slide-to="' . $nb++ . '" ' . ($nb == 1 ? ' class="active"' : '') . '></li>';
