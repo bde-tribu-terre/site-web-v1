@@ -50,12 +50,24 @@
                 </p>
             </div>
             <!-- \/ Pôle Cuisine \/ -->
+            <!-- Auteur : Lou GEORGES. -->
             <div class="well">
                 <h1>🍳</h1>
                 <h3>Pôle Cuisine</h3>
                 <hr>
                 <p class="text-justify retrait">
-                    Texte pôle cuisine.
+                    Vous aimez cuisiner ? Marre de manger des pâtes ? Tous à vos fourneaux ! Le pôle cuisine est fait
+                    pour vous. Nous vous proposons des recettes simples à réaliser, saines et peu coûteuses.
+                </p>
+                <p class="text-justify retrait">
+                    Ouvert à tous, le pôle cuisine est avant tout un moyen de partager. Chaque semaine sur le site
+                    Internet de Tribu-Terre, les membres du pôle cuisine proposeront conseils et techniques pour
+                    cuisiner vite et bien ! <a href="<?php echo RACINE . 'articles/' ?>">Consulter les articles.</a>
+                </p>
+                <p class="text-justify retrait">
+                    Si vous désirez partager vos idées ou même participer aux tutos gourmands, alors contactez-nous en
+                    privé sur Facebook, à nos noms : Louis <span class="pc">Joubert</span> et Lou
+                    <span class="pc">Georges</span>.
                 </p>
             </div>
             <!-- \/ Pôle Partenariat \/ -->
