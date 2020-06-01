@@ -1348,7 +1348,7 @@ function afficherEventPrecis($event) {
     // define('TITLE', 'Évents');
     define('GABARIT', 'eventPrecis.php');
 
-    $date = $event->idEvents;
+    $date = $event->dateEvents;
     $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
     $nbJoursStr = '';
     if ($nbJours == 0) {
