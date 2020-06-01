@@ -96,9 +96,8 @@
                     recherche constante de nouveaux goodies à proposer aux étudiants.
                 </p>
                 <p class="text-justify retrait">
-                    <a href="<?php echo RACINE . 'goodies/' ?>">
-                        La liste complète ainsi que les prix des goodies est disponible sur le site internet.
-                    </a>
+                    <a href="<?php echo RACINE . 'goodies/' ?>">La liste complète ainsi que les prix des goodies est
+                    disponible sur le site internet.</a>
                 </p>
             </div>
         </div>
