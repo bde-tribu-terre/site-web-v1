@@ -41,6 +41,7 @@
     <div class="row">
         <div class="col-sm-6">
             <!-- \/ Pôle Culture \/ -->
+            <!-- Auteur : Xxxx XXXX. -->
             <div class="well">
                 <h1>🔬</h1>
                 <h3>Pôle Culture</h3>
@@ -79,7 +80,10 @@
                 <p class="text-justify retrait">
                     Le pôle partenariat s’occupe de rechercher des partenaires auprès de petites ou grosses entreprises,
                     de magasins, de sites internet, etc... qu’il soit financier, matériel ou encore pour des échanges de
-                    visibilité. De plus, il s'occupe de développer les relations avec les partenaires existants ou
+                    visibilité.
+                </p>
+                <p class="text-justify retrait">
+                    De plus, il s'occupe de développer les relations avec les partenaires existants ou
                     potentiels pour l’association tout en les "fidélisant".
                 </p>
             </div>
@@ -107,6 +111,7 @@
         </div>
         <div class="col-sm-6">
             <!-- \/ Pôle Événementiel \/ -->
+            <!-- Auteur : Xxxx XXXX. -->
             <div class="well">
                 <h1>🎫</h1>
                 <h3>Pôle Événementiel</h3>
