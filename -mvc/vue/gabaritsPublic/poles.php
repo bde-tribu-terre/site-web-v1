@@ -118,6 +118,10 @@
                 <hr>
                 <p class="text-justify retrait">
                     Texte pôle événementiel.
+                    <!--
+                    C’est l’un des pôles essentiel au sein d’une association étudiante. Ils se chargent de
+                    l’organisation de tous les événements de début d’année, et de notamment l'organisation des soirées.
+                    -->
                 </p>
             </div>
             <!-- \/ Pôle Communication \/ -->
