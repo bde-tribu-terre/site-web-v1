@@ -71,12 +71,16 @@
                 </p>
             </div>
             <!-- \/ Pôle Partenariat \/ -->
+            <!-- Auteur : William ABESSOLO. -->
             <div class="well">
                 <h1>🤝</h1>
                 <h3>Pôle Partenariat</h3>
                 <hr>
                 <p class="text-justify retrait">
-                    Texte pôle partenariat.
+                    Le pôle partenariat s’occupe de rechercher des partenaires auprès de petites ou grosses entreprises,
+                    de magasins, de sites internet, etc... qu’il soit financier, matériel ou encore pour des échanges de
+                    visibilité. De plus, il s'occupe de développer les relations avec les partenaires existants ou
+                    potentiels pour l’association tout en les "fidélisant".
                 </p>
             </div>
             <!-- \/ Pôle Goodies \/ -->
@@ -112,33 +116,31 @@
                 </p>
             </div>
             <!-- \/ Pôle Communication \/ -->
+            <!-- Auteur : Lia-May DECOBECQ. -->
             <div class="well">
                 <h1>🎤</h1>
                 <h3>Pôle Communication</h3>
                 <hr>
-                <div class="text-justify retrait">
-                    <!-- Auteur : Lia-May DECOBECQ. -->
-                    <p class="text-justify retrait">
-                        Notre rôle, en tant que pôle communication, est de vous transmettre nos informations pour que
-                        vous soyez toujours au courant des nouveautés de Tribu-Terre. Nous essayons au mieux de vous
-                        divertir et d’être présents pour vous afin de relayer les actualités du CoST et de nos divers
-                        évènements (soirées, conférences...), vous proposer des contenus variés et des partages qui
-                        pourraient vous intéresser, ainsi que tout ce qui est bon à savoir sur Tribu-Terre.
-                    </p>
-                    <p class="text-justify retrait">
-                        Nous sommes présents sur trois réseaux :
-                        <a href="https://www.facebook.com/bdeTribuTerre/">Facebook</a>,
-                        <a href="https://instagram.com/tribu.terre?igshid=1nskuzt0d9nhb">Instagram</a> et
-                        <a href="https://twitter.com/Tributerre45?s=09">Twitter</a>.
-                    </p>
-                    <p class="text-justify retrait">
-                        Ce pôle est essentiel à toute association, il est le lien entre vous, chers étudiants et les
-                        membres de votre association dévouée. Il vous ouvre à un monde d’activités variées : affiches,
-                        stories Instagram et Twitter et publications de tous types. De quoi prendre plaisir à faire de
-                        beaux textes et visuels et échanger un peu de nos idées, nos inspirations, nos passions avec
-                        vous.
-                    </p>
-                </div>
+                <p class="text-justify retrait">
+                    Notre rôle, en tant que pôle communication, est de vous transmettre nos informations pour que
+                    vous soyez toujours au courant des nouveautés de Tribu-Terre. Nous essayons au mieux de vous
+                    divertir et d’être présents pour vous afin de relayer les actualités du CoST et de nos divers
+                    évènements (soirées, conférences...), vous proposer des contenus variés et des partages qui
+                    pourraient vous intéresser, ainsi que tout ce qui est bon à savoir sur Tribu-Terre.
+                </p>
+                <p class="text-justify retrait">
+                    Nous sommes présents sur trois réseaux :
+                    <a href="https://www.facebook.com/bdeTribuTerre/">Facebook</a>,
+                    <a href="https://instagram.com/tribu.terre?igshid=1nskuzt0d9nhb">Instagram</a> et
+                    <a href="https://twitter.com/Tributerre45?s=09">Twitter</a>.
+                </p>
+                <p class="text-justify retrait">
+                    Ce pôle est essentiel à toute association, il est le lien entre vous, chers étudiants et les
+                    membres de votre association dévouée. Il vous ouvre à un monde d’activités variées : affiches,
+                    stories Instagram et Twitter et publications de tous types. De quoi prendre plaisir à faire de
+                    beaux textes et visuels et échanger un peu de nos idées, nos inspirations, nos passions avec
+                    vous.
+                </p>
             </div>
             <!-- \/ Pôle Journal \/ -->
             <!-- Auteur : Jade BEAUMONT. -->
