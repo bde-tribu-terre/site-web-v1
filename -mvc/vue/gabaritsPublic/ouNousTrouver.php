@@ -27,7 +27,7 @@
             <div>
                 <small>
                     <a href="https://www.openstreetmap.org/?mlat=47.83392&amp;mlon=1.94255#map=18/47.83392/1.94255">
-                        Afficher une carte plus grande
+                        Afficher une carte plus grande.
                     </a>
                 </small>
             </div>
