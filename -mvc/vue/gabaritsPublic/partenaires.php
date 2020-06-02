@@ -35,6 +35,11 @@
     <br>
     <div class="row">
         <div class="col-sm-12">
+            <div>
+                <small>
+                    Cliquer sur l'image pour afficher en taille réelle.
+                </small>
+            </div>
             <a href="<?php echo IMAGES . 'imgBrochurePartenariats.jpg' ?>">
                 <img class="img-arrondi ombre"
                      src="<?php echo IMAGES . 'imgBrochurePartenariats.jpg' ?>"
