@@ -26,7 +26,7 @@
                 </li>
                 <li> <!-- Depuis 01/2020 -->
                     <a href="https://www.facebook.com/secretpremieres/">Secret Premieres</a> permet à tous les étudiants
-                    de profiter d'avant premières au cinéma ainsi que de bons plans divers.
+                    de profiter d'avant-premières au cinéma ainsi que de bons plans divers.
                 </li>
             </ul>
         </div>
