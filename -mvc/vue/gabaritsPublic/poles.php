@@ -221,4 +221,24 @@
             </div>
         </div>
     </div>
+    <!--
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <! -- \/ Trésorerie \/ -- >
+            <! -- Auteur : Xxxx XXXX. -- >
+            <div class="well">
+                <h1>💶</h1>
+                <h3>Trésorerie</h3>
+                <hr>
+                <p class="text-justify retrait">
+                    C’est LE pôle clé de toute association étudiante. Le trésorier établit ou fait établir, sous sa
+                    responsabilité, les comptes de l'association. Il est également chargé de l'appel des cotisations et
+                    procède, sous le contrôle du Président, au paiement des dépenses et à la réception des recettes.
+                </p>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    -->
 </div><br>
