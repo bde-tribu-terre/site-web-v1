@@ -1,30 +1,35 @@
 <?php
 ########################################################################################################################
-# Fonctions de mise en tableau                                                                                         #
 ########################################################################################################################
-function MET_SQLLigneUnique($object) {
-    if ($object) {
-        $array = array();
-        foreach ($object as $key => $val) {
-            $array[$key] = is_string($val) ? htmlentities($val, ENT_QUOTES, 'UTF-8') : $val;
-        }
-        return $array;
-    }
-    return $object;
-}
-
-function MET_SQLLignesMultiples($arrayObject) {
-    $array = array();
-    foreach ($arrayObject as $objectKey => $objectValue) {
-        $array[$objectKey] = MET_SQLLigneUnique($objectValue);
-    }
-    return $array;
-}
+###                                                                                                                  ###
+###                                                BASE DE DONNÉE SQL                                                ###
+###                                                                                                                  ###
+########################################################################################################################
+########################################################################################################################
 
 ########################################################################################################################
 # Fonction d'automation de requêtes SQL                                                                                #
 ########################################################################################################################
 function requeteSQL($requete, $variables = array(), $resultatUnique = false, $codeMessageSucces = NULL, $texteMessageSucces = NULL) {
+    function MET_SQLLigneUnique($object) {
+        if ($object) {
+            $array = array();
+            foreach ($object as $key => $val) {
+                $array[$key] = is_string($val) ? htmlentities($val, ENT_QUOTES, 'UTF-8') : $val;
+            }
+            return $array;
+        }
+        return $object;
+    }
+
+    function MET_SQLLignesMultiples($arrayObject) {
+        $array = array();
+        foreach ($arrayObject as $objectKey => $objectValue) {
+            $array[$objectKey] = MET_SQLLigneUnique($objectValue);
+        }
+        return $array;
+    }
+
     try {
         $connexion = getConnect();
         $prepare = $connexion->prepare($requete);
@@ -242,39 +247,38 @@ function MdlAjouterLog($code, $message) {
 # Évents                                                                                                               #
 ########################################################################################################################
 function MdlEventsTous($tri, $aVenir, $passes, $maxi) {
-    try {
-        $timestamp = time();
-        $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
-        $dt->setTimestamp($timestamp);
-
-        $ajd = $dt->format('Y-m-d');
-        switch ($tri) {
-            case 'FP':
-                $triSQL = ' ORDER BY dateEvents DESC';
-                break;
-            case 'PF':
-                $triSQL = ' ORDER BY dateEvents';
-                break;
-            default:
-                $triSQL = ''; // Normalement jamais atteint.
-        }
-        switch ($maxi) {
-            case NULL:
-                $maxiSQL = '';
-                break;
-            default:
-                $maxiSQL = ' LIMIT ' . $maxi;
-                break;
-        }
-        $where = " WHERE 1=2"; // Condition useless pour concaténer après.
-        if ($aVenir) {
-            $where .= " OR dateEvents>='" . $ajd . "'";
-        }
-        if ($passes) {
-            $where .= " OR dateEvents<'" . $ajd . "'";
-        }
-        $connexion = getConnect();
-        $requete =
+    switch ($tri) {
+        case 'FP':
+            $triSQL = ' ORDER BY dateEvents DESC';
+            break;
+        case 'PF':
+            $triSQL = ' ORDER BY dateEvents';
+            break;
+        default:
+            $triSQL = ''; // Normalement jamais atteint.
+    }
+    switch ($maxi) {
+        case NULL:
+            $maxiSQL = '';
+            break;
+        default:
+            $maxiSQL = ' LIMIT ' . $maxi;
+            break;
+    }
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+    $ajd = $dt->format('Y-m-d');
+    $where = " WHERE 1=2"; // Condition useless pour concaténer après.
+    if ($aVenir) {
+        $where .= " OR dateEvents>='" . $ajd . "'";
+    }
+    if ($passes) {
+        $where .= " OR dateEvents<'" . $ajd . "'";
+    }
+    ajouterRetourModele(
+        'events',
+        requeteSQL(
             "
             SELECT
                 idEvents AS id,
@@ -288,22 +292,15 @@ function MdlEventsTous($tri, $aVenir, $passes, $maxi) {
             " . $where . "
             " . $triSQL . "
             " . $maxiSQL . "
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('events', MET_SQLLignesMultiples($prepare->fetchall()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-        ajouterRetourModele('events', array());
-    }
+            "
+        )
+    );
 }
 
 function MdlEventPrecis($id) {
-    try {
-        $connexion = getConnect();
-        $requete =
+    ajouterRetourModele(
+        'event',
+        requeteSQL(
             "
             SELECT
                 idEvents AS id,
@@ -316,140 +313,121 @@ function MdlEventPrecis($id) {
                 Events
             WHERE
                 idEvents=:idEvents
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('event', MET_SQLLigneUnique($prepare->fetch()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-        ajouterRetourModele('event', NULL);
-    }
+            ",
+            array(
+                [':idEvents', $id, 'INT']
+            ),
+            true
+        )
+    );
 }
 
 function MdlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            INSERT INTO
-                Events
-            VALUES
-                (
-                    0,
-                    :titreEvents,
-                    :descEvents,
-                    :dateEvents,
-                    :heureEvents,
-                    :lieuEvents
-                )
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':titreEvents', $titre, PDO::PARAM_STR);
-        $prepare->bindValue(':descEvents', $desc, PDO::PARAM_STR);
-        $prepare->bindValue(':dateEvents', $date, PDO::PARAM_STR);
-        $prepare->bindValue(':heureEvents', $heure . ':' . $minute . ':00', PDO::PARAM_STR);
-        $prepare->bindValue(':lieuEvents', $lieu, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'L\'évent "' . $titre . '" a été ajouté avec succès !');
-        MdlAjouterLog(101, 'Ajout de l\'évent "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
+    requeteSQL(
+        "
+        INSERT INTO
+            Events
+        VALUES
+            (
+                0,
+                :titreEvents,
+                :descEvents,
+                :dateEvents,
+                :heureEvents,
+                :lieuEvents
+            )
+        ",
+        array(
+            [':titreEvents', $titre, 'STR'],
+            [':descEvents', $desc, 'STR'],
+            [':dateEvents', $date, 'STR'],
+            [':heureEvents', $heure . ':' . $minute . ':00', 'STR'],
+            [':lieuEvents', $lieu, 'STR']
+        ),
+        false,
+        201,
+        'L\'évent "' . $titre . '" a été ajouté avec succès !'
+    );
+    MdlAjouterLog(101, 'Ajout de l\'évent "' . $titre . '".');
 }
 
 function MdlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            UPDATE
-                Events
-            SET
-                titreEvents=:titreEvents,
-                descEvents=:descEvents,
-                dateEvents=:dateEvents,
-                heureEvents=:heureEvents,
-                lieuEvents=:lieuEvents
-            WHERE
-                idEvents=:idEvents
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
-        $prepare->bindValue(':titreEvents', $titre, PDO::PARAM_STR);
-        $prepare->bindValue(':descEvents', $desc, PDO::PARAM_STR);
-        $prepare->bindValue(':dateEvents', $date, PDO::PARAM_STR);
-        $prepare->bindValue(':heureEvents', $heure . ':' . $minute . ':00', PDO::PARAM_STR);
-        $prepare->bindValue(':lieuEvents', $lieu, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'L\'évent "' . $titre . '" a été modifié avec succès !');
-        MdlAjouterLog(102, 'Modification de l\'évent "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
+    requeteSQL(
+        "
+        UPDATE
+            Events
+        SET
+            titreEvents=:titreEvents,
+            descEvents=:descEvents,
+            dateEvents=:dateEvents,
+            heureEvents=:heureEvents,
+            lieuEvents=:lieuEvents
+        WHERE
+            idEvents=:idEvents
+        ",
+        array(
+            [':idEvents', $id, 'INT'],
+            [':titreEvents', $titre, 'STR'],
+            [':descEvents', $desc, 'STR'],
+            [':dateEvents', $date, 'STR'],
+            [':heureEvents', $heure . ':' . $minute . ':00', 'STR'],
+            [':lieuEvents', $lieu, 'STR']
+        ),
+        false,
+        201,
+        'L\'évent "' . $titre . '" a été modifié avec succès !'
+    );
+    MdlAjouterLog(102, 'Modification de l\'évent "' . $titre . '".');
 }
 
 function MdlSupprimerEvent($id) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            DELETE FROM
-                Events
-            WHERE
-                idEvents=:idEvents
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idEvents', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'L\'évent a été supprimé avec succès !');
-        MdlAjouterLog(103, 'Suppression d\'un évent (ID : ' . $id . ').');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
+    requeteSQL(
+        "
+        DELETE FROM
+            Events
+        WHERE
+            idEvents=:idEvents
+        ",
+        array(
+            [':idEvents', $id, 'INT']
+        ),
+        false,
+        201,
+        'L\'évent a été supprimé avec succès !'
+    );
+    MdlAjouterLog(103, 'Suppression d\'un évent (ID : ' . $id . ').');
 }
 
 ########################################################################################################################
 # Goodies                                                                                                              #
 ########################################################################################################################
 function MdlGoodiesTous($tri, $disponible, $bientot, $rupture) {
-    try {
-        switch ($tri) {
-            case 'nom':
-                $triSQL = ' ORDER BY titreGoodies';
-                break;
-            case 'prixAD':
-                $triSQL = ' ORDER BY prixADGoodies';
-                break;
-            case 'prixADD':
-                $triSQL = ' ORDER BY prixADGoodies DESC';
-                break;
-            case 'prixNAD':
-                $triSQL = ' ORDER BY prixNADGoodies';
-                break;
-            case 'prixNADD':
-                $triSQL = ' ORDER BY prixNADGoodies DESC';
-                break;
-            default:
-                $triSQL = '';
-        }
-        $where = " WHERE 1=2"; // Condition useless pour concaténer après.
-        if ($disponible) {
-            $where .= " OR categorieGoodies=1";
-        }
-        if ($bientot) {
-            $where .= " OR categorieGoodies=2";
-        }
-        if ($rupture) {
-            $where .= " OR categorieGoodies=3";
-        }
-        $connexion = getConnect();
-        $requete =
+    switch ($tri) {
+        case 'nom':
+            $triSQL = ' ORDER BY titreGoodies';
+            break;
+        case 'prixAD':
+            $triSQL = ' ORDER BY prixADGoodies';
+            break;
+        case 'prixADD':
+            $triSQL = ' ORDER BY prixADGoodies DESC';
+            break;
+        case 'prixNAD':
+            $triSQL = ' ORDER BY prixNADGoodies';
+            break;
+        case 'prixNADD':
+            $triSQL = ' ORDER BY prixNADGoodies DESC';
+            break;
+        default:
+            $triSQL = '';
+    }
+    $where = " WHERE 1=2"; // Condition useless pour concaténer après.
+    $where .= $disponible ? " OR categorieGoodies=1" : '';
+    $where .= $bientot ? " OR categorieGoodies=2" : '';
+    $where .= $rupture ? " OR categorieGoodies=3" : '';
+    ajouterRetourModele(
+        'goodies',
+        requeteSQL(
             "
             SELECT
                 idGoodies AS id,
@@ -463,22 +441,15 @@ function MdlGoodiesTous($tri, $disponible, $bientot, $rupture) {
                 Goodies
             " . $where . "
             " . $triSQL . "
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('goodies', MET_SQLLignesMultiples($prepare->fetchAll()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterRetourModele('goodies', array());
-        ajouterMessage(600, $e->getMessage());
-    }
+            "
+        )
+    );
 }
 
 function MdlGoodiePrecis($id) {
-    try {
-        $connexion = getConnect();
-        $requete =
+    ajouterRetourModele(
+        'goodie',
+        requeteSQL(
             "
             SELECT
                 idGoodies AS id,
@@ -492,42 +463,13 @@ function MdlGoodiePrecis($id) {
                 Goodies
             WHERE
                 idGoodies=:idGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('goodie', MET_SQLLigneUnique($prepare->fetch()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-        ajouterRetourModele('goodie', NULL);
-    }
-}
-
-function MdlImagesGoodie($id) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            SELECT
-                idImagesGoodies AS id,
-                lienImagesGoodies AS lien
-            FROM
-                ImagesGoodies
-            WHERE
-                idGoodies=:idGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('imagesGoodie', MET_SQLLignesMultiples($prepare->fetchAll()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterRetourModele('imagesGoodie', array());
-        ajouterMessage(600, $e->getMessage());
-    }
+            ",
+            array(
+                [':idGoodies', $id, 'INT']
+            ),
+            true
+        )
+    );
 }
 
 function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
@@ -546,37 +488,143 @@ function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes
     }
 
     # Enregistrement des données dans la BDD SQL.
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            INSERT INTO
-                Goodies
-            VALUES
-                (
-                    0,
-                    :titreGoodies,
-                    :prixADGoodies,
-                    :prixNADGoodies,
-                    :descGoodies,
-                    :categorieGoodies,
-                    :miniatureGoodies
-                 )
-             ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':titreGoodies', $titre, PDO::PARAM_STR);
-        $prepare->bindValue(':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), PDO::PARAM_STR);
-        $prepare->bindValue(':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), PDO::PARAM_STR);
-        $prepare->bindValue(':descGoodies', $desc, PDO::PARAM_STR);
-        $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
-        $prepare->bindValue(':miniatureGoodies', $newName, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'Le goodie "' . $titre . '" a été ajouté avec succès !');
-        MdlAjouterLog(101, 'Ajout du goodie "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
+    requeteSQL(
+        "
+        INSERT INTO
+            Goodies
+        VALUES
+            (
+                0,
+                :titreGoodies,
+                :prixADGoodies,
+                :prixNADGoodies,
+                :descGoodies,
+                :categorieGoodies,
+                :miniatureGoodies
+            )
+        ",
+        array(
+            [':titreGoodies', $titre, 'STR'],
+            [':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), 'STR'],
+            [':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), 'STR'],
+            [':descGoodies', $desc, 'STR'],
+            [':categorieGoodies', $categorie, 'INT'],
+            [':miniatureGoodies', $newName, 'STR']
+        ),
+        false,
+        201,
+        'Le goodie "' . $titre . '" a été ajouté avec succès !'
+    );
+    MdlAjouterLog(101, 'Ajout du goodie "' . $titre . '".');
+}
+
+function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
+    requeteSQL(
+        "
+        UPDATE
+            Goodies
+        SET
+            titreGoodies=:titreGoodies,
+            prixADGoodies=:prixADGoodies,
+            prixNADGoodies=:prixNADGoodies,
+            descGoodies=:descGoodies,
+            categorieGoodies=:categorieGoodies
+        WHERE
+            idGoodies=:idGoodies
+        ",
+        array(
+            [':idGoodies', $id, 'INT'],
+            [':titreGoodies', $titre, 'STR'],
+            [':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), 'STR'],
+            [':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), 'STR'],
+            [':descGoodies', $desc, 'STR'],
+            [':categorieGoodies', $categorie, 'INT']
+        ),
+        false,
+        201,
+        'Le goodie ' . $titre . ' a été modifié avec succès !'
+    );
+    MdlAjouterLog(202, 'Modification du goodie "' . $titre . '".');
+}
+
+function MdlSupprimerGoodie($rep, $id) {
+    # Suppression des images
+    $images = requeteSQL(
+        "
+        SELECT
+            idImagesGoodies AS id,
+            lienImagesGoodies AS lien
+        FROM
+            ImagesGoodies
+        WHERE
+            idGoodies=:idGoodies
+        ",
+        array(
+            [':idGoodies', $id, 'INT']
+        )
+    );
+    foreach ($images as $image) {
+        MdlSupprimerImageGoodie($rep, $image['id'], false);
     }
+
+    try {
+        # Suppression de la miniature du goodie
+        $miniature = requeteSQL(
+            "
+            SELECT
+                miniatureGoodies AS miniature
+            FROM
+                Goodies
+            WHERE
+                idGoodies=:idGoodies
+            ",
+            array(
+                [":idGoodies", $id, 'INT']
+            ),
+            true
+        )['miniature'];
+        unlink($rep . $miniature);
+    } catch (Exception $e) {
+        ajouterMessage(501, $e->getMessage());
+        return;
+    }
+
+    # Suppression des données
+    requeteSQL(
+        "
+        DELETE FROM
+            Goodies
+        WHERE
+            idGoodies=:idGoodies
+        ",
+        array(
+            [':idGoodies', $id, 'INT']
+        ),
+        false,
+        201,
+        'Le goodie a été supprimée avec succès !'
+    );
+    MdlAjouterLog(203, 'Suppression d\'un goodie (ID : ' . $id . ').');
+}
+
+function MdlImagesGoodie($id) {
+    ajouterRetourModele(
+        'imagesGoodies',
+        requeteSQL(
+            "
+            SELECT
+                idImagesGoodies AS id,
+                lienImagesGoodies AS lien
+            FROM
+                ImagesGoodies
+            WHERE
+                idGoodies=:idGoodies
+            ",
+            array(
+                [':idGoodies', $id, 'INT']
+            )
+        )
+    );
 }
 
 function MdlAjouterImageGoodie($rep, $id, $titre, $fileImput) {
@@ -594,203 +642,78 @@ function MdlAjouterImageGoodie($rep, $id, $titre, $fileImput) {
         return;
     }
 
-    try {
-        # Enregistrement des données dans la BDD SQL.
-        $connexion = getConnect();
-        $requete =
-            "
-            INSERT INTO
-                ImagesGoodies
-            VALUES
-                (
-                    0,
-                    :idGoodies,
-                    :lienImagesgoodies
-                )
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-        $prepare->bindValue(':lienImagesgoodies', $newName, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'L\'image a été ajoutée avec succès !');
-        MdlAjouterLog(204, 'Ajout d\'une image d\'un goodie (ID : ' . $id . ').');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
-}
-
-function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            UPDATE
-                Goodies
-            SET
-                titreGoodies=:titreGoodies,
-                prixADGoodies=:prixADGoodies,
-                prixNADGoodies=:prixNADGoodies,
-                descGoodies=:descGoodies,
-                categorieGoodies=:categorieGoodies
-            WHERE
-                idGoodies=:idGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-        $prepare->bindValue(':titreGoodies', $titre, PDO::PARAM_STR);
-        $prepare->bindValue(':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), PDO::PARAM_STR);
-        $prepare->bindValue(':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), PDO::PARAM_STR);
-        $prepare->bindValue(':descGoodies', $desc, PDO::PARAM_STR);
-        $prepare->bindValue(':categorieGoodies', $categorie, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'Le goodie ' . $titre . ' a été modifié avec succès !');
-        MdlAjouterLog(202, 'Modification du goodie "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
+    # Enregistrement des données dans la BDD SQL.
+    requeteSQL(
+        "
+        INSERT INTO
+            ImagesGoodies
+        VALUES
+            (
+                0,
+                :idGoodies,
+                :lienImagesgoodies
+            )
+        ",
+        array(
+            [':idGoodies', $id, 'INT'],
+            [':lienImagesgoodies', $newName, 'STR']
+        ),
+        false,
+        201,
+        'L\'image a été ajoutée avec succès !'
+    );
+    MdlAjouterLog(204, 'Ajout d\'une image d\'un goodie (ID : ' . $id . ').');
 }
 
 function MdlSupprimerImageGoodie($rep, $id, $logguer) {
     try {
-        # Suppression de l'image
-        $connexion = getConnect();
-        $requete =
+        $lienImage = requeteSQL(
             "
             SELECT
-                lienImagesGoodies
+                lienImagesGoodies AS lien
             FROM
                 ImagesGoodies
             WHERE
                 idImagesGoodies=:idImagesGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idImagesGoodies', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        $ligne = $prepare->fetch();
-        $prepare->closeCursor();
-        $image = $ligne->lienImagesGoodies;
-        unlink($rep . $image);
+            ",
+            array(
+                [':idImagesGoodies', $id, 'INT']
+            ),
+            true
+        )['lien'];
+        unlink($rep . $lienImage);
     } catch (Exception $e) {
         ajouterMessage(501, $e->getMessage());
         return;
     }
 
-    try {
-        # Suppression des données
-        $connexion = getConnect();
-        $requete =
-            "
-            DELETE FROM
-                ImagesGoodies
-            WHERE
-                idImagesGoodies=:idImagesGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idImagesGoodies', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
-
+    # Suppression des données
+    requeteSQL(
+        "
+        DELETE FROM
+            ImagesGoodies
+        WHERE
+            idImagesGoodies=:idImagesGoodies
+        ",
+        array(
+            [':idImagesGoodies', $id, 'INT']
+        ),
+        false,
+        $logguer ? 201 : NULL,
+        $logguer ? 'L\'image a été supprimée avec succès !' : NULL
+    );
     if ($logguer) {
-        ajouterMessage(201, 'L\'image a été supprimée avec succès !');
         MdlAjouterLog(205, 'Suppression d\'une image d\'un goodie (ID : ' . $id . ').');
-    }
-}
-
-function MdlSupprimerGoodie($rep, $id) {
-    try {
-        # Suppression des images
-        $connexion = getConnect();
-        $requete =
-            "
-            SELECT
-                idImagesGoodies,
-                lienImagesGoodies
-            FROM
-                ImagesGoodies
-            WHERE
-                idGoodies=:idGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        $lignes = $prepare->fetchall();
-        $prepare->closeCursor();
-        foreach ($lignes as $ligne) {
-            MdlSupprimerImageGoodie($rep, $ligne->idImagesGoodies, false);
-        }
-    } catch (Exception $e) {
-        ajouterMessage(501, $e->getMessage());
-        return;
-    }
-
-    try {
-        # Suppression de la miniature du goodie
-        $connexion = getConnect();
-        $requete =
-            "
-            SELECT
-                miniatureGoodies
-            FROM
-                Goodies
-            WHERE
-                idGoodies=:idGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        $ligne = $prepare->fetch();
-        $prepare->closeCursor();
-        $miniature = $ligne->miniatureGoodies;
-        unlink($rep . $miniature);
-    } catch (Exception $e) {
-        ajouterMessage(501, $e->getMessage());
-        return;
-    }
-
-    try {
-        # Suppression des données
-        $connexion = getConnect();
-        $requete =
-            "
-            DELETE FROM
-                Goodies
-            WHERE
-                idGoodies=:idGoodies
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idGoodies', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'Le goodie a été supprimée avec succès !');
-        MdlAjouterLog(203, 'Suppression d\'un goodie (ID : ' . $id . ').');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
     }
 }
 
 ########################################################################################################################
 # Journaux                                                                                                             #
 ########################################################################################################################
-function MdlJournauxTous($maxi) {
-    try {
-        switch ($maxi) {
-            case NULL:
-                $maxiSQL = '';
-                break;
-            default:
-                $maxiSQL = ' LIMIT ' . $maxi;
-                break;
-        }
-        $connexion = getConnect();
-        $requete =
+function MdlJournauxTous($maxi = NULL) {
+    ajouterRetourModele(
+        'journaux',
+        requeteSQL(
             "
             SELECT
                 idJournaux AS id,
@@ -802,17 +725,10 @@ function MdlJournauxTous($maxi) {
             ORDER BY
                 dateJournaux
                 DESC
-            " . $maxiSQL . "
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('journaux', MET_SQLLignesMultiples($prepare->fetchall()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-        ajouterRetourModele('journaux', array());
-    }
+            " . ($maxi ? 'LIMIT ' . $maxi : '') . "
+            "
+        )
+    );
 }
 
 function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
@@ -828,39 +744,35 @@ function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
         return;
     }
 
-    try {
-        # Enregistrement des données dans la BDD SQL.
-        $connexion = getConnect();
-        $requete =
-            "
-            INSERT INTO
-                Journaux
-            VALUES
-                (
-                    0,
-                    :titreJournaux,
-                    :dateJournaux,
-                    :pdfJournaux
-                )
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':titreJournaux', $titre, PDO::PARAM_STR);
-        $prepare->bindValue(':dateJournaux', $annee . '-' . $mois . '-' . '01', PDO::PARAM_STR);
-        $prepare->bindValue(':pdfJournaux', $newName, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'Le journal "' . $titre . '" a été ajouté avec succès !');
-        MdlAjouterLog(301, 'Ajout du journal "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
+    # Enregistrement des données dans la BDD SQL.
+    requeteSQL(
+        "
+        INSERT INTO
+            Journaux
+        VALUES
+            (
+                0,
+                :titreJournaux,
+                :dateJournaux,
+                :pdfJournaux
+            )
+        ",
+        array(
+            [':titreJournaux', $titre, 'STR'],
+            [':dateJournaux', $annee . '-' . $mois . '-' . '01', 'STR'],
+            [':pdfJournaux', $newName, 'STR']
+        ),
+        false,
+        201,
+        'Le journal "' . $titre . '" a été ajouté avec succès !'
+    );
+    MdlAjouterLog(301, 'Ajout du journal "' . $titre . '".');
 }
 
 function MdlSupprimerJournal($rep, $id) {
     try {
         # Suppression du journal
-        $connexion = getConnect();
-        $requete =
+        $pdf = requeteSQL(
             "
             SELECT
                 pdfJournaux
@@ -868,159 +780,84 @@ function MdlSupprimerJournal($rep, $id) {
                 Journaux
             WHERE
                 idJournaux=:idJournaux
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        $ligne = $prepare->fetch();
-        $prepare->closeCursor();
-        $pdf = $ligne->pdfJournaux;
+            ",
+            array(
+                [':idJournaux', $id, 'INT']
+            )
+        )['pdf'];
         unlink($rep . $pdf);
     } catch (Exception $e) {
         ajouterMessage(501, $e->getMessage());
         return;
     }
 
-    try {
-        # Suppression des données
-        $connexion = getConnect();
-        $requete =
-            "
-            DELETE FROM
-                Journaux
-            WHERE
-                idJournaux=:idJournaux
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idJournaux', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->closeCursor();
-        MdlAjouterLog(302, 'Suppression d\'un journal (ID : ' . $id . ').');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
+    # Suppression des données
+    requeteSQL(
+        "
+        DELETE FROM
+            Journaux
+        WHERE
+            idJournaux=:idJournaux
+        ",
+        array(
+            [':idJournaux', $id, 'INT']
+        ),
+        false,
+        201,
+        'Le journal a été supprimé avec succès !'
+    );
+    MdlAjouterLog(302, 'Suppression d\'un journal (ID : ' . $id . ').');
 }
 
 ########################################################################################################################
 # Articles                                                                                                             #
 ########################################################################################################################
-function MdlCategoriesArticlesTous() {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            SELECT
-                idCategoriesArticles AS id,
-                titreCategoriesArticles AS titre
-            FROM
-                CategoriesArticles
-            ORDER BY
-                titreCategoriesArticles
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('categoriesArticles', MET_SQLLignesMultiples($prepare->fetchall()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterRetourModele('categoriesArticles', array());
-        ajouterMessage(600, $e->getMessage());
-    }
-}
-
-function MdlAjouterArticle($titre, $categorie, $visibilite, $texte) {
-    try {
-        $timestamp = time();
-        $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
-        $dt->setTimestamp($timestamp);
-
-        $connexion = getConnect();
-        $requete =
-            "
-            INSERT INTO
-                Articles
-            VALUES
-                (
-                    0,
-                    :idMembres,
-                    :idCategorieArticles,
-                    :titreArticles,
-                    :texteArticles,
-                    :visibiliteArticles,
-                    :dateCreationArticles,
-                    :dateModificationArticles
-                )
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idMembres', $_SESSION['id'], PDO::PARAM_INT);
-        $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
-        $prepare->bindValue(':titreArticles', $titre, PDO::PARAM_STR);
-        $prepare->bindValue(':texteArticles', $texte, PDO::PARAM_STR);
-        $prepare->bindValue(':visibiliteArticles', $visibilite, PDO::PARAM_INT);
-        $prepare->bindValue(':dateCreationArticles', $dt->format('Y-m-d'), PDO::PARAM_STR);
-        $prepare->bindValue(':dateModificationArticles', NULL, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'L\'article "' . $titre . '" a été ajouté avec succès !');
-        MdlAjouterLog(401, 'Ajout de l\'article "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
-}
-
-function MdlAjouterCategorieArticle($titre) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            INSERT INTO
-                CategoriesArticles
-            VALUES
-                (
-                    0,
-                    :titreCategoriesArticles
-                )
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':titreCategoriesArticles', $titre, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'La catégorie d\'articles "' . $titre . '" a été ajouté avec succès !');
-        MdlAjouterLog(406, 'Ajout de la catégorie d\'articles "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
-}
-
-function MdlRenommerCategorieArticle($id, $titre) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            UPDATE
-                CategoriesArticles
-            SET
-                titreCategoriesArticles=:titreCategoriesArticles
-            WHERE
-                idCategoriesArticles=:idCategoriesArticles
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idCategoriesArticles', $id, PDO::PARAM_INT);
-        $prepare->bindValue(':titreCategoriesArticles', $titre, PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'La catégorie d\'articles a été renommée en "' . $titre . '" avec succès !');
-        MdlAjouterLog(407, 'Renommage de la catégorie d\'article en "' . $titre . '" (ID : ' . $id . ').');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
+function MdlArticlesTous() {
+    ajouterRetourModele(
+        'articles',
+        "
+        SELECT
+            idArticles AS id,
+            titreArticles AS titre,
+            titreCategoriesArticles AS categorie,
+            visibiliteArticles AS visibilite,
+            texteArticles AS texte,
+            prenomMembres AS prenomAuteur,
+            nomMembres AS nomAuteur,
+            dateCreationArticles AS dateCreation,
+            dateModificationArticles AS dateModification
+        FROM
+            (
+                SELECT
+                    idArticles,
+                    titreArticles,
+                    titreCategoriesArticles,
+                    visibiliteArticles,
+                    texteArticles,
+                    prenomMembres,
+                    nomMembres,
+                    dateCreationArticles,
+                    dateModificationArticles
+                FROM
+                    Articles
+                        NATURAL JOIN
+                    Membres
+                        NATURAL JOIN
+                    CategoriesArticles
+                ORDER BY
+                    dateCreationArticles
+                    DESC
+            ) AS T
+        WHERE
+            visibiliteArticles<>0
+        "
+    );
 }
 
 function MdlArticlePrecis($id) {
-    try {
-        $connexion = getConnect();
-        $requete =
+    ajouterRetourModele(
+        'article',
+        requeteSQL(
             "
             SELECT
                 idArticles AS id,
@@ -1041,299 +878,284 @@ function MdlArticlePrecis($id) {
                 CategoriesArticles
             WHERE
                 idArticles=:idArticles
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('article', MET_SQLLigneUnique($prepare->fetch()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-        ajouterRetourModele('article', NULL);
-    }
+            ",
+            array(
+                [':idArticles', $id, ]
+            ),
+            true
+        )
+    );
+}
+
+function MdlAjouterArticle($titre, $categorie, $visibilite, $texte) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+    requeteSQL(
+        "
+        INSERT INTO
+            Articles
+        VALUES
+            (
+                0,
+                :idMembres,
+                :idCategorieArticles,
+                :titreArticles,
+                :texteArticles,
+                :visibiliteArticles,
+                :dateCreationArticles,
+                :dateModificationArticles
+            )
+        ",
+        array(
+            [':idMembres', $_SESSION['id'], 'INT'],
+            [':idCategorieArticles', $categorie, 'INT'],
+            [':titreArticles', $titre, 'STR'],
+            [':texteArticles', $texte, 'STR'],
+            [':visibiliteArticles', $visibilite, 'INT'],
+            [':dateCreationArticles', $dt->format('Y-m-d'), 'STR'],
+            [':dateModificationArticles', NULL, 'STR']
+        ),
+        false,
+        201,
+        'L\'article "' . $titre . '" a été ajouté avec succès !'
+    );
+    MdlAjouterLog(401, 'Ajout de l\'article "' . $titre . '".');
 }
 
 function MdlModifierArticle($id, $titre, $categorie, $visibilite, $texte) {
-    try {
-        $timestamp = time();
-        $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
-        $dt->setTimestamp($timestamp);
-
-        $connexion = getConnect();
-        $requete =
-            "
-            UPDATE
-                Articles
-            SET
-                idCategoriesArticles=:idCategoriesArticles,
-                titreArticles=:titreArticles,
-                visibiliteArticles=:visibiliteArticles,
-                texteArticles=:texteArticles,
-                dateModificationArticles=:dateModificationArticles
-            WHERE
-                idArticles=:idArticles
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':idCategoriesArticles', $categorie, PDO::PARAM_INT);
-        $prepare->bindValue(':titreArticles', $titre, PDO::PARAM_STR);
-        $prepare->bindValue(':visibiliteArticles', $visibilite, PDO::PARAM_INT);
-        $prepare->bindValue(':texteArticles', $texte, PDO::PARAM_STR);
-        $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
-        $prepare->bindValue(':dateModificationArticles', $dt->format('Y-m-d'), PDO::PARAM_STR);
-        $prepare->execute();
-        $prepare->closeCursor();
-        ajouterMessage(201, 'L\'article "' . $titre . '" a été modifié avec succès !');
-        MdlAjouterLog(402, 'Modification de l\'article "' . $titre . '".');
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-    }
-}
-
-function ajouterImageArticle($rep, $id, $titre, $fileImput) {
-    # Enregistrement de l'image.
-    $infosFichier = pathinfo($_FILES[$fileImput]['name']);
-    $extension = $infosFichier['extension'];
-    $newName = 'img-' . preg_replace('/[\W|.]/', '', $titre). '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
-    move_uploaded_file(
-        $_FILES[$fileImput]['tmp_name'],
-        $rep . $newName
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+    requeteSQL(
+        "
+        UPDATE
+            Articles
+        SET
+            idCategoriesArticles=:idCategoriesArticles,
+            titreArticles=:titreArticles,
+            visibiliteArticles=:visibiliteArticles,
+            texteArticles=:texteArticles,
+            dateModificationArticles=:dateModificationArticles
+        WHERE
+            idArticles=:idArticles
+        ",
+        array(
+            [':idCategoriesArticles', $categorie, 'INT'],
+            [':titreArticles', $titre, 'STR'],
+            [':visibiliteArticles', $visibilite, 'INT'],
+            [':texteArticles', $texte, 'STR'],
+            [':idArticles', $id, 'INT'],
+            [':dateModificationArticles', $dt->format('Y-m-d'), 'STR']
+        ),
+        false,
+        201,
+        'L\'article "' . $titre . '" a été modifié avec succès !'
     );
-
-    # Enregistrement des données dans la BDD SQL.
-    $connexion = getConnect();
-    $requete = "INSERT INTO ImagesArticles VALUES (0, :idArticles, :lienImagesArticles)";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
-    $prepare->bindValue(':lienImagesArticles', $newName, PDO::PARAM_STR);
-    $prepare->execute();
-    $prepare->closeCursor();
-    MdlAjouterLog(404, 'Ajout d\'une image d\'un article (ID : ' . $id . ').');
+    MdlAjouterLog(402, 'Modification de l\'article "' . $titre . '".');
 }
 
-function MdlImagesArticle($id) {
-    try {
-        $connexion = getConnect();
-        $requete =
-            "
-            SELECT
-                idImagesArticles,
-                lienImagesArticles
-            FROM
-                ImagesArticles
-            WHERE
-                idArticles=:id
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->bindValue(':id', $id, PDO::PARAM_INT);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('imagesArticle', MET_SQLLignesMultiples($prepare->fetchAll()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterRetourModele('imagesArticle', array());
-        ajouterMessage(600, $e->getMessage());
-    }
-}
-
-function MdlPremiereImageArticle($id) {
-    $requete =
+function MdlSupprimerArticle($rep, $id) {
+    # Suppression des images
+    $images = requeteSQL(
         "
         SELECT
-            idImagesArticles,
-            lienImagesArticles
+            idImagesArticles AS id,
+            lienImagesArticles AS lien
         FROM
             ImagesArticles
         WHERE
             idArticles=:idArticles
-        LIMIT 1
-        ";
-    $variables = array(
-        [':idArticles', $id, 'INT']
+        ",
+        array(
+            [':idArticles', $id, 'INT']
+        )
     );
-    ajouterRetourModele('imagesArticle', requeteSQL($requete, $variables));
-}
-
-function supprimerImageArticle($rep, $id, $logguer) {
-    # Suppression de l'image
-    $connexion = getConnect();
-    $requete = "SELECT lienImagesArticles FROM ImagesArticles WHERE idImagesArticles=:idImagesArticles";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idImagesArticles', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
-    $prepare->closeCursor();
-    $image = $ligne->lienImagesArticles;
-    unlink($rep . $image);
-
-    # Suppression des données
-    $connexion = getConnect();
-    $requete = "DELETE FROM ImagesArticles WHERE idImagesArticles=:idImagesArticles";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idImagesArticles', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->closeCursor();
-
-    if ($logguer) {
-        MdlAjouterLog(405, 'Suppression d\'une image d\'un article (ID : ' . $id . ').');
-    }
-}
-
-function supprimerArticle($rep, $id) {
-    # Suppression des images
-    $connexion = getConnect();
-    $requete = "SELECT idImagesArticles, lienImagesArticles FROM ImagesArticles WHERE idArticles=:id";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':id', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $lignes = $prepare->fetchall();
-    $prepare->closeCursor();
-    foreach ($lignes as $ligne) {
-        supprimerImageArticle($rep, $ligne->idImagesArticles, false);
+    foreach ($images as $image) {
+        MdlSupprimerImageArticle($rep, $image['id'], false);
     }
 
     # Suppression des données
-    $connexion = getConnect();
-    $requete = "DELETE FROM Articles WHERE idArticles=:idArticles";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idArticles', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->closeCursor();
+    requeteSQL(
+        "
+        DELETE FROM
+            Articles
+        WHERE
+            idArticles=:idArticles
+        ",
+        array(
+            [':idArticles', $id, 'INT']
+        ),
+        false,
+        201,
+        'L\'article a été supprimée avec succès !'
+    );
     MdlAjouterLog(403, 'Suppression d\'un article (ID : ' . $id . ').');
 }
 
-function MdlArticlesTous() {
-    try {
-        $connexion = getConnect();
-        $requete =
+function MdlCategoriesArticlesTous() {
+    ajouterRetourModele(
+        'catgoriesArticles',
+        requeteSQL(
             "
             SELECT
-                idArticles AS id,
-                titreArticles AS titre,
-                titreCategoriesArticles AS categorie,
-                visibiliteArticles AS visibilite,
-                texteArticles AS texte,
-                prenomMembres AS prenomAuteur,
-                nomMembres AS nomAuteur,
-                dateCreationArticles AS dateCreation,
-                dateModificationArticles AS dateModification
+                idCategoriesArticles AS id,
+                titreCategoriesArticles AS titre
             FROM
-                (
-                    SELECT
-                        idArticles,
-                        titreArticles,
-                        titreCategoriesArticles,
-                        visibiliteArticles,
-                        texteArticles,
-                        prenomMembres,
-                        nomMembres,
-                        dateCreationArticles,
-                        dateModificationArticles
-                    FROM
-                        Articles
-                            NATURAL JOIN
-                        Membres
-                            NATURAL JOIN
-                        CategoriesArticles
-                    ORDER BY
-                        dateCreationArticles
-                        DESC
-                ) AS T
+                CategoriesArticles
+            ORDER BY
+                titreCategoriesArticles
+            "
+        )
+    );
+}
+
+function MdlAjouterCategorieArticle($titre) {
+    requeteSQL(
+        "
+        INSERT INTO
+            CategoriesArticles
+        VALUES
+            (
+                0,
+                :titreCategoriesArticles
+            )
+        ",
+        array(
+            [':titreCategoriesArticles', $titre, 'STR']
+        ),
+        false,
+        201,
+        'La catégorie d\'articles "' . $titre . '" a été ajouté avec succès !'
+    );
+    MdlAjouterLog(406, 'Ajout de la catégorie d\'articles "' . $titre . '".');
+}
+
+function MdlRenommerCategorieArticle($id, $titre) {
+    requeteSQL(
+        "
+        UPDATE
+            CategoriesArticles
+        SET
+            titreCategoriesArticles=:titreCategoriesArticles
+        WHERE
+            idCategoriesArticles=:idCategoriesArticles
+        ",
+        array(
+            [':idCategoriesArticles', $id, 'INT'],
+            [':titreCategoriesArticles', $titre, 'STR']
+        ),
+        false,
+        201,
+        'La catégorie d\'articles a été renommée en "' . $titre . '" avec succès !'
+    );
+    MdlAjouterLog(407, 'Renommage de la catégorie d\'article en "' . $titre . '" (ID : ' . $id . ').');
+}
+
+function MdlImagesArticle($id, $maxi) {
+    ajouterRetourModele(
+        'imagesArticle',
+        requeteSQL(
+            "
+            SELECT
+                idImagesArticles AS id,
+                lienImagesArticles AS lien
+            FROM
+                ImagesArticles
             WHERE
-                visibiliteArticles<>0
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('articles', MET_SQLLignesMultiples($prepare->fetchall()));
-        $prepare->closeCursor();
+                idArticles=:idArticles
+            " . ($maxi ? 'LIMIT ' . $maxi : '') . "
+            ",
+            array(
+                [':idArticles', $id, 'INT']
+            )
+        )
+    );
+}
+
+function MdlAjouterImageArticle($rep, $id, $titre, $fileImput) {
+    try {
+        # Enregistrement de l'image.
+        $infosFichier = pathinfo($_FILES[$fileImput]['name']);
+        $extension = $infosFichier['extension'];
+        $newName = 'img-' . preg_replace('/[\W|.]/', '', $titre) . '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
+        move_uploaded_file(
+            $_FILES[$fileImput]['tmp_name'],
+            $rep . $newName
+        );
     } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-        ajouterRetourModele('articles', array());
+        ajouterMessage(501, $e->getMessage());
+        return;
+    }
+
+    # Enregistrement des données dans la BDD SQL.
+    requeteSQL(
+        "
+        INSERT INTO
+        ImagesArticles
+        VALUES
+            (
+                0,
+                :idArticles,
+                :lienImagesArticles
+            )
+        ",
+        array(
+            [':idArticles', $id, 'INT'],
+            [':lienImagesArticles', $newName, 'STR']
+        ),
+        false,
+        201,
+        'L\'image de l\'article a été ajoutée avec succès !'
+    );
+    MdlAjouterLog(404, 'Ajout d\'une image d\'un article (ID : ' . $id . ').');
+}
+
+function MdlSupprimerImageArticle($rep, $id, $logguer) {
+    # Suppression de l'image
+    $image = requeteSQL(
+        "
+        SELECT
+            lienImagesArticles AS lien
+        FROM
+            ImagesArticles
+        WHERE
+            idImagesArticles=:idImagesArticles
+        ",
+        array(
+            [':idImagesArticles', $id, 'INT']
+        ),
+        true
+    )['lien'];
+    unlink($rep . $image);
+
+    # Suppression des données
+    requeteSQL(
+        "
+        DELETE FROM
+            ImagesArticles
+        WHERE
+            idImagesArticles=:idImagesArticles
+        ",
+        array(
+            [':idImagesArticles', $id, 'INT']
+        ),
+        false,
+        $logguer ? 201 : NULL,
+        $logguer ? 'L\'image de l\'article a été supprimé avec succès !' : NULL
+    );
+    if ($logguer) {
+        MdlAjouterLog(405, 'Suppression d\'une image d\'un article (ID : ' . $id . ').');
     }
 }
 
 ########################################################################################################################
 # Articles vidéo                                                                                                       #
 ########################################################################################################################
-function ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
-    $timestamp = time();
-    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
-    $dt->setTimestamp($timestamp);
-
-    $connexion = getConnect();
-    $requete = "INSERT INTO ArticlesYouTube VALUES (0, :idCategorieArticles, :idMembres, :titreArticlesYouTube, :texteArticlesYouTube, :lienArticlesYouTube, :visibiliteArticlesYouTube, :dateCreationArticlesYouTube, :dateModificationArticlesYouTube)";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idMembres', $_SESSION['id'], PDO::PARAM_INT);
-    $prepare->bindValue(':idCategorieArticles', $categorie, PDO::PARAM_INT);
-    $prepare->bindValue(':titreArticlesYouTube', $titre, PDO::PARAM_STR);
-    $prepare->bindValue(':lienArticlesYouTube', $lien, PDO::PARAM_STR);
-    $prepare->bindValue(':texteArticlesYouTube', $texte, PDO::PARAM_STR);
-    $prepare->bindValue(':visibiliteArticlesYouTube', $visibilite, PDO::PARAM_INT);
-    $prepare->bindValue(':dateCreationArticlesYouTube', $dt->format('Y-m-d'), PDO::PARAM_STR);
-    $prepare->bindValue(':dateModificationArticlesYouTube', NULL, PDO::PARAM_STR);
-    $prepare->execute();
-    $prepare->closeCursor();
-    MdlAjouterLog(501, 'Ajout de l\'article vidéo "' . $titre . '".');
-}
-
-function articleVideoPrecis($id) {
-    $connexion = getConnect();
-    $requete = "SELECT idArticlesYouTube, titreArticlesYouTube, idCategoriesArticles, titreCategoriesArticles, visibiliteArticlesYouTube, lienArticlesYouTube, texteArticlesYouTube, prenomMembres, nomMembres, dateCreationArticlesYouTube, dateModificationArticlesYouTube FROM ArticlesYouTube NATURAL JOIN Membres NATURAL JOIN CategoriesArticles WHERE idArticlesYouTube=:idArticlesYouTube";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
-    $prepare->closeCursor();
-    return $ligne;
-}
-
-function modifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte) {
-    $timestamp = time();
-    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
-    $dt->setTimestamp($timestamp);
-
-    $connexion = getConnect();
-    $requete = "UPDATE ArticlesYouTube SET idCategoriesArticles=:idCategoriesArticles, titreArticlesYouTube=:titreArticlesYouTube, visibiliteArticlesYouTube=:visibiliteArticlesYouTube, lienArticlesYouTube=:lienArticlesYouTube, texteArticlesYouTube=:texteArticlesYouTube, dateModificationArticlesYouTube=:dateModificationArticlesYouTube WHERE idArticlesYouTube=:idArticlesYouTube";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idCategoriesArticles', $categorie, PDO::PARAM_INT);
-    $prepare->bindValue(':titreArticlesYouTube', $titre, PDO::PARAM_STR);
-    $prepare->bindValue(':visibiliteArticlesYouTube', $visibilite, PDO::PARAM_INT);
-    $prepare->bindValue(':texteArticlesYouTube', $texte, PDO::PARAM_STR);
-    $prepare->bindValue(':lienArticlesYouTube', $lien, PDO::PARAM_STR);
-    $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
-    $prepare->bindValue(':dateModificationArticlesYouTube', $dt->format('Y-m-d'), PDO::PARAM_STR);
-    $prepare->execute();
-    $prepare->closeCursor();
-    MdlAjouterLog(502, 'Modification de l\'article vidéo "' . $titre . '".');
-}
-
-function supprimerArticleVideo($id) {
-    $connexion = getConnect();
-    $requete = "DELETE FROM ArticlesYouTube WHERE idArticlesYouTube=:idArticlesYouTube";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':idArticlesYouTube', $id, PDO::PARAM_INT);
-    $prepare->execute();
-    $prepare->closeCursor();
-    MdlAjouterLog(503, 'Suppression d\'un article vidéo (ID : ' . $id . ').');
-}
-
-function obtenirInfoYouTube($url) {
-    $youtube = "http://www.youtube.com/oembed?url=". $url ."&format=json";
-    $curl = curl_init($youtube);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    $return = curl_exec($curl);
-    curl_close($curl);
-    return json_decode($return);
-}
-
 function MdlArticlesVideoTous() {
-    try {
-        $connexion = getConnect();
-        $requete =
+    ajouterRetourModele(
+        'articlesVideo',
+        requeteSQL(
             "
             SELECT
                 idArticlesYouTube AS id,
@@ -1371,14 +1193,141 @@ function MdlArticlesVideoTous() {
                 ) AS T
             WHERE
                 visibiliteArticlesYouTube<>0
-            ";
-        $prepare = $connexion->prepare($requete);
-        $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        ajouterRetourModele('articlesVideo', MET_SQLLignesMultiples($prepare->fetchall()));
-        $prepare->closeCursor();
-    } catch (Exception $e) {
-        ajouterMessage(600, $e->getMessage());
-        ajouterRetourModele('articlesVideo', array());
-    }
+            "
+        )
+    );
+}
+
+function MdlArticleVideoPrecis($id) {
+    ajouterRetourModele(
+        'articleVideo',
+        requeteSQL(
+            "
+            SELECT
+                idArticlesYouTube AS id,
+                titreArticlesYouTube AS titre,
+                titreCategoriesArticles AS categorie,
+                visibiliteArticlesYouTube AS visibilite,
+                lienArticlesYouTube AS lien,
+                texteArticlesYouTube AS texte,
+                prenomMembres AS prenomAuteur,
+                nomMembres AS nomAuteur,
+                dateCreationArticlesYouTube AS dateCreation,
+                dateModificationArticlesYouTube AS dateModification
+            FROM
+                ArticlesYouTube
+                    NATURAL JOIN
+                Membres
+                    NATURAL JOIN
+                CategoriesArticle
+            WHERE
+                idArticlesYouTube=:idArticlesYouTube
+            ",
+            array(
+                [':idArticlesYouTube', $id, 'INT']
+            ),
+            true
+        )
+    );
+}
+
+function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+    requeteSQL(
+        "
+        INSERT INTO
+            ArticlesYouTube
+        VALUES
+            (
+                0,
+                :idCategorieArticles,
+                :idMembres,
+                :titreArticlesYouTube,
+                :texteArticlesYouTube,
+                :lienArticlesYouTube,
+                :visibiliteArticlesYouTube,
+                :dateCreationArticlesYouTube,
+                :dateModificationArticlesYouTube
+             )
+        ",
+        array(
+            [':idMembres', $_SESSION['id'], 'INT'],
+            [':idCategorieArticles', $categorie, 'INT'],
+            [':titreArticlesYouTube', $titre, 'STR'],
+            [':lienArticlesYouTube', $lien, 'STR'],
+            [':texteArticlesYouTube', $texte, 'STR'],
+            [':visibiliteArticlesYouTube', $visibilite, 'INT'],
+            [':dateCreationArticlesYouTube', $dt->format('Y-m-d'), 'STR'],
+            [':dateModificationArticlesYouTube', NULL, 'STR'],
+        ),
+        false,
+        201,
+        'L\'article vidéo ' . $titre . ' a été ajouté avec succès'
+    );
+    MdlAjouterLog(501, 'Ajout de l\'article vidéo "' . $titre . '".');
+}
+
+function MdlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte) {
+    $timestamp = time();
+    $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
+    $dt->setTimestamp($timestamp);
+    requeteSQL(
+        "
+        UPDATE
+            ArticlesYouTube
+        SET
+            idCategoriesArticles=:idCategoriesArticles,
+            titreArticlesYouTube=:titreArticlesYouTube,
+            visibiliteArticlesYouTube=:visibiliteArticlesYouTube,
+            lienArticlesYouTube=:lienArticlesYouTube,
+            texteArticlesYouTube=:texteArticlesYouTube,
+            dateModificationArticlesYouTube=:dateModificationArticlesYouTube
+        WHERE
+            idArticlesYouTube=:idArticlesYouTube
+        ",
+        array(
+            [':idCategoriesArticles', $categorie, 'INT'],
+            [':titreArticlesYouTube', $titre, 'STR'],
+            [':visibiliteArticlesYouTube', $visibilite, 'INT'],
+            [':texteArticlesYouTube', $texte, 'STR'],
+            [':lienArticlesYouTube', $lien, 'STR'],
+            [':idArticlesYouTube', $id, 'INT'],
+            [':dateModificationArticlesYouTube', $dt->format('Y-m-d'), 'STR']
+        ),
+        false,
+        201,
+        'L\'article vidéo ' . $titre . ' a été modifié avec succès !'
+    );
+    MdlAjouterLog(502, 'Modification de l\'article vidéo "' . $titre . '".');
+}
+
+function MdlSupprimerArticleVideo($id) {
+    requeteSQL(
+        "DELETE FROM ArticlesYouTube WHERE idArticlesYouTube=:idArticlesYouTube",
+        array(
+            [':idArticlesYouTube', $id, 'INT']
+        ),
+        false,
+        201,
+        'L\'article vidéo a été supprimé avec succès !'
+    );
+    MdlAjouterLog(503, 'Suppression d\'un article vidéo (ID : ' . $id . ').');
+}
+
+########################################################################################################################
+########################################################################################################################
+###                                                                                                                  ###
+###                                                   API YOUTUBE                                                    ###
+###                                                                                                                  ###
+########################################################################################################################
+########################################################################################################################
+function obtenirInfoYouTube($url) {
+    $youtube = "http://www.youtube.com/oembed?url=". $url ."&format=json";
+    $curl = curl_init($youtube);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $return = curl_exec($curl);
+    curl_close($curl);
+    return json_decode($return);
 }

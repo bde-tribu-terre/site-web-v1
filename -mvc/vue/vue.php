@@ -567,7 +567,7 @@ function afficherModifierArticleVideo($messageRetour, $id) {
     define('GABARIT', 'modifierArticleVideo.php');
 
     $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $ligneArticle = articleVideoPrecis($id);
+    $ligneArticle = MdlArticleVideoPrecis($id);
     $categorie = $ligneArticle->idCategoriesArticles;
     $lignesCategoriesArticle = MdlCategoriesArticlesTous();
 

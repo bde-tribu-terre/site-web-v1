@@ -104,7 +104,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         elseif (isset($_POST['formSupprimerImageArticle_supprimer'])) {
             foreach ($_POST as $key => $value) {
                 if ($value == 'on') {
-                    supprimerImageArticle(RACINE . 'articles/', $key, true);
+                    MdlSupprimerImageArticle(RACINE . 'articles/', $key, true);
                 }
             }
             CtlAllerSupprimerImageArticle(

@@ -28,7 +28,7 @@ $GLOBALS['retoursModele'] = array();
 # Fonctions d'ajout dans les tableaux globaux (pour la lisibilité)                                                     #
 ########################################################################################################################
 function ajouterMessage($code, $texte) {
-    array_push($GLOBALS['messages'], [$code, $texte]);
+    array_push($GLOBALS['messages'], [$code, htmlentities($texte, ENT_QUOTES, 'UTF-8')]);
 }
 
 function ajouterRetourModele($cle, $resultats) {
@@ -531,7 +531,7 @@ function CtlAjouterImageArticle($id, $fileImput) {
         try {
             if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
                 $titre = MdlArticlePrecis($id)->titreArticles;
-                ajouterImageArticle(RACINE . 'articles/', $id, $titre, $fileImput);
+                MdlAjouterImageArticle(RACINE . 'articles/', $id, $titre, $fileImput);
                 afficherAjouterImageArticle('L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
@@ -602,7 +602,7 @@ function CtlSupprimerArticle($id) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id)) {
-                supprimerArticle(RACINE . 'articles/', $id);
+                MdlSupprimerArticle(RACINE . 'articles/', $id);
                 afficherSupprimerArticle('L\'article a été supprimé avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez sélectionner un article.');
@@ -625,7 +625,7 @@ function CtlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) 
                 !empty($lien) &&
                 !empty($texte)
             ) {
-                ajouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte);
+                MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte);
                 afficherAjouterArticleVideo('L\'article vidéo "' . $titre . '" a été ajouté avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs.');
@@ -664,7 +664,7 @@ function CtlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $t
                 !empty($lien) &&
                 !empty($texte)
             ) {
-                modifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte);
+                MdlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte);
                 afficherModifierArticleVideo('L\'article "' . $titre . '" a été modifié avec succès !', $id);
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs.');
@@ -681,7 +681,7 @@ function CtlSupprimerArticleVideo($id) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id)) {
-                supprimerArticleVideo($id);
+                MdlSupprimerArticleVideo($id);
                 afficherSupprimerArticleVideo('L\'article vidéo a été supprimé avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez sélectionner un article.');
@@ -784,7 +784,7 @@ function CtlArticlePrecis($id) {
             throw new Exception('L\'article recherché n\'existe pas.');
         }
     } else {
-        $article = articleVideoPrecis(-$id);
+        $article = MdlArticleVideoPrecis(-$id);
         if ($article != false) {
             afficherArticleVideoPrecis($article);
         } else {
