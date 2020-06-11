@@ -13,13 +13,13 @@
 <body>
 <div class="page-complete">
     <header>
-        <?php require_once PATH_TO_HEADER; ?>
+        <?php require_once CHEMIN_VERS_HEADER; ?>
     </header>
     <main>
-        <?php require_once PATH_TO_GABARIT; ?>
+        <?php require_once CHEMIN_VERS_GABARIT; ?>
     </main>
     <footer>
-        <?php require_once PATH_TO_FOOTER; ?>
+        <?php require_once CHEMIN_VERS_FOOTER; ?>
     </footer>
 </div>
 </body>

@@ -16,26 +16,39 @@ define('VERSION_SITE', file_get_contents(RACINE . '-mvc/vue/version.txt'));
 ########################################################################################################################
 # A.II - Fonction d'Initialisation des Constantes Spécifiques & Affichage du Cadre                                     #
 ########################################################################################################################
-function afficherCadre($quelCadre) {
-    switch ($quelCadre) {
-        case 'ADMIN':
-            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsAdmin/' . '-header.php');
-            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsAdmin/' . '-footer.php');
-            define('PATH_TO_GABARIT', RACINE . '-mvc/vue/gabaritsAdmin/' . GABARIT);
-            break;
-        case 'PUBLIC':
-            define('PATH_TO_HEADER', RACINE . '-mvc/vue/gabaritsPublic/' . '-header.php');
-            define('PATH_TO_FOOTER', RACINE . '-mvc/vue/gabaritsPublic/' . '-footer.php');
-            define('PATH_TO_GABARIT', RACINE . '-mvc/vue/gabaritsPublic/' . GABARIT);
+/**
+ * Exécute l'affichage de la page.
+ * @param string $title
+ * Le title qui sera affiché sur l'onglet du navigateur.
+ * @param string $gabarit
+ * Le nom du fichier gabarit qui sera utilisé (extension de fichier comprise). Exemple : 'accueil.php'.
+ * @param string $cadre
+ * Le nom du répertoire dans lequel sera cherché le gabarit. Le header et le footer seront ainsi correctement choisis.
+ * Les répertoires implémentés sont :
+ * <ul>
+ * <li>'admin' : Partie administration, réservée aux membres</li>
+ * <li>'public' : Partie publique (par défaut)</li>
+ * </ul>
+ */
+function afficherPage($title, $gabarit, $cadre) {
+    if (file_exists(RACINE . '-mvc/vue/gabarits/' . $cadre)) {
+        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . '-header.php');
+        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . '-messages.php');
+        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . '-footer.php');
+        define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . $gabarit);
+    } else {
+        array_push($messages, ['500', 'Répertoire de gabarits ' . $cadre . ' non trouvé.']);
+        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/public/' . '-header.php');
+        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/public/' . '-messages.php');
+        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/public/' . '-footer.php');
+        define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/public/accueil.php');
     }
 
-    require_once(RACINE . '-mvc/vue/cadre.php');
-}
-
-function afficherPageFixe($quelCadre, $title, $gabarit) {
+    define('MESSAGES', $GLOBALS['messages']);
     define('TITLE', $title);
     define('GABARIT', $gabarit);
-    afficherCadre($quelCadre);
+
+    require_once(RACINE . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -70,12 +83,8 @@ function formaterTexte($texte) {
     return $texteFormate;
 }
 
-function genererNom($membre) {
-    return
-        htmlentities($membre->prenomMembres, ENT_QUOTES, "UTF-8") .
-        '<span class="pc">' .
-        htmlentities($membre->nomMembres, ENT_QUOTES, "UTF-8") .
-        '</span>';
+function genererNom($prenom, $nom) {
+    return $prenom . ' <span class="pc">' . $nom . '</span>';
 }
 
 ########################################################################################################################
@@ -91,25 +100,14 @@ function genererNom($membre) {
 # B.I - Admin                                                                                                          #
 ########################################################################################################################
 # Système
-function afficherConnexion($messageRetour) {
-    define('TITLE', 'Connexion');
-    define('GABARIT', 'connexion.php');
-
-    define('MESSAGE_RETOUR', $messageRetour);
-
-    afficherCadre('ADMIN');
+function afficherConnexion() {
+    afficherPage('Accueil', 'connexion.php', 'admin');
 }
 
-function afficherMenu($messageRetour) {
-    define('TITLE', 'Menu administrateur');
-    define('GABARIT', 'menu.php');
+function afficherMenu() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-
-    afficherCadre('ADMIN');
+    afficherPage('Menu administrateur', 'menu.php', 'admin');
 }
 
 # Events
@@ -692,34 +690,26 @@ function afficherRenommerCategorieArticle($messageRetour) {
 }
 
 # Log
-function afficherAfficherLog($messageRetour) {
-    define('TITLE', 'Log');
-    define('GABARIT', 'afficherLog.php');
-
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesLog = logTous();
-
+function afficherAfficherLog() {
     $log = '';
-    foreach ($lignesLog as $ligneLog) {
-        $nomMembre = htmlentities($ligneLog->nomMembre, ENT_QUOTES, "UTF-8");
-        $codeLogActions = htmlentities($ligneLog->codeLogActions, ENT_QUOTES, "UTF-8");
-        $dateLogActions = htmlentities($ligneLog->dateLogActions, ENT_QUOTES, "UTF-8");
-        $descLogActions = htmlentities($ligneLog->descLogActions, ENT_QUOTES, "UTF-8");
-
+    foreach ($GLOBALS['retoursModele']['log'] as $ligneLog) {
+        $dateHeure = explode(' ', $ligneLog['date']);
+        $date = $dateHeure[0];
+        $heure = $dateHeure[1];
         $log .=
-            '<tr>' .
-            '<th scope="row">' . $dateLogActions . '</th>' .
-            '<th>' . sprintf('%03d', $codeLogActions) . '</th>' .
-            '<th>' . $nomMembre . '</th>' .
-            '<th>' . $descLogActions . '</th>' .
-            '</tr>';
+            '
+            <tr>
+            <th scope="row">' . genererDate($date) . ' '. $heure . '</th>
+            <th>' . sprintf('%03d', $ligneLog['code']) . '</th>
+            <th>' . genererNom($ligneLog['prenomMembre'], $ligneLog['nomMembre']) . '</th>
+            <th>' . $ligneLog['description'] . '</th>
+            </tr>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('LOG', $log);
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    afficherCadre('ADMIN');
+    afficherPage('Log', 'afficherLog.php', 'admin');
 }
 
 ########################################################################################################################

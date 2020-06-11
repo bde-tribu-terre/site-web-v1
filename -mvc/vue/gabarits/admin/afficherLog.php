@@ -1,17 +1,5 @@
 <div class="container text-center">
-    <div class="row">
-        <div class="col-sm-12">
-            <?php
-            if (!empty(MESSAGE_RETOUR)) {
-                echo
-                    '<div class="well">' .
-                    '<h3>Message : </h3>' .
-                    '<p><strong>' . MESSAGE_RETOUR . '</strong></p>' .
-                    '</div>';
-            }
-            ?>
-        </div>
-    </div>
+    <?php require_once CHEMIN_VERS_MESSAGES ?>
     <div class="row">
         <div class="col-sm-12">
             <table class="well table table-striped table-hover" style="background-color: white">

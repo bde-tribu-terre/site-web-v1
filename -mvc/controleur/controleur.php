@@ -10,34 +10,59 @@ function CtlErreur($messageErreur) {
 }
 
 ########################################################################################################################
+# Initialisation des tableaux globaux                                                                                  #
+########################################################################################################################
+# Messages
+$GLOBALS['messages'] = array();
+
+# Formulaire HTML
+$GLOBALS['form'] = array();
+foreach ($_POST as $keyInput => $valInput) {
+    $GLOBALS['form'][explode('_', $keyInput)[1]] = $valInput;
+}
+
+# Retours d'appels de fonctions du modèle
+$GLOBALS['retoursModele'] = array();
+
+########################################################################################################################
+# Fonctions d'ajout dans les tableaux globaux (pour la lisibilité)                                                     #
+########################################################################################################################
+function ajouterMessage($code, $texte) {
+    array_push($GLOBALS['messages'], [$code, $texte]);
+}
+
+function ajouterRetourModele($cle, $resultats) {
+    $GLOBALS['retoursModele'][$cle] = $resultats;
+}
+
+########################################################################################################################
 # Admin                                                                                                                #
 ########################################################################################################################
 # Connexion
-function CtlConnexion($messageRetour) {
-    afficherConnexion($messageRetour);
+function CtlConnexion() {
+    afficherConnexion();
 }
 
-function CtlVerifConnexion($login, $mdp) {
+function CtlVerifConnexion() {
     try {
-        if (!empty($login) && !empty($mdp)) {
-            $id = verifConnexion($login, $mdp);
-            if ($id != false) {
-                $_SESSION['id'] = $id;
+        if (!empty($GLOBALS['form']['login']) && !empty($GLOBALS['form']['mdp'])) {
+            $membre = MdlVerifConnexion($GLOBALS['form']['login'], $GLOBALS['form']['mdp']);
+            if ($membre != false) {
+                $_SESSION['membre'] = $membre;
                 // ajouterLog(001, 'Connexion'); C'est bcp trop stressant d'être autant pisté omg !!!!
-                CtlMenu('');
+                CtlMenu();
             } else {
-                afficherConnexion("Erreur : Login ou mot de passe invalide.");
+                ajouterMessage(401, 'Login ou mot de passe invalide.');
+                afficherConnexion();
             }
         } else {
-            afficherConnexion("Erreur : Veuillez remplir tous les champs.");
+            ajouterMessage(400, 'Veuillez remplir tous les champs.');
+            afficherConnexion();
         }
     } catch (Exception $e) {
-        afficherConnexion($e->getMessage());
+        ajouterMessage(500, $e->getMessage());
+        afficherConnexion();
     }
-}
-
-function CtlConnexionErreur($messageErreur) {
-    afficherConnexion($messageErreur);
 }
 
 # Menu
@@ -185,29 +210,23 @@ function CtlRenommerCategorieArticleMenu($messageRetour) {
     }
 }
 
-function CtlAfficherLog($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAfficherLog($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
+function CtlAfficherLog() {
+    MdlLogTous();
+    afficherAfficherLog();
 }
 
-function CtlMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherMenu($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
+function CtlMenu() {
+    afficherMenu();
 }
 
-function CtlDeconnexion($messageRetour) {
+function CtlDeconnexion() {
     $_SESSION = array();
     if (isset($COOKIE[session_name()])) {
         setcookie(session_name(), '', time()-42000, '/');
     }
     session_destroy();
-    CtlConnexion($messageRetour);
+    ajouterMessage(200, 'Session déconnectée avec succès.');
+    CtlConnexion();
 }
 
 function CtlMenuErreur($messageErreur) {

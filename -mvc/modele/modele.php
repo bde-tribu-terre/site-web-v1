@@ -1,26 +1,67 @@
 <?php
 ########################################################################################################################
+# Fonctions de mise en tableau                                                                                         #
+########################################################################################################################
+function MET_SQLLigneUnique($object) {
+    if ($object) {
+        $array = array();
+        foreach ($object as $key => $val) {
+            $array[$key] = is_string($val) ? htmlentities($val, ENT_QUOTES, 'UTF-8') : $val;
+        }
+        return $array;
+    }
+    return $object;
+}
+
+function MET_SQLLignesMultiples($arrayObject) {
+    $array = array();
+    foreach ($arrayObject as $objectKey => $objectValue) {
+        $array[$objectKey] = MET_SQLLigneUnique($objectValue);
+    }
+    return $array;
+}
+
+########################################################################################################################
 # Membres                                                                                                              #
 ########################################################################################################################
-function verifConnexion($login, $mdp) {
-    $connexion = getConnect();
-    $requete = "SELECT idMembres, loginMembres, mdpHashMembres, mdpSaltMembres FROM Membres WHERE loginMembres=:login";
-    $prepare = $connexion->prepare($requete);
-    $prepare->bindValue(':login', $login, PDO::PARAM_STR);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetch();
-
-    $return = false;
-    if ($ligne) {
-        // https://youtu.be/8ZtInClXe1Q pour des explications.
-        $mdpSaisieHash = hash('whirlpool', $ligne->mdpSaltMembres . $mdp);
-        if ($ligne->mdpHashMembres == $mdpSaisieHash) {
-            $return = $ligne->idMembres;
+function MdlVerifConnexion($login, $mdp) {
+    try {
+        $connexion = getConnect();
+        $requete =
+            "
+        SELECT
+            idMembres AS id,
+           loginMembres AS login,
+           prenomMembres AS prenom,
+           nomMembres AS nom,
+           mdpHashMembres AS mdpHash,
+           mdpSaltMembres AS mdpSalt
+        FROM
+            Membres
+        WHERE
+            loginMembres=:login
+        ";
+        $prepare = $connexion->prepare($requete);
+        $prepare->bindValue(':login', $login, PDO::PARAM_STR);
+        $prepare->execute();
+        $prepare->setFetchMode(PDO::FETCH_OBJ);
+        $membre = $prepare->fetch();
+        $mdpSalt = $membre->mdpSalt;
+        $mdpHash = $membre->mdpHash;
+        $membre = MET_SQLLigneUnique($membre);
+        if ($membre) {
+            // https://youtu.be/8ZtInClXe1Q pour des explications.
+            $mdpSaisieHash = hash('whirlpool', $mdpSalt . $mdp);
+            if ($mdpHash == $mdpSaisieHash) {
+                return $membre;
+            }
         }
+        $prepare->closeCursor();
+        return false;
+    } catch (Exception $e) {
+        ajouterMessage(600, $e->getMessage());
+        return false;
     }
-    $prepare->closeCursor();
-    return $return;
 }
 
 function infosMembre($id) {
@@ -84,15 +125,36 @@ function cleExiste($cle) {
 # Log des actions                                                                                                      #
 ########################################################################################################################
 
-function logTous() {
-    $connexion = getConnect();
-    $requete = "SELECT idMembres, prenomMembres, nomMembres, codeLogActions, dateLogActions, descLogActions FROM LogActions NATURAL JOIN Membres ORDER BY dateLogActions DESC";
-    $prepare = $connexion->prepare($requete);
-    $prepare->execute();
-    $prepare->setFetchMode(PDO::FETCH_OBJ);
-    $ligne = $prepare->fetchall();
-    $prepare->closeCursor();
-    return $ligne;
+function MdlLogTous() {
+    try {
+        $connexion = getConnect();
+        $requete =
+            "
+        SELECT
+            idLogActions AS idLog,
+            idMembres AS idMembre,
+            prenomMembres AS prenomMembre,
+            nomMembres AS nomMembre,
+            codeLogActions AS code,
+            dateLogActions AS date,
+            descLogActions AS description
+        FROM
+            LogActions
+                NATURAL JOIN
+            Membres
+        ORDER BY
+            dateLogActions
+            DESC";
+        $prepare = $connexion->prepare($requete);
+        $prepare->execute();
+        $prepare->setFetchMode(PDO::FETCH_OBJ);
+        ajouterRetourModele('log', MET_SQLLignesMultiples($prepare->fetchall()));
+        $prepare->closeCursor();
+    } catch (Exception $e) {
+        ajouterMessage(600, $e->getMessage());
+        ajouterRetourModele('log', array());
+    }
+
 }
 
 function ajouterLog($code, $message) {
