@@ -11,8 +11,9 @@ try {
             $_POST['formInscription_mdp']
         );
     } else {
-        CtlInscription('');
+        CtlInscription();
     }
 } catch (Exception $e) {
-    CtlInscription($e->getMessage());
+    ajouterMessage(500, $e->getMessage());
+    CtlInscription();
 }

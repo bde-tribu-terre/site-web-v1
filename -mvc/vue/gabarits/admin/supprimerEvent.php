@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formSupprimerEvent" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Évent en question -->
-                        <label for="formSupprimerEvent_idEvent">Évent</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerEvent_idEvent" name="formSupprimerEvent_idEvent">
+                        <label for="formSupprimerEvent_id">Évent</label>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerEvent_id" name="formSupprimerEvent_id">
                             <option value="">--Choisir un évent--</option>
                             <?php echo EVENTS ?>
                         </select>

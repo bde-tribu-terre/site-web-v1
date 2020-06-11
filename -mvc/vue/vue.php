@@ -54,20 +54,27 @@ function afficherPage($title, $gabarit, $cadre) {
 ########################################################################################################################
 # A.III - Fonctions d'affichage                                                                                        #
 ########################################################################################################################
-function genererDate($date) {
-    $arrayMois = [
-        '01' => 'Janvier', '02' => 'Février',  '03' => 'Mars',
-        '04' => 'Avril',   '05' => 'Mai',      '06' => 'Juin',
-        '07' => 'Juillet', '08' => 'Août',     '09' => 'Septembre',
-        '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
-    ];
+function genererDate($date, $numerique = false) {
+    if ($numerique) {
+        return
+            substr($date, 8, 2) . '/' .
+            substr($date, 5, 2) . '/' .
+            substr($date, 0, 4);
+    } else {
+        $arrayMois = [
+            '01' => 'Janvier', '02' => 'Février', '03' => 'Mars',
+            '04' => 'Avril', '05' => 'Mai', '06' => 'Juin',
+            '07' => 'Juillet', '08' => 'Août', '09' => 'Septembre',
+            '10' => 'Octobre', '11' => 'Novembre', '12' => 'Décembre'
+        ];
 
-    return
-        (substr($date, 8, 2) == '01' ? '1<sup>er</sup>' : intval(substr($date, 8, 2))) .
-        ' ' .
-        $arrayMois[substr($date, 5, 2)] .
-        ' ' .
-        substr($date, 0, 4);
+        return
+            (substr($date, 8, 2) == '01' ? '1<sup>er</sup>' : intval(substr($date, 8, 2))) .
+            ' ' .
+            $arrayMois[substr($date, 5, 2)] .
+            ' ' .
+            substr($date, 0, 4);
+    }
 }
 
 function formaterTexte($texte) {
@@ -111,110 +118,69 @@ function afficherMenu() {
 }
 
 # Events
-function afficherCreerEvent($messageRetour) {
-    define('TITLE', 'Créer un évent');
-    define('GABARIT', 'creerEvent.php');
+function afficherCreerEvent() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-
-    afficherCadre('ADMIN');
+    afficherPage('Créer un évent', 'creerEvent.php', 'admin');
 }
 
-function afficherChoixEvent($messageRetour) {
-    define('TITLE', 'Choisir un évent');
-    define('GABARIT', 'choixEvent.php');
-
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesEvents = idTitreEvents();
-
+function afficherChoixEvent() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $events = '';
-    foreach ($lignesEvents as $ligneEvent) {
-        $idEvents = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
-        $titreEvents = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
-        $dateEvents = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['events'] as $event) {
         $events .=
-            '<option value="' . $idEvents . '">(' .
-            substr($dateEvents, 8, 2) . '/' .
-            substr($dateEvents, 5, 2) . '/' .
-            substr($dateEvents, 0, 4) . ') ' .
-            $titreEvents . '</option>';
+            '
+            <option value="' . $event['id'] . '">
+                (' . genererDate($event['date'], true) . ') ' . $event['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('EVENTS', $events);
 
-    afficherCadre('ADMIN');
+    afficherPage('Choisir un évent', 'choixEvent.php', 'admin');
 }
 
-function afficherModifierEvent($messageRetour, $id) {
-    define('TITLE', 'Modifier un évent');
-    define('GABARIT', 'modifierEvent.php');
+function afficherModifierEvent() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
+    define('ID', $GLOBALS['retoursModele']['event']['id']);
+    define('TITRE', $GLOBALS['retoursModele']['event']['titre']);
+    define('DESC', $GLOBALS['retoursModele']['event']['description']);
+    define('DATE', $GLOBALS['retoursModele']['event']['date']);
+    define('HEURE', substr($GLOBALS['retoursModele']['event']['heure'], 0, 2));
+    define('MINUTE', substr($GLOBALS['retoursModele']['event']['heure'], 3, 2));
+    define('LIEU', $GLOBALS['retoursModele']['event']['lieu']);
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $ligneEvent = eventPrecis($id);
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-    define('ID', $id);
-    define('TITRE', $ligneEvent->titreEvents);
-    define('DESC', $ligneEvent->descEvents);
-    define('DATE', $ligneEvent->dateEvents);
-    define('HEURE', substr($ligneEvent->heureEvents, 0, 2));
-    define('MINUTE', substr($ligneEvent->heureEvents, 3, 2));
-    define('LIEU', $ligneEvent->lieuEvents);
-
-    afficherCadre('ADMIN');
+    afficherPage('Modifier un évent', 'modifierEvent.php', 'admin');
 }
 
-function afficherSupprimerEvent($messageRetour) {
-    define('TITLE', 'Supprimer un évent');
-    define('GABARIT', 'supprimerEvent.php');
-
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesEvents = idTitreEvents();
-
+function afficherSupprimerEvent() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $events = '';
-    foreach ($lignesEvents as $ligneEvent) {
-        $idEvents = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
-        $titreEvents = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
-        $dateEvents = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['events'] as $event) {
         $events .=
-            '<option value="' . $idEvents . '">(' .
-            substr($dateEvents, 8, 2) . '/' .
-            substr($dateEvents, 5, 2) . '/' .
-            substr($dateEvents, 0, 4) . ') ' .
-            $titreEvents . '</option>';
+            '
+            <option value="' . $event['id'] . '">
+                (' . genererDate($event['date'], true) . ') ' . $event['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('EVENTS', $events);
 
-    afficherCadre('ADMIN');
+    afficherPage('Supprimer un évent', 'supprimerEvent.php', 'admin');
 }
 
 # Goodies
-function afficherAjouterGoodie($messageRetour) {
-    define('TITLE', 'Ajouter un goodie');
-    define('GABARIT', 'ajouterGoodie.php');
+function afficherAjouterGoodie() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-
-    afficherCadre('ADMIN');
+    afficherPage('Ajouter un goodie', 'ajouterGoodie.php', 'admin');
 }
 
 function afficherAjouterImageGoodie($messageRetour) {
     define('TITLE', 'Ajouter une image à un goodie');
     define('GABARIT', 'ajouterImageGoodie.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesGoodies = idTitreGoodies();
 
     $goodies = '';
@@ -236,7 +202,7 @@ function afficherChoixGoodie($messageRetour) {
     define('TITLE', 'Choisir un goodie');
     define('GABARIT', 'choixGoodie.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesGoodies = idTitreGoodies();
 
     $arrayCategories = [
@@ -266,8 +232,8 @@ function afficherModifierGoodie($messageRetour, $id) {
     define('TITLE', 'Modifier un goodie');
     define('GABARIT', 'modifierGoodie.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $ligneGoodie = goodiePrecis($id);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
+    $ligneGoodie = MdlGoodiePrecis($id);
 
     define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
@@ -287,8 +253,8 @@ function afficherSupprimerImageGoodie($messageRetour, $id) {
     define('TITLE', 'Supprimer une image d\'un goodie');
     define('GABARIT', 'supprimerImageGoodie.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesImages = imagesGoodie($id);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
+    $lignesImages = MdlImagesGoodie($id);
 
     $images = '';
     foreach ($lignesImages as $ligne) {
@@ -315,7 +281,7 @@ function afficherSupprimerGoodie($messageRetour) {
     define('TITLE', 'Supprimer un goodie');
     define('GABARIT', 'supprimerGoodie.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesGoodies = idTitreGoodies();
 
     $arrayCategories = [
@@ -346,7 +312,7 @@ function afficherAjouterJournal($messageRetour) {
     define('TITLE', 'Ajouter un journal');
     define('GABARIT', 'ajouterJournal.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
 
     define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
@@ -358,7 +324,7 @@ function afficherSupprimerJournal($messageRetour) {
     define('TITLE', 'Supprimer un journal');
     define('GABARIT', 'supprimerJournal.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesJournaux = idTitreJournaux();
 
     $journaux = '';
@@ -381,8 +347,8 @@ function afficherAjouterArticle($messageRetour) {
     define('TITLE', 'Ajouter un article');
     define('GABARIT', 'ajouterArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesCategoriesArticle = idTitreCategoriesArticles();
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
+    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
 
     $categories = '';
     foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
@@ -403,7 +369,7 @@ function afficherAjouterImageArticle($messageRetour) {
     define('TITLE', 'Ajouter une image à un article');
     define('GABARIT', 'ajouterImageArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticles();
 
     $articles = '';
@@ -432,7 +398,7 @@ function afficherChoixArticle($messageRetour) {
     define('TITLE', 'Choisir un article');
     define('GABARIT', 'choixArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticles();
 
     $articles = '';
@@ -461,10 +427,10 @@ function afficherModifierArticle($messageRetour, $id) {
     define('TITLE', 'Modifier un article');
     define('GABARIT', 'modifierArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $ligneArticle = articlePrecis($id);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
+    $ligneArticle = MdlArticlePrecis($id);
     $categorie = $ligneArticle->idCategoriesArticles;
-    $lignesCategoriesArticle = idTitreCategoriesArticles();
+    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
 
     $categories = '';
     foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
@@ -491,8 +457,8 @@ function afficherSupprimerImageArticle($messageRetour, $id) {
     define('TITLE', 'Supprimer une image d\'un article');
     define('GABARIT', 'supprimerImageArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesImages = imagesArticle($id);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
+    $lignesImages = MdlImagesArticle($id);
 
     $images = '';
     foreach ($lignesImages as $ligne) {
@@ -519,7 +485,7 @@ function afficherSupprimerArticle($messageRetour) {
     define('TITLE', 'Supprimer un article');
     define('GABARIT', 'supprimerArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticles();
 
     $articles = '';
@@ -548,8 +514,8 @@ function afficherAjouterArticleVideo($messageRetour) {
     define('TITLE', 'Ajouter un article vidéo');
     define('GABARIT', 'ajouterArticleVideo.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesCategoriesArticle = idTitreCategoriesArticles();
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
+    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
 
     $categories = '';
     foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
@@ -571,7 +537,7 @@ function afficherChoixArticleVideo($messageRetour) {
     define('TITLE', 'Choisir un article vidéo');
     define('GABARIT', 'choixArticleVideo.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticlesVideo();
 
     $articlesVideo = '';
@@ -600,10 +566,10 @@ function afficherModifierArticleVideo($messageRetour, $id) {
     define('TITLE', 'Modifier un article vidéo');
     define('GABARIT', 'modifierArticleVideo.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $ligneArticle = articleVideoPrecis($id);
     $categorie = $ligneArticle->idCategoriesArticles;
-    $lignesCategoriesArticle = idTitreCategoriesArticles();
+    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
 
     $categories = '';
     foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
@@ -630,7 +596,7 @@ function afficherSupprimerArticleVideo($messageRetour) {
     define('TITLE', 'Supprimer un article vidéo');
     define('GABARIT', 'supprimerArticleVideo.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
     $lignesArticles = idTitreArticlesVideo();
 
     $articlesVideo = '';
@@ -659,7 +625,7 @@ function afficherAjouterCategorieArticle($messageRetour) {
     define('TITLE', 'Ajouter une catégorie d\'article');
     define('GABARIT', 'ajouterCategorieArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
 
     define('NOM_MEMBRE', genererNom($ligneInfoMembre));
     define('MESSAGE_RETOUR', $messageRetour);
@@ -671,8 +637,8 @@ function afficherRenommerCategorieArticle($messageRetour) {
     define('TITLE', 'Renommer une catégorie d\'article');
     define('GABARIT', 'renommerCategorieArticle.php');
 
-    $ligneInfoMembre = infosMembre($_SESSION['id']);
-    $lignesCategoriesArticle = idTitreCategoriesArticles();
+    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
+    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
 
     $categories = '';
     foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
@@ -715,13 +681,8 @@ function afficherAfficherLog() {
 ########################################################################################################################
 # B.II - Admin - Inscription                                                                                           #
 ########################################################################################################################
-function afficherInscription($messageRetour) {
-    define('TITLE', 'Inscription');
-    define('GABARIT', 'inscription.php');
-
-    define('MESSAGE_RETOUR', $messageRetour);
-
-    afficherCadre('ADMIN');
+function afficherInscription() {
+    afficherPage('Inscription', 'inscription.php', 'admin');
 }
 
 ########################################################################################################################
@@ -734,7 +695,7 @@ function afficherAccueil() {
     # Goodies
     $goodiesIndicators = '';
     $goodies ='';
-    $lignesGoodies = goodiesTous('', true, false, false);
+    $lignesGoodies = MdlGoodiesTous('', true, false, false);
 
     $nb = 0;
     $premier = true;
@@ -794,7 +755,7 @@ function afficherAccueil() {
         '</div>';
 
     # Events
-    $lignesEvents = eventsTous('PF', true, false, 3);
+    $lignesEvents = MdlEventsTous('PF', true, false, 3);
     $events = '<div class="well">';
 
     if (empty($lignesEvents)) {
@@ -840,7 +801,7 @@ function afficherAccueil() {
     $events .= '</div>';
 
     # Journal
-    $lignesJournaux = journauxTous(2);
+    $lignesJournaux = MdlJournauxTous(2);
     $journaux ='';
 
     foreach ($lignesJournaux as $ligneJournal) {
@@ -864,8 +825,8 @@ function afficherAccueil() {
     }
 
     # Article
-    $lignesArticles = articlesTous();
-    $lignesArticlesVideo = articlesVideoTous();
+    $lignesArticles = MdlArticlesTous();
+    $lignesArticlesVideo = MdlArticlesVideoTous();
 
     $arrayID = [];
     $arrayArticles = [];
@@ -920,8 +881,8 @@ function afficherArticles() {
     define('GABARIT', 'articles.php');
 
     $tableArticles = '';
-    $lignesArticles = articlesTous();
-    $lignesArticlesVideo = articlesVideoTous();
+    $lignesArticles = MdlArticlesTous();
+    $lignesArticlesVideo = MdlArticlesVideoTous();
 
     $arrayID = [];
     $arrayArticles = [];
@@ -949,7 +910,7 @@ function afficherArticles() {
             switch (substr($ID, 0, 1)) {
                 case 'T':
                     $lienArticle = RACINE . 'articles/?id=' . $id;
-                    $premiereImage = premiereImageArticle($id);
+                    $premiereImage = MdlPremiereImageArticle($id);
                     $miniature = $premiereImage ? preg_replace('/--EMPLACEMENT--/', $premiereImage->lienImagesArticles, $cadreMiniature) : '';
                     break;
                 case 'V':
@@ -998,7 +959,7 @@ function afficherArticlePrecis($article) {
     define('GABARIT', 'articlePrecis.php');
 
     $id = $article->idArticles;
-    $lignesImages = imagesArticle($id);
+    $lignesImages = MdlImagesArticle($id);
 
     $carouselArticle = '';
     if (!empty($lignesImages) && count($lignesImages) <= 1) {
@@ -1273,7 +1234,7 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
     }
 
     $tableEvents = '';
-    $lignesEvents = eventsTous($tri, $aVenir, $passes, -1);
+    $lignesEvents = MdlEventsTous($tri, $aVenir, $passes, -1);
 
     if (empty($lignesEvents)) {
         $tableEvents = '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>';
@@ -1393,7 +1354,7 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
     }
 
     $tableGoodies = '';
-    $lignesGoodies = goodiesTous($tri, $disponible, $bientot, $rupture);
+    $lignesGoodies = MdlGoodiesTous($tri, $disponible, $bientot, $rupture);
 
     if (empty($lignesGoodies)) {
         $tableGoodies = '<h3>Hmmm... On dirait qu\'il n\'y a aucun goodie qui correspond à vos critères de recherches 🤔</h3>';
@@ -1456,7 +1417,7 @@ function afficherGoodiePrecis($goodie) {
 
     $id = $goodie->idGoodies;
     $miniature = $goodie->miniatureGoodies;
-    $lignesImages = imagesGoodie($id);
+    $lignesImages = MdlImagesGoodie($id);
 
     $carouselGoodie = '';
     if (empty($lignesImages)) {
@@ -1520,7 +1481,7 @@ function afficherJournaux() {
     define('GABARIT', 'journaux.php');
 
     $tableJournaux = '';
-    $lignesJournaux = journauxTous(-1);
+    $lignesJournaux = MdlJournauxTous(-1);
 
     foreach ($lignesJournaux as $ligne) {
         $titre = htmlentities($ligne->titreJournaux, ENT_QUOTES, "UTF-8");;

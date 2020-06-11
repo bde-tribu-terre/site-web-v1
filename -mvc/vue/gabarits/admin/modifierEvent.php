@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formModifierEvent" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- ID de l'évent -->
-                        <label for="formModifierEvent_idEvent">ID de l'évent</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierEvent_idEvent" type="text" value="<?php echo ID ?>" name="formModifierEvent_idEvent" readonly>
+                        <label for="formModifierEvent_id">ID de l'évent</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierEvent_id" type="text" value="<?php echo ID ?>" name="formModifierEvent_id" readonly>
                     </div>
                     <div class="form-group"> <!-- Titre de l'évent -->
                         <label for="formModifierEvent_titre">Titre de l'évent</label>

@@ -6,47 +6,19 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
     try {
         // Gabarit Créer Évent
         if (isset($_POST['formCreerEvent_ajouter'])) {
-            CtlCreerEvent(
-                $_POST['formCreerEvent_titre'],
-                $_POST['formCreerEvent_date'],
-                $_POST['formCreerEvent_heureHeure'],
-                $_POST['formCreerEvent_heureMinute'],
-                $_POST['formCreerEvent_lieu'],
-                $_POST['formCreerEvent_desc']
-            );
+            CtlCreerEvent(true);
         } // Gabarit Choix Évent
         elseif (isset($_POST['formChoisirEvent_choisir'])) {
-            CtlChoixEvent(
-                $_POST['formChoisirEvent_idEvent']
-            );
+            CtlChoixEvent(true);
         } // Gabarit Modifier Évent
         elseif (isset($_POST['formModifierEvent_modifierEvent'])) {
-            CtlModifierEvent(
-                $_POST['formModifierEvent_idEvent'],
-                $_POST['formModifierEvent_titre'],
-                $_POST['formModifierEvent_date'],
-                $_POST['formModifierEvent_heureHeure'],
-                $_POST['formModifierEvent_heureMinute'],
-                $_POST['formModifierEvent_lieu'],
-                $_POST['formModifierEvent_desc']
-            );
+            CtlModifierEvent();
         } // Gabarit Supprimer Évent
         elseif (isset($_POST['formSupprimerEvent_supprimer'])) {
-            CtlSupprimerEvent(
-                $_POST['formSupprimerEvent_idEvent']
-            );
+            CtlSupprimerEvent(true);
         } // Gabarit Ajouter Goodie
         elseif (isset($_POST['formAjouterGoodie_ajouterGoodie'])) {
-            CtlAjouterGoodie(
-                $_POST['formAjouterGoodie_titreGoodie'],
-                $_POST['formAjouterGoodie_categorie'],
-                $_POST['formAjouterGoodie_prixAdhérentEuro'],
-                $_POST['formAjouterGoodie_prixAdhérentCentimes'],
-                $_POST['formAjouterGoodie_prixNonAdhérentEuro'],
-                $_POST['formAjouterGoodie_prixNonAdhérentCentimes'],
-                $_POST['formAjouterGoodie_descGoodie'],
-                'formAjouterGoodie_miniature'
-            );
+            CtlAjouterGoodie(true, 'formAjouterGoodie_miniature');
         } // Gabarit Ajouter Image Goodie
         elseif (isset($_POST['formAjouterImageGoodie_ajouter'])) {
             CtlAjouterImageGoodie(
@@ -78,7 +50,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         elseif (isset($_POST['formSupprimerImageGoodie_supprimer'])) {
             foreach ($_POST as $key => $value) {
                 if ($value == 'on') {
-                    supprimerImageGoodie(RACINE . '/goodies/', $key, true);
+                    MdlSupprimerImageGoodie(RACINE . '/goodies/', $key, true);
                 }
             }
             CtlAllerSupprimerImageGoodie(
@@ -191,13 +163,13 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
             );
         } // Gabarit Menu
         elseif (isset($_POST['formEvents_creerEventMenu'])) {
-            CtlCreerEventMenu('');
+            CtlCreerEvent(false);
         } elseif (isset($_POST['formEvents_modifierEventMenu'])) {
-            CtlChoixEventMenu('');
+            CtlChoixEvent(false);
         } elseif (isset($_POST['formEvents_supprimerEventMenu'])) {
-            CtlSupprimerEventMenu('');
+            CtlSupprimerEvent(false);
         } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
-            CtlAjouterGoodieMenu('');
+            CtlAjouterGoodie(false, NULL);
         } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
             CtlAjouterImageGoodieMenu('');
         } elseif (isset($_POST['formGoodies_ModifierGoodieMenu'])) {
@@ -227,7 +199,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formArticles_renommerCategorieArticleMenu'])) {
             CtlRenommerCategorieArticleMenu('');
         } elseif (isset($_POST['formLog_afficherLog'])) {
-            CtlAfficherLog('');
+            CtlAfficherLog();
         } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
             CtlDeconnexion();
         } // Globaux : apparaissent dans plusieurs gabarits

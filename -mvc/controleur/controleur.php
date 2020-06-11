@@ -40,16 +40,23 @@ function ajouterRetourModele($cle, $resultats) {
 ########################################################################################################################
 # Connexion
 function CtlConnexion() {
-    afficherConnexion();
+    try {
+        afficherConnexion();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherConnexion();
+    }
 }
 
 function CtlVerifConnexion() {
     try {
-        if (!empty($GLOBALS['form']['login']) && !empty($GLOBALS['form']['mdp'])) {
+        if (
+            !empty($GLOBALS['form']['login']) &&
+            !empty($GLOBALS['form']['mdp'])
+        ) {
             $membre = MdlVerifConnexion($GLOBALS['form']['login'], $GLOBALS['form']['mdp']);
             if ($membre != false) {
                 $_SESSION['membre'] = $membre;
-                // ajouterLog(001, 'Connexion'); C'est bcp trop stressant d'être autant pisté omg !!!!
                 CtlMenu();
             } else {
                 ajouterMessage(401, 'Login ou mot de passe invalide.');
@@ -66,38 +73,6 @@ function CtlVerifConnexion() {
 }
 
 # Menu
-function CtlCreerEventMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherCreerEvent($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlChoixEventMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherChoixEvent($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlSupprimerEventMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherSupprimerEvent($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAjouterGoodieMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAjouterGoodie($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
 function CtlAjouterImageGoodieMenu($messageRetour) {
     if (isset($_SESSION['id'])) {
         afficherAjouterImageGoodie($messageRetour);
@@ -211,136 +186,193 @@ function CtlRenommerCategorieArticleMenu($messageRetour) {
 }
 
 function CtlAfficherLog() {
-    MdlLogTous();
-    afficherAfficherLog();
+    try {
+        MdlLogTous();
+        afficherAfficherLog();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherAfficherLog();
+    }
 }
 
 function CtlMenu() {
-    afficherMenu();
+    try {
+        afficherMenu();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherMenu();
+    }
 }
 
 function CtlDeconnexion() {
-    $_SESSION = array();
-    if (isset($COOKIE[session_name()])) {
-        setcookie(session_name(), '', time()-42000, '/');
-    }
-    session_destroy();
-    ajouterMessage(200, 'Session déconnectée avec succès.');
-    CtlConnexion();
-}
-
-function CtlMenuErreur($messageErreur) {
-    if (isset($_SESSION['id'])) {
-        afficherMenu($messageErreur);
-    } else {
-        CtlConnexion('La session a expiré.');
+    try {
+        $_SESSION = array();
+        if (isset($COOKIE[session_name()])) {
+            setcookie(session_name(), '', time()-42000, '/');
+        }
+        session_destroy();
+        ajouterMessage(200, 'Session déconnectée avec succès.');
+        CtlConnexion();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        CtlConnexion();
     }
 }
 
 # Events
-function CtlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
-    if (isset($_SESSION['id'])) {
-        try {
+function CtlCreerEvent($executer) {
+    try {
+        if (!$executer) {
+            afficherCreerEvent();
+        } else {
             if (
-                !empty($titre) &&
-                !empty($date) &&
-                (!empty($heure) || $heure == 0) &&
-                (!empty($minute) || $minute == 0) &&
-                !empty($desc)
+                !empty($GLOBALS['form']['titre']) &&
+                !empty($GLOBALS['form']['date']) &&
+                (!empty($GLOBALS['form']['heureHeure']) || $GLOBALS['form']['heureHeure'] == 0) &&
+                (!empty($GLOBALS['form']['heureMinute']) || $GLOBALS['form']['heureMinute'] == 0) &&
+                !empty($GLOBALS['form']['lieu']) &&
+                !empty($GLOBALS['form']['desc'])
             ) {
-                creerEvent($titre, $date, $heure, $minute, $lieu, $desc);
-                afficherCreerEvent('L\'évent "' . $titre . '" a été ajouté avec succès !');
+                MdlCreerEvent(
+                    $GLOBALS['form']['titre'],
+                    $GLOBALS['form']['date'],
+                    $GLOBALS['form']['heureHeure'],
+                    $GLOBALS['form']['heureMinute'],
+                    $GLOBALS['form']['lieu'],
+                    $GLOBALS['form']['desc']
+                );
+                afficherCreerEvent();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
+                afficherCreerEvent();
             }
-        } catch (Exception $e) {
-            afficherCreerEvent($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherCreerEvent();
     }
 }
 
-function CtlChoixEvent($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                afficherModifierEvent('', $id);
-            } else {
-                throw new Exception('Erreur : Veuillez sélectionner un évent.');
-            }
-        } catch (Exception $e) {
-            afficherChoixEvent($e->getMessage());
-        }
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
-    if (isset($_SESSION['id'])) {
-        try {
+function CtlChoixEvent($executer) {
+    try {
+        if (!$executer) {
+            MdlEventsTous('FP', true, true, NULL);
+            afficherChoixEvent();
+        } else {
             if (
-                !empty($titre) &&
-                !empty($date) &&
-                (!empty($heure) || $heure == 0) &&
-                (!empty($minute) || $minute == 0) &&
-                !empty($desc)
+                !empty($GLOBALS['form']['id'])
             ) {
-                modifierEvent($id, $titre, $desc, $date, $heure, $minute, $lieu);
-                afficherModifierEvent('L\'évent "' . $titre . '" a été modifié avec succès !', $id);
+                MdlEventPrecis($GLOBALS['form']['id']);
+                afficherModifierEvent();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+                ajouterMessage(400, 'Veuillez sélectionner un évent.');
+                MdlEventsTous('FP', true, true, NULL);
+                afficherChoixEvent();
             }
-        } catch (Exception $e) {
-            afficherModifierEvent($e->getMessage(), $id);
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlEventsTous('FP', true, true, NULL);
+        afficherChoixEvent();
     }
 }
 
-function CtlSupprimerEvent($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                supprimerEvent($id);
-                afficherSupprimerEvent('L\'évent a été supprimé avec succès !');
-            } else {
-                throw new Exception('Erreur : Veuillez sélectionner un évent.');
-            }
-        } catch (Exception $e) {
-            afficherSupprimerEvent($e->getMessage());
+function CtlModifierEvent() {
+    try {
+        if (
+            !empty($GLOBALS['form']['titre']) &&
+            !empty($GLOBALS['form']['date']) &&
+            (!empty($GLOBALS['form']['heureHeure']) || $GLOBALS['form']['heureHeure'] == 0) &&
+            (!empty($GLOBALS['form']['heureMinute']) || $GLOBALS['form']['heureMinute'] == 0) &&
+            !empty($GLOBALS['form']['lieu']) &&
+            !empty($GLOBALS['form']['desc'])
+        ) {
+            MdlModifierEvent(
+                $GLOBALS['form']['id'],
+                $GLOBALS['form']['titre'],
+                $GLOBALS['form']['date'],
+                $GLOBALS['form']['heureHeure'],
+                $GLOBALS['form']['heureMinute'],
+                $GLOBALS['form']['lieu'],
+                $GLOBALS['form']['desc']
+            );
+            MdlEventPrecis($GLOBALS['form']['id']);
+            afficherModifierEvent();
+        } else {
+            ajouterMessage(400, 'Veuillez remplir tous les champs.');
+            MdlEventPrecis($GLOBALS['form']['id']);
+            afficherModifierEvent();
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlEventsTous('FP', true, true, NULL);
+        afficherChoixEvent();
+    }
+}
+
+function CtlSupprimerEvent($executer) {
+    try {
+        if (!$executer) {
+            MdlEventsTous('FP', true, true, NULL);
+            afficherSupprimerEvent();
+        } else {
+            if (
+                !empty($GLOBALS['form']['id'])
+            ) {
+                MdlSupprimerEvent(
+                    $GLOBALS['form']['id']
+                );
+                MdlEventsTous('FP', true, true, NULL);
+                afficherSupprimerEvent();
+            } else {
+                ajouterMessage(400, 'Veuillez sélectionner un évent.');
+                MdlEventsTous('FP', true, true, NULL);
+                afficherSupprimerEvent();
+            }
+        }
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlEventsTous('FP', true, true, NULL);
+        afficherSupprimerEvent();
     }
 }
 
 # Goodies
-function CtlAjouterGoodie($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
-    if (isset($_SESSION['id'])) {
-        try {
+function CtlAjouterGoodie($executer, $fileImput) {
+    try {
+        if (!$executer) {
+            afficherAjouterGoodie();
+        } else {
             if (
-                !empty($titre) &&
-                (!empty($categorie) || $categorie == 0) && $categorie != '-1' &&
-                (!empty($prixADEuro) || $prixADEuro == 0) &&
-                (!empty($prixADCentimes) || $prixADCentimes == 0) &&
-                (!empty($prixNADEuro) || $prixNADEuro == 0) &&
-                (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
-                !empty($desc) &&
+                !empty($GLOBALS['form']['titre']) &&
+                (!empty($GLOBALS['form']['categorie']) || $GLOBALS['form']['categorie'] == 0) && $GLOBALS['form']['categorie'] != '-1' &&
+                (!empty($GLOBALS['form']['prixADEuro']) || $GLOBALS['form']['prixADEuro'] == 0) &&
+                (!empty($GLOBALS['form']['prixADCentimes']) || $GLOBALS['form']['prixADCentimes'] == 0) &&
+                (!empty($GLOBALS['form']['prixNADEuro']) || $GLOBALS['form']['prixNADEuro'] == 0) &&
+                (!empty($GLOBALS['form']['prixNADCentimes']) || $GLOBALS['form']['prixNADCentimes'] == 0) &&
+                !empty($GLOBALS['form']['desc']) &&
                 !empty($_FILES[$fileImput]['name'])
             ) {
-                ajouterGoodie(RACINE . 'goodies/', $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput);
-                afficherAjouterGoodie('Le goodie "' . $titre . '" a été ajouté avec succès !');
+                MdlAjouterGoodie(
+                    RACINE . 'goodies/',
+                    $GLOBALS['form']['titre'],
+                    $GLOBALS['form']['categorie'],
+                    $GLOBALS['form']['prixADEuro'],
+                    $GLOBALS['form']['prixADCentimes'],
+                    $GLOBALS['form']['prixNADEuro'],
+                    $GLOBALS['form']['prixNADCentimes'],
+                    $GLOBALS['form']['desc'],
+                    $fileImput
+                );
+                afficherAjouterGoodie();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une miniature.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
+                afficherAjouterGoodie();
             }
-        } catch (Exception $e) {
-            afficherAjouterGoodie($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherAjouterGoodie();
     }
 }
 
@@ -348,8 +380,8 @@ function CtlAjouterImageGoodie($id, $fileImput) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
-                $titre = goodiePrecis($id)->titreGoodies;
-                ajouterImageGoodie(RACINE . 'goodies/', $id, $titre, $fileImput);
+                $titre = MdlGoodiePrecis($id)->titreGoodies;
+                MdlAjouterImageGoodie(RACINE . 'goodies/', $id, $titre, $fileImput);
                 afficherAjouterImageGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
@@ -390,7 +422,7 @@ function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
                 (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
                 !empty($desc)
             ) {
-                modifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
+                MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
                 afficherModifierGoodie('Le goodie "' . $titre . '" a été modifié avec succès !', $id);
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs.');
@@ -423,7 +455,7 @@ function CtlSupprimerGoodie($id) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id)) {
-                supprimerGoodie(RACINE . 'goodies/', $id);
+                MdlSupprimerGoodie(RACINE . 'goodies/', $id);
                 afficherSupprimerGoodie('Le goodie a été supprimé avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez sélectionner un goodie.');
@@ -441,7 +473,7 @@ function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($_FILES[$fileImput]['name'])) {
-                ajouterJournal(RACINE . 'journaux/', $titre, $mois, $annee, $fileImput);
+                MdlAjouterJournal(RACINE . 'journaux/', $titre, $mois, $annee, $fileImput);
                 afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner un PDF.');
@@ -458,7 +490,7 @@ function CtlSupprimerJournal($id) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id)) {
-                supprimerJournal(RACINE . 'journaux/', $id);
+                MdlSupprimerJournal(RACINE . 'journaux/', $id);
                 afficherSupprimerJournal('Le journal a été supprimé avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez sélectionner un journal.');
@@ -481,7 +513,7 @@ function CtlAjouterArticle($titre, $categorie, $visibilite, $texte) {
                 $visibilite != '-1' &&
                 !empty($texte)
             ) {
-                ajouterArticle($titre, $categorie, $visibilite, $texte);
+                MdlAjouterArticle($titre, $categorie, $visibilite, $texte);
                 afficherAjouterArticle('L\'article "' . $titre . '" a été ajouté avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs.');
@@ -498,7 +530,7 @@ function CtlAjouterImageArticle($id, $fileImput) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
-                $titre = articlePrecis($id)->titreArticles;
+                $titre = MdlArticlePrecis($id)->titreArticles;
                 ajouterImageArticle(RACINE . 'articles/', $id, $titre, $fileImput);
                 afficherAjouterImageArticle('L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
             } else {
@@ -537,7 +569,7 @@ function CtlModifierArticle($id, $titre, $categorie, $visibilite, $texte) {
                 (!empty($visibilite) || $visibilite == 0) &&
                 !empty($texte)
             ) {
-                modifierArticle($id, $titre, $categorie, $visibilite, $texte);
+                MdlModifierArticle($id, $titre, $categorie, $visibilite, $texte);
                 afficherModifierArticle('L\'article "' . $titre . '" a été modifié avec succès !', $id);
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs.');
@@ -666,7 +698,7 @@ function CtlAjouterCategorieArticle($titre) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($titre)) {
-                ajouterCategorieArticle($titre);
+                MdlAjouterCategorieArticle($titre);
                 afficherAjouterCategorieArticle('La catégorie "' . $titre . '" a été ajoutée avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs.');
@@ -683,7 +715,7 @@ function CtlRenommerCategorieArticle($id, $titre) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id) && !empty($titre)) {
-                renommerCategorieArticle($id, $titre);
+                MdlRenommerCategorieArticle($id, $titre);
                 afficherRenommerCategorieArticle('La catégorie a été renommée en "' . $titre . '" avec succès !');
             } else {
                 throw new Exception('Erreur : Veuillez remplir tous les champs.');
@@ -699,24 +731,33 @@ function CtlRenommerCategorieArticle($id, $titre) {
 ########################################################################################################################
 # Admin - Inscription                                                                                                  #
 ########################################################################################################################
-function CtlInscription($messageRetour) {
-    afficherInscription($messageRetour);
+function CtlInscription() {
+    afficherInscription();
 }
 
-function CtlSInscrire($cle, $prenom, $nom, $login, $mdp) {
+function CtlSInscrire() {
     try {
-        if (!empty($cle) && !empty($prenom) && !empty($nom) && !empty($login) && !empty($mdp)) {
-            if (cleExiste($cle)) { // Si trouvée, alors elle est détruite.
-                ajouterMembre($prenom, $nom, $login, $mdp);
-                afficherInscription('L\'inscription a bien été enregistrée.');
+        if (
+            !empty($cle) &&
+            !empty($prenom) &&
+            !empty($nom) &&
+            !empty($login) &&
+            !empty($mdp)
+        ) {
+            if (MdlCleExiste($cle)) { // Si trouvée, alors elle est détruite.
+                MdlAjouterMembre($prenom, $nom, $login, $mdp);
+                afficherInscription();
             } else {
-                afficherInscription("Erreur : La clé d'inscription saisie n'existe pas.");
+                ajouterMessage(402, 'La clé d\'inscription saisie n\'existe pas.');
+                afficherInscription();
             }
         } else {
-            afficherInscription("Erreur : Veuillez remplir tous les champs.");
+            ajouterMessage(400, 'Veuillez remplir tous les champs.');
+            afficherInscription();
         }
     } catch (Exception $e) {
-        afficherInscription($e->getMessage());
+        ajouterMessage(500, $e->getMessage());
+        afficherInscription();
     }
 }
 
@@ -736,7 +777,7 @@ function CtlArticles() {
 
 function CtlArticlePrecis($id) {
     if ($id >= 0) {
-        $article = articlePrecis($id);
+        $article = MdlArticlePrecis($id);
         if ($article != false) {
             afficherArticlePrecis($article);
         } else {
@@ -858,7 +899,7 @@ function CtlEvents($tri, $aVenir, $passes, $rechercheEnCours) {
 }
 
 function CtlEventPrecis($id) {
-    $event = eventPrecis($id);
+    $event = MdlEventPrecis($id);
     if ($event != false) {
         afficherEventPrecis($event);
     } else {
@@ -874,7 +915,7 @@ function CtlGoodies($tri, $disponible, $bientot, $rupture,$rechercheEnCours) {
 }
 
 function CtlGoodiePrecis($id) {
-    $goodie = goodiePrecis($id);
+    $goodie = MdlGoodiePrecis($id);
     if (!empty($goodie)) {
         afficherGoodiePrecis($goodie);
     } else {
