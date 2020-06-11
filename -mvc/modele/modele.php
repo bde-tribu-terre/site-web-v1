@@ -24,13 +24,12 @@ function MET_SQLLigneUnique($object) {
 function MET_SQLLignesMultiples($arrayObject) {
     $array = array();
     foreach ($arrayObject as $objectKey => $objectValue) {
-
         $array[$objectKey] = MET_SQLLigneUnique($objectValue);
     }
     return $array;
 }
 
-function requeteSQL($requete, $variables = array(), $resultatUnique = false, $codeMessageSucces = NULL, $texteMessageSucces = NULL) {
+function requeteSQL($requete, $variables = array(), $nbResultats = 2, $codeMessageSucces = NULL, $texteMessageSucces = NULL) {
     try {
         $connexion = getConnect();
         $prepare = $connexion->prepare($requete);
@@ -39,11 +38,15 @@ function requeteSQL($requete, $variables = array(), $resultatUnique = false, $co
             $prepare->bindValue($variable[0], $variable[1], $data_type);
         }
         $prepare->execute();
-        $prepare->setFetchMode(PDO::FETCH_OBJ);
-        if ($resultatUnique) {
-            $retour = MET_SQLLigneUnique($prepare->fetch());
-        } else {
-            $retour = MET_SQLLignesMultiples($prepare->fetchAll());
+        switch ($nbResultats) {
+            case 0:
+                $retour = NULL;
+                break;
+            case 1:
+                $retour = MET_SQLLigneUnique($prepare->fetch());
+                break;
+            default:
+                $retour = MET_SQLLignesMultiples($prepare->fetchAll());
         }
         $prepare->closeCursor();
         if ($codeMessageSucces && $texteMessageSucces) {
@@ -52,10 +55,13 @@ function requeteSQL($requete, $variables = array(), $resultatUnique = false, $co
         return $retour;
     } catch (Exception $e) {
         ajouterMessage(600, $e->getMessage());
-        if ($resultatUnique) {
-            return NULL;
+        switch ($nbResultats) {
+            case 0:
+            case 1:
+                return NULL;
+            default:
+                return array();
         }
-        return array();
     }
 }
 
@@ -80,7 +86,7 @@ function MdlVerifConnexion($login, $mdp) {
         array(
             [':login', $login, 'STR']
         ),
-        true
+        1
     );
     if ($membre) {
         // https://youtu.be/8ZtInClXe1Q pour des explications.
@@ -110,7 +116,7 @@ function MdlInfosMembre($id) {
             array(
                 [':idMembres', $id, 'INT']
             ),
-            true
+            1
         )
     );
 }
@@ -143,7 +149,7 @@ function MdlAjouterMembre($prenom, $nom, $login, $mdp) {
             [':prenom', $prenom, 'STR'],
             [':nom', $nom, 'STR']
         ),
-        false,
+        0,
         201,
         'L\'inscription a bien été enregistrée.'
     );
@@ -166,7 +172,7 @@ function MdlCleExiste($cle) {
         array(
             [':cle', $cle, 'STR']
         ),
-        true,
+        1,
         NULL,
         NULL
     );
@@ -240,7 +246,8 @@ function MdlAjouterLog($code, $message) {
             [':codeLogActions', $code, 'INT'],
             [':dateLogActions', $dt->format('Y-m-d H-i-s'), 'STR'],
             [':descLogActions', $message, 'STR']
-        )
+        ),
+        0
     );
 }
 
@@ -318,7 +325,7 @@ function MdlEventPrecis($id) {
             array(
                 [':idEvents', $id, 'INT']
             ),
-            true
+            1
         )
     );
 }
@@ -345,7 +352,7 @@ function MdlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
             [':heureEvents', $heure . ':' . $minute . ':00', 'STR'],
             [':lieuEvents', $lieu, 'STR']
         ),
-        false,
+        0,
         201,
         'L\'évent "' . $titre . '" a été ajouté avec succès !'
     );
@@ -374,7 +381,7 @@ function MdlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
             [':heureEvents', $heure . ':' . $minute . ':00', 'STR'],
             [':lieuEvents', $lieu, 'STR']
         ),
-        false,
+        0,
         201,
         'L\'évent "' . $titre . '" a été modifié avec succès !'
     );
@@ -392,7 +399,7 @@ function MdlSupprimerEvent($id) {
         array(
             [':idEvents', $id, 'INT']
         ),
-        false,
+        0,
         201,
         'L\'évent a été supprimé avec succès !'
     );
@@ -512,7 +519,7 @@ function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes
             [':categorieGoodies', $categorie, 'INT'],
             [':miniatureGoodies', $newName, 'STR']
         ),
-        false,
+        0,
         201,
         'Le goodie "' . $titre . '" a été ajouté avec succès !'
     );
@@ -541,7 +548,7 @@ function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
             [':descGoodies', $desc, 'STR'],
             [':categorieGoodies', $categorie, 'INT']
         ),
-        false,
+        0,
         201,
         'Le goodie ' . $titre . ' a été modifié avec succès !'
     );
@@ -582,7 +589,7 @@ function MdlSupprimerGoodie($rep, $id) {
             array(
                 [":idGoodies", $id, 'INT']
             ),
-            true
+            1
         )['miniature'];
         unlink($rep . $miniature);
     } catch (Exception $e) {
@@ -601,7 +608,7 @@ function MdlSupprimerGoodie($rep, $id) {
         array(
             [':idGoodies', $id, 'INT']
         ),
-        false,
+        0,
         201,
         'Le goodie a été supprimée avec succès !'
     );
@@ -659,7 +666,7 @@ function MdlAjouterImageGoodie($rep, $id, $titre, $fileImput) {
             [':idGoodies', $id, 'INT'],
             [':lienImagesgoodies', $newName, 'STR']
         ),
-        false,
+        0,
         201,
         'L\'image a été ajoutée avec succès !'
     );
@@ -680,7 +687,7 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
             array(
                 [':idImagesGoodies', $id, 'INT']
             ),
-            true
+            1
         )['lien'];
         unlink($rep . $lienImage);
     } catch (Exception $e) {
@@ -699,7 +706,7 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
         array(
             [':idImagesGoodies', $id, 'INT']
         ),
-        false,
+        0,
         $logguer ? 201 : NULL,
         $logguer ? 'L\'image a été supprimée avec succès !' : NULL
     );
@@ -763,7 +770,7 @@ function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
             [':dateJournaux', $annee . '-' . $mois . '-' . '01', 'STR'],
             [':pdfJournaux', $newName, 'STR']
         ),
-        false,
+        0,
         201,
         'Le journal "' . $titre . '" a été ajouté avec succès !'
     );
@@ -784,7 +791,8 @@ function MdlSupprimerJournal($rep, $id) {
             ",
             array(
                 [':idJournaux', $id, 'INT']
-            )
+            ),
+            1
         )['pdf'];
         unlink($rep . $pdf);
     } catch (Exception $e) {
@@ -803,7 +811,7 @@ function MdlSupprimerJournal($rep, $id) {
         array(
             [':idJournaux', $id, 'INT']
         ),
-        false,
+        0,
         201,
         'Le journal a été supprimé avec succès !'
     );
@@ -883,7 +891,7 @@ function MdlArticlePrecis($id) {
             array(
                 [':idArticles', $id, ]
             ),
-            true
+            1
         )
     );
 }
@@ -917,7 +925,7 @@ function MdlAjouterArticle($titre, $categorie, $visibilite, $texte) {
             [':dateCreationArticles', $dt->format('Y-m-d'), 'STR'],
             [':dateModificationArticles', NULL, 'STR']
         ),
-        false,
+        0,
         201,
         'L\'article "' . $titre . '" a été ajouté avec succès !'
     );
@@ -949,7 +957,7 @@ function MdlModifierArticle($id, $titre, $categorie, $visibilite, $texte) {
             [':idArticles', $id, 'INT'],
             [':dateModificationArticles', $dt->format('Y-m-d'), 'STR']
         ),
-        false,
+        0,
         201,
         'L\'article "' . $titre . '" a été modifié avec succès !'
     );
@@ -987,7 +995,7 @@ function MdlSupprimerArticle($rep, $id) {
         array(
             [':idArticles', $id, 'INT']
         ),
-        false,
+        0,
         201,
         'L\'article a été supprimée avec succès !'
     );
@@ -1025,7 +1033,7 @@ function MdlAjouterCategorieArticle($titre) {
         array(
             [':titreCategoriesArticles', $titre, 'STR']
         ),
-        false,
+        0,
         201,
         'La catégorie d\'articles "' . $titre . '" a été ajouté avec succès !'
     );
@@ -1046,7 +1054,7 @@ function MdlRenommerCategorieArticle($id, $titre) {
             [':idCategoriesArticles', $id, 'INT'],
             [':titreCategoriesArticles', $titre, 'STR']
         ),
-        false,
+        0,
         201,
         'La catégorie d\'articles a été renommée en "' . $titre . '" avec succès !'
     );
@@ -1105,7 +1113,7 @@ function MdlAjouterImageArticle($rep, $id, $titre, $fileImput) {
             [':idArticles', $id, 'INT'],
             [':lienImagesArticles', $newName, 'STR']
         ),
-        false,
+        0,
         201,
         'L\'image de l\'article a été ajoutée avec succès !'
     );
@@ -1126,7 +1134,7 @@ function MdlSupprimerImageArticle($rep, $id, $logguer) {
         array(
             [':idImagesArticles', $id, 'INT']
         ),
-        true
+        1
     )['lien'];
     unlink($rep . $image);
 
@@ -1141,7 +1149,7 @@ function MdlSupprimerImageArticle($rep, $id, $logguer) {
         array(
             [':idImagesArticles', $id, 'INT']
         ),
-        false,
+        0,
         $logguer ? 201 : NULL,
         $logguer ? 'L\'image de l\'article a été supprimé avec succès !' : NULL
     );
@@ -1227,7 +1235,7 @@ function MdlArticleVideoPrecis($id) {
             array(
                 [':idArticlesYouTube', $id, 'INT']
             ),
-            true
+            1
         )
     );
 }
@@ -1263,7 +1271,7 @@ function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) 
             [':dateCreationArticlesYouTube', $dt->format('Y-m-d'), 'STR'],
             [':dateModificationArticlesYouTube', NULL, 'STR'],
         ),
-        false,
+        0,
         201,
         'L\'article vidéo ' . $titre . ' a été ajouté avec succès'
     );
@@ -1297,7 +1305,7 @@ function MdlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $t
             [':idArticlesYouTube', $id, 'INT'],
             [':dateModificationArticlesYouTube', $dt->format('Y-m-d'), 'STR']
         ),
-        false,
+        0,
         201,
         'L\'article vidéo ' . $titre . ' a été modifié avec succès !'
     );
@@ -1310,7 +1318,7 @@ function MdlSupprimerArticleVideo($id) {
         array(
             [':idArticlesYouTube', $id, 'INT']
         ),
-        false,
+        0,
         201,
         'L\'article vidéo a été supprimé avec succès !'
     );
