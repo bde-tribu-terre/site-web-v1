@@ -10,6 +10,26 @@
 ########################################################################################################################
 # Fonction d'automation de requêtes SQL                                                                                #
 ########################################################################################################################
+function MET_SQLLigneUnique($object) {
+    if ($object) {
+        $array = array();
+        foreach ($object as $key => $val) {
+            $array[$key] = is_string($val) ? htmlentities($val, ENT_QUOTES, 'UTF-8') : $val;
+        }
+        return $array;
+    }
+    return $object;
+}
+
+function MET_SQLLignesMultiples($arrayObject) {
+    $array = array();
+    foreach ($arrayObject as $objectKey => $objectValue) {
+
+        $array[$objectKey] = MET_SQLLigneUnique($objectValue);
+    }
+    return $array;
+}
+
 function requeteSQL($requete, $variables = array(), $resultatUnique = false, $codeMessageSucces = NULL, $texteMessageSucces = NULL) {
     try {
         $connexion = getConnect();
@@ -21,23 +41,9 @@ function requeteSQL($requete, $variables = array(), $resultatUnique = false, $co
         $prepare->execute();
         $prepare->setFetchMode(PDO::FETCH_OBJ);
         if ($resultatUnique) {
-            $retour = $prepare->fetch();
-            if ($retour) {
-                $array = array();
-                foreach ($retour as $key => $val) {
-                    $array[$key] = is_string($val) ? htmlentities($val, ENT_QUOTES, 'UTF-8') : $val;
-                }
-                $retour = $array;
-            }
+            $retour = MET_SQLLigneUnique($prepare->fetch());
         } else {
-            $retour = array();
-            foreach ($prepare->fetchAll() as $objectKey => $objectVal) {
-                $array = array();
-                foreach ($objectVal as $key => $val) {
-                    $array[$key] = is_string($val) ? htmlentities($val, ENT_QUOTES, 'UTF-8') : $val;
-                }
-                $retour[$objectKey] = $array;
-            }
+            $retour = MET_SQLLignesMultiples($prepare->fetchAll());
         }
         $prepare->closeCursor();
         if ($codeMessageSucces && $texteMessageSucces) {
