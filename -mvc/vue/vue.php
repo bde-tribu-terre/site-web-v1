@@ -360,13 +360,13 @@ function afficherModifierArticle() {
     foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
             '
-            <option value="' . $categorie['id'] . '">
+            <option value="' . $categorie['id'] . '" ' . ($GLOBALS['retoursModele']['article']['categorie'] == $GLOBALS['form']['id'] ? 'selected' : '') . '>
                 ' . $categorie['titre'] . '
             </option>
             ';
     }
     define('CATEGORIES', $categories);
-    define('ID', $GLOBALS['form']['id']);
+    define('ID', $GLOBALS['retoursModele']['article']['id']);
     define('TITRE', $GLOBALS['retoursModele']['article']['titre']);
     define('CATEGORIE', $GLOBALS['retoursModele']['article']['categorie']);
     define('VISIBILITE', $GLOBALS['retoursModele']['article']['visibilite']);
@@ -451,19 +451,19 @@ function afficherChoixArticleVideo() {
     afficherPage('Choisir un article vidéo', 'choixArticleVideo.php', 'admin');
 }
 
-function afficherModifierArticleVideo($messageRetour, $id) {
+function afficherModifierArticleVideo() {
     define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $categories = '';
     foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
             '
-            <option value="' . $categorie['id'] . '">
+            <option value="' . $categorie['id'] . '" ' . ($GLOBALS['retoursModele']['articleVideo']['categorie'] == $GLOBALS['retoursModele']['articleVideo']['id'] ? 'selected' : '') . '>
                 ' . $categorie['titre'] . '
             </option>
             ';
     }
     define('CATEGORIES', $categories);
-    define('ID', $GLOBALS['form']['id']);
+    define('ID', $GLOBALS['retoursModele']['articleVideo']['id']);
     define('TITRE', $GLOBALS['retoursModele']['articleVideo']['titre']);
     define('CATEGORIE', $GLOBALS['retoursModele']['articleVideo']['categorie']);
     define('VISIBILITE', $GLOBALS['retoursModele']['articleVideo']['visibilite']);
