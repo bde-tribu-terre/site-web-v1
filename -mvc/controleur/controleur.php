@@ -396,7 +396,7 @@ function CtlAjouterJournal($executer, $fileImput) {
                 !empty($_FILES[$fileImput]['name'])
             ) {
                 MdlAjouterJournal(
-                    RACINE . 'goodies/',
+                    RACINE . 'journaux/',
                     $GLOBALS['form']['titre'],
                     $GLOBALS['form']['mois'],
                     $GLOBALS['form']['annee'],
