@@ -1244,7 +1244,7 @@ function MdlArticleVideoPrecis($id) {
                     NATURAL JOIN
                 Membres
                     NATURAL JOIN
-                CategoriesArticle
+                CategoriesArticles
             WHERE
                 idArticlesYouTube=:idArticlesYouTube
             ",
