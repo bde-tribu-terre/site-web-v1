@@ -1018,7 +1018,7 @@ function MdlSupprimerArticle($rep, $id) {
 
 function MdlCategoriesArticlesTous() {
     ajouterRetourModele(
-        'catgoriesArticles',
+        'categoriesArticles',
         requeteSQL(
             "
             SELECT
