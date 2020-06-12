@@ -376,21 +376,25 @@ function CtlAjouterGoodie($executer, $fileImput) {
     }
 }
 
-function CtlAjouterImageGoodie($id, $fileImput) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
-                $titre = MdlGoodiePrecis($id)->titreGoodies;
-                MdlAjouterImageGoodie(RACINE . 'goodies/', $id, $titre, $fileImput);
-                afficherAjouterImageGoodie('L\'image a été ajoutée au goodie ' . $titre . ' avec succès !');
+function CtlAjouterImageGoodie($executer, $fileImput) {
+    try {
+        if ($executer) {
+            afficherAjouterImageGoodie();
+        } else {
+            if (
+                !empty($GLOBALS['form']['idGoodie']) &&
+                !empty($_FILES[$fileImput]['name'])
+            ) {
+                MdlAjouterImageGoodie(RACINE . 'goodies/', $GLOBALS['form']['idGoodie'], $fileImput);
+                afficherAjouterImageGoodie();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs et sélectionner une image.');
+                afficherAjouterImageGoodie();
             }
-        } catch (Exception $e) {
-            afficherAjouterImageGoodie($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherAjouterImageGoodie();
     }
 }
 

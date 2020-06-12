@@ -635,9 +635,23 @@ function MdlImagesGoodie($id) {
     );
 }
 
-function MdlAjouterImageGoodie($rep, $id, $titre, $fileImput) {
+function MdlAjouterImageGoodie($rep, $id, $fileImput) {
     try {
         # Enregistrement de la miniature.
+        $titre = requeteSQL(
+            "
+            SELECT
+                titreGoodies AS titre
+            FROM
+                Goodies
+            WHERE
+                idGoodies=:idGoodies
+            ",
+            array(
+                [':idGoodies', $id, 'INT']
+            ),
+            1
+        )['titre'];
         $infosFichier = pathinfo($_FILES[$fileImput]['name']);
         $extension = $infosFichier['extension'];
         $newName = 'img-i-' . preg_replace('/[\W|.]/', '', $titre) . '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.

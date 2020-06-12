@@ -176,26 +176,16 @@ function afficherAjouterGoodie() {
     afficherPage('Ajouter un goodie', 'ajouterGoodie.php', 'admin');
 }
 
-function afficherAjouterImageGoodie($messageRetour) {
-    define('TITLE', 'Ajouter une image à un goodie');
-    define('GABARIT', 'ajouterImageGoodie.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesGoodies = idTitreGoodies();
-
+function afficherAjouterImageGoodie() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $goodies = '';
-    foreach ($lignesGoodies as $ligneGoodie) {
-        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
-        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['goodies'] as $goodie) {
         $goodies .=
-            '<option value="' . $idGoodie . '">' . $titreGoodie . '</option>';
+            '<option value="' . $goodie['id'] . '">' . $goodie['titre'] . '</option>';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('GOODIES', $goodies);
 
-    afficherCadre('ADMIN');
+    afficherPage('Ajouter une image à un goodie', 'ajouterImageGoodie.php', 'admin');
 }
 
 function afficherChoixGoodie($messageRetour) {
