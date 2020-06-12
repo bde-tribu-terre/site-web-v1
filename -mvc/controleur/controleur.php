@@ -73,14 +73,6 @@ function CtlVerifConnexion() {
 }
 
 # Menu
-function CtlAjouterImageGoodieMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAjouterImageGoodie($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
 function CtlChoixGoodieMenu($messageRetour) {
     if (isset($_SESSION['id'])) {
         afficherChoixGoodie($messageRetour);
