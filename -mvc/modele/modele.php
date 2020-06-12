@@ -838,42 +838,44 @@ function MdlSupprimerJournal($rep, $id) {
 function MdlArticlesTous($visibles = true, $invisibles = false) {
     ajouterRetourModele(
         'articles',
-        "
-        SELECT
-            idArticles AS id,
-            titreArticles AS titre,
-            titreCategoriesArticles AS categorie,
-            visibiliteArticles AS visibilite,
-            texteArticles AS texte,
-            prenomMembres AS prenomAuteur,
-            nomMembres AS nomAuteur,
-            dateCreationArticles AS dateCreation,
-            dateModificationArticles AS dateModification
-        FROM
-            (
-                SELECT
-                    idArticles,
-                    titreArticles,
-                    titreCategoriesArticles,
-                    visibiliteArticles,
-                    texteArticles,
-                    prenomMembres,
-                    nomMembres,
-                    dateCreationArticles,
-                    dateModificationArticles
-                FROM
-                    Articles
-                        NATURAL JOIN
-                    Membres
-                        NATURAL JOIN
-                    CategoriesArticles
-                ORDER BY
-                    dateCreationArticles
-                    DESC
-            ) AS T
-        WHERE
-            1=2" . ($visibles ? " OR visibiliteArticles=0" : "") . ($invisibles ? "OR visibiliteArticles=1" : "") . "
-        "
+        requeteSQL(
+            "
+            SELECT
+                idArticles AS id,
+                titreArticles AS titre,
+                titreCategoriesArticles AS categorie,
+                visibiliteArticles AS visibilite,
+                texteArticles AS texte,
+                prenomMembres AS prenomAuteur,
+                nomMembres AS nomAuteur,
+                dateCreationArticles AS dateCreation,
+                dateModificationArticles AS dateModification
+            FROM
+                (
+                    SELECT
+                        idArticles,
+                        titreArticles,
+                        titreCategoriesArticles,
+                        visibiliteArticles,
+                        texteArticles,
+                        prenomMembres,
+                        nomMembres,
+                        dateCreationArticles,
+                        dateModificationArticles
+                    FROM
+                        Articles
+                            NATURAL JOIN
+                        Membres
+                            NATURAL JOIN
+                        CategoriesArticles
+                    ORDER BY
+                        dateCreationArticles
+                        DESC
+                ) AS T
+            WHERE
+                1=2" . ($visibles ? " OR visibiliteArticles=0" : "") . ($invisibles ? " OR visibiliteArticles=1" : "") . "
+            "
+        )
     );
 }
 
