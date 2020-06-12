@@ -21,10 +21,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
             CtlAjouterGoodie(true, 'formAjouterGoodie_miniature');
         } // Gabarit Ajouter Image Goodie
         elseif (isset($_POST['formAjouterImageGoodie_ajouter'])) {
-            CtlAjouterImageGoodie(
-                $_POST['formAjouterImageGoodie_idGoodie'],
-                'formAjouterImageGoodie_image'
-            );
+            CtlAjouterImageGoodie(true, 'formAjouterImageGoodie_image');
         } // Gabarit Choix Goodie
         elseif (isset($_POST['formChoisirGoodie_choisir'])) {
             CtlChoixGoodie(
@@ -171,7 +168,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
             CtlAjouterGoodie(false, NULL);
         } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
-            CtlAjouterImageGoodieMenu('');
+            CtlAjouterImageGoodie(true, NULL);
         } elseif (isset($_POST['formGoodies_ModifierGoodieMenu'])) {
             CtlChoixGoodieMenu('');
         } elseif (isset($_POST['formGoodies_SupprimerGoodieMenu'])) {
