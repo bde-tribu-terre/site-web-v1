@@ -497,7 +497,7 @@ function CtlAjouterImageArticle($id, $fileImput) {
 function CtlChoixArticle($executer) {
     try {
         if (!$executer) {
-            MdlArticlesTous();
+            MdlArticlesTous(true, true);
             afficherChoixArticle();
         } else {
             if (
@@ -507,13 +507,13 @@ function CtlChoixArticle($executer) {
                 afficherModifierArticle();
             } else {
                 ajouterMessage(400, 'Veuillez sélectionner un évent.');
-                MdlArticlesTous();
+                MdlArticlesTous(true, true);
                 afficherChoixArticle();
             }
         }
     } catch (Exception $e) {
         ajouterMessage(500, $e->getMessage());
-        MdlArticlesTous();
+        MdlArticlesTous(true, true);
         afficherChoixArticle();
     }
 }
