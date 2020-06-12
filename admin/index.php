@@ -21,19 +21,9 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formModifierGoodie_modifierGoodie'])) { // Gabarit Modifier Goodie
             CtlModifierGoodie();
         } elseif (isset($_POST['formModifierGoodie_supprimerImages'])) {
-            CtlAllerSupprimerImageGoodie(
-                $_POST['formModifierGoodie_idGoodie']
-            );
-        } // Gabarit Supprimer Images Goodie
-        elseif (isset($_POST['formSupprimerImageGoodie_supprimer'])) {
-            foreach ($_POST as $key => $value) {
-                if ($value == 'on') {
-                    MdlSupprimerImageGoodie(RACINE . '/goodies/', $key, true);
-                }
-            }
-            CtlAllerSupprimerImageGoodie(
-                $_POST['formSupprimerImageGoodie_idGoodie']
-            );
+            CtlAllerSupprimerImageGoodie();
+        } elseif (isset($_POST['formSupprimerImageGoodie_supprimer'])) { // Gabarit Supprimer Images Goodie
+            CtlAllerSupprimerImageGoodie();
         } elseif (isset($_POST['formSupprimerGoodie_supprimer'])) { // Gabarit Supprimer Goodie
             CtlSupprimerGoodie(true);
         } // Gabarit Ajouter Journal

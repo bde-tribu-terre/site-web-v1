@@ -228,32 +228,22 @@ function afficherModifierGoodie() {
     afficherPage('Modifier un goodie', 'modifierGoodie.php', 'admin');
 }
 
-function afficherSupprimerImageGoodie($messageRetour, $id) {
-    define('TITLE', 'Supprimer une image d\'un goodie');
-    define('GABARIT', 'supprimerImageGoodie.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesImages = MdlImagesGoodie($id);
-
+function afficherSupprimerImageGoodie() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $images = '';
-    foreach ($lignesImages as $ligne) {
-        $idImage = $ligne->idImagesGoodies;
-        $lienImage = $ligne->lienImagesGoodies;
-
+    foreach ($GLOBALS['retoursModele']['imagesGoodie'] as $image) {
         $images .=
-            '<div class="form-group">' .
-                '<label for="' . $idImage . '"><img src="' . RACINE . 'goodies/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
-                '<input class="form-control" type="checkbox" name="' . $idImage . '" id="' . $idImage . '">' .
-            '</div>' .
-            '<br>';
+            '
+            <div class="form-group">
+                <label for="' . $image['id'] . '"><img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="100" alt="img"></label>
+                <input class="form-control" type="checkbox" name="' . $image['id'] . '" id="' . $image['id'] . '">
+            </div>
+            <br>';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-    define('ID', $id);
+    define('ID', $GLOBALS['form']['id']);
     define('IMAGES_GOODIE', $images); // Car la constante IMAGES existe déjà...
 
-    afficherCadre('ADMIN');
+    afficherPage('Supprimer une image d\'un goodie', 'supprimerImageGoodie.php', 'admin');
 }
 
 function afficherSupprimerGoodie() {

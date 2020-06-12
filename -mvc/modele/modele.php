@@ -617,7 +617,7 @@ function MdlSupprimerGoodie($rep, $id) {
 
 function MdlImagesGoodie($id) {
     ajouterRetourModele(
-        'imagesGoodies',
+        'imagesGoodie',
         requeteSQL(
             "
             SELECT

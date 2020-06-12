@@ -445,19 +445,19 @@ function CtlModifierGoodie() {
     }
 }
 
-function CtlAllerSupprimerImageGoodie($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                afficherSupprimerImageGoodie('', $id);
-            } else {
-                throw new Exception('Erreur : Identifiant invalide.');
+function CtlAllerSupprimerImageGoodie() {
+    try {
+        foreach ($_POST as $key => $value) {
+            if ($value == 'on') {
+                MdlSupprimerImageGoodie(RACINE . '/goodies/', $key, true);
             }
-        } catch (Exception $e) {
-            afficherModifierGoodie($e->getMessage(), $id);
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+        MdlImagesGoodie($GLOBALS['form']['id']);
+        afficherSupprimerImageGoodie();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlGoodiesTous('nom', true, true, true);
+        afficherChoixGoodie();
     }
 }
 
