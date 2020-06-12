@@ -638,7 +638,7 @@ function CtlChoixArticleVideo($executer) {
             if (
             !empty($GLOBALS['form']['id'])
             ) {
-                MdlArticlePrecis($GLOBALS['form']['id']);
+                MdlArticleVideoPrecis($GLOBALS['form']['id']);
                 MdlCategoriesArticlesTous();
                 afficherModifierArticleVideo();
             } else {
