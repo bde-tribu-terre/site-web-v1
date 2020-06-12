@@ -797,7 +797,7 @@ function MdlSupprimerJournal($rep, $id) {
         $pdf = requeteSQL(
             "
             SELECT
-                pdfJournaux
+                pdfJournaux AS pdf
             FROM
                 Journaux
             WHERE
