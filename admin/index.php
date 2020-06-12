@@ -168,7 +168,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
             CtlAjouterGoodie(false, NULL);
         } elseif (isset($_POST['formGoodies_ajouterImageGoodieMenu'])) {
-            CtlAjouterImageGoodie(true, NULL);
+            CtlAjouterImageGoodie(false, NULL);
         } elseif (isset($_POST['formGoodies_ModifierGoodieMenu'])) {
             CtlChoixGoodieMenu('');
         } elseif (isset($_POST['formGoodies_SupprimerGoodieMenu'])) {

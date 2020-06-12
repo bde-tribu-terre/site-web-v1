@@ -370,7 +370,7 @@ function CtlAjouterGoodie($executer, $fileImput) {
 
 function CtlAjouterImageGoodie($executer, $fileImput) {
     try {
-        if ($executer) {
+        if (!$executer) {
             MdlGoodiesTous('nom', true, true, true);
             afficherAjouterImageGoodie();
         } else {
