@@ -738,14 +738,19 @@ function CtlInscription() {
 function CtlSInscrire() {
     try {
         if (
-            !empty($cle) &&
-            !empty($prenom) &&
-            !empty($nom) &&
-            !empty($login) &&
-            !empty($mdp)
+            !empty($GLOBALS['form']['cleInscription']) &&
+            !empty($GLOBALS['form']['prenom']) &&
+            !empty($GLOBALS['form']['nom']) &&
+            !empty($GLOBALS['form']['login']) &&
+            !empty($GLOBALS['form']['mdp'])
         ) {
-            if (MdlCleExiste($cle)) { // Si trouvée, alors elle est détruite.
-                MdlAjouterMembre($prenom, $nom, $login, $mdp);
+            if (MdlCleExiste($GLOBALS['form']['cleInscription'])) { // Si trouvée, alors elle est détruite.
+                MdlAjouterMembre(
+                    $GLOBALS['form']['prenom'],
+                    $GLOBALS['form']['nom'],
+                    $GLOBALS['form']['login'],
+                    $GLOBALS['form']['mdp']
+                );
                 afficherInscription();
             } else {
                 ajouterMessage(402, 'La clé d\'inscription saisie n\'existe pas.');
