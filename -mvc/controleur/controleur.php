@@ -73,112 +73,6 @@ function CtlVerifConnexion() {
 }
 
 # Menu
-function CtlSupprimerGoodieMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherSupprimerGoodie($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAjouterJournalMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAjouterJournal($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlSupprimerJournalMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherSupprimerJournal($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAjouterArticleMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAjouterArticle($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAjouterImageArticleMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAjouterImageArticle($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlChoixArticleMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherChoixArticle($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlSupprimerArticleMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherSupprimerArticle($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAjouterArticleVideoMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAjouterArticleVideo($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlChoixArticleVideoMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherChoixArticleVideo($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlSupprimerArticleVideoMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherSupprimerArticleVideo($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAjouterCategorieArticleMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherAjouterCategorieArticle($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlRenommerCategorieArticleMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherRenommerCategorieArticle($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAfficherLog() {
-    try {
-        MdlLogTous();
-        afficherAfficherLog();
-    } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
-        afficherAfficherLog();
-    }
-}
-
 function CtlMenu() {
     try {
         afficherMenu();
@@ -490,24 +384,37 @@ function CtlSupprimerGoodie($executer) {
 }
 
 # Journaux
-function CtlAjouterJournal($titre, $mois, $annee, $fileImput) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($titre) && !empty($mois) && !empty($annee) && !empty($_FILES[$fileImput]['name'])) {
-                MdlAjouterJournal(RACINE . 'journaux/', $titre, $mois, $annee, $fileImput);
-                afficherAjouterJournal('Le journal "' . $titre . '" a été ajouté avec succès !');
+function CtlAjouterJournal($executer, $fileImput) {
+    try {
+        if (!$executer) {
+            afficherAjouterJournal();
+        } else {
+            if (
+                !empty($GLOBALS['form']['titre']) &&
+                !empty($GLOBALS['form']['mois']) &&
+                !empty($GLOBALS['form']['annee']) &&
+                !empty($_FILES[$fileImput]['name'])
+            ) {
+                MdlAjouterJournal(
+                    RACINE . 'goodies/',
+                    $GLOBALS['form']['titre'],
+                    $GLOBALS['form']['mois'],
+                    $GLOBALS['form']['annee'],
+                    $fileImput
+                );
+                afficherAjouterJournal();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner un PDF.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
+                afficherAjouterJournal();
             }
-        } catch (Exception $e) {
-            afficherAjouterJournal($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherAjouterJournal();
     }
 }
 
-function CtlSupprimerJournal($id) {
+function CtlSupprimerJournal($executer) {
     if (isset($_SESSION['id'])) {
         try {
             if (!empty($id)) {
@@ -521,6 +428,31 @@ function CtlSupprimerJournal($id) {
         }
     } else {
         CtlConnexion('La session a expiré.');
+    }
+    try {
+        if (!$executer) {
+            MdlJournauxTous(NULL);
+            afficherSupprimerJournal();
+        } else {
+            if (
+            !empty($GLOBALS['form']['id'])
+            ) {
+                MdlSupprimerJournal(
+                    RACINE . 'journaux/',
+                    $GLOBALS['form']['id']
+                );
+                MdlJournauxTous(NULL);
+                afficherSupprimerJournal();
+            } else {
+                ajouterMessage(400, 'Veuillez sélectionner un journal.');
+                MdlJournauxTous(NULL);
+                afficherSupprimerJournal();
+            }
+        }
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlJournauxTous(NULL);
+        afficherSupprimerJournal();
     }
 }
 
@@ -746,6 +678,17 @@ function CtlRenommerCategorieArticle($id, $titre) {
         }
     } else {
         CtlConnexion('La session a expiré.');
+    }
+}
+
+# Log
+function CtlAfficherLog() {
+    try {
+        MdlLogTous();
+        afficherAfficherLog();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherAfficherLog();
     }
 }
 

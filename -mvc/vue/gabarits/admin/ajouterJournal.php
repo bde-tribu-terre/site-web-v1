@@ -7,12 +7,12 @@
                 <hr>
                 <form id="formAjouterJournal" method="post" enctype="multipart/form-data" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Titre du journal -->
-                        <label for="formAjouterJournal_titreJournal">Titre du journal :</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formAjouterJournal_titreJournal" type="text" placeholder="Titre" value="Omni-Sciences n°" name="formAjouterJournal_titreJournal">
+                        <label for="formAjouterJournal_titre">Titre du journal :</label>
+                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formAjouterJournal_titre" type="text" placeholder="Titre" value="Omni-Sciences n°" name="formAjouterJournal_titre">
                     </div>
                     <div class="form-group"> <!-- Mois de sortie du journal -->
-                        <label for="formAjouterJournal_moisJournal">Mois de sortie du journal :</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formAjouterJournal_moisJournal" name="formAjouterJournal_moisJournal">
+                        <label for="formAjouterJournal_mois">Mois de sortie du journal :</label>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formAjouterJournal_mois" name="formAjouterJournal_mois">
                             <option value="">--Choisir--</option>
                             <option value="01">Janvier</option>
                             <option value="02">Février</option>
@@ -29,8 +29,8 @@
                         </select>
                     </div>
                     <div class="form-group"> <!-- Année de sortie du journal -->
-                        <label for="formAjouterJournal_anneeJournal">Année de sortie du journal :</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterJournal_anneeJournal" type="number" value="2000" min="2000" max="2050" name="formAjouterJournal_anneeJournal" placeholder="Année">
+                        <label for="formAjouterJournal_annee">Année de sortie du journal :</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterJournal_annee" type="number" value="2000" min="2000" max="2050" name="formAjouterJournal_annee" placeholder="Année">
                     </div>
                     <div class="form-group"> <!-- Fichier PDF -->
                         <label for="formAjouterJournal_fichierPDF">Sélectionner le journal</label>
