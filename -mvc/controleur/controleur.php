@@ -504,6 +504,7 @@ function CtlChoixArticle($executer) {
                 !empty($GLOBALS['form']['id'])
             ) {
                 MdlArticlePrecis($GLOBALS['form']['id']);
+                MdlCategoriesArticlesTous();
                 afficherModifierArticle();
             } else {
                 ajouterMessage(400, 'Veuillez sélectionner un évent.');
@@ -638,6 +639,7 @@ function CtlChoixArticleVideo($executer) {
             !empty($GLOBALS['form']['id'])
             ) {
                 MdlArticlePrecis($GLOBALS['form']['id']);
+                MdlCategoriesArticlesTous();
                 afficherModifierArticleVideo();
             } else {
                 ajouterMessage(400, 'Veuillez sélectionner un évent.');
