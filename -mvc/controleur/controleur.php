@@ -431,11 +431,11 @@ function CtlModifierGoodie() {
                 $GLOBALS['form']['prixNADCentimes'],
                 $GLOBALS['form']['descGoodie']
             );
-            MdlGoodiePrecis($GLOBALS['form']['id']);
+            MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
             afficherModifierGoodie();
         } else {
             ajouterMessage(400, 'Veuillez remplir tous les champs.');
-            MdlGoodiePrecis($GLOBALS['form']['id']);
+            MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
             afficherModifierGoodie();
         }
     } catch (Exception $e) {
