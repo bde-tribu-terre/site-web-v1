@@ -371,6 +371,7 @@ function CtlAjouterGoodie($executer, $fileImput) {
 function CtlAjouterImageGoodie($executer, $fileImput) {
     try {
         if ($executer) {
+            MdlGoodiesTous('nom', true, true, true);
             afficherAjouterImageGoodie();
         } else {
             if (
@@ -378,14 +379,17 @@ function CtlAjouterImageGoodie($executer, $fileImput) {
                 !empty($_FILES[$fileImput]['name'])
             ) {
                 MdlAjouterImageGoodie(RACINE . 'goodies/', $GLOBALS['form']['idGoodie'], $fileImput);
+                MdlGoodiesTous('nom', true, true, true);
                 afficherAjouterImageGoodie();
             } else {
                 ajouterMessage(400, 'Veuillez remplir tous les champs et sélectionner une image.');
+                MdlGoodiesTous('nom', true, true, true);
                 afficherAjouterImageGoodie();
             }
         }
     } catch (Exception $e) {
         ajouterMessage(500, $e->getMessage());
+        MdlGoodiesTous('nom', true, true, true);
         afficherAjouterImageGoodie();
     }
 }
