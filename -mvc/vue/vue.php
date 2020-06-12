@@ -181,41 +181,37 @@ function afficherAjouterImageGoodie() {
     $goodies = '';
     foreach ($GLOBALS['retoursModele']['goodies'] as $goodie) {
         $goodies .=
-            '<option value="' . $goodie['id'] . '">' . $goodie['titre'] . '</option>';
+            '
+            <option value="' . $goodie['id'] . '">
+            ' . $goodie['titre'] . '
+            </option>
+            ';
     }
     define('GOODIES', $goodies);
 
     afficherPage('Ajouter une image à un goodie', 'ajouterImageGoodie.php', 'admin');
 }
 
-function afficherChoixGoodie($messageRetour) {
-    define('TITLE', 'Choisir un goodie');
-    define('GABARIT', 'choixGoodie.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesGoodies = idTitreGoodies();
-
+function afficherChoixGoodie() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $arrayCategories = [
         0 => 'Caché',
         1 => 'Disponible',
         2 => 'Bientôt disponible',
         3 => 'Rupture de stock'
     ];
-
     $goodies = '';
-    foreach ($lignesGoodies as $ligneGoodie) {
-        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
-        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
-        $categorieGoodie = htmlentities($ligneGoodie->categorieGoodies, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['goodies'] as $goodie) {
         $goodies .=
-            '<option value="' . $idGoodie . '">(' . $arrayCategories[$categorieGoodie] . ') ' . $titreGoodie . '</option>';
+            '
+            <option value="' . $goodie['id'] . '">
+                (' . $arrayCategories[$goodie['categorie']] . ') ' . $goodie['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('GOODIES', $goodies);
 
-    afficherCadre('ADMIN');
+    afficherPage('Choisir un goodie', 'choixGoodie.php', 'admin');
 }
 
 function afficherModifierGoodie($messageRetour, $id) {

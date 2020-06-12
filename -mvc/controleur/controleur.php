@@ -73,14 +73,6 @@ function CtlVerifConnexion() {
 }
 
 # Menu
-function CtlChoixGoodieMenu($messageRetour) {
-    if (isset($_SESSION['id'])) {
-        afficherChoixGoodie($messageRetour);
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
 function CtlSupprimerGoodieMenu($messageRetour) {
     if (isset($_SESSION['id'])) {
         afficherSupprimerGoodie($messageRetour);
@@ -394,19 +386,27 @@ function CtlAjouterImageGoodie($executer, $fileImput) {
     }
 }
 
-function CtlChoixGoodie($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                afficherModifierGoodie('', $id);
+function CtlChoixGoodie($executer) {
+    try {
+        if (!$executer) {
+            MdlGoodiesTous('FP', true, true, NULL);
+            afficherChoixGoodie();
+        } else {
+            if (
+            !empty($GLOBALS['form']['id'])
+            ) {
+                MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
+                afficherModifierGoodie();
             } else {
-                throw new Exception('Erreur : Veuillez sélectionner un goodie.');
+                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
+                MdlGoodiesTous('FP', true, true, NULL);
+                afficherChoixGoodie();
             }
-        } catch (Exception $e) {
-            afficherChoixGoodie($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlGoodiesTous('FP', true, true, NULL);
+        afficherChoixGoodie();
     }
 }
 
