@@ -216,14 +216,14 @@ function afficherChoixGoodie() {
 
 function afficherModifierGoodie() {
     define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
-    define('ID', $GLOBALS['form']['idGoodie']);
-    define('TITRE', $GLOBALS['form']['titreGoodie']);
-    define('PRIX_AD_EURO', $GLOBALS['form']['prixADEuro']);
-    define('PRIX_AD_CENTIMES', $GLOBALS['form']['prixADCentimes']);
-    define('PRIX_NAD_EURO', $GLOBALS['form']['prixNADEuro']);
-    define('PRIX_NAD_CENTIMES', $GLOBALS['form']['prixNADCentimes']);
-    define('CATEGORIE', $GLOBALS['form']['categorie']);
-    define('DESC', $GLOBALS['form']['descGoodie']);
+    define('ID', $GLOBALS['retoursModele']['id']);
+    define('TITRE', $GLOBALS['retoursModele']['titre']);
+    define('PRIX_AD_EURO', intval($GLOBALS['retoursModele']['prixAD']));
+    define('PRIX_AD_CENTIMES', intval(($GLOBALS['retoursModele']['prixAD'] - intval(PRIX_AD_EURO)) * 100));
+    define('PRIX_NAD_EURO', intval($GLOBALS['retoursModele']['prixNAD']));
+    define('PRIX_NAD_CENTIMES', intval(($GLOBALS['retoursModele']['prixNAD'] - intval(PRIX_NAD_EURO)) * 100));
+    define('CATEGORIE', $GLOBALS['retoursModele']['categorie']);
+    define('DESC', $GLOBALS['retoursModele']['description']);
 
     afficherPage('Modifier un goodie', 'modifierGoodie.php', 'admin');
 }
