@@ -389,7 +389,7 @@ function CtlAjouterImageGoodie($executer, $fileImput) {
 function CtlChoixGoodie($executer) {
     try {
         if (!$executer) {
-            MdlGoodiesTous('FP', true, true, NULL);
+            MdlGoodiesTous('nom', true, true, true);
             afficherChoixGoodie();
         } else {
             if (
@@ -399,39 +399,49 @@ function CtlChoixGoodie($executer) {
                 afficherModifierGoodie();
             } else {
                 ajouterMessage(400, 'Veuillez sélectionner un goodie.');
-                MdlGoodiesTous('FP', true, true, NULL);
+                MdlGoodiesTous('nom', true, true, true);
                 afficherChoixGoodie();
             }
         }
     } catch (Exception $e) {
         ajouterMessage(500, $e->getMessage());
-        MdlGoodiesTous('FP', true, true, NULL);
+        MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
 }
 
-function CtlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (
-                !empty($titre) &&
-                (!empty($categorie) || $categorie == 0) &&
-                (!empty($prixADEuro) || $prixADEuro == 0) &&
-                (!empty($prixADCentimes) || $prixADCentimes == 0) &&
-                (!empty($prixNADEuro) || $prixNADEuro == 0) &&
-                (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
-                !empty($desc)
-            ) {
-                MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc);
-                afficherModifierGoodie('Le goodie "' . $titre . '" a été modifié avec succès !', $id);
-            } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
-            }
-        } catch (Exception $e) {
-            afficherModifierGoodie($e->getMessage(), $id);
+function CtlModifierGoodie() {
+    try {
+        if (
+            !empty($GLOBALS['form']['titreGoodie']) &&
+            (!empty($GLOBALS['form']['categorie']) || $GLOBALS['form']['categorie'] == 0) && $GLOBALS['form']['categorie'] != '-1' &&
+            (!empty($GLOBALS['form']['prixADEuro']) || $GLOBALS['form']['prixADEuro'] == 0) &&
+            (!empty($GLOBALS['form']['prixADCentimes']) || $GLOBALS['form']['prixADCentimes'] == 0) &&
+            (!empty($GLOBALS['form']['prixNADEuro']) || $GLOBALS['form']['prixNADEuro'] == 0) &&
+            (!empty($GLOBALS['form']['prixNADCentimes']) || $GLOBALS['form']['prixNADCentimes'] == 0) &&
+            !empty($GLOBALS['form']['descGoodie'])
+        ) {
+            MdlModifierGoodie(
+                $GLOBALS['form']['idGoodie'],
+                $GLOBALS['form']['titreGoodie'],
+                $GLOBALS['form']['categorie'],
+                $GLOBALS['form']['prixADEuro'],
+                $GLOBALS['form']['prixADCentimes'],
+                $GLOBALS['form']['prixNADEuro'],
+                $GLOBALS['form']['prixNADCentimes'],
+                $GLOBALS['form']['descGoodie']
+            );
+            MdlGoodiePrecis($GLOBALS['form']['id']);
+            afficherModifierGoodie();
+        } else {
+            ajouterMessage(400, 'Veuillez remplir tous les champs.');
+            MdlGoodiePrecis($GLOBALS['form']['id']);
+            afficherModifierGoodie();
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlGoodiesTous('nom', true, true, true);
+        afficherChoixGoodie();
     }
 }
 

@@ -214,25 +214,18 @@ function afficherChoixGoodie() {
     afficherPage('Choisir un goodie', 'choixGoodie.php', 'admin');
 }
 
-function afficherModifierGoodie($messageRetour, $id) {
-    define('TITLE', 'Modifier un goodie');
-    define('GABARIT', 'modifierGoodie.php');
+function afficherModifierGoodie() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
+    define('ID', $GLOBALS['form']['idGoodie']);
+    define('TITRE', $GLOBALS['form']['titreGoodie']);
+    define('PRIX_AD_EURO', $GLOBALS['form']['prixADEuro']);
+    define('PRIX_AD_CENTIMES', $GLOBALS['form']['prixADCentimes']);
+    define('PRIX_NAD_EURO', $GLOBALS['form']['prixNADEuro']);
+    define('PRIX_NAD_CENTIMES', $GLOBALS['form']['prixNADCentimes']);
+    define('CATEGORIE', $GLOBALS['form']['categorie']);
+    define('DESC', $GLOBALS['form']['descGoodie']);
 
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $ligneGoodie = MdlGoodiePrecis($id);
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-    define('ID', $id);
-    define('TITRE', $ligneGoodie->titreGoodies);
-    define('PRIX_AD_EURO', intval($ligneGoodie->prixADGoodies));
-    define('PRIX_AD_CENTIMES', intval(($ligneGoodie->prixADGoodies - intval(PRIX_AD_EURO)) * 100));
-    define('PRIX_NAD_EURO', intval($ligneGoodie->prixNADGoodies));
-    define('PRIX_NAD_CENTIMES', intval(($ligneGoodie->prixNADGoodies - intval(PRIX_NAD_EURO)) * 100));
-    define('CATEGORIE', $ligneGoodie->categorieGoodies);
-    define('DESC', $ligneGoodie->descGoodies);
-
-    afficherCadre('ADMIN');
+    afficherPage('Modifier un goodie', 'modifierGoodie.php', 'admin');
 }
 
 function afficherSupprimerImageGoodie($messageRetour, $id) {

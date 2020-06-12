@@ -4,39 +4,22 @@ define('RACINE', '../');
 require_once(RACINE . '-mvc/controleur/controleur.php');
 if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
     try {
-        // Gabarit Créer Évent
-        if (isset($_POST['formCreerEvent_ajouter'])) {
+        if (isset($_POST['formCreerEvent_ajouter'])) { // Gabarit Créer Évent
             CtlCreerEvent(true);
-        } // Gabarit Choix Évent
-        elseif (isset($_POST['formChoisirEvent_choisir'])) {
+        } elseif (isset($_POST['formChoisirEvent_choisir'])) { // Gabarit Choix Évent
             CtlChoixEvent(true);
-        } // Gabarit Modifier Évent
-        elseif (isset($_POST['formModifierEvent_modifierEvent'])) {
+        } elseif (isset($_POST['formModifierEvent_modifierEvent'])) { // Gabarit Modifier Évent
             CtlModifierEvent();
-        } // Gabarit Supprimer Évent
-        elseif (isset($_POST['formSupprimerEvent_supprimer'])) {
+        } elseif (isset($_POST['formSupprimerEvent_supprimer'])) { // Gabarit Supprimer Évent
             CtlSupprimerEvent(true);
-        } // Gabarit Ajouter Goodie
-        elseif (isset($_POST['formAjouterGoodie_ajouterGoodie'])) {
+        } elseif (isset($_POST['formAjouterGoodie_ajouterGoodie'])) { // Gabarit Ajouter Goodie
             CtlAjouterGoodie(true, 'formAjouterGoodie_miniature');
-        } // Gabarit Ajouter Image Goodie
-        elseif (isset($_POST['formAjouterImageGoodie_ajouter'])) {
+        } elseif (isset($_POST['formAjouterImageGoodie_ajouter'])) { // Gabarit Ajouter Image Goodie
             CtlAjouterImageGoodie(true, 'formAjouterImageGoodie_image');
-        } // Gabarit Choix Goodie
-        elseif (isset($_POST['formChoisirGoodie_choisir'])) {
+        } elseif (isset($_POST['formChoisirGoodie_choisir'])) { // Gabarit Choix Goodie
             CtlChoixGoodie(true);
-        } // Gabarit Modifier Goodie
-        elseif (isset($_POST['formModifierGoodie_modifierGoodie'])) {
-            CtlModifierGoodie(
-                $_POST['formModifierGoodie_idGoodie'],
-                $_POST['formModifierGoodie_titreGoodie'],
-                $_POST['formModifierGoodie_categorie'],
-                $_POST['formModifierGoodie_prixAdhérentEuro'],
-                $_POST['formModifierGoodie_prixAdhérentCentimes'],
-                $_POST['formModifierGoodie_prixNonAdhérentEuro'],
-                $_POST['formModifierGoodie_prixNonAdhérentCentimes'],
-                $_POST['formModifierGoodie_descGoodie']
-            );
+        } elseif (isset($_POST['formModifierGoodie_modifierGoodie'])) { // Gabarit Modifier Goodie
+            CtlModifierGoodie();
         } elseif (isset($_POST['formModifierGoodie_supprimerImages'])) {
             CtlAllerSupprimerImageGoodie(
                 $_POST['formModifierGoodie_idGoodie']
