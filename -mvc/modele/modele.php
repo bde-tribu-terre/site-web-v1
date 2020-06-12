@@ -1231,6 +1231,7 @@ function MdlArticleVideoPrecis($id) {
             SELECT
                 idArticlesYouTube AS id,
                 titreArticlesYouTube AS titre,
+                idCategoriesArticles AS idCategorie,
                 titreCategoriesArticles AS categorie,
                 visibiliteArticlesYouTube AS visibilite,
                 lienArticlesYouTube AS lien,
