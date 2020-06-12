@@ -835,7 +835,7 @@ function MdlSupprimerJournal($rep, $id) {
 ########################################################################################################################
 # Articles                                                                                                             #
 ########################################################################################################################
-function MdlArticlesTous() {
+function MdlArticlesTous($visibles = true, $invisibles = false) {
     ajouterRetourModele(
         'articles',
         "
@@ -872,7 +872,7 @@ function MdlArticlesTous() {
                     DESC
             ) AS T
         WHERE
-            visibiliteArticles<>0
+            1=2" . ($visibles ? " OR visibiliteArticles=0" : "") . ($invisibles ? "OR visibiliteArticles=1" : "") . "
         "
     );
 }
