@@ -28,19 +28,19 @@
                         </select>
                     </div>
                     <div class="form-group"> <!-- Prix adhérent -->
-                        <label for="formModifierGoodie_prixAdhérentEuro">Prix adhérent</label>
-                        <label for="formModifierGoodie_prixAdhérentCentimes" style="display: none;">Prix adhérent (centimes)</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixAdhérentEuro" type="number" value="<?php echo PRIX_AD_EURO ?>" min="0" name="formModifierGoodie_prixAdhérentEuro" placeholder="Euros">
+                        <label for="formModifierGoodie_prixADEuro">Prix adhérent</label>
+                        <label for="formModifierGoodie_prixADCentimes" style="display: none;">Prix adhérent (centimes)</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixADEuro" type="number" value="<?php echo PRIX_AD_EURO ?>" min="0" name="formModifierGoodie_prixADEuro" placeholder="Euros">
                         <small class="form-text text-muted">Euros</small>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixAdhérentCentimes" type="number" value="<?php echo PRIX_AD_CENTIMES ?>" min="0" max="99" name="formModifierGoodie_prixAdhérentCentimes" placeholder="Centimes">
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixADCentimes" type="number" value="<?php echo PRIX_AD_CENTIMES ?>" min="0" max="99" name="formModifierGoodie_prixADCentimes" placeholder="Centimes">
                         <small class="form-text text-muted">Centimes</small>
                     </div>
                     <div class="form-group"> <!-- Prix non-adhérent -->
-                        <label for="formModifierGoodie_prixNonAdhérentEuro">Prix non-adhérent</label>
-                        <label for="formModifierGoodie_prixNonAdhérentCentimes">Prix non-adhérent (centimes)</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixNonAdhérentEuro" type="number" value="<?php echo PRIX_NAD_EURO ?>" min="0" name="formModifierGoodie_prixNonAdhérentEuro" placeholder="Euros">
+                        <label for="formModifierGoodie_prixNADEuro">Prix non-adhérent</label>
+                        <label for="formModifierGoodie_prixNADtCentimes">Prix non-adhérent (centimes)</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixNADEuro" type="number" value="<?php echo PRIX_NAD_EURO ?>" min="0" name="formModifierGoodie_prixNADEuro" placeholder="Euros">
                         <small class="form-text text-muted">Euros</small>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixNonAdhérentCentimes" type="number" value="<?php echo PRIX_NAD_CENTIMES ?>" min="0" max="99" name="formModifierGoodie_prixNonAdhérentCentimes" placeholder="Centimes">
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixNADCentimes" type="number" value="<?php echo PRIX_NAD_CENTIMES ?>" min="0" max="99" name="formModifierGoodie_prixNADCentimes" placeholder="Centimes">
                         <small class="form-text text-muted">Centimes</small>
                     </div>
                     <div class="form-group"> <!-- Description du goodie -->

@@ -21,19 +21,19 @@
                         </select>
                     </div>
                     <div class="form-group"> <!-- Prix adhérent -->
-                        <label for="formAjouterGoodie_prixAdhérentEuro">Prix adhérent</label>
-                        <label for="formAjouterGoodie_prixAdhérentCentimes" style="display: none;">Prix adhérent (centimes)</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixAdhérentEuro" type="number" min="0" name="formAjouterGoodie_prixAdhérentEuro" placeholder="Euros">
+                        <label for="formAjouterGoodie_prixADEuro">Prix adhérent</label>
+                        <label for="formAjouterGoodie_prixADCentimes" style="display: none;">Prix adhérent (centimes)</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixADEuro" type="number" min="0" name="formAjouterGoodie_prixADEuro" placeholder="Euros">
                         <small class="form-text text-muted">Euros</small>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixAdhérentCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixAdhérentCentimes" placeholder="Centimes">
+                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixADCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixADCentimes" placeholder="Centimes">
                         <small class="form-text text-muted">Centimes</small>
                     </div>
                     <div class="form-group"> <!-- Prix non-adhérent -->
-                        <label for="formAjouterGoodie_prixNonAdhérentEuro">Prix non-adhérent</label>
-                        <label for="formAjouterGoodie_prixNonAdhérentCentimes" style="display: none;">Prix adhérent (centimes)</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixNonAdhérentEuro" type="number" min="0" name="formAjouterGoodie_prixNonAdhérentEuro" placeholder="Euros">
+                        <label for="formAjouterGoodie_prixNADEuro">Prix non-adhérent</label>
+                        <label for="formAjouterGoodie_prixNADCentimes" style="display: none;">Prix adhérent (centimes)</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixNADEuro" type="number" min="0" name="formAjouterGoodie_prixNADEuro" placeholder="Euros">
                         <small class="form-text text-muted">Euros</small>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixNonAdhérentCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixNonAdhérentCentimes" placeholder="Centimes">
+                        <input onblur="verifNonVide(this);" class="form-control" id="formAjouterGoodie_prixNADCentimes" type="number" min="0" max="99" name="formAjouterGoodie_prixNADCentimes" placeholder="Centimes">
                         <small class="form-text text-muted">Centimes</small>
                     </div>
                     <div class="form-group"> <!-- Description du goodie -->
