@@ -235,8 +235,8 @@ function afficherSupprimerImageGoodie() {
         $images .=
             '
             <div class="form-group">
-                <label for="' . $image['id'] . '"><img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="100" alt="img"></label>
-                <input class="form-control" type="checkbox" name="' . $image['id'] . '" id="' . $image['id'] . '">
+                <label for="formSupprimerImageArticle_' . $image['id'] . '"><img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="100" alt="img"></label>
+                <input class="form-control" type="checkbox" name="formSupprimerImageArticle_' . $image['id'] . '" id="formSupprimerImageArticle_' . $image['id'] . '">
             </div>
             <br>';
     }
