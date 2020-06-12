@@ -10,8 +10,8 @@
                         <input class="btn btn-danger" type="submit" value="Supprimer des images de l'article" name="formModifierArticle_supprimerImages">
                     </div>
                     <div class="form-group"> <!-- ID de l'article -->
-                        <label for="formModifierArticle_idArticle">ID de l'article</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierArticle_idArticle" type="text" value="<?php echo ID ?>" name="formModifierArticle_idArticle" readonly>
+                        <label for="formModifierArticle_id">ID de l'article</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierArticle_id" type="text" value="<?php echo ID ?>" name="formModifierArticle_id" readonly>
                     </div>
                     <div class="form-group"> <!-- Titre de l'article -->
                         <label for="formModifierArticle_titre">Titre de l'article</label>
