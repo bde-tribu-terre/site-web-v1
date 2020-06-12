@@ -360,7 +360,7 @@ function afficherModifierArticle() {
     foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
             '
-            <option value="' . $categorie['id'] . '" ' . ($GLOBALS['retoursModele']['article']['categorie'] == $categorie['id'] ? 'selected' : '') . '>
+            <option value="' . $categorie['id'] . '" ' . ($GLOBALS['retoursModele']['article']['idCategorie'] == $categorie['id'] ? 'selected' : '') . '>
                 ' . $categorie['titre'] . '
             </option>
             ';
@@ -457,7 +457,7 @@ function afficherModifierArticleVideo() {
     foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
             '
-            <option value="' . $categorie['id'] . '" ' . ($GLOBALS['retoursModele']['articleVideo']['categorie'] == $categorie['id'] ? 'selected' : '') . '>
+            <option value="' . $categorie['id'] . '" ' . ($GLOBALS['retoursModele']['articleVideo']['idCategorie'] == $categorie['id'] ? 'selected' : '') . '>
                 ' . $categorie['titre'] . '
             </option>
             ';
