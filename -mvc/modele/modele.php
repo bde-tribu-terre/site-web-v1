@@ -1106,7 +1106,7 @@ function MdlAjouterImageArticle($rep, $id, $fileImput) {
             SELECT
                 titreArticles AS titre
             FROM
-                Goodies
+                Articles
             WHERE
                 idArticles=:idArticles
             ",
