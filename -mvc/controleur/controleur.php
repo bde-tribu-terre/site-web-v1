@@ -415,20 +415,6 @@ function CtlAjouterJournal($executer, $fileImput) {
 }
 
 function CtlSupprimerJournal($executer) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                MdlSupprimerJournal(RACINE . 'journaux/', $id);
-                afficherSupprimerJournal('Le journal a été supprimé avec succès !');
-            } else {
-                throw new Exception('Erreur : Veuillez sélectionner un journal.');
-            }
-        } catch (Exception $e) {
-            afficherSupprimerJournal($e->getMessage());
-        }
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
     try {
         if (!$executer) {
             MdlJournauxTous(NULL);
