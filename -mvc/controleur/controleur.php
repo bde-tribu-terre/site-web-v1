@@ -461,20 +461,31 @@ function CtlAllerSupprimerImageGoodie($id) {
     }
 }
 
-function CtlSupprimerGoodie($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                MdlSupprimerGoodie(RACINE . 'goodies/', $id);
-                afficherSupprimerGoodie('Le goodie a été supprimé avec succès !');
+function CtlSupprimerGoodie($executer) {
+    try {
+        if (!$executer) {
+            MdlGoodiesTous('nom', true, true, true);
+            afficherSupprimerGoodie();
+        } else {
+            if (
+                !empty($GLOBALS['form']['id'])
+            ) {
+                MdlSupprimerGoodie(
+                    RACINE . 'goodies/',
+                    $GLOBALS['form']['id']
+                );
+                MdlGoodiesTous('nom', true, true, true);
+                afficherSupprimerGoodie();
             } else {
-                throw new Exception('Erreur : Veuillez sélectionner un goodie.');
+                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
+                MdlGoodiesTous('nom', true, true, true);
+                afficherSupprimerGoodie();
             }
-        } catch (Exception $e) {
-            afficherSupprimerGoodie($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlGoodiesTous('nom', true, true, true);
+        afficherSupprimerGoodie();
     }
 }
 

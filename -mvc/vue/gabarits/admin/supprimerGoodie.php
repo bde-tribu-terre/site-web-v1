@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formSupprimerGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Goodie en question -->
-                        <label for="formSupprimerGoodie_idGoodie">Goodie</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerGoodie_idGoodie" name="formSupprimerGoodie_idGoodie">
+                        <label for="formSupprimerGoodie_id">Goodie</label>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerGoodie_id" name="formSupprimerGoodie_id">
                             <option value="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>

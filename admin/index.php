@@ -34,11 +34,8 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
             CtlAllerSupprimerImageGoodie(
                 $_POST['formSupprimerImageGoodie_idGoodie']
             );
-        } // Gabarit Supprimer Goodie
-        elseif (isset($_POST['formSupprimerGoodie_supprimer'])) {
-            CtlSupprimerGoodie(
-                $_POST['formSupprimerGoodie_idGoodie']
-            );
+        } elseif (isset($_POST['formSupprimerGoodie_supprimer'])) { // Gabarit Supprimer Goodie
+            CtlSupprimerGoodie(true);
         } // Gabarit Ajouter Journal
         elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
             CtlAjouterJournal(
@@ -153,7 +150,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formGoodies_ModifierGoodieMenu'])) {
             CtlChoixGoodie(false);
         } elseif (isset($_POST['formGoodies_SupprimerGoodieMenu'])) {
-            CtlSupprimerGoodieMenu('');
+            CtlSupprimerGoodie(false);
         } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
             CtlAjouterJournalMenu('');
         } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {
