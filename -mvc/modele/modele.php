@@ -931,7 +931,7 @@ function MdlAjouterArticle($titre, $categorie, $visibilite, $texte) {
             )
         ",
         array(
-            [':idMembres', $_SESSION['id'], 'INT'],
+            [':idMembres', $_SESSION['membre']['id'], 'INT'],
             [':idCategorieArticles', $categorie, 'INT'],
             [':titreArticles', $titre, 'STR'],
             [':texteArticles', $texte, 'STR'],
@@ -1276,7 +1276,7 @@ function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) 
              )
         ",
         array(
-            [':idMembres', $_SESSION['id'], 'INT'],
+            [':idMembres', $_SESSION['membre']['id'], 'INT'],
             [':idCategorieArticles', $categorie, 'INT'],
             [':titreArticlesYouTube', $titre, 'STR'],
             [':lienArticlesYouTube', $lien, 'STR'],
