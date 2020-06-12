@@ -106,17 +106,10 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
             CtlSupprimerArticleVideo(
                 $_POST['formSupprimerArticleVideo_idArticle']
             );
-        } // Gabarit Ajouter Catégorie Article
-        elseif (isset($_POST['formAjouterCategorieArticle_ajouter'])) {
-            CtlAjouterCategorieArticle(
-                $_POST['formAjouterCategorieArticle_titre']
-            );
-        } // Gabarit Renommer Catégorie Article
-        elseif (isset($_POST['formRenommerCategorieArticle_renommer'])) {
-            CtlRenommerCategorieArticle(
-                $_POST['formRenommerCategorieArticle_idCategorieArticle'],
-                $_POST['formRenommerCategorieArticle_titre']
-            );
+        } elseif (isset($_POST['formAjouterCategorieArticle_ajouter'])) { // Gabarit Ajouter Catégorie Article
+            CtlAjouterCategorieArticle(true);
+        } elseif (isset($_POST['formRenommerCategorieArticle_renommer'])) { // Gabarit Renommer Catégorie Article
+            CtlRenommerCategorieArticle(true);
         } // Gabarit Menu
         elseif (isset($_POST['formEvents_creerEventMenu'])) {
             CtlCreerEvent(false);
@@ -151,9 +144,9 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formArticles_supprimerArticleVideoMenu'])) {
             CtlSupprimerArticleVideoMenu('');
         } elseif (isset($_POST['formArticles_ajouterCategorieArticleMenu'])) {
-            CtlAjouterCategorieArticleMenu('');
+            CtlAjouterCategorieArticle(false);
         } elseif (isset($_POST['formArticles_renommerCategorieArticleMenu'])) {
-            CtlRenommerCategorieArticleMenu('');
+            CtlRenommerCategorieArticle(false);
         } elseif (isset($_POST['formLog_afficherLog'])) {
             CtlAfficherLog();
         } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
@@ -161,7 +154,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } // Globaux : apparaissent dans plusieurs gabarits
         elseif (isset($_POST['formRetourMenu_retourMenu'])) {
             CtlMenu();
-        } else {
+        } else { // Si aucun formulaire d'envoyé...
             CtlMenu();
         }
     } catch (Exception $e) {

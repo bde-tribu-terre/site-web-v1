@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formRenommerCategorieArticle" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Catégorie -->
-                        <label for="formRenommerCategorieArticle_idCategorieArticle">Catégorie à renommer</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formRenommerCategorieArticle_idCategorieArticle" name="formRenommerCategorieArticle_idCategorieArticle">
+                        <label for="formRenommerCategorieArticle_id">Catégorie à renommer</label>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formRenommerCategorieArticle_id" name="formRenommerCategorieArticle_id">
                             <option value="">--Choisir--</option>
                             <?php echo CATEGORIES ?>
                         </select>
