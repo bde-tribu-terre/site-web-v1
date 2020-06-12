@@ -1177,7 +1177,7 @@ function MdlSupprimerImageArticle($rep, $id, $logguer) {
 ########################################################################################################################
 # Articles vidéo                                                                                                       #
 ########################################################################################################################
-function MdlArticlesVideoTous() {
+function MdlArticlesVideoTous($visibles = true, $invisibles = false) {
     ajouterRetourModele(
         'articlesVideo',
         requeteSQL(
@@ -1217,7 +1217,7 @@ function MdlArticlesVideoTous() {
                         DESC
                 ) AS T
             WHERE
-                visibiliteArticlesYouTube<>0
+                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=0" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=1" : "") . "
             "
         )
     );
