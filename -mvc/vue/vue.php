@@ -270,38 +270,26 @@ function afficherSupprimerGoodie() {
 }
 
 # Journaux
-function afficherAjouterJournal($messageRetour) {
-    define('TITLE', 'Ajouter un journal');
-    define('GABARIT', 'ajouterJournal.php');
+function afficherAjouterJournal() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-
-    afficherCadre('ADMIN');
+    afficherPage('Ajouter un journal', 'ajouterJournal.php', 'admin');
 }
 
-function afficherSupprimerJournal($messageRetour) {
-    define('TITLE', 'Supprimer un journal');
-    define('GABARIT', 'supprimerJournal.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesJournaux = idTitreJournaux();
-
+function afficherSupprimerJournal() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $journaux = '';
-    foreach ($lignesJournaux as $ligneJournal) {
-        $idJournal = htmlentities($ligneJournal->idJournaux, ENT_QUOTES, "UTF-8");
-        $titreJournal = htmlentities($ligneJournal->titreJournaux, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['journaux'] as $journal) {
         $journaux .=
-            '<option value="' . $idJournal . '">' . $titreJournal . '</option>';
+            '
+            <option value="' . $journal['id'] . '">
+                ' . $journal['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('JOURNAUX', $journaux);
 
-    afficherCadre('ADMIN');
+    afficherPage('Supprimer un journal', 'supprimerJournal.php', 'admin');
 }
 
 # Articles

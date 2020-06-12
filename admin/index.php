@@ -26,19 +26,10 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
             CtlAllerSupprimerImageGoodie();
         } elseif (isset($_POST['formSupprimerGoodie_supprimer'])) { // Gabarit Supprimer Goodie
             CtlSupprimerGoodie(true);
-        } // Gabarit Ajouter Journal
-        elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) {
-            CtlAjouterJournal(
-                $_POST['formAjouterJournal_titreJournal'],
-                $_POST['formAjouterJournal_moisJournal'],
-                $_POST['formAjouterJournal_anneeJournal'],
-                'formAjouterJournal_fichierPDF'
-            );
-        } // Gabarit Supprimer Journal
-        elseif (isset($_POST['formSupprimerJournal_supprimer'])) {
-            CtlSupprimerJournal(
-                $_POST['formSupprimerJournal_idJournal']
-            );
+        } elseif (isset($_POST['formAjouterJournal_ajouterJournal'])) { // Gabarit Ajouter Journal
+            CtlAjouterJournal(true, 'formAjouterJournal_fichierPDF');
+        } elseif (isset($_POST['formSupprimerJournal_supprimer'])) {// Gabarit Supprimer Journal
+            CtlSupprimerJournal(true);
         } // Gabarit Ajouter Article
         elseif (isset($_POST['formAjouterArticle_ajouter'])) {
             CtlAjouterArticle(
@@ -142,9 +133,9 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formGoodies_SupprimerGoodieMenu'])) {
             CtlSupprimerGoodie(false);
         } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
-            CtlAjouterJournalMenu('');
+            CtlAjouterJournal(false, NULL);
         } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {
-            CtlSupprimerJournalMenu('');
+            CtlSupprimerJournal(true);
         } elseif (isset($_POST['formArticles_ajouterArticleMenu'])) {
             CtlAjouterArticleMenu('');
         } elseif (isset($_POST['formArticles_ajouterImageArticleMenu'])) {

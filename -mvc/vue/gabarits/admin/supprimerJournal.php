@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formSupprimerJournal" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Journal en question -->
-                        <label for="formSupprimerJournal_idJournal">Goodie :</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerJournal_idJournal" name="formSupprimerJournal_idJournal">
+                        <label for="formSupprimerJournal_id">Goodie :</label>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerJournal_id" name="formSupprimerJournal_id">
                             <option value="">--Choisir un journal--</option>
                             <?php echo JOURNAUX ?>
                         </select>
