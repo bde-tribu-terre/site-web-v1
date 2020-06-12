@@ -293,26 +293,20 @@ function afficherSupprimerJournal() {
 }
 
 # Articles
-function afficherAjouterArticle($messageRetour) {
-    define('TITLE', 'Ajouter un article');
-    define('GABARIT', 'ajouterArticle.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
-
+function afficherAjouterArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $categories = '';
-    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
-        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
-            '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
+            '
+            <option value="' . $categorie['id'] . '">
+                ' . $categorie['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('CATEGORIES', $categories);
 
-    afficherCadre('ADMIN');
+    afficherPage('Ajouter un article', 'ajouterArticle.php', 'admin');
 }
 
 function afficherAjouterImageArticle($messageRetour) {
@@ -344,63 +338,41 @@ function afficherAjouterImageArticle($messageRetour) {
     afficherCadre('ADMIN');
 }
 
-function afficherChoixArticle($messageRetour) {
-    define('TITLE', 'Choisir un article');
-    define('GABARIT', 'choixArticle.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesArticles = idTitreArticles();
-
+function afficherChoixArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $articles = '';
-    foreach ($lignesArticles as $ligneArticle) {
-        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
-        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
-        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
-        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['articles'] as $article) {
         $articles .=
-            '<option value="' . $idArticle . '">(' .
-            substr($dateArticle, 8, 2) . '/' .
-            substr($dateArticle, 5, 2) . '/' .
-            substr($dateArticle, 0, 4) .
-            ' | ' . $categorieArticle . ') ' .
-            $titreArticle . '</option>';
+            '
+            <option value="' . $article['id'] . '">
+                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES', $articles);
 
-    afficherCadre('ADMIN');
+    afficherPage('Choisir un article', 'choixArticle.php', 'admin');
 }
 
-function afficherModifierArticle($messageRetour, $id) {
-    define('TITLE', 'Modifier un article');
-    define('GABARIT', 'modifierArticle.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $ligneArticle = MdlArticlePrecis($id);
-    $categorie = $ligneArticle->idCategoriesArticles;
-    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
-
+function afficherModifierArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $categories = '';
-    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
-        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $selected = $categorie == $idCategorieArticle ? 'selected' : '';
+    foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
-            '<option value="' . $idCategorieArticle . '" ' . $selected . '>' . $titreCategorieArticle . '</option>';
+            '
+            <option value="' . $categorie['id'] . '">
+                ' . $categorie['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-    define('ID', $id);
-    define('TITRE', $ligneArticle->titreArticles);
-    define('CATEGORIE', $categorie);
-    define('VISIBILITE', $ligneArticle->visibiliteArticles);
-    define('TEXTE', $ligneArticle->texteArticles);
     define('CATEGORIES', $categories);
+    define('ID', $GLOBALS['form']['id']);
+    define('TITRE', $GLOBALS['retoursModele']['article']['titre']);
+    define('CATEGORIE', $GLOBALS['retoursModele']['article']['categorie']);
+    define('VISIBILITE', $GLOBALS['retoursModele']['article']['visibilite']);
+    define('TEXTE', $GLOBALS['retoursModele']['article']['texte']);
 
-    afficherCadre('ADMIN');
+    afficherPage('Modifier un article', 'modifierArticle.php', 'admin');
 }
 
 function afficherSupprimerImageArticle($messageRetour, $id) {
@@ -431,144 +403,90 @@ function afficherSupprimerImageArticle($messageRetour, $id) {
     afficherCadre('ADMIN');
 }
 
-function afficherSupprimerArticle($messageRetour) {
-    define('TITLE', 'Supprimer un article');
-    define('GABARIT', 'supprimerArticle.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesArticles = idTitreArticles();
-
+function afficherSupprimerArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $articles = '';
-    foreach ($lignesArticles as $ligneArticle) {
-        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
-        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
-        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
-        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['articles'] as $article) {
         $articles .=
-            '<option value="' . $idArticle . '">(' .
-            substr($dateArticle, 8, 2) . '/' .
-            substr($dateArticle, 5, 2) . '/' .
-            substr($dateArticle, 0, 4) .
-            ' | ' . $categorieArticle . ') ' .
-            $titreArticle . '</option>';
+            '
+            <option value="' . $article['id'] . '">
+                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES', $articles);
 
-    afficherCadre('ADMIN');
+    afficherPage('Supprimer un article', 'supprimerArticle.php', 'admin');
 }
 
-function afficherAjouterArticleVideo($messageRetour) {
-    define('TITLE', 'Ajouter un article vidéo');
-    define('GABARIT', 'ajouterArticleVideo.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
-
+function afficherAjouterArticleVideo() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $categories = '';
-    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
-        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
-            '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
+            '
+            <option value="' . $categorie['id'] . '">
+                ' . $categorie['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('CATEGORIES', $categories);
 
-    afficherCadre('ADMIN');
+    afficherPage('Ajouter un article vidéo', 'ajouterArticleVideo.php', 'admin');
 }
 
-function afficherChoixArticleVideo($messageRetour) {
-
-    define('TITLE', 'Choisir un article vidéo');
-    define('GABARIT', 'choixArticleVideo.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesArticles = idTitreArticlesVideo();
-
+function afficherChoixArticleVideo() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $articlesVideo = '';
-    foreach ($lignesArticles as $ligneArticle) {
-        $idArticle = htmlentities($ligneArticle->idArticlesYouTube, ENT_QUOTES, "UTF-8");
-        $titreArticle = htmlentities($ligneArticle->titreArticlesYouTube, ENT_QUOTES, "UTF-8");
-        $dateArticle = htmlentities($ligneArticle->dateCreationArticlesYouTube, ENT_QUOTES, "UTF-8");
-        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['articlesVideo'] as $article) {
         $articlesVideo .=
-            '<option value="' . $idArticle . '">(' .
-            substr($dateArticle, 8, 2) . '/' .
-            substr($dateArticle, 5, 2) . '/' .
-            substr($dateArticle, 0, 4) .
-            ' | ' . $categorieArticle . ') ' .
-            $titreArticle . '</option>';
+            '
+            <option value="' . $article['id'] . '">
+                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES_VIDEO', $articlesVideo);
 
-    afficherCadre('ADMIN');
+    afficherPage('Choisir un article vidéo', 'choixArticleVideo.php', 'admin');
 }
 
 function afficherModifierArticleVideo($messageRetour, $id) {
-    define('TITLE', 'Modifier un article vidéo');
-    define('GABARIT', 'modifierArticleVideo.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $ligneArticle = MdlArticleVideoPrecis($id);
-    $categorie = $ligneArticle->idCategoriesArticles;
-    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
-
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $categories = '';
-    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
-        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $selected = $categorie == $idCategorieArticle ? 'selected' : '';
+    foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
-            '<option value="' . $idCategorieArticle . '" ' . $selected . '>' . $titreCategorieArticle . '</option>';
+            '
+            <option value="' . $categorie['id'] . '">
+                ' . $categorie['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-    define('ID', $id);
-    define('TITRE', $ligneArticle->titreArticlesYouTube);
     define('CATEGORIES', $categories);
-    define('VISIBILITE', $ligneArticle->visibiliteArticlesYouTube);
-    define('LIEN', $ligneArticle->lienArticlesYouTube);
-    define('TEXTE', $ligneArticle->texteArticlesYouTube);
+    define('ID', $GLOBALS['form']['id']);
+    define('TITRE', $GLOBALS['retoursModele']['articleVideo']['titre']);
+    define('CATEGORIE', $GLOBALS['retoursModele']['articleVideo']['categorie']);
+    define('VISIBILITE', $GLOBALS['retoursModele']['articleVideo']['visibilite']);
+    define('LIEN', $GLOBALS['retoursModele']['articleVideo']['lien']);
+    define('TEXTE', $GLOBALS['retoursModele']['articleVideo']['texte']);
 
-    afficherCadre('ADMIN');
+    afficherPage('Modifier un article vidéo', 'modifierArticleVideo.php', 'admin');
 }
 
-function afficherSupprimerArticleVideo($messageRetour) {
-    define('TITLE', 'Supprimer un article vidéo');
-    define('GABARIT', 'supprimerArticleVideo.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesArticles = idTitreArticlesVideo();
-
+function afficherSupprimerArticleVideo() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $articlesVideo = '';
-    foreach ($lignesArticles as $ligneArticle) {
-        $idArticle = htmlentities($ligneArticle->idArticlesYouTube, ENT_QUOTES, "UTF-8");
-        $titreArticle = htmlentities($ligneArticle->titreArticlesYouTube, ENT_QUOTES, "UTF-8");
-        $dateArticle = htmlentities($ligneArticle->dateCreationArticlesYouTube, ENT_QUOTES, "UTF-8");
-        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['articlesVideo'] as $article) {
         $articlesVideo .=
-            '<option value="' . $idArticle . '">(' .
-            substr($dateArticle, 8, 2) . '/' .
-            substr($dateArticle, 5, 2) . '/' .
-            substr($dateArticle, 0, 4) .
-            ' | ' . $categorieArticle . ') ' .
-            $titreArticle . '</option>';
+            '
+            <option value="' . $article['id'] . '">
+                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES_VIDEO', $articlesVideo);
 
-    afficherCadre('ADMIN');
+    afficherPage('Supprimer un article vidéo', 'supprimerArticleVideo.php', 'admin');
 }
 
 function afficherAjouterCategorieArticle() {

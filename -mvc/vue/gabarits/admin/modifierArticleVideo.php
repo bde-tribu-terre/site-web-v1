@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formModifierArticleVideo" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- ID de l'article -->
-                        <label for="formModifierArticleVideo_idArticle">ID de l'article vidéo</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierArticleVideo_idArticle" type="text" value="<?php echo ID ?>" name="formModifierArticleVideo_idArticle" readonly>
+                        <label for="formModifierArticleVideo_id">ID de l'article vidéo</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierArticleVideo_id" type="text" value="<?php echo ID ?>" name="formModifierArticleVideo_id" readonly>
                     </div>
                     <div class="form-group"> <!-- Titre de l'article -->
                         <label for="formModifierArticleVideo_titre">Titre de l'article vidéo</label>

@@ -443,25 +443,36 @@ function CtlSupprimerJournal($executer) {
 }
 
 # Articles
-function CtlAjouterArticle($titre, $categorie, $visibilite, $texte) {
-    if (isset($_SESSION['id'])) {
-        try {
+function CtlAjouterArticle($executer) {
+    try {
+        if (!$executer) {
+            MdlCategoriesArticlesTous();
+            afficherAjouterArticle();
+        } else {
             if (
-                !empty($titre) &&
-                $categorie != '-1' &&
-                $visibilite != '-1' &&
-                !empty($texte)
+                !empty($GLOBALS['form']['titre']) &&
+                $GLOBALS['form']['categorie'] != '-1' &&
+                $GLOBALS['form']['visibilite'] != '-1' &&
+                !empty($GLOBALS['form']['texte'])
             ) {
-                MdlAjouterArticle($titre, $categorie, $visibilite, $texte);
-                afficherAjouterArticle('L\'article "' . $titre . '" a été ajouté avec succès !');
+                MdlAjouterArticle(
+                    $GLOBALS['form']['titre'],
+                    $GLOBALS['form']['categorie'],
+                    $GLOBALS['form']['visibilite'],
+                    $GLOBALS['form']['texte']
+                );
+                MdlCategoriesArticlesTous();
+                afficherAjouterArticle();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
+                MdlCategoriesArticlesTous();
+                afficherAjouterArticle();
             }
-        } catch (Exception $e) {
-            afficherAjouterArticle($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlCategoriesArticlesTous();
+        afficherAjouterArticle();
     }
 }
 
@@ -483,41 +494,58 @@ function CtlAjouterImageArticle($id, $fileImput) {
     }
 }
 
-function CtlChoixArticle($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                afficherModifierArticle('', $id);
+function CtlChoixArticle($executer) {
+    try {
+        if (!$executer) {
+            MdlArticlesTous();
+            afficherChoixArticle();
+        } else {
+            if (
+                !empty($GLOBALS['form']['id'])
+            ) {
+                MdlArticlePrecis($GLOBALS['form']['id']);
+                afficherModifierArticle();
             } else {
-                throw new Exception('Erreur : Veuillez sélectionner un article.');
+                ajouterMessage(400, 'Veuillez sélectionner un évent.');
+                MdlArticlesTous();
+                afficherChoixArticle();
             }
-        } catch (Exception $e) {
-            afficherChoixArticle($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlArticlesTous();
+        afficherChoixArticle();
     }
 }
 
-function CtlModifierArticle($id, $titre, $categorie, $visibilite, $texte) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (
-                !empty($titre) &&
-                (!empty($visibilite) || $visibilite == 0) &&
-                (!empty($visibilite) || $visibilite == 0) &&
-                !empty($texte)
-            ) {
-                MdlModifierArticle($id, $titre, $categorie, $visibilite, $texte);
-                afficherModifierArticle('L\'article "' . $titre . '" a été modifié avec succès !', $id);
-            } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
-            }
-        } catch (Exception $e) {
-            afficherModifierArticle($e->getMessage(), $id);
+function CtlModifierArticle() {
+    try {
+        if (
+            !empty($GLOBALS['form']['titre']) &&
+            $GLOBALS['form']['categorie'] != '-1' &&
+            $GLOBALS['form']['visibilite'] != '-1' &&
+            !empty($GLOBALS['form']['texte'])
+        ) {
+            MdlModifierArticle(
+                $GLOBALS['form']['id'],
+                $GLOBALS['form']['titre'],
+                $GLOBALS['form']['categorie'],
+                $GLOBALS['form']['visibilite'],
+                $GLOBALS['form']['texte']
+            );
+            MdlArticlePrecis($GLOBALS['form']['id']);
+            MdlCategoriesArticlesTous();
+            afficherModifierArticle();
+        } else {
+            ajouterMessage(400, 'Veuillez remplir tous les champs.');
+            MdlArticlePrecis($GLOBALS['form']['id']);
+            MdlCategoriesArticlesTous();
+            afficherModifierArticle();
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlArticlesTous();
+        afficherChoixArticle();
     }
 }
 
@@ -537,99 +565,150 @@ function CtlAllerSupprimerImageArticle($id) {
     }
 }
 
-function CtlSupprimerArticle($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                MdlSupprimerArticle(RACINE . 'articles/', $id);
-                afficherSupprimerArticle('L\'article a été supprimé avec succès !');
-            } else {
-                throw new Exception('Erreur : Veuillez sélectionner un article.');
-            }
-        } catch (Exception $e) {
-            afficherSupprimerArticle($e->getMessage());
-        }
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
-    if (isset($_SESSION['id'])) {
-        try {
+function CtlSupprimerArticle($executer) {
+    try {
+        if (!$executer) {
+            MdlArticlesTous();
+            afficherSupprimerArticle();
+        } else {
             if (
-                !empty($titre) &&
-                $categorie != '-1' &&
-                $visibilite != '-1' &&
-                !empty($lien) &&
-                !empty($texte)
+                !empty($GLOBALS['form']['id'])
             ) {
-                MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte);
-                afficherAjouterArticleVideo('L\'article vidéo "' . $titre . '" a été ajouté avec succès !');
+                MdlSupprimerArticle(
+                    RACINE . 'articles/',
+                    $GLOBALS['form']['id']
+                );
+                MdlArticlesTous();
+                afficherSupprimerArticle();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
+                MdlArticlesTous();
+                afficherSupprimerArticle();
             }
-        } catch (Exception $e) {
-            afficherAjouterArticleVideo($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlArticlesTous();
+        afficherSupprimerArticle();
     }
 }
 
-function CtlChoixArticleVideo($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                afficherModifierArticleVideo('', $id);
-            } else {
-                throw new Exception('Erreur : Veuillez sélectionner un article.');
-            }
-        } catch (Exception $e) {
-            afficherChoixArticleVideo($e->getMessage());
-        }
-    } else {
-        CtlConnexion('La session a expiré.');
-    }
-}
-
-function CtlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte) {
-    if (isset($_SESSION['id'])) {
-        try {
+function CtlAjouterArticleVideo($executer) {
+    try {
+        if (!$executer) {
+            MdlCategoriesArticlesTous();
+            afficherAjouterArticleVideo();
+        } else {
             if (
-                !empty($titre) &&
-                (!empty($visibilite) || $visibilite == 0) &&
-                (!empty($visibilite) || $visibilite == 0) &&
-                !empty($lien) &&
-                !empty($texte)
+                !empty($GLOBALS['form']['titre']) &&
+                $GLOBALS['form']['categorie'] != '-1' &&
+                $GLOBALS['form']['visibilite'] != '-1' &&
+                !empty($GLOBALS['form']['lien']) &&
+                !empty($GLOBALS['form']['texte'])
             ) {
-                MdlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $texte);
-                afficherModifierArticleVideo('L\'article "' . $titre . '" a été modifié avec succès !', $id);
+                MdlAjouterArticleVideo(
+                    $GLOBALS['form']['titre'],
+                    $GLOBALS['form']['categorie'],
+                    $GLOBALS['form']['visibilite'],
+                    $GLOBALS['form']['lien'],
+                    $GLOBALS['form']['texte']
+                );
+                MdlCategoriesArticlesTous();
+                afficherAjouterArticleVideo();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
+                MdlCategoriesArticlesTous();
+                afficherAjouterArticleVideo();
             }
-        } catch (Exception $e) {
-            afficherModifierArticleVideo($e->getMessage(), $id);
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlCategoriesArticlesTous();
+        afficherAjouterArticleVideo();
     }
 }
 
-function CtlSupprimerArticleVideo($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                MdlSupprimerArticleVideo($id);
-                afficherSupprimerArticleVideo('L\'article vidéo a été supprimé avec succès !');
+function CtlChoixArticleVideo($executer) {
+    try {
+        if (!$executer) {
+            MdlArticlesVideoTous();
+            afficherChoixArticleVideo();
+        } else {
+            if (
+            !empty($GLOBALS['form']['id'])
+            ) {
+                MdlArticlePrecis($GLOBALS['form']['id']);
+                afficherModifierArticleVideo();
             } else {
-                throw new Exception('Erreur : Veuillez sélectionner un article.');
+                ajouterMessage(400, 'Veuillez sélectionner un évent.');
+                MdlArticlesVideoTous();
+                afficherChoixArticleVideo();
             }
-        } catch (Exception $e) {
-            afficherSupprimerArticleVideo($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlArticlesVideoTous();
+        afficherChoixArticleVideo();
+    }
+}
+
+function CtlModifierArticleVideo() {
+    try {
+        if (
+            !empty($GLOBALS['form']['titre']) &&
+            $GLOBALS['form']['categorie'] != '-1' &&
+            $GLOBALS['form']['visibilite'] != '-1' &&
+            !empty($GLOBALS['form']['lien']) &&
+            !empty($GLOBALS['form']['texte'])
+        ) {
+            MdlModifierArticleVideo(
+                $GLOBALS['form']['id'],
+                $GLOBALS['form']['titre'],
+                $GLOBALS['form']['categorie'],
+                $GLOBALS['form']['visibilite'],
+                $GLOBALS['form']['lien'],
+                $GLOBALS['form']['texte']
+            );
+            MdlCategoriesArticlesTous();
+            MdlArticleVideoPrecis($GLOBALS['form']['id']);
+            afficherModifierArticleVideo();
+        } else {
+            ajouterMessage(400, 'Veuillez remplir tous les champs.');
+            MdlCategoriesArticlesTous();
+            MdlArticleVideoPrecis($GLOBALS['form']['id']);
+            afficherModifierArticleVideo();
+        }
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlArticlesVideoTous();
+        afficherChoixArticleVideo();
+    }
+}
+
+function CtlSupprimerArticleVideo($executer) {
+    try {
+        if (!$executer) {
+            MdlArticlesVideoTous();
+            afficherSupprimerArticleVideo();
+        } else {
+            if (
+                !empty($GLOBALS['form']['id'])
+            ) {
+                MdlSupprimerArticleVideo(
+                    $GLOBALS['form']['id']
+                );
+                MdlArticlesVideoTous();
+                afficherSupprimerArticleVideo();
+            } else {
+                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
+                MdlArticlesVideoTous();
+                afficherSupprimerArticleVideo();
+            }
+        }
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlArticlesVideoTous();
+        afficherSupprimerArticleVideo();
     }
 }
 

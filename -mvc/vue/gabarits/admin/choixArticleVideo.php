@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formChoisirArticleVideo" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Article en question -->
-                        <label for="formChoisirArticleVideo_idArticle">Article vidéo</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formChoisirArticleVideo_idArticle" name="formChoisirArticleVideo_idArticle">
+                        <label for="formChoisirArticleVideo_id">Article vidéo</label>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formChoisirArticleVideo_id" name="formChoisirArticleVideo_id">
                             <option value="">--Choisir un article vidéo--</option>
                             <?php echo ARTICLES_VIDEO ?>
                         </select>
