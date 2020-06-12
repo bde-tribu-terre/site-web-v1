@@ -240,6 +240,7 @@ function afficherSupprimerImageGoodie() {
             </div>
             <br>';
     }
+    $images .= $images == '' ? '<p>Ce goodie n\'a aucune image. La miniature n\'est pas modifiable.</p>' : '';
     define('ID', $GLOBALS['form']['idGoodie']);
     define('IMAGES_GOODIE', $images); // Car la constante IMAGES existe déjà...
 
