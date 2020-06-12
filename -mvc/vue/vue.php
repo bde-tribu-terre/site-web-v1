@@ -345,7 +345,7 @@ function afficherChoixArticle() {
         $articles .=
             '
             <option value="' . $article['id'] . '">
-                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+                (' . genererDate($article['dateCreation'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
             </option>
             ';
     }
@@ -442,7 +442,7 @@ function afficherChoixArticleVideo() {
         $articlesVideo .=
             '
             <option value="' . $article['id'] . '">
-                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+                (' . genererDate($article['dateCreation'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
             </option>
             ';
     }
