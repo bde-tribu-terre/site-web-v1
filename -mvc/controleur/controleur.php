@@ -336,24 +336,24 @@ function CtlAjouterGoodie($executer, $fileImput) {
             afficherAjouterGoodie();
         } else {
             if (
-                !empty($GLOBALS['form']['titre']) &&
+                !empty($GLOBALS['form']['titreGoodie']) &&
                 (!empty($GLOBALS['form']['categorie']) || $GLOBALS['form']['categorie'] == 0) && $GLOBALS['form']['categorie'] != '-1' &&
                 (!empty($GLOBALS['form']['prixADEuro']) || $GLOBALS['form']['prixADEuro'] == 0) &&
                 (!empty($GLOBALS['form']['prixADCentimes']) || $GLOBALS['form']['prixADCentimes'] == 0) &&
                 (!empty($GLOBALS['form']['prixNADEuro']) || $GLOBALS['form']['prixNADEuro'] == 0) &&
                 (!empty($GLOBALS['form']['prixNADCentimes']) || $GLOBALS['form']['prixNADCentimes'] == 0) &&
-                !empty($GLOBALS['form']['desc']) &&
+                !empty($GLOBALS['form']['descGoodie']) &&
                 !empty($_FILES[$fileImput]['name'])
             ) {
                 MdlAjouterGoodie(
                     RACINE . 'goodies/',
-                    $GLOBALS['form']['titre'],
+                    $GLOBALS['form']['titreGoodie'],
                     $GLOBALS['form']['categorie'],
                     $GLOBALS['form']['prixADEuro'],
                     $GLOBALS['form']['prixADCentimes'],
                     $GLOBALS['form']['prixNADEuro'],
                     $GLOBALS['form']['prixNADCentimes'],
-                    $GLOBALS['form']['desc'],
+                    $GLOBALS['form']['descGoodie'],
                     $fileImput
                 );
                 afficherAjouterGoodie();
