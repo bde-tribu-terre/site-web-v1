@@ -905,7 +905,7 @@ function MdlArticlePrecis($id) {
                 idArticles=:idArticles
             ",
             array(
-                [':idArticles', $id, ]
+                [':idArticles', $id, 'INT']
             ),
             1
         )
