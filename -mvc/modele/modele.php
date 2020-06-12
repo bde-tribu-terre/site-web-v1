@@ -650,7 +650,9 @@ function MdlAjouterImageGoodie($rep, $id, $fileImput) {
             array(
                 [':idGoodies', $id, 'INT']
             ),
-            1
+            1,
+            201,
+            'L\'image a été ajoutée au goodie avec succès !'
         )['titre'];
         $infosFichier = pathinfo($_FILES[$fileImput]['name']);
         $extension = $infosFichier['extension'];
