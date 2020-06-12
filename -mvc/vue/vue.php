@@ -309,33 +309,20 @@ function afficherAjouterArticle() {
     afficherPage('Ajouter un article', 'ajouterArticle.php', 'admin');
 }
 
-function afficherAjouterImageArticle($messageRetour) {
-    define('TITLE', 'Ajouter une image à un article');
-    define('GABARIT', 'ajouterImageArticle.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesArticles = idTitreArticles();
-
+function afficherAjouterImageArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $articles = '';
-    foreach ($lignesArticles as $ligneArticle) {
-        $idArticle = htmlentities($ligneArticle->idArticles, ENT_QUOTES, "UTF-8");
-        $titreArticle = htmlentities($ligneArticle->titreArticles, ENT_QUOTES, "UTF-8");
-        $dateArticle = htmlentities($ligneArticle->dateCreationArticles, ENT_QUOTES, "UTF-8");
-        $categorieArticle = htmlentities($ligneArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['articles'] as $article) {
         $articles .=
-            '<option value="' . $idArticle . '">(' .
-            substr($dateArticle, 8, 2) . '/' .
-            substr($dateArticle, 5, 2) . '/' .
-            substr($dateArticle, 0, 4) .
-            ' | ' . $categorieArticle . ') ' .
-            $titreArticle . '</option>';
+            '
+            <option value="' . $article['id'] . '">
+            ' . $article['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('ARTICLES', $articles);
 
-    afficherCadre('ADMIN');
+    afficherPage('Ajouter une image à un article', 'ajouterImageArticle.php', 'admin');
 }
 
 function afficherChoixArticle() {
@@ -375,32 +362,23 @@ function afficherModifierArticle() {
     afficherPage('Modifier un article', 'modifierArticle.php', 'admin');
 }
 
-function afficherSupprimerImageArticle($messageRetour, $id) {
-    define('TITLE', 'Supprimer une image d\'un article');
-    define('GABARIT', 'supprimerImageArticle.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesImages = MdlImagesArticle($id);
-
+function afficherSupprimerImageArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $images = '';
-    foreach ($lignesImages as $ligne) {
-        $idImage = $ligne->idImagesArticles;
-        $lienImage = $ligne->lienImagesArticles;
-
+    foreach ($GLOBALS['retoursModele']['imagesArticle'] as $image) {
         $images .=
-            '<div class="form-group">' .
-            '<label for="' . $idImage . '"><img src="' . RACINE . 'articles/' . $lienImage . '" width="200" height="100" alt="img"></label>' .
-            '<input class="form-control" type="checkbox" name="' . $idImage . '" id="' . $idImage . '">' .
-            '</div>' .
-            '<br>';
+            '
+            <div class="form-group">
+                <label for="formSupprimerImageArticle_' . $image['id'] . '"><img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="100" alt="img"></label>
+                <input class="form-control" type="checkbox" name="formSupprimerImageArticle_' . $image['id'] . '" id="formSupprimerImageArticle_' . $image['id'] . '">
+            </div>
+            <br>';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-    define('ID', $id);
+    $images .= $images == '' ? '<p>Ce goodie n\'a aucune image. La miniature n\'est pas modifiable.</p>' : '';
+    define('ID', $GLOBALS['form']['idArticle']);
     define('IMAGES_ARTICLE', $images); // Car la constante IMAGES existe déjà...
 
-    afficherCadre('ADMIN');
+    afficherPage('Supprimer une image d\'un article', 'supprimerImageArticle.php', 'admin');
 }
 
 function afficherSupprimerArticle() {
