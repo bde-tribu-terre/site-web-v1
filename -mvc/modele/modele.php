@@ -1098,9 +1098,23 @@ function MdlImagesArticle($id, $maxi) {
     );
 }
 
-function MdlAjouterImageArticle($rep, $id, $titre, $fileImput) {
+function MdlAjouterImageArticle($rep, $id, $fileImput) {
     try {
         # Enregistrement de l'image.
+        $titre = requeteSQL(
+            "
+            SELECT
+                titreArticles AS titre
+            FROM
+                Goodies
+            WHERE
+                idArticles=:idArticles
+            ",
+            array(
+                [':idArticles', $id, 'INT']
+            ),
+            1
+        )['titre'];
         $infosFichier = pathinfo($_FILES[$fileImput]['name']);
         $extension = $infosFichier['extension'];
         $newName = 'img-' . preg_replace('/[\W|.]/', '', $titre) . '-' . time() . '.' . $extension; # time() => aucun doublon imaginable.
@@ -1117,7 +1131,7 @@ function MdlAjouterImageArticle($rep, $id, $titre, $fileImput) {
     requeteSQL(
         "
         INSERT INTO
-        ImagesArticles
+            ImagesArticles
         VALUES
             (
                 0,

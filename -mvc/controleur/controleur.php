@@ -343,7 +343,7 @@ function CtlAllerSupprimerImageGoodie() {
     try {
         foreach ($GLOBALS['form'] as $key => $value) {
             if ($value == 'on') {
-                MdlSupprimerImageGoodie(RACINE . '/goodies/', $key, true);
+                MdlSupprimerImageGoodie(RACINE . 'goodies/', $key, true);
             }
         }
         MdlImagesGoodie($GLOBALS['form']['idGoodie']);
@@ -476,21 +476,32 @@ function CtlAjouterArticle($executer) {
     }
 }
 
-function CtlAjouterImageArticle($id, $fileImput) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id) && !empty($_FILES[$fileImput]['name'])) {
-                $titre = MdlArticlePrecis($id)->titreArticles;
-                MdlAjouterImageArticle(RACINE . 'articles/', $id, $titre, $fileImput);
-                afficherAjouterImageArticle('L\'image a été ajoutée à l\'article ' . $titre . ' avec succès !');
+function CtlAjouterImageArticle($executer, $fileImput) {
+    try {
+        if (!$executer) {
+            MdlArticlesTous(true, true);
+            afficherAjouterImageArticle();
+        } else {
+            if (
+                !empty($GLOBALS['form']['id']) &&
+                !empty($_FILES[$fileImput]['name'])
+            ) {
+                MdlAjouterImageArticle(
+                    RACINE . 'articles/',
+                    $GLOBALS['form']['id'],
+                    $fileImput);
+                MdlArticlesTous(true, true);
+                afficherAjouterImageArticle();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs et sélectionner une image.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs et sélectionner une image.');
+                MdlArticlesTous(true, true);
+                afficherAjouterImageArticle();
             }
-        } catch (Exception $e) {
-            afficherAjouterImageArticle($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlArticlesTous(true, true);
+        afficherAjouterImageArticle();
     }
 }
 
@@ -550,19 +561,19 @@ function CtlModifierArticle() {
     }
 }
 
-function CtlAllerSupprimerImageArticle($id) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id)) {
-                afficherSupprimerImageArticle('', $id);
-            } else {
-                throw new Exception('Erreur : Identifiant invalide.');
+function CtlAllerSupprimerImageArticle() {
+    try {
+        foreach ($GLOBALS['form'] as $key => $value) {
+            if ($value == 'on') {
+                MdlSupprimerImageArticle(RACINE . 'articles/', $key, true);
             }
-        } catch (Exception $e) {
-            afficherModifierArticle($e->getMessage(), $id);
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+        MdlImagesArticle($GLOBALS['form']['id'], NULL);
+        afficherSupprimerImageArticle();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlGoodiesTous('nom', true, true, true);
+        afficherChoixGoodie();
     }
 }
 
