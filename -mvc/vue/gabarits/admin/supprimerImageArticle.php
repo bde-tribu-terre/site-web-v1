@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formSupprimerImageArticle" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- ID du goodie -->
-                        <label for="formSupprimerImageArticle_idArticle">ID de l'article</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formSupprimerImageArticle_idArticle" type="text" value="<?php echo ID ?>" name="formSupprimerImageArticle_idArticle" readonly>
+                        <label for="formSupprimerImageArticle_id">ID de l'article</label>
+                        <input onblur="verifNonVide(this);" class="form-control" id="formSupprimerImageArticle_id" type="text" value="<?php echo ID ?>" name="formSupprimerImageArticle_id" readonly>
                     </div>
                     <?php echo IMAGES_ARTICLE ?>
                     <hr>

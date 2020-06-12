@@ -7,8 +7,8 @@
                 <hr>
                 <form id="formAjouterImageArticle" method="post" enctype="multipart/form-data" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Article en question -->
-                        <label for="formAjouterImageArticle_idArticle">Article</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formAjouterImageArticle_idArticle" name="formAjouterImageArticle_idArticle">
+                        <label for="formAjouterImageArticle_id">Article</label>
+                        <select onblur="verifNonVide(this);" class="form-control" id="formAjouterImageArticle_id" name="formAjouterImageArticle_id">
                             <option value="">--Choisir un article--</option>
                             <?php echo ARTICLES ?>
                         </select>
