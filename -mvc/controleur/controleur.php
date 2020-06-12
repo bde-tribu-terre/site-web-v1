@@ -633,37 +633,56 @@ function CtlSupprimerArticleVideo($id) {
     }
 }
 
-function CtlAjouterCategorieArticle($titre) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($titre)) {
-                MdlAjouterCategorieArticle($titre);
-                afficherAjouterCategorieArticle('La catégorie "' . $titre . '" a été ajoutée avec succès !');
+function CtlAjouterCategorieArticle($executer) {
+    try {
+        if (!$executer) {
+            afficherAjouterCategorieArticle();
+        } else {
+            if (
+                !empty($GLOBALS['form']['titre'])
+            ) {
+                MdlAjouterCategorieArticle(
+                    $GLOBALS['form']['titre']
+                );
+                afficherAjouterCategorieArticle();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
+                afficherAjouterCategorieArticle();
             }
-        } catch (Exception $e) {
-            afficherAjouterCategorieArticle($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherAjouterCategorieArticle();
     }
 }
 
-function CtlRenommerCategorieArticle($id, $titre) {
-    if (isset($_SESSION['id'])) {
-        try {
-            if (!empty($id) && !empty($titre)) {
-                MdlRenommerCategorieArticle($id, $titre);
-                afficherRenommerCategorieArticle('La catégorie a été renommée en "' . $titre . '" avec succès !');
+function CtlRenommerCategorieArticle($executer) {
+    try {
+        if (!$executer) {
+            MdlCategoriesArticlesTous();
+            afficherRenommerCategorieArticle();
+        } else {
+            if (
+                !empty($GLOBALS['form']['id']) &&
+                !empty($GLOBALS['form']['titre'])
+            ) {
+                MdlRenommerCategorieArticle(
+                    $GLOBALS['form']['id'],
+                    $GLOBALS['form']['titre']
+                );
+                MdlCategoriesArticlesTous();
+                afficherRenommerCategorieArticle();
             } else {
-                throw new Exception('Erreur : Veuillez remplir tous les champs.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
+                MdlCategoriesArticlesTous();
+                afficherRenommerCategorieArticle();
             }
-        } catch (Exception $e) {
-            afficherRenommerCategorieArticle($e->getMessage());
         }
-    } else {
-        CtlConnexion('La session a expiré.');
+
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        MdlCategoriesArticlesTous();
+        afficherRenommerCategorieArticle();
     }
 }
 

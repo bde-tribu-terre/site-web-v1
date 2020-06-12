@@ -571,38 +571,26 @@ function afficherSupprimerArticleVideo($messageRetour) {
     afficherCadre('ADMIN');
 }
 
-function afficherAjouterCategorieArticle($messageRetour) {
-    define('TITLE', 'Ajouter une catégorie d\'article');
-    define('GABARIT', 'ajouterCategorieArticle.php');
+function afficherAjouterCategorieArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
-
-    afficherCadre('ADMIN');
+    afficherPage('Ajouter une catégorie d\'article', 'ajouterCategorieArticle.php', 'admin');
 }
 
-function afficherRenommerCategorieArticle($messageRetour) {
-    define('TITLE', 'Renommer une catégorie d\'article');
-    define('GABARIT', 'renommerCategorieArticle.php');
-
-    $ligneInfoMembre = MdlInfosMembre($_SESSION['id']);
-    $lignesCategoriesArticle = MdlCategoriesArticlesTous();
-
+function afficherRenommerCategorieArticle() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
     $categories = '';
-    foreach ($lignesCategoriesArticle as $ligneCategorisArticle) {
-        $idCategorieArticle = htmlentities($ligneCategorisArticle->idCategoriesArticles, ENT_QUOTES, "UTF-8");
-        $titreCategorieArticle = htmlentities($ligneCategorisArticle->titreCategoriesArticles, ENT_QUOTES, "UTF-8");
+    foreach ($GLOBALS['retoursModele']['categoriesArticles'] as $categorie) {
         $categories .=
-            '<option value="' . $idCategorieArticle . '">' . $titreCategorieArticle . '</option>';
+            '
+            <option value="' . $categorie['id'] . '">
+                ' . $categorie['titre'] . '
+            </option>
+            ';
     }
-
-    define('NOM_MEMBRE', genererNom($ligneInfoMembre));
-    define('MESSAGE_RETOUR', $messageRetour);
     define('CATEGORIES', $categories);
 
-    afficherCadre('ADMIN');
+    afficherPage('Renommer une catégorie d\'article', 'renommerCategorieArticle.php', 'admin');
 }
 
 # Log
