@@ -393,7 +393,7 @@ function CtlChoixGoodie($executer) {
             afficherChoixGoodie();
         } else {
             if (
-            !empty($GLOBALS['form']['id'])
+            !empty($GLOBALS['form']['idGoodie'])
             ) {
                 MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
                 afficherModifierGoodie();
