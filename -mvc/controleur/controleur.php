@@ -447,12 +447,12 @@ function CtlModifierGoodie() {
 
 function CtlAllerSupprimerImageGoodie() {
     try {
-        foreach ($_POST as $key => $value) {
+        foreach ($GLOBALS['form'] as $key => $value) {
             if ($value == 'on') {
                 MdlSupprimerImageGoodie(RACINE . '/goodies/', $key, true);
             }
         }
-        MdlImagesGoodie($GLOBALS['form']['id']);
+        MdlImagesGoodie($GLOBALS['form']['idGoodie']);
         afficherSupprimerImageGoodie();
     } catch (Exception $e) {
         ajouterMessage(500, $e->getMessage());
