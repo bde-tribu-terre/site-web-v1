@@ -421,7 +421,7 @@ function CtlSupprimerJournal($executer) {
             afficherSupprimerJournal();
         } else {
             if (
-            !empty($GLOBALS['form']['id'])
+                !empty($GLOBALS['form']['id'])
             ) {
                 MdlSupprimerJournal(
                     RACINE . 'journaux/',

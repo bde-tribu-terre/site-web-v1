@@ -135,7 +135,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         } elseif (isset($_POST['formJournal_ajouterJournalMenu'])) {
             CtlAjouterJournal(false, NULL);
         } elseif (isset($_POST['formJournal_supprimerJournalMenu'])) {
-            CtlSupprimerJournal(true);
+            CtlSupprimerJournal(false);
         } elseif (isset($_POST['formArticles_ajouterArticleMenu'])) {
             CtlAjouterArticleMenu('');
         } elseif (isset($_POST['formArticles_ajouterImageArticleMenu'])) {
