@@ -240,7 +240,7 @@ function afficherSupprimerImageGoodie() {
             </div>
             <br>';
     }
-    define('ID', $GLOBALS['form']['id']);
+    define('ID', $GLOBALS['form']['idGoodie']);
     define('IMAGES_GOODIE', $images); // Car la constante IMAGES existe déjà...
 
     afficherPage('Supprimer une image d\'un goodie', 'supprimerImageGoodie.php', 'admin');
