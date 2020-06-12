@@ -410,7 +410,7 @@ function afficherSupprimerArticle() {
         $articles .=
             '
             <option value="' . $article['id'] . '">
-                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+                (' . genererDate($article['dateCreation'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
             </option>
             ';
     }
@@ -480,7 +480,7 @@ function afficherSupprimerArticleVideo() {
         $articlesVideo .=
             '
             <option value="' . $article['id'] . '">
-                (' . genererDate($article['date'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
+                (' . genererDate($article['dateCreation'], true) . ' | ' . $article['categorie'] . ') ' . $article['titre'] . '
             </option>
             ';
     }
