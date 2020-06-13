@@ -53,3 +53,5 @@
         </ul>
     </div>
 </nav>
+
+<?php require_once CHEMIN_VERS_MESSAGES ?>

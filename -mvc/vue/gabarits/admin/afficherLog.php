@@ -1,5 +1,4 @@
 <div class="container text-center">
-    <?php require_once CHEMIN_VERS_MESSAGES ?>
     <div class="row">
         <div class="col-sm-12">
             <table class="well table table-striped table-hover" style="background-color: white">

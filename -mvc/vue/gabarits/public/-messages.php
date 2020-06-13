@@ -1,11 +1,12 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <h3>Oulah... Une erreur s'est produite 😰</h3>
-            <div class="well">
-                <h3>Rapport de l'erreur :</h3>
-                <h4>
-                    <strong>
+    <div<?php echo empty(MESSAGES) || GABARIT == 'erreur.php' ? ' style="display: none"' : '' ?>>
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="well">
+                    <h3>Message(s)</h3>
+                    <hr>
+                    <ul class="text-left">
                         <?php
                         foreach (MESSAGES as $arrMessage) {
                             switch (substr($arrMessage[0], 0, 1)) {
@@ -30,13 +31,10 @@
                             echo '<li' . $color . '>' . $arrMessage[0] . ' : ' . $arrMessage[1] . '</li>';
                         }
                         ?>
-                    </strong>
-                </h4>
-                <p><i>Pour te consoler voici une girafe.</i></p>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="col-sm-4">
-            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgGirafeErreur.png' ?>" alt="Girafe">
+            <div class="col-sm-3"></div>
         </div>
     </div>
-</div><br>
+</div>
