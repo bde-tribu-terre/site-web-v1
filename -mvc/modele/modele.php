@@ -1188,6 +1188,51 @@ function MdlSupprimerImageArticle($rep, $id, $logguer) {
     }
 }
 
+function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
+    $articleTexte = requeteSQL(
+        "
+        SELECT
+            idArticles AS id,
+            MAX(dateCreationArticles) AS date
+        FROM
+            ArticlesYouTube
+        WHERE
+            1=2" . ($visibles ? " OR visibiliteArticles=0" : "") . ($invisibles ? " OR visibiliteArticles=1" : "") . "
+        ",
+        array(),
+        1
+    );
+    $articleVideo = requeteSQL(
+        "
+        SELECT
+            idArticlesYouTube AS id,
+            MAX(dateCreationArticlesYouTube) AS date
+        FROM
+            ArticlesYouTube
+        WHERE
+            1=2" . ($visibles ? " OR visibiliteArticlesYouTube=0" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=1" : "") . "
+        ",
+        array(),
+        1
+    )['id'];
+    if ($articleTexte['id'] && $articleVideo['id']) {
+        if (strcmp($articleTexte['id'], $articleVideo['id']) >= 0) {
+            MdlArticlePrecis($articleTexte['id']);
+        } else {
+            MdlArticleVideoPrecis($articleVideo['id']);
+        }
+    } elseif ($articleTexte['id']) {
+        MdlArticlePrecis($articleTexte['id']);
+    } elseif ($articleVideo['id']) {
+        MdlArticleVideoPrecis($articleVideo['id']);
+    } else {
+        ajouterRetourModele(
+            'article',
+            NULL
+        );
+    }
+}
+
 ########################################################################################################################
 # Articles vidéo                                                                                                       #
 ########################################################################################################################

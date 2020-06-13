@@ -523,188 +523,136 @@ function afficherInscription() {
 # B.III - Accueil                                                                                                      #
 ########################################################################################################################
 function afficherAccueil() {
-    define('TITLE', 'Accueil');
-    define('GABARIT', 'accueil.php');
-
     # Goodies
     $goodiesIndicators = '';
     $goodies ='';
-    $lignesGoodies = MdlGoodiesTous('', true, false, false);
-
     $nb = 0;
     $premier = true;
-    foreach ($lignesGoodies as $ligneGoodie) {
-        $idGoodie = htmlentities($ligneGoodie->idGoodies, ENT_QUOTES, "UTF-8");
-        $titreGoodie = htmlentities($ligneGoodie->titreGoodies, ENT_QUOTES, "UTF-8");
-        $prixAdherentGoodie = htmlentities($ligneGoodie->prixADGoodies, ENT_QUOTES, "UTF-8");
-        $prixNonAdherentGoodie = htmlentities($ligneGoodie->prixNADGoodies, ENT_QUOTES, "UTF-8");
-        $categorieGoodie = htmlentities($ligneGoodie->categorieGoodies, ENT_QUOTES, "UTF-8");
-        $miniatureGoodie = htmlentities($ligneGoodie->miniatureGoodies, ENT_QUOTES, "UTF-8");
-
+    foreach ($GLOBALS['retoursModele']['goodies'] as $goodie) {
         // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
-        if ($categorieGoodie != 1) {
+        if ($goodie['categorie'] != 1) {
             continue;
         }
-        $lienMiniature = RACINE . 'goodies/' . $miniatureGoodie;
-
-        $goodiesIndicators .= '<li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '"';
+        $goodiesIndicators .=
+            '
+            <li data-target="#carouselGoodies" data-slide-to="' . $nb++ . '" ' . ($premier ? 'class="active"' : '') . '>
+            </li>
+            ';
+        $goodies .=
+            '
+            <div class="item' . ($premier ? ' active' : '') . '">
+            <a href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '"><img class="arrondi" src="' . RACINE . 'goodies/' . $goodie['miniature'] . '" alt="Image"></a>
+            <div class="carousel-caption">
+            <a href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '"><h3>' . $goodie['titre'] . '</h3></a>
+            <p>' . $goodie['prixAD'] . '€ Adhérent | ' . $goodie['prixNAD'] . '€ Non-adhérent</p>
+            </div>
+            </div>
+            ';
         if ($premier) {
-            $goodiesIndicators .= ' class="active"';
-        }
-        $goodiesIndicators .= '></li>' . "\n";
-        $goodies .= '<div class="item';
-        if ($premier) {
-            $goodies .= ' active';
             $premier = false;
         }
-        $goodies .=
-            '">' . "\n" .
-            '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><img class="arrondi" src="' . $lienMiniature . '" alt="Image"></a>' . "\n" .
-            '<div class="carousel-caption">' . "\n" .
-            '<a href="' . RACINE . 'goodies/?id=' . $idGoodie . '"><h3>' . $titreGoodie . '</h3></a>' . "\n" .
-            '<p>' . $prixAdherentGoodie . '€ Adhérent | ' . $prixNonAdherentGoodie . '€ Non-adhérent</p>' . "\n" .
-            '</div>' . "\n" .
-            '</div>';
     }
     $carouselGoodies =
-        '<div id="carouselGoodies" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">' .
-            '<!-- Indicators -->' .
-            '<ol class="carousel-indicators">' .
-                $goodiesIndicators .
-            '</ol>' .
-            '<!-- Wrapper for slides -->' .
-            '<div class="carousel-inner" role="listbox">' .
-                '<!-- Ici on liste les goodies -->' .
-                $goodies .
-            '</div>' .
-            '<!-- Left and right controls -->' .
-            '<a class="left carousel-control" href="#carouselGoodies" role="button" data-slide="prev">' .
-            '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>' .
-            '<span class="sr-only">Previous</span>' .
-            '</a>' .
-            '<a class="right carousel-control" href="#carouselGoodies" role="button" data-slide="next">' .
-            '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' .
-            '<span class="sr-only">Next</span>' .
-            '</a>' .
-        '</div>';
+        '<div id="carouselGoodies" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                ' . $goodiesIndicators . '
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <!-- Ici on liste les goodies -->
+                ' . $goodies . '
+            </div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#carouselGoodies" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carouselGoodies" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>';
+    define('CAROUSEL_GOODIES', $carouselGoodies);
 
     # Events
-    $lignesEvents = MdlEventsTous('PF', true, false, 3);
-    $events = '<div class="well">';
-
-    if (empty($lignesEvents)) {
-        $events .=
-            '<p>Oups ! On dirait qu\'il n\'y a aucun évent de prévu dans le futur 🙈</p>';
-    }
-
+    $events = '';
     $count = 0;
-    foreach ($lignesEvents as $ligneEvent) {
+    foreach ($GLOBALS['retoursModele']['events'] as $event) {
         $count++;
-        $idEvent = htmlentities($ligneEvent->idEvents, ENT_QUOTES, "UTF-8");
-        $titreEvent = htmlentities($ligneEvent->titreEvents, ENT_QUOTES, "UTF-8");
-        $dateEvent = htmlentities($ligneEvent->dateEvents, ENT_QUOTES, "UTF-8");
-        $heureEvent = htmlentities($ligneEvent->heureEvents, ENT_QUOTES, "UTF-8");
-        $lieuEvent = htmlentities($ligneEvent->lieuEvents, ENT_QUOTES, "UTF-8");
-        $nbJours = round((strtotime($dateEvent) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
-        $nbJoursStr = '';
-        if ($nbJours == 0) {
-            $nbJoursStr .= '<strong><span style="color: red"> (Aujourd\'hui)</span></strong>';
-        } elseif ($nbJours == 1) {
-            $nbJoursStr .= '<strong><span style="color: red"> (Demain)</span></strong>';
-        } else {
-            $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
-        }
-        if ($count !=1 ) {
-            $events .= '<hr>';
-        }
-        if ($count == 3) {
-            $events .= '<div class="alterneur-grand-moyen">';
+        $nbJours = round((strtotime($event['date']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+        switch ($nbJours) {
+            case 0:
+                $nbJoursStr = '<strong><span style="color: red"> (Aujourd\'hui)</span></strong>';
+                break;
+            case 1:
+                $nbJoursStr = '<strong><span style="color: red"> (Demain)</span></strong>';
+                break;
+            default:
+                $nbJoursStr = ' (dans ' . $nbJours . ' jours)';
         }
         $events .=
-            '<h3 class="text-center">' . $titreEvent . '</h3>' .
-            '<h5>📅&emsp;' . preg_replace('/ [^ ]*$/', '', genererDate($dateEvent)) . $nbJoursStr . '</h5>' .
-            '<h5>⌚️&emsp;' . substr($heureEvent, 0, 2) . 'h' . substr($heureEvent, 3, 2) . '</h5>' .
-            '<h5>📍&emsp;' . $lieuEvent . '</h5>' .
-            '<a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $idEvent . '">' .
-            '<h4>Détails</h4>' .
-            '</a>';
-        if ($count == 3) {
-            $events .= '</div>';
-        }
+            '
+            ' . ($count == 3 ? '<div class="alterneur-grand-moyen">' : '') . '
+            ' . ($count != 1 ? '<hr>' : '') . '
+            <h3 class="text-center">' . $event['titre'] . '</h3>
+            <h5>📅&emsp;' . preg_replace('/ [^ ]*$/', '', genererDate($event['date'])) . $nbJoursStr . '</h5>
+            <h5>⌚️&emsp;' . substr($event['heure'], 0, 2) . 'h' . substr($event['heure'], 3, 2) . '</h5>
+            <h5>📍&emsp;' . $event['lieu'] . '</h5>
+            <a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
+                <h4>Détails</h4>
+            </a>
+            ' . ($count == 3 ? '</div>' : '') . '
+            ';
     }
-    $events .= '</div>';
+    $events =
+        '
+        <div class="well">
+            ' . ($events == '' ? '<p>Oups ! On dirait qu\'il n\'y a aucun évent de prévu dans le futur 🙈</p>' : $events) . '
+        </div>
+        ';
+    define('EVENTS', $events);
 
     # Journal
-    $lignesJournaux = MdlJournauxTous(2);
     $journaux ='';
-
-    foreach ($lignesJournaux as $ligneJournal) {
-        $titre = htmlentities($ligneJournal->titreJournaux, ENT_QUOTES, "UTF-8");;
-        $date = htmlentities($ligneJournal->dateJournaux, ENT_QUOTES, "UTF-8");
-        $pdf = htmlentities($ligneJournal->pdfJournaux, ENT_QUOTES, "UTF-8");
-
-        $lienJournal = RACINE . 'journaux/' . $pdf;
-
+    foreach ($GLOBALS['retoursModele']['journaux'] as $journal) {
         $journaux .=
-            '<div class="col-sm-6">' .
-            '<div class="well">' .
-            '<h3>' . $titre . '</h3>' .
-            '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
-            '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
-            '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
-            '<h4 class="alterneur-petit">Lire</h4>' .
-            '</a>' .
-            '</div>' .
-            '</div>';
+            '
+            <div class="col-sm-6">
+                <div class="well">
+                    <h3>' . $journal['titre'] . '</h3>
+                    <h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>
+                    <a href="' . RACINE . 'journaux/' . $journal['pdf'] . '" class="btn btn-danger btn-block">
+                        <h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
+                        <h4 class="alterneur-petit">Lire</h4>
+                    </a>
+                </div>
+            </div>
+            ';
     }
+    define('JOURNAUX', $journaux);
 
     # Article
-    $lignesArticles = MdlArticlesTous();
-    $lignesArticlesVideo = MdlArticlesVideoTous();
-
-    $arrayID = [];
-    $arrayArticles = [];
-    foreach ($lignesArticles as $ligneArticle) {
-        $arrayID['T' . $ligneArticle->id] = $ligneArticle->dateCreation;
-        $arrayArticles['T' . $ligneArticle->id] = $ligneArticle;
-    }
-    foreach ($lignesArticlesVideo as $ligneArticleVideo) {
-        $arrayID['V' . $ligneArticleVideo->id] = $ligneArticleVideo->dateCreation;
-        $arrayArticles['V' . $ligneArticleVideo->id] = $ligneArticleVideo;
-    }
-    asort($arrayID);
-    $arrayID = array_reverse($arrayID);
-
-    if (empty($arrayID)) {
-        $article = 'Il semble qu\'il n\'y ait aucun article sur le site...';
-    } else {
-        function array_key_first_de_secours($array) { // Car la fonction n'est pas là dans ma version de PHP :(
-            foreach ($array as $key => $value) {
-                return $key;
-            }
-            return NULL;
-        }
-        $ligneArticle = $arrayArticles[array_key_first_de_secours($arrayID)];
-
+    if ($GLOBALS['retoursModele']['article']) {
         $article =
-            '<div class="well">' .
-            '<h5>' .
-            '<span class="pc">' . $ligneArticle->categorie . '</span>' .
-            '</h5>' .
-            '<h3>' . $ligneArticle->titre . '</h3>' .
-            '<h5>' . genererDate($ligneArticle->dateCreation) . '</h5>' .
-            '<a href="' . RACINE . 'articles/?id=' . (!empty($ligneArticle->lien) ? '-' : '') . $ligneArticle->id . '" class="btn btn-danger btn-block">' .
-            '<h4>Lire l\'article</h4>' .
-            '</a>' .
-            '</div>';
+            '
+            <div class="well">
+            <h5>
+            <span class="pc">' . $GLOBALS['retoursModele']['article']['categorie'] . '</span>
+            </h5>
+            <h3>' . $GLOBALS['retoursModele']['article']['titre'] . '</h3>
+            <h5>' . genererDate($GLOBALS['retoursModele']['article']['dateCreation']) . '</h5>
+            <a href="' . RACINE . 'articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? '-' : '') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-danger btn-block">
+            <h4>Lire l\'article</h4>
+            </a>
+            </div>
+            ';
+    } else {
+        $article = 'Il semble qu\'il n\'y ait aucun article sur le site...';
     }
-
-    define('CAROUSEL_GOODIES', $carouselGoodies);
-    define('EVENTS', $events);
-    define('JOURNAUX', $journaux);
     define('ARTICLE', $article);
 
-    afficherCadre('PUBLIC');
+    afficherPage('Accueil', 'accueil.php', 'public');
 }
 
 ########################################################################################################################
