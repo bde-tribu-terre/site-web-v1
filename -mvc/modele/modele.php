@@ -893,8 +893,8 @@ function MdlArticlePrecis($id) {
                 texteArticles AS texte,
                 prenomMembres AS prenomAuteur,
                 nomMembres AS nomAuteur,
-                dateCreationArticles,
-                dateModificationArticles
+                dateCreationArticles AS dateCreation,
+                dateModificationArticles AS dateModification
             FROM
                 Articles
                     NATURAL JOIN
