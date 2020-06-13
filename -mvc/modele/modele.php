@@ -1195,7 +1195,7 @@ function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
             idArticles AS id,
             MAX(dateCreationArticles) AS date
         FROM
-            ArticlesYouTube
+            Articles
         WHERE
             1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
         ",
@@ -1214,7 +1214,7 @@ function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
         ",
         array(),
         1
-    )['id'];
+    );
     if ($articleTexte['id'] && $articleVideo['id']) {
         if (strcmp($articleTexte['id'], $articleVideo['id']) >= 0) {
             MdlArticlePrecis($articleTexte['id']);
