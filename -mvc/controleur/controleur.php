@@ -831,6 +831,10 @@ function CtlSInscrire() {
 # Accueil                                                                                                              #
 ########################################################################################################################
 function CtlAccueil() {
+    MdlGoodiesTous('', true, false, false);
+    MdlEventsTous('PF', true, false, 3);
+    MdlJournauxTous(2);
+    MdlDernierArticleTexteVideo(true, false);
     afficherAccueil();
 }
 
