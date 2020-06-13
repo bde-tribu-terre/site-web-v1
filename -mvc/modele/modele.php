@@ -1219,12 +1219,12 @@ function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
         if (strcmp($articleTexte['date'], $articleVideo['date']) >= 0) {
             MdlArticlePrecis($articleTexte['id']);
         } else {
-            MdlArticleVideoPrecis($articleVideo['id']);
+            MdlArticleVideoPrecis($articleVideo['id'], true);
         }
     } elseif ($articleTexte['id']) {
         MdlArticlePrecis($articleTexte['id']);
     } elseif ($articleVideo['id']) {
-        MdlArticleVideoPrecis($articleVideo['id']);
+        MdlArticleVideoPrecis($articleVideo['id'], true);
     } else {
         ajouterRetourModele(
             'article',
