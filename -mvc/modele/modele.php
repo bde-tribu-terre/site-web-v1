@@ -1216,7 +1216,7 @@ function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
         1
     );
     if ($articleTexte['id'] && $articleVideo['id']) {
-        if (strcmp($articleTexte['id'], $articleVideo['id']) >= 0) {
+        if (strcmp($articleTexte['date'], $articleVideo['date']) >= 0) {
             MdlArticlePrecis($articleTexte['id']);
         } else {
             MdlArticleVideoPrecis($articleVideo['id']);
@@ -1282,9 +1282,9 @@ function MdlArticlesVideoTous($visibles = true, $invisibles = false) {
     );
 }
 
-function MdlArticleVideoPrecis($id) {
+function MdlArticleVideoPrecis($id, $article = false) {
     ajouterRetourModele(
-        'articleVideo',
+        $article ? 'article' : 'articleVideo',
         requeteSQL(
             "
             SELECT
