@@ -5,8 +5,8 @@ require_once(RACINE . '-mvc/vue/vue.php');
 ########################################################################################################################
 # Erreur (public, tous les C. Frontaux)                                                                                #
 ########################################################################################################################
-function CtlErreur($messageErreur) {
-    afficherErreur($messageErreur);
+function CtlErreur() {
+    afficherErreur();
 }
 
 ########################################################################################################################
@@ -792,34 +792,34 @@ function CtlAfficherLog() {
 ########################################################################################################################
 # Admin - Inscription                                                                                                  #
 ########################################################################################################################
-function CtlInscription() {
-    afficherInscription();
-}
-
-function CtlSInscrire() {
+function CtlInscription($executer) {
     try {
-        if (
-            !empty($GLOBALS['form']['cleInscription']) &&
-            !empty($GLOBALS['form']['prenom']) &&
-            !empty($GLOBALS['form']['nom']) &&
-            !empty($GLOBALS['form']['login']) &&
-            !empty($GLOBALS['form']['mdp'])
-        ) {
-            if (MdlCleExiste($GLOBALS['form']['cleInscription'])) { // Si trouvée, alors elle est détruite.
-                MdlAjouterMembre(
-                    $GLOBALS['form']['prenom'],
-                    $GLOBALS['form']['nom'],
-                    $GLOBALS['form']['login'],
-                    $GLOBALS['form']['mdp']
-                );
-                afficherInscription();
+        if (!$executer) {
+            afficherInscription();
+        } else {
+            if (
+                !empty($GLOBALS['form']['cleInscription']) &&
+                !empty($GLOBALS['form']['prenom']) &&
+                !empty($GLOBALS['form']['nom']) &&
+                !empty($GLOBALS['form']['login']) &&
+                !empty($GLOBALS['form']['mdp'])
+            ) {
+                if (MdlCleExiste($GLOBALS['form']['cleInscription'])) { // Si trouvée, alors elle est détruite.
+                    MdlAjouterMembre(
+                        $GLOBALS['form']['prenom'],
+                        $GLOBALS['form']['nom'],
+                        $GLOBALS['form']['login'],
+                        $GLOBALS['form']['mdp']
+                    );
+                    afficherInscription();
+                } else {
+                    ajouterMessage(402, 'La clé d\'inscription saisie n\'existe pas.');
+                    afficherInscription();
+                }
             } else {
-                ajouterMessage(402, 'La clé d\'inscription saisie n\'existe pas.');
+                ajouterMessage(400, 'Veuillez remplir tous les champs.');
                 afficherInscription();
             }
-        } else {
-            ajouterMessage(400, 'Veuillez remplir tous les champs.');
-            afficherInscription();
         }
     } catch (Exception $e) {
         ajouterMessage(500, $e->getMessage());
@@ -831,35 +831,45 @@ function CtlSInscrire() {
 # Accueil                                                                                                              #
 ########################################################################################################################
 function CtlAccueil() {
-    MdlGoodiesTous('', true, false, false);
-    MdlEventsTous('PF', true, false, 3);
-    MdlJournauxTous(2);
-    MdlDernierArticleTexteVideo(true, false);
-    afficherAccueil();
+    try {
+        MdlGoodiesTous('', true, false, false);
+        MdlEventsTous('PF', true, false, 3);
+        MdlJournauxTous(2);
+        MdlDernierArticleTexteVideo(true, false);
+        afficherAccueil();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        afficherAccueil();
+    }
 }
 
 ########################################################################################################################
 # Articles                                                                                                             #
 ########################################################################################################################
-function CtlArticles() {
+function CtlArticles($id = NULL) {
+
+    MdlArticlesTous();
+    MdlArticlesVideoTous();
     afficherArticles();
 }
 
 function CtlArticlePrecis($id) {
-    if ($id >= 0) {
-        $article = MdlArticlePrecis($id);
-        if ($article != false) {
-            afficherArticlePrecis($article);
-        } else {
-            throw new Exception('L\'article recherché n\'existe pas.');
-        }
-    } else {
-        $article = MdlArticleVideoPrecis(-$id);
-        if ($article != false) {
-            afficherArticleVideoPrecis($article);
-        } else {
-            throw new Exception('L\'article vidéo recherché n\'existe pas.');
-        }
+    switch (substr($id, 0, 1) == 'T') {
+        case 'T':
+            $article = MdlArticlePrecis($id);
+            if ($article != false) {
+                afficherArticlePrecis($article);
+            } else {
+                throw new Exception('L\'article recherché n\'existe pas.');
+            }
+            break;
+        case 'V':
+            $article = MdlArticleVideoPrecis(-$id);
+            if ($article != false) {
+                afficherArticleVideoPrecis($article);
+            } else {
+                throw new Exception('L\'article vidéo recherché n\'existe pas.');
+            }
     }
 }
 

@@ -8,3 +8,5 @@
 
 <nav class="navbar navbar-tribu-terre">
 </nav>
+
+<?php require_once CHEMIN_VERS_MESSAGES ?>

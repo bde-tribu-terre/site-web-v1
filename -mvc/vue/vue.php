@@ -642,7 +642,7 @@ function afficherAccueil() {
             </h5>
             <h3>' . $GLOBALS['retoursModele']['article']['titre'] . '</h3>
             <h5>' . genererDate($GLOBALS['retoursModele']['article']['dateCreation']) . '</h5>
-            <a href="' . RACINE . 'articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? '-' : '') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-danger btn-block">
+            <a href="' . RACINE . 'articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? 'V' : 'T') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-danger btn-block">
             <h4>Lire l\'article</h4>
             </a>
             </div>
@@ -1405,9 +1405,6 @@ function afficherRiad() {
 ########################################################################################################################
 # B.XXV - Erreur                                                                                                       #
 ########################################################################################################################
-function afficherErreur($messageErreur) {
-    define('MESSAGE_ERREUR', $messageErreur);
-    define('GABARIT', 'erreur.php');
-    define('TITLE', 'Erreur');
-    afficherCadre('PUBLIC');
+function afficherErreur() {
+    afficherPage('Erreur', 'erreur.php', 'public');
 }

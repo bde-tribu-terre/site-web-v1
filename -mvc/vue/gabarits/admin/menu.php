@@ -1,5 +1,4 @@
 <div class="container text-center">
-    <?php require_once CHEMIN_VERS_MESSAGES ?>
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
