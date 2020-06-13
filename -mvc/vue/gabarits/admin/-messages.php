@@ -4,7 +4,7 @@
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
                 <div class="well">
-                    <h3>Message(s)</h3>
+                    <h3 class="text-center">Message(s)</h3>
                     <hr>
                     <ul class="text-left">
                         <?php
