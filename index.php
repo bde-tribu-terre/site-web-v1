@@ -5,5 +5,10 @@ try {
     CtlAccueil();
 } catch (Exception $e) {
     ajouterMessage(500, $e->getMessage());
-    CtlAccueil();
+    try {
+        CtlAccueil();
+    } catch (Exception $e) {
+        ajouterMessage(500, $e->getMessage());
+        CtlErreur();
+    }
 }

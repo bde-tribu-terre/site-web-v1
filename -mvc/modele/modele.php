@@ -873,7 +873,7 @@ function MdlArticlesTous($visibles = true, $invisibles = false) {
                         DESC
                 ) AS T
             WHERE
-                1=2" . ($visibles ? " OR visibiliteArticles=0" : "") . ($invisibles ? " OR visibiliteArticles=1" : "") . "
+                1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
             "
         )
     );
@@ -1197,7 +1197,7 @@ function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
         FROM
             ArticlesYouTube
         WHERE
-            1=2" . ($visibles ? " OR visibiliteArticles=0" : "") . ($invisibles ? " OR visibiliteArticles=1" : "") . "
+            1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
         ",
         array(),
         1
@@ -1210,7 +1210,7 @@ function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
         FROM
             ArticlesYouTube
         WHERE
-            1=2" . ($visibles ? " OR visibiliteArticlesYouTube=0" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=1" : "") . "
+            1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
         ",
         array(),
         1
@@ -1276,7 +1276,7 @@ function MdlArticlesVideoTous($visibles = true, $invisibles = false) {
                         DESC
                 ) AS T
             WHERE
-                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=0" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=1" : "") . "
+                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
             "
         )
     );
