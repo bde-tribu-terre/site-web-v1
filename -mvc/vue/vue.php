@@ -641,7 +641,7 @@ function afficherAccueil() {
             <span class="pc">' . $GLOBALS['retoursModele']['article']['categorie'] . '</span>
             </h5>
             <h3>' . $GLOBALS['retoursModele']['article']['titre'] . '</h3>
-            <h5>' . genererDate($GLOBALS['retoursModele']['article']['date']) . '</h5>
+            <h5>' . genererDate($GLOBALS['retoursModele']['article']['dateCreation']) . '</h5>
             <a href="' . RACINE . 'articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? '-' : '') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-danger btn-block">
             <h4>Lire l\'article</h4>
             </a>
