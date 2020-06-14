@@ -1409,17 +1409,15 @@ function MdlSupprimerArticleVideo($id) {
 function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
     $retour = array();
     $articlesVideo = requeteSQL(
-        requeteSQL(
-            "
-            SELECT
-                idArticlesYouTube AS id,
-                lienArticlesYouTube AS lien
-            FROM
-                ArticlesYouTube
-            WHERE
-                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
-            "
-        )
+        "
+        SELECT
+            idArticlesYouTube AS id,
+            lienArticlesYouTube AS lien
+        FROM
+            ArticlesYouTube
+        WHERE
+            1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
+        "
     );
     foreach ($articlesVideo as $articleVideo) {
         $youtube = "http://www.youtube.com/oembed?url=". $articleVideo['lien'] ."&format=json";
