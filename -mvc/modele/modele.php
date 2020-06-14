@@ -1233,6 +1233,36 @@ function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
     }
 }
 
+function MdlMiniaturesArticles($visibles = true, $invisibles = false) {
+    $retour = array();
+    $miniatures = requeteSQL(
+        "
+        SELECT
+            idArticles AS id,
+            lienImagesArticles AS lien
+        FROM
+            (
+                SELECT
+                    MIN(idImagesArticles) AS idImagesArticles,
+                    idArticles
+                FROM
+                    ImagesArticles
+                GROUP BY
+                    idArticles
+            ) AS T
+                NATURAL JOIN
+            ImagesArticles
+        "
+    );
+    foreach ($miniatures as $miniature) {
+        $retour[$miniature['id']] = $miniature['lien'];
+    }
+    ajouterRetourModele(
+        'miniaturesArticles',
+        $retour
+    );
+}
+
 ########################################################################################################################
 # Articles vidéo                                                                                                       #
 ########################################################################################################################
@@ -1415,4 +1445,4 @@ function obtenirInfoYouTube($url) {
     $return = curl_exec($curl);
     curl_close($curl);
     return json_decode($return);
-}
+} //TODO: Uniformisation
