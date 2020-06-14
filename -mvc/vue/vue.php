@@ -680,13 +680,13 @@ function afficherArticles() {
             switch (substr($ID, 0, 1)) {
                 case 'T':
                     $miniature =
-                        empty($GLOBALS['retoursModele']['miniatureArticles'][$arrayArticles[$ID]['id']]) ?
+                        empty($GLOBALS['retoursModele']['miniaturesArticles'][$arrayArticles[$ID]['id']]) ?
                             '' :
                             '
                             <div class="div-miniature-articles">
                                 <img
                                     class="img-fluid img-arrondi"
-                                    src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['miniatureArticles'][$arrayArticles[$ID]['id']] . '"
+                                    src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['miniaturesArticles'][$arrayArticles[$ID]['id']] . '"
                                     alt="Miniature"
                                 >
                             </div>
@@ -694,15 +694,17 @@ function afficherArticles() {
                     break;
                 case 'V':
                     $miniature =
-                        '
-                        <div class="div-miniature-articles">
-                                <img
-                                    class="img-fluid img-arrondi"
-                                    src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['miniatureArticlesVideo'][$arrayArticles[$ID]['id']] . '"
-                                    alt="Miniature"
-                                >
-                            </div>
-                        ';
+                        empty($GLOBALS['retoursModele']['miniaturesArticlesVideo'][$arrayArticles[$ID]['id']]) ?
+                            '' :
+                            '
+                            <div class="div-miniature-articles">
+                                    <img
+                                        class="img-fluid img-arrondi"
+                                        src="' . $GLOBALS['retoursModele']['miniaturesArticlesVideo'][$arrayArticles[$ID]['id']] . '"
+                                        alt="Miniature"
+                                    >
+                                </div>
+                            ';
                     break;
                 default:
                     $miniature = '';
