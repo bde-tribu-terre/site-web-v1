@@ -857,7 +857,7 @@ function CtlArticles($id = NULL) {
                     }
                     break;
                 case 'V':
-                    MdlArticleVideoPrecis(-$id);
+                    MdlArticleVideoPrecis($id);
                     if ($GLOBALS['retoursModele']['articleVideo']) {
                         afficherArticleVideoPrecis();
                     } else {
@@ -876,6 +876,10 @@ function CtlArticles($id = NULL) {
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
+        MdlArticlesTous(true, false);
+        MdlMiniaturesArticles(true, false);
+        MdlArticlesVideoTous(true, false);
+        MdlMiniaturesArticlesVideo(true, false);
         afficherArticles();
     }
 }
