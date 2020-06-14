@@ -856,11 +856,11 @@ function MdlArticlesTous($visibles = true, $invisibles = false) {
                 Membres
                     NATURAL JOIN
                 CategoriesArticles
+            WHERE
+                1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
             ORDER BY
                 dateCreationArticles
                 DESC
-            WHERE
-                1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
             "
         )
     );
@@ -1239,6 +1239,8 @@ function MdlMiniaturesArticles($visibles = true, $invisibles = false) {
             ) AS T
                 NATURAL JOIN
             ImagesArticles
+                NATURAL JOIN
+            Articles   
         WHERE
             1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
         "
@@ -1277,11 +1279,11 @@ function MdlArticlesVideoTous($visibles = true, $invisibles = false) {
                 Membres
                     NATURAL JOIN
                 CategoriesArticles
+            WHERE
+                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
             ORDER BY
                 dateCreationArticlesYouTube
                 DESC
-            WHERE
-                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
             "
         )
     );
@@ -1423,9 +1425,16 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
         $youtube = "http://www.youtube.com/oembed?url=". $articleVideo['lien'] ."&format=json";
         $curl = curl_init($youtube);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $retour[$articleVideo['id']] = json_decode(curl_exec($curl))['thumbnail_url'];
+        $object = json_decode(curl_exec($curl));
+        if ($object) {
+            $retour[$articleVideo['id']] = $object->{'thumbnail_url'};
+        }
         curl_close($curl);
     }
+    ajouterRetourModele(
+        'miniaturesArticlesVideo',
+        $retour
+    );
 }
 
 ########################################################################################################################
