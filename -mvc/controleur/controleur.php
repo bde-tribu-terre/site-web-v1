@@ -46,7 +46,7 @@ function CtlConnexion() {
         ajouterMessage(500, $e->getMessage());
         afficherConnexion();
     }
-}
+} //TODO: Exception
 
 function CtlVerifConnexion() {
     try {
@@ -70,7 +70,7 @@ function CtlVerifConnexion() {
         ajouterMessage(500, $e->getMessage());
         afficherConnexion();
     }
-}
+} //TODO: Exception
 
 # Menu
 function CtlMenu() {
@@ -80,7 +80,7 @@ function CtlMenu() {
         ajouterMessage(500, $e->getMessage());
         afficherMenu();
     }
-}
+} //TODO: Exception
 
 function CtlDeconnexion() {
     try {
@@ -95,7 +95,7 @@ function CtlDeconnexion() {
         ajouterMessage(500, $e->getMessage());
         CtlConnexion();
     }
-}
+} //TODO: Exception
 
 # Events
 function CtlCreerEvent($executer) {
@@ -129,7 +129,7 @@ function CtlCreerEvent($executer) {
         ajouterMessage(500, $e->getMessage());
         afficherCreerEvent();
     }
-}
+} //TODO: Exception
 
 function CtlChoixEvent($executer) {
     try {
@@ -153,7 +153,7 @@ function CtlChoixEvent($executer) {
         MdlEventsTous('FP', true, true, NULL);
         afficherChoixEvent();
     }
-}
+} //TODO: Exception
 
 function CtlModifierEvent() {
     try {
@@ -186,7 +186,7 @@ function CtlModifierEvent() {
         MdlEventsTous('FP', true, true, NULL);
         afficherChoixEvent();
     }
-}
+} //TODO: Exception
 
 function CtlSupprimerEvent($executer) {
     try {
@@ -213,7 +213,7 @@ function CtlSupprimerEvent($executer) {
         MdlEventsTous('FP', true, true, NULL);
         afficherSupprimerEvent();
     }
-}
+} //TODO: Exception
 
 # Goodies
 function CtlAjouterGoodie($executer, $fileImput) {
@@ -252,7 +252,7 @@ function CtlAjouterGoodie($executer, $fileImput) {
         ajouterMessage(500, $e->getMessage());
         afficherAjouterGoodie();
     }
-}
+} //TODO: Exception
 
 function CtlAjouterImageGoodie($executer, $fileImput) {
     try {
@@ -278,7 +278,7 @@ function CtlAjouterImageGoodie($executer, $fileImput) {
         MdlGoodiesTous('nom', true, true, true);
         afficherAjouterImageGoodie();
     }
-}
+} //TODO: Exception
 
 function CtlChoixGoodie($executer) {
     try {
@@ -302,7 +302,7 @@ function CtlChoixGoodie($executer) {
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-}
+} //TODO: Exception
 
 function CtlModifierGoodie() {
     try {
@@ -337,7 +337,7 @@ function CtlModifierGoodie() {
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-}
+} //TODO: Exception
 
 function CtlAllerSupprimerImageGoodie() {
     try {
@@ -353,7 +353,7 @@ function CtlAllerSupprimerImageGoodie() {
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-}
+} //TODO: Exception
 
 function CtlSupprimerGoodie($executer) {
     try {
@@ -381,7 +381,7 @@ function CtlSupprimerGoodie($executer) {
         MdlGoodiesTous('nom', true, true, true);
         afficherSupprimerGoodie();
     }
-}
+} //TODO: Exception
 
 # Journaux
 function CtlAjouterJournal($executer, $fileImput) {
@@ -412,7 +412,7 @@ function CtlAjouterJournal($executer, $fileImput) {
         ajouterMessage(500, $e->getMessage());
         afficherAjouterJournal();
     }
-}
+} //TODO: Exception
 
 function CtlSupprimerJournal($executer) {
     try {
@@ -440,7 +440,7 @@ function CtlSupprimerJournal($executer) {
         MdlJournauxTous(NULL);
         afficherSupprimerJournal();
     }
-}
+} //TODO: Exception
 
 # Articles
 function CtlAjouterArticle($executer) {
@@ -474,7 +474,7 @@ function CtlAjouterArticle($executer) {
         MdlCategoriesArticlesTous();
         afficherAjouterArticle();
     }
-}
+} //TODO: Exception
 
 function CtlAjouterImageArticle($executer, $fileImput) {
     try {
@@ -503,7 +503,7 @@ function CtlAjouterImageArticle($executer, $fileImput) {
         MdlArticlesTous(true, true);
         afficherAjouterImageArticle();
     }
-}
+} //TODO: Exception
 
 function CtlChoixArticle($executer) {
     try {
@@ -528,7 +528,7 @@ function CtlChoixArticle($executer) {
         MdlArticlesTous(true, true);
         afficherChoixArticle();
     }
-}
+} //TODO: Exception
 
 function CtlModifierArticle() {
     try {
@@ -559,7 +559,7 @@ function CtlModifierArticle() {
         MdlArticlesTous();
         afficherChoixArticle();
     }
-}
+} //TODO: Exception
 
 function CtlAllerSupprimerImageArticle() {
     try {
@@ -575,7 +575,7 @@ function CtlAllerSupprimerImageArticle() {
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-}
+} //TODO: Exception
 
 function CtlSupprimerArticle($executer) {
     try {
@@ -603,7 +603,7 @@ function CtlSupprimerArticle($executer) {
         MdlArticlesTous();
         afficherSupprimerArticle();
     }
-}
+} //TODO: Exception
 
 function CtlAjouterArticleVideo($executer) {
     try {
@@ -638,7 +638,7 @@ function CtlAjouterArticleVideo($executer) {
         MdlCategoriesArticlesTous();
         afficherAjouterArticleVideo();
     }
-}
+} //TODO: Exception
 
 function CtlChoixArticleVideo($executer) {
     try {
@@ -663,7 +663,7 @@ function CtlChoixArticleVideo($executer) {
         MdlArticlesVideoTous();
         afficherChoixArticleVideo();
     }
-}
+} //TODO: Exception
 
 function CtlModifierArticleVideo() {
     try {
@@ -696,7 +696,7 @@ function CtlModifierArticleVideo() {
         MdlArticlesVideoTous();
         afficherChoixArticleVideo();
     }
-}
+} //TODO: Exception
 
 function CtlSupprimerArticleVideo($executer) {
     try {
@@ -723,7 +723,7 @@ function CtlSupprimerArticleVideo($executer) {
         MdlArticlesVideoTous();
         afficherSupprimerArticleVideo();
     }
-}
+} //TODO: Exception
 
 function CtlAjouterCategorieArticle($executer) {
     try {
@@ -746,7 +746,7 @@ function CtlAjouterCategorieArticle($executer) {
         ajouterMessage(500, $e->getMessage());
         afficherAjouterCategorieArticle();
     }
-}
+} //TODO: Exception
 
 function CtlRenommerCategorieArticle($executer) {
     try {
@@ -776,7 +776,7 @@ function CtlRenommerCategorieArticle($executer) {
         MdlCategoriesArticlesTous();
         afficherRenommerCategorieArticle();
     }
-}
+} //TODO: Exception
 
 # Log
 function CtlAfficherLog() {
@@ -784,7 +784,7 @@ function CtlAfficherLog() {
         MdlLogTous();
         afficherAfficherLog();
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherAfficherLog();
     }
 }
@@ -813,16 +813,14 @@ function CtlInscription($executer) {
                     );
                     afficherInscription();
                 } else {
-                    ajouterMessage(402, 'La clé d\'inscription saisie n\'existe pas.');
-                    afficherInscription();
+                    throw new Exception('La clé d\'inscription saisie n\'existe pas.', 402);
                 }
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                afficherInscription();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherInscription();
     }
 }
@@ -838,7 +836,7 @@ function CtlAccueil() {
         MdlDernierArticleTexteVideo(true, false);
         afficherAccueil();
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherAccueil();
     }
 }
@@ -847,29 +845,38 @@ function CtlAccueil() {
 # Articles                                                                                                             #
 ########################################################################################################################
 function CtlArticles($id = NULL) {
-
-    MdlArticlesTous();
-    MdlArticlesVideoTous();
-    afficherArticles();
-}
-
-function CtlArticlePrecis($id) {
-    switch (substr($id, 0, 1) == 'T') {
-        case 'T':
-            $article = MdlArticlePrecis($id);
-            if ($article != false) {
-                afficherArticlePrecis($article);
-            } else {
-                throw new Exception('L\'article recherché n\'existe pas.');
+    try {
+        if ($id) {
+            switch (substr($id, 0, 1) == 'T') {
+                case 'T':
+                    MdlArticlePrecis($id);
+                    if ($GLOBALS['retoursModele']['article']) {
+                        afficherArticlePrecis();
+                    } else {
+                        throw new Exception('L\'article recherché n\'existe pas.', 404);
+                    }
+                    break;
+                case 'V':
+                    MdlArticleVideoPrecis(-$id);
+                    if ($GLOBALS['retoursModele']['articleVideo']) {
+                        afficherArticleVideoPrecis();
+                    } else {
+                        throw new Exception('L\'article vidéo recherché n\'existe pas.', 404);
+                    }
+                    break;
+                default:
+                    throw new Exception('L\'adresse d\'article recherché est invalide.', 403);
             }
-            break;
-        case 'V':
-            $article = MdlArticleVideoPrecis(-$id);
-            if ($article != false) {
-                afficherArticleVideoPrecis($article);
-            } else {
-                throw new Exception('L\'article vidéo recherché n\'existe pas.');
-            }
+        } else {
+            MdlArticlesTous(true, false);
+            MdlMiniaturesArticles(true, false);
+            MdlArticlesVideoTous(true, false);
+            MdlMiniaturesArticlesVideo(true, false);
+            afficherArticles();
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        afficherArticles();
     }
 }
 

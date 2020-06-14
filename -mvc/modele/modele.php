@@ -851,27 +851,14 @@ function MdlArticlesTous($visibles = true, $invisibles = false) {
                 dateCreationArticles AS dateCreation,
                 dateModificationArticles AS dateModification
             FROM
-                (
-                    SELECT
-                        idArticles,
-                        titreArticles,
-                        titreCategoriesArticles,
-                        visibiliteArticles,
-                        texteArticles,
-                        prenomMembres,
-                        nomMembres,
-                        dateCreationArticles,
-                        dateModificationArticles
-                    FROM
-                        Articles
-                            NATURAL JOIN
-                        Membres
-                            NATURAL JOIN
-                        CategoriesArticles
-                    ORDER BY
-                        dateCreationArticles
-                        DESC
-                ) AS T
+                Articles
+                    NATURAL JOIN
+                Membres
+                    NATURAL JOIN
+                CategoriesArticles
+            ORDER BY
+                dateCreationArticles
+                DESC
             WHERE
                 1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
             "
@@ -1252,6 +1239,8 @@ function MdlMiniaturesArticles($visibles = true, $invisibles = false) {
             ) AS T
                 NATURAL JOIN
             ImagesArticles
+        WHERE
+            1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
         "
     );
     foreach ($miniatures as $miniature) {
@@ -1283,28 +1272,14 @@ function MdlArticlesVideoTous($visibles = true, $invisibles = false) {
                 dateCreationArticlesYouTube AS dateCreation,
                 dateModificationArticlesYouTube AS dateModification
             FROM
-                (
-                    SELECT
-                        idArticlesYouTube,
-                        titreArticlesYouTube,
-                        titreCategoriesArticles,
-                        visibiliteArticlesYouTube,
-                        lienArticlesYouTube,
-                        texteArticlesYouTube,
-                        prenomMembres,
-                        nomMembres,
-                        dateCreationArticlesYouTube,
-                        dateModificationArticlesYouTube
-                    FROM
-                        ArticlesYouTube
-                            NATURAL JOIN
-                        Membres
-                            NATURAL JOIN
-                        CategoriesArticles
-                    ORDER BY
-                        dateCreationArticlesYouTube
-                        DESC
-                ) AS T
+                ArticlesYouTube
+                    NATURAL JOIN
+                Membres
+                    NATURAL JOIN
+                CategoriesArticles
+            ORDER BY
+                dateCreationArticlesYouTube
+                DESC
             WHERE
                 1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
             "
@@ -1429,6 +1404,30 @@ function MdlSupprimerArticleVideo($id) {
         'L\'article vidéo a été supprimé avec succès !'
     );
     MdlAjouterLog(503, 'Suppression d\'un article vidéo (ID : ' . $id . ').');
+}
+
+function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
+    $retour = array();
+    $articlesVideo = requeteSQL(
+        requeteSQL(
+            "
+            SELECT
+                idArticlesYouTube AS id,
+                lienArticlesYouTube AS lien
+            FROM
+                ArticlesYouTube
+            WHERE
+                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
+            "
+        )
+    );
+    foreach ($articlesVideo as $articleVideo) {
+        $youtube = "http://www.youtube.com/oembed?url=". $articleVideo['lien'] ."&format=json";
+        $curl = curl_init($youtube);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $retour[$articleVideo['id']] = json_decode(curl_exec($curl))['thumbnail_url'];
+        curl_close($curl);
+    }
 }
 
 ########################################################################################################################

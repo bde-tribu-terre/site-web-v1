@@ -659,22 +659,15 @@ function afficherAccueil() {
 # B.IV - Articles                                                                                                      #
 ########################################################################################################################
 function afficherArticles() {
-    define('TITLE', 'Articles');
-    define('GABARIT', 'articles.php');
-
-    $tableArticles = '';
-    $lignesArticles = MdlArticlesTous();
-    $lignesArticlesVideo = MdlArticlesVideoTous();
-
-    $arrayID = [];
-    $arrayArticles = [];
-    foreach ($lignesArticles as $ligneArticle) {
-        $arrayID['T' . $ligneArticle->id] = $ligneArticle->dateCreation;
-        $arrayArticles['T' . $ligneArticle->id] = $ligneArticle;
+    $arrayID = array();
+    $arrayArticles = array();
+    foreach ($GLOBALS['retoursModele']['articles'] as $article) {
+        $arrayID['T' . $article['id']] = $article['dateCreation'];
+        $arrayArticles['T' . $article['id']] = $article;
     }
-    foreach ($lignesArticlesVideo as $ligneArticleVideo) {
-        $arrayID['V' . $ligneArticleVideo->id] = $ligneArticleVideo->dateCreation;
-        $arrayArticles['V' . $ligneArticleVideo->id] = $ligneArticleVideo;
+    foreach ($GLOBALS['retoursModele']['articlesVideo'] as $articleVideo) {
+        $arrayID['V' . $articleVideo['id']] = $articleVideo['dateCreation'];
+        $arrayArticles['V' . $articleVideo['id']] = $articleVideo;
     }
     asort($arrayID);
     $arrayID = array_reverse($arrayID);
@@ -682,58 +675,69 @@ function afficherArticles() {
     if (empty($arrayArticles)) {
         $tableArticles = '<h3>Hmmm... On dirait qu\'il n\'y a aucun article qui correspond à vos critères de recherches 🤔</h3>';
     } else {
+        $tableArticles = '';
         foreach ($arrayID as $ID => $dateCreation) {
-            $id = htmlentities($arrayArticles[$ID]->id, ENT_QUOTES, "UTF-8");
-            $titre = htmlentities($arrayArticles[$ID]->titre, ENT_QUOTES, "UTF-8");
-            $categorie = htmlentities($arrayArticles[$ID]->categorie, ENT_QUOTES, "UTF-8");
-            $texte = htmlentities($arrayArticles[$ID]->texte, ENT_QUOTES, "UTF-8");
-
-            $cadreMiniature = '<div class="div-miniature-articles"><img class="img-fluid img-arrondi" src="--EMPLACEMENT--" alt="Miniature"></div>';
             switch (substr($ID, 0, 1)) {
                 case 'T':
-                    $lienArticle = RACINE . 'articles/?id=' . $id;
-                    $premiereImage = MdlPremiereImageArticle($id);
-                    $miniature = $premiereImage ? preg_replace('/--EMPLACEMENT--/', $premiereImage->lienImagesArticles, $cadreMiniature) : '';
+                    $miniature =
+                        empty($GLOBALS['retoursModele']['miniatureArticles'][$arrayArticles[$ID]['id']]) ?
+                            '' :
+                            '
+                            <div class="div-miniature-articles">
+                                <img
+                                    class="img-fluid img-arrondi"
+                                    src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['miniatureArticles'][$arrayArticles[$ID]['id']] . '"
+                                    alt="Miniature"
+                                >
+                            </div>
+                            ';
                     break;
                 case 'V':
-                    $lienArticle = RACINE . 'articles/?id=-' . $id;
-                    $miniature = preg_replace('/--EMPLACEMENT--/', obtenirInfoYouTube($arrayArticles[$ID]->lien)['thumbnail_url'], $cadreMiniature);
+                    $miniature =
+                        '
+                        <div class="div-miniature-articles">
+                                <img
+                                    class="img-fluid img-arrondi"
+                                    src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['miniatureArticlesVideo'][$arrayArticles[$ID]['id']] . '"
+                                    alt="Miniature"
+                                >
+                            </div>
+                        ';
                     break;
                 default:
-                    $lienArticle = '#';
                     $miniature = '';
-                    break;
             }
 
-            $texteNonFormate = preg_replace('/&sect;!?L(\[.*])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $texte)));
+            $texteNonFormate = preg_replace('/&sect;!?L(\[.*])?/', '', preg_replace('/\n/', ' ', preg_replace('/&sect;!?[GISBCT]/', '', $arrayArticles[$ID]['texte'])));
             $texteNonFormateMini = substr($texteNonFormate, 0, 256);
 
             $tableArticles .=
-                '<div class="row">' .
-                '<div class="col-sm-2"></div>' .
-                '<div class="col-sm-8">' .
-                    '<div class="well">' .
-                        '<h4 class="pc">' . $categorie . '</h4>' .
-                        '<hr>' .
-                        '<h2>' . $titre . '</h2>' .
-                        '<p><small>' . genererDate($dateCreation) . '</small></p>' .
-                        $miniature .
-                        '<hr>' .
-                        '<p class="text-left retrait">' . $texteNonFormateMini . (strlen($texte) > 256 ? '[...]' : '')  . '</p>' .
-                        '<hr>' .
-                        '<a class="btn btn-danger btn-block" href="' . $lienArticle . '">' .
-                            '<h4>Lire l\'article</h4>' .
-                        '</a>' .
-                    '</div>' .
-                '</div>' .
-                '<div class="col-sm-2"></div>' .
-                '</div>';
+                '
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <div class="well">
+                            <h4 class="pc">' . $arrayArticles[$ID]['categorie'] . '</h4>
+                            <hr>
+                            <h2>' . $arrayArticles[$ID]['titre'] . '</h2>
+                            <p><small>' . genererDate($dateCreation) . '</small></p>
+                            ' . $miniature . '
+                            <hr>
+                            <p class="text-left retrait">' . $texteNonFormateMini . (strlen($arrayArticles[$ID]['texte']) > 256 ? '[...]' : '')  . '</p>
+                            <hr>
+                            <a class="btn btn-danger btn-block" href="' . RACINE . 'articles/?id=' . $ID . '">
+                                <h4>Lire l\'article</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+                ';
         }
     }
-
     define('ARTICLES', $tableArticles);
 
-    afficherCadre('PUBLIC');
+    afficherPage('Articles', 'articles.php', 'public');
 }
 
 function afficherArticlePrecis($article) {
