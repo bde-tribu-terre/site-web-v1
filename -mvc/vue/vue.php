@@ -817,7 +817,6 @@ function afficherArticlePrecis() {
     }
     define('CAROUSEL_ARTICLES', $carouselArticle);
 
-
     define('CATEGORIE', $GLOBALS['retoursModele']['article']['categorie']);
     define('TITRE', $GLOBALS['retoursModele']['article']['titre']);
     define('DATE_CREATION', genererDate($GLOBALS['retoursModele']['article']['dateCreation']));
@@ -828,13 +827,7 @@ function afficherArticlePrecis() {
     afficherPage($GLOBALS['retoursModele']['article']['titre'], 'articlePrecis.php', 'public');
 }
 
-function afficherArticleVideoPrecis($article) {
-    // define('TITLE', 'Articles'); Voir ci-après.
-    define('GABARIT', 'articleVideoPrecis.php');
-
-    $lien = $article->lienArticlesYouTube;
-    $infoYouTube = obtenirInfoYouTube($lien);
-
+function afficherArticleVideoPrecis() {
     $integrationVideo =
         '
         <div class="row">
@@ -854,21 +847,16 @@ function afficherArticleVideoPrecis($article) {
             <div class="col-sm-2"></div>
         </div><hr>
         ';
-
-    define('ID', htmlentities($article->idArticlesYouTube, ENT_QUOTES, "UTF-8"));
-    define('LIEN', htmlentities($article->lienArticlesYouTube, ENT_QUOTES, "UTF-8"));
-    define('TITRE', htmlentities($article->titreArticlesYouTube, ENT_QUOTES, "UTF-8"));
-    define('CATEGORIE', htmlentities($article->titreCategoriesArticles, ENT_QUOTES, "UTF-8"));
-    define('VISIBILITE', htmlentities($article->visibiliteArticlesYouTube, ENT_QUOTES, "UTF-8"));
-    echo $article->dateCreationArticlesYouTube;
-    define('DATE_CREATION', genererDate(htmlentities($article->dateCreationArticlesYouTube, ENT_QUOTES, "UTF-8")));
-    // define('DATE_MODIFICATION', genererDate(htmlentities($article->dateModificationArticlesYouTube, ENT_QUOTES, "UTF-8")));
-    define('TEXTE', formaterTexte(htmlentities($article->texteArticlesYouTube)));
-    define('AUTEUR', genererNom($article));
     define('INTEGRATION_VIDEO', $integrationVideo);
-    define('TITLE', TITRE); // Ici.
 
-    afficherCadre('PUBLIC');
+    define('CATEGORIE', $GLOBALS['retoursModele']['articleVideo']['categorie']);
+    define('TITRE', $GLOBALS['retoursModele']['articleVideo']['titre']);
+    define('DATE_CREATION', genererDate($GLOBALS['retoursModele']['articleVideo']['dateCreation']));
+    define('AUTEUR', genererNom($GLOBALS['retoursModele']['articleVideo']['prenomAuteur'], $GLOBALS['retoursModele']['articleVideo']['nomAuteur']));
+    define('TEXTE', formaterTexte($GLOBALS['retoursModele']['articleVideo']['texte']));
+    define('ID', $GLOBALS['retoursModele']['articleVideo']['id']);
+
+    afficherPage($GLOBALS['retoursModele']['articleVideo']['titre'], 'articleVideoPrecis.php', 'public');
 }
 
 ########################################################################################################################
