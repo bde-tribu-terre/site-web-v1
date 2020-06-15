@@ -1449,7 +1449,7 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
     );
     foreach ($articlesVideo as $articleVideo) {
         try {
-            $youtube = "http://www.youtube.com/oembed?url=" . $arrayRetour['lien'] . "&format=json";
+            $youtube = "http://www.youtube.com/oembed?url=" . $articleVideo['lien'] . "&format=json";
             $curl = curl_init($youtube);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             $return = curl_exec($curl);
