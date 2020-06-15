@@ -859,154 +859,98 @@ function afficherArticleVideoPrecis() {
 # B.V - Association (Présentation)                                                                                     #
 ########################################################################################################################
 function afficherPresentation() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Présentation',
-        'presentation.php'
-    );
+    afficherPage('Présentation', 'presentation.php', 'public');
 }
 
 ########################################################################################################################
 # B.VI - Association - Contact                                                                                         #
 ########################################################################################################################
 function afficherContact() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Contact',
-        'contact.php'
-    );
+    afficherPage('Contact', 'contact.php', 'public');
 }
 
 ########################################################################################################################
 # B.VII - Association - Fonctionnement                                                                                 #
 ########################################################################################################################
 function afficherFonctionnement() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Fonctionnement de l\'association',
-        'fonctionnement.php'
-    );
+    afficherPage('Fonctionnement de l\'association', 'fonctionnement.php', 'public');
 }
 
 ########################################################################################################################
 # B.VIII - Association - Fonctionnement - Statuts                                                                      #
 ########################################################################################################################
 function afficherStatuts() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Statuts',
-        'statuts.php'
-    );
+    afficherPage('Statuts', 'statuts.php', 'public');
 }
 
 ########################################################################################################################
 # B.IX - Association - Historique                                                                                      #
 ########################################################################################################################
 function afficherHistorique() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Historique de l\'association',
-        'historique.php'
-    );
+    afficherPage('Historique de l\'association', 'historique.php', 'public');
 }
 
 ########################################################################################################################
 # B.X - Association - Où nous trouver ?                                                                                #
 ########################################################################################################################
 function afficherOuNousTrouver() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Où nous trouver ?',
-        'ouNousTrouver.php'
-    );
+    afficherPage('Où nous trouver ?', 'ouNousTrouver.php', 'public');
 }
 
 ########################################################################################################################
 # B.XI - Association - Partenaires                                                                                     #
 ########################################################################################################################
 function afficherPartenaires() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Partenaires',
-        'partenaires.php'
-    );
+    afficherPage('Partenaires', 'partenaires.php', 'public');
 }
 
 ########################################################################################################################
 # B.XII - Association - Pôles                                                                                          #
 ########################################################################################################################
 function afficherPoles() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Pôles',
-        'poles.php'
-    );
+    afficherPage('Pôles', 'poles.php', 'public');
 }
 
 ########################################################################################################################
 # B.XIII - Association - Pourquoi adhérer ?                                                                            #
 ########################################################################################################################
 function afficherPourquoiAdherer() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Pourquoi adhérer ?',
-        'pourquoiAdherer.php'
-    );
+    afficherPage('Pourquoi adhérer ?', 'pourquoiAdherer.php', 'public');
 }
 
 ########################################################################################################################
 # B.XIV - Association - Réseau associatif                                                                              #
 ########################################################################################################################
 function afficherReseauAssociatif() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Réseau associatif',
-        'reseauAssociatif.php'
-    );
+    afficherPage('Réseau associatif', 'reseauAssociatif.php', 'public');
 }
 
 ########################################################################################################################
 # B.XV - Association - Réseau associatif - ÔCampus                                                                     #
 ########################################################################################################################
 function afficherOCampus() {
-    afficherPageFixe(
-        'PUBLIC',
-        'ÔCampus',
-        'OCampus.php'
-    );
+    afficherPage('ÔCampus', 'OCampus.php', 'public');
 }
 
 ########################################################################################################################
 # B.XVI - Association - Réseau associatif - FNEB                                                                       #
 ########################################################################################################################
 function afficherFneb() {
-    afficherPageFixe(
-        'PUBLIC',
-        'FNEB',
-        'fneb.php'
-    );
+    afficherPage('FNEB', 'fneb.php', 'public');
 }
 
 ########################################################################################################################
 # B.XVII - Association - Réseaus sociaux                                                                               #
 ########################################################################################################################
 function afficherReseauxSociaux() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Réseaux sociaux',
-        'reseauxSociaux.php'
-    );
+    afficherPage('Réseaux sociaux', 'reseauxSociaux.php', 'public');
 }
 
 ########################################################################################################################
 # B.XVIII - Association - Université                                                                                   #
 ########################################################################################################################
 function afficherUniversite() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Université d\'Orléans',
-        'universite.php'
-    );
+    afficherPage('Université d\'Orléans', 'universite.php', 'public');
 }
 
 ########################################################################################################################
@@ -1311,27 +1255,19 @@ function afficherJournaux() {
 # B.XXII - Mentions légales                                                                                            #
 ########################################################################################################################
 function afficherMentionsLegales() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Mentions légales',
-        'mentionsLegales.php'
-    );
+    afficherPage('Mentions légales', 'mentionsLegales.php', 'public');
 }
 
 ########################################################################################################################
 # B.XXIII - Plan du site                                                                                               #
 ########################################################################################################################
 function afficherPlanDuSite() {
-    define('TITLE', 'Plan du site');
-    define('GABARIT', 'planDuSite.php');
-
     function allerChercherString($a) {
         if (gettype($a) == 'string') {
             return $a;
         }
         return allerChercherString($a[0]);
     }
-
     function trierEnfants($e1, $e2) {
         return strcmp(
             preg_replace(
@@ -1346,7 +1282,6 @@ function afficherPlanDuSite() {
             )
         );
     }
-
     function chercherTousLesEnfants($cheminParent) {
         if (!is_dir($cheminParent)) {
             return $cheminParent;
@@ -1363,7 +1298,6 @@ function afficherPlanDuSite() {
             return $arrayEnfants;
         }
     }
-
     function construireListe($array) {
         if (gettype($array) == 'string') {
             $chemin = explode('/', $array);
@@ -1385,7 +1319,6 @@ function afficherPlanDuSite() {
             return $str;
         }
     }
-
     function optimiserListe($liste) {
         $oldListe = '';
         while ($oldListe != $liste) {
@@ -1395,28 +1328,22 @@ function afficherPlanDuSite() {
         }
         return $liste;
     }
-
     function retirerDivEnglobant($liste) {
         $liste = preg_replace('/^<div class="list-group-item">/', '', $liste);
         $liste = preg_replace('/<\/div>$/', '', $liste);
         return $liste;
     }
-
     $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants(RACINE))));
-
     define('PLAN', $plan);
-    afficherCadre('PUBLIC');
+
+    afficherPage('Plan du site', 'planDuSite.php', 'public');
 }
 
 ########################################################################################################################
 # B.XXIV - Riad (temporaire)                                                                                           #
 ########################################################################################################################
 function afficherRiad() {
-    afficherPageFixe(
-        'PUBLIC',
-        'Riad',
-        'riad.php'
-    );
+    afficherPage('Riad', 'riad.php', 'public');
 }
 
 ########################################################################################################################
