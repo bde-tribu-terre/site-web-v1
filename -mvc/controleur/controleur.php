@@ -15,19 +15,21 @@ function CtlErreur() {
 # Messages
 $GLOBALS['messages'] = array();
 
-# Formulaire HTML
-$FORM = array();
+# Retours d'appels de fonctions du modèle
+$GLOBALS['retoursModele'] = array();
+
+########################################################################################################################
+# Initialisation du tableau formulaire                                                                                 #
+########################################################################################################################
+$form = array();
 foreach ($_POST as $keyInput => $valInput) {
     $arrayInput = explode('_', $keyInput);
     if (isset($arrayInput[2]) && $arrayInput[2] == 'submit') {
-        $FORM['_submit'] = $arrayInput['1'];
+        $form['_submit'] = $arrayInput['1'];
     } else {
-        $FORM[explode('_', $keyInput)[1]] = $valInput;
+        $form[explode('_', $keyInput)[1]] = $valInput;
     }
 }
-
-# Retours d'appels de fonctions du modèle
-$GLOBALS['retoursModele'] = array();
 
 ########################################################################################################################
 # Fonctions d'ajout dans les tableaux globaux (pour la lisibilité)                                                     #
