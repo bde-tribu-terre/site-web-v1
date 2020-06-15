@@ -829,16 +829,11 @@ function CtlInscription($executer) {
 # Accueil                                                                                                              #
 ########################################################################################################################
 function CtlAccueil() {
-    try {
-        MdlGoodiesTous('', true, false, false);
-        MdlEventsTous('PF', true, false, 3);
-        MdlJournauxTous(2);
-        MdlDernierArticleTexteVideo(true, false);
-        afficherAccueil();
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
-        afficherAccueil();
-    }
+    MdlGoodiesTous('', true, false, false);
+    MdlEventsTous('PF', true, false, 3);
+    MdlJournauxTous(2);
+    MdlDernierArticleTexteVideo(true, false);
+    afficherAccueil();
 }
 
 ########################################################################################################################
@@ -847,10 +842,11 @@ function CtlAccueil() {
 function CtlArticles($id = NULL) {
     try {
         if ($id) {
-            switch (substr($id, 0, 1) == 'T') {
+            switch (substr($id, 0, 1)) {
                 case 'T':
                     MdlArticlePrecis($id);
                     if ($GLOBALS['retoursModele']['article']) {
+                        MdlImagesArticle($id, NULL);
                         afficherArticlePrecis();
                     } else {
                         throw new Exception('L\'article recherché n\'existe pas.', 404);

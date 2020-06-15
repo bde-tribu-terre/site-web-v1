@@ -1327,6 +1327,11 @@ function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) 
     $timestamp = time();
     $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
     $dt->setTimestamp($timestamp);
+
+    $ytVars = array();
+    parse_str(parse_url($lien, PHP_URL_QUERY), $ytVars);
+    $ytid = $ytVars['id'];
+
     requeteSQL(
         "
         INSERT INTO
@@ -1348,7 +1353,7 @@ function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) 
             [':idMembres', $_SESSION['membre']['id'], 'INT'],
             [':idCategorieArticles', $categorie, 'INT'],
             [':titreArticlesYouTube', $titre, 'STR'],
-            [':lienArticlesYouTube', $lien, 'STR'],
+            [':lienArticlesYouTube', $ytid, 'STR'],
             [':texteArticlesYouTube', $texte, 'STR'],
             [':visibiliteArticlesYouTube', $visibilite, 'INT'],
             [':dateCreationArticlesYouTube', $dt->format('Y-m-d'), 'STR'],
@@ -1422,14 +1427,7 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
         "
     );
     foreach ($articlesVideo as $articleVideo) {
-        $youtube = "http://www.youtube.com/oembed?url=". $articleVideo['lien'] ."&format=json";
-        $curl = curl_init($youtube);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $object = json_decode(curl_exec($curl));
-        if ($object) {
-            $retour[$articleVideo['id']] = $object->{'thumbnail_url'};
-        }
-        curl_close($curl);
+        $retour[$articleVideo['id']] = 'https://i.ytimg/vi/' . $articleVideo['lien'] . '/hqdefault.jpg';
     }
     ajouterRetourModele(
         'miniaturesArticlesVideo',

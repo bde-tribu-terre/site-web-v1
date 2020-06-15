@@ -742,72 +742,80 @@ function afficherArticles() {
     afficherPage('Articles', 'articles.php', 'public');
 }
 
-function afficherArticlePrecis($article) {
-    // define('TITLE', 'Articles'); Voir ci-après.
-    define('GABARIT', 'articlePrecis.php');
-
-    $id = $article->idArticles;
-    $lignesImages = MdlImagesArticle($id);
-
+function afficherArticlePrecis() {
     $carouselArticle = '';
-    if (!empty($lignesImages) && count($lignesImages) <= 1) {
+    if (count($GLOBALS['retoursModele']['imagesArticle']) == 1) {
         $carouselArticle =
-            '<div class="row">' .
-                '<div class="col-sm-2"></div>'.
-                    '<div class="col-sm-8">' .
-                        '<img class="img-arrondi ombre" src="' . RACINE . 'articles/' . $lignesImages[0]->lienImagesArticles . '" class="img-arrondi ombre" alt="Image">' .
-                    '</div>' .
-                '<div class="col-sm-2"></div>' .
-            '</div><hr>';
-    } elseif (!empty($lignesImages)) {
+            '
+            <div class="row">
+                <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <img
+                            class="img-arrondi ombre"
+                            src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['imagesArticle'][0]['lien'] . '"
+                            class="img-arrondi ombre"
+                            alt="Image"
+                        >
+                    </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <hr>
+            ';
+    } elseif (count($GLOBALS['retoursModele']['imagesArticle']) > 1) {
         $nb = 0;
-        $carouselArticleIndicator = '<ol class="carousel-indicators">';
-        $carouselArticleImages = '<div class="carousel-inner" role="listbox">';
-
-        foreach ($lignesImages as $ligne) {
-            $lien = $ligne->lienImagesArticles;
-            $carouselArticleIndicator .= '<li data-target="#carouselArticle" data-slide-to="' . $nb++ . '" ' . ($nb == 1 ? ' class="active"' : '') . '></li>';
+        $carouselArticleIndicator = '';
+        $carouselArticleImages = '';
+        foreach ($GLOBALS['retoursModele']['imagesArticle'] as $image) {
+            $lien = $image['lien'];
+            $carouselArticleIndicator .=
+                '
+                <li data-target="#carouselArticle" data-slide-to="' . $nb++ . '" ' . ($nb == 1 ? ' class="active"' : '') . '>
+                </li>
+                ';
             $carouselArticleImages .=
-                '<div class="item' . ($nb == 1 ? ' active' : '') . '">' .
-                    '<img src="' . RACINE . 'articles/' . $lien . '" alt="Image">' .
-                '</div>';
+                '
+                <div class="item' . ($nb == 1 ? ' active' : '') . '">
+                <img src="' . RACINE . 'articles/' . $lien . '" alt="Image">
+                </div>
+                ';
         }
-        $carouselArticleIndicator .= '</ol>';
-        $carouselArticleImages .= '</div>';
+        $carouselArticleIndicator = '<ol class="carousel-indicators">' . $carouselArticleIndicator . '</ol>';
+        $carouselArticleImages = '<div class="carousel-inner" role="listbox">' . $carouselArticleImages . '</div>';
 
         $carouselArticle =
-            '<div class="row">' .
-                '<div class="col-sm-2"></div>' .
-                '<div class="col-sm-8">' .
-                    '<div id="carouselArticle" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">' .
-                        $carouselArticleIndicator .
-                        $carouselArticleImages .
-                        '<a class="left carousel-control" href="#carouselArticle" role="button" data-slide="prev">' .
-                            '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>' .
-                            '<span class="sr-only">Previous</span>' .
-                        '</a>' .
-                        '<a class="right carousel-control" href="#carouselArticle" role="button" data-slide="next">' .
-                            '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' .
-                            '<span class="sr-only">Next</span>' .
-                        '</a>' .
-                    '</div>' .
-                '</div>' .
-                '<div class="col-sm-2"></div>' .
-            '</div><hr>';
+            '
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div id="carouselArticle" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">
+                        ' . $carouselArticleIndicator . '
+                        ' . $carouselArticleImages . '
+                        <a class="left carousel-control" href="#carouselArticle" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carouselArticle" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+            <hr>
+            ';
     }
-
-    define('ID', $id);
-    define('TITRE', htmlentities($article->titreArticles, ENT_QUOTES, "UTF-8"));
-    define('CATEGORIE', htmlentities($article->titreCategoriesArticles, ENT_QUOTES, "UTF-8"));
-    define('VISIBILITE', htmlentities($article->visibiliteArticles, ENT_QUOTES, "UTF-8"));
-    define('DATE_CREATION', genererDate(htmlentities($article->dateCreationArticles, ENT_QUOTES, "UTF-8")));
-    // define('DATE_MODIFICATION', genererDate(htmlentities($article->dateModificationArticles, ENT_QUOTES, "UTF-8")));
-    define('TEXTE', formaterTexte(htmlentities($article->texteArticles)));
-    define('AUTEUR', genererNom($article));
     define('CAROUSEL_ARTICLES', $carouselArticle);
-    define('TITLE', TITRE); // Ici.
 
-    afficherCadre('PUBLIC');
+
+    define('CATEGORIE', $GLOBALS['retoursModele']['article']['categorie']);
+    define('TITRE', $GLOBALS['retoursModele']['article']['titre']);
+    define('DATE_CREATION', genererDate($GLOBALS['retoursModele']['article']['dateCreation']));
+    define('AUTEUR', genererNom($GLOBALS['retoursModele']['article']['prenomAuteur'], $GLOBALS['retoursModele']['article']['nomAuteur']));
+    define('TEXTE', formaterTexte($GLOBALS['retoursModele']['article']['texte']));
+    define('ID', $GLOBALS['retoursModele']['article']['id']);
+
+    afficherPage($GLOBALS['retoursModele']['article']['titre'], 'articlePrecis.php', 'public');
 }
 
 function afficherArticleVideoPrecis($article) {
@@ -818,15 +826,24 @@ function afficherArticleVideoPrecis($article) {
     $infoYouTube = obtenirInfoYouTube($lien);
 
     $integrationVideo =
-        '<div class="row">' .
-            '<div class="col-sm-2"></div>' .
-                '<div class="col-sm-8">' .
-                    '<div class="embed-responsive embed-responsive-16by9 arrondi ombre">' .
-                        preg_replace('/width="459" height="344"/', 'class="embed-responsive-item"', $infoYouTube['html']) .
-                    '</div>' .
-                '</div>' .
-            '<div class="col-sm-2"></div>' .
-        '</div><hr>';
+        '
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="embed-responsive embed-responsive-16by9 arrondi ombre">
+                    <iframe
+                        width="480"
+                        height="270"
+                        src="https://www.youtube.com/embed/' . $GLOBALS['retoursModele']['articleVideo']['lien'] . '?feature=oembed"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div><hr>
+        ';
 
     define('ID', htmlentities($article->idArticlesYouTube, ENT_QUOTES, "UTF-8"));
     define('LIEN', htmlentities($article->lienArticlesYouTube, ENT_QUOTES, "UTF-8"));

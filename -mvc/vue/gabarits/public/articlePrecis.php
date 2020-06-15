@@ -42,7 +42,7 @@
                 );
             </script>
             <div class="fb-share-button"
-                 data-href="http://barodine.fr/tribu-terre/articles?id=<?php echo ID ?>"
+                 data-href="http://barodine.fr/tribu-terre/articles?id=T<?php echo ID ?>"
                  data-layout="button"
                  data-size="large">
                 <a target="_blank"
