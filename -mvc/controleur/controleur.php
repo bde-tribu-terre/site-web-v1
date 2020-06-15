@@ -844,16 +844,16 @@ function CtlArticles($id = NULL) {
         if ($id) {
             switch (substr($id, 0, 1)) {
                 case 'T':
-                    MdlArticlePrecis($id);
+                    MdlArticlePrecis(substr($id, 1));
                     if ($GLOBALS['retoursModele']['article']) {
-                        MdlImagesArticle($id, NULL);
+                        MdlImagesArticle(substr($id, 1), NULL);
                         afficherArticlePrecis();
                     } else {
                         throw new Exception('L\'article recherché n\'existe pas.', 404);
                     }
                     break;
                 case 'V':
-                    MdlArticleVideoPrecis($id);
+                    MdlArticleVideoPrecis(substr($id, 1));
                     if ($GLOBALS['retoursModele']['articleVideo']) {
                         afficherArticleVideoPrecis();
                     } else {

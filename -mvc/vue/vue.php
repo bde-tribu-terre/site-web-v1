@@ -779,8 +779,18 @@ function afficherArticlePrecis() {
                 </div>
                 ';
         }
-        $carouselArticleIndicator = '<ol class="carousel-indicators">' . $carouselArticleIndicator . '</ol>';
-        $carouselArticleImages = '<div class="carousel-inner" role="listbox">' . $carouselArticleImages . '</div>';
+        $carouselArticleIndicator =
+            '
+            <ol class="carousel-indicators">
+                ' . $carouselArticleIndicator . '
+            </ol>
+            ';
+        $carouselArticleImages =
+            '
+            <div class="carousel-inner" role="listbox">
+                ' . $carouselArticleImages . '
+            </div>
+            ';
 
         $carouselArticle =
             '
