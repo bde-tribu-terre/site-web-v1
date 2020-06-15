@@ -38,7 +38,7 @@
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Modifier l'article -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Modifier l'article vidéo" name="formModifierArticleVideo_modifier">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier l'article vidéo" name="formModifierArticleVideo_modifier_submit">
                     </div>
                 </form>
             </div>
@@ -51,7 +51,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
                     </p>
                 </form>
             </div>

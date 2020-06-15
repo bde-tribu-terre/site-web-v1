@@ -19,7 +19,7 @@
                     </div>
                     <hr>
                     <p> <!-- Ajouter l'image de l'article -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter l'image" name="formAjouterImageArticle_ajouter">
+                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter l'image" name="formAjouterImageArticle_ajouter_submit">
                     </p>
                 </form>
             </div>
@@ -32,7 +32,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
                     </p>
                 </form>
             </div>

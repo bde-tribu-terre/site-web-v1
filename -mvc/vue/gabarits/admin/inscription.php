@@ -41,7 +41,7 @@
                     </p>
                     <hr>
                     <p> <!-- S'inscrire -->
-                        <input class="btn btn-danger btn-block" type="submit" value="S'inscrire" name="formInscription_inscription">
+                        <input class="btn btn-danger btn-block" type="submit" value="S'inscrire" name="formInscription_inscription_submit">
                     </p>
                 </form>
             </div>

@@ -6,7 +6,7 @@
                 <hr>
                 <form id="formModifierArticle" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Supprimer des images de l'article -->
-                        <input class="btn btn-danger" type="submit" value="Supprimer des images de l'article" name="formModifierArticle_supprimerImages">
+                        <input class="btn btn-danger" type="submit" value="Supprimer des images de l'article" name="formModifierArticle_supprimerImages_submit">
                     </div>
                     <div class="form-group"> <!-- ID de l'article -->
                         <label for="formModifierArticle_id">ID de l'article</label>
@@ -36,7 +36,7 @@
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Modifier l'article -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Modifier l'article" name="formModifierArticle_modifier">
+                        <input class="btn btn-danger btn-block" type="submit" value="Modifier l'article" name="formModifierArticle_modifier_submit">
                     </div>
                 </form>
             </div>
@@ -49,7 +49,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
                     </p>
                 </form>
             </div>

@@ -15,7 +15,7 @@
                     <p>⚠️ Cette action est irréversible ! ⚠️</p>
                     <hr>
                     <div class="form-group"> <!-- Supprimer journal -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer le journal" name="formSupprimerJournal_supprimer">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer le journal" name="formSupprimerJournal_supprimer_submit">
                     </div>
                 </form>
             </div>
@@ -28,7 +28,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
                     </p>
                 </form>
             </div>

@@ -24,11 +24,20 @@ $GLOBALS['retoursModele'] = array();
 $form = array();
 foreach ($_POST as $keyInput => $valInput) {
     $arrayInput = explode('_', $keyInput);
+    if (isset($form['_name']) && $form['_name'] != $arrayInput[0]) {
+        ajouterMessage(502, 'Attention : la convention d\'attribut "name" des inputs n\'est pas respectée.');
+    } else {
+        $form['_name'] = $arrayInput[0];
+    }
     if (isset($arrayInput[2]) && $arrayInput[2] == 'submit') {
         $form['_submit'] = $arrayInput['1'];
     } else {
         $form[explode('_', $keyInput)[1]] = $valInput;
     }
+}
+if (count($form) == 0) {
+    $form['_name'] = NULL;
+    $form['_submit'] = NULL;
 }
 
 ########################################################################################################################

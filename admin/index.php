@@ -2,10 +2,17 @@
 if (strlen(session_id()) < 1) session_start();
 define('RACINE', '../');
 require_once(RACINE . '-mvc/controleur/controleur.php');
+ajouterMessage(0, print_r($form, true));
 if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
-    if (isset($_POST['formCreerEvent_ajouter'])) { // Gabarit Créer Évent
+    if ( // Gabarit Créer Évent
+        $form['_name'] == 'formCreerEvent' &&
+        $form['_submit'] == 'ajouter'
+    ) {
         CtlCreerEventExecuter();
-    } elseif (isset($_POST['formChoisirEvent_choisir'])) { // Gabarit Choix Évent
+    } elseif ( // Gabarit Choix Évent
+        $form['_name'] == 'formChoisirEvent' &&
+        $form['_submit'] == 'choisir'
+    ) {
         CtlChoixEventExecuter();
     } elseif (isset($_POST['formModifierEvent_modifierEvent'])) { // Gabarit Modifier Évent
         CtlModifierEvent();
@@ -57,9 +64,9 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         CtlRenommerCategorieArticle(true);
     } // Gabarit Menu
     elseif (isset($_POST['formEvents_creerEventMenu'])) {
-        CtlCreerEvent(false);
+        CtlCreerEvent();
     } elseif (isset($_POST['formEvents_modifierEventMenu'])) {
-        CtlChoixEvent(false);
+        CtlChoixEvent();
     } elseif (isset($_POST['formEvents_supprimerEventMenu'])) {
         CtlSupprimerEvent(false);
     } elseif (isset($_POST['formGoodies_ajouterGoodieMenu'])) {
@@ -94,7 +101,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         CtlRenommerCategorieArticle(false);
     } elseif (isset($_POST['formLog_afficherLog'])) {
         CtlAfficherLog();
-    } elseif (isset($_POST['formDeconnexion_deconnexion'])) {
+    } elseif ($form['_submit'] == 'deconnexion') {
         CtlDeconnexion();
     } // Globaux : apparaissent dans plusieurs gabarits
     elseif (isset($_POST['formRetourMenu_retourMenu'])) {
@@ -104,7 +111,10 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
     }
 } else {
     // Gabarit Connexion
-    if (isset($_POST['formConnexion_seConnecter'])) {
+    if (
+        $form['_name'] == 'formConnexion' &&
+        $form['_submit'] == 'seConnecter'
+    ) {
         CtlVerifConnexion();
     } elseif (isset($_POST)) {
         // Si on accède à admin.php suite à un formulaire POST, et qu'il n'y a pas de session, c'est que la session

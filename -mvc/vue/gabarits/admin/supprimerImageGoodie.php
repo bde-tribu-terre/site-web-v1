@@ -12,7 +12,7 @@
                     <?php echo IMAGES_GOODIE ?>
                     <hr>
                     <div class="form-group"> <!-- Supprimer les images -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer les images" name="formSupprimerImageGoodie_supprimer">
+                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer les images" name="formSupprimerImageGoodie_supprimer_submit">
                     </div>
                 </form>
             </div>
@@ -25,7 +25,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
                     </p>
                 </form>
             </div>

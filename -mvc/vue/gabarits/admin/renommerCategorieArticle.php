@@ -18,7 +18,7 @@
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Supprimer évent -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Renommer la catégorie" name="formRenommerCategorieArticle_renommer">
+                        <input class="btn btn-danger btn-block" type="submit" value="Renommer la catégorie" name="formRenommerCategorieArticle_renommer_submit">
                     </div>
                 </form>
             </div>
@@ -31,7 +31,7 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu">
+                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
                     </p>
                 </form>
             </div>
