@@ -40,13 +40,8 @@ function ajouterRetourModele($cle, $resultats) {
 ########################################################################################################################
 # Connexion
 function CtlConnexion() {
-    try {
-        afficherConnexion();
-    } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
-        afficherConnexion();
-    }
-} //TODO: Exception
+    afficherConnexion();
+}
 
 function CtlVerifConnexion() {
     try {
@@ -59,28 +54,21 @@ function CtlVerifConnexion() {
                 $_SESSION['membre'] = $membre;
                 CtlMenu();
             } else {
-                ajouterMessage(401, 'Login ou mot de passe invalide.');
-                afficherConnexion();
+                throw new Exception('Login ou mot de passe invalide.', 401);
             }
         } else {
-            ajouterMessage(400, 'Veuillez remplir tous les champs.');
-            afficherConnexion();
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherConnexion();
     }
-} //TODO: Exception
+}
 
 # Menu
 function CtlMenu() {
-    try {
-        afficherMenu();
-    } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
-        afficherMenu();
-    }
-} //TODO: Exception
+    afficherMenu();
+}
 
 function CtlDeconnexion() {
     try {
@@ -92,10 +80,10 @@ function CtlDeconnexion() {
         ajouterMessage(200, 'Session déconnectée avec succès.');
         CtlConnexion();
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         CtlConnexion();
     }
-} //TODO: Exception
+}
 
 # Events
 function CtlCreerEvent($executer) {
@@ -121,15 +109,14 @@ function CtlCreerEvent($executer) {
                 );
                 afficherCreerEvent();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                afficherCreerEvent();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherCreerEvent();
     }
-} //TODO: Exception
+}
 
 function CtlChoixEvent($executer) {
     try {
@@ -143,17 +130,15 @@ function CtlChoixEvent($executer) {
                 MdlEventPrecis($GLOBALS['form']['id']);
                 afficherModifierEvent();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un évent.');
-                MdlEventsTous('FP', true, true, NULL);
-                afficherChoixEvent();
+                throw new Exception('Veuillez sélectionner un évent.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlEventsTous('FP', true, true, NULL);
         afficherChoixEvent();
     }
-} //TODO: Exception
+}
 
 function CtlModifierEvent() {
     try {
@@ -182,11 +167,11 @@ function CtlModifierEvent() {
             afficherModifierEvent();
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlEventsTous('FP', true, true, NULL);
         afficherChoixEvent();
     }
-} //TODO: Exception
+}
 
 function CtlSupprimerEvent($executer) {
     try {
@@ -203,17 +188,15 @@ function CtlSupprimerEvent($executer) {
                 MdlEventsTous('FP', true, true, NULL);
                 afficherSupprimerEvent();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un évent.');
-                MdlEventsTous('FP', true, true, NULL);
-                afficherSupprimerEvent();
+                throw new Exception('Veuillez sélectionner un évent.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlEventsTous('FP', true, true, NULL);
         afficherSupprimerEvent();
     }
-} //TODO: Exception
+}
 
 # Goodies
 function CtlAjouterGoodie($executer, $fileImput) {
@@ -244,15 +227,14 @@ function CtlAjouterGoodie($executer, $fileImput) {
                 );
                 afficherAjouterGoodie();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                afficherAjouterGoodie();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherAjouterGoodie();
     }
-} //TODO: Exception
+}
 
 function CtlAjouterImageGoodie($executer, $fileImput) {
     try {
@@ -268,17 +250,15 @@ function CtlAjouterImageGoodie($executer, $fileImput) {
                 MdlGoodiesTous('nom', true, true, true);
                 afficherAjouterImageGoodie();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs et sélectionner une image.');
-                MdlGoodiesTous('nom', true, true, true);
-                afficherAjouterImageGoodie();
+                throw new Exception('Veuillez remplir tous les champs et sélectionner une image.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlGoodiesTous('nom', true, true, true);
         afficherAjouterImageGoodie();
     }
-} //TODO: Exception
+}
 
 function CtlChoixGoodie($executer) {
     try {
@@ -292,17 +272,15 @@ function CtlChoixGoodie($executer) {
                 MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
                 afficherModifierGoodie();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
-                MdlGoodiesTous('nom', true, true, true);
-                afficherChoixGoodie();
+                throw new Exception('Veuillez sélectionner un goodie.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-} //TODO: Exception
+}
 
 function CtlModifierGoodie() {
     try {
@@ -333,11 +311,11 @@ function CtlModifierGoodie() {
             afficherModifierGoodie();
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-} //TODO: Exception
+}
 
 function CtlAllerSupprimerImageGoodie() {
     try {
@@ -349,11 +327,11 @@ function CtlAllerSupprimerImageGoodie() {
         MdlImagesGoodie($GLOBALS['form']['idGoodie']);
         afficherSupprimerImageGoodie();
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-} //TODO: Exception
+}
 
 function CtlSupprimerGoodie($executer) {
     try {
@@ -371,17 +349,15 @@ function CtlSupprimerGoodie($executer) {
                 MdlGoodiesTous('nom', true, true, true);
                 afficherSupprimerGoodie();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
-                MdlGoodiesTous('nom', true, true, true);
-                afficherSupprimerGoodie();
+                throw new Exception('Veuillez sélectionner un goodie.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlGoodiesTous('nom', true, true, true);
         afficherSupprimerGoodie();
     }
-} //TODO: Exception
+}
 
 # Journaux
 function CtlAjouterJournal($executer, $fileImput) {
@@ -404,15 +380,14 @@ function CtlAjouterJournal($executer, $fileImput) {
                 );
                 afficherAjouterJournal();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                afficherAjouterJournal();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherAjouterJournal();
     }
-} //TODO: Exception
+}
 
 function CtlSupprimerJournal($executer) {
     try {
@@ -430,17 +405,15 @@ function CtlSupprimerJournal($executer) {
                 MdlJournauxTous(NULL);
                 afficherSupprimerJournal();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un journal.');
-                MdlJournauxTous(NULL);
-                afficherSupprimerJournal();
+                throw new Exception('Veuillez sélectionner un journal.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlJournauxTous(NULL);
         afficherSupprimerJournal();
     }
-} //TODO: Exception
+}
 
 # Articles
 function CtlAjouterArticle($executer) {
@@ -464,17 +437,15 @@ function CtlAjouterArticle($executer) {
                 MdlCategoriesArticlesTous();
                 afficherAjouterArticle();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                MdlCategoriesArticlesTous();
-                afficherAjouterArticle();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlCategoriesArticlesTous();
         afficherAjouterArticle();
     }
-} //TODO: Exception
+}
 
 function CtlAjouterImageArticle($executer, $fileImput) {
     try {
@@ -493,17 +464,15 @@ function CtlAjouterImageArticle($executer, $fileImput) {
                 MdlArticlesTous(true, true);
                 afficherAjouterImageArticle();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs et sélectionner une image.');
-                MdlArticlesTous(true, true);
-                afficherAjouterImageArticle();
+                throw new Exception('Veuillez remplir tous les champs et sélectionner une image.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlArticlesTous(true, true);
         afficherAjouterImageArticle();
     }
-} //TODO: Exception
+}
 
 function CtlChoixArticle($executer) {
     try {
@@ -518,17 +487,15 @@ function CtlChoixArticle($executer) {
                 MdlCategoriesArticlesTous();
                 afficherModifierArticle();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un évent.');
-                MdlArticlesTous(true, true);
-                afficherChoixArticle();
+                throw new Exception('Veuillez sélectionner un évent.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlArticlesTous(true, true);
         afficherChoixArticle();
     }
-} //TODO: Exception
+}
 
 function CtlModifierArticle() {
     try {
@@ -555,11 +522,11 @@ function CtlModifierArticle() {
             afficherModifierArticle();
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlArticlesTous();
         afficherChoixArticle();
     }
-} //TODO: Exception
+}
 
 function CtlAllerSupprimerImageArticle() {
     try {
@@ -571,11 +538,11 @@ function CtlAllerSupprimerImageArticle() {
         MdlImagesArticle($GLOBALS['form']['id'], NULL);
         afficherSupprimerImageArticle();
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlGoodiesTous('nom', true, true, true);
         afficherChoixGoodie();
     }
-} //TODO: Exception
+}
 
 function CtlSupprimerArticle($executer) {
     try {
@@ -593,17 +560,15 @@ function CtlSupprimerArticle($executer) {
                 MdlArticlesTous();
                 afficherSupprimerArticle();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
-                MdlArticlesTous();
-                afficherSupprimerArticle();
+                throw new Exception('Veuillez sélectionner un article.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlArticlesTous();
         afficherSupprimerArticle();
     }
-} //TODO: Exception
+}
 
 function CtlAjouterArticleVideo($executer) {
     try {
@@ -628,17 +593,15 @@ function CtlAjouterArticleVideo($executer) {
                 MdlCategoriesArticlesTous();
                 afficherAjouterArticleVideo();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                MdlCategoriesArticlesTous();
-                afficherAjouterArticleVideo();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlCategoriesArticlesTous();
         afficherAjouterArticleVideo();
     }
-} //TODO: Exception
+}
 
 function CtlChoixArticleVideo($executer) {
     try {
@@ -653,17 +616,15 @@ function CtlChoixArticleVideo($executer) {
                 MdlCategoriesArticlesTous();
                 afficherModifierArticleVideo();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un évent.');
-                MdlArticlesVideoTous();
-                afficherChoixArticleVideo();
+                throw new Exception('Veuillez sélectionner un article.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlArticlesVideoTous();
         afficherChoixArticleVideo();
     }
-} //TODO: Exception
+}
 
 function CtlModifierArticleVideo() {
     try {
@@ -692,11 +653,11 @@ function CtlModifierArticleVideo() {
             afficherModifierArticleVideo();
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlArticlesVideoTous();
         afficherChoixArticleVideo();
     }
-} //TODO: Exception
+}
 
 function CtlSupprimerArticleVideo($executer) {
     try {
@@ -713,17 +674,15 @@ function CtlSupprimerArticleVideo($executer) {
                 MdlArticlesVideoTous();
                 afficherSupprimerArticleVideo();
             } else {
-                ajouterMessage(400, 'Veuillez sélectionner un goodie.');
-                MdlArticlesVideoTous();
-                afficherSupprimerArticleVideo();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlArticlesVideoTous();
         afficherSupprimerArticleVideo();
     }
-} //TODO: Exception
+}
 
 function CtlAjouterCategorieArticle($executer) {
     try {
@@ -738,15 +697,14 @@ function CtlAjouterCategorieArticle($executer) {
                 );
                 afficherAjouterCategorieArticle();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                afficherAjouterCategorieArticle();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         afficherAjouterCategorieArticle();
     }
-} //TODO: Exception
+}
 
 function CtlRenommerCategorieArticle($executer) {
     try {
@@ -765,18 +723,16 @@ function CtlRenommerCategorieArticle($executer) {
                 MdlCategoriesArticlesTous();
                 afficherRenommerCategorieArticle();
             } else {
-                ajouterMessage(400, 'Veuillez remplir tous les champs.');
-                MdlCategoriesArticlesTous();
-                afficherRenommerCategorieArticle();
+                throw new Exception('Veuillez remplir tous les champs.', 400);
             }
         }
 
     } catch (Exception $e) {
-        ajouterMessage(500, $e->getMessage());
+        ajouterMessage($e->getCode(), $e->getMessage());
         MdlCategoriesArticlesTous();
         afficherRenommerCategorieArticle();
     }
-} //TODO: Exception
+}
 
 # Log
 function CtlAfficherLog() {
