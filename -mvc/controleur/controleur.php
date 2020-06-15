@@ -795,44 +795,40 @@ function CtlAccueil() {
 ########################################################################################################################
 # Articles                                                                                                             #
 ########################################################################################################################
-function CtlArticles($id = NULL) {
-    try {
-        if ($id) {
-            switch (substr($id, 0, 1)) {
-                case 'T':
-                    MdlArticlePrecis(substr($id, 1));
-                    if ($GLOBALS['retoursModele']['article']) {
-                        MdlImagesArticle(substr($id, 1), NULL);
-                        afficherArticlePrecis();
-                    } else {
-                        throw new Exception('L\'article recherché n\'existe pas.', 404);
-                    }
-                    break;
-                case 'V':
-                    MdlArticleVideoPrecis(substr($id, 1));
-                    if ($GLOBALS['retoursModele']['articleVideo']) {
-                        afficherArticleVideoPrecis();
-                    } else {
-                        throw new Exception('L\'article vidéo recherché n\'existe pas.', 404);
-                    }
-                    break;
-                default:
-                    throw new Exception('L\'adresse d\'article recherché est invalide.', 403);
-            }
-        } else {
-            MdlArticlesTous(true, false);
-            MdlMiniaturesArticles(true, false);
-            MdlArticlesVideoTous(true, false);
-            MdlMiniaturesArticlesVideo(true, false);
-            afficherArticles();
-        }
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
+function CtlArticles() {
         MdlArticlesTous(true, false);
         MdlMiniaturesArticles(true, false);
         MdlArticlesVideoTous(true, false);
         MdlMiniaturesArticlesVideo(true, false);
         afficherArticles();
+}
+
+function CtlArticlePrecis($id) {
+    try {
+        switch (substr($id, 0, 1)) {
+            case 'T':
+                MdlArticlePrecis(substr($id, 1));
+                if ($GLOBALS['retoursModele']['article']) {
+                    MdlImagesArticle(substr($id, 1), NULL);
+                    afficherArticlePrecis();
+                } else {
+                    throw new Exception('L\'article recherché n\'existe pas.', 404);
+                }
+                break;
+            case 'V':
+                MdlArticleVideoPrecis(substr($id, 1));
+                if ($GLOBALS['retoursModele']['articleVideo']) {
+                    afficherArticleVideoPrecis();
+                } else {
+                    throw new Exception('L\'article vidéo recherché n\'existe pas.', 404);
+                }
+                break;
+            default:
+                throw new Exception('L\'adresse d\'article recherché est invalide.', 403);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlArticles();
     }
 }
 
@@ -952,8 +948,7 @@ function CtlEventPrecis($id){
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlEventsTous('FP', true, false, NULL);
-        afficherEvents('FP', true, false, false);
+        CtlEvents('FP', true, false, false);
     }
 }
 
