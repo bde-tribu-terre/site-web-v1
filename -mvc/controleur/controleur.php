@@ -937,16 +937,23 @@ function CtlUniversite() {
 ########################################################################################################################
 # Events                                                                                                               #
 ########################################################################################################################
-function CtlEvents($tri, $aVenir, $passes, $rechercheEnCours) {
-    afficherEvents($tri, $aVenir, $passes, $rechercheEnCours);
-}
-
-function CtlEventPrecis($id) {
-    $event = MdlEventPrecis($id);
-    if ($event != false) {
-        afficherEventPrecis($event);
-    } else {
-        throw new Exception('L\'évent recherché n\'existe pas.');
+function CtlEvents($id, $tri, $aVenir, $passes, $rechercheEnCours) {
+    try {
+        if ($id) {
+            MdlEventPrecis($id);
+            if ($GLOBALS['retoursModele']['event']) {
+                afficherEventPrecis();
+            } else {
+                throw new Exception('L\'évent recherché n\'existe pas.', 404);
+            }
+        } else {
+            MdlEventsTous($tri, $aVenir, $passes, NULL);
+            afficherEvents($rechercheEnCours);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        MdlEventsTous($tri, $aVenir, $passes, NULL);
+        afficherEvents($rechercheEnCours);
     }
 }
 
@@ -970,6 +977,7 @@ function CtlGoodiePrecis($id) {
 # Journaux                                                                                                             #
 ########################################################################################################################
 function CtlJournaux() {
+    MdlJournauxTous(NULL);
     afficherJournaux();
 }
 

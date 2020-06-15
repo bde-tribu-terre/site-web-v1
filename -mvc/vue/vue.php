@@ -957,115 +957,83 @@ function afficherUniversite() {
 # B.XIX - Events                                                                                                       #
 ########################################################################################################################
 function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
-    define('TITLE', 'Évents');
-    define('GABARIT', 'events.php');
-
-    if ($rechercheEnCours) {
-        $rechercheEnCoursStr = 'true';
-    } else {
-        $rechercheEnCoursStr = 'false';
-    }
-    if ($aVenir) {
-        $checkedAVenir = ' checked';
-    } else {
-        $checkedAVenir = '';
-    }
-    if ($passes) {
-        $checkedPasses = ' checked';
-    } else {
-        $checkedPasses = '';
-    }
-
     $tableEvents = '';
-    $lignesEvents = MdlEventsTous($tri, $aVenir, $passes, -1);
-
-    if (empty($lignesEvents)) {
-        $tableEvents = '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>';
-    }
-
     $pair = true; // On commence à 0 en informatique.
-    foreach ($lignesEvents as $ligne) {
-        $id = htmlentities($ligne->idEvents, ENT_QUOTES, "UTF-8");
-        $titre = htmlentities($ligne->titreEvents, ENT_QUOTES, "UTF-8");
-        $date = htmlentities($ligne->dateEvents, ENT_QUOTES, "UTF-8");
-        $heure = htmlentities($ligne->heureEvents, ENT_QUOTES, "UTF-8");
-        $lieu = htmlentities($ligne->lieuEvents, ENT_QUOTES, "UTF-8");
-        $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
+    foreach ($GLOBALS['retoursModele']['events'] as $event) {
+        $nbJours = round((strtotime($event['date']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
         $nbJoursStr = '';
-        $couleur = '';
-        if ($nbJours == 0) {
-            $nbJoursStr .= '<strong><span style="color: red"> (Aujourd\'hui)</span></strong>';
-        } elseif ($nbJours == 1) {
-            $nbJoursStr .= '<strong><span style="color: red"> (Demain)</span></strong>';
-        } elseif ($nbJours > 0) {
-            $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
-        } else {
-            $couleur = ' style="background-color: #d1d2ce"';
-        }
-
-        if ($pair) {
-            $tableEvents .= '<div class="row">';
+        switch ($nbJours) {
+            case 0:
+                $nbJoursStr .=
+                    '
+                <strong>
+                    <span style="color: red"> (Aujourd\'hui)</span>
+                </strong>
+                ';
+                break;
+            case 1:
+                $nbJoursStr .=
+                    '
+                <strong>
+                    <span style="color: red"> (Demain)</span>
+                </strong>
+                ';
+                break;
+            default:
+                $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
         }
         $tableEvents .=
-            '<div class="col-sm-6">' .
-                '<div class="well" ' . $couleur . '>' .
-                    '<h3>' . $titre . '</h3>' .
-                    '<h4>📅 ' . genererDate($date) . $nbJoursStr . '</h4>' .
-                    '<h4>⌚️ ' . substr($heure, 0, 2) . 'h' . substr($heure, 3, 2) . '</h4>' .
-                    '<h4>📍️ ' . $lieu . '</h4>' .
-                    '<a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $id . '">' .
-                        '<h4>Détails</h4>' .
-                    '</a>' .
-                '</div>' .
-            '</div>';
-        if (!$pair) {
-            $tableEvents .= '</div>';
-            $pair = true;
-        } else {
-            $pair = false;
-        }
+            '
+            <div class="col-sm-6">
+                <div class="well" ' . ($nbJours < 0 ? ' style="background-color: #d1d2ce"' : '') . '>
+                    <h3>' . $event['titre'] . '</h3>
+                    <h4>📅 ' . genererDate($event['date']) . $nbJoursStr . '</h4>
+                    <h4>⌚️ ' . substr($event['heure'], 0, 2) . 'h' . substr($event['heure'], 3, 2) . '</h4>
+                    <h4>📍️ ' . $event['lieu'] . '</h4>
+                    <a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
+                        <h4>Détails</h4>
+                    </a>
+                </div>
+            </div>
+            ';
+        $tableEvents .= $pair ? '<div class="row">' : '</div>';
+        $pair = $pair ? false : true;
     }
-    if (!$pair) { // Si c'est pair il fait fermer la balise.
-        $tableEvents .= '</div>';
-    }
-
-    define('TRI', $tri);
-    define('RECHERCHE_EN_COURS', $rechercheEnCoursStr);
-    define('CHECKED_A_VENIR', $checkedAVenir);
-    define('CHECKED_PASSES', $checkedPasses);
+    $tableEvents .= $pair ? '' : '</div>'; // Si c'est pair il fait fermer la balise.
+    $tableEvents =
+        $tableEvents == '' ?
+            '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>' :
+            $tableEvents;
     define('EVENTS', $tableEvents);
 
-    afficherCadre('PUBLIC');
+    define('TRI', $tri);
+    define('RECHERCHE_EN_COURS', $rechercheEnCours ? 'true' : 'false');
+    define('CHECKED_A_VENIR', $aVenir ? ' checked' : '');
+    define('CHECKED_PASSES', $passes ? ' checked' : '');
+
+    afficherPage('Évents', 'events.php', 'public');
 }
 
-function afficherEventPrecis($event) {
-    // define('TITLE', 'Évents');
-    define('GABARIT', 'eventPrecis.php');
-
-    $date = $event->dateEvents;
-    $nbJours = round((strtotime($date) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
-    $nbJoursStr = '';
+function afficherEventPrecis() {
+    $nbJours = round((strtotime($GLOBALS['retoursModele']['event']['date']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24));
     if ($nbJours == 0) {
-        $nbJoursStr .= '<strong><span style="color: red">(Aujourd\'hui)</span></strong>';
+        $nbJoursStr = '<strong><span style="color: red">(Aujourd\'hui)</span></strong>';
     } elseif ($nbJours == 1) {
-        $nbJoursStr .= '<strong><span style="color: red">(Demain)</span></strong>';
+        $nbJoursStr = '<strong><span style="color: red">(Demain)</span></strong>';
     } elseif ($nbJours > 0) {
-        $nbJoursStr .= '(dans ' . $nbJours . ' jours)';
+        $nbJoursStr = '(dans ' . $nbJours . ' jours)';
     } else {
-        $nbJoursStr .= '<i><span style="color: darkgray">(Il y a ' . abs($nbJours) . ' jours)</span></i>';
+        $nbJoursStr = '<i><span style="color: darkgray">(Il y a ' . abs($nbJours) . ' jours)</span></i>';
     }
-    $heureStr = substr($event->heureEvents, 0, 2) . 'h' . substr($event->heureEvents, 3, 2);
-
-    define('ID', $event->idEvents);
-    define('TITRE', htmlentities($event->titreEvents, ENT_QUOTES, "UTF-8"));
-    define('DESC', nl2br(htmlentities($event->descEvents, ENT_QUOTES, "UTF-8")));
-    define('DATE', genererDate($event->dateEvents));
-    define('HEURE', $heureStr);
-    define('LIEU', htmlentities($event->lieuEvents, ENT_QUOTES, "UTF-8"));
+    define('ID', $GLOBALS['retoursModele']['event']['id']);
+    define('TITRE', $GLOBALS['retoursModele']['event']['titre']);
+    define('DATE', genererDate($GLOBALS['retoursModele']['event']['date']));
     define('NB_JOURS', $nbJoursStr);
-    define('TITLE', TITRE); // Ici.
+    define('HEURE', substr($GLOBALS['retoursModele']['event']['heure'], 0, 2) . 'h' . substr($GLOBALS['retoursModele']['event']['heure'], 3, 2));
+    define('LIEU', $GLOBALS['retoursModele']['event']['lieu']);
+    define('DESC', nl2br($GLOBALS['retoursModele']['event']['desc']));
 
-    afficherCadre('PUBLIC');
+    afficherPage($GLOBALS['retoursModele']['event']['titre'], 'eventPrecis.php', 'public');
 }
 
 ########################################################################################################################
@@ -1220,35 +1188,23 @@ function afficherGoodiePrecis($goodie) {
 # B.XXI - Journaux                                                                                                     #
 ########################################################################################################################
 function afficherJournaux() {
-    define('TITLE', 'Journaux');
-    define('GABARIT', 'journaux.php');
-
     $tableJournaux = '';
-    $lignesJournaux = MdlJournauxTous(-1);
-
-    foreach ($lignesJournaux as $ligne) {
-        $titre = htmlentities($ligne->titreJournaux, ENT_QUOTES, "UTF-8");;
-        $date = htmlentities($ligne->dateJournaux, ENT_QUOTES, "UTF-8");
-        $pdf = htmlentities($ligne->pdfJournaux, ENT_QUOTES, "UTF-8");
-
-        $lienJournal = RACINE . 'journaux/' . $pdf;
-
+    foreach ($GLOBALS['retoursModele']['journaux'] as $journal) {
         $tableJournaux .=
             '<div class="col-sm-3">' .
                 '<div class="well">' .
-                    '<h3>' . $titre . '</h3>' .
-                    '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($date)) . '</h5>' .
-                    '<a href="' . $lienJournal . '" class="btn btn-danger btn-block">' .
+                    '<h3>' . $journal['titre'] . '</h3>' .
+                    '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>' .
+                    '<a href="' . $journal['pdf'] . '" class="btn btn-danger btn-block">' .
                         '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
                         '<h4 class="alterneur-petit">Lire</h4>' .
                     '</a>' .
                 '</div>' .
             '</div>';
     }
-
     define('JOURNAUX', $tableJournaux);
 
-    afficherCadre('PUBLIC');
+    afficherPage('Journaux', 'journaux.php', 'public');
 }
 
 ########################################################################################################################
