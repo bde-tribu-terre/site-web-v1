@@ -937,23 +937,23 @@ function CtlUniversite() {
 ########################################################################################################################
 # Events                                                                                                               #
 ########################################################################################################################
-function CtlEvents($id, $tri, $aVenir, $passes, $rechercheEnCours) {
+function CtlEvents($tri, $aVenir, $passes, $rechercheEnCours) {
+    MdlEventsTous($tri, $aVenir, $passes, NULL);
+    afficherEvents($tri, $aVenir, $passes, $rechercheEnCours);
+}
+
+function CtlEventPrecis($id){
     try {
-        if ($id) {
-            MdlEventPrecis($id);
-            if ($GLOBALS['retoursModele']['event']) {
-                afficherEventPrecis();
-            } else {
-                throw new Exception('L\'évent recherché n\'existe pas.', 404);
-            }
+        MdlEventPrecis($id);
+        if ($GLOBALS['retoursModele']['event']) {
+            afficherEventPrecis();
         } else {
-            MdlEventsTous($tri, $aVenir, $passes, NULL);
-            afficherEvents($rechercheEnCours);
+            throw new Exception('L\'évent recherché n\'existe pas.', 404);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlEventsTous($tri, $aVenir, $passes, NULL);
-        afficherEvents($rechercheEnCours);
+        MdlEventsTous('FP', true, false, NULL);
+        afficherEvents('FP', true, false, false);
     }
 }
 
