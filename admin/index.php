@@ -4,9 +4,9 @@ define('RACINE', '../');
 require_once(RACINE . '-mvc/controleur/controleur.php');
 if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
     if (isset($_POST['formCreerEvent_ajouter'])) { // Gabarit Créer Évent
-        CtlCreerEvent(true);
+        CtlCreerEventExecuter();
     } elseif (isset($_POST['formChoisirEvent_choisir'])) { // Gabarit Choix Évent
-        CtlChoixEvent(true);
+        CtlChoixEventExecuter();
     } elseif (isset($_POST['formModifierEvent_modifierEvent'])) { // Gabarit Modifier Évent
         CtlModifierEvent();
     } elseif (isset($_POST['formSupprimerEvent_supprimer'])) { // Gabarit Supprimer Évent

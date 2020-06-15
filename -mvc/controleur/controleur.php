@@ -16,9 +16,14 @@ function CtlErreur() {
 $GLOBALS['messages'] = array();
 
 # Formulaire HTML
-$GLOBALS['form'] = array();
+$FORM = array();
 foreach ($_POST as $keyInput => $valInput) {
-    $GLOBALS['form'][explode('_', $keyInput)[1]] = $valInput;
+    $arrayInput = explode('_', $keyInput);
+    if (isset($arrayInput[2]) && $arrayInput[2] == 'submit') {
+        $FORM['_submit'] = $arrayInput['1'];
+    } else {
+        $FORM[explode('_', $keyInput)[1]] = $valInput;
+    }
 }
 
 # Retours d'appels de fonctions du modèle
@@ -61,7 +66,7 @@ function CtlVerifConnexion() {
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        afficherConnexion();
+        CtlConnexion();
     }
 }
 
@@ -86,57 +91,55 @@ function CtlDeconnexion() {
 }
 
 # Events
-function CtlCreerEvent($executer) {
+function CtlCreerEvent() {
+    afficherCreerEvent();
+}
+
+function CtlCreerEventExecuter($titre, $date, $heureHeure, $minuteHeure, $lieu, $desc) {
     try {
-        if (!$executer) {
-            afficherCreerEvent();
+        if (
+            !empty($GLOBALS['form']['titre']) &&
+            !empty($GLOBALS['form']['date']) &&
+            (!empty($GLOBALS['form']['heureHeure']) || $GLOBALS['form']['heureHeure'] == 0) &&
+            (!empty($GLOBALS['form']['heureMinute']) || $GLOBALS['form']['heureMinute'] == 0) &&
+            !empty($GLOBALS['form']['lieu']) &&
+            !empty($GLOBALS['form']['desc'])
+        ) {
+            MdlCreerEvent(
+                $GLOBALS['form']['titre'],
+                $GLOBALS['form']['date'],
+                $GLOBALS['form']['heureHeure'],
+                $GLOBALS['form']['heureMinute'],
+                $GLOBALS['form']['lieu'],
+                $GLOBALS['form']['desc']
+            );
+            CtlCreerEvent();
         } else {
-            if (
-                !empty($GLOBALS['form']['titre']) &&
-                !empty($GLOBALS['form']['date']) &&
-                (!empty($GLOBALS['form']['heureHeure']) || $GLOBALS['form']['heureHeure'] == 0) &&
-                (!empty($GLOBALS['form']['heureMinute']) || $GLOBALS['form']['heureMinute'] == 0) &&
-                !empty($GLOBALS['form']['lieu']) &&
-                !empty($GLOBALS['form']['desc'])
-            ) {
-                MdlCreerEvent(
-                    $GLOBALS['form']['titre'],
-                    $GLOBALS['form']['date'],
-                    $GLOBALS['form']['heureHeure'],
-                    $GLOBALS['form']['heureMinute'],
-                    $GLOBALS['form']['lieu'],
-                    $GLOBALS['form']['desc']
-                );
-                afficherCreerEvent();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        afficherCreerEvent();
+        CtlCreerEvent();
     }
 }
 
-function CtlChoixEvent($executer) {
+function CtlChoixEvent() {
+    MdlEventsTous('FP', true, true, NULL);
+    afficherChoixEvent();
+}
+
+function CtlChoixEventExecuter($id) {
     try {
-        if (!$executer) {
-            MdlEventsTous('FP', true, true, NULL);
-            afficherChoixEvent();
+        if (
+            !empty($id)
+        ) {
+            CtlModifierEvent($id);
         } else {
-            if (
-                !empty($GLOBALS['form']['id'])
-            ) {
-                MdlEventPrecis($GLOBALS['form']['id']);
-                afficherModifierEvent();
-            } else {
-                throw new Exception('Veuillez sélectionner un évent.', 400);
-            }
+            throw new Exception('Veuillez sélectionner un évent.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlEventsTous('FP', true, true, NULL);
-        afficherChoixEvent();
+        CtlChoixEvent();
     }
 }
 
