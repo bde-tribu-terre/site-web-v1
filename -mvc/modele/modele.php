@@ -1258,80 +1258,101 @@ function MdlMiniaturesArticles($visibles = true, $invisibles = false) {
 # Articles vidéo                                                                                                       #
 ########################################################################################################################
 function MdlArticlesVideoTous($visibles = true, $invisibles = false) {
+    $arrayRetour = requeteSQL(
+        "
+        SELECT
+            idArticlesYouTube AS id,
+            titreArticlesYouTube AS titre,
+            titreCategoriesArticles AS categorie,
+            visibiliteArticlesYouTube AS visibilite,
+            lienArticlesYouTube AS lien,
+            texteArticlesYouTube AS texte,
+            prenomMembres AS prenomAuteur,
+            nomMembres AS nomAuteur,
+            dateCreationArticlesYouTube AS dateCreation,
+            dateModificationArticlesYouTube AS dateModification
+        FROM
+            ArticlesYouTube
+                NATURAL JOIN
+            Membres
+                NATURAL JOIN
+            CategoriesArticles
+        WHERE
+            1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
+        ORDER BY
+            dateCreationArticlesYouTube
+            DESC
+        "
+    );
+    foreach ($arrayRetour as $articleVideo) {
+        try {
+            $youtube = "http://www.youtube.com/oembed?url=" . $articleVideo['lien'] . "&format=json";
+            $curl = curl_init($youtube);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            $return = curl_exec($curl);
+            curl_close($curl);
+            $articleVideo['API_YouTube'] = MET_SQLLigneUnique(json_decode($return));
+        } catch (Exception $e) {
+            ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse ' . $articleVideo['lien'] . 'n\'ont pas pu être récupérées sur l\'API YouTube.');
+            $articleVideo['API_YouTube'] = NULL;
+        }
+    }
     ajouterRetourModele(
         'articlesVideo',
-        requeteSQL(
-            "
-            SELECT
-                idArticlesYouTube AS id,
-                titreArticlesYouTube AS titre,
-                titreCategoriesArticles AS categorie,
-                visibiliteArticlesYouTube AS visibilite,
-                lienArticlesYouTube AS lien,
-                texteArticlesYouTube AS texte,
-                prenomMembres AS prenomAuteur,
-                nomMembres AS nomAuteur,
-                dateCreationArticlesYouTube AS dateCreation,
-                dateModificationArticlesYouTube AS dateModification
-            FROM
-                ArticlesYouTube
-                    NATURAL JOIN
-                Membres
-                    NATURAL JOIN
-                CategoriesArticles
-            WHERE
-                1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
-            ORDER BY
-                dateCreationArticlesYouTube
-                DESC
-            "
-        )
+        $arrayRetour
     );
 }
 
 function MdlArticleVideoPrecis($id, $article = false) {
+    $arrayRetour = requeteSQL(
+        "
+        SELECT
+            idArticlesYouTube AS id,
+            titreArticlesYouTube AS titre,
+            idCategoriesArticles AS idCategorie,
+            titreCategoriesArticles AS categorie,
+            visibiliteArticlesYouTube AS visibilite,
+            lienArticlesYouTube AS lien,
+            texteArticlesYouTube AS texte,
+            prenomMembres AS prenomAuteur,
+            nomMembres AS nomAuteur,
+            dateCreationArticlesYouTube AS dateCreation,
+            dateModificationArticlesYouTube AS dateModification
+        FROM
+            ArticlesYouTube
+                NATURAL JOIN
+            Membres
+                NATURAL JOIN
+            CategoriesArticles
+        WHERE
+            idArticlesYouTube=:idArticlesYouTube
+        ",
+        array(
+            [':idArticlesYouTube', $id, 'INT']
+        ),
+        1
+    );
     ajouterRetourModele(
         $article ? 'article' : 'articleVideo',
-        requeteSQL(
-            "
-            SELECT
-                idArticlesYouTube AS id,
-                titreArticlesYouTube AS titre,
-                idCategoriesArticles AS idCategorie,
-                titreCategoriesArticles AS categorie,
-                visibiliteArticlesYouTube AS visibilite,
-                lienArticlesYouTube AS lien,
-                texteArticlesYouTube AS texte,
-                prenomMembres AS prenomAuteur,
-                nomMembres AS nomAuteur,
-                dateCreationArticlesYouTube AS dateCreation,
-                dateModificationArticlesYouTube AS dateModification
-            FROM
-                ArticlesYouTube
-                    NATURAL JOIN
-                Membres
-                    NATURAL JOIN
-                CategoriesArticles
-            WHERE
-                idArticlesYouTube=:idArticlesYouTube
-            ",
-            array(
-                [':idArticlesYouTube', $id, 'INT']
-            ),
-            1
-        )
+        $arrayRetour
     );
+    try {
+        $youtube = "http://www.youtube.com/oembed?url=" . $arrayRetour['lien'] . "&format=json";
+        $curl = curl_init($youtube);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $return = curl_exec($curl);
+        curl_close($curl);
+        $arrayRetour['API_YouTube'] = MET_SQLLigneUnique(json_decode($return));
+    } catch (Exception $e) {
+        ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse ' . $arrayRetour['lien'] . 'n\'ont pas pu être récupérées sur l\'API YouTube.');
+        $arrayRetour['API_YouTube'] = NULL;
+    }
 }
 
 function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
     $timestamp = time();
     $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
     $dt->setTimestamp($timestamp);
-
-    $ytVars = array();
-    parse_str(parse_url($lien, PHP_URL_QUERY), $ytVars);
-    $ytid = $ytVars['id'];
-
     requeteSQL(
         "
         INSERT INTO
@@ -1353,7 +1374,7 @@ function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) 
             [':idMembres', $_SESSION['membre']['id'], 'INT'],
             [':idCategorieArticles', $categorie, 'INT'],
             [':titreArticlesYouTube', $titre, 'STR'],
-            [':lienArticlesYouTube', $ytid, 'STR'],
+            [':lienArticlesYouTube', $lien, 'STR'],
             [':texteArticlesYouTube', $texte, 'STR'],
             [':visibiliteArticlesYouTube', $visibilite, 'INT'],
             [':dateCreationArticlesYouTube', $dt->format('Y-m-d'), 'STR'],
@@ -1427,26 +1448,19 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
         "
     );
     foreach ($articlesVideo as $articleVideo) {
-        $retour[$articleVideo['id']] = 'https://i.ytimg/vi/' . $articleVideo['lien'] . '/hqdefault.jpg';
+        try {
+            $youtube = "http://www.youtube.com/oembed?url=" . $arrayRetour['lien'] . "&format=json";
+            $curl = curl_init($youtube);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            $return = curl_exec($curl);
+            curl_close($curl);
+            $retour[$articleVideo['id']] = MET_SQLLigneUnique(json_decode($return))['thumbnail_url'];
+        } catch (Exception $e) {
+            $retour[$articleVideo['id']] = NULL;
+        }
     }
     ajouterRetourModele(
         'miniaturesArticlesVideo',
         $retour
     );
 }
-
-########################################################################################################################
-########################################################################################################################
-###                                                                                                                  ###
-###                                                   API YOUTUBE                                                    ###
-###                                                                                                                  ###
-########################################################################################################################
-########################################################################################################################
-function obtenirInfoYouTube($url) {
-    $youtube = "http://www.youtube.com/oembed?url=". $url ."&format=json";
-    $curl = curl_init($youtube);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    $return = curl_exec($curl);
-    curl_close($curl);
-    return json_decode($return);
-} //TODO: Uniformisation

@@ -828,20 +828,14 @@ function afficherArticlePrecis() {
 }
 
 function afficherArticleVideoPrecis() {
+    $iframe = $GLOBALS['retoursModele']['articleVideo']['API_YouTube']['html'];
     $integrationVideo =
         '
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <div class="embed-responsive embed-responsive-16by9 arrondi ombre">
-                    <iframe
-                        width="480"
-                        height="270"
-                        src="https://www.youtube.com/embed/' . $GLOBALS['retoursModele']['articleVideo']['lien'] . '?feature=oembed"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                    ></iframe>
+                    ' . $iframe . '
                 </div>
             </div>
             <div class="col-sm-2"></div>
