@@ -828,7 +828,9 @@ function afficherArticlePrecis() {
 }
 
 function afficherArticleVideoPrecis() {
-    $iframe = $GLOBALS['retoursModele']['articleVideo']['API_YouTube']['html'];
+    $iframe = html_entity_decode($GLOBALS['retoursModele']['articleVideo']['API_YouTube']['html']);
+    $iframe = preg_replace('/ width=".*?"/', '', $iframe);
+    $iframe = preg_replace('/ height=".*?"/', '', $iframe);
     $integrationVideo =
         '
         <div class="row">

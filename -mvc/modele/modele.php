@@ -1332,10 +1332,6 @@ function MdlArticleVideoPrecis($id, $article = false) {
         ),
         1
     );
-    ajouterRetourModele(
-        $article ? 'article' : 'articleVideo',
-        $arrayRetour
-    );
     try {
         $youtube = "http://www.youtube.com/oembed?url=" . $arrayRetour['lien'] . "&format=json";
         $curl = curl_init($youtube);
@@ -1347,6 +1343,10 @@ function MdlArticleVideoPrecis($id, $article = false) {
         ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse ' . $arrayRetour['lien'] . 'n\'ont pas pu être récupérées sur l\'API YouTube.');
         $arrayRetour['API_YouTube'] = NULL;
     }
+    ajouterRetourModele(
+        $article ? 'article' : 'articleVideo',
+        $arrayRetour
+    );
 }
 
 function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) {
