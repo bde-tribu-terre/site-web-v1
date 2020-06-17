@@ -114,9 +114,7 @@
                                 placeholder="Description de l'évent"
                                 onblur="verifNonVide(this);"
                                 oninput="garderMoins(this, 7999);"
-                        >
-                            <?php echo DESC ?>
-                        </textarea>
+                        ><?php echo DESC ?></textarea> <!-- Si linebreak : whitespace superflu. -->
                         <small class="form-text text-muted">
                             Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.
                         </small>
