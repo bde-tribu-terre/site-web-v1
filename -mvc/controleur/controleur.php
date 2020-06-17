@@ -212,40 +212,40 @@ function CtlSupprimerEvent() {
 }
 
 # Goodies
-function CtlAjouterGoodie($executer, $fileImput) {
+function CtlAjouterGoodie() {
+    afficherAjouterGoodie();
+}
+
+function CtlAjouterGoodieExecuter($titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc, $fileImput) {
     try {
-        if (!$executer) {
-            afficherAjouterGoodie();
+        if (
+            !empty($titre) &&
+            (!empty($categorie) || $categorie == 0) && $categorie != '-1' &&
+            (!empty($prixADEuro) || $prixADEuro == 0) &&
+            (!empty($prixADCentimes) || $prixADCentimes == 0) &&
+            (!empty($prixNADEuro) || $prixNADEuro == 0) &&
+            (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
+            !empty($desc) &&
+            !empty($_FILES[$fileImput]['name'])
+        ) {
+            MdlAjouterGoodie(
+                RACINE . 'goodies/',
+                $titre,
+                $categorie,
+                $prixADEuro,
+                $prixADCentimes,
+                $prixNADEuro,
+                $prixNADCentimes,
+                $desc,
+                $fileImput
+            );
+            CtlAjouterGoodie();
         } else {
-            if (
-                !empty($GLOBALS['form']['titreGoodie']) &&
-                (!empty($GLOBALS['form']['categorie']) || $GLOBALS['form']['categorie'] == 0) && $GLOBALS['form']['categorie'] != '-1' &&
-                (!empty($GLOBALS['form']['prixADEuro']) || $GLOBALS['form']['prixADEuro'] == 0) &&
-                (!empty($GLOBALS['form']['prixADCentimes']) || $GLOBALS['form']['prixADCentimes'] == 0) &&
-                (!empty($GLOBALS['form']['prixNADEuro']) || $GLOBALS['form']['prixNADEuro'] == 0) &&
-                (!empty($GLOBALS['form']['prixNADCentimes']) || $GLOBALS['form']['prixNADCentimes'] == 0) &&
-                !empty($GLOBALS['form']['descGoodie']) &&
-                !empty($_FILES[$fileImput]['name'])
-            ) {
-                MdlAjouterGoodie(
-                    RACINE . 'goodies/',
-                    $GLOBALS['form']['titreGoodie'],
-                    $GLOBALS['form']['categorie'],
-                    $GLOBALS['form']['prixADEuro'],
-                    $GLOBALS['form']['prixADCentimes'],
-                    $GLOBALS['form']['prixNADEuro'],
-                    $GLOBALS['form']['prixNADCentimes'],
-                    $GLOBALS['form']['descGoodie'],
-                    $fileImput
-                );
-                afficherAjouterGoodie();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        afficherAjouterGoodie();
+        CtlAjouterGoodie();
     }
 }
 

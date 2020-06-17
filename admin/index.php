@@ -47,7 +47,16 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formAjouterGoodie' &&
         $form['_submit'] == 'ajouterGoodie'
     ) {
-        CtlAjouterGoodie(true, 'formAjouterGoodie_miniature');
+        CtlAjouterGoodieExecuter(
+            $form['titre'],
+            $form['categorie'],
+            $form['prixADEuro'],
+            $form['prixADCentimes'],
+            $form['prixNADEuro'],
+            $form['prixNADCentimes'],
+            $form['desc'],
+            'formAjouterGoodie_miniature'
+        );
     } elseif ( // Gabarit Ajouter Image Goodie
         $form['_name'] == 'formAjouterImageGoodie' &&
         $form['_submit'] == 'ajouter'
