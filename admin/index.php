@@ -9,12 +9,12 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_submit'] == 'ajouter'
     ) {
         CtlCreerEventExecuter(
-            $form[''],
-            $form[''],
-            $form[''],
-            $form[''],
-            $form[''],
-            $form['']
+            $form['titre'],
+            $form['date'],
+            $form['heureHeure'],
+            $form['heureMinute'],
+            $form['lieu'],
+            $form['desc']
         );
     } elseif ( // Gabarit Choix Évent
         $form['_name'] == 'formChoisirEvent' &&
