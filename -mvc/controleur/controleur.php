@@ -59,13 +59,13 @@ function CtlConnexion() {
     afficherConnexion();
 }
 
-function CtlVerifConnexion() {
+function CtlVerifConnexion($login, $mdp) {
     try {
         if (
-            !empty($GLOBALS['form']['login']) &&
-            !empty($GLOBALS['form']['mdp'])
+            !empty($login) &&
+            !empty($mdp)
         ) {
-            $membre = MdlVerifConnexion($GLOBALS['form']['login'], $GLOBALS['form']['mdp']);
+            $membre = MdlVerifConnexion($login, $mdp);
             if ($membre != false) {
                 $_SESSION['membre'] = $membre;
                 CtlMenu();
@@ -109,20 +109,20 @@ function CtlCreerEvent() {
 function CtlCreerEventExecuter($titre, $date, $heureHeure, $minuteHeure, $lieu, $desc) {
     try {
         if (
-            !empty($GLOBALS['form']['titre']) &&
-            !empty($GLOBALS['form']['date']) &&
-            (!empty($GLOBALS['form']['heureHeure']) || $GLOBALS['form']['heureHeure'] == 0) &&
-            (!empty($GLOBALS['form']['heureMinute']) || $GLOBALS['form']['heureMinute'] == 0) &&
-            !empty($GLOBALS['form']['lieu']) &&
-            !empty($GLOBALS['form']['desc'])
+            !empty($titre) &&
+            !empty($date) &&
+            (!empty($heureHeure) || $heureHeure == 0) &&
+            (!empty($minuteHeure) || $minuteHeure == 0) &&
+            !empty($lieu) &&
+            !empty($desc)
         ) {
             MdlCreerEvent(
-                $GLOBALS['form']['titre'],
-                $GLOBALS['form']['date'],
-                $GLOBALS['form']['heureHeure'],
-                $GLOBALS['form']['heureMinute'],
-                $GLOBALS['form']['lieu'],
-                $GLOBALS['form']['desc']
+                $titre,
+                $date,
+                $heureHeure,
+                $minuteHeure,
+                $lieu,
+                $desc
             );
             CtlCreerEvent();
         } else {

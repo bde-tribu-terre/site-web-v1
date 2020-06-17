@@ -6,16 +6,41 @@
                 <hr>
                 <form id="formConnexion" method="post" onsubmit="return verifForm(this);">
                     <p> <!-- Identifiant -->
-                        <label for="formConnexion_login">Identifiant</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMinuscules(this);" class="form-control" id="formConnexion_login" type="text" name="formConnexion_login" placeholder="Saisir votre identifiant">
+                        <label for="formConnexion_login">
+                            Identifiant
+                        </label>
+                        <input
+                                id="formConnexion_login"
+                                name="formConnexion_login"
+                                type="text"
+                                class="form-control"
+                                placeholder="Saisir votre identifiant"
+                                onblur="verifNonVide(this);"
+                                oninput="garderMinuscules(this);"
+                        >
                     </p>
                     <p> <!-- Mot de passe -->
-                        <label for="formConnexion_mdp">Mot de passe</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formConnexion_mdp" type="password" name="formConnexion_mdp" placeholder="Saisir votre mot de passe">
+                        <label for="formConnexion_mdp">
+                            Mot de passe
+                        </label>
+                        <input
+                                id="formConnexion_mdp"
+                                name="formConnexion_mdp"
+                                type="password"
+                                class="form-control"
+                                placeholder="Saisir votre mot de passe"
+                                onblur="verifNonVide(this);"
+                        >
                     </p>
                     <hr>
                     <p> <!-- Se connecter -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Se connecter" name="formConnexion_seConnecter_submit">
+                        <input
+                                id="formConnexion_seConnecter_submit"
+                                name="formConnexion_seConnecter_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Se connecter"
+                        >
                     </p>
                 </form>
             </div>
