@@ -188,29 +188,27 @@ function CtlModifierEventExecuter($id, $titre, $date, $heureHeure, $heureMinute,
     }
 }
 
-function CtlSupprimerEvent($executer) {
+function CtlSupprimerEventExecuter($id) {
     try {
-        if (!$executer) {
-            MdlEventsTous('FP', true, true, NULL);
-            afficherSupprimerEvent();
+        if (
+            !empty($id)
+        ) {
+            MdlSupprimerEvent(
+                $id
+            );
+            CtlSupprimerEvent();
         } else {
-            if (
-                !empty($GLOBALS['form']['id'])
-            ) {
-                MdlSupprimerEvent(
-                    $GLOBALS['form']['id']
-                );
-                MdlEventsTous('FP', true, true, NULL);
-                afficherSupprimerEvent();
-            } else {
-                throw new Exception('Veuillez sélectionner un évent.', 400);
-            }
+            throw new Exception('Veuillez sélectionner un évent.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlEventsTous('FP', true, true, NULL);
-        afficherSupprimerEvent();
+        CtlSupprimerEvent();
     }
+}
+
+function CtlSupprimerEvent() {
+    MdlEventsTous('FP', true, true, NULL);
+    afficherSupprimerEvent();
 }
 
 # Goodies

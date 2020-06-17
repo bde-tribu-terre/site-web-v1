@@ -40,7 +40,9 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formSupprimerEvent' &&
         $form['_submit'] == 'supprimer'
     ) {
-        CtlSupprimerEvent(true);
+        CtlSupprimerEventExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Ajouter Goodie
         $form['_name'] == 'formAjouterGoodie' &&
         $form['_submit'] == 'ajouterGoodie'
@@ -165,7 +167,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formEvents' &&
         $form['_submit'] == 'supprimerEventMenu'
     ) {
-        CtlSupprimerEvent(false);
+        CtlSupprimerEvent();
     } elseif (
         $form['_name'] == 'formGoodies' &&
         $form['_submit'] == 'ajouterGoodieMenu'
