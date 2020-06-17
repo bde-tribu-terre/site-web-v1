@@ -154,36 +154,37 @@ function CtlChoixEventExecuter($id) {
     }
 }
 
-function CtlModifierEvent() {
+function CtlModifierEvent($id) {
+    MdlEventPrecis($id);
+    afficherModifierEvent();
+}
+
+function CtlModifierEventExecuter($id, $titre, $date, $heureHeure, $heureMinute, $lieu, $desc) {
     try {
         if (
-            !empty($GLOBALS['form']['titre']) &&
-            !empty($GLOBALS['form']['date']) &&
-            (!empty($GLOBALS['form']['heureHeure']) || $GLOBALS['form']['heureHeure'] == 0) &&
-            (!empty($GLOBALS['form']['heureMinute']) || $GLOBALS['form']['heureMinute'] == 0) &&
-            !empty($GLOBALS['form']['lieu']) &&
-            !empty($GLOBALS['form']['desc'])
+            !empty($titre) &&
+            !empty($date) &&
+            (!empty($heureHeure) || $heureHeure == 0) &&
+            (!empty($heureMinute) || $heureMinute == 0) &&
+            !empty($lieu) &&
+            !empty($desc)
         ) {
             MdlModifierEvent(
-                $GLOBALS['form']['id'],
-                $GLOBALS['form']['titre'],
-                $GLOBALS['form']['date'],
-                $GLOBALS['form']['heureHeure'],
-                $GLOBALS['form']['heureMinute'],
-                $GLOBALS['form']['lieu'],
-                $GLOBALS['form']['desc']
+                $id,
+                $titre,
+                $date,
+                $heureHeure,
+                $heureMinute,
+                $lieu,
+                $desc
             );
-            MdlEventPrecis($GLOBALS['form']['id']);
-            afficherModifierEvent();
+            CtlModifierEvent($id);
         } else {
-            ajouterMessage(400, 'Veuillez remplir tous les champs.');
-            MdlEventPrecis($GLOBALS['form']['id']);
-            afficherModifierEvent();
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlEventsTous('FP', true, true, NULL);
-        afficherChoixEvent();
+        CtlChoixEvent();
     }
 }
 

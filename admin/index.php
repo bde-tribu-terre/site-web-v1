@@ -20,12 +20,22 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formChoisirEvent' &&
         $form['_submit'] == 'choisir'
     ) {
-        CtlChoixEventExecuter();
+        CtlChoixEventExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Modifier Évent
         $form['_name'] == 'formModifierEvent' &&
         $form['_submit'] == 'modifierEvent'
     ) {
-        CtlModifierEvent();
+        CtlModifierEventExecuter(
+            $form['id'],
+            $form['titre'],
+            $form['date'],
+            $form['heureHeure'],
+            $form['heureMinute'],
+            $form['lieu'],
+            $form['desc']
+        );
     } elseif ( // Gabarit Supprimer Évent
         $form['_name'] == 'formSupprimerEvent' &&
         $form['_submit'] == 'supprimer'

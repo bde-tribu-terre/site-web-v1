@@ -90,7 +90,7 @@
                         <textarea
                                 id="formCreerEvent_desc"
                                 name="formCreerEvent_desc"
-                                class="form-control" id="formCreerEvent_desc"
+                                class="form-control"
                                 placeholder="Description de l'évent"
                                 rows="20"
                                 onblur="verifNonVide(this);"
