@@ -11,12 +11,12 @@
                         onsubmit="return verifForm(this);"
                 >
                     <div class="form-group"> <!-- Goodie en question -->
-                        <label for="formAjouterImageGoodie_idGoodie">
+                        <label for="formAjouterImageGoodie_id">
                             Goodie
                         </label>
                         <select
-                                id="formAjouterImageGoodie_idGoodie"
-                                name="formAjouterImageGoodie_idGoodie"
+                                id="formAjouterImageGoodie_id"
+                                name="formAjouterImageGoodie_id"
                                 class="form-control"
                                 onblur="verifNonVide(this);"
                         >
