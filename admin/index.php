@@ -61,12 +61,17 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formAjouterImageGoodie' &&
         $form['_submit'] == 'ajouter'
     ) {
-        CtlAjouterImageGoodie(true, 'formAjouterImageGoodie_image');
+        CtlAjouterImageGoodieExecuter(
+            $form['id'],
+            'formAjouterImageGoodie_image'
+        );
     } elseif ( // Gabarit Choix Goodie
         $form['_name'] == 'formChoisirGoodie' &&
         $form['_submit'] == 'choisir'
     ) {
-        CtlChoixGoodie(true);
+        CtlChoixGoodieExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Modifier Goodie
         $form['_name'] == 'formModifierGoodie' &&
         $form['_submit'] == 'modifierGoodie'
@@ -181,17 +186,17 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formGoodies' &&
         $form['_submit'] == 'ajouterGoodieMenu'
     ) {
-        CtlAjouterGoodie(false, NULL);
+        CtlAjouterGoodie();
     } elseif (
         $form['_name'] == 'formGoodies' &&
         $form['_submit'] == 'ajouterImageGoodieMenu'
     ) {
-        CtlAjouterImageGoodie(false, NULL);
+        CtlAjouterImageGoodie();
     } elseif (
         $form['_name'] == 'formGoodies' &&
         $form['_submit'] == 'modifierGoodieMenu'
     ) {
-        CtlChoixGoodie(false);
+        CtlChoixGoodie();
     } elseif (
         $form['_name'] == 'formGoodies' &&
         $form['_submit'] == 'supprimerGoodieMenu'

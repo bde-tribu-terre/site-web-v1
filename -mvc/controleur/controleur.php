@@ -188,6 +188,11 @@ function CtlModifierEventExecuter($id, $titre, $date, $heureHeure, $heureMinute,
     }
 }
 
+function CtlSupprimerEvent() {
+    MdlEventsTous('FP', true, true, NULL);
+    afficherSupprimerEvent();
+}
+
 function CtlSupprimerEventExecuter($id) {
     try {
         if (
@@ -204,11 +209,6 @@ function CtlSupprimerEventExecuter($id) {
         ajouterMessage($e->getCode(), $e->getMessage());
         CtlSupprimerEvent();
     }
-}
-
-function CtlSupprimerEvent() {
-    MdlEventsTous('FP', true, true, NULL);
-    afficherSupprimerEvent();
 }
 
 # Goodies
@@ -249,49 +249,52 @@ function CtlAjouterGoodieExecuter($titre, $categorie, $prixADEuro, $prixADCentim
     }
 }
 
-function CtlAjouterImageGoodie($executer, $fileImput) {
+function CtlAjouterImageGoodie() {
+    MdlGoodiesTous('nom', true, true, true);
+    afficherAjouterImageGoodie();
+}
+
+function CtlAjouterImageGoodieExecuter($id, $fileImput) {
     try {
-        if (!$executer) {
-            MdlGoodiesTous('nom', true, true, true);
-            afficherAjouterImageGoodie();
+        if (
+            !empty($id) &&
+            !empty($_FILES[$fileImput]['name'])
+        ) {
+            MdlAjouterImageGoodie(
+                RACINE . 'goodies/',
+                $id,
+                $fileImput
+            );
+            CtlAjouterImageGoodie();
         } else {
-            if (
-                !empty($GLOBALS['form']['idGoodie']) &&
-                !empty($_FILES[$fileImput]['name'])
-            ) {
-                MdlAjouterImageGoodie(RACINE . 'goodies/', $GLOBALS['form']['idGoodie'], $fileImput);
-                MdlGoodiesTous('nom', true, true, true);
-                afficherAjouterImageGoodie();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs et sélectionner une image.', 400);
-            }
+            throw new Exception('Veuillez remplir tous les champs et sélectionner une image.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlGoodiesTous('nom', true, true, true);
-        afficherAjouterImageGoodie();
+        CtlAjouterImageGoodie();
     }
 }
 
-function CtlChoixGoodie($executer) {
+function CtlChoixGoodie() {
+    MdlGoodiesTous('nom', true, true, true);
+    afficherChoixGoodie();
+}
+
+function CtlChoixGoodieExecuter($id) {
     try {
-        if (!$executer) {
-            MdlGoodiesTous('nom', true, true, true);
-            afficherChoixGoodie();
+        if (
+            !empty($id)
+        ) {
+            MdlGoodiePrecis(
+                $id
+            );
+            CtlChoixGoodie();
         } else {
-            if (
-            !empty($GLOBALS['form']['idGoodie'])
-            ) {
-                MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
-                afficherModifierGoodie();
-            } else {
-                throw new Exception('Veuillez sélectionner un goodie.', 400);
-            }
+            throw new Exception('Veuillez sélectionner un goodie.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlGoodiesTous('nom', true, true, true);
-        afficherChoixGoodie();
+        CtlChoixGoodie();
     }
 }
 
