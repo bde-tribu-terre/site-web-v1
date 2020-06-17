@@ -4,22 +4,53 @@
             <div class="well">
                 <h3>Ajouter une image à un goodie</h3>
                 <hr>
-                <form id="formAjouterImageGoodie" method="post" enctype="multipart/form-data" onsubmit="return verifForm(this);">
+                <form
+                        id="formAjouterImageGoodie"
+                        method="post"
+                        enctype="multipart/form-data"
+                        onsubmit="return verifForm(this);"
+                >
                     <div class="form-group"> <!-- Goodie en question -->
-                        <label for="formAjouterImageGoodie_idGoodie">Goodie</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formAjouterImageGoodie_idGoodie" name="formAjouterImageGoodie_idGoodie">
+                        <label for="formAjouterImageGoodie_idGoodie">
+                            Goodie
+                        </label>
+                        <select
+                                id="formAjouterImageGoodie_idGoodie"
+                                name="formAjouterImageGoodie_idGoodie"
+                                class="form-control"
+                                onblur="verifNonVide(this);"
+                        >
                             <option value="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>
                     </div>
                     <div class="div-group"> <!-- Image -->
-                        <label for="formAjouterImageGoodie_image">Sélectionner l'image</label>
-                        <input onblur="verifNonVide(this);" class="form-control" type="file" id="formAjouterImageGoodie_image" name="formAjouterImageGoodie_image" accept="image/*">
-                        <small class="form-text text-muted">⚠️ Format : 4:3, pour éviter que ça nique la mise en page.<br>🙏 Taille : 960px*720px.<br>⚠️ La miniature compte déjà comme une image. Attention aux doublons !</small>
+                        <label for="formAjouterImageGoodie_image">
+                            Sélectionner l'image
+                        </label>
+                        <input
+                                id="formAjouterImageGoodie_image"
+                                name="formAjouterImageGoodie_image"
+                                type="file"
+                                class="form-control"
+                                accept="image/*"
+                                onblur="verifNonVide(this);"
+                        >
+                        <small class="form-text text-muted">
+                            ⚠️ Format : 4:3, pour éviter que ça nique la mise en page.<br>
+                            🙏 Taille : 960px*720px.<br>
+                            ⚠️ La miniature compte déjà comme une image. Attention aux doublons !
+                        </small>
                     </div>
                     <hr>
                     <p> <!-- Ajouter l'image de goodie -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter l'image" name="formAjouterImageGoodie_ajouter_submit">
+                        <input
+                                id="formAjouterImageGoodie_ajouter_submit"
+                                name="formAjouterImageGoodie_ajouter_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Ajouter l'image"
+                        >
                     </p>
                 </form>
             </div>
@@ -32,7 +63,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>
