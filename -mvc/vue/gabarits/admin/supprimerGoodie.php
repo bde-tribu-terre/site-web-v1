@@ -19,7 +19,9 @@
                             <?php echo GOODIES ?>
                         </select>
                     </div>
-                    <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>
+                    <small class="form-text text-muted">
+                        ⚠️ Cette action est irréversible !
+                    </small>
                     <hr>
                     <div class="form-group"> <!-- Supprimer goodie -->
                         <input
