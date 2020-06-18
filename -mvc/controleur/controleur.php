@@ -86,7 +86,7 @@ function CtlVerifConnexion($login, $mdp) {
         ajouterMessage($e->getCode(), $e->getMessage());
         CtlConnexion();
     }
-}
+} // CtlConnexionExecuter en suivant le reste des standards.
 
 # Menu
 function CtlMenu() {
@@ -745,36 +745,36 @@ function CtlLog() {
 ########################################################################################################################
 # Admin - Inscription                                                                                                  #
 ########################################################################################################################
-function CtlInscription($executer) {
+function CtlInscription() {
+    afficherInscription();
+}
+
+function CtlInscriptionExecuter($cleInscription, $prenom, $nom, $login, $mdp) {
     try {
-        if (!$executer) {
-            afficherInscription();
-        } else {
-            if (
-                !empty($GLOBALS['form']['cleInscription']) &&
-                !empty($GLOBALS['form']['prenom']) &&
-                !empty($GLOBALS['form']['nom']) &&
-                !empty($GLOBALS['form']['login']) &&
-                !empty($GLOBALS['form']['mdp'])
-            ) {
-                if (MdlCleExiste($GLOBALS['form']['cleInscription'])) { // Si trouvée, alors elle est détruite.
-                    MdlAjouterMembre(
-                        $GLOBALS['form']['prenom'],
-                        $GLOBALS['form']['nom'],
-                        $GLOBALS['form']['login'],
-                        $GLOBALS['form']['mdp']
-                    );
-                    afficherInscription();
-                } else {
-                    throw new Exception('La clé d\'inscription saisie n\'existe pas.', 402);
-                }
+        if (
+            !empty($cleInscription) &&
+            !empty($prenom) &&
+            !empty($nom) &&
+            !empty($login) &&
+            !empty($mdp)
+        ) {
+            if (MdlCleExiste($cleInscription)) { // Si trouvée, alors elle est détruite.
+                MdlAjouterMembre(
+                    $prenom,
+                    $nom,
+                    $login,
+                    $mdp
+                );
+                CtlInscription();
             } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
+                throw new Exception('La clé d\'inscription saisie n\'existe pas.', 402);
             }
+        } else {
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        afficherInscription();
+        CtlInscription();
     }
 }
 
