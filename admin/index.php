@@ -2,7 +2,6 @@
 if (strlen(session_id()) < 1) session_start();
 define('RACINE', '../');
 require_once(RACINE . '-mvc/controleur/controleur.php');
-ajouterMessage(0, print_r($form, true));
 if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
     if ( // Gabarit Créer Évent
         $form['_name'] == 'formCreerEvent' &&
