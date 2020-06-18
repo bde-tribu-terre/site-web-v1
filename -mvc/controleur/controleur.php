@@ -582,167 +582,157 @@ function CtlSupprimerArticleExecuter($id) {
     }
 }
 
-function CtlAjouterArticleVideo($executer) {
-    try {
-        if (!$executer) {
-            MdlCategoriesArticlesTous();
-            afficherAjouterArticleVideo();
-        } else {
-            if (
-                !empty($GLOBALS['form']['titre']) &&
-                $GLOBALS['form']['categorie'] != '-1' &&
-                $GLOBALS['form']['visibilite'] != '-1' &&
-                !empty($GLOBALS['form']['lien']) &&
-                !empty($GLOBALS['form']['texte'])
-            ) {
-                MdlAjouterArticleVideo(
-                    $GLOBALS['form']['titre'],
-                    $GLOBALS['form']['categorie'],
-                    $GLOBALS['form']['visibilite'],
-                    $GLOBALS['form']['lien'],
-                    $GLOBALS['form']['texte']
-                );
-                MdlCategoriesArticlesTous();
-                afficherAjouterArticleVideo();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
-        }
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
-        MdlCategoriesArticlesTous();
-        afficherAjouterArticleVideo();
-    }
+function CtlAjouterArticleVideo() {
+    MdlCategoriesArticlesTous();
+    afficherAjouterArticleVideo();
 }
 
-function CtlChoixArticleVideo($executer) {
-    try {
-        if (!$executer) {
-            MdlArticlesVideoTous();
-            afficherChoixArticleVideo();
-        } else {
-            if (
-            !empty($GLOBALS['form']['id'])
-            ) {
-                MdlArticleVideoPrecis($GLOBALS['form']['id']);
-                MdlCategoriesArticlesTous();
-                afficherModifierArticleVideo();
-            } else {
-                throw new Exception('Veuillez sélectionner un article.', 400);
-            }
-        }
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
-        MdlArticlesVideoTous();
-        afficherChoixArticleVideo();
-    }
-}
-
-function CtlModifierArticleVideo() {
+function CtlAjouterArticleVideoExecuter($titre, $categorie, $visibilite, $lien, $texte) {
     try {
         if (
-            !empty($GLOBALS['form']['titre']) &&
-            $GLOBALS['form']['categorie'] != '-1' &&
-            $GLOBALS['form']['visibilite'] != '-1' &&
-            !empty($GLOBALS['form']['lien']) &&
-            !empty($GLOBALS['form']['texte'])
+            !empty($titre) &&
+            $categorie != '-1' &&
+            $visibilite != '-1' &&
+            !empty($lien) &&
+            !empty($texte)
+        ) {
+            MdlAjouterArticleVideo(
+                $titre,
+                $categorie,
+                $visibilite,
+                $lien,
+                $texte
+            );
+            CtlAjouterArticleVideo();
+        } else {
+            throw new Exception('Veuillez remplir tous les champs.', 400);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlAjouterArticleVideo();
+    }
+}
+
+function CtlChoixArticleVideo() {
+    MdlArticlesVideoTous();
+    afficherChoixArticleVideo();
+}
+
+function CtlChoixArticleVideoExecuter($id) {
+    try {
+        if (
+            !empty($id)
+        ) {
+            CtlModifierArticleVideo($id);
+        } else {
+            throw new Exception('Veuillez sélectionner un article.', 400);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlChoixArticleVideo();
+    }
+}
+
+function CtlModifierArticleVideo($id) {
+    MdlArticleVideoPrecis($id);
+    MdlCategoriesArticlesTous();
+    afficherModifierArticleVideo();
+}
+
+function CtlModifierArticleVideoExecuter($id, $titre, $categorie, $visibilite, $lien, $texte) {
+    try {
+        if (
+            !empty($titre) &&
+            $categorie != '-1' &&
+            $visibilite != '-1' &&
+            !empty($lien) &&
+            !empty($texte)
         ) {
             MdlModifierArticleVideo(
-                $GLOBALS['form']['id'],
-                $GLOBALS['form']['titre'],
-                $GLOBALS['form']['categorie'],
-                $GLOBALS['form']['visibilite'],
-                $GLOBALS['form']['lien'],
-                $GLOBALS['form']['texte']
+                $id,
+                $titre,
+                $categorie,
+                $visibilite,
+                $lien,
+                $texte
             );
-            MdlCategoriesArticlesTous();
-            MdlArticleVideoPrecis($GLOBALS['form']['id']);
-            afficherModifierArticleVideo();
+            CtlModifierArticleVideo($id);
         } else {
-            ajouterMessage(400, 'Veuillez remplir tous les champs.');
-            MdlCategoriesArticlesTous();
-            MdlArticleVideoPrecis($GLOBALS['form']['id']);
-            afficherModifierArticleVideo();
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlArticlesVideoTous();
-        afficherChoixArticleVideo();
+        CtlModifierArticleVideo($id);
     }
 }
 
-function CtlSupprimerArticleVideo($executer) {
+function CtlSupprimerArticleVideo() {
+    MdlArticlesVideoTous();
+    afficherSupprimerArticleVideo();
+}
+
+function CtlSupprimerArticleVideoExecuter($id) {
     try {
-        if (!$executer) {
-            MdlArticlesVideoTous();
-            afficherSupprimerArticleVideo();
+        if (
+            !empty($id)
+        ) {
+            MdlSupprimerArticleVideo(
+                $id
+            );
+            CtlSupprimerArticleVideo();
         } else {
-            if (
-                !empty($GLOBALS['form']['id'])
-            ) {
-                MdlSupprimerArticleVideo(
-                    $GLOBALS['form']['id']
-                );
-                MdlArticlesVideoTous();
-                afficherSupprimerArticleVideo();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlArticlesVideoTous();
-        afficherSupprimerArticleVideo();
+        CtlSupprimerArticleVideo();
     }
 }
 
-function CtlAjouterCategorieArticle($executer) {
+function CtlAjouterCategorieArticle() {
+    afficherAjouterCategorieArticle();
+}
+
+function CtlAjouterCategorieArticleExecuter($titre) {
     try {
-        if (!$executer) {
-            afficherAjouterCategorieArticle();
+        if (
+            !empty($titre)
+        ) {
+            MdlAjouterCategorieArticle(
+                $titre
+            );
+            CtlAjouterCategorieArticle();
         } else {
-            if (
-                !empty($GLOBALS['form']['titre'])
-            ) {
-                MdlAjouterCategorieArticle(
-                    $GLOBALS['form']['titre']
-                );
-                afficherAjouterCategorieArticle();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        afficherAjouterCategorieArticle();
+        CtlAjouterCategorieArticle();
     }
 }
 
-function CtlRenommerCategorieArticle($executer) {
-    try {
-        if (!$executer) {
-            MdlCategoriesArticlesTous();
-            afficherRenommerCategorieArticle();
-        } else {
-            if (
-                !empty($GLOBALS['form']['id']) &&
-                !empty($GLOBALS['form']['titre'])
-            ) {
-                MdlRenommerCategorieArticle(
-                    $GLOBALS['form']['id'],
-                    $GLOBALS['form']['titre']
-                );
-                MdlCategoriesArticlesTous();
-                afficherRenommerCategorieArticle();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
-        }
+function CtlRenommerCategorieArticle() {
+    MdlCategoriesArticlesTous();
+    afficherRenommerCategorieArticle();
+}
 
+function CtlRenommerCategorieArticleExecuter($id, $titre) {
+    try {
+        if (
+            !empty($id) &&
+            !empty($titre)
+        ) {
+            MdlRenommerCategorieArticle(
+                $id,
+                $titre
+            );
+            CtlRenommerCategorieArticle();
+        } else {
+            throw new Exception('Veuillez remplir tous les champs.', 400);
+        }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlCategoriesArticlesTous();
-        afficherRenommerCategorieArticle();
+        CtlRenommerCategorieArticle();
     }
 }
 

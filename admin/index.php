@@ -198,32 +198,54 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formAjouterArticleVideo' &&
         $form['_submit'] == 'ajouter'
     ) {
-        CtlAjouterArticleVideo(true);
+        CtlAjouterArticleVideoExecuter(
+            $form['titre'],
+            $form['categorie'],
+            $form['visibilite'],
+            $form['lien'],
+            $form['texte']
+        );
     } elseif ( // Gabarit Choix Article Video
         $form['_name'] == 'formChoisirArticleVideo' &&
         $form['_submit'] == 'choisir'
     ) {
-        CtlChoixArticleVideo(true);
+        CtlChoixArticleVideoExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Modifier Article Video
         $form['_name'] == 'formModifierArticleVideo' &&
         $form['_submit'] == 'modifier'
     ) {
-        CtlModifierArticleVideo();
+        CtlModifierArticleVideoExecuter(
+            $form['id'],
+            $form['titre'],
+            $form['categorie'],
+            $form['visibilite'],
+            $form['lien'],
+            $form['texte']
+        );
     } elseif ( // Gabarit Supprimer Article Video
         $form['_name'] == 'formSupprimerArticleVideo' &&
         $form['_submit'] == 'supprimer'
     ) {
-        CtlSupprimerArticleVideo(true);
+        CtlSupprimerArticleVideoExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Ajouter Catégorie Article
         $form['_name'] == 'formAjouterCategorieArticle' &&
         $form['_submit'] == 'ajouter'
     ) {
-        CtlAjouterCategorieArticle(true);
+        CtlAjouterCategorieArticleExecuter(
+            $form['titre']
+        );
     } elseif ( // Gabarit Renommer Catégorie Article
         $form['_name'] == 'formRenommerCategorieArticle' &&
         $form['_submit'] == 'renommer'
     ) {
-        CtlRenommerCategorieArticle(true);
+        CtlRenommerCategorieArticleExecuter(
+            $form['id'],
+            $form['titre']
+        );
     } elseif ( // Gabarit Menu
         $form['_name'] == 'formEvents' &&
         $form['_submit'] == 'creerEventMenu'
@@ -293,27 +315,27 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'ajouterArticleVideoMenu'
     ) {
-        CtlAjouterArticleVideo(false);
+        CtlAjouterArticleVideo();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'modifierArticleVideoMenu'
     ) {
-        CtlChoixArticleVideo(false);
+        CtlChoixArticleVideo();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'supprimerArticleVideoMenu'
     ) {
-        CtlSupprimerArticleVideo(false);
+        CtlSupprimerArticleVideo();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'ajouterCategorieArticleMenu'
     ) {
-        CtlAjouterCategorieArticle(false);
+        CtlAjouterCategorieArticle();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'renommerCategorieArticleMenu'
     ) {
-        CtlRenommerCategorieArticle(false);
+        CtlRenommerCategorieArticle();
     } elseif (
         $form['_name'] == 'formLog' &&
         $form['_submit'] == 'afficherLog'
