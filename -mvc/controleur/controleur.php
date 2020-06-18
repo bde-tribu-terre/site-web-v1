@@ -961,6 +961,7 @@ function CtlGoodiePrecis($id) {
     try {
         MdlGoodiePrecis($id);
         if ($GLOBALS['retoursModele']['goodie']) {
+            MdlImagesGoodie($id);
             afficherGoodiePrecis();
         } else {
             throw new Exception('Le goodie recherché n\'existe pas.', 404);

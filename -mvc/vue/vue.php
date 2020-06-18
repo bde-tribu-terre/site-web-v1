@@ -1044,7 +1044,7 @@ function afficherEventPrecis() {
     define('NB_JOURS', $nbJoursStr);
     define('HEURE', substr($GLOBALS['retoursModele']['event']['heure'], 0, 2) . 'h' . substr($GLOBALS['retoursModele']['event']['heure'], 3, 2));
     define('LIEU', $GLOBALS['retoursModele']['event']['lieu']);
-    define('DESC', nl2br($GLOBALS['retoursModele']['event']['desc']));
+    define('DESC', nl2br($GLOBALS['retoursModele']['event']['description']));
 
     afficherPage($GLOBALS['retoursModele']['event']['titre'], 'eventPrecis.php', 'public');
 }
@@ -1105,65 +1105,79 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
 }
 
 function afficherGoodiePrecis($goodie) {
-    // define('TITLE', 'Évents');
-    define('GABARIT', 'goodiePrecis.php');
-
-    $id = $goodie->idGoodies;
-    $miniature = $goodie->miniatureGoodies;
-    $lignesImages = MdlImagesGoodie($id);
-
-    $carouselGoodie = '';
-    if (empty($lignesImages)) {
-        $carouselGoodie .= '<img src="' . RACINE . 'goodies/' . $miniature . '" class="img-arrondi ombre">';
+    define('TITRE', $GLOBALS['retoursModele']['goodie']['titre']);
+    define('PRIX_AD', $GLOBALS['retoursModele']['goodie']['prixAD']);
+    define('PRIX_NAD', $GLOBALS['retoursModele']['goodie']['prixNAD']);
+    define('DESC', nl2br($GLOBALS['retoursModele']['goodie']['description']));
+    define('ID', $GLOBALS['retoursModele']['goodie']['id']);
+    if (empty($GLOBALS['retoursModele']['imagesGoodie'])) {
+        $carouselGoodie =
+            '
+            <img
+                    src="' . RACINE . 'goodies/' . $GLOBALS['retoursModele']['goodie']['miniature'] . '"
+                    class="img-arrondi ombre"
+                    alt="Image"
+            >
+            ';
     } else {
         $nb = 0;
-        $carouselGoodieIndicator = '<ol class="carousel-indicators">';
-        $carouselGoodieImages = '<div class="carousel-inner" role="listbox">';
-
         # Image miniature
-        $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '" class="active"></li>';
-        $carouselGoodieImages .=
-            '<div class="item active">' .
-                '<img class="arrondi" src="' . RACINE . 'goodies/' . $miniature . '" alt="Image">' .
-            '</div>';
+        $carouselGoodieIndicator =
+            '
+            <li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '" class="active">
+            </li>
+            ';
+        $carouselGoodieImages =
+            '
+            <div class="item active">
+                <img
+                        class="arrondi"
+                        src="' . RACINE . 'goodies/' . $GLOBALS['retoursModele']['goodie']['miniature'] . '"
+                        alt="Image"
+                >
+            </div>
+            ';
 
         # Le reste des -images
-        foreach ($lignesImages as $ligne) {
-            $lien = $ligne->lienImagesGoodies;
-            $carouselGoodieIndicator .= '<li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '"></li>';
+        foreach ($GLOBALS['retoursModele']['imagesGoodie'] as $image) {
+            $carouselGoodieIndicator .=
+                '
+                <li data-target="#carouselGoodie" data-slide-to="' . $nb++ . '">
+                </li>
+                ';
             $carouselGoodieImages .=
-                '<div class="item">' .
-                    '<img class="arrondi" src="' . RACINE . 'goodies/' . $lien . '" alt="Image">' .
-                '</div>';
+                '
+                <div class="item">
+                    <img
+                            class="arrondi"
+                            src="' . RACINE . 'goodies/' . $image['lien'] . '"
+                            alt="Image"
+                    >
+                </div>
+                ';
         }
-        $carouselGoodieIndicator .= '</ol>';
-        $carouselGoodieImages .= '</div>';
+        $carouselGoodieIndicator = '<ol class="carousel-indicators">' . $carouselGoodieIndicator . '</ol>';
+        $carouselGoodieImages = '<div class="carousel-inner" role="listbox">' . $carouselGoodieImages . '</div>';
 
         $carouselGoodie =
-            '<div id="carouselGoodie" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">' .
-                $carouselGoodieIndicator .
-                $carouselGoodieImages .
-                '<a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">' .
-                    '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>' .
-                    '<span class="sr-only">Previous</span>' .
-                '</a>' .
-                '<a class="right carousel-control" href="#carouselGoodie" role="button" data-slide="next">' .
-                    '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>' .
-                    '<span class="sr-only">Next</span>' .
-                '</a>' .
-            '</div>';
+            '
+            <div id="carouselGoodie" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">
+            ' .$carouselGoodieIndicator . '
+            ' . $carouselGoodieImages . '
+            <a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carouselGoodie" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+            </div>
+            ';
     }
-
-    define('ID', $id);
-    define('TITRE', htmlentities($goodie->titreGoodies, ENT_QUOTES, "UTF-8"));
-    define('PRIX_AD', $goodie->prixADGoodies);
-    define('PRIX_NAD', $goodie->prixNADGoodies);
-    define('CATEGORIE', $goodie->categorieGoodies);
-    define('DESC', nl2br(htmlentities($goodie->descGoodies, ENT_QUOTES, "UTF-8")));
     define('CAROUSEL_GOODIES', $carouselGoodie);
-    define('TITLE', TITRE); // Ici.
 
-    afficherCadre('PUBLIC');
+    afficherPage($GLOBALS['retoursModele']['goodie']['titre'], 'goodiePrecis.php', 'public');
 }
 
 ########################################################################################################################
