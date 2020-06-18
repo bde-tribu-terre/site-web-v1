@@ -994,7 +994,7 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
                 ';
                 break;
             default:
-                $nbJoursStr .= ' (dans ' . $nbJours . ' jours)';
+                $nbJoursStr .= $nbJours > 1 ? (' (dans ' . $nbJours . ' jours)') : '';
         }
         $tableEvents .=
             '
