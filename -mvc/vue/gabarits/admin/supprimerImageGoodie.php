@@ -6,12 +6,12 @@
                 <hr>
                 <form id="formSupprimerImageGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- ID du goodie -->
-                        <label for="formSupprimerImageGoodie_idGoodie">
+                        <label for="formSupprimerImageGoodie_id">
                             ID du goodie
                         </label>
                         <input
-                                id="formSupprimerImageGoodie_idGoodie"
-                                name="formSupprimerImageGoodie_idGoodie"
+                                id="formSupprimerImageGoodie_id"
+                                name="formSupprimerImageGoodie_id"
                                 type="text"
                                 class="form-control"
                                 readonly
