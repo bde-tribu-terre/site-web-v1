@@ -191,7 +191,7 @@ function CtlModifierEventExecuter($id, $titre, $date, $heureHeure, $heureMinute,
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        CtlModifierEvent();
+        CtlModifierEvent($id);
     }
 }
 
@@ -381,58 +381,56 @@ function CtlSupprimerGoodieExecuter($id) {
 }
 
 # Journaux
-function CtlAjouterJournal($executer, $fileImput) {
+function CtlAjouterJournal() {
+    afficherAjouterJournal();
+}
+
+function CtlAjouterJournalExecuter($titre, $mois, $annee, $fileImput) {
     try {
-        if (!$executer) {
-            afficherAjouterJournal();
+        if (
+            !empty($titre) &&
+            !empty($mois) &&
+            !empty($annee) &&
+            !empty($_FILES[$fileImput]['name'])
+        ) {
+            MdlAjouterJournal(
+                RACINE . 'journaux/',
+                $titre,
+                $mois,
+                $annee,
+                $fileImput
+            );
+            CtlAjouterJournal();
         } else {
-            if (
-                !empty($GLOBALS['form']['titre']) &&
-                !empty($GLOBALS['form']['mois']) &&
-                !empty($GLOBALS['form']['annee']) &&
-                !empty($_FILES[$fileImput]['name'])
-            ) {
-                MdlAjouterJournal(
-                    RACINE . 'journaux/',
-                    $GLOBALS['form']['titre'],
-                    $GLOBALS['form']['mois'],
-                    $GLOBALS['form']['annee'],
-                    $fileImput
-                );
-                afficherAjouterJournal();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        afficherAjouterJournal();
+        CtlAjouterJournal();
     }
 }
 
-function CtlSupprimerJournal($executer) {
+function CtlSupprimerJournal() {
+    MdlJournauxTous(NULL);
+    afficherSupprimerJournal();
+}
+
+function CtlSupprimerJournalExecuter($id) {
     try {
-        if (!$executer) {
-            MdlJournauxTous(NULL);
-            afficherSupprimerJournal();
+        if (
+            !empty($id)
+        ) {
+            MdlSupprimerJournal(
+                RACINE . 'journaux/',
+                $id
+            );
+            CtlSupprimerJournal();
         } else {
-            if (
-                !empty($GLOBALS['form']['id'])
-            ) {
-                MdlSupprimerJournal(
-                    RACINE . 'journaux/',
-                    $GLOBALS['form']['id']
-                );
-                MdlJournauxTous(NULL);
-                afficherSupprimerJournal();
-            } else {
-                throw new Exception('Veuillez sélectionner un journal.', 400);
-            }
+            throw new Exception('Veuillez sélectionner un journal.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlJournauxTous(NULL);
-        afficherSupprimerJournal();
+        CtlSupprimerJournal();
     }
 }
 

@@ -117,12 +117,19 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formAjouterJournal' &&
         $form['_submit'] == 'ajouterJournal'
     ) {
-        CtlAjouterJournal(true, 'formAjouterJournal_fichierPDF');
+        CtlAjouterJournalExecuter(
+            $form['titre'],
+            $form['mois'],
+            $form['annee'],
+            'formAjouterJournal_fichierPDF'
+        );
     } elseif ( // Gabarit Supprimer Journal
         $form['_name'] == 'formSupprimerJournal' &&
         $form['_submit'] == 'supprimer'
     ) {
-        CtlSupprimerJournal(true);
+        CtlSupprimerJournalExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Ajouter Article
         $form['_name'] == 'formAjouterArticle' &&
         $form['_submit'] == 'ajouter'
