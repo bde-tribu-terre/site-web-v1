@@ -6,8 +6,15 @@
                 <hr>
                 <form id="formSupprimerGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Goodie en question -->
-                        <label for="formSupprimerGoodie_id">Goodie</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerGoodie_id" name="formSupprimerGoodie_id">
+                        <label for="formSupprimerGoodie_id">
+                            Goodie
+                        </label>
+                        <select
+                                id="formSupprimerGoodie_id"
+                                name="formSupprimerGoodie_id"
+                                class="form-control"
+                                onblur="verifNonVide(this);"
+                        >
                             <option value="">--Choisir un goodie--</option>
                             <?php echo GOODIES ?>
                         </select>
@@ -15,7 +22,13 @@
                     <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>
                     <hr>
                     <div class="form-group"> <!-- Supprimer goodie -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer le goodie" name="formSupprimerGoodie_supprimer_submit">
+                        <input
+                                id="formSupprimerGoodie_supprimer_submit"
+                                name="formSupprimerGoodie_supprimer_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Supprimer le goodie"
+                        >
                     </div>
                 </form>
             </div>
@@ -28,7 +41,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>

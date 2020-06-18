@@ -6,51 +6,166 @@
                 <hr>
                 <form id="formModifierGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Supprimer des images du goodie -->
-                        <input class="btn btn-danger" type="submit" value="Supprimer des images du goodie" name="formModifierGoodie_supprimerImages_submit">
+                        <input
+                                id="formModifierGoodie_supprimerImages_submit"
+                                name="formModifierGoodie_supprimerImages_submit"
+                                type="submit"
+                                class="btn btn-danger"
+                                value="Supprimer des images du goodie"
+                        >
                     </div>
                     <hr>
                     <div class="form-group"> <!-- ID du goodie -->
-                        <label for="formModifierGoodie_idGoodie">ID du goodie</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_idGoodie" type="text" value="<?php echo ID ?>" name="formModifierGoodie_idGoodie" readonly>
+                        <label for="formModifierGoodie_id">
+                            ID du goodie
+                        </label>
+                        <input
+                                id="formModifierGoodie_id"
+                                name="formModifierGoodie_id"
+                                type="text" value="<?php echo ID ?>"
+                                class="form-control"
+                                readonly
+                                onblur="verifNonVide(this);"
+                        >
                     </div>
                     <div class="form-group"> <!-- Titre du goodie -->
-                        <label for="formModifierGoodie_titreGoodie">Titre du goodie</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 64);" class="form-control" id="formModifierGoodie_titreGoodie" type="text" value="<?php echo TITRE ?>" placeholder="Titre" name="formModifierGoodie_titreGoodie">
+                        <label for="formModifierGoodie_titre">
+                            Titre du goodie
+                        </label>
+                        <input
+                                id="formModifierGoodie_titre"
+                                name="formModifierGoodie_titre"
+                                type="text"
+                                class="form-control"
+                                placeholder="Titre"
+                                value="<?php echo TITRE ?>"
+                                onblur="verifNonVide(this);"
+                                oninput="garderMoins(this, 64);"
+                        >
                     </div>
                     <div class="form-group"> <!-- Catégorie -->
-                        <label for="formModifierGoodie_categorie">Catégorie</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_categorie" name="formModifierGoodie_categorie">
-                            <option value="0"<?php if (CATEGORIE == 0) { echo ' selected'; } ?>>Caché</option>
-                            <option value="1"<?php if (CATEGORIE == 1) { echo ' selected'; } ?>>Disponible</option>
-                            <option value="2"<?php if (CATEGORIE == 2) { echo ' selected'; } ?>>Bientôt disponible</option>
-                            <option value="3"<?php if (CATEGORIE == 3) { echo ' selected'; } ?>>En rupture de stock</option>
+                        <label for="formModifierGoodie_categorie">
+                            Catégorie
+                        </label>
+                        <select
+                                id="formModifierGoodie_categorie"
+                                name="formModifierGoodie_categorie"
+                                class="form-control"
+                                onblur="verifNonVide(this);"
+                        >
+                            <option value="0"<?php if (CATEGORIE == 0) { echo ' selected'; } ?>>
+                                Caché
+                            </option>
+                            <option value="1"<?php if (CATEGORIE == 1) { echo ' selected'; } ?>>
+                                Disponible
+                            </option>
+                            <option value="2"<?php if (CATEGORIE == 2) { echo ' selected'; } ?>>
+                                Bientôt disponible
+                            </option>
+                            <option value="3"<?php if (CATEGORIE == 3) { echo ' selected'; } ?>>
+                                En rupture de stock
+                            </option>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Prix adhérent -->
-                        <label for="formModifierGoodie_prixADEuro">Prix adhérent</label>
-                        <label for="formModifierGoodie_prixADCentimes" style="display: none;">Prix adhérent (centimes)</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixADEuro" type="number" value="<?php echo PRIX_AD_EURO ?>" min="0" name="formModifierGoodie_prixADEuro" placeholder="Euros">
-                        <small class="form-text text-muted">Euros</small>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixADCentimes" type="number" value="<?php echo PRIX_AD_CENTIMES ?>" min="0" max="99" name="formModifierGoodie_prixADCentimes" placeholder="Centimes">
-                        <small class="form-text text-muted">Centimes</small>
+                        <label for="formModifierGoodie_prixADEuro">
+                            Prix adhérent
+                        </label>
+                        <label for="formModifierGoodie_prixADCentimes" style="display: none;">
+                            Prix adhérent (centimes)
+                        </label>
+                        <input
+                                id="formModifierGoodie_prixADEuro"
+                                name="formModifierGoodie_prixADEuro"
+                                type="number"
+                                class="form-control"
+                                min="0"
+                                placeholder="Euros"
+                                value="<?php echo PRIX_AD_EURO ?>"
+                                onblur="verifNonVide(this);"
+                        >
+                        <small class="form-text text-muted">
+                            Euros
+                        </small>
+                        <input
+                                id="formModifierGoodie_prixADCentimes"
+                                name="formModifierGoodie_prixADCentimes"
+                                type="number"
+                                class="form-control"
+                                min="0"
+                                max="99"
+                                placeholder="Centimes"
+                                value="<?php echo PRIX_AD_CENTIMES ?>"
+                                onblur="verifNonVide(this);"
+                        >
+                        <small class="form-text text-muted">
+                            Centimes
+                        </small>
                     </div>
                     <div class="form-group"> <!-- Prix non-adhérent -->
-                        <label for="formModifierGoodie_prixNADEuro">Prix non-adhérent</label>
-                        <label for="formModifierGoodie_prixNADtCentimes">Prix non-adhérent (centimes)</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixNADEuro" type="number" value="<?php echo PRIX_NAD_EURO ?>" min="0" name="formModifierGoodie_prixNADEuro" placeholder="Euros">
-                        <small class="form-text text-muted">Euros</small>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formModifierGoodie_prixNADCentimes" type="number" value="<?php echo PRIX_NAD_CENTIMES ?>" min="0" max="99" name="formModifierGoodie_prixNADCentimes" placeholder="Centimes">
-                        <small class="form-text text-muted">Centimes</small>
+                        <label for="formModifierGoodie_prixNADEuro">
+                            Prix non-adhérent
+                        </label>
+                        <label for="formModifierGoodie_prixNADCentimes">
+                            Prix non-adhérent (centimes)
+                        </label>
+                        <input
+                                id="formModifierGoodie_prixNADEuro"
+                                name="formModifierGoodie_prixNADEuro"
+                                type="number"
+                                class="form-control"
+                                min="0"
+                                placeholder="Euros"
+                                value="<?php echo PRIX_NAD_EURO ?>"
+                                onblur="verifNonVide(this);"
+                        >
+                        <small class="form-text text-muted">
+                            Euros
+                        </small>
+                        <input
+                                id="formModifierGoodie_prixNADCentimes"
+                                name="formModifierGoodie_prixNADCentimes"
+                                type="number"
+                                class="form-control"
+                                min="0"
+                                max="99"
+                                placeholder="Centimes"
+                                value="<?php echo PRIX_NAD_CENTIMES ?>"
+                                onblur="verifNonVide(this);"
+                        >
+                        <small class="form-text text-muted">
+                            Centimes
+                        </small>
                     </div>
                     <div class="form-group"> <!-- Description du goodie -->
-                        <label for="formModifierGoodie_descGoodie">Description du goodie</label>
-                        <textarea onblur="verifNonVide(this);" oninput="garderMoins(this, 7999);" class="form-control" id="formModifierGoodie_descGoodie" placeholder="Description du goodie" name="formModifierGoodie_descGoodie" rows="20"><?php echo DESC ?></textarea>
-                        <small class="form-text text-muted">Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.</small>
+                        <label for="formModifierGoodie_desc">
+                            Description du goodie
+                        </label>
+                        <textarea
+                                id="formModifierGoodie_desc"
+                                name="formModifierGoodie_desc"
+                                class="form-control"
+                                rows="20"
+                                placeholder="Description du goodie"
+                                onblur="verifNonVide(this);"
+                                oninput="garderMoins(this, 7999);"
+                        ><?php echo DESC ?></textarea>
+                        <small class="form-text text-muted">
+                            Sur PC, vous pouvez augmenter la taille de la zone de saisie en bas à droite.
+                        </small>
                     </div>
-                    <small class="form-text text-muted">⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé !</small>
+                    <small class="form-text text-muted">
+                        ⚠️ Pour modifier la miniature il faut recréer le goodie. Désolé !
+                    </small>
                     <hr>
                     <div class="form-group"> <!-- Modifier Goodie -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Modifier le goodie" name="formModifierGoodie_modifierGoodie_submit">
+                        <input
+                                id="formModifierGoodie_modifierGoodie_submit"
+                                name="formModifierGoodie_modifierGoodie_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Modifier le goodie"
+                        >
                     </div>
                 </form>
             </div>
@@ -63,7 +178,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>

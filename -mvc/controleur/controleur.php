@@ -184,7 +184,7 @@ function CtlModifierEventExecuter($id, $titre, $date, $heureHeure, $heureMinute,
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        CtlChoixEvent();
+        CtlModifierEvent();
     }
 }
 
@@ -285,10 +285,7 @@ function CtlChoixGoodieExecuter($id) {
         if (
             !empty($id)
         ) {
-            MdlGoodiePrecis(
-                $id
-            );
-            CtlChoixGoodie();
+            CtlModifierGoodie($id);
         } else {
             throw new Exception('Veuillez sélectionner un goodie.', 400);
         }
@@ -298,80 +295,80 @@ function CtlChoixGoodieExecuter($id) {
     }
 }
 
-function CtlModifierGoodie() {
+function CtlModifierGoodie($id) {
+    MdlGoodiePrecis($id);
+    afficherModifierGoodie();
+}
+
+function CtlModifierGoodieExecuter($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
     try {
         if (
-            !empty($GLOBALS['form']['titreGoodie']) &&
-            (!empty($GLOBALS['form']['categorie']) || $GLOBALS['form']['categorie'] == 0) && $GLOBALS['form']['categorie'] != '-1' &&
-            (!empty($GLOBALS['form']['prixADEuro']) || $GLOBALS['form']['prixADEuro'] == 0) &&
-            (!empty($GLOBALS['form']['prixADCentimes']) || $GLOBALS['form']['prixADCentimes'] == 0) &&
-            (!empty($GLOBALS['form']['prixNADEuro']) || $GLOBALS['form']['prixNADEuro'] == 0) &&
-            (!empty($GLOBALS['form']['prixNADCentimes']) || $GLOBALS['form']['prixNADCentimes'] == 0) &&
-            !empty($GLOBALS['form']['descGoodie'])
+            !empty($titre) &&
+            (!empty($categorie) || $categorie == 0) && $categorie != '-1' &&
+            (!empty($prixADEuro) || $prixADEuro == 0) &&
+            (!empty($prixADCentimes) || $prixADCentimes == 0) &&
+            (!empty($prixNADEuro) || $prixNADEuro == 0) &&
+            (!empty($prixNADCentimes) || $prixNADCentimes == 0) &&
+            !empty($desc)
         ) {
             MdlModifierGoodie(
-                $GLOBALS['form']['idGoodie'],
-                $GLOBALS['form']['titreGoodie'],
-                $GLOBALS['form']['categorie'],
-                $GLOBALS['form']['prixADEuro'],
-                $GLOBALS['form']['prixADCentimes'],
-                $GLOBALS['form']['prixNADEuro'],
-                $GLOBALS['form']['prixNADCentimes'],
-                $GLOBALS['form']['descGoodie']
+                $id,
+                $titre,
+                $categorie,
+                $prixADEuro,
+                $prixADCentimes,
+                $prixNADEuro,
+                $prixNADCentimes,
+                $desc
             );
-            MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
-            afficherModifierGoodie();
+            CtlModifierGoodie($id);
         } else {
-            ajouterMessage(400, 'Veuillez remplir tous les champs.');
-            MdlGoodiePrecis($GLOBALS['form']['idGoodie']);
-            afficherModifierGoodie();
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlGoodiesTous('nom', true, true, true);
-        afficherChoixGoodie();
+        CtlModifierGoodie($id);
     }
 }
 
-function CtlAllerSupprimerImageGoodie() {
+function CtlSupprimerImageGoodie($id) {
+    MdlImagesGoodie($id);
+    afficherSupprimerImageGoodie();
+}
+
+function CtlSupprimerImageGoodieExecuter($id, $arrayIdImages) {
     try {
-        foreach ($GLOBALS['form'] as $key => $value) {
-            if ($value == 'on') {
-                MdlSupprimerImageGoodie(RACINE . 'goodies/', $key, true);
-            }
+        foreach ($arrayIdImages as $idImage) {
+            MdlSupprimerImageGoodie(RACINE . 'goodies/', $idImage, true);
         }
-        MdlImagesGoodie($GLOBALS['form']['idGoodie']);
-        afficherSupprimerImageGoodie();
+        CtlSupprimerImageGoodie($id);
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlGoodiesTous('nom', true, true, true);
-        afficherChoixGoodie();
+        CtlSupprimerImageGoodie($id);
     }
 }
 
-function CtlSupprimerGoodie($executer) {
+function CtlSupprimerGoodie() {
+    MdlGoodiesTous('nom', true, true, true);
+    afficherSupprimerGoodie();
+}
+
+function CtlSupprimerGoodieExecuter($id) {
     try {
-        if (!$executer) {
-            MdlGoodiesTous('nom', true, true, true);
-            afficherSupprimerGoodie();
+        if (
+            !empty($id)
+        ) {
+            MdlSupprimerGoodie(
+                RACINE . 'goodies/',
+                $id
+            );
+            CtlSupprimerGoodie();
         } else {
-            if (
-                !empty($GLOBALS['form']['id'])
-            ) {
-                MdlSupprimerGoodie(
-                    RACINE . 'goodies/',
-                    $GLOBALS['form']['id']
-                );
-                MdlGoodiesTous('nom', true, true, true);
-                afficherSupprimerGoodie();
-            } else {
-                throw new Exception('Veuillez sélectionner un goodie.', 400);
-            }
+            throw new Exception('Veuillez sélectionner un goodie.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlGoodiesTous('nom', true, true, true);
-        afficherSupprimerGoodie();
+        CtlSupprimerGoodie();
     }
 }
 

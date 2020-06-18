@@ -6,13 +6,29 @@
                 <hr>
                 <form id="formSupprimerImageGoodie" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- ID du goodie -->
-                        <label for="formSupprimerImageGoodie_idGoodie">ID du goodie</label>
-                        <input onblur="verifNonVide(this);" class="form-control" id="formSupprimerImageGoodie_idGoodie" type="text" value="<?php echo ID ?>" name="formSupprimerImageGoodie_idGoodie" readonly>
+                        <label for="formSupprimerImageGoodie_idGoodie">
+                            ID du goodie
+                        </label>
+                        <input
+                                id="formSupprimerImageGoodie_idGoodie"
+                                name="formSupprimerImageGoodie_idGoodie"
+                                type="text"
+                                class="form-control"
+                                readonly
+                                value="<?php echo ID ?>"
+                                onblur="verifNonVide(this);"
+                        >
                     </div>
                     <?php echo IMAGES_GOODIE ?>
                     <hr>
                     <div class="form-group"> <!-- Supprimer les images -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer les images" name="formSupprimerImageGoodie_supprimer_submit">
+                        <input
+                                id="formSupprimerImageGoodie_supprimer_submit"
+                                name="formSupprimerImageGoodie_supprimer_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Supprimer les images"
+                        >
                     </div>
                 </form>
             </div>
@@ -25,7 +41,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>

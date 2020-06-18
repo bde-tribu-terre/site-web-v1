@@ -76,22 +76,44 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formModifierGoodie' &&
         $form['_submit'] == 'modifierGoodie'
     ) {
-        CtlModifierGoodie();
+        CtlModifierGoodieExecuter(
+            $form['id'],
+            $form['titre'],
+            $form['categorie'],
+            $form['prixADEuro'],
+            $form['prixADCentimes'],
+            $form['prixNADEuro'],
+            $form['prixNADCentimes'],
+            $form['desc']
+        );
     } elseif (
         $form['_name'] == 'formModifierGoodie' &&
         $form['_submit'] == 'supprimerImages'
     ) {
-        CtlAllerSupprimerImageGoodie();
+        CtlSupprimerImageGoodie(
+            $form['id']
+        );
     } elseif ( // Gabarit Supprimer Images Goodie
         $form['_name'] == 'formSupprimerImageGoodie' &&
         $form['_submit'] == 'supprimer'
     ) {
-        CtlAllerSupprimerImageGoodie();
+        $arrayIdImages = array();
+        foreach ($form as $name => $value) {
+            if (substr($name, 0, 5) == 'image' && $value = 'on') {
+                array_push($arrayIdImages, substr($name, 5));
+            }
+        }
+        CtlSupprimerImageGoodieExecuter(
+            $form['id'],
+            $arrayIdImages
+        );
     } elseif ( // Gabarit Supprimer Goodie
         $form['_name'] == 'formSupprimerGoodie' &&
         $form['_submit'] == 'supprimer'
     ) {
-        CtlSupprimerGoodie(true);
+        CtlSupprimerGoodieExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Ajouter Journal
         $form['_name'] == 'formAjouterJournal' &&
         $form['_submit'] == 'ajouterJournal'
@@ -201,7 +223,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formGoodies' &&
         $form['_submit'] == 'supprimerGoodieMenu'
     ) {
-        CtlSupprimerGoodie(false);
+        CtlSupprimerGoodie();
     } elseif (
         $form['_name'] == 'formJournal' &&
         $form['_submit'] == 'ajouterJournalMenu'

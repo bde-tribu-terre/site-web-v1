@@ -369,8 +369,15 @@ function afficherSupprimerImageArticle() {
         $images .=
             '
             <div class="form-group">
-                <label for="formSupprimerImageArticle_' . $image['id'] . '"><img src="' . RACINE . 'articles/' . $image['lien'] . '" width="200" height="100" alt="img"></label>
-                <input class="form-control" type="checkbox" name="formSupprimerImageArticle_' . $image['id'] . '" id="formSupprimerImageArticle_' . $image['id'] . '">
+                <label for="formSupprimerImageArticle_image' . $image['id'] . '">
+                    <img src="' . RACINE . 'articles/' . $image['lien'] . '" width="200" height="100" alt="img">
+                </label>
+                <input
+                        id="formSupprimerImageArticle_image' . $image['id'] . '"
+                        name="formSupprimerImageArticle_image' . $image['id'] . '"
+                        type="checkbox"
+                        class="form-control"
+                >
             </div>
             <br>';
     }
