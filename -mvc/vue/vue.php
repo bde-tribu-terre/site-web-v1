@@ -235,14 +235,21 @@ function afficherSupprimerImageGoodie() {
         $images .=
             '
             <div class="form-group">
-                <label for="formSupprimerImageArticle_' . $image['id'] . '"><img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="100" alt="img"></label>
-                <input class="form-control" type="checkbox" name="formSupprimerImageArticle_' . $image['id'] . '" id="formSupprimerImageArticle_' . $image['id'] . '">
+                <label for="formSupprimerImageGoodie_image' . $image['id'] . '">
+                    <img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="100" alt="img">
+                </label>
+                <input
+                        id="formSupprimerImageGoodie_image' . $image['id'] . '"
+                        name="formSupprimerImageGoodie_image' . $image['id'] . '"
+                        type="checkbox"
+                        class="form-control"
+                >
             </div>
             <br>';
     }
     $images .= $images == '' ? '<p>Ce goodie n\'a aucune image. La miniature n\'est pas modifiable.</p>' : '';
-    define('ID', $GLOBALS['form']['idGoodie']);
-    define('IMAGES_GOODIE', $images); // Car la constante IMAGES existe déjà...
+    define('ID', $GLOBALS['retoursModele']['goodie']['id']);
+    define('IMAGES_ARTICLE', $images); // Car la constante IMAGES existe déjà...
 
     afficherPage('Supprimer une image d\'un goodie', 'supprimerImageGoodie.php', 'admin');
 }
@@ -381,8 +388,8 @@ function afficherSupprimerImageArticle() {
             </div>
             <br>';
     }
-    $images .= $images == '' ? '<p>Ce goodie n\'a aucune image. La miniature n\'est pas modifiable.</p>' : '';
-    define('ID', $GLOBALS['form']['id']);
+    $images .= $images == '' ? '<p>Cet article n\'a aucune image.</p>' : '';
+    define('ID', $GLOBALS['retoursModele']['article']['id']);
     define('IMAGES_ARTICLE', $images); // Car la constante IMAGES existe déjà...
 
     afficherPage('Supprimer une image d\'un article', 'supprimerImageArticle.php', 'admin');

@@ -332,6 +332,7 @@ function CtlModifierGoodieExecuter($id, $titre, $categorie, $prixADEuro, $prixAD
 }
 
 function CtlSupprimerImageGoodie($id) {
+    MdlGoodiePrecis($id);
     MdlImagesGoodie($id);
     afficherSupprimerImageGoodie();
 }
