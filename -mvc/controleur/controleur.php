@@ -45,7 +45,7 @@ if (count($form) == 0) {
 # /!\ Tout ce qui suit doit être en commentaire dans la version finale du site /!\                                     #
 ########################################################################################################################
 # Visualisation du formulaire POST
-ajouterMessage(0, print_r($form, true));
+##ajouterMessage(0, print_r($form, true));
 
 ########################################################################################################################
 # Fonctions d'ajout dans les tableaux globaux (pour la lisibilité)                                                     #
