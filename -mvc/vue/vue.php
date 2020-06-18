@@ -236,7 +236,7 @@ function afficherSupprimerImageGoodie() {
             '
             <div class="form-group">
                 <label for="formSupprimerImageGoodie_image' . $image['id'] . '">
-                    <img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="100" alt="img">
+                    <img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="150" alt="img">
                 </label>
                 <input
                         id="formSupprimerImageGoodie_image' . $image['id'] . '"
@@ -377,7 +377,7 @@ function afficherSupprimerImageArticle() {
             '
             <div class="form-group">
                 <label for="formSupprimerImageArticle_image' . $image['id'] . '">
-                    <img src="' . RACINE . 'articles/' . $image['lien'] . '" width="200" height="100" alt="img">
+                    <img src="' . RACINE . 'articles/' . $image['lien'] . '" width="200" height="150" alt="img">
                 </label>
                 <input
                         id="formSupprimerImageArticle_image' . $image['id'] . '"
