@@ -6,16 +6,31 @@
                 <hr>
                 <form id="formSupprimerArticleVideo" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Article en question -->
-                        <label for="formSupprimerArticleVideo_id">Article vidéo</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formSupprimerArticleVideo_id" name="formSupprimerArticleVideo_id">
+                        <label for="formSupprimerArticleVideo_id">
+                            Article vidéo
+                        </label>
+                        <select
+                                id="formSupprimerArticleVideo_id"
+                                name="formSupprimerArticleVideo_id"
+                                class="form-control"
+                                onblur="verifNonVide(this);"
+                        >
                             <option value="">--Choisir un article vidéo--</option>
                             <?php echo ARTICLES_VIDEO ?>
                         </select>
                     </div>
-                    <small class="form-text text-muted">⚠️ Cette action est irréversible !</small>
+                    <small class="form-text text-muted">
+                        ⚠️ Cette action est irréversible !
+                    </small>
                     <hr>
                     <div class="form-group"> <!-- Supprimer article -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Supprimer l'article vidéo" name="formSupprimerArticleVideo_supprimer_submit">
+                        <input
+                                id="formSupprimerArticleVideo_supprimer_submit"
+                                name="formSupprimerArticleVideo_supprimer_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Supprimer l'article vidéo"
+                        >
                     </div>
                 </form>
             </div>
@@ -28,7 +43,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>

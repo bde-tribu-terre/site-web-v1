@@ -6,15 +6,28 @@
                 <hr>
                 <form id="formChoisirArticleVideo" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Article en question -->
-                        <label for="formChoisirArticleVideo_id">Article vidéo</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formChoisirArticleVideo_id" name="formChoisirArticleVideo_id">
+                        <label for="formChoisirArticleVideo_id">
+                            Article vidéo
+                        </label>
+                        <select
+                                id="formChoisirArticleVideo_id"
+                                name="formChoisirArticleVideo_id"
+                                class="form-control"
+                                onblur="verifNonVide(this);"
+                        >
                             <option value="">--Choisir un article vidéo--</option>
                             <?php echo ARTICLES_VIDEO ?>
                         </select>
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Choisir Article Vidéo -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Choisir l'article" name="formChoisirArticleVideo_choisir_submit">
+                        <input
+                                id="formChoisirArticleVideo_choisir_submit"
+                                name="formChoisirArticleVideo_choisir_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Choisir l'article"
+                        >
                     </div>
                 </form>
             </div>
@@ -27,7 +40,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>

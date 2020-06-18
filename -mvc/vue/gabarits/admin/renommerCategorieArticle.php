@@ -6,19 +6,42 @@
                 <hr>
                 <form id="formRenommerCategorieArticle" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Catégorie -->
-                        <label for="formRenommerCategorieArticle_id">Catégorie à renommer</label>
-                        <select onblur="verifNonVide(this);" class="form-control" id="formRenommerCategorieArticle_id" name="formRenommerCategorieArticle_id">
+                        <label for="formRenommerCategorieArticle_id">
+                            Catégorie à renommer
+                        </label>
+                        <select
+                                id="formRenommerCategorieArticle_id"
+                                name="formRenommerCategorieArticle_id"
+                                class="form-control"
+                                onblur="verifNonVide(this);"
+                        >
                             <option value="">--Choisir--</option>
                             <?php echo CATEGORIES ?>
                         </select>
                     </div>
                     <div class="form-group"> <!-- Nouveau titre de la catégorie -->
-                        <label for="formRenommerCategorieArticle_titre">Nouveau titre de la catégorie</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 128);" class="form-control" id="formRenommerCategorieArticle_titre" type="text" placeholder="Titre" name="formRenommerCategorieArticle_titre">
+                        <label for="formRenommerCategorieArticle_titre">
+                            Nouveau titre de la catégorie
+                        </label>
+                        <input
+                                id="formRenommerCategorieArticle_titre"
+                                name="formRenommerCategorieArticle_titre"
+                                type="text"
+                                class="form-control"
+                                placeholder="Titre"
+                                onblur="verifNonVide(this);"
+                                oninput="garderMoins(this, 128);"
+                        >
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Supprimer évent -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Renommer la catégorie" name="formRenommerCategorieArticle_renommer_submit">
+                        <input
+                                id="formRenommerCategorieArticle_renommer_submit"
+                                name="formRenommerCategorieArticle_renommer_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Renommer la catégorie"
+                        >
                     </div>
                 </form>
             </div>
@@ -31,7 +54,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>

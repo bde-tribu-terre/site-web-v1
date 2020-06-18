@@ -6,12 +6,28 @@
                 <hr>
                 <form id="formAjouterCategorieArticle" method="post" onsubmit="return verifForm(this);">
                     <div class="form-group"> <!-- Titre de la catégorie -->
-                        <label for="formAjouterCategorieArticle_titre">Titre de la catégorie</label>
-                        <input onblur="verifNonVide(this);" oninput="garderMoins(this, 128);" class="form-control" id="formAjouterCategorieArticle_titre" type="text" placeholder="Titre" name="formAjouterCategorieArticle_titre">
+                        <label for="formAjouterCategorieArticle_titre">
+                            Titre de la catégorie
+                        </label>
+                        <input
+                                id="formAjouterCategorieArticle_titre"
+                                name="formAjouterCategorieArticle_titre"
+                                type="text"
+                                class="form-control"
+                                placeholder="Titre"
+                                onblur="verifNonVide(this);"
+                                oninput="garderMoins(this, 128);"
+                        >
                     </div>
                     <hr>
                     <div class="form-group"> <!-- Ajouter la catégorie -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Ajouter la catégorie" name="formAjouterCategorieArticle_ajouter_submit">
+                        <input
+                                id="formAjouterCategorieArticle_ajouter_submit"
+                                name="formAjouterCategorieArticle_ajouter_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Ajouter la catégorie"
+                        >
                     </div>
                 </form>
             </div>
@@ -24,7 +40,13 @@
                 <hr>
                 <form id="formRetourMenu" method="post">
                     <p> <!-- Retour au menu -->
-                        <input class="btn btn-danger btn-block" type="submit" value="Retour au menu" name="formRetourMenu_retourMenu_submit">
+                        <input
+                                id="formRetourMenu_retourMenu_submit"
+                                name="formRetourMenu_retourMenu_submit"
+                                type="submit"
+                                class="btn btn-danger btn-block"
+                                value="Retour au menu"
+                        >
                     </p>
                 </form>
             </div>
