@@ -971,6 +971,10 @@ function afficherUniversite() {
 # B.XIX - Events                                                                                                       #
 ########################################################################################################################
 function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
+    define('TRI', $tri);
+    define('RECHERCHE_EN_COURS', $rechercheEnCours ? 'true' : 'false');
+    define('CHECKED_A_VENIR', $aVenir ? ' checked' : '');
+    define('CHECKED_PASSES', $passes ? ' checked' : '');
     $tableEvents = '';
     $pair = true; // On commence à 0 en informatique.
     foreach ($GLOBALS['retoursModele']['events'] as $event) {
@@ -1020,11 +1024,6 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
             $tableEvents;
     define('EVENTS', $tableEvents);
 
-    define('TRI', $tri);
-    define('RECHERCHE_EN_COURS', $rechercheEnCours ? 'true' : 'false');
-    define('CHECKED_A_VENIR', $aVenir ? ' checked' : '');
-    define('CHECKED_PASSES', $passes ? ' checked' : '');
-
     afficherPage('Évents', 'events.php', 'public');
 }
 
@@ -1054,47 +1053,14 @@ function afficherEventPrecis() {
 # B.XX - Goodies                                                                                                       #
 ########################################################################################################################
 function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
-    define('TITLE', 'Goodies');
-    define('GABARIT', 'goodies.php');
-
-    if ($rechercheEnCours) {
-        $rechercheEnCoursStr = 'true';
-    } else {
-        $rechercheEnCoursStr = 'false';
-    }
-    if ($disponible) {
-        $checkedDisponible = ' checked';
-    } else {
-        $checkedDisponible = '';
-    }
-    if ($bientot) {
-        $checkedBientot = ' checked';
-    } else {
-        $checkedBientot = '';
-    }
-    if ($rupture) {
-        $checkedRupture = ' checked';
-    } else {
-        $checkedRupture = '';
-    }
-
+    define('TRI', $tri);
+    define('RECHERCHE_EN_COURS', $rechercheEnCours ? 'true' : 'false');
+    define('CHECKED_DISPONIBLE', $disponible ? ' checked' : '');
+    define('CHECKED_BIENTOT', $bientot ? ' checked' : '');
+    define('CHECKED_RUPTURE', $rupture ? ' checked' : '');
     $tableGoodies = '';
-    $lignesGoodies = MdlGoodiesTous($tri, $disponible, $bientot, $rupture);
-
-    if (empty($lignesGoodies)) {
-        $tableGoodies = '<h3>Hmmm... On dirait qu\'il n\'y a aucun goodie qui correspond à vos critères de recherches 🤔</h3>';
-    }
-
-    foreach ($lignesGoodies as $ligne) {
-        $id = htmlentities($ligne->idGoodies, ENT_QUOTES, "UTF-8");
-        $titre = htmlentities($ligne->titreGoodies, ENT_QUOTES, "UTF-8");
-        $prixAdherent = htmlentities($ligne->prixADGoodies, ENT_QUOTES, "UTF-8");
-        $prixNonAdherent = htmlentities($ligne->prixNADGoodies, ENT_QUOTES, "UTF-8");
-        $categorie = htmlentities($ligne->categorieGoodies, ENT_QUOTES, "UTF-8");
-        $miniature = htmlentities($ligne->miniatureGoodies, ENT_QUOTES, "UTF-8");
-
-        $lienMiniature = RACINE . 'goodies/' . $miniature;
-        switch ($categorie) {
+    foreach ($GLOBALS['retoursModele']['goodies'] as $goodie) {
+        switch ($goodie['categorie']) {
             case 1:
                 $categorieStr = '<span style="color: darkgreen">Disponible</span>';
                 break;
@@ -1108,32 +1074,34 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
                 $categorieStr = '<span style="color: red">Une erreur s\'est produite.</span>';
                 break;
         }
-
         $tableGoodies .=
-            '<div class="col-sm-6">' .
-                '<div class="well">' .
-                    '<a href="' . RACINE . 'goodies/?id=' . $id . '">' .
-                        '<img src="' . $lienMiniature . '" class="img-arrondi-mini" alt="Miniature">' .
-                    '</a>' .
-                    '<h3>' . $titre . '</h3>' .
-                    '<hr>' .
-                    '<h4><strong>' . $categorieStr . '</strong></h4>' .
-                    '<h4>Prix pour les adhérents : ' . $prixAdherent . '€</h4>' .
-                    '<h4>Prix pour les non-adhérents : ' . $prixNonAdherent . '€</h4>' .
-                    '<a class="btn btn-danger btn-block" href="' . RACINE . 'goodies/?id=' . $id . '">' .
-                        '<h4>Détails</h4>' .
-                    '</a>' .
-                '</div>' .
-            '</div>';
+            '
+            <div class="col-sm-6">
+                <div class="well">
+                    <a href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '">
+                        <img src="' . RACINE . 'goodies/' . $goodie['miniature'] . '" class="img-arrondi-mini" alt="Miniature">
+                    </a>
+                    <h3>' . $goodie['titre'] . '</h3>
+                    <hr>
+                    <h4><strong>' . $categorieStr . '</strong></h4>
+                    <h4>Prix pour les adhérents : ' . $goodie['prixAD'] . '€</h4>
+                    <h4>Prix pour les non-adhérents : ' . $goodie['prixNAD'] . '€</h4>
+                    <a class="btn btn-danger btn-block" href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '">
+                        <h4>Détails</h4>
+                    </a>
+                </div>
+            </div>
+            ';
     }
-
-    define('RECHERCHE_EN_COURS', $rechercheEnCoursStr);
-    define('CHECKED_DISPONIBLE', $checkedDisponible);
-    define('CHECKED_BIENTOT', $checkedBientot);
-    define('CHECKED_RUPTURE', $checkedRupture);
+    if (empty($lignesGoodies)) {
+        $tableGoodies .=
+            $tableGoodies == '' ?
+                '<h3>Hmmm... On dirait qu\'il n\'y a aucun goodie qui correspond à vos critères de recherches 🤔</h3>' :
+                '';
+    }
     define('GOODIES', $tableGoodies);
 
-    afficherCadre('PUBLIC');
+    afficherPage('Goodies', 'goodies.php', 'public');
 }
 
 function afficherGoodiePrecis($goodie) {

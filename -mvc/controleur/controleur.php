@@ -952,16 +952,22 @@ function CtlEventPrecis($id){
 ########################################################################################################################
 # Goodies                                                                                                              #
 ########################################################################################################################
-function CtlGoodies($tri, $disponible, $bientot, $rupture,$rechercheEnCours) {
-    afficherGoodies($tri, $disponible, $bientot, $rupture,$rechercheEnCours);
+function CtlGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCours) {
+    MdlGoodiesTous($tri, $disponible, $bientot, $rupture);
+    afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCours);
 }
 
 function CtlGoodiePrecis($id) {
-    $goodie = MdlGoodiePrecis($id);
-    if (!empty($goodie)) {
-        afficherGoodiePrecis($goodie);
-    } else {
-        throw new Exception("Le goodie recherché n'existe pas.");
+    try {
+        MdlGoodiePrecis($id);
+        if ($GLOBALS['retoursModele']['goodie']) {
+            afficherGoodiePrecis();
+        } else {
+            throw new Exception('Le goodie recherché n\'existe pas.', 404);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlGoodies('', true, true, false, false);
     }
 }
 
