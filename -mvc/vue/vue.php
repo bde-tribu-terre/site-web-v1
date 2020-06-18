@@ -249,7 +249,7 @@ function afficherSupprimerImageGoodie() {
     }
     $images .= $images == '' ? '<p>Ce goodie n\'a aucune image. La miniature n\'est pas modifiable.</p>' : '';
     define('ID', $GLOBALS['retoursModele']['goodie']['id']);
-    define('IMAGES_ARTICLE', $images); // Car la constante IMAGES existe déjà...
+    define('IMAGES_GOODIE', $images); // Car la constante IMAGES existe déjà...
 
     afficherPage('Supprimer une image d\'un goodie', 'supprimerImageGoodie.php', 'admin');
 }
