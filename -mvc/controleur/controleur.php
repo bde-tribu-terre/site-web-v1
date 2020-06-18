@@ -435,157 +435,150 @@ function CtlSupprimerJournalExecuter($id) {
 }
 
 # Articles
-function CtlAjouterArticle($executer) {
-    try {
-        if (!$executer) {
-            MdlCategoriesArticlesTous();
-            afficherAjouterArticle();
-        } else {
-            if (
-                !empty($GLOBALS['form']['titre']) &&
-                $GLOBALS['form']['categorie'] != '-1' &&
-                $GLOBALS['form']['visibilite'] != '-1' &&
-                !empty($GLOBALS['form']['texte'])
-            ) {
-                MdlAjouterArticle(
-                    $GLOBALS['form']['titre'],
-                    $GLOBALS['form']['categorie'],
-                    $GLOBALS['form']['visibilite'],
-                    $GLOBALS['form']['texte']
-                );
-                MdlCategoriesArticlesTous();
-                afficherAjouterArticle();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs.', 400);
-            }
-        }
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
-        MdlCategoriesArticlesTous();
-        afficherAjouterArticle();
-    }
+function CtlAjouterArticle() {
+    MdlCategoriesArticlesTous();
+    afficherAjouterArticle();
 }
 
-function CtlAjouterImageArticle($executer, $fileImput) {
-    try {
-        if (!$executer) {
-            MdlArticlesTous(true, true);
-            afficherAjouterImageArticle();
-        } else {
-            if (
-                !empty($GLOBALS['form']['id']) &&
-                !empty($_FILES[$fileImput]['name'])
-            ) {
-                MdlAjouterImageArticle(
-                    RACINE . 'articles/',
-                    $GLOBALS['form']['id'],
-                    $fileImput);
-                MdlArticlesTous(true, true);
-                afficherAjouterImageArticle();
-            } else {
-                throw new Exception('Veuillez remplir tous les champs et sélectionner une image.', 400);
-            }
-        }
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
-        MdlArticlesTous(true, true);
-        afficherAjouterImageArticle();
-    }
-}
-
-function CtlChoixArticle($executer) {
-    try {
-        if (!$executer) {
-            MdlArticlesTous(true, true);
-            afficherChoixArticle();
-        } else {
-            if (
-                !empty($GLOBALS['form']['id'])
-            ) {
-                MdlArticlePrecis($GLOBALS['form']['id']);
-                MdlCategoriesArticlesTous();
-                afficherModifierArticle();
-            } else {
-                throw new Exception('Veuillez sélectionner un évent.', 400);
-            }
-        }
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
-        MdlArticlesTous(true, true);
-        afficherChoixArticle();
-    }
-}
-
-function CtlModifierArticle() {
+function CtlAjouterArticleExecuter($titre, $categorie, $visibilite, $texte) {
     try {
         if (
-            !empty($GLOBALS['form']['titre']) &&
-            $GLOBALS['form']['categorie'] != '-1' &&
-            $GLOBALS['form']['visibilite'] != '-1' &&
-            !empty($GLOBALS['form']['texte'])
+            !empty($titre) &&
+            $categorie != '-1' &&
+            $visibilite != '-1' &&
+            !empty($texte)
+        ) {
+            MdlAjouterArticle(
+                $titre,
+                $categorie,
+                $visibilite,
+                $texte
+            );
+            CtlAjouterArticle();
+        } else {
+            throw new Exception('Veuillez remplir tous les champs.', 400);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlAjouterArticle();
+    }
+}
+
+function CtlAjouterImageArticle() {
+    MdlArticlesTous(true, true);
+    afficherAjouterImageArticle();
+}
+
+function CtlAjouterImageArticleExecuter($id, $fileImput) {
+    try {
+        if (
+            !empty($id) &&
+            !empty($_FILES[$fileImput]['name'])
+        ) {
+            MdlAjouterImageArticle(
+                RACINE . 'articles/',
+                $id,
+                $fileImput);
+            CtlAjouterImageArticle();
+        } else {
+            throw new Exception('Veuillez remplir tous les champs et sélectionner une image.', 400);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlAjouterImageArticle();
+    }
+}
+
+function CtlChoixArticle() {
+    MdlArticlesTous(true, true);
+    afficherChoixArticle();
+}
+
+function CtlChoixArticleExecuter($id) {
+    try {
+        if (
+            !empty($id)
+        ) {
+            CtlModifierArticle($id);
+        } else {
+            throw new Exception('Veuillez sélectionner un article.', 400);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlChoixArticle();
+    }
+}
+
+function CtlModifierArticle($id) {
+    MdlArticlePrecis($id);
+    MdlCategoriesArticlesTous();
+    afficherModifierArticle();
+}
+
+function CtlModifierArticleExecuter($id, $titre, $categorie, $visibilite, $texte) {
+    try {
+        if (
+            !empty($titre) &&
+            $categorie != '-1' &&
+            $visibilite != '-1' &&
+            !empty($texte)
         ) {
             MdlModifierArticle(
-                $GLOBALS['form']['id'],
-                $GLOBALS['form']['titre'],
-                $GLOBALS['form']['categorie'],
-                $GLOBALS['form']['visibilite'],
-                $GLOBALS['form']['texte']
+                $id,
+                $titre,
+                $categorie,
+                $visibilite,
+                $texte
             );
-            MdlArticlePrecis($GLOBALS['form']['id']);
-            MdlCategoriesArticlesTous();
-            afficherModifierArticle();
+            CtlModifierArticle($id);
         } else {
-            ajouterMessage(400, 'Veuillez remplir tous les champs.');
-            MdlArticlePrecis($GLOBALS['form']['id']);
-            MdlCategoriesArticlesTous();
-            afficherModifierArticle();
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlArticlesTous();
-        afficherChoixArticle();
+        CtlModifierArticle($id);
     }
 }
 
-function CtlAllerSupprimerImageArticle() {
+function CtlSupprimerImageArticle($id) {
+    MdlArticlePrecis($id);
+    MdlImagesArticle($id, NULL);
+    afficherSupprimerImageArticle();
+}
+
+function CtlSupprimerImageArticleExecuter($id, $arrayIdImages) {
     try {
-        foreach ($GLOBALS['form'] as $key => $value) {
-            if ($value == 'on') {
-                MdlSupprimerImageArticle(RACINE . 'articles/', $key, true);
-            }
+        foreach ($arrayIdImages as $idImage) {
+            MdlSupprimerImageArticle(RACINE . 'articles/', $idImage, true);
         }
-        MdlImagesArticle($GLOBALS['form']['id'], NULL);
-        afficherSupprimerImageArticle();
+        CtlSupprimerImageArticle($id);
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlGoodiesTous('nom', true, true, true);
-        afficherChoixGoodie();
+        CtlSupprimerImageArticle($id);
     }
 }
 
-function CtlSupprimerArticle($executer) {
+function CtlSupprimerArticle() {
+    MdlArticlesTous();
+    afficherSupprimerArticle();
+}
+
+function CtlSupprimerArticleExecuter($id) {
     try {
-        if (!$executer) {
-            MdlArticlesTous();
-            afficherSupprimerArticle();
+        if (
+            !empty($id)
+        ) {
+            MdlSupprimerArticle(
+                RACINE . 'articles/',
+                $id
+            );
+            CtlSupprimerArticle();
         } else {
-            if (
-                !empty($GLOBALS['form']['id'])
-            ) {
-                MdlSupprimerArticle(
-                    RACINE . 'articles/',
-                    $GLOBALS['form']['id']
-                );
-                MdlArticlesTous();
-                afficherSupprimerArticle();
-            } else {
-                throw new Exception('Veuillez sélectionner un article.', 400);
-            }
+            throw new Exception('Veuillez sélectionner un article.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
-        MdlArticlesTous();
-        afficherSupprimerArticle();
+        CtlSupprimerArticle();
     }
 }
 

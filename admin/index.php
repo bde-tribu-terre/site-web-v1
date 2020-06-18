@@ -134,37 +134,66 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formAjouterArticle' &&
         $form['_submit'] == 'ajouter'
     ) {
-        CtlAjouterArticle(true);
-    } elseif ( // Gabarit Choix Article
-        $form['_name'] == 'formChoisirArticle' &&
-        $form['_submit'] == 'choisir'
-    ) {
-        CtlChoixArticle(true);
-    } elseif ( // Gabarit Modifier Article
-        $form['_name'] == 'formModifierArticle' &&
-        $form['_submit'] == 'modifier'
-    ) {
-        CtlModifierArticle();
-    } elseif (
-        $form['_name'] == 'formModifierArticle' &&
-        $form['_submit'] == 'supprimerImages'
-    ) {
-        CtlAllerSupprimerImageArticle();
-    } elseif ( // Gabarit Supprimer Images Article
-        $form['_name'] == 'formSupprimerImageArticle' &&
-        $form['_submit'] == 'supprimer'
-    ) {
-        CtlAllerSupprimerImageArticle();
-    } elseif ( // Gabarit Supprimer Article
-        $form['_name'] == 'formSupprimerArticle' &&
-        $form['_submit'] == 'supprimer'
-    ) {
-        CtlSupprimerArticle(true);
+        CtlAjouterArticleExecuter(
+            $form['titre'],
+            $form['categorie'],
+            $form['visibilite'],
+            $form['texte']
+        );
     } elseif ( // Gabarit Ajouter Image Article
         $form['_name'] == 'formAjouterImageArticle' &&
         $form['_submit'] == 'ajouter'
     ) {
-        CtlAjouterImageArticle(true, 'formAjouterImageArticle_image');
+        CtlAjouterImageArticleExecuter(
+            $form['id'],
+            'formAjouterImageArticle_image'
+        );
+    } elseif ( // Gabarit Choix Article
+        $form['_name'] == 'formChoisirArticle' &&
+        $form['_submit'] == 'choisir'
+    ) {
+        CtlChoixArticleExecuter(
+            $form['id']
+        );
+    } elseif ( // Gabarit Modifier Article
+        $form['_name'] == 'formModifierArticle' &&
+        $form['_submit'] == 'modifier'
+    ) {
+        CtlModifierArticleExecuter(
+            $form['id'],
+            $form['titre'],
+            $form['categorie'],
+            $form['visibilite'],
+            $form['texte']
+        );
+    } elseif (
+        $form['_name'] == 'formModifierArticle' &&
+        $form['_submit'] == 'supprimerImages'
+    ) {
+        CtlSupprimerImageArticle(
+            $form['id']
+        );
+    } elseif ( // Gabarit Supprimer Images Article
+        $form['_name'] == 'formSupprimerImageArticle' &&
+        $form['_submit'] == 'supprimer'
+    ) {
+        $arrayIdImages = array();
+        foreach ($form as $name => $value) {
+            if (substr($name, 0, 5) == 'image' && $value = 'on') {
+                array_push($arrayIdImages, substr($name, 5));
+            }
+        }
+        CtlSupprimerImageArticleExecuter(
+            $form['id'],
+            $arrayIdImages
+        );
+    } elseif ( // Gabarit Supprimer Article
+        $form['_name'] == 'formSupprimerArticle' &&
+        $form['_submit'] == 'supprimer'
+    ) {
+        CtlSupprimerArticleExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Ajouter Article Video
         $form['_name'] == 'formAjouterArticleVideo' &&
         $form['_submit'] == 'ajouter'
@@ -234,32 +263,32 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formJournal' &&
         $form['_submit'] == 'ajouterJournalMenu'
     ) {
-        CtlAjouterJournal(false, NULL);
+        CtlAjouterJournal();
     } elseif (
         $form['_name'] == 'formJournal' &&
         $form['_submit'] == 'supprimerJournalMenu'
     ) {
-        CtlSupprimerJournal(false);
+        CtlSupprimerJournal();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'ajouterArticleMenu'
     ) {
-        CtlAjouterArticle(false);
+        CtlAjouterArticle();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'ajouterImageArticleMenu'
     ) {
-        CtlAjouterImageArticle(false, NULL);
+        CtlAjouterImageArticle();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'modifierArticleMenu'
     ) {
-        CtlChoixArticle(false);
+        CtlChoixArticle();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'supprimerArticleMenu'
     ) {
-        CtlSupprimerArticle(false);
+        CtlSupprimerArticle();
     } elseif (
         $form['_name'] == 'formArticles' &&
         $form['_submit'] == 'ajouterArticleVideoMenu'
