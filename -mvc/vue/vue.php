@@ -1104,7 +1104,7 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
     afficherPage('Goodies', 'goodies.php', 'public');
 }
 
-function afficherGoodiePrecis($goodie) {
+function afficherGoodiePrecis() {
     define('TITRE', $GLOBALS['retoursModele']['goodie']['titre']);
     define('PRIX_AD', $GLOBALS['retoursModele']['goodie']['prixAD']);
     define('PRIX_NAD', $GLOBALS['retoursModele']['goodie']['prixNAD']);
