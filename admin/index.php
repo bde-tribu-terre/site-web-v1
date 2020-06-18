@@ -289,7 +289,7 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_name'] == 'formLog' &&
         $form['_submit'] == 'afficherLog'
     ) {
-        CtlAfficherLog();
+        CtlLog();
     } elseif (
         $form['_name'] == 'formDeconnexion' &&
         $form['_submit'] == 'deconnexion'

@@ -504,7 +504,7 @@ function afficherRenommerCategorieArticle() {
 }
 
 # Log
-function afficherAfficherLog() {
+function afficherLog() {
     $log = '';
     foreach ($GLOBALS['retoursModele']['log'] as $ligneLog) {
         $dateHeure = explode(' ', $ligneLog['date']);
@@ -523,7 +523,7 @@ function afficherAfficherLog() {
     define('LOG', $log);
     define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    afficherPage('Log', 'afficherLog.php', 'admin');
+    afficherPage('Log', 'log.php', 'admin');
 }
 
 ########################################################################################################################

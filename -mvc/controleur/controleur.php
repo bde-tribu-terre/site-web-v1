@@ -754,14 +754,9 @@ function CtlRenommerCategorieArticle($executer) {
 }
 
 # Log
-function CtlAfficherLog() {
-    try {
-        MdlLogTous();
-        afficherAfficherLog();
-    } catch (Exception $e) {
-        ajouterMessage($e->getCode(), $e->getMessage());
-        afficherAfficherLog();
-    }
+function CtlLog() {
+    MdlLogTous();
+    afficherLog();
 }
 
 ########################################################################################################################
