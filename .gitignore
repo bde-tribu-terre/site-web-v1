@@ -1,3 +1,6 @@
-/articles/*.png
-/goodies/*.png
-/journaux/*.pdf
+/articles/*
+!/articles/index.php
+/goodies/*
+!/goodies/index.php
+/journaux/*
+!/journaux/index.php
