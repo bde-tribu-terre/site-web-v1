@@ -1297,10 +1297,3 @@ function afficherPlanDuSite() {
 function afficherRiad() {
     afficherPage('Riad', 'riad.php', 'public');
 }
-
-########################################################################################################################
-# B.XXV - Erreur                                                                                                       #
-########################################################################################################################
-function afficherErreur() {
-    afficherPage('Erreur', 'erreur.php', 'public');
-}
