@@ -10,7 +10,14 @@
 ########################################################################################################################
 # A.I - Constantes Générales                                                                                           #
 ########################################################################################################################
+/**
+ * Chemin vers le répertoire contenant les images.
+ */
 define('IMAGES', RACINE . '-images/');
+
+/**
+ * Variable contenant la version actuelle du site indiquée dans le fichier ."../-mvc/vue/version.txt".
+ */
 define('VERSION_SITE', file_get_contents(RACINE . '-mvc/vue/version.txt'));
 
 ########################################################################################################################
@@ -54,6 +61,20 @@ function afficherPage($title, $gabarit, $cadre) {
 ########################################################################################################################
 # A.III - Fonctions d'affichage                                                                                        #
 ########################################################################################################################
+/**
+ * Génère une date dans un format convivial.
+ * @param string $date
+ * La date à convertir au format aaaa-mm-jj (info : format standard en SQL).
+ * @param bool $numerique
+ * Faut-il privilégier un format numérique ? Si le paramètre n'est pas renseigné alors la date sera au format développé
+ * en français. Exemples :
+ * <ul>
+ * <li>Développé : 1<sup>er</sup> Janvier 2020</li>
+ * <li>Numérique : 01/01/2020</li>
+ * </ul>
+ * @return string
+ * <strong>HTML</strong> La date au format choisi, sous forme de chaîne de caractère.
+ */
 function genererDate($date, $numerique = false) {
     if ($numerique) {
         return
@@ -77,6 +98,23 @@ function genererDate($date, $numerique = false) {
     }
 }
 
+/**
+ * Formate le texte en remplaçant les éléments simples en balises HTML. Réorganise également les retours à la ligne et
+ * la mise en forme en général. Les éléments simples traîtés sont :
+ * <ul>
+ * <li>§T<i>texte</i>§!T => Titre</li>
+ * <li>§G<i>texte</i>§!G => Gras</li>
+ * <li>§I<i>texte</i>§!I => Italique</li>
+ * <li>§S<i>texte</i>§!S => Souligné</li>
+ * <li>§B<i>texte</i>§!B => Barré</li>
+ * <li>§C<i>texte</i>§!C => Petites Capitales</li>
+ * <li>§L<i>texte</i>§!L[<i>lien</i>] => Lien Hypertexte</li>
+ * </ul>
+ * @param string $texte
+ * Le texte d'origine.
+ * @return string
+ * <strong>HTML</strong> Le texte formaté.
+ */
 function formaterTexte($texte) {
     $texteFormate = preg_replace('/&sect;T(.*?)&sect;!T/', "\n<h3>$1</h3>\n", $texte);
     $texteFormate = preg_replace('/\n(\n)*/', "\n", $texteFormate);
