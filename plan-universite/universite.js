@@ -8,7 +8,7 @@ L.tileLayer(
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoidHJpYnUtdGVycmUiLCJhIjoiY2tjbTh4Y2o4MmI5ODJxcGZmdHUxMDJvbSJ9.9cj9wLdfbAQgD6avdfu7rg'
+        accessToken: 'pk.eyJ1IjoidHJpYnUtdGVycmUiLCJhIjoiY2tjdGJ6aml3MHZ2YjJ5bHdkNWMwMDU2MiJ9.ERo6ou9VlclQ8_3Ec8hbnA'
     }
 ).addTo(carte);
 let elementsGeoJSON = L.geoJSON().addTo(carte);
