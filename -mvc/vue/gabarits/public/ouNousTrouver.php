@@ -22,7 +22,16 @@
             <iframe class="img-arrondi ombre text-center" height="450" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8924.851732286033!2d1.935002002916136!3d47.83939441504462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDUwJzAyLjIiTiAxwrA1NiczMy4zIkU!5e0!3m2!1sfr!2sfr!4v1586184279306!5m2!1sfr!2sfr" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             -->
             <!-- OpenStreetMap -->
-            <iframe class="img-arrondi ombre text-center" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.9356805086135866%2C47.831624736569175%2C1.9494187831878664%2C47.83621245750501&amp;layer=mapnik&amp;marker=47.8339186477377%2C1.9425496459007263" style="border: 0"></iframe>
+            <iframe
+                    class="img-arrondi ombre text-center"
+                    height="450"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=1.9356805086135866%2C47.831624736569175%2C1.9494187831878664%2C47.83621245750501&amp;layer=mapnik&amp;marker=47.8339186477377%2C1.9425496459007263"
+                    style="border: 0"
+            ></iframe>
             <br>
             <div>
                 <small>
