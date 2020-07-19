@@ -19,9 +19,7 @@
 ></div>
 <script type="text/javascript">
     // Lecture du JSON
-    let universiteJSON = JSON.parse(
-        `<?php require_once 'universite.json'?>`
-    );
+    let universiteJSON = JSON.parse('<?php echo preg_replace('/\'/', '\\\'', preg_replace('/(^|\n)\s*/', '', file_get_contents('../-json/universite.json'))); ?>');
 </script>
 <script src="universite.js"></script>
 </body>

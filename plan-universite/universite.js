@@ -1,3 +1,15 @@
+// Initialisation des données bâtiment
+let batiments = [];
+for (const [idcomposante, composante] of Object.entries(universiteJSON)) {
+    for (let ibatiment = 0; ibatiment < composante.batiments.length; ibatiment++) {
+        composante.batiments[ibatiment].composante = idcomposante;
+        batiments.push(composante.batiments[ibatiment]);
+    }
+}
+
+console.log(universiteJSON);
+console.log(batiments);
+
 // Initialisation de la carte
 let carte = L.map('carte').setView([47.845106, 1.933701], 15);
 L.tileLayer(
@@ -5,7 +17,7 @@ L.tileLayer(
     {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
-        id: 'mapbox/streets-v11',
+        id: 'tribu-terre/ckcm8zb851eor1jo4hbtehlaw',
         tileSize: 512,
         zoomOffset: -1,
         accessToken: 'pk.eyJ1IjoidHJpYnUtdGVycmUiLCJhIjoiY2tjdGJ6aml3MHZ2YjJ5bHdkNWMwMDU2MiJ9.ERo6ou9VlclQ8_3Ec8hbnA'
@@ -28,7 +40,7 @@ info.onAdd = function () {
 info.update = function (batiment) {
     this._div.innerHTML =
         batiment ?
-            '<span class="pc"><b>' + universiteJSON.composantes[batiment.composante].titre + '</b></span><br><h4>' + batiment.libelle_long + '</h4>'
+            '<span class="pc"><b>' + universiteJSON[batiment.composante].titre + '</b></span><br><h4>' + batiment.libelle_long + '</h4>'
             : 'Survolez/Touchez un bâtiment pour l\'identifier';
 };
 info.addTo(carte);
@@ -44,13 +56,13 @@ function highlightFeature(e) {
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         e.target.bringToFront();
     }
-    info.update(universiteJSON.batiments[e.target.feature.geometry.properties.index]);
+    info.update(batiments[e.target.feature.geometry.properties.index]);
 }
 
 function resetHighlight(e) {
     geoJSON.resetStyle(e.target);
     let couleur =
-        universiteJSON.composantes[universiteJSON.batiments[e.target.feature.geometry.properties.index].composante].couleur;
+        universiteJSON[batiments[e.target.feature.geometry.properties.index].composante].couleur;
     e.target.setStyle(
         {
             weight: 2,
@@ -97,8 +109,8 @@ let legend = L.control({position: 'bottomright'});
 legend.onAdd = function () {
     let div = L.DomUtil.create('div', 'well info legend');
     let elementsLegende = '';
-    for (const [titre, objet] of Object.entries(universiteJSON.composantes)) {
-        elementsLegende += '<i style="background:' + objet.couleur + '"></i> ' + titre + '<br>';
+    for (const [, objet] of Object.entries(universiteJSON)) {
+        elementsLegende += '<i style="background:' + objet.couleur + '"></i> ' + objet.legende + '<br>';
     }
     div.innerHTML += '<div class="text-center">' +
         '<button ' +
@@ -120,21 +132,26 @@ legend.onAdd = function () {
 legend.addTo(carte);
 
 // Initialisation des géométries
-for (let i = 0; i < universiteJSON.batiments.length; i++) {
-    universiteJSON.batiments[i].geoJSON.properties = {index: i};
-    elementsGeoJSON.addData(universiteJSON.batiments[i].geoJSON);
+for (let i = 0; i < batiments.length; i++) {
+    batiments[i].geoJSON.properties = {index: i};
+    elementsGeoJSON.addData(batiments[i].geoJSON);
     let style = {
         weight: 2,
-        color: universiteJSON.composantes[universiteJSON.batiments[i].composante].couleur,
+        color: universiteJSON[batiments[i].composante].couleur,
         opacity: 1,
-        fillColor: universiteJSON.composantes[universiteJSON.batiments[i].composante].couleur,
+        fillColor: universiteJSON[batiments[i].composante].couleur,
         fillOpacity: 0.6
     }
     geoJSON = L.geoJSON(
-        universiteJSON.batiments[i].geoJSON,
+        batiments[i].geoJSON,
         {
             style: style,
             onEachFeature: onEachFeature
         }
     ).addTo(carte);
 }
+
+// Ajouter de nouveaux bâtiments :
+// https://www.openstreetmap.org/way/39838231
+// http://overpass-turbo.eu/#
+// https://foucaultvsnorm.sciencesconf.org/data/pages/plan_5.png
