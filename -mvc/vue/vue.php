@@ -1335,3 +1335,10 @@ function afficherPlanDuSite() {
 function afficherRiad() {
     afficherPage('Riad', 'riad.php', 'public');
 }
+
+########################################################################################################################
+# B.XXV - Trouver une salle                                                                                            #
+########################################################################################################################
+function afficherTrouverUneSalle() {
+    afficherPage('Trouver une salle', 'trouverUneSalle.php', 'public');
+}
