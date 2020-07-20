@@ -8,6 +8,7 @@
         "libelle_court": "Halle des Sports",
         "libelle_long": "Halle des Sports",
         "type": "vie de campus",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -35,9 +36,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -45,6 +44,7 @@
         "libelle_court": "Présidence",
         "libelle_long": "Présidence de l'Université",
         "type": "administration",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -156,9 +156,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -166,6 +164,7 @@
         "libelle_court": "Service Santé",
         "libelle_long": "Service de Santé Universitaire",
         "type": "administration",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -237,9 +236,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -247,6 +244,7 @@
         "libelle_court": "Relations Internationales",
         "libelle_long": "Direction des Relations Internationales",
         "type": "administration",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -278,9 +276,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -288,6 +284,7 @@
         "libelle_court": "Maison de l'Étudiant",
         "libelle_long": "Maison de l'Étudiant",
         "type": "vie de campus",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -355,9 +352,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -365,6 +360,7 @@
         "libelle_court": "Radio Campus",
         "libelle_long": "Radio Campus",
         "type": "vie de campus",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -436,9 +432,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -446,6 +440,7 @@
         "libelle_court": "Le Bouillon",
         "libelle_long": "Le Bouillon",
         "type": "vie de campus",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -533,9 +528,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       }
@@ -568,6 +561,7 @@
         "libelle_court": "LLSH",
         "libelle_long": "Bâtiment LLSH",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -751,9 +745,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -761,6 +753,7 @@
         "libelle_court": "BU LLSH",
         "libelle_long": "Bibliothèque Universitaire LLSH",
         "type": "bibliothèque",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -800,9 +793,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       }
@@ -817,6 +808,7 @@
         "libelle_court": "OSUC",
         "libelle_long": "OSUC",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -930,6 +922,7 @@
         "libelle_court": "Polytech Galilée",
         "libelle_long": "Site Galilée",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -1079,9 +1072,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -1089,6 +1080,7 @@
         "libelle_court": "Polytech Vinci",
         "libelle_long": "Site Vinci",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -1628,9 +1620,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       }
@@ -1645,7 +1635,8 @@
         "libelle_court": "BU CoST",
         "libelle_long": "Bibliothèque Universitaire de Sciences",
         "type": "bibliothèque",
-        "groupes": [: {
+        "groupes": [],
+        "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
             [
@@ -1676,9 +1667,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -1686,6 +1675,51 @@
         "libelle_court": "3IA",
         "libelle_long": "Bâtiment 3IA",
         "type": "cours",
+        "groupes": [
+          {
+            "nom": "Sous-sol",
+            "salles": [
+              "ES1",
+              "ES2",
+              "ES3",
+              "ES4",
+              "ES5",
+              "ES6",
+              "ES7",
+              "ES8",
+              "ES09"
+            ]
+          },
+          {
+            "nom": "Rez-de-chaussée",
+            "salles": [
+              "E01",
+              "E02",
+              "E03",
+              "E04",
+              "E05",
+              "E06",
+              "E07",
+              "E08",
+              "E09",
+              "Amphi H"
+            ]
+          },
+          {
+            "nom": "Premier étage",
+            "salles": [
+              "E11",
+              "E12",
+              "E13",
+              "E14",
+              "E15",
+              "E16",
+              "E17",
+              "E18",
+              "E19"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -1816,6 +1850,7 @@
         "libelle_court": "Admin CoST",
         "libelle_long": "Administration du CoST",
         "type": "administration",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -1843,9 +1878,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -1853,6 +1886,7 @@
         "libelle_court": "Bat Science",
         "libelle_long": "Bâtiment d'enseignement général des Sciences",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -1880,9 +1914,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -1890,6 +1922,32 @@
         "libelle_court": "Amphi Sciences",
         "libelle_long": "Bloc Amphithéâtres des Sciences",
         "type": "cours",
+        "groupes": [
+          {
+            "nom": "Amphithéâtres",
+            "salles": [
+              "Amphi 1. Sciences",
+              "Amphi 2. Sciences",
+              "Amphi 3. Sciences",
+              "Amphi 4. Sciences"
+            ]
+          },
+          {
+            "nom": "Salles de TD",
+            "salles": [
+              "L01",
+              "L02",
+              "L03",
+              "L04",
+              "L05",
+              "L06",
+              "L07",
+              "L08",
+              "L09",
+              "L10"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -1929,9 +1987,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -1939,6 +1995,7 @@
         "libelle_court": "Physique Chimie",
         "libelle_long": "Bâtiment de Physique-Chimie",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -1997,6 +2054,7 @@
         "libelle_court": "Pôle Chimie",
         "libelle_long": "Pôle de Chimie",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2103,6 +2161,7 @@
         "libelle_court": "Mathématiques",
         "libelle_long": "Bâtiment de Mathématiques",
         "type": "cours",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2134,9 +2193,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -2144,6 +2201,34 @@
         "libelle_court": "Norbert Grelet",
         "libelle_long": "Bâtiment Norbert Grelet",
         "type": "cours",
+        "groupes": [
+          {
+            "nom": "Sous-sol",
+            "salles": [
+              "NG01",
+              "NG02",
+              "NG03",
+              "NG04"
+            ]
+          },
+          {
+            "nom": "Rez-de-chaussée",
+            "salles": [
+              "NGC01",
+              "NGC02",
+              "NGC03",
+              "NGC04",
+              "Salle Bio-Info"
+            ]
+          },
+          {
+            "nom": "Premier étage",
+            "salles": [
+              "BC107",
+              "BC110"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2171,9 +2256,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -2181,6 +2264,37 @@
         "libelle_court": "Michel Royer",
         "libelle_long": "Bâtiment Michel Royer",
         "type": "cours",
+        "groupes": [
+          {
+            "nom": "Sous-sol",
+            "salles": [
+              "BS02",
+              "BS07"
+            ]
+          },
+          {
+            "nom": "Rez-de-chaussée",
+            "salles": [
+              "B006",
+              "B009"
+            ]
+          },
+          {
+            "nom": "Premier étage",
+            "salles": [
+              "B105",
+              "B130",
+              "B132",
+              "B135"
+            ]
+          },
+          {
+            "nom": "Second étage",
+            "salles": [
+              "B205"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2228,9 +2342,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       }
@@ -2245,6 +2357,7 @@
         "libelle_court": "Le Lac",
         "libelle_long": "Le Lac",
         "type": "restaurant",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2308,9 +2421,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -2318,6 +2429,7 @@
         "libelle_court": "Le Forum",
         "libelle_long": "Le Forum",
         "type": "restaurant",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2381,9 +2493,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -2391,6 +2501,7 @@
         "libelle_court": "L'Anatidé",
         "libelle_long": "L'Anatidé",
         "type": "restaurant",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2478,9 +2589,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       }
@@ -2495,6 +2604,7 @@
         "libelle_court": "Résidence Châtaigniers",
         "libelle_long": "Les Châtaigniers",
         "type": "résidence",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2618,9 +2728,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -2628,6 +2736,7 @@
         "libelle_court": "Résidence Magnolias",
         "libelle_long": "Les Magnolias",
         "type": "résidence",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2675,9 +2784,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -2685,6 +2792,7 @@
         "libelle_court": "Résidence Charmes",
         "libelle_long": "Les Charmes",
         "type": "résidence",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -2920,9 +3028,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -2930,6 +3036,7 @@
         "libelle_court": "Résidence Aristote",
         "libelle_long": "Aristote",
         "type": "résidence",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -3005,9 +3112,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       },
@@ -3015,6 +3120,7 @@
         "libelle_court": "Résidence Roses",
         "libelle_long": "Les Roses",
         "type": "résidence",
+        "groupes": [],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -3094,9 +3200,7 @@
                 ]
               ]
             ],
-            [
-
-            ]
+            []
           ]
         }
       }

@@ -7,9 +7,6 @@ for (const [idcomposante, composante] of Object.entries(universiteJSON)) {
     }
 }
 
-console.log(universiteJSON);
-console.log(batiments);
-
 // Initialisation de la carte
 let carte = L.map('carte').setView([47.845106, 1.933701], 15);
 L.tileLayer(
@@ -99,7 +96,7 @@ function onEachFeature(feature, layer) {
 let TT = L.control({position: 'bottomright'});
 TT.onAdd = function () {
     let div = L.DomUtil.create('div', 'leaflet-control-attribution leaflet-control');
-    div.innerHTML += 'Anaël B., pôle informatique de l\'association <a href="..">Tribu-Terre</a><!-- Un plaisir ;) -->';
+    div.innerHTML += 'Anaël B., pôle informatique de l\'association <a href="../..">Tribu-Terre</a><!-- Un plaisir ;) -->';
     return div;
 };
 TT.addTo(carte);
