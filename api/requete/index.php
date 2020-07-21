@@ -10,30 +10,42 @@ function requete(&$retour) {
                     if (!isset($_GET['c']) || strtolower($_GET['c']) == strtolower($codeComposante)) {
                         $ibatiment = 0;
                         foreach ($composante->batiments as $batiment) {
-                            $igroupe = 0;
-                            foreach ($batiment->groupes as $groupe) {
-                                $isalle = 0;
-                                foreach ($groupe->salles as $salle) {
-                                    if (!isset($_GET['s']) || strtolower($_GET['s']) == strtolower($salle)) {
-                                        array_push(
-                                            $retour,
-                                            array(
-                                                'code_composante' => $codeComposante,
-                                                'titre_composante' => $composante->titre,
-                                                'id_batiment' => $ibatiment,
-                                                'nom_batiment' => $batiment->libelle_long,
-                                                'id_groupe' => $igroupe,
-                                                'nom_groupe' => $groupe->nom,
-                                                'id_salle' => $isalle,
-                                                'nom_salle' => $salle
-                                            )
-                                        );
+                            if (!isset($_GET['b']) || $_GET['b'] == $ibatiment) {
+                                $igroupe = 0;
+                                foreach ($batiment->groupes as $groupe) {
+                                    if (!isset($_GET['g']) || $_GET['g'] == $igroupe) {
+                                        $isalle = 0;
+                                        foreach ($groupe->salles as $salle) {
+                                            if (
+                                                (
+                                                    !isset($_GET['s']) || $_GET['s'] == $isalle
+                                                )
+                                                &&
+                                                (
+                                                    !isset($_GET['ns']) || strtolower($_GET['ns']) == strtolower($salle)
+                                                )
+                                            ) {
+                                                array_push(
+                                                    $retour,
+                                                    array(
+                                                        'code_composante' => $codeComposante,
+                                                        'titre_composante' => $composante->titre,
+                                                        'id_batiment' => $ibatiment,
+                                                        'nom_batiment' => $batiment->libelle_long,
+                                                        'id_groupe' => $igroupe,
+                                                        'nom_groupe' => $groupe->nom,
+                                                        'id_salle' => $isalle,
+                                                        'nom_salle' => $salle
+                                                    )
+                                                );
+                                            }
+                                            $isalle++;
+                                        }
+                                        $igroupe++;
                                     }
-                                    $isalle++;
                                 }
-                                $igroupe++;
+                                $ibatiment++;
                             }
-                            $ibatiment++;
                         }
                     }
                 }
