@@ -51,7 +51,7 @@ function afficherPage($title, $gabarit, $cadre) {
         define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/public/accueil.php');
     }
 
-    define('MESSAGES', $GLOBALS['messages']);
+    define('MESSAGES', serialize($GLOBALS['messages']));
     define('TITLE', $title);
     define('GABARIT', $gabarit);
 
