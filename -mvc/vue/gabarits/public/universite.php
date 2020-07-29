@@ -32,7 +32,7 @@
                         scrolling="no"
                         frameborder="0"
                         title="Plan Interactif du Campus"
-                        src="<?php echo RACINE . 'plan-universite/' ?>"
+                        src="<?php echo RACINE . 'api/plan-universite/' ?>"
                 ></iframe>
             </div>
         </div>
