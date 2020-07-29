@@ -2318,7 +2318,15 @@
         "libelle_court": "Polytech Vinci",
         "libelle_long": "Site Vinci",
         "type": "cours",
-        "groupes": [],
+        "groupes": [
+          {
+            "nom": "Amphis",
+            "salles": [
+              "Cabannes",
+              "Turing"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
