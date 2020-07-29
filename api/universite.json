@@ -1847,7 +1847,29 @@
         "libelle_court": "OSUC",
         "libelle_long": "OSUC",
         "type": "cours",
-        "groupes": [],
+        "groupes": [
+          {
+            "nom": "E",
+            "salles": [
+              "E001",
+              "E003",
+              "E005",
+              "E006",
+              "E007",
+              "E008",
+              "E009",
+              "E010",
+              "E018 (Amphi Iste)",
+              "E101",
+              "E103",
+              "E104",
+              "E105",
+              "E106",
+              "E110",
+              "E112"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
