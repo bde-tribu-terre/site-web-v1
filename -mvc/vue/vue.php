@@ -1342,3 +1342,22 @@ function afficherRiad() {
 function afficherTrouverUneSalle() {
     afficherPage('Trouver une salle', 'trouverUneSalle.php', 'public');
 }
+
+function afficherTrouverUneSalleRecherche() {
+    $listeSalles = '';
+    foreach ($GLOBALS['retoursModele']['salles'] as $salle) {
+        $listeSalles .=
+            '
+            <div class="well">
+                <h4>' . $salle['nom_salle'] . '</h4>
+                <p>Composante : ' . $salle['titre_composante'] . '</p>
+                <p>Bâtiment : ' . $salle['nom_batiment'] . '</p>
+                <p>Emplacement : ' . $salle['nom_groupe'] . '</p>
+            </div>
+            ';
+    }
+    define('NOMBRE', count($GLOBALS['retoursModele']['salles']));
+    define('SALLES', $listeSalles);
+
+    afficherPage('Trouver une salle', 'trouverUneSalle.php', 'public');
+}

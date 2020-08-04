@@ -1465,3 +1465,24 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
         $retour
     );
 }
+
+########################################################################################################################
+# Salles (API)                                                                                                         #
+########################################################################################################################
+function MdlRechercherSalle($nom) {
+    try {
+        $api = 'http://barodine.fr/tribu-terre/api/requete/?r=salles&ns=' . $nom;
+        $curl = curl_init($api);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $return = curl_exec($curl);
+        curl_close($curl);
+        $arrayRetour = MET_SQLLignesMultiples(json_decode($return)->retour);
+    } catch (Exception $e) {
+        ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.');
+        $arrayRetour = NULL;
+    }
+    ajouterRetourModele(
+        'salles',
+        $arrayRetour
+    );
+}

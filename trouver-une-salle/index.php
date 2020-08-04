@@ -1,4 +1,8 @@
 <?php
 define('RACINE', '../');
 require_once(RACINE . '-mvc/controleur/controleur.php');
-CtlTrouverUneSalle();
+if (isset($_GET['nom'])) {
+    CtlTrouverUneSalleRecherche($_GET['nom']);
+} else {
+    CtlTrouverUneSalle();
+}

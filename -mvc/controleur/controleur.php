@@ -1000,3 +1000,17 @@ function CtlRiad() {
 function CtlTrouverUneSalle() {
     afficherTrouverUneSalle();
 }
+
+function CtlTrouverUneSalleRecherche($nom) {
+    try {
+        MdlRechercherSalle($nom);
+        if ($GLOBALS['retoursModele']['salles']) {
+            afficherTrouverUneSalleRecherche();
+        } else {
+            throw new Exception('Aucune salle de nom "' . $nom . '" n\'a été trouvée.', 604);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlTrouverUneSalle();
+    }
+}
