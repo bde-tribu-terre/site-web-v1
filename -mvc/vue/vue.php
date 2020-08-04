@@ -1200,16 +1200,16 @@ function afficherGoodiePrecis() {
         $carouselGoodie =
             '
             <div id="carouselGoodie" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">
-            ' .$carouselGoodieIndicator . '
-            ' . $carouselGoodieImages . '
-            <a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carouselGoodie" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-            </a>
+                ' .$carouselGoodieIndicator . '
+                ' . $carouselGoodieImages . '
+                <a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carouselGoodie" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
             ';
     }
@@ -1225,16 +1225,18 @@ function afficherJournaux() {
     $tableJournaux = '';
     foreach ($GLOBALS['retoursModele']['journaux'] as $journal) {
         $tableJournaux .=
-            '<div class="col-sm-3">' .
-                '<div class="well">' .
-                    '<h3>' . $journal['titre'] . '</h3>' .
-                    '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>' .
-                    '<a href="' . $journal['pdf'] . '" class="btn btn-danger btn-block">' .
-                        '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
-                        '<h4 class="alterneur-petit">Lire</h4>' .
-                    '</a>' .
-                '</div>' .
-            '</div>';
+            '
+            <div class="col-sm-3">
+                <div class="well">
+                    <h3>' . $journal['titre'] . '</h3>
+                    <h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>
+                    <a href="' . $journal['pdf'] . '" class="btn btn-danger btn-block">
+                        <h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
+                        <h4 class="alterneur-petit">Lire</h4>
+                    </a>
+                </div>
+            </div>
+            ';
     }
     define('JOURNAUX', $tableJournaux);
 
