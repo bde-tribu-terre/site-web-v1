@@ -1361,5 +1361,5 @@ function afficherTrouverUneSalleRecherche() {
     define('NOMBRE', count($GLOBALS['retoursModele']['salles']));
     define('SALLES', $listeSalles);
 
-    afficherPage('Trouver une salle', 'trouverUneSalle.php', 'public');
+    afficherPage('Trouver une salle', 'trouverUneSalleRecherche.php', 'public');
 }

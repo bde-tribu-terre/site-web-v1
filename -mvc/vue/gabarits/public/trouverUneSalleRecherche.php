@@ -2,6 +2,20 @@
     <h3>Trouver une salle</h3>
     <hr>
     <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <?php
+            echo NOMBRE > 1 ?
+                '<h4>' . NOMBRE . 'salles correspondantes ont été trouvées.</h4>' :
+                '<h4>Une salle correspondante a été trouvée.</h4>';
+            echo SALLES
+            ?>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <hr>
+    <h3>Lancer une nouvelle recherche</h3>
+    <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <form id="formConnexion" method="get" onsubmit="return verifForm(this);">
