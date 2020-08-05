@@ -13,6 +13,28 @@
         </div>
         <div class="col-sm-3"></div>
     </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Emplacement du bâtiment</h3>
+            <div class="img-arrondi ombre text-center" style="height: 80vh">
+                <iframe
+                        style="border:none;overflow:hidden"
+                        width="100%"
+                        height="100%"
+                        scrolling="no"
+                        frameborder="0"
+                        title="Plan Interactif du Campus"
+                        src="<?php echo RACINE . 'api/plan-universite/?c=' . CODE_COMPOSANTE . '&b=' . ID_BATIMENT ?>"
+                ></iframe>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h3>Emplacement de la salle</h3>
+            <p>
+                Plan de l'intérieur du bâtiment...
+            </p>
+        </div>
+    </div>
     <hr>
     <h3>Lancer une nouvelle recherche</h3>
     <div class="row">
