@@ -1,14 +1,16 @@
 // Initialisation des données bâtiment
 let batiments = [];
+let centresBatiments = [];
 for (const [idcomposante, composante] of Object.entries(universiteJSON)) {
-    for (let ibatiment = 0; ibatiment < composante.batiments.length; ibatiment++) {
-        composante.batiments[ibatiment].composante = idcomposante;
-        batiments.push(composante.batiments[ibatiment]);
+    for (const [, batiment] of Object.entries(composante.batiments)) {
+        batiment.composante = idcomposante;
+        batiments.push(batiment);
+        centresBatiments.push(turf.centerOfMass(turf.multiPolygon(batiment.geoJSON.coordinates)));
     }
 }
 
 // Initialisation de la carte
-let carte = L.map('carte').setView([47.845106, 1.933701], 15);
+let carte = L.map('carte').setView(turf.center(turf.featureCollection(centresBatiments)).geometry.coordinates.reverse(), 15);
 L.tileLayer(
     'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
     {
