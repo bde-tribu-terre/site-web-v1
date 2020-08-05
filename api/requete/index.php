@@ -70,7 +70,7 @@ function requete(&$retour) {
 $debut = microtime(true);
 $retour = array();
 $meta = requete($retour);
-$meta['source'] = 'http://' . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI];
+$meta['source'] = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $meta['debut_execution'] = $debut;
 $meta['temps_execution'] = microtime(true) - $debut;
 $meta['credits'] = 'Anaël BARODINE, étudiant en informatique à l\'Université d\'Orléans, au nom de l\'association étudiante Tribu-Terre.';
