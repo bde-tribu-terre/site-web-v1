@@ -1360,6 +1360,8 @@ function afficherTrouverUneSalleRecherche() {
     }
     define('NOMBRE', count($GLOBALS['retoursModele']['salles']));
     define('SALLES', $listeSalles);
+    define('CODE_COMPOSANTE', $salle['code_composante']);
+    define('ID_BATIMENT', $salle['id_batiment']);
 
     afficherPage('Trouver une salle', 'trouverUneSalleRecherche.php', 'public');
 }
