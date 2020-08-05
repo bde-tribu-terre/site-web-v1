@@ -1471,7 +1471,7 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
 ########################################################################################################################
 function MdlRechercherSalle($nom) {
     try {
-        $api = 'http://barodine.fr/tribu-terre/api/requete/?r=salles&ns=' . $nom;
+        $api = 'http://localhost/phpstormprojects/Site-Tribu-Terre/api/requete/?r=salles&ns=' . preg_replace('/ /', '+', $nom);
         $curl = curl_init($api);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $return = curl_exec($curl);
