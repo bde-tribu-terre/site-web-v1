@@ -24,7 +24,7 @@ L.tileLayer(
 ).addTo(carte);
 let elementsGeoJSON = L.geoJSON().addTo(carte);
 
-// Tous les éléments racupérés à partir de l'IDE http://overpass-turbo.eu/#.
+// Tous les éléments récupérés à partir de l'IDE http://overpass-turbo.eu/#.
 // Construction de l'objet
 let geoJSON;
 
