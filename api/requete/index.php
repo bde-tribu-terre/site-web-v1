@@ -19,7 +19,7 @@ function requete(&$retour) {
                                                 )
                                                 &&
                                                 (
-                                                    !isset($_GET['ns']) || strtolower($_GET['ns']) == strtolower($salle)
+                                                    !isset($_GET['ns']) || preg_replace('/ |\.|\(.*\) /', '', strtolower($_GET['ns'])) ==  preg_replace('/ |\.|\(.*\) /', '', strtolower($salle))
                                                 )
                                             ) {
                                                 array_push(
