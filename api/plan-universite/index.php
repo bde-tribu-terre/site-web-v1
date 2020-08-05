@@ -18,8 +18,30 @@
     id="carte"
 ></div>
 <script type="text/javascript">
+    // Si conditions
+    <?php
+    $universiteJSON = json_decode(file_get_contents('../universite.json'));
+    if (!empty($_GET)) {
+        foreach ($universiteJSON as $codeComposante => $composante) {
+            if (isset($_GET['c']) && !(strtolower($_GET['c']) == strtolower($codeComposante))) {
+                unset($universiteJSON->$codeComposante);
+                continue;
+            }
+            if (isset($_GET['b'])) {
+                foreach ($composante->batiments as $ibatiment => $batiment) {
+                    //echo !($_GET['b'] == $ibatiment) ? 'V' : 'F';
+                    if (!($_GET['b'] == $ibatiment)) {
+                        unset($universiteJSON->$codeComposante->batiments[$ibatiment]);
+                    }
+                }
+            }
+        }
+    }
+    $universiteJSONCompact = preg_replace('/\'/', '\\\'', preg_replace('/(^|\n)\s*/', '', json_encode($universiteJSON)));
+    ?>
+
     // Lecture du JSON
-    let universiteJSON = JSON.parse('<?php echo preg_replace('/\'/', '\\\'', preg_replace('/(^|\n)\s*/', '', file_get_contents('../universite.json'))); ?>');
+    let universiteJSON = JSON.parse('<?php echo $universiteJSONCompact ?>');
 </script>
 <script src="universite.js"></script>
 </body>
