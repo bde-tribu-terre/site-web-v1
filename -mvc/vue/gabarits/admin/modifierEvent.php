@@ -125,7 +125,7 @@
                                 id="formModifierEvent_modifierEvent_submit"
                                 name="formModifierEvent_modifierEvent_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Modifier l'évent"
                         >
                     </div>
@@ -144,7 +144,7 @@
                                 id="formRetourMenu_retourMenu_submit"
                                 name="formRetourMenu_retourMenu_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Retour au menu"
                         >
                     </p>

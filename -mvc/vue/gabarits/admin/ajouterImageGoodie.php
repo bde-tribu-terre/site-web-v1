@@ -48,7 +48,7 @@
                                 id="formAjouterImageGoodie_ajouter_submit"
                                 name="formAjouterImageGoodie_ajouter_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Ajouter l'image"
                         >
                     </p>
@@ -67,7 +67,7 @@
                                 id="formRetourMenu_retourMenu_submit"
                                 name="formRetourMenu_retourMenu_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Retour au menu"
                         >
                     </p>

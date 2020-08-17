@@ -32,7 +32,7 @@
                 <p>
                     Courriel : <span id="mailTT_txt_mail">dHJpYnV0ZXJyZTBAZ21haWwuY29t</span>
                 </p>
-                <button id="mailTT_button" class="btn btn-danger text-center" onclick="decoder('mailTT', true);">Cliquer pour décrypter</button>
+                <button id="mailTT_button" class="btn btn-var text-center" onclick="decoder('mailTT', true);">Cliquer pour décrypter</button>
                 <h3>Directeur/trice de publication</h3>
                 <p>
                     <strong>NOM PRENOM</strong>
@@ -40,7 +40,7 @@
                 <p>
                     Courriel : <span id="mailDirPubli_txt_mail">RU1BSUw=</span>
                 </p>
-                <button id="mailDirPubli_button" class="btn btn-danger text-center" onclick="decoder('mailDirPubli');">Cliquer pour décrypter</button>
+                <button id="mailDirPubli_button" class="btn btn-var text-center" onclick="decoder('mailDirPubli');">Cliquer pour décrypter</button>
                 <h3>Hébergeur</h3>
                 <p>
                     <strong>Société OVH</strong><br>

@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-tribu-terre">
+<div class="jumbotron">
     <div class="container text-center">
         <a href="<?php echo RACINE ?>">
             <img src="<?php echo IMAGES .'imgLogoMini.png' ?>" alt="Logo" height="300">
@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-expand-sm navbar-tribu-terre py-0">
+<nav class="navbar navbar-expand-sm py-0">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationHeader"> <!-- C'est le petit bouton menu quand l'écran est trop petit -->
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>

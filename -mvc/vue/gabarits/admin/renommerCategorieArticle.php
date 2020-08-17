@@ -39,7 +39,7 @@
                                 id="formRenommerCategorieArticle_renommer_submit"
                                 name="formRenommerCategorieArticle_renommer_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Renommer la catégorie"
                         >
                     </div>
@@ -58,7 +58,7 @@
                                 id="formRetourMenu_retourMenu_submit"
                                 name="formRetourMenu_retourMenu_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Retour au menu"
                         >
                     </p>
