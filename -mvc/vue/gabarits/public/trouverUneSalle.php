@@ -1,20 +1,33 @@
-<link rel="stylesheet" type="text/css" href="<?php echo RACINE . '-mvc/vue/universite.css' ?>">
 <div class="container text-center">
-    <h3>Université d'Orléans</h3>
+    <h3>Trouver une salle</h3>
     <hr>
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-            <p class="text-justify retrait">
-                Le campus de l'Université d'Orléans, dans le quartier Orléanais de La Source, est le lieu dans lequel se
-                situent la plus grande partie des enseignements proposés par l'Université. Il comporte des bâtiments de
-                cours, aussi bien théoriques que pratiques, de nombreuses résidences étudiantes, des restaurants
-                universitaires, des bibliothèques universitaires et des lieux de vie et de divertissement pour les
-                étudiants. Il comporte également <a href="#">de nombreux laboratoires scientifiques</a>, ce qui permet
-                une accessibilité au domaine de la recherche pour les étudiants de la majeure partie des disciplines
-                enseignées.
-            </p>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form id="formConnexion" method="get" onsubmit="return verifForm(this);">
+                <p> <!-- Nom Salle -->
+                    <label style="display: none" for="nom">Nom de la salle</label>
+                    <!-- En display none JS prends les retours à la ligne avant et après du innerText -->
+                    <input
+                            id="nom"
+                            name="nom"
+                            type="text"
+                            class="form-control"
+                            placeholder="Saisir le nom de la salle"
+                            onblur="verifNonVide(this);"
+                            oninput="garderMoins(this, 64);"
+                    >
+                </p>
+                <hr>
+                <p> <!-- Rechercher -->
+                    <input
+                            type="submit"
+                            class="btn btn-danger btn-block"
+                            value="Lancer la recherche"
+                    >
+                </p>
+            </form>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-4"></div>
     </div>
 </div><br>

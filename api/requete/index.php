@@ -8,21 +8,18 @@ function requete(&$retour) {
                 $JSON = json_decode(file_get_contents('../universite.json'));
                 foreach ($JSON as $codeComposante => $composante) {
                     if (!isset($_GET['c']) || strtolower($_GET['c']) == strtolower($codeComposante)) {
-                        $ibatiment = 0;
-                        foreach ($composante->batiments as $batiment) {
+                        foreach ($composante->batiments as $ibatiment => $batiment) {
                             if (!isset($_GET['b']) || $_GET['b'] == $ibatiment) {
-                                $igroupe = 0;
-                                foreach ($batiment->groupes as $groupe) {
+                                foreach ($batiment->groupes as $igroupe => $groupe) {
                                     if (!isset($_GET['g']) || $_GET['g'] == $igroupe) {
-                                        $isalle = 0;
-                                        foreach ($groupe->salles as $salle) {
+                                        foreach ($groupe->salles as $isalle => $salle) {
                                             if (
                                                 (
                                                     !isset($_GET['s']) || $_GET['s'] == $isalle
                                                 )
                                                 &&
                                                 (
-                                                    !isset($_GET['ns']) || strtolower($_GET['ns']) == strtolower($salle)
+                                                    !isset($_GET['ns']) || preg_replace('/ |\.|\(.*\) /', '', strtolower($_GET['ns'])) ==  preg_replace('/ |\.|\(.*\) /', '', strtolower($salle))
                                                 )
                                             ) {
                                                 array_push(
@@ -39,12 +36,9 @@ function requete(&$retour) {
                                                     )
                                                 );
                                             }
-                                            $isalle++;
                                         }
-                                        $igroupe++;
                                     }
                                 }
-                                $ibatiment++;
                             }
                         }
                     }
@@ -76,7 +70,7 @@ function requete(&$retour) {
 $debut = microtime(true);
 $retour = array();
 $meta = requete($retour);
-$meta['source'] = 'http://' . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI];
+$meta['source'] = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 $meta['debut_execution'] = $debut;
 $meta['temps_execution'] = microtime(true) - $debut;
 $meta['credits'] = 'Anaël BARODINE, étudiant en informatique à l\'Université d\'Orléans, au nom de l\'association étudiante Tribu-Terre.';

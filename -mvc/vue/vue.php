@@ -1048,7 +1048,7 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
                     <h4>📅 ' . genererDate($event['date']) . $nbJoursStr . '</h4>
                     <h4>⌚️ ' . substr($event['heure'], 0, 2) . 'h' . substr($event['heure'], 3, 2) . '</h4>
                     <h4>📍️ ' . $event['lieu'] . '</h4>
-                    <a class="btn btn-var btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
+                    <a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
                         <h4>Détails</h4>
                     </a>
                 </div>
@@ -1202,16 +1202,16 @@ function afficherGoodiePrecis() {
         $carouselGoodie =
             '
             <div id="carouselGoodie" class="carousel carousel-images slide arrondi ombre" data-ride="carousel">
-            ' .$carouselGoodieIndicator . '
-            ' . $carouselGoodieImages . '
-            <a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carouselGoodie" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-            </a>
+                ' .$carouselGoodieIndicator . '
+                ' . $carouselGoodieImages . '
+                <a class="left carousel-control" href="#carouselGoodie" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carouselGoodie" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
             ';
     }
@@ -1227,16 +1227,18 @@ function afficherJournaux() {
     $tableJournaux = '';
     foreach ($GLOBALS['retoursModele']['journaux'] as $journal) {
         $tableJournaux .=
-            '<div class="col-sm-3">' .
-                '<div class="well">' .
-                    '<h3>' . $journal['titre'] . '</h3>' .
-                    '<h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>' .
-                    '<a href="' . $journal['pdf'] . '" class="btn btn-var btn-block">' .
-                        '<h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>' .
-                        '<h4 class="alterneur-petit">Lire</h4>' .
-                    '</a>' .
-                '</div>' .
-            '</div>';
+            '
+            <div class="col-sm-3">
+                <div class="well">
+                    <h3>' . $journal['titre'] . '</h3>
+                    <h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>
+                    <a href="' . $journal['pdf'] . '" class="btn btn-danger btn-block">
+                        <h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
+                        <h4 class="alterneur-petit">Lire</h4>
+                    </a>
+                </div>
+            </div>
+            ';
     }
     define('JOURNAUX', $tableJournaux);
 
@@ -1343,4 +1345,25 @@ function afficherRiad() {
 ########################################################################################################################
 function afficherTrouverUneSalle() {
     afficherPage('Trouver une salle', 'trouverUneSalle.php', 'public');
+}
+
+function afficherTrouverUneSalleRecherche() {
+    $listeSalles = '';
+    foreach ($GLOBALS['retoursModele']['salles'] as $salle) {
+        $listeSalles .=
+            '
+            <div class="well">
+                <h4>' . $salle['nom_salle'] . '</h4>
+                <p>Composante : ' . $salle['titre_composante'] . '</p>
+                <p>Bâtiment : ' . $salle['nom_batiment'] . '</p>
+                <p>Emplacement : ' . $salle['nom_groupe'] . '</p>
+            </div>
+            ';
+    }
+    define('NOMBRE', count($GLOBALS['retoursModele']['salles']));
+    define('SALLES', $listeSalles);
+    define('CODE_COMPOSANTE', $salle['code_composante']);
+    define('ID_BATIMENT', $salle['id_batiment']);
+
+    afficherPage('Trouver une salle', 'trouverUneSalleRecherche.php', 'public');
 }

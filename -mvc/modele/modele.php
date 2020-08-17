@@ -1293,7 +1293,7 @@ function MdlArticlesVideoTous($visibles = true, $invisibles = false) {
             curl_close($curl);
             $articleVideo['API_YouTube'] = MET_SQLLigneUnique(json_decode($return));
         } catch (Exception $e) {
-            ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse ' . $articleVideo['lien'] . 'n\'ont pas pu être récupérées sur l\'API YouTube.');
+            ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse "' . $arrayRetour['lien'] . '" n\'ont pas pu être récupérées sur l\'API YouTube.');
             $articleVideo['API_YouTube'] = NULL;
         }
     }
@@ -1340,7 +1340,7 @@ function MdlArticleVideoPrecis($id, $article = false) {
         curl_close($curl);
         $arrayRetour['API_YouTube'] = MET_SQLLigneUnique(json_decode($return));
     } catch (Exception $e) {
-        ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse ' . $arrayRetour['lien'] . 'n\'ont pas pu être récupérées sur l\'API YouTube.');
+        ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse "' . $arrayRetour['lien'] . '" n\'ont pas pu être récupérées sur l\'API YouTube.');
         $arrayRetour['API_YouTube'] = NULL;
     }
     ajouterRetourModele(
@@ -1456,11 +1456,33 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
             curl_close($curl);
             $retour[$articleVideo['id']] = MET_SQLLigneUnique(json_decode($return))['thumbnail_url'];
         } catch (Exception $e) {
+            ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse "' . $articleVideo['lien'] . '" n\'ont pas pu être récupérées sur l\'API YouTube.');
             $retour[$articleVideo['id']] = NULL;
         }
     }
     ajouterRetourModele(
         'miniaturesArticlesVideo',
         $retour
+    );
+}
+
+########################################################################################################################
+# Salles (API)                                                                                                         #
+########################################################################################################################
+function MdlRechercherSalle($nom) {
+    try {
+        $api = 'http://localhost/phpstormprojects/Site-Tribu-Terre/api/requete/?r=salles&ns=' . preg_replace('/ /', '+', $nom);
+        $curl = curl_init($api);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $return = curl_exec($curl);
+        curl_close($curl);
+        $arrayRetour = MET_SQLLignesMultiples(json_decode($return)->retour);
+    } catch (Exception $e) {
+        ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.');
+        $arrayRetour = NULL;
+    }
+    ajouterRetourModele(
+        'salles',
+        $arrayRetour
     );
 }
