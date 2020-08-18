@@ -36,7 +36,12 @@
                     <div class="well">
                         <h4>Notre page Facebook</h4>
                         <p>
-                            <img src="<?php echo IMAGES . 'imgFacebook.svg' ?>" height="64" width="64" alt="Facebook">
+                            <img
+                                    src="<?php echo IMAGES . 'imgFacebook.svg' ?>"
+                                    height="64"
+                                    width="64"
+                                    alt="Facebook"
+                            >
                         </p>
                     </div>
                 </a>
@@ -46,7 +51,12 @@
                     <div class="well">
                         <h4>Notre compte Instagram</h4>
                         <p>
-                            <img src="<?php echo IMAGES . 'imgInstagram.svg' ?>" height="64" width="64" alt="Instagram">
+                            <img
+                                    src="<?php echo IMAGES . 'imgInstagram.svg' ?>"
+                                    height="64"
+                                    width="64"
+                                    alt="Instagram"
+                            >
                         </p>
                     </div>
                 </a>
@@ -56,7 +66,12 @@
                     <div class="well">
                         <h4>Notre compte Twitter</h4>
                         <p>
-                            <img src="<?php echo IMAGES . 'imgTwitter.svg' ?>" height="64" width="64" alt="Twitter">
+                            <img
+                                    src="<?php echo IMAGES . 'imgTwitter.svg' ?>"
+                                    height="64"
+                                    width="64"
+                                    alt="Twitter"
+                            >
                         </p>
                     </div>
                 </a>
@@ -66,7 +81,12 @@
                     <div class="well">
                         <h4>Notre serveur Discord</h4>
                         <p>
-                            <img src="<?php echo IMAGES . 'imgDiscord.svg' ?>" height="64" width="64" alt="Twitter">
+                            <img
+                                    src="<?php echo IMAGES . 'imgDiscord.svg' ?>"
+                                    height="64"
+                                    width="64"
+                                    alt="Discord"
+                            >
                         </p>
                     </div>
                 </a>
@@ -88,19 +108,40 @@
     </script>
     <div class="row"> <!-- Boutons pour choisir -->
         <div class="col-sm-4">
-            <a id="boutonInfo1" class="btn btn-var btn-block ombre active" type="button" data-slide-to="0" data-target="#carouselInfos" onclick="activerBoutonInfo('1')">
+            <a
+                    id="boutonInfo1"
+                    class="btn btn-var btn-block ombre active"
+                    type="button"
+                    data-slide-to="0"
+                    data-target="#carouselInfos"
+                    onclick="activerBoutonInfo('1')"
+            >
                 <h4>Partenaires</h4>
             </a>
             <br>
         </div>
         <div class="col-sm-4">
-            <a id="boutonInfo2" class="btn btn-var btn-block ombre" type="button" data-slide-to="1" data-target="#carouselInfos" onclick="activerBoutonInfo('2')">
+            <a
+                    id="boutonInfo2"
+                    class="btn btn-var btn-block ombre"
+                    type="button"
+                    data-slide-to="1"
+                    data-target="#carouselInfos"
+                    onclick="activerBoutonInfo('2')"
+            >
                 <h4>Réseau associatif</h4>
             </a>
             <br>
         </div>
         <div class="col-sm-4">
-            <a id="boutonInfo3" class="btn btn-var btn-block ombre" type="button" data-slide-to="2" data-target="#carouselInfos" onclick="activerBoutonInfo('3')">
+            <a
+                    id="boutonInfo3"
+                    class="btn btn-var btn-block ombre"
+                    type="button"
+                    data-slide-to="2"
+                    data-target="#carouselInfos"
+                    onclick="activerBoutonInfo('3')"
+            >
                 <h4>Université</h4>
             </a>
             <br>
@@ -115,11 +156,21 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
                                 <h3>Partenaires</h3>
-                                <p>Tribu-Terre est actuellement partenaire avec trois établissements Rue de Bourgogne.</p>
-                                <p>Profitez de tarifs préférentiels sur présentation de votre carte d'adhérent Tribu-Terre !</p>
                                 <p>
-                                    <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">Comment adhérer ?</a> |
-                                    <a href="<?php echo RACINE . 'association/partenaires/' ?>">Voir les tarifs préférentiels</a>
+                                    Tribu-Terre est actuellement partenaire avec trois établissements Rue de Bourgogne.
+                                </p>
+                                <p>
+                                    Profitez de tarifs préférentiels sur présentation de votre carte d'adhérent
+                                    Tribu-Terre !
+                                </p>
+                                <p>
+                                    <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">
+                                        Comment adhérer ?
+                                    </a>
+                                    |
+                                    <a href="<?php echo RACINE . 'association/partenaires/' ?>">
+                                        Voir les tarifs préférentiels
+                                    </a>
                                 </p>
                             </div>
                             <div class="col-sm-3"></div>
@@ -130,12 +181,19 @@
                                 <h4>Bar l'Atelier</h4>
                                 <p>203 Rue de Bourgogne, Orléans</p>
                                 <p>
-                                    <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
+                                    <a
+                                            href="https://www.facebook.com/LAtelier-203-255887947799605/"
+                                            target="_blank"
+                                    >
                                         Page Facebook
                                     </a>
                                 </p>
-                                <a href="https://www.facebook.com/LAtelier-203-255887947799605/">
-                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgBarAtelier.png' ?>" alt="Bar l'Atelier">
+                                <a href="https://www.facebook.com/LAtelier-203-255887947799605/" target="_blank">
+                                    <img
+                                            class="img-arrondi ombre"
+                                            src="<?php echo IMAGES . 'imgBarAtelier.png' ?>"
+                                            alt="Bar l'Atelier"
+                                    >
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -143,12 +201,19 @@
                                 <h4>Bar Le Key West</h4>
                                 <p>208 Rue de Bourgogne, Orléans</p>
                                 <p>
-                                    <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
+                                    <a
+                                            href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/"
+                                            target="_blank"
+                                    >
                                         Page Facebook
                                     </a>
                                 </p>
-                                <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/">
-                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgBarKeyWest.png' ?>" alt="Bar le Key West">
+                                <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/" target="_blank">
+                                    <img
+                                            class="img-arrondi ombre"
+                                            src="<?php echo IMAGES . 'imgBarKeyWest.png' ?>"
+                                            alt="Bar le Key West"
+                                    >
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -156,12 +221,19 @@
                                 <h4>Restaurant Le Maestro</h4>
                                 <p>218 Rue de Bourgogne, Orléans</p>
                                 <p>
-                                    <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
+                                    <a
+                                            href="https://maestro-snack-orleans.eatbu.com/?lang=fr"
+                                            target="_blank"
+                                    >
                                         Site Web
                                     </a>
                                 </p>
-                                <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr">
-                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgLeMaestro.png' ?>" alt="Restaurant le Maestro">
+                                <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr" target="_blank">
+                                    <img
+                                            class="img-arrondi ombre"
+                                            src="<?php echo IMAGES . 'imgLeMaestro.png' ?>"
+                                            alt="Restaurant le Maestro"
+                                    >
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -172,7 +244,10 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
                                 <h3>Réseau associatif</h3>
-                                <p>L'association Tribu-Terre est adhérente à deux fédérations d'associations étudiantes.</p>
+                                <p>
+                                    L'association Tribu-Terre est adhérente à deux fédérations d'associations
+                                    étudiantes.
+                                </p>
                                 <p>
                                     Elles permettent une mise en relation des étudiants à l'échelle locale pour
                                     l'une et à l'échelle nationale pour l'autre, dans l'objectif d'organiser des
@@ -184,13 +259,18 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-6">
-                                <h4>ÔCampus</h4>
-                                <h5>Fédération des Associations Etudiantes d'Orléans</h5>
+                                <h4>
+                                    ÔCampus
+                                </h4>
+                                <h5>
+                                    Fédération des Associations Etudiantes d'Orléans
+                                </h5>
                                 <p>
-                                    <a href="https://fr-fr.facebook.com/OCampusFederation/">
+                                    <a href="https://fr-fr.facebook.com/OCampusFederation/" target="_blank">
                                         Page Facebook
-                                    </a> |
-                                    <a href="https://ocampus.fr/index.php">
+                                    </a>
+                                    |
+                                    <a href="https://ocampus.fr/index.php" target="_blank">
                                         Site Web
                                     </a>
                                 </p>
@@ -199,19 +279,27 @@
                                         Plus d'information sur ÔCampus
                                     </a>
                                 </p>
-                                <a href="https://ocampus.fr/index.php">
-                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgOCampus.png' ?>" alt="ÔCampus">
+                                <a href="https://ocampus.fr/index.php" target="_blank">
+                                    <img
+                                            class="img-arrondi ombre"
+                                            src="<?php echo IMAGES . 'imgOCampus.png' ?>"
+                                            alt="ÔCampus"
+                                    >
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
                             <div class="col-sm-6">
-                                <h4>FNEB</h4>
-                                <h5>Fédération Nationale des Étudiants en sciences exactes naturelles et techniques</h5>
+                                <h4>
+                                    FNEB
+                                </h4>
+                                <h5>
+                                    Fédération Nationale des Étudiants en sciences exactes naturelles et techniques
+                                </h5>
                                 <p>
-                                    <a href="https://www.facebook.com/FNEBmono">
+                                    <a href="https://www.facebook.com/FNEBmono" target="_blank">
                                         Page Facebook
                                     </a> |
-                                    <a href="https://www.fneb.fr/">
+                                    <a href="https://www.fneb.fr/" target="_blank">
                                         Site Web
                                     </a>
                                 </p>
@@ -220,8 +308,12 @@
                                         Plus d'information sur la FNEB
                                     </a>
                                 </p>
-                                <a href="https://www.fneb.fr/">
-                                    <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgFNEB.png' ?>" alt="FNEB">
+                                <a href="https://www.fneb.fr/" target="_blank">
+                                    <img
+                                            class="img-arrondi ombre"
+                                            src="<?php echo IMAGES . 'imgFNEB.png' ?>"
+                                            alt="FNEB"
+                                    >
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
@@ -247,27 +339,35 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-6">
-                                <h4>OSUC</h4>
-                                <h5>Observatoire des Sciences de l’Univers en région Centre</h5>
+                                <h4>
+                                    OSUC
+                                </h4>
+                                <h5>
+                                    Observatoire des Sciences de l’Univers en région Centre
+                                </h5>
                                 <p>
-                                    <a href="http://www.univ-orleans.fr/fr/osuc">
+                                    <a href="http://www.univ-orleans.fr/fr/osuc" target="_blank">
                                         Site Web
                                     </a>
                                 </p>
-                                <a href="http://www.univ-orleans.fr/fr/osuc">
+                                <a href="http://www.univ-orleans.fr/fr/osuc" target="_blank">
                                     <img src="<?php echo IMAGES . 'imgOSUC2.png' ?>" alt="OSUC">
                                 </a>
                                 <hr class="alterneur-mini">
                             </div>
                             <div class="col-sm-6">
-                                <h4>CoST</h4>
-                                <h5>Collégium Sciences et Techniques</h5>
+                                <h4>
+                                    CoST
+                                </h4>
+                                <h5>
+                                    Collégium Sciences et Techniques
+                                </h5>
                                 <p>
-                                    <a href="http://www.univ-orleans.fr/fr/sciences-techniques/">
+                                    <a href="http://www.univ-orleans.fr/fr/sciences-techniques/" target="_blank">
                                         Site Web
                                     </a>
                                 </p>
-                                <a href="http://www.univ-orleans.fr/fr/sciences-techniques/">
+                                <a href="http://www.univ-orleans.fr/fr/sciences-techniques/" target="_blank">
                                     <img src="<?php echo IMAGES . 'imgCoST2.png' ?>" alt="CoST">
                                 </a>
                                 <hr class="alterneur-mini">
