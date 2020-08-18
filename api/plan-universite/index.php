@@ -29,7 +29,6 @@
             }
             if (isset($_GET['b'])) {
                 foreach ($composante->batiments as $ibatiment => $batiment) {
-                    //echo !($_GET['b'] == $ibatiment) ? 'V' : 'F';
                     if (!($_GET['b'] == $ibatiment)) {
                         unset($universiteJSON->$codeComposante->batiments[$ibatiment]);
                     }
