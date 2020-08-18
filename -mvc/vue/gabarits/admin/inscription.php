@@ -112,7 +112,7 @@
                                 id="formInscription_inscription_submit"
                                 name="formInscription_inscription_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="S'inscrire"
                         >
                     </p>

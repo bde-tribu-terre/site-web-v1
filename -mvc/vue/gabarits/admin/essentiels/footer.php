@@ -1,4 +1,4 @@
-<div class="container-fluid text-center footer-admin">
+<div class="container-fluid text-center">
     <p><a href="<?php echo RACINE ?>">Retourner à l'accueil</a></p>
     <hr>
     <div class="texte-footer">

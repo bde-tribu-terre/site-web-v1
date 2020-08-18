@@ -88,19 +88,19 @@
     </script>
     <div class="row"> <!-- Boutons pour choisir -->
         <div class="col-sm-4">
-            <a id="boutonInfo1" class="btn btn-danger btn-block ombre active" type="button" data-slide-to="0" data-target="#carouselInfos" onclick="activerBoutonInfo('1')">
+            <a id="boutonInfo1" class="btn btn-var btn-block ombre active" type="button" data-slide-to="0" data-target="#carouselInfos" onclick="activerBoutonInfo('1')">
                 <h4>Partenaires</h4>
             </a>
             <br>
         </div>
         <div class="col-sm-4">
-            <a id="boutonInfo2" class="btn btn-danger btn-block ombre" type="button" data-slide-to="1" data-target="#carouselInfos" onclick="activerBoutonInfo('2')">
+            <a id="boutonInfo2" class="btn btn-var btn-block ombre" type="button" data-slide-to="1" data-target="#carouselInfos" onclick="activerBoutonInfo('2')">
                 <h4>Réseau associatif</h4>
             </a>
             <br>
         </div>
         <div class="col-sm-4">
-            <a id="boutonInfo3" class="btn btn-danger btn-block ombre" type="button" data-slide-to="2" data-target="#carouselInfos" onclick="activerBoutonInfo('3')">
+            <a id="boutonInfo3" class="btn btn-var btn-block ombre" type="button" data-slide-to="2" data-target="#carouselInfos" onclick="activerBoutonInfo('3')">
                 <h4>Université</h4>
             </a>
             <br>

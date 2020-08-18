@@ -26,7 +26,7 @@
                                 id="formSupprimerImageGoodie_supprimer_submit"
                                 name="formSupprimerImageGoodie_supprimer_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Supprimer les images"
                         >
                     </div>
@@ -45,7 +45,7 @@
                                 id="formRetourMenu_retourMenu_submit"
                                 name="formRetourMenu_retourMenu_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Retour au menu"
                         >
                     </p>

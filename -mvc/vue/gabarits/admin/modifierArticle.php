@@ -10,7 +10,7 @@
                                 id="formModifierArticle_supprimerImages_submit"
                                 name="formModifierArticle_supprimerImages_submit"
                                 type="submit"
-                                class="btn btn-danger"
+                                class="btn btn-var"
                                 value="Supprimer des images de l'article"
                         >
                     </div>
@@ -93,7 +93,7 @@
                                 id="formModifierArticle_modifier_submit"
                                 name="formModifierArticle_modifier_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Modifier l'article"
                         >
                     </div>
@@ -112,7 +112,7 @@
                                 id="formRetourMenu_retourMenu_submit"
                                 name="formRetourMenu_retourMenu_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Retour au menu"
                         >
                     </p>

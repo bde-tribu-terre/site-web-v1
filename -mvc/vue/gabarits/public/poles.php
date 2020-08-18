@@ -182,7 +182,7 @@
                 <div class="text-center">
                     <button
                         id="mailJournal_button"
-                        class="btn btn-danger text-center"
+                        class="btn btn-var text-center"
                         onclick="decoder('mailJournal');"
                     >
                         Cliquer pour décrypter

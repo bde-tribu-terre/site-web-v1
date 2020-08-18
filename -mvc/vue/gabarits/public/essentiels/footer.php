@@ -1,4 +1,4 @@
-<div class="container-fluid text-center footer-tribu-terre">
+<div class="container-fluid text-center">
     <p><strong>
             Vous avez des questions sur Tribu-Terre ou les derniers évènements ?<br/>
             <a href="<?php echo RACINE . 'association/contact/' ?>">Contactez nous !</a>

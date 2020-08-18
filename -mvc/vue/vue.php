@@ -39,15 +39,17 @@ define('VERSION_SITE', file_get_contents(RACINE . '-mvc/vue/version.txt'));
  */
 function afficherPage($title, $gabarit, $cadre) {
     if (file_exists(RACINE . '-mvc/vue/gabarits/' . $cadre)) {
-        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . '-header.php');
-        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . '-messages.php');
-        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . '-footer.php');
+        define('CHEMIN_VERS_STYLE', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/style.css');
+        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/header.php');
+        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/messages.php');
+        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/footer.php');
         define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . $gabarit);
     } else {
         array_push($messages, ['500', 'Répertoire de gabarits ' . $cadre . ' non trouvé.']);
-        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/public/' . '-header.php');
-        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/public/' . '-messages.php');
-        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/public/' . '-footer.php');
+        define('CHEMIN_VERS_STYLE', RACINE . '-mvc/vue/gabarits/public/essentiels/style.css');
+        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/public/essentiels/header.php');
+        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/public/essentiels/messages.php');
+        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/public/essentiels/footer.php');
         define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/public/accueil.php');
     }
 
@@ -651,7 +653,7 @@ function afficherAccueil() {
             <h5>📅&emsp;' . preg_replace('/ [^ ]*$/', '', genererDate($event['date'])) . $nbJoursStr . '</h5>
             <h5>⌚️&emsp;' . substr($event['heure'], 0, 2) . 'h' . substr($event['heure'], 3, 2) . '</h5>
             <h5>📍&emsp;' . $event['lieu'] . '</h5>
-            <a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
+            <a class="btn btn-var btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
                 <h4>Détails</h4>
             </a>
             ' . ($count == 3 ? '</div>' : '') . '
@@ -674,7 +676,7 @@ function afficherAccueil() {
                 <div class="well">
                     <h3>' . $journal['titre'] . '</h3>
                     <h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>
-                    <a href="' . RACINE . 'journaux/' . $journal['pdf'] . '" class="btn btn-danger btn-block">
+                    <a href="' . RACINE . 'journaux/' . $journal['pdf'] . '" class="btn btn-var btn-block">
                         <h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
                         <h4 class="alterneur-petit">Lire</h4>
                     </a>
@@ -694,7 +696,7 @@ function afficherAccueil() {
             </h5>
             <h3>' . $GLOBALS['retoursModele']['article']['titre'] . '</h3>
             <h5>' . genererDate($GLOBALS['retoursModele']['article']['dateCreation']) . '</h5>
-            <a href="' . RACINE . 'articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? 'V' : 'T') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-danger btn-block">
+            <a href="' . RACINE . 'articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? 'V' : 'T') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-var btn-block">
             <h4>Lire l\'article</h4>
             </a>
             </div>
@@ -779,7 +781,7 @@ function afficherArticles() {
                             <hr>
                             <p class="text-left retrait">' . $texteNonFormateMini . (strlen($arrayArticles[$ID]['texte']) > 256 ? '[...]' : '')  . '</p>
                             <hr>
-                            <a class="btn btn-danger btn-block" href="' . RACINE . 'articles/?id=' . $ID . '">
+                            <a class="btn btn-var btn-block" href="' . RACINE . 'articles/?id=' . $ID . '">
                                 <h4>Lire l\'article</h4>
                             </a>
                         </div>
@@ -1124,7 +1126,7 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
                     <h4><strong>' . $categorieStr . '</strong></h4>
                     <h4>Prix pour les adhérents : ' . $goodie['prixAD'] . '€</h4>
                     <h4>Prix pour les non-adhérents : ' . $goodie['prixNAD'] . '€</h4>
-                    <a class="btn btn-danger btn-block" href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '">
+                    <a class="btn btn-var btn-block" href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '">
                         <h4>Détails</h4>
                     </a>
                 </div>

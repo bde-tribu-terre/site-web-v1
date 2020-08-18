@@ -1,10 +1,3 @@
-/*
-element {
-    --couleur: #dc3545;
-    background-color: var(--couleur);
-}
- */
-
 /*######################################################################################################################
 ########################################################################################################################
 ###                                                     -- A --                                                      ###
@@ -12,23 +5,10 @@ element {
 ###                                                      NAVBAR                                                      ###
 ########################################################################################################################
 ######################################################################################################################*/
-
-/*######################################################################################################################
-# I - Variables                                                                                                        #
-######################################################################################################################*/
-html {
-    --navbar-couleur-1: #d9534f;
-    --navbar-couleur-2: #c9302c;
-    --navbar-couleur-3: #ac2925;
-    --navbar-couleur-4: white;
-}
-
-/*######################################################################################################################
-# II - Navbar en général                                                                                               #
-######################################################################################################################*/
 .navbar { /* Navbar entière */
     margin-bottom: 50px; /* Espace sous la navbar */
     border-radius: 0; /* Les coins ne sont pas arrondis */
+    background-color: var(--prim); /* Couleur de fond de base */
 }
 
 .navbar:before{ /* Entourloupe pour pouvoir poser une ombre qui s'étente en dessous à droite et à gauche de la navbar */
@@ -44,49 +24,42 @@ html {
     box-shadow: 0 5px 4px #656565;
 }
 
-/*######################################################################################################################
-# III - Navbar Tribu-Terre                                                                                             #
-######################################################################################################################*/
-.navbar-tribu-terre { /* Couleur de fond de base */
-    background-color: var(--navbar-couleur-1);
+.navbar .nav .open > a,
+.navbar .nav .open > a:focus,
+.navbar .nav .open > a:hover { /* Couleur des boutons quand sélectionnés ou survolés */
+    background-color: var(--prim-select);
 }
 
-.navbar-tribu-terre .nav .open > a,
-.navbar-tribu-terre .nav .open > a:focus,
-.navbar-tribu-terre .nav .open > a:hover { /* Couleur des boutons quand sélectionnés ou survolés */
-    background-color: var(--navbar-couleur-2);
+.navbar .icon-bar { /* Couleur des ||| trois barres horizontales quand l'écran est trop petit pour ouvrir */
+    background-color: var(--sec);
 }
 
-.navbar-tribu-terre .icon-bar { /* Couleur des ||| trois barres horizontales quand l'écran est trop petit pour ouvrir */
-    background-color: var(--navbar-couleur-4);
+.navbar .navbar-nav .nav-link, /* Couleur du texte qui est affiché de base dans la navbar */
+.navbar .dropdown-toggle, /* Couleur du texte du menu d'ouverture du menu déroulant */
+.navbar .dropdown-item { /* Couleur de texte des items du menu déroulant */
+    color: var(--sec);
 }
 
-.navbar-tribu-terre .navbar-nav .nav-link, /* Couleur du texte qui est affiché de base dans la navbar */
-.navbar-tribu-terre .dropdown-toggle, /* Couleur du texte du menu d'ouverture du menu déroulant */
-.navbar-tribu-terre .dropdown-item { /* Couleur de texte des items du menu déroulant */
-    color: var(--navbar-couleur-4);
+.navbar .nav-item.active .nav-link,
+.navbar .nav-item:hover .nav-link,
+.navbar .dropdown a:hover,
+.navbar .dropdown a:focus,
+.navbar .dropdown-item.active,
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus { /* Couleur et background si un menu est survolé ou sélectionné */
+    color: var(--sec);
+    background-color: var(--prim-select);
 }
 
-.navbar-tribu-terre .nav-item.active .nav-link,
-.navbar-tribu-terre .nav-item:hover .nav-link,
-.navbar-tribu-terre .dropdown a:hover,
-.navbar-tribu-terre .dropdown a:focus,
-.navbar-tribu-terre .dropdown-item.active,
-.navbar-tribu-terre .dropdown-item:hover,
-.navbar-tribu-terre .dropdown-item:focus { /* Couleur et background si un menu est survolé ou sélectionné */
-    color: var(--navbar-couleur-4);
-    background-color: var(--navbar-couleur-2);
+.navbar .nav-item.active:hover .nav-link,
+.navbar .dropdown-item.active:hover,
+.navbar .dropdown-item.active:focus,
+.navbar .dropdown a:focus:hover { /* Background si un menu est sélectionné ET survolé */
+    background-color: var(--prim-select-double);
 }
 
-.navbar-tribu-terre .nav-item.active:hover .nav-link,
-.navbar-tribu-terre .dropdown-item.active:hover,
-.navbar-tribu-terre .dropdown-item.active:focus,
-.navbar-tribu-terre .dropdown a:focus:hover { /* Background si un menu est sélectionné ET survolé */
-    background-color: var(--navbar-couleur-3);
-}
-
-.navbar-tribu-terre .dropdown-menu { /* Couleur de background de l'intérieur du menu déroulant */
-    background-color: var(--navbar-couleur-1);
+.navbar .dropdown-menu { /* Couleur de background de l'intérieur du menu déroulant */
+    background-color: var(--prim);
 }
 
 /*######################################################################################################################
@@ -96,8 +69,7 @@ html {
 ###                                                    JUMBOTRON                                                     ###
 ########################################################################################################################
 ######################################################################################################################*/
-.jumbotron-tribu-terre { /* Retire la marge par défaut (vu qu'il faut coller la navbar) */
-    background-image: url("../../-images/imgFondMarbre.png");
+.jumbotron { /* Retire la marge par défaut (vu qu'il faut coller la navbar) */
     background-clip: border-box;
     background-repeat: no-repeat;
     background-size: cover;
@@ -106,12 +78,12 @@ html {
     margin-bottom: 0;
 }
 
-.jumbotron-tribu-terre p,
-.jumbotron-tribu-terre h1,
-.jumbotron-tribu-terre h2,
-.jumbotron-tribu-terre h3,
-.jumbotron-tribu-terre h4,
-.jumbotron-tribu-terre h5 { /* Lueur blanche autour du texte du jumbotron */
+.jumbotron p,
+.jumbotron h1,
+.jumbotron h2,
+.jumbotron h3,
+.jumbotron h4,
+.jumbotron h5 { /* Lueur blanche autour du texte du jumbotron */
     text-shadow:
             5px 5px 5px #f3f3f3,
             -5px 5px 5px #f3f3f3,
@@ -119,12 +91,14 @@ html {
             -5px -5px 5px #f3f3f3;
 }
 
-.jumbotron-admin { /* Retire la marge par défaut (vu qu'il faut coller la navbar) */
-    background-color: var(--navbar-couleur-1);
-    color: var(--navbar-couleur-4);
+/* S'il faut coller pour faire comme si sans jumbotron...
+.jumbotron-admin { / * Retire la marge par défaut (vu qu'il faut coller la navbar) * /
+    background-color: var(--prim);
+    color: var(--sec);
     margin-bottom: 0;
     padding-bottom: 0;
 }
+*/
 
 @media (max-width: 767px) { /* Le jumbotron ne sera pas fixe sur mobile (problèmes de performances) */
     .jumbotron {
@@ -203,25 +177,9 @@ html {
 ###                                                      FOOTER                                                      ###
 ########################################################################################################################
 ######################################################################################################################*/
-.footer-tribu-terre {
+footer {
     padding: 25px;
     background-color: #f2f2f2;
-}
-
-.footer-admin {
-    padding: 25px;
-    background-color: var(--navbar-couleur-1);
-    color: var(--navbar-couleur-4);
-}
-
-.footer-admin a { /* Les liens restent blancs même survolés */
-    text-decoration: underline;
-    color: white;
-}
-
-.footer-admin a:hover {
-    font-weight: bold;
-    color: white;
 }
 
 .texte-footer {
@@ -241,15 +199,15 @@ html {
 }
 
 .plan-du-site .list-group-item-danger {
-    color: white;
-    background-color: #d9534f;
-    border-color: #d43f3a;
+    color: var(--sec);
+    background-color: var(--prim);
+    border-color: var(--prim-border);
 }
 
 .plan-du-site .list-group-item-danger:hover {
-    color: white;
-    background-color:#c9302c;
-    border-color:#761c19
+    color: var(--sec);
+    background-color: var(--prim-select);
+    border-color: var(--prim-select-double-border);
 }
 
 .plan-du-site .list-group-item:not(.list-group-item-danger) {
@@ -348,7 +306,7 @@ html {
 }
 
 a, a:hover { /* On change la couleur des liens vers du rouge */
-    color: #dc3545;
+    color: var(--prim);
 }
 
 .div-miniature-articles { /* Limite la largeur de la miniature des articles dans la page articles */
@@ -380,4 +338,56 @@ main {
 }
 footer {
     flex: 0 1 60px;
+}
+
+/*######################################################################################################################
+########################################################################################################################
+###                                                     -- L --                                                      ###
+###                                                                                                                  ###
+###                                                BOUTONS VARIABLES                                                 ###
+########################################################################################################################
+######################################################################################################################*/
+.btn-var {
+    color: var(--sec);
+    background-color: var(--prim);
+    border-color: var(--prim-border);
+}
+
+.btn-var.focus, .btn-var:focus {
+    color: var(--sec);
+    background-color: var(--prim-select);
+    border-color: var(--prim-select-double-border);
+}
+
+.btn-var:hover {
+    color: var(--sec);
+    background-color: var(--prim-select);
+    border-color: var(--prim-select-double);
+}
+
+.btn-var.active, .btn-var:active, .open>.dropdown-toggle.btn-var {
+    color: var(--sec);
+    background-color: var(--prim-select);
+    background-image:none;
+    border-color: var(--prim-select-double);
+}
+
+.btn-var.active.focus, .btn-var.active:focus, .btn-var.active:hover, .btn-var:active.focus,
+.btn-var:active:focus, .btn-var:active:hover, .open>.dropdown-toggle.btn-var.focus,
+.open>.dropdown-toggle.btn-var:focus, .open>.dropdown-toggle.btn-var:hover {
+    color: var(--sec);
+    background-color: var(--prim-select-double);
+    border-color: var(--prim-select-double-border);
+}
+
+.btn-var.disabled.focus, .btn-var.disabled:focus, .btn-var.disabled:hover, .btn-var[disabled].focus,
+.btn-var[disabled]:focus, .btn-var[disabled]:hover, fieldset[disabled] .btn-var.focus,
+fieldset[disabled] .btn-var:focus, fieldset[disabled] .btn-var:hover {
+    background-color: var(--prim);
+    border-color: var(--prim-border);
+}
+
+.btn-var .badge {
+    color: var(--prim);
+    background-color: var(--sec)
 }

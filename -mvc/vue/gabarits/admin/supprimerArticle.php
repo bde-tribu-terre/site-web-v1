@@ -28,7 +28,7 @@
                                 id="formSupprimerArticle_supprimer_submit"
                                 name="formSupprimerArticle_supprimer_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Supprimer l'article"
                         >
                     </div>
@@ -47,7 +47,7 @@
                                 id="formRetourMenu_retourMenu_submit"
                                 name="formRetourMenu_retourMenu_submit"
                                 type="submit"
-                                class="btn btn-danger btn-block"
+                                class="btn btn-var btn-block"
                                 value="Retour au menu"
                         >
                     </p>
