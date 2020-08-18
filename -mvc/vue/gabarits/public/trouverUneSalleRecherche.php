@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-sm-6">
             <h3>Emplacement du bâtiment</h3>
-            <div class="img-arrondi ombre text-center" style="height: 80vh">
+            <div class="img-arrondi ombre text-center" style="height: 50vh">
                 <iframe
                         style="border:none;overflow:hidden"
                         width="100%"
