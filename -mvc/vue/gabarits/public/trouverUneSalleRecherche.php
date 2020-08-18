@@ -31,7 +31,7 @@
         <div class="col-sm-6">
             <h3>Emplacement de la salle</h3>
             <p>
-                Plan de l'intérieur du bâtiment...
+                Bientôt disponible...
             </p>
         </div>
     </div>
