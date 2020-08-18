@@ -11,9 +11,10 @@
                 situent la plus grande partie des enseignements proposés par l'Université. Il comporte des bâtiments de
                 cours, aussi bien théoriques que pratiques, de nombreuses résidences étudiantes, des restaurants
                 universitaires, des bibliothèques universitaires et des lieux de vie et de divertissement pour les
-                étudiants. Il comporte également <a href="#">de nombreux laboratoires scientifiques</a>, ce qui permet
-                une accessibilité au domaine de la recherche pour les étudiants de la majeure partie des disciplines
-                enseignées.
+                étudiants. Il comporte également
+                <a href="https://www.univ-orleans.fr/fr/univ/recherche/laboratoires-et-structures">
+                de nombreux laboratoires scientifiques</a>, ce qui permet une accessibilité au domaine de la recherche
+                pour les étudiants de la majeure partie des disciplines enseignées.
             </p>
             <p class="text-justify retrait">
                 Ci-dessous une carte interactive du campus. Survolez avec la souris (touchez sur appareil mobile) une
