@@ -53,6 +53,10 @@
                             onblur="verifNonVide(this);"
                             oninput="garderMoins(this, 64);"
                     >
+                    <small class="form-text text-muted">
+                        Telle qu'indiquée sur l'emploi du temps.
+                        Ex. : "S110", "Amphi. 3 Sciences", "NG02", "Salle 157".
+                    </small>
                 </p>
                 <hr>
                 <p> <!-- Rechercher -->
