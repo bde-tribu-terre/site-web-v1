@@ -62,7 +62,7 @@
                 <p> <!-- Rechercher -->
                     <input
                             type="submit"
-                            class="btn btn-danger btn-block"
+                            class="btn btn-var btn-block"
                             value="Lancer la recherche"
                     >
                 </p>
