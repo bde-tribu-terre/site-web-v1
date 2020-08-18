@@ -1003,11 +1003,17 @@ function CtlTrouverUneSalle() {
 
 function CtlTrouverUneSalleRecherche($nom) {
     try {
-        MdlRechercherSalle($nom);
-        if ($GLOBALS['retoursModele']['salles']) {
-            afficherTrouverUneSalleRecherche();
+        if (
+            !empty($nom)
+        ) {
+            MdlRechercherSalle($nom);
+            if ($GLOBALS['retoursModele']['salles']) {
+                afficherTrouverUneSalleRecherche();
+            } else {
+                throw new Exception('Aucune salle de nom "' . $nom . '" n\'a été trouvée.', 604);
+            }
         } else {
-            throw new Exception('Aucune salle de nom "' . $nom . '" n\'a été trouvée.', 604);
+            throw new Exception('Veuillez remplir tous les champs.', 400);
         }
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
