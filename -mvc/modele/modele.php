@@ -1478,7 +1478,7 @@ function MdlRechercherSalle($nom) {
         curl_close($curl);
         $arrayRetour = MET_SQLLignesMultiples(json_decode($return)->retour);
     } catch (Exception $e) {
-        ajouterMessage(601, 'Les informations sur la vidéo à l\'adresse "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.');
+        ajouterMessage(601, 'Les informations sur la salle "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.');
         $arrayRetour = NULL;
     }
     ajouterRetourModele(
