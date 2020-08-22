@@ -3,6 +3,14 @@ require_once(RACINE . '-mvc/modele/connect.php');
 require_once(RACINE . '-mvc/modele/modele.php');
 require_once(RACINE . '-mvc/vue/vue.php');
 ########################################################################################################################
+# Vérification du protocole (les deux fonctionnent mais on veut forcer le passage par HTTPS)                           #
+########################################################################################################################
+if($_SERVER["HTTPS"] != "on") {
+    header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+    exit();
+}
+
+########################################################################################################################
 # Initialisation des tableaux globaux                                                                                  #
 ########################################################################################################################
 # Messages

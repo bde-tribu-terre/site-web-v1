@@ -1471,7 +1471,7 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
 ########################################################################################################################
 function MdlRechercherSalle($nom) {
     try {
-        $api = 'http://' . $_SERVER['HTTP_HOST'] . preg_replace('/\?.*$/', '', $_SERVER['REQUEST_URI']) . RACINE . 'api/requete/?r=salles&ns=' . preg_replace('/ /', '+', $nom);
+        $api = 'https://' . $_SERVER['HTTP_HOST'] . preg_replace('/\?.*$/', '', $_SERVER['REQUEST_URI']) . RACINE . 'api/requete/?r=salles&ns=' . preg_replace('/ /', '+', $nom);
         $curl = curl_init($api);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $return = curl_exec($curl);
