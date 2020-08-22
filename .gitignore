@@ -4,4 +4,5 @@
 !/goodies/index.php
 /journaux/*
 !/journaux/index.php
-/-mvc/modele/connectOn.php
+/-mvc/modele/connectBarodine.php
+/-mvc/modele/connectBde.php
