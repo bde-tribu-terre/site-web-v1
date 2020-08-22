@@ -33,19 +33,19 @@
                     Courriel : <span id="mailTT_txt_mail">dHJpYnV0ZXJyZTBAZ21haWwuY29t</span>
                 </p>
                 <button id="mailTT_button" class="btn btn-var text-center" onclick="decoder('mailTT', true);">Cliquer pour décrypter</button>
-                <h3>Directeur/trice de publication</h3>
+                <h3>Directeur de publication</h3>
                 <p>
-                    <strong>NOM PRENOM</strong>
+                    <strong>Simon <span class="pc">Medelli</span></strong>
                 </p>
                 <p>
                     Courriel : <span id="mailDirPubli_txt_mail">RU1BSUw=</span>
                 </p>
                 <button id="mailDirPubli_button" class="btn btn-var text-center" onclick="decoder('mailDirPubli');">Cliquer pour décrypter</button>
-                <h3>Hébergeur</h3>
+                <h3>Hébergement Web</h3>
                 <p>
-                    <strong>Société OVH</strong><br>
-                    2 rue Kellermann<br>
-                    59100 Roubaix, France
+                    <strong>Nuxit</strong><br>
+                    132-134 Avenue du Président Wilson<br>
+                    93512 Montreuil Cedex, France
                 </p>
                 <p>
                     Tél. : +33 (0)8 99 70 17 61
