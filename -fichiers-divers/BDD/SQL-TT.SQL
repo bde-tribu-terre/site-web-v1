@@ -1,255 +1,252 @@
-DROP DATABASE IF EXISTS TRIBUTERRE;
-
-CREATE DATABASE IF NOT EXISTS TRIBUTERRE;
 USE TRIBUTERRE;
 # -----------------------------------------------------------------------------
-#       TABLE : JOURNAUX
+#       TABLE : Journaux
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS JOURNAUX
+CREATE TABLE IF NOT EXISTS Journaux
  (
-   IDJOURNAUX INTEGER NOT NULL AUTO_INCREMENT ,
-   TITREJOURNAUX VARCHAR(64) NOT NULL  ,
-   DATEJOURNAUX DATE NOT NULL  ,
-   PDFJOURNAUX VARCHAR(128) NOT NULL  
-   , PRIMARY KEY (IDJOURNAUX) 
+   idJournaux INTEGER NOT NULL AUTO_INCREMENT ,
+   titreJournaux VARCHAR(64) NOT NULL  ,
+   dateJournaux date NOT NULL  ,
+   pdfJournaux VARCHAR(128) NOT NULL  
+   , PRIMARY KEY (idJournaux) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       TABLE : CLESINSCRIPTIONS
+#       TABLE : ClesInscriptions
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS CLESINSCRIPTIONS
+CREATE TABLE IF NOT EXISTS ClesInscriptions
  (
-   IDCLESINSCRIPTIONS INTEGER NOT NULL AUTO_INCREMENT  ,
-   STRCLESINSCRIPTIONS VARCHAR(128) NOT NULL  
-   , PRIMARY KEY (IDCLESINSCRIPTIONS) 
+   idClesInscriptions INTEGER NOT NULL AUTO_INCREMENT  ,
+   strClesInscriptions VARCHAR(128) NOT NULL  
+   , PRIMARY KEY (idClesInscriptions) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       TABLE : MEMBRES
+#       TABLE : Membres
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS MEMBRES
+CREATE TABLE IF NOT EXISTS Membres
  (
-   IDMEMBRES INTEGER NOT NULL AUTO_INCREMENT ,
-   LOGINMEMBRES VARCHAR(64) NOT NULL  ,
-   MDPHASHMEMBRES VARCHAR(128) NOT NULL  ,
-   MDPSALTMEMBRES VARCHAR(32) NOT NULL  ,
-   PRENOMMEMBRES VARCHAR(64) NOT NULL  ,
-   NOMMEMBRES VARCHAR(64) NOT NULL  
-   , PRIMARY KEY (IDMEMBRES) 
+   idMembres INTEGER NOT NULL AUTO_INCREMENT ,
+   loginMembres VARCHAR(64) NOT NULL  ,
+   mdpHashMembres VARCHAR(128) NOT NULL  ,
+   mdpSaltMembres VARCHAR(32) NOT NULL  ,
+   prenomMembres VARCHAR(64) NOT NULL  ,
+   nomMembres VARCHAR(64) NOT NULL  
+   , PRIMARY KEY (idMembres) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       TABLE : IMAGESARTICLES
+#       TABLE : ImagesArticles
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS IMAGESARTICLES
+CREATE TABLE IF NOT EXISTS ImagesArticles
  (
-   IDIMAGESARTICLES INTEGER NOT NULL AUTO_INCREMENT ,
-   IDARTICLES INTEGER NOT NULL  ,
-   LIENIMAGESARTICLES VARCHAR(128) NOT NULL  
-   , PRIMARY KEY (IDIMAGESARTICLES) 
+   idImagesArticles INTEGER NOT NULL AUTO_INCREMENT ,
+   idArticles INTEGER NOT NULL  ,
+   lienImagesArticles VARCHAR(128) NOT NULL  
+   , PRIMARY KEY (idImagesArticles) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE IMAGESARTICLES
+#       INDEX DE LA TABLE ImagesArticles
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_IMAGESARTICLES_ARTICLES
-     ON IMAGESARTICLES (IDARTICLES ASC);
+CREATE  INDEX I_FK_ImagesArticles_Articles
+     ON ImagesArticles (idArticles ASC);
 
 # -----------------------------------------------------------------------------
-#       TABLE : EVENTS
+#       TABLE : Events
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS EVENTS
+CREATE TABLE IF NOT EXISTS Events
  (
-   IDEVENTS INTEGER NOT NULL AUTO_INCREMENT ,
-   TITREEVENTS VARCHAR(64) NOT NULL  ,
-   DESCEVENTS VARCHAR(7999) NOT NULL  ,
-   DATEEVENTS DATE NOT NULL  ,
-   HEUREEVENTS TIME NOT NULL  ,
-   LIEUEVENTS CHAR(32) NOT NULL  
-   , PRIMARY KEY (IDEVENTS) 
+   idEvents INTEGER NOT NULL AUTO_INCREMENT ,
+   titreEvents VARCHAR(64) NOT NULL  ,
+   descEvents VARCHAR(7999) NOT NULL  ,
+   dateEvents date NOT NULL  ,
+   heureEvents TIME NOT NULL  ,
+   lieuEvents CHAR(32) NOT NULL  
+   , PRIMARY KEY (idEvents) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       TABLE : LOGACTIONS
+#       TABLE : LogActions
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS LOGACTIONS
+CREATE TABLE IF NOT EXISTS LogActions
  (
-   IDLOGACTIONS INTEGER NOT NULL AUTO_INCREMENT ,
-   IDMEMBRES INTEGER NOT NULL  ,
-   CODELOGACTIONS INTEGER NOT NULL  ,
-   DATELOGACTIONS DATETIME NOT NULL  ,
-   DESCLOGACTIONS VARCHAR(256) NOT NULL  
-   , PRIMARY KEY (IDLOGACTIONS) 
+   idLogActions INTEGER NOT NULL AUTO_INCREMENT ,
+   idMembres INTEGER NOT NULL  ,
+   codeLogActions INTEGER NOT NULL  ,
+   dateLogActions dateTIME NOT NULL  ,
+   descLogActions VARCHAR(256) NOT NULL  
+   , PRIMARY KEY (idLogActions) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE LOGACTIONS
+#       INDEX DE LA TABLE LogActions
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_LOGACTIONS_MEMBRES
-     ON LOGACTIONS (IDMEMBRES ASC);
+CREATE  INDEX I_FK_LogActions_Membres
+     ON LogActions (idMembres ASC);
 
 # -----------------------------------------------------------------------------
-#       TABLE : ARTICLES
+#       TABLE : Articles
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS ARTICLES
+CREATE TABLE IF NOT EXISTS Articles
  (
-   IDARTICLES INTEGER NOT NULL AUTO_INCREMENT ,
-   IDMEMBRES INTEGER NOT NULL  ,
-   IDCATEGORIESARTICLES INTEGER NOT NULL  ,
-   TITREARTICLES VARCHAR(128) NOT NULL  ,
-   TEXTEARTICLES VARCHAR(7999) NOT NULL  ,
-   VISIBILITEARTICLES INTEGER NOT NULL  ,
-   DATECREATIONARTICLES DATE NOT NULL  ,
-   DATEMODIFICATIONARTICLES DATE NULL  
-   , PRIMARY KEY (IDARTICLES) 
+   idArticles INTEGER NOT NULL AUTO_INCREMENT ,
+   idMembres INTEGER NOT NULL  ,
+   idcategoriesArticles INTEGER NOT NULL  ,
+   titreArticles VARCHAR(128) NOT NULL  ,
+   texteArticles VARCHAR(7999) NOT NULL  ,
+   visibiliteArticles INTEGER NOT NULL  ,
+   dateCreationArticles date NOT NULL  ,
+   dateModificationArticles date NULL  
+   , PRIMARY KEY (idArticles) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE ARTICLES
+#       INDEX DE LA TABLE Articles
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_ARTICLES_MEMBRES
-     ON ARTICLES (IDMEMBRES ASC);
+CREATE  INDEX I_FK_Articles_Membres
+     ON Articles (idMembres ASC);
 
-CREATE  INDEX I_FK_ARTICLES_CATEGORIESARTICLES
-     ON ARTICLES (IDCATEGORIESARTICLES ASC);
+CREATE  INDEX I_FK_Articles_categoriesArticles
+     ON Articles (idcategoriesArticles ASC);
 
 # -----------------------------------------------------------------------------
-#       TABLE : CATEGORIESARTICLES
+#       TABLE : CategoriesArticles
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS CATEGORIESARTICLES
+CREATE TABLE IF NOT EXISTS CategoriesArticles
  (
-   IDCATEGORIESARTICLES INTEGER NOT NULL AUTO_INCREMENT ,
-   TITRECATEGORIESARTICLES VARCHAR(128) NOT NULL  
-   , PRIMARY KEY (IDCATEGORIESARTICLES) 
+   idCategoriesArticles INTEGER NOT NULL AUTO_INCREMENT ,
+   titreCategoriesArticles VARCHAR(128) NOT NULL
+   , PRIMARY KEY (idCategoriesArticles)
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       TABLE : IMAGESGOODIES
+#       TABLE : ImagesGoodies
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS IMAGESGOODIES
+CREATE TABLE IF NOT EXISTS ImagesGoodies
  (
-   IDIMAGESGOODIES INTEGER NOT NULL AUTO_INCREMENT ,
-   IDGOODIES INTEGER NOT NULL  ,
-   LIENIMAGESGOODIES VARCHAR(128) NOT NULL  
-   , PRIMARY KEY (IDIMAGESGOODIES) 
+   idImagesGoodies INTEGER NOT NULL AUTO_INCREMENT ,
+   idGoodies INTEGER NOT NULL  ,
+   lienImagesGoodies VARCHAR(128) NOT NULL  
+   , PRIMARY KEY (idImagesGoodies) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE IMAGESGOODIES
+#       INDEX DE LA TABLE ImagesGoodies
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_IMAGESGOODIES_GOODIES
-     ON IMAGESGOODIES (IDGOODIES ASC);
+CREATE  INDEX I_FK_ImagesGoodies_Goodies
+     ON ImagesGoodies (idGoodies ASC);
 
 # -----------------------------------------------------------------------------
-#       TABLE : GOODIES
+#       TABLE : Goodies
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS GOODIES
+CREATE TABLE IF NOT EXISTS Goodies
  (
-   IDGOODIES INTEGER NOT NULL AUTO_INCREMENT ,
-   TITREGOODIES VARCHAR(64) NOT NULL  ,
-   PRIXADGOODIES DECIMAL(10,2) NOT NULL  ,
-   PRIXNADGOODIES DECIMAL(10,2) NOT NULL  ,
-   DESCGOODIES VARCHAR(7999) NOT NULL  ,
-   CATEGORIEGOODIES INTEGER NOT NULL  ,
-   MINIATUREGOODIES VARCHAR(128) NOT NULL  
-   , PRIMARY KEY (IDGOODIES) 
+   idGoodies INTEGER NOT NULL AUTO_INCREMENT ,
+   titreGoodies VARCHAR(64) NOT NULL  ,
+   prixADGoodies DECIMAL(10,2) NOT NULL  ,
+   prixNADGoodies DECIMAL(10,2) NOT NULL  ,
+   descGoodies VARCHAR(7999) NOT NULL  ,
+   categorieGoodies INTEGER NOT NULL  ,
+   miniatureGoodies VARCHAR(128) NOT NULL  
+   , PRIMARY KEY (idGoodies) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       TABLE : ARTICLESYOUTUBE
+#       TABLE : ArticlesYouTube
 # -----------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS ARTICLESYOUTUBE
+CREATE TABLE IF NOT EXISTS ArticlesYouTube
  (
-   IDARTICLESYOUTUBE INTEGER NOT NULL AUTO_INCREMENT ,
-   IDCATEGORIESARTICLES INTEGER NOT NULL  ,
-   IDMEMBRES INTEGER NOT NULL  ,
-   TITREARTICLESYOUTUBE VARCHAR(128) NOT NULL  ,
-   TEXTEARTICLESYOUTUBE VARCHAR(7999) NOT NULL  ,
-   LIENARTICLESYOUTUBE VARCHAR(256) NOT NULL  ,
-   VISIBILITEARTICLESYOUTUBE INTEGER NOT NULL  ,
-   DATECREATIONARTICLESYOUTUBE DATE NOT NULL  ,
-   DATEMODIFICATIONARTICLESYOUTUBE DATE NULL  
-   , PRIMARY KEY (IDARTICLESYOUTUBE) 
+   idArticlesYouTube INTEGER NOT NULL AUTO_INCREMENT ,
+   idcategoriesArticles INTEGER NOT NULL  ,
+   idMembres INTEGER NOT NULL  ,
+   titreArticlesYouTube VARCHAR(128) NOT NULL  ,
+   texteArticlesYouTube VARCHAR(7999) NOT NULL  ,
+   lienArticlesYouTube VARCHAR(256) NOT NULL  ,
+   visibiliteArticlesYouTube INTEGER NOT NULL  ,
+   dateCreationArticlesYouTube date NOT NULL  ,
+   dateModificationArticlesYouTube date NULL  
+   , PRIMARY KEY (idArticlesYouTube) 
  ) 
  comment = "";
 
 # -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE ARTICLESYOUTUBE
+#       INDEX DE LA TABLE ArticlesYouTube
 # -----------------------------------------------------------------------------
 
 
-CREATE  INDEX I_FK_ARTICLESYOUTUBE_CATEGORIESARTICLES
-     ON ARTICLESYOUTUBE (IDCATEGORIESARTICLES ASC);
+CREATE  INDEX I_FK_ArticlesYouTube_categoriesArticles
+     ON ArticlesYouTube (idcategoriesArticles ASC);
 
-CREATE  INDEX I_FK_ARTICLESYOUTUBE_MEMBRES
-     ON ARTICLESYOUTUBE (IDMEMBRES ASC);
+CREATE  INDEX I_FK_ArticlesYouTube_Membres
+     ON ArticlesYouTube (idMembres ASC);
 
 
 # -----------------------------------------------------------------------------
-#       CREATION DES REFERENCES DE TABLE
+#       Creation DES REFERENCES DE TABLE
 # -----------------------------------------------------------------------------
 
 
-ALTER TABLE IMAGESARTICLES 
-  ADD FOREIGN KEY FK_IMAGESARTICLES_ARTICLES (IDARTICLES)
-      REFERENCES ARTICLES (IDARTICLES) ;
+ALTER TABLE ImagesArticles 
+  ADD FOREIGN KEY FK_ImagesArticles_Articles (idArticles)
+      REFERENCES Articles (idArticles) ;
 
 
-ALTER TABLE LOGACTIONS 
-  ADD FOREIGN KEY FK_LOGACTIONS_MEMBRES (IDMEMBRES)
-      REFERENCES MEMBRES (IDMEMBRES) ;
+ALTER TABLE LogActions 
+  ADD FOREIGN KEY FK_LogActions_Membres (idMembres)
+      REFERENCES Membres (idMembres) ;
 
 
-ALTER TABLE ARTICLES 
-  ADD FOREIGN KEY FK_ARTICLES_MEMBRES (IDMEMBRES)
-      REFERENCES MEMBRES (IDMEMBRES) ;
+ALTER TABLE Articles 
+  ADD FOREIGN KEY FK_Articles_Membres (idMembres)
+      REFERENCES Membres (idMembres) ;
 
 
-ALTER TABLE ARTICLES 
-  ADD FOREIGN KEY FK_ARTICLES_CATEGORIESARTICLES (IDCATEGORIESARTICLES)
-      REFERENCES CATEGORIESARTICLES (IDCATEGORIESARTICLES) ;
+ALTER TABLE Articles 
+  ADD FOREIGN KEY FK_Articles_categoriesArticles (idcategoriesArticles)
+      REFERENCES categoriesArticles (idcategoriesArticles) ;
 
 
-ALTER TABLE IMAGESGOODIES 
-  ADD FOREIGN KEY FK_IMAGESGOODIES_GOODIES (IDGOODIES)
-      REFERENCES GOODIES (IDGOODIES) ;
+ALTER TABLE ImagesGoodies 
+  ADD FOREIGN KEY FK_ImagesGoodies_Goodies (idGoodies)
+      REFERENCES Goodies (idGoodies) ;
 
 
-ALTER TABLE ARTICLESYOUTUBE 
-  ADD FOREIGN KEY FK_ARTICLESYOUTUBE_CATEGORIESARTICLES (IDCATEGORIESARTICLES)
-      REFERENCES CATEGORIESARTICLES (IDCATEGORIESARTICLES) ;
+ALTER TABLE ArticlesYouTube 
+  ADD FOREIGN KEY FK_ArticlesYouTube_categoriesArticles (idcategoriesArticles)
+      REFERENCES categoriesArticles (idcategoriesArticles) ;
 
 
-ALTER TABLE ARTICLESYOUTUBE 
-  ADD FOREIGN KEY FK_ARTICLESYOUTUBE_MEMBRES (IDMEMBRES)
-      REFERENCES MEMBRES (IDMEMBRES) ;
+ALTER TABLE ArticlesYouTube 
+  ADD FOREIGN KEY FK_ArticlesYouTube_Membres (idMembres)
+      REFERENCES Membres (idMembres) ;
 
