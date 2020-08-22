@@ -8,6 +8,6 @@
         <p>Tribu-Terre est une association étudiante apolitique à but non lucratif régie par la loi du 1er Juillet 1901.</p>
         <p><a href="<?php echo RACINE . 'plan-du-site/' ?>">Plan du site</a> | <a href="<?php echo RACINE . 'mentions-legales/' ?>">Mentions légales</a></p>
         <p>Tribu-Terre 2020 | 1A Rue de la Férollerie, 45071, Orléans Cedex 2</p>
-        <p style="color: red"><strong>Site Tribu-Terre version <?php echo VERSION_SITE ?></strong></p>
+        <p><strong>Site Tribu-Terre version <?php echo VERSION_SITE ?></strong></p>
     </div>
 </div>
