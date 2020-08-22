@@ -1225,9 +1225,11 @@ function afficherGoodiePrecis() {
 ########################################################################################################################
 function afficherJournaux() {
     $tableJournaux = '';
+    $count = 0;
     foreach ($GLOBALS['retoursModele']['journaux'] as $journal) {
         $tableJournaux .=
             '
+            ' . ($count != 0 && $count % 4 == 0 ? '<div class="row">' : '') . '
             <div class="col-sm-3">
                 <div class="well">
                     <h3>' . $journal['titre'] . '</h3>
@@ -1238,8 +1240,11 @@ function afficherJournaux() {
                     </a>
                 </div>
             </div>
+            ' . ($count != count($GLOBALS['retoursModele']['journaux']) - 1 && ($count + 1) % 4 == 0 ? '</div>' : '') . '
             ';
+        $count++;
     }
+    $tableJournaux = '<div class="row">' . $tableJournaux . '</div>';
     define('JOURNAUX', $tableJournaux);
 
     afficherPage('Journaux', 'journaux.php', 'public');
