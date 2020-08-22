@@ -1282,7 +1282,9 @@ function afficherPlanDuSite() {
         );
     }
     function chercherTousLesEnfants($cheminParent) {
-        if (!is_dir($cheminParent)) {
+        if (!@is_dir($cheminParent)) { // Attention !!!!!!!! On cache les warning (@) :
+            // On va chercher le type de tous les fichiers, mais le serveur http indique qu'on a pas le droit de les
+            // toucher. Mais c'est good car on a juste besoin de leur type (fichier ou répertoire).
             return $cheminParent;
         }
         $enfants = array_diff(scandir($cheminParent), ['.', '..']);
