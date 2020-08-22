@@ -7,7 +7,7 @@
                 <h4>
                     <strong>
                         <?php
-                        foreach (MESSAGES as $arrMessage) {
+                        foreach (unserialize(MESSAGES) as $arrMessage) {
                             switch (substr($arrMessage[0], 0, 1)) {
                                 case '1':
                                     $color = '';
