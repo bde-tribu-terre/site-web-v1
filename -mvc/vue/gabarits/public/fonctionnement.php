@@ -80,7 +80,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <br>
-            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgAG.png' ?>" alt="imgOrlinzCup">
+            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgAG.jpg' ?>" alt="imgOrlinzCup">
             <br>
         </div>
         <div class="col-sm-2"></div>

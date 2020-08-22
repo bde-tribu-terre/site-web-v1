@@ -191,7 +191,7 @@
                                 <a href="https://www.facebook.com/LAtelier-203-255887947799605/" target="_blank">
                                     <img
                                             class="img-arrondi ombre"
-                                            src="<?php echo IMAGES . 'imgBarAtelier.png' ?>"
+                                            src="<?php echo IMAGES . 'imgBarAtelier.jpg' ?>"
                                             alt="Bar l'Atelier"
                                     >
                                 </a>
@@ -211,7 +211,7 @@
                                 <a href="https://www.facebook.com/Key-West-Rhumerie-318605488186473/" target="_blank">
                                     <img
                                             class="img-arrondi ombre"
-                                            src="<?php echo IMAGES . 'imgBarKeyWest.png' ?>"
+                                            src="<?php echo IMAGES . 'imgBarKeyWest.jpg' ?>"
                                             alt="Bar le Key West"
                                     >
                                 </a>
@@ -231,7 +231,7 @@
                                 <a href="https://maestro-snack-orleans.eatbu.com/?lang=fr" target="_blank">
                                     <img
                                             class="img-arrondi ombre"
-                                            src="<?php echo IMAGES . 'imgLeMaestro.png' ?>"
+                                            src="<?php echo IMAGES . 'imgLeMaestro.jpg' ?>"
                                             alt="Restaurant le Maestro"
                                     >
                                 </a>
@@ -311,7 +311,7 @@
                                 <a href="https://www.fneb.fr/" target="_blank">
                                     <img
                                             class="img-arrondi ombre"
-                                            src="<?php echo IMAGES . 'imgFNEB.png' ?>"
+                                            src="<?php echo IMAGES . 'imgFNEB.jpg' ?>"
                                             alt="FNEB"
                                     >
                                 </a>

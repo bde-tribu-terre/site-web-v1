@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgOrlinzCup.png' ?>" alt="imgOrlinzCup">
+            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgOrlinzCup.jpg' ?>" alt="imgOrlinzCup">
         </div>
         <div class="col-sm-2"></div>
     </div>
