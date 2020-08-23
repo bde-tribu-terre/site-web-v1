@@ -153,6 +153,7 @@ function MdlAjouterMembre($prenom, $nom, $login, $mdp) {
         201,
         'L\'inscription a bien été enregistrée.'
     );
+    MdlAjouterLog(601, $prenom . ' ' . $nom . ' s\'est inscrit(e) avec succès sous le login "' . $login . '".');
 }
 
 ########################################################################################################################
