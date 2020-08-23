@@ -153,7 +153,7 @@ function MdlAjouterMembre($prenom, $nom, $login, $mdp) {
         201,
         'L\'inscription a bien été enregistrée.'
     );
-    MdlAjouterLog(601, $prenom . ' ' . $nom . ' s\'est inscrit(e) avec succès sous le login "' . $login . '".');
+    MdlAjouterLogAnonyme(601, $prenom . ' ' . $nom . ' s\'est inscrit(e) avec succès sous le login "' . $login . '".');
 }
 
 ########################################################################################################################
@@ -243,7 +243,33 @@ function MdlAjouterLog($code, $message) {
             )
         ",
         array(
-            [':idMembres', $_SESSION['membre']['id'], 'STR'],
+            [':idMembres', $_SESSION['membre']['id'], 'INT'],
+            [':codeLogActions', $code, 'INT'],
+            [':dateLogActions', $dt->format('Y-m-d H-i-s'), 'STR'],
+            [':descLogActions', $message, 'STR']
+        ),
+        0
+    );
+}
+
+function MdlAjouterLogAnonyme($code, $message) {
+    $timestamp = time();
+    $dt = new DateTime('now', new DateTimeZone('Europe/Paris'));
+    $dt->setTimestamp($timestamp);
+    requeteSQL(
+        "
+        INSERT INTO
+            LogActions
+        VALUES
+            (
+                0,
+                0,
+                :codeLogActions,
+                :dateLogActions,
+                :descLogActions
+            )
+        ",
+        array(
             [':codeLogActions', $code, 'INT'],
             [':dateLogActions', $dt->format('Y-m-d H-i-s'), 'STR'],
             [':descLogActions', $message, 'STR']
