@@ -21,37 +21,58 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <div>
-                <h3>Association Tribu-Terre</h3>
+                <h3>
+                    Association Tribu-Terre
+                </h3>
                 <p>
                     <strong>Tribu-Terre</strong><br>
                     1A Rue de la Férollerie<br>
                     45071 Orléans Cedex 2, France
                 <p>
-                    Tél. : <span id="mailTT_txt_tel">MDEgMjMgNDUgNjcgODk=</span>
+                    <!-- Tel de Simon MEDELLI, président. -->
+                    Tél. : <span id="mailTT_txt_tel">MDYgNTIgNDkgMzggMzg=</span>
                 </p>
                 <p>
                     Courriel : <span id="mailTT_txt_mail">dHJpYnV0ZXJyZTBAZ21haWwuY29t</span>
                 </p>
-                <button id="mailTT_button" class="btn btn-var text-center" onclick="decoder('mailTT', true);">Cliquer pour décrypter</button>
-                <h3>Directeur de publication</h3>
+                <button
+                        id="mailTT_button"
+                        class="btn btn-var text-center"
+                        onclick="decoder('mailTT', true);"
+                >
+                    Cliquer pour décrypter
+                </button>
+                <h3>
+                    Directeur de publication
+                </h3>
                 <p>
                     <strong>Simon <span class="pc">Medelli</span></strong>
                 </p>
                 <p>
-                    Courriel : <span id="mailDirPubli_txt_mail">RU1BSUw=</span>
+                    Courriel : <span id="mailDirPubli_txt_mail">c2ltb25tZWRlbGxpMkBnbWFpbC5jb20=</span>
                 </p>
-                <button id="mailDirPubli_button" class="btn btn-var text-center" onclick="decoder('mailDirPubli');">Cliquer pour décrypter</button>
-                <h3>Hébergement Web</h3>
+                <button
+                        id="mailDirPubli_button"
+                        class="btn btn-var text-center"
+                        onclick="decoder('mailDirPubli');"
+                >
+                    Cliquer pour décrypter
+                </button>
+                <h3>
+                    Hébergement Web
+                </h3>
                 <p>
-                    <strong>Nuxit</strong><br>
+                    <strong>NUXIT - GROUPE MAGIC ONLINE</strong><br>
+                    RCS 451 146 757 BOBIGNY<br>
+                    Code APE 6311Z<br>
                     132-134 Avenue du Président Wilson<br>
-                    93512 Montreuil Cedex, France
+                    93512 Montreuil sous Bois Cedex, France<br>
                 </p>
                 <p>
-                    Tél. : +33 (0)8 99 70 17 61
+                    Tél. : +33 (0)1 41 58 22 50
                 </p>
                 <p>
-                    Site web : <a href="www.ovh.com">www.ovh.com</a>
+                    Site web : <a href="https://www.nuxit.com">nuxit.com</a>
                 </p>
             </div>
         </div>
