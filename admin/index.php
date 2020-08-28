@@ -246,6 +246,21 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
             $form['id'],
             $form['titre']
         );
+    }  elseif ( // Gabarit Ajouter Lien Pratique
+        $form['_name'] == 'formAjouterLienPratique' &&
+        $form['_submit'] == 'ajouter'
+    ) {
+        CtlAjouterLienPratiqueExecuter(
+            $form['titre'],
+            $form['url']
+        );
+    } elseif ( // Gabarit Supprimer Lien Pratique
+        $form['_name'] == 'formSupprimerLienPratique' &&
+        $form['_submit'] == 'supprimer'
+    ) {
+        CtlSupprimerLienPratiqueExecuter(
+            $form['id']
+        );
     } elseif ( // Gabarit Menu
         $form['_name'] == 'formEvents' &&
         $form['_submit'] == 'creerEventMenu'
@@ -336,6 +351,16 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_submit'] == 'renommerCategorieArticleMenu'
     ) {
         CtlRenommerCategorieArticle();
+    } elseif (
+        $form['_name'] == 'formLiensPratiques' &&
+        $form['_submit'] == 'ajouterLienPratiqueMenu'
+    ) {
+        CtlAjouterLienPratique();
+    } elseif (
+        $form['_name'] == 'formLiensPratiques' &&
+        $form['_submit'] == 'supprimerLienPratiqueMenu'
+    ) {
+        CtlSupprimerLienPratique();
     } elseif (
         $form['_name'] == 'formLog' &&
         $form['_submit'] == 'afficherLog'

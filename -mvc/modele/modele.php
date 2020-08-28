@@ -153,7 +153,7 @@ function MdlAjouterMembre($prenom, $nom, $login, $mdp) {
         201,
         'L\'inscription a bien été enregistrée.'
     );
-    MdlAjouterLogAnonyme(601, $prenom . ' ' . $nom . ' s\'est inscrit(e) avec succès sous le login "' . $login . '".');
+    MdlAjouterLog(601, $prenom . ' ' . $nom . ' s\'est inscrit(e) avec succès sous le login "' . $login . '".', True);
 }
 
 ########################################################################################################################
@@ -225,7 +225,71 @@ function MdlLogTous() {
     );
 }
 
-function MdlAjouterLog($code, $message) {
+/**
+ * Ajoute au log un code accompagné d'un message.
+ * @param string $code
+ * Le code du log qui est la caractéristique principale pour identifier l'action.
+ * <ul>
+ * <li>1 : Évents
+ * <ul>
+ * <li>101 : Ajout d'un évent</li>
+ * <li>102 : Modification d'un évent</li>
+ * <li>103 : Suppression d'un évent</li>
+ * </ul>
+ * </li>
+ * <li>2 : Goodies
+ * <ul>
+ * <li>201 : Ajout d'un goodie</li>
+ * <li>202 : Modification d'un goodie</li>
+ * <li>203 : Suppression d'un goodie</li>
+ * <li>204 : Ajout d'une image de goodie</li>
+ * <li>205 : Suppression d'une image de goodie</li>
+ * </ul>
+ * </li>
+ * <li>3 : Journaux
+ * <ul>
+ * <li>301 : Ajout d'un journal</li>
+ * <li>302 : Suppression d'un journal</li>
+ * </ul>
+ * </li>
+ * <li>4 : Articles
+ * <ul>
+ * <li>401 : Ajout d'un article</li>
+ * <li>402 : Modification d'un article</li>
+ * <li>403 : Suppression d'un article</li>
+ * <li>404 : Ajout d'une image à un article</li>
+ * <li>405 : Suppression d'une image à un article</li>
+ * <li>406 : Ajout d'une catégorie d'article</li>
+ * <li>407 : Renommage d'une catégorie d'article</li>
+ * </ul>
+ * </li>
+ * <li>5 : Articles vidéo
+ * <ul>
+ * <li>501 : Ajout d'un article vidéo</li>
+ * <li>502 : Modification d'un article vidéo</li>
+ * <li>503 : Suppression d'un article vidéo</li>
+ * </ul>
+ * </li>
+ * <li>6 : Membres
+ * <ul>
+ * <li>601 : Inscription d'un membre</li>
+ * </ul>
+ * </li>
+ * <li>7 : Liens
+ * <ul>
+ * <li>701 : Ajout d'un lien</li>
+ * <li>702 : Suppression d'un lien</li>
+ * </ul>
+ * </li>
+ * </ul>
+ * @param string $message
+ * Une description de l'action.
+ * @param boolean $anonyme
+ * Si omit alors l'auteur sera la personne identifiée par la session ouverte. Si mit à True, alors l'auteur sera le
+ * système (anonyme).
+ * @throws Exception
+ */
+function MdlAjouterLog($code, $message, $anonyme = False) {
     $timestamp = time();
     $dt = new DateTime('now', new DateTimeZone('Europe/Paris'));
     $dt->setTimestamp($timestamp);
@@ -243,33 +307,7 @@ function MdlAjouterLog($code, $message) {
             )
         ",
         array(
-            [':idMembres', $_SESSION['membre']['id'], 'INT'],
-            [':codeLogActions', $code, 'INT'],
-            [':dateLogActions', $dt->format('Y-m-d H-i-s'), 'STR'],
-            [':descLogActions', $message, 'STR']
-        ),
-        0
-    );
-}
-
-function MdlAjouterLogAnonyme($code, $message) {
-    $timestamp = time();
-    $dt = new DateTime('now', new DateTimeZone('Europe/Paris'));
-    $dt->setTimestamp($timestamp);
-    requeteSQL(
-        "
-        INSERT INTO
-            LogActions
-        VALUES
-            (
-                0,
-                0,
-                :codeLogActions,
-                :dateLogActions,
-                :descLogActions
-            )
-        ",
-        array(
+            [':idMembres', !$anonyme ? $_SESSION['membre']['id'] : 0, 'INT'],
             [':codeLogActions', $code, 'INT'],
             [':dateLogActions', $dt->format('Y-m-d H-i-s'), 'STR'],
             [':descLogActions', $message, 'STR']
@@ -550,7 +588,7 @@ function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes
         201,
         'Le goodie "' . $titre . '" a été ajouté avec succès !'
     );
-    MdlAjouterLog(101, 'Ajout du goodie "' . $titre . '".');
+    MdlAjouterLog(201, 'Ajout du goodie "' . $titre . '".');
 }
 
 function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
@@ -1491,6 +1529,63 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
         'miniaturesArticlesVideo',
         $retour
     );
+}
+
+########################################################################################################################
+# Liens Pratiques                                                                                                      #
+########################################################################################################################
+function MdlLiensPratiquesTous() {
+    ajouterRetourModele(
+        'liensPratiques',
+        requeteSQL(
+            "
+            SELECT
+                idLiensPratiques AS id,
+                titreLiensPratiques AS titre,
+                urlLiensPratiques AS url
+            FROM
+                LiensPratiques
+            ORDER BY
+                idLiensPratiques
+            "
+        )
+    );
+}
+
+function MdlAjouterLienPratique($titre, $url) {
+    requeteSQL(
+        "
+        INSERT INTO
+            LiensPratiques
+        VALUES
+            (
+                0,
+                :titreLiensPratiques,
+                :urlLiensPratiques
+            )
+        ",
+        array(
+            [':titreLiensPratiques', $titre, 'STR'],
+            [':urlLiensPratiques', $url, 'STR']
+        ),
+        0,
+        201,
+        'Le lien "' . $titre . '" vers "' . $url . '" a été ajouté avec succès !'
+    );
+    MdlAjouterLog(701, 'Ajout du lien "' . $titre . '" vers "' . $url . '".');
+}
+
+function MdlSupprimerLienPratique($id) {
+    requeteSQL(
+        "DELETE FROM LiensPratiques WHERE idLiensPratiques=:idLiensPratiques",
+        array(
+            [':idLiensPratiques', $id, 'INT']
+        ),
+        0,
+        201,
+        'Le lien a été supprimé avec succès !'
+    );
+    MdlAjouterLog(702, 'Suppression d\'un lien (ID : ' . $id . ').');
 }
 
 ########################################################################################################################

@@ -164,6 +164,19 @@ CREATE  INDEX I_FK_ImagesGoodies_Goodies
      ON ImagesGoodies (idGoodies ASC);
 
 # -----------------------------------------------------------------------------
+#       TABLE : LiensPratiques
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS LiensPratiques
+ (
+   idLiensPratiques INTEGER NOT NULL AUTO_INCREMENT ,
+   titreLiensPratiques VARCHAR(128) NOT NULL  ,
+   urlLiensPratiques VARCHAR(128) NOT NULL
+   , PRIMARY KEY (idLiensPratiques)
+ )
+ comment = "";
+
+# -----------------------------------------------------------------------------
 #       TABLE : Goodies
 # -----------------------------------------------------------------------------
 

@@ -543,6 +543,28 @@ function afficherRenommerCategorieArticle() {
     afficherPage('Renommer une catégorie d\'article', 'renommerCategorieArticle.php', 'admin');
 }
 
+function afficherAjouterLienPratique() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
+
+    afficherPage('Ajouter un lien', 'ajouterLienPratique.php', 'admin');
+}
+
+function afficherSupprimerLienPratique() {
+    define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
+    $liens = '';
+    foreach ($GLOBALS['retoursModele']['liensPratiques'] as $lien) {
+        $liens .=
+            '
+            <option value="' . $lien['id'] . '">
+                ' . $lien['titre'] . '
+            </option>
+            ';
+    }
+    define('LIENS_PRATIQUES', $liens);
+
+    afficherPage('Supprimer un lien', 'supprimerLienPratique.php', 'admin');
+}
+
 # Log
 function afficherLog() {
     $log = '';
@@ -1254,6 +1276,20 @@ function afficherJournaux() {
 # B.XXI-XXII - Liens                                                                                                   #
 ########################################################################################################################
 function afficherLiens() {
+    $liens = '';
+    foreach ($GLOBALS['retoursModele']['liensPratiques'] as $lien) {
+        $liens .=
+            '
+            <a
+                        class="btn btn-var btn-block btn-wrap-text"
+                        href="' . $lien['url'] . '"
+                >
+                    ' . $lien['titre'] . '
+                </a>
+            ';
+    }
+    define('LIENS', $liens);
+
     afficherPage('Liens', 'liens.php', 'liens');
 }
 

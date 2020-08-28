@@ -737,6 +737,54 @@ function CtlRenommerCategorieArticleExecuter($id, $titre) {
     }
 }
 
+# Liens Pratiques
+function CtlAjouterLienPratique() {
+    afficherAjouterLienPratique();
+}
+
+function CtlAjouterLienPratiqueExecuter($titre, $url) {
+    try {
+        if (
+            !empty($titre) &&
+            !empty($url)
+        ) {
+            MdlAjouterLienPratique(
+                $titre,
+                $url
+            );
+            CtlAjouterLienPratique();
+        } else {
+            throw new Exception('Veuillez remplir tous les champs.', 400);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlAjouterLienPratique();
+    }
+}
+
+function CtlSupprimerLienPratique() {
+    MdlLiensPratiquesTous();
+    afficherSupprimerLienPratique();
+}
+
+function CtlSupprimerLienPratiqueExecuter($id) {
+    try {
+        if (
+            !empty($id)
+        ) {
+            MdlSupprimerLienPratique(
+                $id
+            );
+            CtlSupprimerLienPratique();
+        } else {
+            throw new Exception('Veuillez remplir tous les champs.', 400);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlSupprimerLienPratique();
+    }
+}
+
 # Log
 function CtlLog() {
     MdlLogTous();
@@ -985,6 +1033,7 @@ function CtlJournaux() {
 # Liens                                                                                                                #
 ########################################################################################################################
 function CtlLiens() {
+    MdlLiensPratiquesTous();
     afficherLiens();
 }
 
