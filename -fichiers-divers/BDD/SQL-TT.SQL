@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS LiensPratiques
  (
    idLiensPratiques INTEGER NOT NULL AUTO_INCREMENT ,
    titreLiensPratiques VARCHAR(128) NOT NULL  ,
-   urlLiensPratiques VARCHAR(128) NOT NULL
+   urlLiensPratiques VARCHAR(1024) NOT NULL
    , PRIMARY KEY (idLiensPratiques)
  )
  comment = "";

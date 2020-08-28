@@ -30,7 +30,7 @@
                                 class="form-control"
                                 placeholder="URL"
                                 onblur="verifNonVide(this);"
-                                oninput="garderMoins(this, 128);"
+                                oninput="garderMoins(this, 1024);"
                         >
                     </div>
                     <hr>
