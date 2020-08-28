@@ -1,0 +1,66 @@
+:root {
+    --prim: #d9534f; /* Primaire neutre */
+    --prim-border: #d43f3a; /* Bordure de primaire */
+    --prim-select: #c9302c; /* Primaire sélectionné (et liens sur blanc) */
+    --prim-select-double: #ac2925; /* Primaire sélectionné double */
+    --prim-select-double-border: #761c19; /* Bordure de primaire sélectionné double */
+    --sec: white; /* Secondaire (liens sur primaire) */
+}
+
+.liens {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.well {
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+    border-radius: 16px !important;
+}
+
+a {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    overflow-wrap: break-word !important;
+}
+
+img {
+    height: 25vh !important;
+}
+
+.btn-wrap-text {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.page-complete {
+    /* Si on met le lien dans une variable, alors le chemin relatif sera faussé car accédé dans le css où est utilisée
+    la variable. */
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+@media (orientation: portrait) {
+    .page-complete {
+        background-image: url("fondPagePortrait.jpg");
+    }
+}
+
+@media (orientation: landscape) {
+    .page-complete {
+        background-image: url("fondPagePaysage.jpg");
+    }
+}
+
+@media (max-width: 767px) { /* Le background ne sera pas fixe sur mobile (problèmes de performances) */
+    .jumbotron {
+        background-attachment: inherit;
+    }
+}
+
+footer {
+    background-color: revert !important;
+}
