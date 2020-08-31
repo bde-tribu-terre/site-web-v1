@@ -111,17 +111,34 @@
         </div>
         <div class="col-sm-6">
             <!-- \/ Pôle Événementiel \/ -->
-            <!-- Auteur : Xxxx XXXX. -->
+            <!-- Auteur : Théo LAM. -->
             <div class="well">
                 <h1>🎫</h1>
                 <h3>Pôle Événementiel</h3>
                 <hr>
                 <p class="text-justify retrait">
-                    Texte pôle événementiel.
-                    <!--
-                    C’est l’un des pôles essentiel au sein d’une association étudiante. Ils se chargent de
-                    l’organisation de tous les événements de début d’année, et de notamment l'organisation des soirées.
-                    -->
+                    Le pôle évent a pour rôle la création, l’organisation et la gestion des divers
+                    <a href="<?php echo RACINE . 'events/' ?>">événements</a> qui rythment l’année universitaire : le
+                    pique-nique et la soirée d’intégration marquant le début des études, des soirées à thème tout au
+                    long de l’année (Halloween, St Valentin etc…) ou encore la soirée de désintégration pour fêter la
+                    fin des examens de fin d’année.
+                </p>
+                <p class="text-justify retrait">
+                    Mais ce pôle s’occupe aussi de l’organisation d’un des projets phare de l’association et qui nous
+                    tient tout particulièrement à cœur : le Parrainage. Chaque année, les nouveaux étudiants en première
+                    année peuvent s’inscrire, par le biais d’un formulaire savamment élaboré en collaboration avec le
+                    pôle communication, pour  être parrainé par un étudiant plus avancé dans ses études, en accord avec
+                    leurs projets d’études, leurs attentes et leurs personnalités ! Nous prenons ensuite le relais pour
+                    former les paires ou les trios et organiser une soirée mémorable où les « fillots » devront
+                    retrouver leurs parrains grâce à des indices.
+                </p>
+                <p class="text-justify retrait">
+                    Mais au-delà d’une simple organisation de soirées, notre objectif est de créer et renforcer la
+                    cohésion entre tous les étudiants en sciences, pour que tous puissent garder des souvenirs
+                    inoubliables de leurs années d’étude à Orléans. Pour cela, toute activité proposée est travaillée en
+                    amont en collaboration avec d’autres pôles de l’association comme par exemple les pôles
+                    communication et goodies entre autres, pour que tout se déroule dans les meilleures conditions
+                    possibles.
                 </p>
             </div>
             <!-- \/ Pôle Communication \/ -->
