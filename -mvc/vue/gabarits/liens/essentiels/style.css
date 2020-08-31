@@ -1,12 +1,3 @@
-:root {
-    --prim: #d9534f; /* Primaire neutre */
-    --prim-border: #d43f3a; /* Bordure de primaire */
-    --prim-select: #c9302c; /* Primaire sélectionné (et liens sur blanc) */
-    --prim-select-double: #ac2925; /* Primaire sélectionné double */
-    --prim-select-double-border: #761c19; /* Bordure de primaire sélectionné double */
-    --sec: white; /* Secondaire (liens sur primaire) */
-}
-
 .liens {
     margin-top: 3vh;
     margin-bottom: 3vh;

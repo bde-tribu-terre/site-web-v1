@@ -39,13 +39,15 @@ define('VERSION_SITE', file_get_contents(RACINE . '-mvc/vue/version.txt'));
  */
 function afficherPage($title, $gabarit, $cadre) {
     if (file_exists(RACINE . '-mvc/vue/gabarits/' . $cadre)) {
-        define('CHEMIN_VERS_STYLE', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/style.css');
-        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/header.php');
-        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/messages.php');
-        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . 'essentiels/footer.php');
+        define('CHEMIN_VERS_VARIABLES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/variables.css');
+        define('CHEMIN_VERS_STYLE', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/style.css');
+        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/header.php');
+        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/messages.php');
+        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/footer.php');
         define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . $gabarit);
     } else {
         array_push($messages, ['500', 'Répertoire de gabarits ' . $cadre . ' non trouvé.']);
+        define('CHEMIN_VERS_VARIABLES', RACINE . '-mvc/vue/gabarits/public/essentiels/variables.css');
         define('CHEMIN_VERS_STYLE', RACINE . '-mvc/vue/gabarits/public/essentiels/style.css');
         define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/public/essentiels/header.php');
         define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/public/essentiels/messages.php');
@@ -728,7 +730,7 @@ function afficherAccueil() {
     }
     define('ARTICLE', $article);
 
-    afficherPage('Accueil', 'accueil.php', 'public');
+    afficherPage('Accueil', 'accueil.php', 'accueil');
 }
 
 ########################################################################################################################
