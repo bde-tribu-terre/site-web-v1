@@ -1072,7 +1072,7 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
                     <h4>📅 ' . genererDate($event['date']) . $nbJoursStr . '</h4>
                     <h4>⌚️ ' . substr($event['heure'], 0, 2) . 'h' . substr($event['heure'], 3, 2) . '</h4>
                     <h4>📍️ ' . $event['lieu'] . '</h4>
-                    <a class="btn btn-danger btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
+                    <a class="btn btn-var btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
                         <h4>Détails</h4>
                     </a>
                 </div>
@@ -1258,7 +1258,7 @@ function afficherJournaux() {
                 <div class="well">
                     <h3>' . $journal['titre'] . '</h3>
                     <h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>
-                    <a href="' . $journal['pdf'] . '" class="btn btn-danger btn-block">
+                    <a href="' . $journal['pdf'] . '" class="btn btn-var btn-block">
                         <h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
                         <h4 class="alterneur-petit">Lire</h4>
                     </a>
