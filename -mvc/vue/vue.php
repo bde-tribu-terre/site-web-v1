@@ -606,6 +606,7 @@ function afficherAccueil() {
     $goodies ='';
     $nb = 0;
     $premier = true;
+    shuffle($GLOBALS['retoursModele']['goodies']);
     foreach ($GLOBALS['retoursModele']['goodies'] as $goodie) {
         // 0 : Caché, 1 : Disponible, 2 : Bientôt disponible, 3 : En rupture de stock
         if ($goodie['categorie'] != 1) {
