@@ -15,7 +15,7 @@
                 écologique aux étudiants d’Orléans autour des sciences.
             </p>
             <p class="text-justify retrait">
-                Votre association vous représente auprès de l'administration universitaire du CoST et de l’OSUC depuis
+                Votre association vous représente auprès de l'administration universitaire de l’OSUC et du CoST depuis
                 quelques années et veille chaque jour à faire évoluer ses projets pour l'ensemble des étudiants.
                 <a href="<?php echo RACINE . 'association/universite/' ?>">En savoir plus sur l'Université d'Orléans.
                 </a>
