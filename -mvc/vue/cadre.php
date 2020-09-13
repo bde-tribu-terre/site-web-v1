@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo TITLE ?> | Tribu-Terre</title>
+    <meta name="description" content="Site web de l'association étudiante Tribu-Terre">
 
     <!-- Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
