@@ -1394,22 +1394,41 @@ function afficherTrouverUneSalle() {
 }
 
 function afficherTrouverUneSalleRecherche() {
-    $listeSalles = '';
-    foreach ($GLOBALS['retoursModele']['salles'] as $salle) {
-        $listeSalles .=
+    define('NOMBRE', count($GLOBALS['retoursModele']['salles']));
+    if (NOMBRE > 1) {
+        $listeSalles = '';
+        foreach ($GLOBALS['retoursModele']['salles'] as $salle) {
+            $listeSalles .=
+                '
+                <div class="well">
+                    <h4>' . $salle['nom_salle'] . '</h4>
+                    <p>Composante : ' . $salle['titre_composante'] . '</p>
+                    <p>Bâtiment : ' . $salle['nom_batiment'] . '</p>
+                    <p>Emplacement : ' . $salle['nom_groupe'] . '</p>
+                    <p>
+                        <a
+                            href="' . RACINE . 'trouver-une-salle/?nom=' . preg_replace('/ /', '+', $salle['nom_salle']) . '"
+                        >
+                            Voir le bâtiment sur le plan
+                        </a>
+                    </p>
+                </div>
+                ';
+        }
+    } else {
+        $listeSalles =
             '
             <div class="well">
-                <h4>' . $salle['nom_salle'] . '</h4>
-                <p>Composante : ' . $salle['titre_composante'] . '</p>
-                <p>Bâtiment : ' . $salle['nom_batiment'] . '</p>
-                <p>Emplacement : ' . $salle['nom_groupe'] . '</p>
+                <h4>' . $GLOBALS['retoursModele']['salles'][0]['nom_salle'] . '</h4>
+                <p>Composante : ' . $GLOBALS['retoursModele']['salles'][0]['titre_composante'] . '</p>
+                <p>Bâtiment : ' . $GLOBALS['retoursModele']['salles'][0]['nom_batiment'] . '</p>
+                <p>Emplacement : ' . $GLOBALS['retoursModele']['salles'][0]['nom_groupe'] . '</p>
             </div>
             ';
     }
-    define('NOMBRE', count($GLOBALS['retoursModele']['salles']));
     define('SALLES', $listeSalles);
-    define('CODE_COMPOSANTE', $salle['code_composante']);
-    define('ID_BATIMENT', $salle['id_batiment']);
+    define('CODE_COMPOSANTE', $GLOBALS['retoursModele']['salles'][0]['code_composante']);
+    define('ID_BATIMENT', $GLOBALS['retoursModele']['salles'][0]['id_batiment']);
 
     afficherPage('Trouver une salle', 'trouverUneSalleRecherche.php', 'public');
 }
