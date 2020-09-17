@@ -14,8 +14,8 @@
         <div class="col-sm-3"></div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
-            <h3>Emplacement du bâtiment</h3>
+        <div class="col-sm-12">
+            <h3>Localisation du bâtiment</h3>
             <div class="img-arrondi ombre text-center" style="height: 50vh">
                 <iframe
                         style="border:none;overflow:hidden"
@@ -27,13 +27,18 @@
                         src="<?php echo RACINE . 'api/plan-universite/?c=' . CODE_COMPOSANTE . '&b=' . ID_BATIMENT ?>"
                 ></iframe>
             </div>
+            <small class="form-text text-muted">
+                Carte dynamique. Vous pouvez déplacer et zoomer la vue.
+            </small>
         </div>
+        <!--
         <div class="col-sm-6">
             <h3>Emplacement de la salle</h3>
             <p>
                 Bientôt disponible...
             </p>
         </div>
+        -->
     </div>
     <hr>
     <h3>Lancer une nouvelle recherche</h3>
