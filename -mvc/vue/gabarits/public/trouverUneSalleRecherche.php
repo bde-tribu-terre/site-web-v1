@@ -6,14 +6,14 @@
         <div class="col-sm-6">
             <?php
             echo NOMBRE > 1 ?
-                '<h4>' . NOMBRE . 'salles correspondantes ont été trouvées.</h4>' :
+                '<h4>' . NOMBRE . ' salles correspondantes ont été trouvées.</h4>' :
                 '<h4>Une salle correspondante a été trouvée.</h4>';
             echo SALLES
             ?>
         </div>
         <div class="col-sm-3"></div>
     </div>
-    <div class="row">
+    <div class="row" <?php echo NOMBRE > 1 ? 'style="display: none"' : ''; ?>>
         <div class="col-sm-12">
             <h3>Localisation du bâtiment</h3>
             <div class="img-arrondi ombre text-center" style="height: 50vh">
