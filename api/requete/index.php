@@ -21,6 +21,10 @@ function requete(&$retour) {
                                                 (
                                                     !isset($_GET['ns']) || preg_replace('/ |\.|\(.*\) /', '', strtolower($_GET['ns'])) ==  preg_replace('/ |\.|\(.*\) /', '', strtolower($salle))
                                                 )
+                                                &&
+                                                (
+                                                    !isset($_GET['nse']) || stristr($salle, $_GET['nse'])
+                                                )
                                             ) {
                                                 array_push(
                                                     $retour,
