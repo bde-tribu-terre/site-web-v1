@@ -440,7 +440,14 @@
         "libelle_court": "Le Bouillon",
         "libelle_long": "Le Bouillon",
         "type": "vie de campus",
-        "groupes": [],
+        "groupes": [
+          {
+            "nom": "Le Bouillon",
+            "salles": [
+              "Centre culturel \"Le Bouillon\""
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -732,6 +739,8 @@
           {
             "nom": "Premier étage",
             "salles": [
+              "B101 (Libre accès)",
+              "B103",
               "B106",
               "B110",
               "B112"
@@ -797,7 +806,8 @@
             "salles": [
               "C100",
               "C101",
-              "C102"
+              "C102",
+              "C106"
             ]
           },
           {
@@ -2325,6 +2335,12 @@
               "Cabannes",
               "Turing"
             ]
+          },
+          {
+            "nom": "Troisième étage",
+            "salles": [
+              "Learning Lab"
+            ]
           }
         ],
         "geoJSON": {
@@ -2881,7 +2897,14 @@
         "libelle_court": "BU CoST",
         "libelle_long": "Bibliothèque Universitaire de Sciences",
         "type": "bibliothèque",
-        "groupes": [],
+        "groupes": [
+          {
+            "nom": "BU Sciences",
+            "salles": [
+              "BU Sciences"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
