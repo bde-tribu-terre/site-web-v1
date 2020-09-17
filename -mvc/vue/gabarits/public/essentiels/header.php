@@ -50,6 +50,9 @@
             <li class="nav-item<?php echo GABARIT == 'articles.php' ? ' active' : ''; ?>">
                 <a class="nav-link" href="<?php echo RACINE . 'articles/' ?>">Articles</a>
             </li>
+            <li class="nav-item<?php echo GABARIT == 'trouverUneSalle.php' || GABARIT == 'trouverUneSalleRecherche.php' ? ' active' : ''; ?>">
+                <a class="nav-link" href="<?php echo RACINE . 'trouver-une-salle/' ?>">Trouver une salle</a>
+            </li>
         </ul>
     </div>
 </nav>
