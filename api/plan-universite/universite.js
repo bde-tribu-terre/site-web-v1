@@ -40,7 +40,7 @@ info.update = function (batiment) {
     this._div.innerHTML =
         batiment ?
             '<span class="pc"><b>' + universiteJSON[batiment.composante].titre + '</b></span><br><h4>' + batiment.libelle_long + '</h4>'
-            : 'Survolez/Touchez un bâtiment pour l\'identifier';
+            : 'Survolez/Touchez un bâtiment en surbrillance pour l\'identifier';
 };
 info.addTo(carte);
 
