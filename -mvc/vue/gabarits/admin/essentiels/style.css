@@ -2,4 +2,5 @@
     /* Si on met le lien dans une variable, alors le chemin relatif sera faussé car accédé dans le css où est utilisée
     la variable. */
     background-image: url("./fondJumbotron.jpg");
+    color: var(--sec);
 }
