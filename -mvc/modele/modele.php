@@ -421,6 +421,7 @@ function MdlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
         201,
         'L\'évent "' . $titre . '" a été ajouté avec succès !'
     );
+    MdlReloadSitemapEvents();
     MdlAjouterLog(101, 'Ajout de l\'évent "' . $titre . '".');
 }
 
@@ -468,7 +469,27 @@ function MdlSupprimerEvent($id) {
         201,
         'L\'évent a été supprimé avec succès !'
     );
+    MdlReloadSitemapEvents();
     MdlAjouterLog(103, 'Suppression d\'un évent (ID : ' . $id . ').');
+}
+
+function MdlReloadSitemapEvents() {
+    $events = requeteSQL(
+        "
+            SELECT
+                idEvents AS id
+            FROM
+                Events
+            ORDER BY dateEvents
+            "
+    );
+
+    $arrayEvents = array();
+    foreach ($events as $event) {
+        array_push($arrayEvents, 'https://bde-tribu-terre.fr/events/?id=' . $event['id']);
+    }
+
+    MdlGenererSiteMap($arrayEvents, RACINE . 'events/sitemap-events.xml');
 }
 
 ########################################################################################################################
