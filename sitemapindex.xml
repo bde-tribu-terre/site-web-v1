@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd"
+>
+    <sitemap>
+        <!-- Sitemap du site statique. -->
+        <loc>https://bde-tribu-terre.fr/sitemap-static.xml</loc>
+        <lastmod>2020-10-31</lastmod>
+    </sitemap>
+    <sitemap>
+        <!-- Sitemap des articles -->
+        <loc>https://bde-tribu-terre.fr/articles/sitemap-articles.xml</loc>
+    </sitemap>
+    <sitemap>
+        <!-- Sitemap des évents -->
+        <loc>https://bde-tribu-terre.fr/events/sitemap-events.xml</loc>
+    </sitemap>
+    <sitemap>
+        <!-- Sitemap des goodies -->
+        <loc>https://bde-tribu-terre.fr/goodies/sitemap-goodies.xml</loc>
+    </sitemap>
+    <sitemap>
+        <!-- Sitemap des journaux -->
+        <loc>https://bde-tribu-terre.fr/journaux/sitemap-journaux.xml</loc>
+    </sitemap>
+</sitemapindex>
