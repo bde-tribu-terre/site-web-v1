@@ -959,7 +959,7 @@ function MdlReloadSitemapJournaux() {
 
     $arrayJournaux = array();
     foreach ($journaux as $journal) {
-        array_push($arrayJournaux, $journal['pdf']);
+        array_push($arrayJournaux, 'https://bde-tribu-terre.fr/journaux/' . $journal['pdf']);
     }
 
     MdlGenererSiteMap($arrayJournaux, RACINE . 'journaux/sitemap-journaux.xml');
