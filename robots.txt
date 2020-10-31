@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://bde-tribu-terre.fr/sitemapindex.xml
