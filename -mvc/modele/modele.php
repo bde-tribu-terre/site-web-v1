@@ -898,6 +898,7 @@ function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
         201,
         'Le journal "' . $titre . '" a été ajouté avec succès !'
     );
+    MdlReloadSitemapJournaux();
     MdlAjouterLog(301, 'Ajout du journal "' . $titre . '".');
 }
 
@@ -939,7 +940,29 @@ function MdlSupprimerJournal($rep, $id) {
         201,
         'Le journal a été supprimé avec succès !'
     );
+    MdlReloadSitemapJournaux();
     MdlAjouterLog(302, 'Suppression d\'un journal (ID : ' . $id . ').');
+}
+
+function MdlReloadSitemapJournaux() {
+    $journaux = requeteSQL(
+        "
+            SELECT
+                pdfJournaux AS pdf
+            FROM
+                Journaux
+            ORDER BY
+                dateJournaux
+                DESC
+            "
+    );
+
+    $arrayJournaux = array();
+    foreach ($journaux as $journal) {
+        array_push($arrayJournaux, $journal['pdf']);
+    }
+
+    MdlGenererSiteMap($arrayJournaux, RACINE . 'journaux/sitemap-journaux.xml');
 }
 
 ########################################################################################################################
