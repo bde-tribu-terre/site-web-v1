@@ -1065,6 +1065,7 @@ function MdlAjouterArticle($titre, $categorie, $visibilite, $texte) {
         201,
         'L\'article "' . $titre . '" a été ajouté avec succès !'
     );
+    MdlReloadSitemapArticles();
     MdlAjouterLog(401, 'Ajout de l\'article "' . $titre . '".');
 }
 
@@ -1097,6 +1098,7 @@ function MdlModifierArticle($id, $titre, $categorie, $visibilite, $texte) {
         201,
         'L\'article "' . $titre . '" a été modifié avec succès !'
     );
+    MdlReloadSitemapArticles();
     MdlAjouterLog(402, 'Modification de l\'article "' . $titre . '".');
 }
 
@@ -1135,66 +1137,8 @@ function MdlSupprimerArticle($rep, $id) {
         201,
         'L\'article a été supprimée avec succès !'
     );
+    MdlReloadSitemapArticles();
     MdlAjouterLog(403, 'Suppression d\'un article (ID : ' . $id . ').');
-}
-
-function MdlCategoriesArticlesTous() {
-    ajouterRetourModele(
-        'categoriesArticles',
-        requeteSQL(
-            "
-            SELECT
-                idCategoriesArticles AS id,
-                titreCategoriesArticles AS titre
-            FROM
-                CategoriesArticles
-            ORDER BY
-                titreCategoriesArticles
-            "
-        )
-    );
-}
-
-function MdlAjouterCategorieArticle($titre) {
-    requeteSQL(
-        "
-        INSERT INTO
-            CategoriesArticles
-        VALUES
-            (
-                0,
-                :titreCategoriesArticles
-            )
-        ",
-        array(
-            [':titreCategoriesArticles', $titre, 'STR']
-        ),
-        0,
-        201,
-        'La catégorie d\'articles "' . $titre . '" a été ajouté avec succès !'
-    );
-    MdlAjouterLog(406, 'Ajout de la catégorie d\'articles "' . $titre . '".');
-}
-
-function MdlRenommerCategorieArticle($id, $titre) {
-    requeteSQL(
-        "
-        UPDATE
-            CategoriesArticles
-        SET
-            titreCategoriesArticles=:titreCategoriesArticles
-        WHERE
-            idCategoriesArticles=:idCategoriesArticles
-        ",
-        array(
-            [':idCategoriesArticles', $id, 'INT'],
-            [':titreCategoriesArticles', $titre, 'STR']
-        ),
-        0,
-        201,
-        'La catégorie d\'articles a été renommée en "' . $titre . '" avec succès !'
-    );
-    MdlAjouterLog(407, 'Renommage de la catégorie d\'article en "' . $titre . '" (ID : ' . $id . ').');
 }
 
 function MdlImagesArticle($id, $maxi) {
@@ -1305,51 +1249,6 @@ function MdlSupprimerImageArticle($rep, $id, $logguer) {
     );
     if ($logguer) {
         MdlAjouterLog(405, 'Suppression d\'une image d\'un article (ID : ' . $id . ').');
-    }
-}
-
-function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
-    $articleTexte = requeteSQL(
-        "
-        SELECT
-            idArticles AS id,
-            MAX(dateCreationArticles) AS date
-        FROM
-            Articles
-        WHERE
-            1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
-        ",
-        array(),
-        1
-    );
-    $articleVideo = requeteSQL(
-        "
-        SELECT
-            idArticlesYouTube AS id,
-            MAX(dateCreationArticlesYouTube) AS date
-        FROM
-            ArticlesYouTube
-        WHERE
-            1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
-        ",
-        array(),
-        1
-    );
-    if ($articleTexte['id'] && $articleVideo['id']) {
-        if (strcmp($articleTexte['date'], $articleVideo['date']) >= 0) {
-            MdlArticlePrecis($articleTexte['id']);
-        } else {
-            MdlArticleVideoPrecis($articleVideo['id'], true);
-        }
-    } elseif ($articleTexte['id']) {
-        MdlArticlePrecis($articleTexte['id']);
-    } elseif ($articleVideo['id']) {
-        MdlArticleVideoPrecis($articleVideo['id'], true);
-    } else {
-        ajouterRetourModele(
-            'article',
-            NULL
-        );
     }
 }
 
@@ -1517,6 +1416,7 @@ function MdlAjouterArticleVideo($titre, $categorie, $visibilite, $lien, $texte) 
         201,
         'L\'article vidéo ' . $titre . ' a été ajouté avec succès'
     );
+    MdlReloadSitemapArticles();
     MdlAjouterLog(501, 'Ajout de l\'article vidéo "' . $titre . '".');
 }
 
@@ -1551,6 +1451,7 @@ function MdlModifierArticleVideo($id, $titre, $categorie, $visibilite, $lien, $t
         201,
         'L\'article vidéo ' . $titre . ' a été modifié avec succès !'
     );
+    MdlReloadSitemapArticles();
     MdlAjouterLog(502, 'Modification de l\'article vidéo "' . $titre . '".');
 }
 
@@ -1564,6 +1465,7 @@ function MdlSupprimerArticleVideo($id) {
         201,
         'L\'article vidéo a été supprimé avec succès !'
     );
+    MdlReloadSitemapArticles();
     MdlAjouterLog(503, 'Suppression d\'un article vidéo (ID : ' . $id . ').');
 }
 
@@ -1597,6 +1499,155 @@ function MdlMiniaturesArticlesVideo($visibles = true, $invisibles = false) {
         'miniaturesArticlesVideo',
         $retour
     );
+}
+
+########################################################################################################################
+# Articles texte et vidéo en commun                                                                                    #
+########################################################################################################################
+function MdlDernierArticleTexteVideo($visibles = true, $invisibles = false) {
+    $articleTexte = requeteSQL(
+        "
+        SELECT
+            idArticles AS id,
+            MAX(dateCreationArticles) AS date
+        FROM
+            Articles
+        WHERE
+            1=2" . ($visibles ? " OR visibiliteArticles=1" : "") . ($invisibles ? " OR visibiliteArticles=0" : "") . "
+        ",
+        array(),
+        1
+    );
+    $articleVideo = requeteSQL(
+        "
+        SELECT
+            idArticlesYouTube AS id,
+            MAX(dateCreationArticlesYouTube) AS date
+        FROM
+            ArticlesYouTube
+        WHERE
+            1=2" . ($visibles ? " OR visibiliteArticlesYouTube=1" : "") . ($invisibles ? " OR visibiliteArticlesYouTube=0" : "") . "
+        ",
+        array(),
+        1
+    );
+    if ($articleTexte['id'] && $articleVideo['id']) {
+        if (strcmp($articleTexte['date'], $articleVideo['date']) >= 0) {
+            MdlArticlePrecis($articleTexte['id']);
+        } else {
+            MdlArticleVideoPrecis($articleVideo['id'], true);
+        }
+    } elseif ($articleTexte['id']) {
+        MdlArticlePrecis($articleTexte['id']);
+    } elseif ($articleVideo['id']) {
+        MdlArticleVideoPrecis($articleVideo['id'], true);
+    } else {
+        ajouterRetourModele(
+            'article',
+            NULL
+        );
+    }
+}
+
+function MdlReloadSitemapArticles() {
+    $articles = requeteSQL(
+        "
+            SELECT
+                idArticles AS id
+            FROM
+                Articles
+            WHERE
+                visibiliteArticles=1
+            ORDER BY
+                dateCreationArticles
+                DESC
+            "
+    );
+    $articlesVideo = requeteSQL(
+        "
+            SELECT
+                idArticlesYouTube AS id
+            FROM
+                ArticlesYouTube
+            WHERE
+                visibiliteArticlesYouTube=1
+            ORDER BY
+                dateCreationArticlesYouTube
+                DESC
+            "
+    );
+
+    $arrayArticles = array();
+    foreach ($articles as $article) {
+        array_push($arrayArticles, 'https://bde-tribu-terre.fr/articles/?id=T' . $article['id']);
+    }
+    foreach ($articlesVideo as $articleVideo) {
+        array_push($arrayArticles, 'https://bde-tribu-terre.fr/articles/?id=V' . $articleVideo['id']);
+    }
+
+    MdlGenererSiteMap($arrayArticles, RACINE . 'articles/sitemap-articles.xml');
+}
+
+########################################################################################################################
+# Cétégories d'articles                                                                                                #
+########################################################################################################################
+function MdlCategoriesArticlesTous() {
+    ajouterRetourModele(
+        'categoriesArticles',
+        requeteSQL(
+            "
+            SELECT
+                idCategoriesArticles AS id,
+                titreCategoriesArticles AS titre
+            FROM
+                CategoriesArticles
+            ORDER BY
+                titreCategoriesArticles
+            "
+        )
+    );
+}
+
+function MdlAjouterCategorieArticle($titre) {
+    requeteSQL(
+        "
+        INSERT INTO
+            CategoriesArticles
+        VALUES
+            (
+                0,
+                :titreCategoriesArticles
+            )
+        ",
+        array(
+            [':titreCategoriesArticles', $titre, 'STR']
+        ),
+        0,
+        201,
+        'La catégorie d\'articles "' . $titre . '" a été ajouté avec succès !'
+    );
+    MdlAjouterLog(406, 'Ajout de la catégorie d\'articles "' . $titre . '".');
+}
+
+function MdlRenommerCategorieArticle($id, $titre) {
+    requeteSQL(
+        "
+        UPDATE
+            CategoriesArticles
+        SET
+            titreCategoriesArticles=:titreCategoriesArticles
+        WHERE
+            idCategoriesArticles=:idCategoriesArticles
+        ",
+        array(
+            [':idCategoriesArticles', $id, 'INT'],
+            [':titreCategoriesArticles', $titre, 'STR']
+        ),
+        0,
+        201,
+        'La catégorie d\'articles a été renommée en "' . $titre . '" avec succès !'
+    );
+    MdlAjouterLog(407, 'Renommage de la catégorie d\'article en "' . $titre . '" (ID : ' . $id . ').');
 }
 
 ########################################################################################################################
