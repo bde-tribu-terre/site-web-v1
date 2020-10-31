@@ -1608,3 +1608,30 @@ function MdlRechercherSalle($nom) {
         $arrayRetour
     );
 }
+
+########################################################################################################################
+# Génération de sitemap                                                                                                #
+########################################################################################################################
+function MdlGenererSiteMap($arrayLiens, $destination) {
+    $sitemap = simplexml_load_string(<<<EOT
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+</urlset>
+EOT
+    );
+    if (count($arrayLiens) == 0) {
+        $newURI = $sitemap->addChild('url');
+        $newURI->addChild('loc', 'https://bde-tribu-terre.fr');
+        $newURI->addChild('lastmod', date('Y-m-d'));
+    } else {
+        foreach ($arrayLiens as $lien) {
+            $newURI = $sitemap->addChild('url');
+            $newURI->addChild('loc', $lien);
+            $newURI->addChild('lastmod', date('Y-m-d\TH:i:sP'));
+        }
+    }
+    $sitemap->asXML($destination);
+}
