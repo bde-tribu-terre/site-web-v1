@@ -60,6 +60,22 @@ function ajouterRetourModele($cle, $resultats) {
 }
 
 ########################################################################################################################
+# Vérification de l'existence des sitemaps                                                                             #
+########################################################################################################################
+if (!file_exists(RACINE . 'articles/sitemap-articles.xml')) {
+    MdlReloadSitemapArticles();
+}
+if (!file_exists(RACINE . 'events/sitemap-events.xml')) {
+    MdlReloadSitemapEvents();
+}
+if (!file_exists(RACINE . 'goodies/sitemap-goodies.xml')) {
+    MdlReloadSitemapGoodies();
+}
+if (!file_exists(RACINE . 'journaux/sitemap-journaux.xml')) {
+    MdlReloadSitemapJournaux();
+}
+
+########################################################################################################################
 # Admin                                                                                                                #
 ########################################################################################################################
 # Connexion
