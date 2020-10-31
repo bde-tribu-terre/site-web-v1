@@ -609,6 +609,7 @@ function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes
         201,
         'Le goodie "' . $titre . '" a été ajouté avec succès !'
     );
+    MdlReloadSitemapGoodies();
     MdlAjouterLog(201, 'Ajout du goodie "' . $titre . '".');
 }
 
@@ -638,6 +639,7 @@ function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
         201,
         'Le goodie ' . $titre . ' a été modifié avec succès !'
     );
+    MdlReloadSitemapGoodies();
     MdlAjouterLog(202, 'Modification du goodie "' . $titre . '".');
 }
 
@@ -698,6 +700,7 @@ function MdlSupprimerGoodie($rep, $id) {
         201,
         'Le goodie a été supprimée avec succès !'
     );
+    MdlReloadSitemapGoodies();
     MdlAjouterLog(203, 'Suppression d\'un goodie (ID : ' . $id . ').');
 }
 
@@ -813,6 +816,27 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
     if ($logguer) {
         MdlAjouterLog(205, 'Suppression d\'une image d\'un goodie (ID : ' . $id . ').');
     }
+}
+
+function MdlReloadSitemapGoodies() {
+    $goodies = requeteSQL(
+        "
+            SELECT
+                idGoodies AS id
+            FROM
+                Goodies
+            WHERE
+                categorieGoodies=1 OR categorieGoodies=2
+            ORDER BY titreGoodies
+            "
+    );
+
+    $arrayGoodies = array();
+    foreach ($goodies as $goodie) {
+        array_push($arrayGoodies, 'https://bde-tribu-terre.fr/goodies/?id=' . $goodie['id']);
+    }
+
+    MdlGenererSiteMap($arrayGoodies, RACINE . 'goodies/sitemap-goodies.xml');
 }
 
 ########################################################################################################################
