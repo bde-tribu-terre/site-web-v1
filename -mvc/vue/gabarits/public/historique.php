@@ -164,16 +164,16 @@
                                 Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation, organisé
                                 localement par l'Université d'Orléans sur le campus, et ouvert au grand public.
                                 Disposant de trois stands, Tribu-Terre propose aux visiteurs de découvrir des minéraux,
-                                de goûter des eaux à différentes étapes du cycle de l'eau, et de découvrir des
-                                bizarreries de la physique et de la chimie. C'est d'ailleurs une année pour laquelle la
-                                Fête de la Science enregistre un record de participation.
+                                de goûter des eaux avec différents parcours au cours du cycle de l'eau, et de découvrir
+                                des bizarreries de la physique et de la chimie. C'est d'ailleurs une année pour laquelle
+                                la Fête de la Science enregistre un record de participation.
                             </p>
                             <p>
                                 L'association organise également de nombreuses conférences, notamment l'une traitant au
                                 sujet de la place de l'hypnose dans les sciences, qui connaît un véritable succès et
                                 d'excellents retours après une démonstration en direct par un hypnotiseur, ainsi qu'une
                                 autre traitant des OGM qui connaît une affluence record pour une conférence organisée
-                                par une association.
+                                par l'association.
                             </p>
                             <p>
                                 Malheureusement, l'année 2020 rime avec le début de la pandémie mondiale de Covid-19.
