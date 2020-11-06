@@ -30,7 +30,7 @@
             </p>
             <p class="text-justify retrait">
                 En 2018, le bureau présidé par Quentin <span class="pc">Baju</span> présent que trop peu de nouveaux
-                étudiants ont la volonté de s'inverstir dans le futur de l'association. Dans le même temps,
+                étudiants ont la volonté de s'invertir dans le futur de l'association. Dans le même temps,
                 l'Université d'Orléans met en place pour l'année suivante le système de portails pour les étudiants en
                 première année scientifique : trois disciplines sont suivies en parallèle pendant un an, avant de
                 choisir parmi ces trois dernières celle qui constituera le reste des études à partir de la deuxième
@@ -81,10 +81,60 @@
     </div>
     <hr>
     <!-- Ici vont les bureaux -->
+    <!-- \/ AG 2020 \/ -->
+    <div>
+        <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2020">
+            Mandat 2020-2021<!-- (Complet) -->
+        </button>
+        <div class="collapse" id="2020">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du 2 novembre 2020</h3>
+                        <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
+                        <hr>
+                        <!--
+                        <div class="text-justify retrait">
+                            <p>Bureau encore en fonction.</p>
+                        </div>
+                        <hr>
+                        -->
+                    </div>
+                    <div class="row">
+                        <?php /*
+                        <div class="col-sm-6">
+                            <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2019.jpg' ?>" alt="imgAG2019">
+                        </div>
+                        */ ?>
+                        <div class="col-sm-12">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Simon <span class="pc">Medelli</span> (Président)</li>
+                                <li>Clément <span class="pc">Guillemet</span> (Vice-Président Général)</li>
+                                <li>Warren <span class="pc">Demuylder</span> (Secrétaire)</li>
+                                <li>Maxence <span class="pc">Piat</span> (Trésorier)</li>
+                                <li>Anaël <span class="pc">Barodine</span> (Vice-Trésorier)</li>
+                                <li>Lia-May <span class="pc">Decobecq</span> (VP Communication)</li>
+                                <li>Claire <span class="pc">Lallemand</span> (VP Communication)</li>
+                                <li>Théo <span class="pc">Franclet</span> (VP Communication)</li>
+                                <li>Théo <span class="pc">Lam</span> (VP Évent)</li>
+                                <li>Ludwig <span class="pc">Soros</span> (VP Évent & Administrateur ÔCampus)</li>
+                                <li>Léa <span class="pc">Fullatier</span> (VP Goodies)</li>
+                                <li>Hugo <span class="pc">Vedie</span> (VP Goodies)</li>
+                                <li>Chloé <span class="pc">Guillin</span> (VP Journal)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
     <!-- \/ AG 2019 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2019">
-            Assemblée Générale du 12 mars 2019<!-- (Complet) -->
+            Mandat 2019-2020<!-- (Complet) -->
         </button>
         <div class="collapse" id="2019">
             <div style="margin: 15px" class="card card-body">
@@ -93,17 +143,68 @@
                         <h3>Assemblée Générale du 12 mars 2019</h3>
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
                         <hr>
-                        <div class="text-justify retrait" style="display: none;">
-                            <p>Bureau encore en fonction</p>
-                            <hr>
+                        <div class="text-justify retrait">
+                            <!-- Auteur : Anaël BARODINE. -->
+                            <p>
+                                Ce mandat agit dans la continuité du précédent, proposant encore plus d'événements à
+                                destination des étudiants adhérents toujours plus nombreux.
+                            </p>
+                            <p>
+                                L'association participe à la Fête de la Science, événement annuel mis en place par le
+                                Ministère de l'Enseignement Supérieur, de la Recherche et de l'Innovation, organisé
+                                localement par l'Université d'Orléans sur le campus, et ouvert au grand public.
+                                Disposant de trois stands, Tribu-Terre propose aux visiteurs de découvrir des minéraux,
+                                de goûter des eaux à différentes étapes du cycle de l'eau, et de découvrir des
+                                bizarreries de la physique et de la chimie. C'est d'ailleurs une année pour laquelle la
+                                Fête de la Science enregistre un record de participation.
+                            </p>
+                            <p>
+                                L'association organise également de nombreuses conférences, notamment l'une traitant au
+                                sujet de la place de l'hypnose dans les sciences, qui connaît un véritable succès et
+                                d'excellents retours après une démonstration en direct par un hypnotiseur, ainsi qu'une
+                                autre traitant des OGM qui connaît une affluence record pour une conférence organisée
+                                par une association.
+                            </p>
+                            <p>
+                                Malheureusement, l'année 2020 rime avec le début de la pandémie mondiale de Covid-19.
+                                Dès le mois de mars 2019, les événements prévus par Tribu-Terre tels que
+                                Mars Attaque III ou la soirée de désintégration sont annulés.
+                            </p>
+                            <p>
+                                L'assemblée générale, prévue initialement le 17 mars 2020 n'y échappe pas, et est de
+                                fait annulée après l'annonce du confinement général partout en France le même jour.
+                            </p>
+                            <p>
+                                La passation ne peut pas se faire mais les membres qui candidataient à cette assemblée
+                                générale annulée prennent petit à petit les rennes de l'association suite au départ
+                                des anciens. Il est décidé que l'assemblée générale se déroulera en présentiel à la
+                                rentrée universitaire 2020. Les vacances d'été servent de transition dans les rôles de
+                                chacun et une passation effective entre le bureau légal et le bureau actif.
+                            </p>
+                            <p>
+                                C'est durant cette période, le 22 août 2020, que sort le site internet de l'association
+                                Tribu-Terre (sur lequel vous naviguez actuellement). Il s'agit d'un projet lancé par
+                                Romain <span class="pc">Martins</span> au début de l'année 2020, puis repris et mené à
+                                bien par Anaël <span class="pc">Barodine</span> qui devint membre dans ce but.
+                            </p>
                         </div>
+                        <hr>
                         <div class="text-center" style="display: none">
                             <button class="btn btn-var" type="button" data-toggle="collapse" data-target="#FB2019">
                                 Voir le post Facebook
                             </button>
                             <div class="collapse" id="FB2019">
                                 <div style="margin: 15px" class="card card-body">
-                                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.524805124713427%26type%3D3&width=500" width="500" height="814" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                    <iframe
+                                            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.524805124713427%26type%3D3&width=500"
+                                            width="500"
+                                            height="814"
+                                            style="border:none; overflow:hidden;"
+                                            scrolling="no"
+                                            frameborder="0"
+                                            allowTransparency="true"
+                                            allow="encrypted-media"
+                                    ></iframe>
                                 </div>
                             </div>
                             <hr>
@@ -141,7 +242,7 @@
     <!-- \/ AG 2018 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2018">
-            Assemblée Générale du 18 avril 2018<!-- (Complet) -->
+            Mandat 2018-2019<!-- (Complet) -->
         </button>
         <div class="collapse" id="2018">
             <div style="margin: 15px" class="card card-body">
@@ -150,17 +251,45 @@
                         <h3>Assemblée Générale du 18 avril 2018</h3>
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
                         <hr>
-                        <div class="text-justify retrait" style="display: none">
-                            <p>Description du bureau et résumé de l'année.</p>
-                            <hr>
+                        <div class="text-justify retrait">
+                            <!-- Auteur : Anaël BARODINE. -->
+                            <p>
+                                Ce mandat est le premier pendant lequel l'association est ouverte à toutes les sciences.
+                            </p>
+                            <p>
+                                Pendant l'année 2018 se met en place le projet de jardin de permaculture, à l'initiative
+                                de Emilie <span class="pc">Suchet</span>. Ce jardin doit sa réussite à l'aide de
+                                nombreux membres du bureau de Tribu-Terre, à une subvention FSDIE de la part de
+                                l'Université d'Orléans, au soutien de l'équipe du Bouillon, qui est le centre culturel
+                                du campus universitaire d'Orléans La Source, au soutien de l'association étudiante
+                                orléanaise Campus Écolo, ainsi qu'à de nombreux étudiants volontaires provenant de
+                                différentes composantes du campus.
+                            </p>
+                            <p>
+                                En janvier 2019 et à l'initiative de Jade <span class="pc">Beaumont</span> sort le
+                                premier numéro du journal mensuel étudiant de Tribu-Terre, Omni-Sciences, . Il s'agit
+                                d'un journal participatif, écrit par des étudiants et pour des étudiants. Son but est
+                                d'être une plateforme de diffusion de vulgarisation scientifique, mais aussi de
+                                promouvoir la vie étudiante et d'informer sur les actualités du campus d'Orléans.
+                            </p>
                         </div>
+                        <hr>
                         <div class="text-center" style="display: none">
                             <button class="btn btn-var" type="button" data-toggle="collapse" data-target="#FB2018">
                                 Voir le post Facebook
                             </button>
                             <div class="collapse" id="FB2018">
                                 <div style="margin: 15px" class="card card-body">
-                                    <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FbdeTribuTerre%2Fposts%2F327675007759774&width=500" width="500" height="568" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                                    <iframe
+                                            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FbdeTribuTerre%2Fposts%2F327675007759774&width=500"
+                                            width="500"
+                                            height="568"
+                                            style="border:none; overflow:hidden;"
+                                            scrolling="no"
+                                            frameborder="0"
+                                            allowTransparency="true"
+                                            allow="encrypted-media"
+                                    ></iframe>
                                 </div>
                             </div>
                             <hr>
@@ -196,7 +325,7 @@
     <!-- \/ AG 2017 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2017">
-            Assemblée Générale du 28 mars 2017<!-- (Bureau restreint) -->
+            Mandat 2017-2018<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2017">
             <div style="margin: 15px" class="card card-body">
@@ -233,7 +362,7 @@
     <!-- \/ AG 2016 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2016">
-            Assemblée Générale du 20 avril 2016<!-- (Bureau restreint) -->
+            Mandat 2016-2017<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2016">
             <div style="margin: 15px" class="card card-body">
@@ -267,7 +396,7 @@
     <!-- \/ AG 2015 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2015">
-            Assemblée Générale du 23 avril 2015<!-- (Bureau restreint + CA) -->
+            Mandat 2015-2016<!-- (Bureau restreint + CA) -->
         </button>
         <div class="collapse" id="2015">
             <div style="margin: 15px" class="card card-body">
@@ -308,7 +437,7 @@
     <!-- \/ AG 2014 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2014">
-            Assemblée Générale du 29 Septembre 2014<!-- (Complet) -->
+            Mandat 2014-2015<!-- (Complet) -->
         </button>
         <div class="collapse" id="2014">
             <div style="margin: 15px" class="card card-body">
@@ -350,7 +479,7 @@
     <!-- \/ AG 2013 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2013">
-            Assemblée Générale du 23 septembre 2013<!-- (Bureau restreint) -->
+            Mandat 2013-2014<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2013">
             <div style="margin: 15px" class="card card-body">
@@ -384,7 +513,7 @@
     <!-- \/ AG 2012 \/ -->
     <div style="display: none;">
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2012">
-            Assemblée Générale du ??? 2012<!-- (Bureau restreint) -->
+            Mandat 2012-2013<!-- (Bureau restreint) -->
         </button>
         <div class="collapse" id="2012">
             <div style="margin: 15px" class="card card-body">
@@ -418,7 +547,7 @@
     <!-- \/ AG 2011 \/ -->
     <div style="display: none">
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2011">
-            Assemblée Générale du 28 septembre 2011<!-- (Inconnu) -->
+            Mandat 2011-2012<!-- (Inconnu) -->
         </button>
         <div class="collapse" id="2011">
             <div style="margin: 15px" class="card card-body">
@@ -446,7 +575,7 @@
     <!-- \/ AG 2010 \/ -->
     <div style="display: none;">
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2010">
-            Assemblée Générale du 29? septembre? 2010<!-- (Inconnu) -->
+            Mandat 2010-2011<!-- (Inconnu) -->
         </button>
         <div class="collapse" id="2010">
             <div style="margin: 15px" class="card card-body">
