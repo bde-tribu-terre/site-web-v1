@@ -92,21 +92,27 @@
                     <div class="row">
                         <h3>Assemblée Générale du 2 novembre 2020</h3>
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
-                        <hr>
-                        <!--
-                        <div class="text-justify retrait">
+                    </div>
+                    <hr>
+                    <!--
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-justify retrait">
                             <p>Bureau encore en fonction.</p>
                         </div>
+                        <div class="col-sm-1"></div>
                         <hr>
-                        -->
                     </div>
+                    <hr>
+                    -->
                     <div class="row">
                         <?php /*
                         <div class="col-sm-6">
                             <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2019.jpg' ?>" alt="imgAG2019">
                         </div>
                         */ ?>
-                        <div class="col-sm-12">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
                             <h3>Composition du bureau</h3>
                             <hr>
                             <ul class="text-left">
@@ -125,6 +131,7 @@
                                 <li>Chloé <span class="pc">Guillin</span> (VP Journal)</li>
                             </ul>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -142,8 +149,11 @@
                     <div class="row">
                         <h3>Assemblée Générale du 12 mars 2019</h3>
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
-                        <hr>
-                        <div class="text-justify retrait">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-justify retrait">
                             <!-- Auteur : Anaël BARODINE. -->
                             <p>
                                 Ce mandat agit dans la continuité du précédent, proposant encore plus d'événements à
@@ -185,31 +195,13 @@
                                 C'est durant cette période, le 22 août 2020, que sort le site internet de l'association
                                 Tribu-Terre (sur lequel vous naviguez actuellement). Il s'agit d'un projet lancé par
                                 Romain <span class="pc">Martins</span> au début de l'année 2020, puis repris et mené à
-                                bien par Anaël <span class="pc">Barodine</span> qui devint membre dans ce but.
+                                bien par Anaël <span class="pc">Barodine</span> qui devint membre en tant que chargé de
+                                mission informatique dans ce but.
                             </p>
                         </div>
-                        <hr>
-                        <div class="text-center" style="display: none">
-                            <button class="btn btn-var" type="button" data-toggle="collapse" data-target="#FB2019">
-                                Voir le post Facebook
-                            </button>
-                            <div class="collapse" id="FB2019">
-                                <div style="margin: 15px" class="card card-body">
-                                    <iframe
-                                            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmedia%2Fset%2F%3Fset%3Da.524805124713427%26type%3D3&width=500"
-                                            width="500"
-                                            height="814"
-                                            style="border:none; overflow:hidden;"
-                                            scrolling="no"
-                                            frameborder="0"
-                                            allowTransparency="true"
-                                            allow="encrypted-media"
-                                    ></iframe>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
+                        <div class="col-sm-1"></div>
                     </div>
+                    <hr>
                     <div class="row">
                         <div class="col-sm-6">
                             <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2019.jpg' ?>" alt="imgAG2019">
@@ -250,8 +242,11 @@
                     <div class="row">
                         <h3>Assemblée Générale du 18 avril 2018</h3>
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
-                        <hr>
-                        <div class="text-justify retrait">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-justify retrait">
                             <!-- Auteur : Anaël BARODINE. -->
                             <p>
                                 Ce mandat est le premier pendant lequel l'association est ouverte à toutes les sciences.
@@ -273,28 +268,9 @@
                                 promouvoir la vie étudiante et d'informer sur les actualités du campus d'Orléans.
                             </p>
                         </div>
-                        <hr>
-                        <div class="text-center" style="display: none">
-                            <button class="btn btn-var" type="button" data-toggle="collapse" data-target="#FB2018">
-                                Voir le post Facebook
-                            </button>
-                            <div class="collapse" id="FB2018">
-                                <div style="margin: 15px" class="card card-body">
-                                    <iframe
-                                            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FbdeTribuTerre%2Fposts%2F327675007759774&width=500"
-                                            width="500"
-                                            height="568"
-                                            style="border:none; overflow:hidden;"
-                                            scrolling="no"
-                                            frameborder="0"
-                                            allowTransparency="true"
-                                            allow="encrypted-media"
-                                    ></iframe>
-                                </div>
-                            </div>
-                            <hr>
-                        </div>
+                        <div class="col-sm-1"></div>
                     </div>
+                    <hr>
                     <div class="row">
                         <div class="col-sm-6">
                             <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2018.jpg' ?>" alt="imgAG2018">
@@ -333,12 +309,8 @@
                     <div class="row">
                         <h3>Assemblée Générale du 28 mars 2017</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="text-justify retrait" style="display: none;">
-                            <p>Description du bureau et résumé de l'année.</p>
-                            <hr>
-                        </div>
                     </div>
+                    <hr>
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
@@ -370,23 +342,23 @@
                     <div class="row">
                         <h3>Assemblée Générale du 20 avril 2016</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
-                                <h3>Composition du bureau</h3>
-                                <hr>
-                                <ul class="text-left">
-                                    <li>Corentin <span class="pc">Veys</span> (Président)</li>
-                                    <li>Joséphine <span class="pc">Bartolo</span> (Vice-Président)</li>
-                                    <li>Florian <span class="pc">Jarry</span> (Secrétaire)</li>
-                                    <li>Dylan <span class="pc">Chateigner</span> (Vice-Secrétaire)</li>
-                                    <li>Killian <span class="pc">Chevalier</span> (Trésorier)</li>
-                                    <li>Raphaël <span class="pc">Tur</span> (Vice-Trésorier)</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Corentin <span class="pc">Veys</span> (Président)</li>
+                                <li>Joséphine <span class="pc">Bartolo</span> (Vice-Président)</li>
+                                <li>Florian <span class="pc">Jarry</span> (Secrétaire)</li>
+                                <li>Dylan <span class="pc">Chateigner</span> (Vice-Secrétaire)</li>
+                                <li>Killian <span class="pc">Chevalier</span> (Trésorier)</li>
+                                <li>Raphaël <span class="pc">Tur</span> (Vice-Trésorier)</li>
+                            </ul>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -404,30 +376,30 @@
                     <div class="row">
                         <h3>Assemblée Générale du 23 avril 2015</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
-                                <h3>Composition du bureau</h3>
-                                <hr>
-                                <ul class="text-left">
-                                    <li>Antoine <span class="pc">Saucray</span> (Président)</li>
-                                    <li>Zoé <span class="pc">Lecoeuche</span> (Vice-Présidente)</li>
-                                    <li>Maëlys <span class="pc">Cadel</span> (Secrétaire)</li>
-                                    <li>Saloua <span class="pc">OUGGAHI</span> (Vice-Secrétaire)</li>
-                                    <li>Maëlys <span class="pc">Tessier</span> (Trésorière)</li>
-                                    <li>Camille <span class="pc">Rouvroy</span> (Vice-Trésorière)</li>
-                                    <li>Arnaud <span class="pc">Clavier</span></li>
-                                    <li>Sarah <span class="pc">Ouggahi</span></li>
-                                    <li>Corentin <span class="pc">Veys</span></li>
-                                    <li>Clément <span class="pc">Mennecart</span></li>
-                                    <li>Sébastien <span class="pc">Coquil</span></li>
-                                    <li>Romain <span class="pc">Pinguet</span></li>
-                                    <li>Maxime <span class="pc">Zimmermann</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Antoine <span class="pc">Saucray</span> (Président)</li>
+                                <li>Zoé <span class="pc">Lecoeuche</span> (Vice-Présidente)</li>
+                                <li>Maëlys <span class="pc">Cadel</span> (Secrétaire)</li>
+                                <li>Saloua <span class="pc">OUGGAHI</span> (Vice-Secrétaire)</li>
+                                <li>Maëlys <span class="pc">Tessier</span> (Trésorière)</li>
+                                <li>Camille <span class="pc">Rouvroy</span> (Vice-Trésorière)</li>
+                                <li>Arnaud <span class="pc">Clavier</span></li>
+                                <li>Sarah <span class="pc">Ouggahi</span></li>
+                                <li>Corentin <span class="pc">Veys</span></li>
+                                <li>Clément <span class="pc">Mennecart</span></li>
+                                <li>Sébastien <span class="pc">Coquil</span></li>
+                                <li>Romain <span class="pc">Pinguet</span></li>
+                                <li>Maxime <span class="pc">Zimmermann</span></li>
+                            </ul>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -445,31 +417,31 @@
                     <div class="row">
                         <h3>Assemblée Générale du 29 Septembre 2014</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
-                                <h3>Composition du bureau</h3>
-                                <hr>
-                                <ul class="text-left">
-                                    <li>Etienne <span class="pc">Marceau</span> (Président)</li>
-                                    <li>Antoine <span class="pc">Saucray</span> (Vice-Président)</li>
-                                    <li>Gabrielle <span class="pc">Prouteau</span> (Secrétaire)</li>
-                                    <li>Tiphaine <span class="pc">Penchenat</span> (Vice-Secrétaire)</li>
-                                    <li>Thomas <span class="pc">Baillet</span> (Trésorière)</li>
-                                    <li>Rémi <span class="pc">Carrio</span> (Vice-Trésorière)</li>
-                                    <li>Jean-Baptiste <span class="pc">Douard</span> (CM Collaboration Inter-Asso)</li>
-                                    <li>Arnaud <span class="pc">Clavier</span> (CM Communication et Gestion Informatique)</li>
-                                    <li>Zoé <span class="pc">Lecoeuche</span> (CM Photographe Événementiel)</li>
-                                    <li>Sarah <span class="pc">Ouggahi</span> (CM Gestion Des Collections)</li>
-                                    <li>Renaud <span class="pc">Gendreau</span></li>
-                                    <li>Julia <span class="pc">Roux</span></li>
-                                    <li>Pierre <span class="pc">Verdon</span></li>
-                                    <li>Marc <span class="pc">Villie</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Etienne <span class="pc">Marceau</span> (Président)</li>
+                                <li>Antoine <span class="pc">Saucray</span> (Vice-Président)</li>
+                                <li>Gabrielle <span class="pc">Prouteau</span> (Secrétaire)</li>
+                                <li>Tiphaine <span class="pc">Penchenat</span> (Vice-Secrétaire)</li>
+                                <li>Thomas <span class="pc">Baillet</span> (Trésorière)</li>
+                                <li>Rémi <span class="pc">Carrio</span> (Vice-Trésorière)</li>
+                                <li>Jean-Baptiste <span class="pc">Douard</span> (CM Collaboration Inter-Asso)</li>
+                                <li>Arnaud <span class="pc">Clavier</span> (CM Communication et Gestion Informatique)</li>
+                                <li>Zoé <span class="pc">Lecoeuche</span> (CM Photographe Événementiel)</li>
+                                <li>Sarah <span class="pc">Ouggahi</span> (CM Gestion Des Collections)</li>
+                                <li>Renaud <span class="pc">Gendreau</span></li>
+                                <li>Julia <span class="pc">Roux</span></li>
+                                <li>Pierre <span class="pc">Verdon</span></li>
+                                <li>Marc <span class="pc">Villie</span></li>
+                            </ul>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -487,23 +459,23 @@
                     <div class="row">
                         <h3>Assemblée Générale du 23 septembre 2013</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
-                                <h3>Composition du bureau</h3>
-                                <hr>
-                                <ul class="text-left">
-                                    <li>Thomas <span class="pc">Bailet</span> (Président)</li>
-                                    <li>Etienne <span class="pc">Marceau</span> (Vice-Président)</li>
-                                    <li>Gabrielle <span class="pc">Prouteau</span> (Secrétaire)</li>
-                                    <li>Paul-Ary <span class="pc">Bruand</span> (Vice-Secrétaire)</li>
-                                    <li>Barbara <span class="pc">Maetracci</span> (Trésorière)</li>
-                                    <li>Thomas <span class="pc">Thiebault</span> (Vice-Trésorier)</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Thomas <span class="pc">Bailet</span> (Président)</li>
+                                <li>Etienne <span class="pc">Marceau</span> (Vice-Président)</li>
+                                <li>Gabrielle <span class="pc">Prouteau</span> (Secrétaire)</li>
+                                <li>Paul-Ary <span class="pc">Bruand</span> (Vice-Secrétaire)</li>
+                                <li>Barbara <span class="pc">Maetracci</span> (Trésorière)</li>
+                                <li>Thomas <span class="pc">Thiebault</span> (Vice-Trésorier)</li>
+                            </ul>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -521,23 +493,23 @@
                     <div class="row">
                         <h3>Assemblée Générale du ??? 2012</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
-                                <h3>Composition du bureau</h3>
-                                <hr>
-                                <ul class="text-left">
-                                    <li>Paul-Ary <span class="pc">Bruand</span> (Président)</li>
-                                    <li>Sarah <span class="pc">Deveaud</span> (Vice-Président)</li>
-                                    <li>Fanny <span class="pc">Dissard</span> (Secrétaire)</li>
-                                    <li>Justine <span class="pc">Négrel</span> (Vice-Secrétaire)</li>
-                                    <li>Thomas <span class="pc">Thiebault</span> (Trésorier)</li>
-                                    <li>Gilles <span class="pc">Dhenain</span> (Vice-Trésorier)</li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-3"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Paul-Ary <span class="pc">Bruand</span> (Président)</li>
+                                <li>Sarah <span class="pc">Deveaud</span> (Vice-Président)</li>
+                                <li>Fanny <span class="pc">Dissard</span> (Secrétaire)</li>
+                                <li>Justine <span class="pc">Négrel</span> (Vice-Secrétaire)</li>
+                                <li>Thomas <span class="pc">Thiebault</span> (Trésorier)</li>
+                                <li>Gilles <span class="pc">Dhenain</span> (Vice-Trésorier)</li>
+                            </ul>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -555,17 +527,17 @@
                     <div class="row">
                         <h3>Assemblée Générale du 28 septembre 2011</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
-                                <h3>Composition du bureau</h3>
-                                <hr>
-                                <ul class="text-left">
-                                    <li>? <span class="pc">?</span> (Président)</li>
-                            </div>
-                            <div class="col-sm-3"></div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>? <span class="pc">?</span> (Président)</li>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -584,16 +556,16 @@
                         <h3>Assemblée Générale du 29? septembre? 2010</h3>
                         <h4>Tribu-Terre, Association des Acteurs en Géosciences d'Orléans</h4>
                         <hr>
-                        <div class="row">
-                            <div class="col-sm-3"></div>
-                            <div class="col-sm-6">
-                                <h3>Composition du bureau</h3>
-                                <hr>
-                                <ul class="text-left">
-                                    <li>? <span class="pc">?</span> (Président)</li>
-                            </div>
-                            <div class="col-sm-3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>? <span class="pc">?</span> (Président)</li>
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
             </div>
