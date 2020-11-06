@@ -262,10 +262,10 @@
                             </p>
                             <p>
                                 En janvier 2019 et à l'initiative de Jade <span class="pc">Beaumont</span> sort le
-                                premier numéro du journal mensuel étudiant de Tribu-Terre, Omni-Sciences, . Il s'agit
-                                d'un journal participatif, écrit par des étudiants et pour des étudiants. Son but est
-                                d'être une plateforme de diffusion de vulgarisation scientifique, mais aussi de
-                                promouvoir la vie étudiante et d'informer sur les actualités du campus d'Orléans.
+                                premier numéro du journal mensuel étudiant de Tribu-Terre, Omni-Sciences. Il s'agit d'un
+                                journal participatif, écrit par des étudiants et pour des étudiants. Son but est d'être
+                                une plateforme de diffusion de vulgarisation scientifique, mais aussi de promouvoir la
+                                vie étudiante et d'informer sur les actualités du campus d'Orléans.
                             </p>
                         </div>
                         <div class="col-sm-1"></div>
