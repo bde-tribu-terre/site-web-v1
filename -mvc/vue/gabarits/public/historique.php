@@ -387,7 +387,7 @@
                                 <li>Antoine <span class="pc">Saucray</span> (Président)</li>
                                 <li>Zoé <span class="pc">Lecoeuche</span> (Vice-Présidente)</li>
                                 <li>Maëlys <span class="pc">Cadel</span> (Secrétaire)</li>
-                                <li>Saloua <span class="pc">OUGGAHI</span> (Vice-Secrétaire)</li>
+                                <li>Saloua <span class="pc">Ouggahi</span> (Vice-Secrétaire)</li>
                                 <li>Maëlys <span class="pc">Tessier</span> (Trésorière)</li>
                                 <li>Camille <span class="pc">Rouvroy</span> (Vice-Trésorière)</li>
                                 <li>Arnaud <span class="pc">Clavier</span></li>
