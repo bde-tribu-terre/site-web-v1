@@ -1,20 +1,3 @@
-<script type="text/javascript">
-    function decoder(target) {
-        let elementBase64 = document.getElementById(target + '_base64');
-        let strBase64 = elementBase64.innerText;
-        let strMail = atob(strBase64);
-        let elementDiv = document.getElementById(target + '_div');
-        elementDiv.removeChild(elementBase64);
-
-        let elementMail = document.createElement('p');
-        elementMail.setAttribute('id', target + '_mail');
-        elementMail.innerText = strMail;
-        elementDiv.appendChild(elementMail);
-
-        let elementButton = document.getElementById(target + '_button');
-        elementButton.setAttribute('disabled', '');
-    }
-</script>
 <div class="container text-center">
     <h3>Pôles</h3>
     <hr>
@@ -200,7 +183,7 @@
                     <button
                         id="mailJournal_button"
                         class="btn btn-var text-center"
-                        onclick="decoder('mailJournal');"
+                        onclick="decoder('mailJournal', 'p');"
                     >
                         Cliquer pour décrypter
                     </button>
