@@ -279,7 +279,7 @@
                 <div class="col-sm-4">
                     <div class="well">
                         <h3>VP Goodies</h3>
-                        <h4>Léa <span class="pc">Fullatier</span></h4>
+                        <h4>Léa <span class="pc">Foulatier</span></h4>
                         <h5>Études</h5>
                         <hr>
                         <img

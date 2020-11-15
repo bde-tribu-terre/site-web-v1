@@ -126,7 +126,7 @@
                                 <li>Théo <span class="pc">Franclet</span> (VP Communication)</li>
                                 <li>Théo <span class="pc">Lam</span> (VP Évent)</li>
                                 <li>Ludwig <span class="pc">Soros</span> (VP Évent & Administrateur ÔCampus)</li>
-                                <li>Léa <span class="pc">Fullatier</span> (VP Goodies)</li>
+                                <li>Léa <span class="pc">Foulatier</span> (VP Goodies)</li>
                                 <li>Hugo <span class="pc">Vedie</span> (VP Goodies)</li>
                                 <li>Chloé <span class="pc">Guillin</span> (VP Journal)</li>
                             </ul>
