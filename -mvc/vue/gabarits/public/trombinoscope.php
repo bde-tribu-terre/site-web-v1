@@ -6,10 +6,19 @@
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
-                <h1></h1>
+                <h1>📑</h1>
                 <h3>Bureau restreint</h3>
+                <!-- Auteur : Anaël BARODINE. -->
                 <p class="text-justify retrait">
-                    Description Bureau restreint.
+                    Le bureau restreint correspond aux membres qui ont pour rôle le bon fonctionnement interne de
+                    l'association.
+                </p>
+                <p class="text-justify retrait">
+                    Il s'agit du président et du vice président général, du secrétaire et du vice secrétaire et
+                    du trésorier et du vice trésorier.
+                </p>
+                <p class="text-justify retrait">
+
                 </p>
             </div>
             <div class="col-sm-1"></div>
@@ -24,7 +33,7 @@
                     <div class="well">
                         <h3>Président</h3>
                         <h4>Simon <span class="pc">Medelli</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 Pluridisciplinaire</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -37,11 +46,11 @@
                     <div class="well">
                         <h3>Secrétaire</h3>
                         <h4>Warren <span class="pc">Demuylder</span></h4>
-                        <h5>Études</h5>
+                        <h5>L2 Physique</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgPhotoPlaceholder.jpg" ?>"
+                                src="<?php echo IMAGES . "imgWarren.jpg" ?>"
                                 alt="imgWarren"
                         >
                     </div>
@@ -50,7 +59,7 @@
                     <div class="well">
                         <h3>Trésorier</h3>
                         <h4>Maxence <span class="pc">Piat</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 ST</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -64,9 +73,9 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-4">
                     <div class="well">
-                        <h3>Vice Président</h3>
+                        <h3>Vice Président Général</h3>
                         <h4>Clément <span class="pc">Guillemet</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 SVT</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -79,7 +88,7 @@
                     <div class="well">
                         <h3>Vice Trésorier</h3>
                         <h4>Anaël <span class="pc">Barodine</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 IMIS</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -133,7 +142,7 @@
                     <div class="well">
                         <h3>VP Communication</h3>
                         <h4>Lia-May <span class="pc">Decobecq</span></h4>
-                        <h5>Études</h5>
+                        <h5>L2 BOPE</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -146,7 +155,7 @@
                     <div class="well">
                         <h3>VP Communication</h3>
                         <h4>Claire <span class="pc">Lallemand</span></h4>
-                        <h5>Études</h5>
+                        <h5>L2 B2MC</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -159,7 +168,7 @@
                     <div class="well">
                         <h3>VP Communication</h3>
                         <h4>Théo <span class="pc">Franclet</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 IMIS</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -230,7 +239,7 @@
                     <div class="well">
                         <h3>VP Journal</h3>
                         <h4>Chloé <span class="pc">Guillin</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 BOPE</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -280,11 +289,11 @@
                     <div class="well">
                         <h3>VP Goodies</h3>
                         <h4>Léa <span class="pc">Foulatier</span></h4>
-                        <h5>Études</h5>
+                        <h5>L2 B2MC</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgPhotoPlaceholder.jpg" ?>"
+                                src="<?php echo IMAGES . "imgLea.jpg" ?>"
                                 alt="imgLea"
                         >
                     </div>
@@ -293,7 +302,7 @@
                     <div class="well">
                         <h3>VP Goodies</h3>
                         <h4>Hugo <span class="pc">Vedie</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 ST</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -377,7 +386,7 @@
                     <div class="well">
                         <h3>VP Événementiel</h3>
                         <h4>Théo <span class="pc">Lam</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 IMIS</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
@@ -390,7 +399,7 @@
                     <div class="well">
                         <h3>VP Événementiel & Administrateur ÔCampus</h3>
                         <h4>Ludwig <span class="pc">Soros</span></h4>
-                        <h5>Études</h5>
+                        <h5>L3 SVT</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
