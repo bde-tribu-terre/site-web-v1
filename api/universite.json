@@ -2337,6 +2337,17 @@
             ]
           },
           {
+            "nom": "Aile Navier",
+            "salles": [
+              "Nav101",
+              "Nav102",
+              "Nav103",
+              "Nav104",
+              "Nav105",
+              "Nav106"
+            ]
+          },
+          {
             "nom": "Troisième étage",
             "salles": [
               "Learning Lab"
@@ -3199,6 +3210,7 @@
             "nom": "Troisième étage",
             "salles": [
               "S304",
+              "S305",
               "S306",
               "S307",
               "S308",
@@ -3316,7 +3328,36 @@
         "libelle_court": "Physique Chimie",
         "libelle_long": "Bâtiment de Physique-Chimie",
         "type": "cours",
-        "groupes": [],
+        "groupes": [
+          {
+            "nom": "Rez-de-chaussée",
+            "salles": [
+              "P001",
+              "P002",
+              "P008",
+              "P013",
+              "P056",
+              "P059"
+            ]
+          },
+          {
+            "nom": "Premier étage",
+            "salles": [
+              "P101",
+              "P117",
+              "P121",
+              "P122"
+            ]
+          },
+          {
+            "nom": "Deuxième étage",
+            "salles": [
+              "P202",
+              "P203",
+              "P216"
+            ]
+          }
+        ],
         "geoJSON": {
           "type": "MultiPolygon",
           "coordinates": [
@@ -3590,7 +3631,8 @@
             "nom": "Sous-sol",
             "salles": [
               "BS02",
-              "BS07"
+              "BS07",
+              "BCS06"
             ]
           },
           {
@@ -3616,8 +3658,10 @@
             "nom": "Second étage",
             "salles": [
               "B201 (Lamark)",
+              "B203 (Chouard)",
               "B204 (Bernard)",
               "B205",
+              "B208 (Marey)",
               "B209 (Buffon)",
               "B211 (Grassé)"
             ]
