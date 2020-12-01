@@ -13,7 +13,7 @@
             <p class="text-justify retrait">
                 Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos
                 <a href="<?php echo RACINE . 'association/fonctionnement/statuts/' ?>">statuts</a>. Mais voici une
-                petite explication plus « pratique » :
+                petite explication plus « pratique » :
             </p>
             <ul class="text-justify liste-retrait">
                 <li>
@@ -27,14 +27,14 @@
                 </li>
             </ul>
             <p class="text-justify retrait">
-                Vous souhaitez vous investir plus concrètement dans l'association et devenir membre du bureau ?
+                Vous souhaitez vous investir plus concrètement dans l'association et devenir membre du bureau ?
             </p>
             <ul class="text-justify liste-retrait">
                 <li>
                     Vous pouvez participer à l’activité de différents pôles en devenant membre actif.
                 </li>
                 <li>
-                    Certains membres actifs peuvent aussi être nommés « responsable d'activité » par le Conseil
+                    Certains membres actifs peuvent aussi être nommés « responsable d'activité » par le Conseil
                     d'Administration et devenir des Chargés de Mission ou des Vice-présidents affiliés à des pôles en
                     particulier. Pour cela, il suffit d’être adhérent, de
                     <a href="<?php echo RACINE . 'association/contact/' ?>">nous contacter</a> et de venir à un conseil

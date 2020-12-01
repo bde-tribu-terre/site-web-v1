@@ -6,8 +6,8 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <p class="text-justify retrait">
-                Vous découvrez Tribu-Terre et voulez en savoir plus ? Vous avez simplement une question pour votre
-                bureau ? Vous pouvez contacter chacun de nos pôles sur leurs adresses mails respectives mais aussi notre
+                Vous découvrez Tribu-Terre et voulez en savoir plus ? Vous avez simplement une question pour votre
+                bureau ? Vous pouvez contacter chacun de nos pôles sur leurs adresses mails respectives mais aussi notre
                 adresse mail générale.
             </p>
         </div>

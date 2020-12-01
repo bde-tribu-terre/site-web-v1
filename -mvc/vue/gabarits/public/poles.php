@@ -172,7 +172,7 @@
                 <p class="text-justify retrait">
                     Si vous aussi vous souhaitez mettre la main à la pâte et apporter votre contribution au journal,
                     que ce soit pour une seule fois ou régulièrement, alors contactez notre équipe à l'adresse mail
-                    suivante :
+                    suivante :
                 </p>
                 <div id="mailJournal_div" style="word-wrap: break-word;">
                     <p id="mailJournal_base64" class="text-justify retrait">
@@ -191,7 +191,7 @@
                 <p class="text-justify retrait">
                     Vous pouvez écrire sur n'importe quel sujet qui ait un rapport avec la vulgarisation
                     scientifique ou la vie étudiante. Et si jamais vous avez besoin d'aide pour trouver un sujet ou
-                    même écrire votre article, l'équipe d'Omni-Sciences est là pour ça !
+                    même écrire votre article, l'équipe d'Omni-Sciences est là pour ça !
                 </p>
             </div>
             <!-- \/ Pôle Informatique \/ -->
