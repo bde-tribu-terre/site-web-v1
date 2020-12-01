@@ -3590,13 +3590,16 @@
             "nom": "Rez-de-chaussée",
             "salles": [
               "B006",
-              "B009"
+              "B009 (Gilles Guerrier)"
             ]
           },
           {
             "nom": "Premier étage",
             "salles": [
               "B105",
+              "B106 (Diane Fossey)",
+              "B107 (Lavran)",
+              "B118 (Rostand)",
               "B130",
               "B132",
               "B135"
@@ -3605,7 +3608,10 @@
           {
             "nom": "Second étage",
             "salles": [
-              "B205"
+              "B201 (Lamark)",
+              "B204 (Bernard)",
+              "B205",
+              "B211 (Grassé)"
             ]
           }
         ],
