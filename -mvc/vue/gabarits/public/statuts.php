@@ -6,7 +6,7 @@
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <p class="text-justify retrait">
-                Les statuts sont une sorte de « contrat d'association » regroupant toutes les règles que doit respecter
+                Les statuts sont une sorte de « contrat d'association » regroupant toutes les règles que doit respecter
                 Tribu-Terre. Ils ont pour but d’encadrer ses activités sur l’aspect juridique et financier.
             </p>
             <p class="text-justify retrait">
@@ -20,7 +20,7 @@
                 bureau, il faut les déclarer en renvoyant les documents à la préfecture.
             </p>
             <p class="text-justify retrait">
-                <a href="<?php echo RACINE . 'association/fonctionnement/statuts/2019-03-12-Statuts.pdf' ?>">
+                <a href="<?php echo RACINE . 'association/fonctionnement/statuts/Statuts-2020-11-02.pdf' ?>">
                     Consulter les statuts de l'association.
                 </a>
             </p>
