@@ -3152,10 +3152,16 @@
         }
       },
       {
-        "libelle_court": "Bat Science",
+        "libelle_court": "Bât Science",
         "libelle_long": "Bâtiment d'enseignement général des Sciences",
         "type": "cours",
         "groupes": [
+          {
+            "nom": "Sous-sol très secret",
+            "salles": [
+              "TERRE"
+            ]
+          },
           {
             "nom": "Rez-de-chaussée",
             "salles": [
