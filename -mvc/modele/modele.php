@@ -1708,6 +1708,46 @@ function MdlSupprimerLienPratique($id) {
 }
 
 ########################################################################################################################
+# Parrainage                                                                                                           #
+########################################################################################################################
+function MdlRecupBinomesParrainages($email) {
+    ajouterRetourModele(
+        'parrainage',
+        requeteSQL(
+            "
+                SELECT
+                    p0.email AS p0email,
+                    p0.nom AS p0nom,
+                    p0.parrain AS p0parrain,
+                    p1.email AS p1email,
+                    p1.nom AS p1nom,
+                    p1.parrain AS p1parrain,
+                    p2.email AS p2email,
+                    p2.nom AS p2nom,
+                    p2.parrain AS p2parrain,
+                    p0.groupe AS groupe
+                FROM
+                    Parrainage p0
+                        JOIN
+                    Parrainage p1
+                        JOIN
+                    Parrainage p2
+                        ON
+                            p1.email = p0.binome1
+                                AND
+                            p2.email = p0.binome2
+                WHERE
+                      p0.email = :email
+                ",
+            array(
+                [':email', $email, 'STR']
+            ),
+            1
+        )
+    );
+}
+
+########################################################################################################################
 # Salles (API)                                                                                                         #
 ########################################################################################################################
 function MdlRechercherSalle($nom) {

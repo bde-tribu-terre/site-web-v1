@@ -1068,6 +1068,27 @@ function CtlMentionsLegales() {
 }
 
 ########################################################################################################################
+# Mentions légales                                                                                                     #
+########################################################################################################################
+function CtlParrainage() {
+    afficherParrainage();
+}
+
+function CtlParrainageReponse($mail) {
+    try {
+        MdlRecupBinomesParrainages($mail);
+        if ($GLOBALS['retoursModele']['parrainage']) {
+            afficherParrainageRecherche();
+        } else {
+            throw new Exception('Cet adresse mail "' . $mail . '" n\'existe pas.', 404);
+        }
+    } catch (Exception $e) {
+        ajouterMessage($e->getCode(), $e->getMessage());
+        CtlParrainage();
+    }
+}
+
+########################################################################################################################
 # Plan du site                                                                                                         #
 ########################################################################################################################
 function CtlPlanDuSite() {

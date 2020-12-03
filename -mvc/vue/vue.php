@@ -1311,6 +1311,23 @@ function afficherMentionsLegales() {
 }
 
 ########################################################################################################################
+# B - Parrainage                                                                                                       #
+########################################################################################################################
+function afficherParrainage() {
+    afficherPage('Parrainage', 'parrainage.php', 'public');
+}
+
+function afficherParrainageRecherche() {
+    define('NB_MEMBRES', 2 + ($GLOBALS['retoursModele']['parrainage']['p2nom'] == 'nil' ? 0 : 1));
+    for ($i = 0; $i < 3; $i++) {
+        define('NOM' . $i, $GLOBALS['retoursModele']['parrainage']['p' . $i . 'nom']);
+        define('EMAIL' . $i, $GLOBALS['retoursModele']['parrainage']['p' . $i . 'email']);
+        define('TYPE' . $i, $GLOBALS['retoursModele']['parrainage']['p' . $i . 'parrain'] == 1 ? 'Parrain/Marraine' : 'Fillot/Fillote');
+    }
+    afficherPage("Parrainage", 'parrainageRecherche.php', 'public');
+}
+
+########################################################################################################################
 # B - Plan du site                                                                                                     #
 ########################################################################################################################
 function afficherPlanDuSite() {
