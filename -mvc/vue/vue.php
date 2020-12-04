@@ -1324,6 +1324,7 @@ function afficherParrainageRecherche() {
         define('EMAIL' . $i, $GLOBALS['retoursModele']['parrainage']['p' . $i . 'email']);
         define('TYPE' . $i, $GLOBALS['retoursModele']['parrainage']['p' . $i . 'parrain'] == 1 ? 'Parrain/Marraine' : 'Fillot/Fillote');
     }
+    define('GROUPE', $GLOBALS['retoursModele']['parrainage']['groupe']);
     afficherPage("Parrainage", 'parrainageRecherche.php', 'public');
 }
 
