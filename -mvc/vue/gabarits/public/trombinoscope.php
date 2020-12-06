@@ -172,7 +172,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgPhotoPlaceholder.jpg" ?>"
+                                src="<?php echo IMAGES . "imgTheoF.jpg" ?>"
                                 alt="imgTheoF"
                         >
                     </div>
