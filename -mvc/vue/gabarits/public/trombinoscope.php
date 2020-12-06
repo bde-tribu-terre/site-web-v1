@@ -208,7 +208,7 @@
                 </p>
                 <div id="mailJournal_div" style="word-wrap: break-word;">
                     <p id="mailJournal_base64">
-                        dHJpYnV0ZXJyZS5qb3VybmFsQGdtYWlsLmNvbQ==
+                        <?php echo base64_encode('tributerre.journal@gmail.com') ?>
                     </p>
                 </div>
                 <div class="text-center">

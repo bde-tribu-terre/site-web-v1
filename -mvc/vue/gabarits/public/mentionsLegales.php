@@ -1,19 +1,3 @@
-<script type="text/javascript">
-    function decoder(target, tel) {
-        let elementTxtMail = document.getElementById(target + '_txt_mail');
-        let strTxtMail = elementTxtMail.innerText;
-        elementTxtMail.innerText = atob(strTxtMail);
-
-        if (tel) {
-            let elementTxtTel = document.getElementById(target + '_txt_tel');
-            let strTxtTel = elementTxtTel.innerText;
-            elementTxtTel.innerText = atob(strTxtTel);
-        }
-
-        let elementButton = document.getElementById(target + '_button');
-        elementButton.setAttribute('disabled', '');
-    }
-</script>
 <div class="container text-center">
     <h3>Mentions légales</h3>
     <hr>
@@ -28,17 +12,31 @@
                     <strong>Tribu-Terre</strong><br>
                     1A Rue de la Férollerie<br>
                     45071 Orléans Cedex 2, France
-                <p>
-                    <!-- Tel de Simon MEDELLI, président. -->
-                    Tél. : <span id="mailTT_txt_tel">MDYgNTIgNDkgMzggMzg=</span>
                 </p>
-                <p>
-                    Courriel : <span id="mailTT_txt_mail">dHJpYnV0ZXJyZTBAZ21haWwuY29t</span>
+                <p id="telSimon_div">
+                    <!-- Tel de Simon MEDELLI, président. -->
+                    Tél. :
+                    <span id="telSimon_base64">
+                        <?php echo base64_encode('06 52 49 38 38') ?>
+                    </span>
+                </p>
+                <button
+                        id="telSimon_button"
+                        class="btn btn-var"
+                        onclick="decoder('telSimon', 'span');"
+                >
+                    Cliquer pour décrypter
+                </button>
+                <p id="mailTT_div">
+                    Courriel :
+                    <span id="mailTT_base64">
+                        <?php echo base64_encode('tributerre0@gmail.com') ?>
+                    </span>
                 </p>
                 <button
                         id="mailTT_button"
-                        class="btn btn-var text-center"
-                        onclick="decoder('mailTT', true);"
+                        class="btn btn-var"
+                        onclick="decoder('mailTT', 'span');"
                 >
                     Cliquer pour décrypter
                 </button>
@@ -48,13 +46,16 @@
                 <p>
                     <strong>Simon <span class="pc">Medelli</span></strong>
                 </p>
-                <p>
-                    Courriel : <span id="mailDirPubli_txt_mail">c2ltb25tZWRlbGxpMkBnbWFpbC5jb20=</span>
+                <p id="mailDirPubli_div">
+                    Courriel :
+                    <span id="mailDirPubli_base64">
+                        <?php echo base64_encode('simonmedelli2@gmail.com') ?>
+                    </span>
                 </p>
                 <button
                         id="mailDirPubli_button"
-                        class="btn btn-var text-center"
-                        onclick="decoder('mailDirPubli');"
+                        class="btn btn-var"
+                        onclick="decoder('mailDirPubli', 'span');"
                 >
                     Cliquer pour décrypter
                 </button>
