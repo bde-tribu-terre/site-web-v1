@@ -39,4 +39,4 @@
             <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgGirafeErreur.jpg' ?>" alt="Girafe">
         </div>
     </div>
-</div><br>
+</div>

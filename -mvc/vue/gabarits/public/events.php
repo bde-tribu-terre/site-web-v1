@@ -36,4 +36,4 @@
     </div>
     <hr>
     <?php echo EVENTS ?>
-</div><br>
+</div>

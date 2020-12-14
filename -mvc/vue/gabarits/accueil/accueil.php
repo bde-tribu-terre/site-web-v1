@@ -9,8 +9,9 @@
             <?php echo EVENTS ?>
         </div>
     </div>
-    <hr>
 </div>
+
+<hr>
 
 <div class="container text-center">
     <div class="row">
@@ -23,8 +24,9 @@
             <?php echo JOURNAUX ?>
         </div>
     </div>
-    <hr>
 </div>
+
+<hr>
 
 <div class="container text-center">
     <div class="row">
@@ -93,8 +95,9 @@
             </div>
         </div>
     </div>
-    <hr>
 </div>
+
+<hr>
 
 <div class="container text-center">
     <script>
@@ -378,4 +381,4 @@
             </div>
         </div>
     </div>
-</div><br>
+</div>

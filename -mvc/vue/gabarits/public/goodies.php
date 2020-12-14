@@ -47,4 +47,4 @@
     </div>
     <hr>
     <?php echo GOODIES ?>
-</div><br>
+</div>

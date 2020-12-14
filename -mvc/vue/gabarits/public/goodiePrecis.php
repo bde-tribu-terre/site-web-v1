@@ -30,7 +30,7 @@
                 <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#recherche" aria-expanded="false">
                     Comment acheter ?
                 </button>
-                <div class="collapse" id="recherche"">
+                <div class="collapse" id="recherche">
                     <div class="card card-body">
                         <br>
                         <p>Pour acheter ce goodie, rendez-vous au local Tribu-Terre !</p>
@@ -45,7 +45,8 @@
                 </div>
             </div>
         </div>
-    </div><br>
+    </div>
+    <br>
     <div class="row">
         <div class="well">
             <h3>Quelques mots sur cette merveille...</h3>
@@ -95,4 +96,4 @@
         </div>
         <div class="col-sm-3"></div>
     </div>
-</div><br>
+</div>

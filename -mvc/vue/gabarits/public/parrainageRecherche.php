@@ -76,4 +76,4 @@ EOD;
             </form>
         </div>
     </div>
-</div><br>
+</div>

@@ -2,4 +2,4 @@
     <h3>Journaux</h3>
     <hr>
     <?php echo JOURNAUX ?>
-</div><br>
+</div>
