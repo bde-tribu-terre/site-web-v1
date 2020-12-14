@@ -30,7 +30,7 @@
                     <li><a class="dropdown-item<?php echo GABARIT == 'reseauAssociatif.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/reseau-associatif/' ?>">Réseau associatif</a></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'universite.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/universite/' ?>">Université d'Orléans</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a class="dropdown-item<?php echo GABARIT == 'poles.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/poles/' ?>">Pôles</a></li>
+                    <li><a class="dropdown-item<?php echo GABARIT == 'trombinoscope.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/trombinoscope/' ?>">Trombinoscope</a></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'fonctionnement.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/fonctionnement/' ?>">Fonctionnement de l'association</a></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'statuts.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/fonctionnement/statuts' ?>">Statuts</a></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'historique.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/historique/' ?>">Historique de l'association</a></li>

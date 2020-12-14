@@ -11,14 +11,36 @@
                 <!-- Auteur : Anaël BARODINE. -->
                 <p class="text-justify retrait">
                     Le bureau restreint correspond aux membres qui ont pour rôle le bon fonctionnement interne de
-                    l'association.
+                    l'association. Il peut être divisé en trois parties : la présidence, le secrétariat et la
+                    trésorerie.
                 </p>
                 <p class="text-justify retrait">
-                    Il s'agit du président et du vice président général, du secrétaire et du vice secrétaire et
-                    du trésorier et du vice trésorier.
+                    La présidence coordonne l’ensemble des activités, des projets et des dossiers menés par les membres
+                    du bureau de Tribu-Terre. La présidence agit également comme porte-parole de l'association lors de
+                    prises de paroles officielles en direction de groupes et d'organismes extérieures. Elle doit
+                    connaître l'ensemble des activités et des projets de l'association, et déléguer les tâches lorsque
+                    cela se révèle nécessaire. En outre, le vice-président est en charge de la cohésion et de la bonne
+                    ambiance dans le bureau.
                 </p>
                 <p class="text-justify retrait">
-
+                    Le secrétariat s'occupe de la gestion des documents administratifs, du contact avec la préfecture,
+                    des relations avec l'administration de l'Université. C'est aussi le secrétariat qui se charge de
+                    répondre à la plupart des e-mails à destination de l'association. Il est également en charge de
+                    rédiger les procès-verbaux, c'est-à-dire les compte-rendus officiels, lors des conseils
+                    d'administration et des assemblées générales et d'organiser chaque vote lors de ces derniers.
+                    Enfin, le secrétariat doit s'assurer du respect des
+                    <a href="<?php echo RACINE . "association/fonctionnement/statuts/" ?>">statuts</a> de l'association
+                    en tout temps.
+                </p>
+                <p class="text-justify retrait">
+                    La trésorerie gère les ressources de l'association, notamment monétaires. C'est elle qui a accès au
+                    compte bancaire ainsi qu'aux clés de la caisse lors des événements. Absolument toutes les
+                    transactions, entrantes ou sortantes, doivent passer par elle. Elle se doit d'être rigoureuse dans
+                    les comptes et dans le suivi quotidien, et elle doit présenter lors de chaque conseil
+                    d'administration et assemblée générale un bilan trésorerie détaillant tout mouvement et tout
+                    événement dans les ressources depuis le précédent bilan. Malgré tout, elle ne peut pas disposer de
+                    l'argent de son propre gré, et elle ne peut rien faire sans un vote préalable de l'ensemble du
+                    bureau lors d'un conseil d'administration pour chaque dépense ou remboursement.
                 </p>
             </div>
             <div class="col-sm-1"></div>

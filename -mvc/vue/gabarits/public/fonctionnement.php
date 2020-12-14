@@ -31,7 +31,8 @@
             </p>
             <ul class="text-justify liste-retrait">
                 <li>
-                    Vous pouvez participer à l’activité de différents pôles en devenant membre actif.
+                    Vous pouvez participer à l’activité de différents pôles en devenant
+                    <a href="<?php echo RACINE . 'association/trombinoscope/' ?>">membre actif</a>.
                 </li>
                 <li>
                     Certains membres actifs peuvent aussi être nommés « responsable d'activité » par le Conseil
@@ -51,10 +52,9 @@
             </ul>
             <p class="text-justify retrait">
                 Régulièrement, tous ces membres se réunissent pour faire un bilan des projets passés et futurs des
-                <a href="<?php echo RACINE . 'association/poles/' ?>">différents pôles</a>, prendre des décisions
-                importantes, voter de nouveaux membres mais aussi faire un bilan trésorerie où les trésorier et
-                vice-trésorier récapitulent les dépenses effectuées et à venir. C'est ce que l'on appelle un Conseil
-                d'Administration.
+                différents pôles, prendre des décisions importantes, voter de nouveaux membres mais aussi faire un bilan
+                trésorerie où les trésorier et vice-trésorier récapitulent les dépenses effectuées et à venir. C'est ce
+                que l'on appelle un Conseil d'Administration.
             </p>
             <p class="text-justify retrait">
                 Une fois par an, nous organison aussi une Assemblée Générale Ordinaire. Au cours de celle-ci, les

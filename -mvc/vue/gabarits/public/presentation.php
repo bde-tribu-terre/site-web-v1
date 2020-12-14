@@ -21,9 +21,9 @@
                 </a>
             </p>
             <p class="text-justify retrait">
-                Toujours dans l’optique d’apporter du confort, du plaisir et de la science à nos étudiants,
-                <a href="<?php echo RACINE . 'association/poles/' ?>">divers pôles</a> ont été créés et œuvrent
-                actuellement.
+                Notre <a href="<?php echo RACINE . 'association/trombinoscope/' ?>">équipe</a> est composé d'étudiants
+                de l'Université, chacun s'occupant d'un pôle selon ses préférences, qui œuvrent tous ensemble dans le
+                but commun d'apporter le plus possible aux adhérents et aux étudiants.
             </p>
             <p class="text-justify retrait">
                 Mais il ne s’agit pas uniquement de se refermer sur nous-même et c'est dans ce but que Tribu-Terre vous
