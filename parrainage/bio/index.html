@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Énigme de biologie</title>
+    <style type="text/css">
+        .cercle {
+            position: absolute;
+            margin: auto;
+            -moz-border-radius: 100%;
+            -webkit-border-radius: 100%;
+            border-radius: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .pointille {
+            border: dashed 1px blue;
+        }
+
+        .cercle img {
+            position: absolute;
+            background-color:white;
+        }
+
+        .fleche {
+            position: absolute;
+            width: 0.35cm;
+            height: 1.5cm;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        .horaire {
+            background-image: url('https://scape.enepe.fr/ressources/concentrx/dextre.png');
+            left:0.15cm;
+        }
+
+        .antihoraire {
+            background-image: url('https://scape.enepe.fr/ressources/concentrx/senestre.png');
+            right:0.15cm;
+        }
+    </style>
+    <script type="text/javascript">
+        let nb_cercles = 10;
+
+        let r = [];
+        for (let i = 0; i < nb_cercles; i++) {
+            r.push(Math.floor(Math.random() * Math.floor(72)) * 5);
+        }
+
+        function tourne(i, inv) {
+            r[i] = (r[i] + (5 * (inv ? -1 : 1))) % 360;
+            document.getElementById('display' + i).style.setProperty('transform', 'rotate(' + r[i] + 'deg)');
+        }
+
+        function generer() {
+            for (let i = nb_cercles - 1; i >= 0; i--) {
+                let widthx = (i + 1) * 100 / nb_cercles;
+                let decalage = -((100 - widthx) / 2)
+                let posbas = (widthx / 2) - 3;
+                document.getElementById('puzzle').innerHTML +=
+`<div id="cercle${i}">
+    <div id="display${i}" class="cercle" style=" transform: rotate(${r[i]}deg); width: ${widthx}vmin; height: ${widthx}vmin;">
+        <img src="https://bde-tribu-terre.fr/-s/okpi.jpg" style="width: 100vmin; top: ${decalage}vmin; left: ${decalage}vmin;" alt="puzzle">
+    </div>
+    <div id="fleche${i}" class="cercle pointille" style="position:absolute; width:${widthx}vmin; height:${widthx}vmin;">
+        <div class="fleche horaire" onclick="tourne(${i}, false)" style="bottom: ${posbas}vmin;"></div>
+        <div class="fleche antihoraire" onclick="tourne(${i}, true)" style="bottom: ${posbas}vmin;"></div>
+    </div>
+</div>`;
+            }
+        }
+    </script>
+</head>
+<body onload="generer()">
+<div id="puzzle">
+    
+</div>
+</body>
+</html>
