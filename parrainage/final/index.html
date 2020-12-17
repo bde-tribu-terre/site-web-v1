@@ -96,7 +96,7 @@
 <img id="SM${i}" class="symbole SM" src="" style="top: ${topList[i]}%;" alt="SM${i}">
 <img id="SD${i}" class="symbole SD" src="" style="top: ${topList[i]}%;" alt="SD${i}">
 <img id="FD${i}" class="fleche FD" src="Fleche.png" style="top: ${topList[i] - 1.75}%;" onclick="tourner(${i}, -1);" alt="FD${i}">`
-                update(i);
+                update(i);""
             }
 
             fond.innerHTML += '<img id="valider" src="Valider.png" onclick="valider();" alt="Valider">';
@@ -122,6 +122,8 @@
             }
             alert('BRAVO !!');
         }
+
+        // J'ai galéré. Anaël BARODINE.
     </script>
 </head>
 <body onload="init();">
