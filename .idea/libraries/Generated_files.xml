@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/-mvc/vue/script.min.js" />
+        <item url="file://$PROJECT_DIR$/api/plan-universite/universite.min.js" />
+        <item url="file://$PROJECT_DIR$/parrainage/tresor/confetti.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/-mvc/vue/script.min.js" />
+      <root url="file://$PROJECT_DIR$/api/plan-universite/universite.min.js" />
+      <root url="file://$PROJECT_DIR$/parrainage/tresor/confetti.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

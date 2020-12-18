@@ -36,13 +36,13 @@
     <link rel="stylesheet" type="text/css" href="<?php echo CHEMIN_VERS_VARIABLES ?>">
 
     <!-- Feuille de style générale -->
-    <link rel="stylesheet" type="text/css" href="<?php echo RACINE . '-mvc/vue/style.css' ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo RACINE . '-mvc/vue/style.min.css' ?>">
 
     <!-- Feuille de style spécifique au gabarit -->
     <link rel="stylesheet" type="text/css" href="<?php echo CHEMIN_VERS_STYLE ?>">
 
     <!-- Fonctions Javascript -->
-    <script src="<?php echo RACINE . '-mvc/vue/script.js' ?>"></script>
+    <script src="<?php echo RACINE . '-mvc/vue/script.min.js' ?>"></script>
 </head>
 <body>
 <div class="page-complete">
