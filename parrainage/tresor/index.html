@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Trésor</title>
+    <style type="text/css">
+        body {
+            /* Si on met le lien dans une variable, alors le chemin relatif sera faussé car accédé dans le css où est utilisée
+            la variable. */
+            background-image: url("Gold.gif");
+            background-clip: border-box;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .center {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 200%;
+            text-align: center;
+            color: yellow;
+            -webkit-text-stroke: 2px black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+        }
+    </style>
+    <script src="confetti.min.js"></script>
+</head>
+<body onload="confetti.start();">
+<div class="center">
+    <h1>Félicitations !</h1>
+    <h1>Vous avez trouvé le trésor du campus d'Orléans !</h1>
+</div>
+</body>
+</html>
