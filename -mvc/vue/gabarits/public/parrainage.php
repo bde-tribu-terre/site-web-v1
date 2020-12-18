@@ -6,7 +6,7 @@
             <form id="formRechercherMail" method="post" onsubmit="return verifForm(this);">
                 <div class="form-group"> <!-- Email recherché -->
                     <label for="formRechercherMail_mail">
-                        Saisissez votre e-mail.
+                        Saisissez l'adresse e-mail avec laquelle vous vous êtes inscrit(e) au parrainage Tribu-Terre.
                     </label>
                     <input
                             id="formRechercherMail_mail"
