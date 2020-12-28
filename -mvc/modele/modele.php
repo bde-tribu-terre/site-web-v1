@@ -90,8 +90,8 @@ function MdlVerifConnexion($login, $mdp) {
     );
     if ($membre) {
         // https://youtu.be/8ZtInClXe1Q pour des explications.
-        $mdpSaisieHash = hash('whirlpool', html_entity_decode($membre['mdpSalt']) . $mdp);
-        if (html_entity_decode($membre['mdpHash']) == $mdpSaisieHash) {
+        $mdpSaisieHash = hash('whirlpool', html_entity_decode($membre['mdpSalt'], ENT_QUOTES) . html_entity_decode($mdp, ENT_QUOTES));
+        if ($membre['mdpHash'] == $mdpSaisieHash) {
             return $membre;
         }
     }
