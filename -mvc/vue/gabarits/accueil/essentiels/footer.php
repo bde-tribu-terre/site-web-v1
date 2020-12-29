@@ -9,6 +9,6 @@
         <p><a href="<?php echo RACINE . 'plan-du-site/' ?>">Plan du site</a> | <a href="<?php echo RACINE . 'mentions-legales/' ?>">Mentions légales</a></p>
         <p>Tribu-Terre 2020 | 1A Rue de la Férollerie, 45071, Orléans Cedex 2</p>
         <p><strong>Site Tribu-Terre version <?php echo VERSION_SITE ?></strong></p>
-        <p><small>Développé avec ❤️ par Anaël B.</small></p>
+        <p><small>Développé avec ❤️ par Anaël BARODINE</small></p>
     </div>
 </div>
