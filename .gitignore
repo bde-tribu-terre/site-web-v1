@@ -6,3 +6,9 @@
 !/journaux/index.php
 /-mvc/modele/connectBarodine.php
 /-mvc/modele/connectBde.php
+
+.idea
+*/*.iml
+*.iml
+
+.DS_Store
