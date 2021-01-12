@@ -27,7 +27,7 @@
                     <li><a class="dropdown-item<?php echo GABARIT == 'reseauxSociaux.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">Réseaux sociaux</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'partenaires.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/partenaires/' ?>">Partenaires</a></li>
-                    <li><a class="dropdown-item<?php echo GABARIT == 'reseauAssociatif.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/reseau-associatif/' ?>">Réseau associatif</a></li>
+                    <li><a class="dropdown-item<?php echo GABARIT == 'ocampus.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">ÔCampus</a></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'universite.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/universite/' ?>">Université d'Orléans</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a class="dropdown-item<?php echo GABARIT == 'trombinoscope.php' ? ' active' : ''; ?>" href="<?php echo RACINE . 'association/trombinoscope/' ?>">Trombinoscope</a></li>
