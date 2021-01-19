@@ -20,7 +20,7 @@
 <script type="text/javascript">
     // Si conditions
     <?php
-    $universiteJSON = json_decode(file_get_contents('../universite.json'));
+    $universiteJSON = json_decode(file_get_contents('../universite.min.json'));
     if (!empty($_GET)) {
         foreach ($universiteJSON as $codeComposante => $composante) {
             if (isset($_GET['c']) && !(strtolower($_GET['c']) == strtolower($codeComposante))) {

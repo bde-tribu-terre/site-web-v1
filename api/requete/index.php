@@ -5,7 +5,7 @@ function requete(&$retour) {
     try {
         if (isset($_GET['r'])) {
             if ($_GET['r'] == 'salles') {
-                $JSON = json_decode(file_get_contents('../universite.json'));
+                $JSON = json_decode(file_get_contents('../universite.min.json'));
                 foreach ($JSON as $codeComposante => $composante) {
                     if (!isset($_GET['c']) || strtolower($_GET['c']) == strtolower($codeComposante)) {
                         foreach ($composante->batiments as $ibatiment => $batiment) {
