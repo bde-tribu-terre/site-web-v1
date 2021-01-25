@@ -4,8 +4,8 @@
 !/goodies/index.php
 /journaux/*
 !/journaux/index.php
-/-mvc/modele/connectBarodine.php
-/-mvc/modele/connectBde.php
+/-mvc/modele/connect/connectBarodine.php
+/-mvc/modele/connect/connectBde.php
 
 .idea
 */*.iml
