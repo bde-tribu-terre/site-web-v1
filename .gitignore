@@ -7,8 +7,8 @@
 /-mvc/modele/connect/connectBarodine.php
 /-mvc/modele/connect/connectBde.php
 
--mvc/modele/identifiants/
-!-mvc/modele/identifiants/identifiants.yml
+/-mvc/modele/identifiants/*
+!/-mvc/modele/identifiants/identifiants.yml
 
 .idea
 */*.iml
