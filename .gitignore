@@ -6,7 +6,6 @@
 !/journaux/index.php
 
 -mvc/modele/identifiants/*
-!-mvc/modele/identifiants/identifiants.yml
 
 .idea
 */*.iml
