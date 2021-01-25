@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="<?php echo RACINE . '-mvc/vue/universite.css' ?>">
 <div class="container text-center">
     <h3>Université d'Orléans</h3>
     <hr>
@@ -33,7 +32,7 @@
                         scrolling="no"
                         frameborder="0"
                         title="Plan Interactif du Campus"
-                        src="<?php echo RACINE . 'api/plan-universite/' ?>"
+                        src="/api/plan-universite/"
                 ></iframe>
             </div>
         </div>

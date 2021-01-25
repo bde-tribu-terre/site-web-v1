@@ -29,7 +29,7 @@
                     rédiger les procès-verbaux, c'est-à-dire les compte-rendus officiels, lors des conseils
                     d'administration et des assemblées générales et d'organiser chaque vote lors de ces derniers.
                     Enfin, le secrétariat doit s'assurer du respect des
-                    <a href="<?php echo RACINE . "association/fonctionnement/statuts/" ?>">statuts</a> de l'association
+                    <a href="/association/fonctionnement/statuts/">statuts</a> de l'association
                     en tout temps.
                 </p>
                 <p class="text-justify retrait">
@@ -59,7 +59,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgSimon.jpg" ?>"
+                                src="/-images/imgSimon.jpg"
                                 alt="imgSimon"
                         >
                     </div>
@@ -72,7 +72,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgWarren.jpg" ?>"
+                                src="/-images/imgWarren.jpg"
                                 alt="imgWarren"
                         >
                     </div>
@@ -85,7 +85,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgMaxence.jpg" ?>"
+                                src="/-images/imgMaxence.jpg"
                                 alt="imgMaxence"
                         >
                     </div>
@@ -101,7 +101,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgClement.jpg" ?>"
+                                src="/-images/imgClement.jpg"
                                 alt="imgClement"
                         >
                     </div>
@@ -114,7 +114,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgAnael.jpg" ?>"
+                                src="/-images/imgAnael.jpg"
                                 alt="imgAnael"
                         >
                     </div>
@@ -168,7 +168,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgLia.jpg" ?>"
+                                src="/-images/imgLia.jpg"
                                 alt="imgLia"
                         >
                     </div>
@@ -181,7 +181,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgClaire.jpg" ?>"
+                                src="/-images/imgClaire.jpg"
                                 alt="imgClaire"
                         >
                     </div>
@@ -194,7 +194,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgTheoF.jpg" ?>"
+                                src="/-images/imgTheoF.jpg"
                                 alt="imgTheoF"
                         >
                     </div>
@@ -220,8 +220,7 @@
                 <p class="text-justify retrait">
                     Ces journaux sont disponibles à la fois en version papier dans divers points de distributions (BU,
                     Bâtiment S, local de l'association, etc...) mais aussi en version numérique, publiée sur les réseaux
-                    sociaux et <a href="<?php echo RACINE . 'journaux/' ?>">dans la rubrique "Journaux" du site internet
-                    </a>.
+                    sociaux et <a href="/journaux/">dans la rubrique "Journaux" du site internet</a>.
                 </p>
                 <p class="text-justify retrait">
                     Si vous aussi vous souhaitez mettre la main à la pâte et apporter votre contribution au journal, que
@@ -265,7 +264,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgChloe.jpg" ?>"
+                                src="/-images/imgChloe.jpg"
                                 alt="imgChloe"
                         >
                     </div>
@@ -294,8 +293,8 @@
                     constante de nouveaux goodies à proposer aux étudiants.
                 </p>
                 <p class="text-justify retrait">
-                    <a href="<?php echo RACINE . 'goodies/' ?>">La liste complète ainsi que les prix des goodies est
-                    disponible sur le site internet.</a>
+                    <a href="/goodies/">La liste complète ainsi que les prix des goodies est disponible sur le site
+                    internet.</a>
                 </p>
             </div>
             <div class="col-sm-1"></div>
@@ -315,7 +314,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgLea.jpg" ?>"
+                                src="/-images/imgLea.jpg"
                                 alt="imgLea"
                         >
                     </div>
@@ -328,7 +327,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgHugo.jpg" ?>"
+                                src="/-images/imgHugo.jpg"
                                 alt="imgHugo"
                         >
                     </div>
@@ -372,10 +371,10 @@
                 <!-- Auteur : Théo LAM. -->
                 <p class="text-justify retrait">
                     Le pôle évent a pour rôle la création, l’organisation et la gestion des divers
-                    <a href="<?php echo RACINE . 'events/' ?>">événements</a> qui rythment l’année universitaire : le
-                    pique-nique et la soirée d’intégration marquant le début des études, des soirées à thème tout au
-                    long de l’année (Halloween, St Valentin etc…) ou encore la soirée de désintégration pour fêter la
-                    fin des examens de fin d’année.
+                    <a href="/events/">événements</a> qui rythment l’année universitaire : le pique-nique et la soirée
+                    d’intégration marquant le début des études, des soirées à thème tout au long de l’année (Halloween,
+                    St Valentin etc…) ou encore la soirée de désintégration pour fêter la fin des examens de fin
+                    d’année.
                 </p>
                 <p class="text-justify retrait">
                     Mais ce pôle s’occupe aussi de l’organisation d’un des projets phare de l’association et qui nous
@@ -412,7 +411,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgTheoL.jpg" ?>"
+                                src="/-images/imgTheoL.jpg"
                                 alt="imgTheoL"
                         >
                     </div>
@@ -425,7 +424,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="<?php echo IMAGES . "imgLudwig.jpg" ?>"
+                                src="/-images/imgLudwig.jpg"
                                 alt="imgLudwig"
                         >
                     </div>

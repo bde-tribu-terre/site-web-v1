@@ -17,29 +17,27 @@
             <p class="text-justify retrait">
                 Votre association vous représente auprès de l'administration universitaire de l’OSUC et du CoST depuis
                 quelques années et veille chaque jour à faire évoluer ses projets pour l'ensemble des étudiants.
-                <a href="<?php echo RACINE . 'association/universite/' ?>">En savoir plus sur l'Université d'Orléans.
-                </a>
+                <a href="/association/universite/">En savoir plus sur l'Université d'Orléans.</a>
             </p>
             <p class="text-justify retrait">
-                Notre <a href="<?php echo RACINE . 'association/trombinoscope/' ?>">équipe</a> est composé d'étudiants
-                de l'Université, chacun s'occupant d'un pôle selon ses préférences, qui œuvrent tous ensemble dans le
-                but commun d'apporter le plus possible aux adhérents et aux étudiants.
+                Notre <a href="/association/trombinoscope/">équipe</a> est composé d'étudiants de l'Université, chacun
+                s'occupant d'un pôle selon ses préférences, qui œuvrent tous ensemble dans le but commun d'apporter le
+                plus possible aux adhérents et aux étudiants.
             </p>
             <p class="text-justify retrait">
                 Mais il ne s’agit pas uniquement de se refermer sur nous-même et c'est dans ce but que Tribu-Terre vous
                 représente aussi au sein de fédérations afin d'échanger avec d'autres associations, de débattre de
                 divers sujets et de toujours vous apporter le meilleur. Pour cela, nous adhérons à deux fédérations :
-                d'une part <a href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">ÔCampus</a>,
-                fédération regroupant les associations orléanaises, et d'autre part la
-                <a href="<?php echo RACINE . 'association/reseau-associatif/fneb/' ?>">FNEB</a>, qui représente des
-                associations scientifiques de France.
+                d'une part <a href="/association/reseau-associatif/ocampus/">ÔCampus</a>, fédération regroupant les
+                associations orléanaises, et d'autre part la <a href="/association/reseau-associatif/fneb/">FNEB</a>,
+                qui représente des associations scientifiques de France.
             </p>
             <p class="text-justify retrait">
-                Nous disposons aussi <a href="<?php echo RACINE . 'association/ou-nous-trouver/' ?>">d’un local à l’OSUC
-                </a> dans lequel vous êtes les bienvenus et où vous pouvez d’ailleurs retrouver les membres de notre
-                bureau grâce à nos évènements et permanences. Et si vous ne pouvez pas venir au local, alors vous pouvez
-                nous suivre sur <a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">nos réseaux</a> où vous
-                retrouverez toute l’actualité de votre association préférée !
+                Nous disposons aussi <a href="/association/ou-nous-trouver/">d’un local à l’OSUC</a> dans lequel vous
+                êtes les bienvenus et où vous pouvez d’ailleurs retrouver les membres de notre bureau grâce à nos
+                évènements et permanences. Et si vous ne pouvez pas venir au local, alors vous pouvez nous suivre sur
+                <a href="/association/reseaux-sociaux/">nos réseaux</a> où vous retrouverez toute l’actualité de votre
+                association préférée !
             </p>
         </div>
         <div class="col-sm-1"></div>

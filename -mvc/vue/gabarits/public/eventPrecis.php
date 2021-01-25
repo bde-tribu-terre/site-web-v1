@@ -30,18 +30,21 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <!-- Twitter -->
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-               class="twitter-share-button"
-               data-size="large"
-               data-text="Cet évent organisé par Tribu-Terre va être cool : <?php echo TITRE ?> !"
-               data-via="Tributerre45"
-               data-show-count="false">
+            <a
+                    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                    class="twitter-share-button"
+                    data-size="large"
+                    data-text="Cet évent organisé par Tribu-Terre va être cool : <?php echo TITRE ?> !"
+                    data-via="Tributerre45"
+                    data-show-count="false"
+            >
                 Tweet
             </a>
-            <script async
+            <script
+                    async
                     src="https://platform.twitter.com/widgets.js"
-                    charset="utf-8">
-            </script>
+                    charset="utf-8"
+            ></script>
             <!-- Facebook -->
             <div id="fb-root"></div>
             <script>
@@ -55,13 +58,19 @@
                     }(document, 'script', 'facebook-jssdk')
                 );
             </script>
-            <div class="fb-share-button"
-                 data-href="http://barodine.fr/tribu-terre/events?id=<?php echo ID ?>"
-                 data-layout="button"
-                 data-size="large">
-                <a target="_blank"
-                   href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                   class="fb-xfbml-parse-ignore">Partager</a>
+            <div
+                    class="fb-share-button"
+                    data-href="https://<?php echo $_SERVER["HTTP_HOST"] ?>/events?id=<?php echo ID ?>"
+                    data-layout="button"
+                    data-size="large"
+            >
+                <a
+                        target="_blank"
+                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                        class="fb-xfbml-parse-ignore"
+                >
+                    Partager
+                </a>
             </div>
         </div>
         <div class="col-sm-3"></div>

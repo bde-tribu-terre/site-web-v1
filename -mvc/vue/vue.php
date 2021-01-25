@@ -11,14 +11,9 @@
 # A.I - Constantes Générales                                                                                           #
 ########################################################################################################################
 /**
- * Chemin vers le répertoire contenant les images.
- */
-define('IMAGES', RACINE . '-images/');
-
-/**
  * Variable contenant la version actuelle du site indiquée dans le fichier ."../-mvc/vue/version.txt".
  */
-define('VERSION_SITE', file_get_contents(RACINE . '-mvc/vue/version.txt'));
+define('VERSION_SITE', file_get_contents(racine() . '/version.txt'));
 
 ########################################################################################################################
 # A.II - Fonction d'Initialisation des Constantes Spécifiques & Affichage du Cadre                                     #
@@ -38,28 +33,28 @@ define('VERSION_SITE', file_get_contents(RACINE . '-mvc/vue/version.txt'));
  * </ul>
  */
 function afficherPage($title, $gabarit, $cadre) {
-    if (file_exists(RACINE . '-mvc/vue/gabarits/' . $cadre)) {
-        define('CHEMIN_VERS_VARIABLES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/variables.min.css');
-        define('CHEMIN_VERS_STYLE', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/style.min.css');
-        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/header.php');
-        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/messages.php');
-        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/' . $cadre . '/essentiels/footer.php');
-        define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/' . $cadre . '/' . $gabarit);
+    if (file_exists(racine() . '-mvc/vue/gabarits/' . $cadre)) {
+        define('CHEMIN_VERS_VARIABLES', '/-mvc/vue/gabarits/' . $cadre . '/essentiels/variables.min.css');
+        define('CHEMIN_VERS_STYLE', '/-mvc/vue/gabarits/' . $cadre . '/essentiels/style.min.css');
+        define('CHEMIN_VERS_HEADER', racine() . '-mvc/vue/gabarits/' . $cadre . '/essentiels/header.php');
+        define('CHEMIN_VERS_MESSAGES', racine() . '-mvc/vue/gabarits/' . $cadre . '/essentiels/messages.php');
+        define('CHEMIN_VERS_FOOTER', racine() . '-mvc/vue/gabarits/' . $cadre . '/essentiels/footer.php');
+        define('CHEMIN_VERS_GABARIT', racine() . '-mvc/vue/gabarits/' . $cadre . '/' . $gabarit);
     } else {
         array_push($messages, ['500', 'Répertoire de gabarits ' . $cadre . ' non trouvé.']);
-        define('CHEMIN_VERS_VARIABLES', RACINE . '-mvc/vue/gabarits/public/essentiels/variables.min.css');
-        define('CHEMIN_VERS_STYLE', RACINE . '-mvc/vue/gabarits/public/essentiels/style.min.css');
-        define('CHEMIN_VERS_HEADER', RACINE . '-mvc/vue/gabarits/public/essentiels/header.php');
-        define('CHEMIN_VERS_MESSAGES', RACINE . '-mvc/vue/gabarits/public/essentiels/messages.php');
-        define('CHEMIN_VERS_FOOTER', RACINE . '-mvc/vue/gabarits/public/essentiels/footer.php');
-        define('CHEMIN_VERS_GABARIT', RACINE . '-mvc/vue/gabarits/public/accueil.php');
+        define('CHEMIN_VERS_VARIABLES', '/-mvc/vue/gabarits/public/essentiels/variables.min.css');
+        define('CHEMIN_VERS_STYLE', '/-mvc/vue/gabarits/public/essentiels/style.min.css');
+        define('CHEMIN_VERS_HEADER', racine() . '-mvc/vue/gabarits/public/essentiels/header.php');
+        define('CHEMIN_VERS_MESSAGES', racine() . '-mvc/vue/gabarits/public/essentiels/messages.php');
+        define('CHEMIN_VERS_FOOTER', racine() . '-mvc/vue/gabarits/public/essentiels/footer.php');
+        define('CHEMIN_VERS_GABARIT', racine() . '-mvc/vue/gabarits/public/accueil.php');
     }
 
     define('MESSAGES', serialize($GLOBALS['messages']));
     define('TITLE', $title);
     define('GABARIT', $gabarit);
 
-    require_once(RACINE . '-mvc/vue/cadre.php');
+    require_once(racine() . '-mvc/vue/cadre.php');
 }
 
 ########################################################################################################################
@@ -278,7 +273,7 @@ function afficherSupprimerImageGoodie() {
             '
             <div class="form-group">
                 <label for="formSupprimerImageGoodie_image' . $image['id'] . '">
-                    <img src="' . RACINE . 'goodies/' . $image['lien'] . '" width="200" height="150" alt="img">
+                    <img src="/goodies/' . $image['lien'] . '" width="200" height="150" alt="img">
                 </label>
                 <input
                         id="formSupprimerImageGoodie_image' . $image['id'] . '"
@@ -419,7 +414,7 @@ function afficherSupprimerImageArticle() {
             '
             <div class="form-group">
                 <label for="formSupprimerImageArticle_image' . $image['id'] . '">
-                    <img src="' . RACINE . 'articles/' . $image['lien'] . '" width="200" height="150" alt="img">
+                    <img src="/articles/' . $image['lien'] . '" width="200" height="150" alt="img">
                 </label>
                 <input
                         id="formSupprimerImageArticle_image' . $image['id'] . '"
@@ -620,9 +615,9 @@ function afficherAccueil() {
         $goodies .=
             '
             <div class="item' . ($premier ? ' active' : '') . '">
-            <a href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '"><img class="arrondi" src="' . RACINE . 'goodies/' . $goodie['miniature'] . '" alt="Image"></a>
+            <a href="/goodies/?id=' . $goodie['id'] . '"><img class="arrondi" src="/goodies/' . $goodie['miniature'] . '" alt="Image"></a>
             <div class="carousel-caption">
-            <a href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '"><h3>' . $goodie['titre'] . '</h3></a>
+            <a href="/goodies/?id=' . $goodie['id'] . '"><h3>' . $goodie['titre'] . '</h3></a>
             <p>' . $goodie['prixAD'] . '€ Adhérent | ' . $goodie['prixNAD'] . '€ Non-adhérent</p>
             </div>
             </div>
@@ -678,7 +673,7 @@ function afficherAccueil() {
             <h5>📅&emsp;' . preg_replace('/ [^ ]*$/', '', genererDate($event['date'])) . $nbJoursStr . '</h5>
             <h5>⌚️&emsp;' . substr($event['heure'], 0, 2) . 'h' . substr($event['heure'], 3, 2) . '</h5>
             <h5>📍&emsp;' . $event['lieu'] . '</h5>
-            <a class="btn btn-var btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
+            <a class="btn btn-var btn-block" href="/events/?id=' . $event['id'] . '">
                 <h4>Détails</h4>
             </a>
             ' . ($count == 3 ? '</div>' : '') . '
@@ -701,8 +696,8 @@ function afficherAccueil() {
                 <div class="well">
                     <h3>' . $journal['titre'] . '</h3>
                     <h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>
-                    <a href="' . RACINE . 'journaux/' . $journal['pdf'] . '" class="btn btn-var btn-block">
-                        <h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
+                    <a href="/journaux/' . $journal['pdf'] . '" class="btn btn-var btn-block">
+                        <h4 class="alterneur-grand-tres-petit"><img src="/-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
                         <h4 class="alterneur-petit">Lire</h4>
                     </a>
                 </div>
@@ -721,7 +716,7 @@ function afficherAccueil() {
             </h5>
             <h3>' . $GLOBALS['retoursModele']['article']['titre'] . '</h3>
             <h5>' . genererDate($GLOBALS['retoursModele']['article']['dateCreation']) . '</h5>
-            <a href="' . RACINE . 'articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? 'V' : 'T') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-var btn-block">
+            <a href="/articles/?id=' . (!empty($GLOBALS['retoursModele']['article']['lien']) ? 'V' : 'T') . $GLOBALS['retoursModele']['article']['id'] . '" class="btn btn-var btn-block">
             <h4>Lire l\'article</h4>
             </a>
             </div>
@@ -765,7 +760,7 @@ function afficherArticles() {
                             <div class="div-miniature-articles">
                                 <img
                                     class="img-fluid img-arrondi"
-                                    src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['miniaturesArticles'][$arrayArticles[$ID]['id']] . '"
+                                    src="/articles/' . $GLOBALS['retoursModele']['miniaturesArticles'][$arrayArticles[$ID]['id']] . '"
                                     alt="Miniature"
                                 >
                             </div>
@@ -806,7 +801,7 @@ function afficherArticles() {
                             <hr>
                             <p class="text-left retrait">' . $texteNonFormateMini . (strlen($arrayArticles[$ID]['texte']) > 256 ? '[...]' : '')  . '</p>
                             <hr>
-                            <a class="btn btn-var btn-block" href="' . RACINE . 'articles/?id=' . $ID . '">
+                            <a class="btn btn-var btn-block" href="/articles/?id=' . $ID . '">
                                 <h4>Lire l\'article</h4>
                             </a>
                         </div>
@@ -831,7 +826,7 @@ function afficherArticlePrecis() {
                     <div class="col-sm-8">
                         <img
                             class="img-arrondi ombre"
-                            src="' . RACINE . 'articles/' . $GLOBALS['retoursModele']['imagesArticle'][0]['lien'] . '"
+                            src="/articles/' . $GLOBALS['retoursModele']['imagesArticle'][0]['lien'] . '"
                             class="img-arrondi ombre"
                             alt="Image"
                         >
@@ -854,7 +849,7 @@ function afficherArticlePrecis() {
             $carouselArticleImages .=
                 '
                 <div class="item' . ($nb == 1 ? ' active' : '') . '">
-                <img src="' . RACINE . 'articles/' . $lien . '" alt="Image">
+                <img src="/articles/' . $lien . '" alt="Image">
                 </div>
                 ';
         }
@@ -1073,7 +1068,7 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
                     <h4>📅 ' . genererDate($event['date']) . $nbJoursStr . '</h4>
                     <h4>⌚️ ' . substr($event['heure'], 0, 2) . 'h' . substr($event['heure'], 3, 2) . '</h4>
                     <h4>📍️ ' . $event['lieu'] . '</h4>
-                    <a class="btn btn-var btn-block" href="' . RACINE . 'events/?id=' . $event['id'] . '">
+                    <a class="btn btn-var btn-block" href="/events/?id=' . $event['id'] . '">
                         <h4>Détails</h4>
                     </a>
                 </div>
@@ -1143,15 +1138,15 @@ function afficherGoodies($tri, $disponible, $bientot, $rupture, $rechercheEnCour
             '
             <div class="col-sm-6">
                 <div class="well">
-                    <a href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '">
-                        <img src="' . RACINE . 'goodies/' . $goodie['miniature'] . '" class="img-arrondi-mini" alt="Miniature">
+                    <a href="/goodies/?id=' . $goodie['id'] . '">
+                        <img src="/goodies/' . $goodie['miniature'] . '" class="img-arrondi-mini" alt="Miniature">
                     </a>
                     <h3>' . $goodie['titre'] . '</h3>
                     <hr>
                     <h4><strong>' . $categorieStr . '</strong></h4>
                     <h4>Prix pour les adhérents : ' . $goodie['prixAD'] . '€</h4>
                     <h4>Prix pour les non-adhérents : ' . $goodie['prixNAD'] . '€</h4>
-                    <a class="btn btn-var btn-block" href="' . RACINE . 'goodies/?id=' . $goodie['id'] . '">
+                    <a class="btn btn-var btn-block" href="/goodies/?id=' . $goodie['id'] . '">
                         <h4>Détails</h4>
                     </a>
                 </div>
@@ -1179,7 +1174,7 @@ function afficherGoodiePrecis() {
         $carouselGoodie =
             '
             <img
-                    src="' . RACINE . 'goodies/' . $GLOBALS['retoursModele']['goodie']['miniature'] . '"
+                    src="/goodies/' . $GLOBALS['retoursModele']['goodie']['miniature'] . '"
                     class="img-arrondi ombre"
                     alt="Image"
             >
@@ -1197,7 +1192,7 @@ function afficherGoodiePrecis() {
             <div class="item active">
                 <img
                         class="arrondi"
-                        src="' . RACINE . 'goodies/' . $GLOBALS['retoursModele']['goodie']['miniature'] . '"
+                        src="/goodies/' . $GLOBALS['retoursModele']['goodie']['miniature'] . '"
                         alt="Image"
                 >
             </div>
@@ -1215,7 +1210,7 @@ function afficherGoodiePrecis() {
                 <div class="item">
                     <img
                             class="arrondi"
-                            src="' . RACINE . 'goodies/' . $image['lien'] . '"
+                            src="/goodies/' . $image['lien'] . '"
                             alt="Image"
                     >
                 </div>
@@ -1260,7 +1255,7 @@ function afficherJournaux() {
                     <h3>' . $journal['titre'] . '</h3>
                     <h5>' . preg_replace('/^[^ ]* /', '', genererDate($journal['date'])) . '</h5>
                     <a href="' . $journal['pdf'] . '" class="btn btn-var btn-block">
-                        <h4 class="alterneur-grand-tres-petit"><img src="' . RACINE . '-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
+                        <h4 class="alterneur-grand-tres-petit"><img src="/-images/imgPdf.svg" height="28" alt="(PDF)">&emsp;Lire en ligne</h4>
                         <h4 class="alterneur-petit">Lire</h4>
                     </a>
                 </div>
@@ -1398,7 +1393,7 @@ function afficherPlanDuSite() {
         $liste = preg_replace('/<\/div>$/', '', $liste);
         return $liste;
     }
-    $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants(RACINE))));
+    $plan = retirerDivEnglobant(optimiserListe(construireListe(chercherTousLesEnfants(racine()))));
     define('PLAN', $plan);
 
     afficherPage('Plan du site', 'planDuSite.php', 'public');
@@ -1425,7 +1420,7 @@ function afficherTrouverUneSalleRecherche() {
                     <p>Emplacement : ' . $salle['nom_groupe'] . '</p>
                     <p>
                         <a
-                            href="' . RACINE . 'trouver-une-salle/?nom=' . preg_replace('/ /', '+', $salle['nom_salle']) . '"
+                            href="/trouver-une-salle/?nom=' . preg_replace('/ /', '+', $salle['nom_salle']) . '"
                         >
                             Voir le bâtiment sur le plan
                         </a>

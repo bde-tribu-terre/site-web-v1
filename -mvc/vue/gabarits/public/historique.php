@@ -68,7 +68,7 @@
                 bureau de Tribu-Terre pendant un an, jusqu'à la date de la prochaine Assemblée Générale.
             </p>
             <p class="text-justify retrait">
-                <a href="<?php echo RACINE . 'association/fonctionnement/' ?>">
+                <a href="/association/fonctionnement/">
                     En savoir plus sur le fonctionnement de l'association.
                 </a>
             </p>
@@ -108,7 +108,7 @@
                     <div class="row">
                         <?php /*
                         <div class="col-sm-6">
-                            <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2019.jpg' ?>" alt="imgAG2019">
+                            <img class="img-arrondi-mini" src="/-images/imgAG2019.jpg" alt="imgAG2019">
                         </div>
                         */ ?>
                         <div class="col-sm-3"></div>
@@ -204,7 +204,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
-                            <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2019.jpg' ?>" alt="imgAG2019">
+                            <img class="img-arrondi-mini" src="/-images/imgAG2019.jpg" alt="imgAG2019">
                         </div>
                         <div class="col-sm-6">
                             <h3>Composition du bureau</h3>
@@ -273,7 +273,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-sm-6">
-                            <img class="img-arrondi-mini" src="<?php echo IMAGES . 'imgAG2018.jpg' ?>" alt="imgAG2018">
+                            <img class="img-arrondi-mini" src="/-images/imgAG2018.jpg" alt="imgAG2018">
                         </div>
                         <div class="col-sm-6">
                             <h3>Composition du bureau</h3>

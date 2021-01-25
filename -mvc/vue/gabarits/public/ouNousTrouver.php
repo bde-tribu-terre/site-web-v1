@@ -7,7 +7,7 @@
         <div class="col-sm-10">
             <p class="text-justify retrait">
                 En plus d'une présence en ligne sur nos
-                <a href="<?php echo RACINE . 'association/reseaux-sociaux/' ?>">réseaux sociaux</a>, Tribu-Terre
+                <a href="/association/reseaux-sociaux/">réseaux sociaux</a>, Tribu-Terre
                 dispose aussi d'un local se situant à l'OSUC. Il se trouve dans la salle 4 après la cafétéria. Le
                 logo de Tribu-Terre se trouve sur la porte, vous ne pouvez pas le rater !
             </p>
@@ -52,11 +52,10 @@
                 Il s'agit d'une salle de repos ouverte à tous, dans laquelle vous pourrez rencontrer des membres du
                 bureau de l'association qui seront en capacité de vous renseigner sur cette dernière, ses différentes
                 actions ou ses différents événements. Vous pourrez ainsi demander à
-                <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">devenir adhérent</a>, acheter votre
-                prévente à un <a href="<?php echo RACINE . 'events/' ?>">événement</a>, prendre le dernier
-                exemplaire du <a href="<?php echo RACINE . 'journaux/' ?>">journal Omni-Sciences</a> (qui est
-                totalement gratuit), ou bien acheter un de
-                <a href="<?php echo RACINE . 'goodies/' ?>">nos goodies</a> (en fonction des disponibilités).
+                <a href="/association/pourquoi-adherer/">devenir adhérent</a>, acheter votre prévente à un
+                <a href="/events/">événement</a>, prendre le dernier exemplaire du
+                <a href="/journaux/">journal Omni-Sciences</a> (qui est totalement gratuit), ou bien acheter un de
+                <a href="/goodies/">nos goodies</a> (en fonction des disponibilités).
             </p>
             <p class="text-justify retrait">
                 En outre, le local a également une fonction de salle de pause. Vous pourrez y trouver trois

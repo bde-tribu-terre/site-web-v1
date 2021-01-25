@@ -489,7 +489,7 @@ function MdlReloadSitemapEvents() {
         array_push($arrayEvents, 'https://bde-tribu-terre.fr/events/?id=' . $event['id']);
     }
 
-    MdlGenererSiteMap($arrayEvents, RACINE . 'events/sitemap-events.xml');
+    MdlGenererSiteMap($arrayEvents, racine() . 'events/sitemap-events.xml');
 }
 
 ########################################################################################################################
@@ -836,7 +836,7 @@ function MdlReloadSitemapGoodies() {
         array_push($arrayGoodies, 'https://bde-tribu-terre.fr/goodies/?id=' . $goodie['id']);
     }
 
-    MdlGenererSiteMap($arrayGoodies, RACINE . 'goodies/sitemap-goodies.xml');
+    MdlGenererSiteMap($arrayGoodies, racine() . 'goodies/sitemap-goodies.xml');
 }
 
 ########################################################################################################################
@@ -962,7 +962,7 @@ function MdlReloadSitemapJournaux() {
         array_push($arrayJournaux, 'https://bde-tribu-terre.fr/journaux/' . $journal['pdf']);
     }
 
-    MdlGenererSiteMap($arrayJournaux, RACINE . 'journaux/sitemap-journaux.xml');
+    MdlGenererSiteMap($arrayJournaux, racine() . 'journaux/sitemap-journaux.xml');
 }
 
 ########################################################################################################################
@@ -1585,7 +1585,7 @@ function MdlReloadSitemapArticles() {
         array_push($arrayArticles, 'https://bde-tribu-terre.fr/articles/?id=V' . $articleVideo['id']);
     }
 
-    MdlGenererSiteMap($arrayArticles, RACINE . 'articles/sitemap-articles.xml');
+    MdlGenererSiteMap($arrayArticles, racine() . 'articles/sitemap-articles.xml');
 }
 
 ########################################################################################################################
@@ -1752,14 +1752,28 @@ function MdlRecupBinomesParrainages($email) {
 ########################################################################################################################
 function MdlRechercherSalle($nom) {
     try {
-        $api = 'https://' . $_SERVER['HTTP_HOST'] . preg_replace('/\?.*$/', '', $_SERVER['REQUEST_URI']) . RACINE . 'api/requete/?r=salles&nse=' . preg_replace('/ /', '+', $nom);
+        // La connexion va être extérieure. On récupère l'adresse publique de la racine du site (qui peut ne pas être
+        // que le nom de domaine), et on ajoute l'adresse de l'API.
+        $api =
+            'https://' . $_SERVER['HTTP_HOST'] . preg_replace(
+                '/\?.*$/',
+                '',
+                $_SERVER['REQUEST_URI']
+            ) . RACINE . 'api/requete/?r=salles&nse=' . preg_replace(
+                '/ /',
+                '+',
+                $nom
+            );
         $curl = curl_init($api);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $return = curl_exec($curl);
         curl_close($curl);
         $arrayRetour = MET_SQLLignesMultiples(json_decode($return)->retour);
     } catch (Exception $e) {
-        ajouterMessage(601, 'Les informations sur la salle "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.');
+        ajouterMessage(
+            601,
+            'Les informations sur la salle "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.'
+        );
         $arrayRetour = NULL;
     }
     ajouterRetourModele(

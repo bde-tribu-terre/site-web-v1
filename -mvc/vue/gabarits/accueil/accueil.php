@@ -38,7 +38,7 @@
                             <h4>Notre page Facebook</h4>
                             <p>
                                 <img
-                                        src="<?php echo IMAGES . 'imgFacebook.svg' ?>"
+                                        src="/-images/imgFacebook.svg"
                                         height="64"
                                         width="64"
                                         alt="Facebook"
@@ -53,7 +53,7 @@
                             <h4>Notre compte Instagram</h4>
                             <p>
                                 <img
-                                        src="<?php echo IMAGES . 'imgInstagram.svg' ?>"
+                                        src="/-images/imgInstagram.svg"
                                         height="64"
                                         width="64"
                                         alt="Instagram"
@@ -68,7 +68,7 @@
                             <h4>Notre compte Twitter</h4>
                             <p>
                                 <img
-                                        src="<?php echo IMAGES . 'imgTwitter.svg' ?>"
+                                        src="/-images/imgTwitter.svg"
                                         height="64"
                                         width="64"
                                         alt="Twitter"
@@ -83,7 +83,7 @@
                             <h4>Notre serveur Discord</h4>
                             <p>
                                 <img
-                                        src="<?php echo IMAGES . 'imgDiscord.svg' ?>"
+                                        src="/-images/imgDiscord.svg"
                                         height="64"
                                         width="64"
                                         alt="Discord"
@@ -172,11 +172,11 @@
                                         Tribu-Terre !
                                     </p>
                                     <p>
-                                        <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">
+                                        <a href="/association/pourquoi-adherer/">
                                             Comment adhérer ?
                                         </a>
                                         |
-                                        <a href="<?php echo RACINE . 'association/partenaires/' ?>">
+                                        <a href="/association/partenaires/">
                                             Voir les tarifs préférentiels
                                         </a>
                                     </p>
@@ -202,7 +202,7 @@
                                     >
                                         <img
                                                 class="img-arrondi ombre"
-                                                src="<?php echo IMAGES . 'imgBarAtelier.jpg' ?>"
+                                                src="/-images/imgBarAtelier.jpg"
                                                 alt="Bar l'Atelier"
                                         >
                                     </a>
@@ -225,7 +225,7 @@
                                     >
                                         <img
                                                 class="img-arrondi ombre"
-                                                src="<?php echo IMAGES . 'imgBarKeyWest.jpg' ?>"
+                                                src="/-images/imgBarKeyWest.jpg"
                                                 alt="Bar le Key West"
                                         >
                                     </a>
@@ -248,7 +248,7 @@
                                     >
                                         <img
                                                 class="img-arrondi ombre"
-                                                src="<?php echo IMAGES . 'imgLeMaestro.jpg' ?>"
+                                                src="/-images/imgLeMaestro.jpg"
                                                 alt="Restaurant le Maestro"
                                         >
                                     </a>
@@ -292,14 +292,14 @@
                                         </a>
                                     </p>
                                     <p>
-                                        <a href="<?php echo RACINE . 'association/reseau-associatif/ocampus/' ?>">
+                                        <a href="/association/reseau-associatif/ocampus/">
                                             Plus d'information sur ÔCampus
                                         </a>
                                     </p>
                                     <a href="https://ocampus.fr/index.php" target="_blank">
                                         <img
                                                 class="img-arrondi ombre"
-                                                src="<?php echo IMAGES . 'imgOCampus.png' ?>"
+                                                src="/-images/imgOCampus.png"
                                                 alt="ÔCampus"
                                         >
                                     </a>
@@ -321,14 +321,14 @@
                                         </a>
                                     </p>
                                     <p>
-                                        <a href="<?php echo RACINE . 'association/reseau-associatif/fneb/' ?>">
+                                        <a href="/association/reseau-associatif/fneb/">
                                             Plus d'information sur la FNEB
                                         </a>
                                     </p>
                                     <a href="https://www.fneb.fr/" target="_blank">
                                         <img
                                                 class="img-arrondi ombre"
-                                                src="<?php echo IMAGES . 'imgFNEB.jpg' ?>"
+                                                src="/-images/imgFNEB.jpg"
                                                 alt="FNEB"
                                         >
                                     </a>
@@ -346,7 +346,7 @@
                                         (OSUC) et scientifique (CoST) de l'Université d'Orléans.
                                     </p>
                                     <p>
-                                        <a href="<?php echo RACINE . 'association/universite/' ?>">
+                                        <a href="/association/universite/">
                                             Plus d'informations sur l'Université d'Orléans.
                                         </a>
                                     </p>
@@ -368,7 +368,7 @@
                                         </a>
                                     </p>
                                     <a href="http://www.univ-orleans.fr/fr/osuc" target="_blank">
-                                        <img src="<?php echo IMAGES . 'imgOSUC2.png' ?>" alt="OSUC">
+                                        <img src="/-images/imgOSUC2.png" alt="OSUC">
                                     </a>
                                     <hr class="alterneur-mini">
                                 </div>
@@ -385,7 +385,7 @@
                                         </a>
                                     </p>
                                     <a href="http://www.univ-orleans.fr/fr/sciences-techniques/" target="_blank">
-                                        <img src="<?php echo IMAGES . 'imgCoST2.png' ?>" alt="CoST">
+                                        <img src="/-images/imgCoST2.png" alt="CoST">
                                     </a>
                                     <hr class="alterneur-mini">
                                 </div>

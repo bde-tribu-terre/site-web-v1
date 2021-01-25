@@ -40,10 +40,11 @@
                     Cliquer sur l'image pour afficher en taille réelle.
                 </small>
             </div>
-            <a href="<?php echo IMAGES . 'imgBrochurePartenariats.jpg' ?>">
-                <img class="img-arrondi ombre"
-                     src="<?php echo IMAGES . 'imgBrochurePartenariats.jpg' ?>"
-                     alt="imgBrochurePartenariats"
+            <a href="/-images/imgBrochurePartenariats.jpg">
+                <img
+                        class="img-arrondi ombre"
+                        src="/-images/imgBrochurePartenariats.jpg"
+                        alt="imgBrochurePartenariats"
                 >
             </a>
         </div>

@@ -12,14 +12,14 @@
             </p>
             <p class="text-justify retrait">
                 Il existe plusieurs types d'acteurs au sein de l'association,  décrits dans nos
-                <a href="<?php echo RACINE . 'association/fonctionnement/statuts/' ?>">statuts</a>. Mais voici une
+                <a href="/association/fonctionnement/statuts/">statuts</a>. Mais voici une
                 petite explication plus « pratique » :
             </p>
             <ul class="text-justify liste-retrait">
                 <li>
                     Vous pouvez intégrer l’association en adhérant au cours de l'année universitaire, ce qui permet de
                     profiter de nombreux avantages. Actuellement, le montant de la côtisation des adhérents est de 5€.
-                    <a href="<?php echo RACINE . 'association/pourquoi-adherer/' ?>">Pourquoi adhérer ?</a>
+                    <a href="/association/pourquoi-adherer/">Pourquoi adhérer ?</a>
                 </li>
                 <li>
                     Vous pouvez aussi faire un quelconque don financier ou matériel à l’association et devenir membre
@@ -32,13 +32,13 @@
             <ul class="text-justify liste-retrait">
                 <li>
                     Vous pouvez participer à l’activité de différents pôles en devenant
-                    <a href="<?php echo RACINE . 'association/trombinoscope/' ?>">membre actif</a>.
+                    <a href="/association/trombinoscope/">membre actif</a>.
                 </li>
                 <li>
                     Certains membres actifs peuvent aussi être nommés « responsable d'activité » par le Conseil
                     d'Administration et devenir des Chargés de Mission ou des Vice-présidents affiliés à des pôles en
                     particulier. Pour cela, il suffit d’être adhérent, de
-                    <a href="<?php echo RACINE . 'association/contact/' ?>">nous contacter</a> et de venir à un conseil
+                    <a href="/association/contact/">nous contacter</a> et de venir à un conseil
                     d’administration pour se présenter et annoncer sa candidature. Lors de la prochaine réunion, un vote
                     aura lieu pour vous intégrer officiellement à votre nouveau poste.
                 </li>
@@ -80,7 +80,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <br>
-            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgAG.jpg' ?>" alt="imgOrlinzCup">
+            <img class="img-arrondi ombre" src="/-images/imgAG.jpg" alt="imgOrlinzCup">
             <br>
         </div>
         <div class="col-sm-2"></div>

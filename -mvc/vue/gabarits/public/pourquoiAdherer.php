@@ -19,7 +19,7 @@
                 permettent aux adhérents de bénéficier de tarifs préférentiels sur leur carte.
             </p>
             <p class="text-justify retrait">
-                <a href="<?php echo RACINE . 'association/partenaires/' ?>">
+                <a href="/association/partenaires/">
                     Plus de détails sur les partenaires et les tarifs préférentiels.
                 </a>
             </p>
@@ -40,7 +40,7 @@
                 sur les non-adhérents s'il y a plus de demandes que de places.
             </p>
             <p class="text-justify retrait">
-                <a href="<?php echo RACINE . 'events/' ?>">
+                <a href="/events/">
                     Voir la liste des événements organisés prochainement.
                 </a>
             </p>
@@ -55,7 +55,7 @@
                 adhérents sur présentation de la carte d'adhérent lors de la transaction.
             </p>
             <p class="text-justify retrait">
-                <a href="<?php echo RACINE . 'goodies/' ?>">
+                <a href="/goodies/">
                     Voir la liste des goodies actuellement disponibles.
                 </a>
             </p>
@@ -66,7 +66,11 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgCarteAdherent.jpg' ?>" alt="imgCarteAdherent">
+            <img
+                    class="img-arrondi ombre"
+                    src="/-images/imgCarteAdherent.jpg"
+                    alt="imgCarteAdherent"
+            >
         </div>
         <div class="col-sm-2"></div>
     </div>

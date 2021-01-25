@@ -20,7 +20,7 @@
                 bureau, il faut les déclarer en renvoyant les documents à la préfecture.
             </p>
             <p class="text-justify retrait">
-                <a href="<?php echo RACINE . 'association/fonctionnement/statuts/Statuts-2020-11-02.pdf' ?>">
+                <a href="/association/fonctionnement/statuts/Statuts-2020-11-02.pdf">
                     Consulter les statuts de l'association.
                 </a>
             </p>

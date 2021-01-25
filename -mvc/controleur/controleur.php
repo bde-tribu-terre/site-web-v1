@@ -1,13 +1,29 @@
 <?php
-require_once(RACINE . '-mvc/modele/connect.php');
-require_once(RACINE . '-mvc/modele/modele.php');
-require_once(RACINE . '-mvc/vue/vue.php');
+require_once(racine() . '-mvc/modele/connect/connect.php');
+require_once(racine() . '-mvc/modele/modele.php');
+require_once(racine() . '-mvc/vue/vue.php');
 ########################################################################################################################
 # Vérification du protocole (les deux fonctionnent mais on veut forcer le passage par HTTPS)                           #
 ########################################################################################################################
 if($_SERVER["HTTPS"] != "on") {
     header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
     exit();
+}
+
+########################################################################################################################
+# Définition de la fonction racine.                                                                                    #
+########################################################################################################################
+/**
+ * Retourne le chemin vers la racine du site web. À n'utiliser que du côté serveur PHP car cela indique le nom de
+ * l'hébergeur, et potentiellement d'autres données sensibles.
+ * @return string
+ */
+function racine() {
+    $chemin = preg_split('/\//', __DIR__);
+    while (!file_exists(join('/', $chemin) . '/sitemapindex.xml')) {
+        array_pop($chemin);
+    }
+    return join('/', $chemin) . '/';
 }
 
 ########################################################################################################################
@@ -36,6 +52,7 @@ foreach ($_POST as $keyInput => $valInput) {
         $form[explode('_', $keyInput)[1]] = $valInput;
     }
 }
+
 if (count($form) == 0) {
     $form['_name'] = NULL;
     $form['_submit'] = NULL;
@@ -62,16 +79,16 @@ function ajouterRetourModele($cle, $resultats) {
 ########################################################################################################################
 # Vérification de l'existence des sitemaps                                                                             #
 ########################################################################################################################
-if (!file_exists(RACINE . 'articles/sitemap-articles.xml')) {
+if (!file_exists(racine() . 'articles/sitemap-articles.xml')) {
     MdlReloadSitemapArticles();
 }
-if (!file_exists(RACINE . 'events/sitemap-events.xml')) {
+if (!file_exists(racine() . 'events/sitemap-events.xml')) {
     MdlReloadSitemapEvents();
 }
-if (!file_exists(RACINE . 'goodies/sitemap-goodies.xml')) {
+if (!file_exists(racine() . 'goodies/sitemap-goodies.xml')) {
     MdlReloadSitemapGoodies();
 }
-if (!file_exists(RACINE . 'journaux/sitemap-journaux.xml')) {
+if (!file_exists(racine() . 'journaux/sitemap-journaux.xml')) {
     MdlReloadSitemapJournaux();
 }
 
@@ -253,7 +270,7 @@ function CtlAjouterGoodieExecuter($titre, $categorie, $prixADEuro, $prixADCentim
             !empty($_FILES[$fileImput]['name'])
         ) {
             MdlAjouterGoodie(
-                RACINE . 'goodies/',
+                racine() . 'goodies/',
                 $titre,
                 $categorie,
                 $prixADEuro,
@@ -285,7 +302,7 @@ function CtlAjouterImageGoodieExecuter($id, $fileImput) {
             !empty($_FILES[$fileImput]['name'])
         ) {
             MdlAjouterImageGoodie(
-                RACINE . 'goodies/',
+                racine() . 'goodies/',
                 $id,
                 $fileImput
             );
@@ -364,7 +381,11 @@ function CtlSupprimerImageGoodie($id) {
 function CtlSupprimerImageGoodieExecuter($id, $arrayIdImages) {
     try {
         foreach ($arrayIdImages as $idImage) {
-            MdlSupprimerImageGoodie(RACINE . 'goodies/', $idImage, true);
+            MdlSupprimerImageGoodie(
+                racine() . 'goodies/',
+                $idImage,
+                true
+            );
         }
         CtlSupprimerImageGoodie($id);
     } catch (Exception $e) {
@@ -384,7 +405,7 @@ function CtlSupprimerGoodieExecuter($id) {
             !empty($id)
         ) {
             MdlSupprimerGoodie(
-                RACINE . 'goodies/',
+                racine() . 'goodies/',
                 $id
             );
             CtlSupprimerGoodie();
@@ -411,7 +432,7 @@ function CtlAjouterJournalExecuter($titre, $mois, $annee, $fileImput) {
             !empty($_FILES[$fileImput]['name'])
         ) {
             MdlAjouterJournal(
-                RACINE . 'journaux/',
+                racine() . 'journaux/',
                 $titre,
                 $mois,
                 $annee,
@@ -438,7 +459,7 @@ function CtlSupprimerJournalExecuter($id) {
             !empty($id)
         ) {
             MdlSupprimerJournal(
-                RACINE . 'journaux/',
+                racine() . 'journaux/',
                 $id
             );
             CtlSupprimerJournal();
@@ -493,7 +514,7 @@ function CtlAjouterImageArticleExecuter($id, $fileImput) {
             !empty($_FILES[$fileImput]['name'])
         ) {
             MdlAjouterImageArticle(
-                RACINE . 'articles/',
+                racine() . 'articles/',
                 $id,
                 $fileImput);
             CtlAjouterImageArticle();
@@ -566,7 +587,11 @@ function CtlSupprimerImageArticle($id) {
 function CtlSupprimerImageArticleExecuter($id, $arrayIdImages) {
     try {
         foreach ($arrayIdImages as $idImage) {
-            MdlSupprimerImageArticle(RACINE . 'articles/', $idImage, true);
+            MdlSupprimerImageArticle(
+                racine() . 'articles/',
+                $idImage,
+                true
+            );
         }
         CtlSupprimerImageArticle($id);
     } catch (Exception $e) {
@@ -586,7 +611,7 @@ function CtlSupprimerArticleExecuter($id) {
             !empty($id)
         ) {
             MdlSupprimerArticle(
-                RACINE . 'articles/',
+                racine() . 'articles/',
                 $id
             );
             CtlSupprimerArticle();

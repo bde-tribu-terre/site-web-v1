@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <img class="img-arrondi ombre" src="<?php echo IMAGES . 'imgGirafeErreur.jpg' ?>" alt="Girafe">
+            <img class="img-arrondi ombre" src="/-images/imgGirafeErreur.jpg" alt="Girafe">
         </div>
     </div>
 </div>

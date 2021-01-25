@@ -24,7 +24,7 @@
                         scrolling="no"
                         frameborder="0"
                         title="Plan Interactif du Campus"
-                        src="<?php echo RACINE . 'api/plan-universite/?c=' . CODE_COMPOSANTE . '&b=' . ID_BATIMENT ?>"
+                        src="/api/plan-universite/?c=<?php echo CODE_COMPOSANTE ?>&b=<?php echo ID_BATIMENT ?>"
                 ></iframe>
             </div>
             <small class="form-text text-muted">
