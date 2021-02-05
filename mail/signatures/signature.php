@@ -37,19 +37,25 @@
                         <h1 style="margin: 5px 0 0 0; font-family: 'Roboto', sans-serif; font-weight: 500; letter-spacing: 2px; font-size: 24px;">
                             <?php echo isset($prenom) ? $prenom : 'Prénom' ?> <span style="font-variant: small-caps"><?php echo isset($nom) ? $nom : 'Nom' ?></span>
                         </h1>
-                        <p style="margin: 0 0 5px 0; font-family: 'Roboto', sans-serif; font-weight: 300; letter-spacing: 2px; font-size: 14px;">
+                        <p style="margin: 0; font-family: 'Roboto', sans-serif; font-weight: 300; letter-spacing: 2px; font-size: 14px;">
                             <?php echo isset($etudes) ? $etudes : 'Études' ?>
                         </p>
-                        <div style="margin: 20px 0 20px 0; height: 4px; width: 75%; background: linear-gradient(to right, #d9534fFF, #d9534f00);"></div>
-                        <p style="margin: 5px 0 5px 0; color: #d9534f; font-family: 'Roboto', sans-serif; font-weight: 300; letter-spacing: 2px; font-size: 14px;">
+                        <p style="margin: 10px 0 5px 0; color: #d9534f; font-family: 'Roboto', sans-serif; font-weight: 300; letter-spacing: 2px; font-size: 14px;">
                             <?php echo isset($poste) ? $poste : 'Poste' ?>
                         </p>
-                        <p style="display: none; margin: 5px 0 5px 0; font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 14px;">
+                        <div style="margin: 20px 0 20px 0; height: 4px; width: 75%; background: linear-gradient(to right, #d9534fFF, #d9534f00);"></div>
+                        <h1 style="margin: 5px 0 0 0; font-family: 'Roboto', sans-serif; font-weight: 500; letter-spacing: 2px; font-size: 18px;">
+                            TRIBU-TERRE
+                        </h1>
+                        <p style="margin: 5px 0 5px 0; font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 14px;">
                             <a
-                                href="mailto:<?php echo isset($mail) ? $mail : 'mail' ?>"
+                                href="mailto:tributerre0@gmail.com"
                             >
-                                <?php echo isset($mail) ? $mail : 'mail' ?>
+                                tributerre0@gmail.com
                             </a>
+                        </p>
+                        <p style="margin: 5px 0 5px 0; font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 14px;">
+                            1A Rue de la Férollerie, 45071, Orléans Cedex 2
                         </p>
                     </td>
                     <td style="text-align: right;">
