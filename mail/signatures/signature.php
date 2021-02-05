@@ -44,7 +44,7 @@
                         <p style="margin: 5px 0 5px 0; color: #d9534f; font-family: 'Roboto', sans-serif; font-weight: 300; letter-spacing: 2px; font-size: 14px;">
                             <?php echo isset($poste) ? $poste : 'Poste' ?>
                         </p>
-                        <p style="margin: 5px 0 5px 0; font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 14px;">
+                        <p style="display: none; margin: 5px 0 5px 0; font-family: 'Roboto', sans-serif; font-weight: 300; font-size: 14px;">
                             <a
                                 href="mailto:<?php echo isset($mail) ? $mail : 'mail' ?>"
                             >

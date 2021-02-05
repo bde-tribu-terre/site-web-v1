@@ -1,8 +1,8 @@
 <?php
-$prenom = 'Hugo';
-$nom = 'Vedie';
+$prenom = 'Maxence';
+$nom = 'Piat';
 $etudes = 'Étudiant en L3 Sciences de la Terre';
-$poste = 'Vice Président en charge du Pôle Goodies';
+$poste = 'Trésorier';
 $mail = 'tributerre0@gmail.com';
 
 require_once '../signature.php';
