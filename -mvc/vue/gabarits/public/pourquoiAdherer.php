@@ -47,7 +47,7 @@
             <h4 class="text-center">Pour nos goodies</h4>
             <p class="text-justify retrait">
                 Votre association Tribu-Terre vend différents goodies au cours de l'année universitaire, dans le but de
-                s'auto-financier ainsi que pour permettre une rivalité très amicale entre les différentes associations
+                s'auto-financer ainsi que pour permettre une rivalité très amicale entre les différentes associations
                 étudiantes existantes, contribuant à la vie de campus.
             </p>
             <p class="text-justify retrait">
