@@ -1362,12 +1362,16 @@ function afficherPlanDuSite() {
         if (gettype($array) == 'string') {
             $chemin = explode('/', $array);
             $cheminInverse = array_reverse($chemin);
+            while (count($chemin) != 0 && $chemin[0] != 'www') {
+                array_shift($chemin);
+            }
+            array_shift($chemin); // www.
             $lien = implode('/', array_diff($chemin, ['index.php', '']));
             if ($cheminInverse[1] == 'index.php') {
-                if ($cheminInverse[2] == '..') {
-                    return '<a href="' . $lien . '" class="list-group-item list-group-item-danger">' . 'accueil' . '</a>';
+                if ($cheminInverse[2] == 'www') {
+                    return '<a href="/' . $lien . '" class="list-group-item list-group-item-danger">' . 'accueil' . '</a>';
                 }
-                return '<a href="' . $lien . '" class="list-group-item list-group-item-danger">' . $cheminInverse[2] . '</a>';
+                return '<a href="/' . $lien . '" class="list-group-item list-group-item-danger">' . $cheminInverse[2] . '</a>';
             }
             return '';
         } else {
