@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Modifier un évent</h3>
+                <h3>Modifier un événement</h3>
                 <hr>
                 <form id="formModifierEvent" method="post" onsubmit="return verifForm(this);">
-                    <div class="form-group"> <!-- ID de l'évent -->
+                    <div class="form-group"> <!-- ID de l'événement -->
                         <label for="formModifierEvent_id">
-                            ID de l'évent
+                            ID de l'événement
                         </label>
                         <input
                                 id="formModifierEvent_id"
@@ -19,9 +19,9 @@
                                 onblur="verifNonVide(this);"
                         >
                     </div>
-                    <div class="form-group"> <!-- Titre de l'évent -->
+                    <div class="form-group"> <!-- Titre de l'événement -->
                         <label for="formModifierEvent_titre">
-                            Titre de l'évent
+                            Titre de l'événement
                         </label>
                         <input
                                 id="formModifierEvent_titre"
@@ -102,16 +102,16 @@
                                 oninput="garderMoins(this, 32);"
                         >
                     </div>
-                    <div class="form-group"> <!-- Description de l'évent -->
+                    <div class="form-group"> <!-- Description de l'événement -->
                         <label for="formModifierEvent_desc">
-                            Description de l'évent
+                            Description de l'événement
                         </label>
                         <textarea
                                 id="formModifierEvent_desc"
                                 name="formModifierEvent_desc"
                                 class="form-control"
                                 rows="20"
-                                placeholder="Description de l'évent"
+                                placeholder="Description de l'événement"
                                 onblur="verifNonVide(this);"
                                 oninput="garderMoins(this, 7999);"
                         ><?php echo DESC ?></textarea> <!-- Si linebreak : whitespace superflu. -->
@@ -120,13 +120,13 @@
                         </small>
                     </div>
                     <hr>
-                    <div class="form-group"> <!-- Modifier Évent -->
+                    <div class="form-group"> <!-- Modifier Événement -->
                         <input
                                 id="formModifierEvent_modifierEvent_submit"
                                 name="formModifierEvent_modifierEvent_submit"
                                 type="submit"
                                 class="btn btn-var btn-block"
-                                value="Modifier l'évent"
+                                value="Modifier l'événement"
                         >
                     </div>
                 </form>

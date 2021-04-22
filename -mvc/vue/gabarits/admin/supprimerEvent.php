@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Supprimer un évent</h3>
+                <h3>Supprimer un événement</h3>
                 <hr>
                 <form id="formSupprimerEvent" method="post" onsubmit="return verifForm(this);">
-                    <div class="form-group"> <!-- Évent en question -->
+                    <div class="form-group"> <!-- Événement en question -->
                         <label for="formSupprimerEvent_id">
-                            Évent
+                            Événement
                         </label>
                         <select
                                 id="formSupprimerEvent_id"
@@ -15,7 +15,7 @@
                                 class="form-control"
                                 onblur="verifNonVide(this);"
                         >
-                            <option value="">--Choisir un évent--</option>
+                            <option value="">--Choisir un événement--</option>
                             <?php echo EVENTS ?>
                         </select>
                     </div>
@@ -23,13 +23,13 @@
                         ⚠️ Cette action est irréversible !
                     </small>
                     <hr>
-                    <div class="form-group"> <!-- Supprimer évent -->
+                    <div class="form-group"> <!-- Supprimer événement -->
                         <input
                                 id="formSupprimerEvent_supprimer_submit"
                                 name="formSupprimerEvent_supprimer_submit"
                                 type="submit"
                                 class="btn btn-var btn-block"
-                                value="Supprimer l'évent"
+                                value="Supprimer l'événement"
                         >
                     </div>
                 </form>

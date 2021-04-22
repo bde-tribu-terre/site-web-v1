@@ -34,7 +34,7 @@
                     href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                     class="twitter-share-button"
                     data-size="large"
-                    data-text="Cet évent organisé par Tribu-Terre va être cool : <?php echo TITRE ?> !"
+                    data-text="Cet événement organisé par Tribu-Terre va être cool : <?php echo TITRE ?> !"
                     data-via="Tributerre45"
                     data-show-count="false"
             >

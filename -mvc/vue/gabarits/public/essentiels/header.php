@@ -39,7 +39,7 @@
                 </ul>
             </li>
             <li class="nav-item<?php echo GABARIT == 'events.php' ? ' active' : ''; ?>">
-                <a class="nav-link" href="/events/">Évents</a>
+                <a class="nav-link" href="/events/">Événements</a>
             </li>
             <li class="nav-item<?php echo GABARIT == 'goodies.php' ? ' active' : ''; ?>">
                 <a class="nav-link" href="/goodies/">Goodies</a>

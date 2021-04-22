@@ -3,34 +3,34 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <div class="well">
-                <h3>Events</h3>
+                <h3>Événement</h3>
                 <hr>
                 <form id="formEvents" method="post">
-                    <p> <!-- Créer un évent -->
+                    <p> <!-- Créer un événement -->
                         <input
                                 id="formEvents_creerEventMenu_submit"
                                 name="formEvents_creerEventMenu_submit"
                                 type="submit"
                                 class="btn btn-var btn-block"
-                                value="Créer un évent"
+                                value="Créer un événement"
                         >
                     </p>
-                    <p> <!-- Modifier un évent -->
+                    <p> <!-- Modifier un événement -->
                         <input
                                 id="formEvents_modifierEventMenu_submit"
                                 name="formEvents_modifierEventMenu_submit"
                                 type="submit"
                                 class="btn btn-var btn-block"
-                                value="Modifier un évent"
+                                value="Modifier un événement"
                         >
                     </p>
-                    <p> <!-- Supprimer un évent -->
+                    <p> <!-- Supprimer un événement -->
                         <input
                                 id="formEvents_supprimerEventMenu_submit"
                                 name="formEvents_supprimerEventMenu_submit"
                                 type="submit"
                                 class="btn btn-var btn-block"
-                                value="Supprimer un évent"
+                                value="Supprimer un événement"
                         >
                     </p>
                 </form>

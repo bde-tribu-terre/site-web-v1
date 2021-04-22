@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Ajouter un évent</h3>
+                <h3>Ajouter un événement</h3>
                 <hr>
                 <form id="formCreerEvent" method="post" onsubmit="return verifForm(this);">
-                    <div class="form-group"> <!-- Titre de l'évent -->
+                    <div class="form-group"> <!-- Titre de l'événement -->
                         <label for="formCreerEvent_titre">
-                            Titre de l'évent
+                            Titre de l'événement
                         </label>
                         <input
                                 id="formCreerEvent_titre"
@@ -83,15 +83,15 @@
                                 oninput="garderMoins(this, 32);"
                         >
                     </div>
-                    <div class="form-group"> <!-- Description de l'évent -->
+                    <div class="form-group"> <!-- Description de l'événement -->
                         <label for="formCreerEvent_desc">
-                            Description de l'évent
+                            Description de l'événement
                         </label>
                         <textarea
                                 id="formCreerEvent_desc"
                                 name="formCreerEvent_desc"
                                 class="form-control"
-                                placeholder="Description de l'évent"
+                                placeholder="Description de l'événement"
                                 rows="20"
                                 onblur="verifNonVide(this);"
                                 oninput="garderMoins(this, 7999);"
@@ -101,13 +101,13 @@
                         </small>
                     </div>
                     <hr>
-                    <div class="form-group"> <!-- Ajouter Évent -->
+                    <div class="form-group"> <!-- Ajouter Événement -->
                         <input
                                 id="formCreerEvent_ajouter_submit"
                                 name="formCreerEvent_ajouter_submit"
                                 type="submit"
                                 class="btn btn-var btn-block"
-                                value="Ajouter l'évent"
+                                value="Ajouter l'événement"
                         >
                     </div>
                 </form>

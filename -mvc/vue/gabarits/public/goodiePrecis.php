@@ -39,7 +39,7 @@
                         <p>Nous organisons également régulièrement des permanences dans le hall du bâtiment S !</p>
                         <a href="/association/reseaux-sociaux/"><p>Tenez-vous informé sur nos réseaux !</p></a>
                         <br>
-                        <p>Certains de nos goodies peuvent être achetés pendant nos évents !</p>
+                        <p>Certains de nos goodies peuvent être achetés pendant nos événements !</p>
                         <a href="/events/"><p>Quels sont les prochains events ?</p></a>
                     </div>
                 </div>

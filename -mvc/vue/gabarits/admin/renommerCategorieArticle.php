@@ -34,7 +34,7 @@
                         >
                     </div>
                     <hr>
-                    <div class="form-group"> <!-- Supprimer évent -->
+                    <div class="form-group"> <!-- Renommer la catégorie -->
                         <input
                                 id="formRenommerCategorieArticle_renommer_submit"
                                 name="formRenommerCategorieArticle_renommer_submit"

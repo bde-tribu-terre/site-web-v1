@@ -1,5 +1,5 @@
 <div class="container text-center">
-    <h3>Évents</h3>
+    <h3>Événements</h3>
     <button class="btn btn-var" type="button" data-toggle="collapse" data-target="#recherche" aria-expanded="<?php echo RECHERCHE_EN_COURS ?>">
         Options de recherche...
     </button>

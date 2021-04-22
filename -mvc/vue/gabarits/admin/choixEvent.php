@@ -2,12 +2,12 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="well">
-                <h3>Choisir un évent à modifier</h3>
+                <h3>Choisir un événement à modifier</h3>
                 <hr>
                 <form id="formChoisirEvent" method="post" onsubmit="return verifForm(this);">
-                    <div class="form-group"> <!-- Évent en question -->
+                    <div class="form-group"> <!-- Événement en question -->
                         <label for="formChoisirEvent_id">
-                            Évent
+                            Événement
                         </label>
                         <select
                                 id="formChoisirEvent_id"
@@ -15,18 +15,18 @@
                                 class="form-control"
                                 onblur="verifNonVide(this);"
                         >
-                            <option value="">--Choisir un évent--</option>
+                            <option value="">--Choisir un événement--</option>
                             <?php echo EVENTS ?>
                         </select>
                     </div>
                     <hr>
-                    <div class="form-group"> <!-- Choisir Évent -->
+                    <div class="form-group"> <!-- Choisir Événement -->
                         <input
                                 id="formChoisirEvent_choisir_submit"
                                 name="formChoisirEvent_choisir_submit"
                                 type="submit"
                                 class="btn btn-var btn-block"
-                                value="Choisir l'évent"
+                                value="Choisir l'événement"
                         >
                     </div>
                 </form>

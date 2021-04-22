@@ -158,7 +158,7 @@ function afficherMenu() {
 function afficherCreerEvent() {
     define('NOM_MEMBRE', genererNom($_SESSION['membre']['prenom'], $_SESSION['membre']['nom']));
 
-    afficherPage('Créer un évent', 'creerEvent.php', 'admin');
+    afficherPage('Créer un événements', 'creerEvent.php', 'admin');
 }
 
 function afficherChoixEvent() {
@@ -174,7 +174,7 @@ function afficherChoixEvent() {
     }
     define('EVENTS', $events);
 
-    afficherPage('Choisir un évent', 'choixEvent.php', 'admin');
+    afficherPage('Choisir un événements', 'choixEvent.php', 'admin');
 }
 
 function afficherModifierEvent() {
@@ -187,7 +187,7 @@ function afficherModifierEvent() {
     define('MINUTE', substr($GLOBALS['retoursModele']['event']['heure'], 3, 2));
     define('LIEU', $GLOBALS['retoursModele']['event']['lieu']);
 
-    afficherPage('Modifier un évent', 'modifierEvent.php', 'admin');
+    afficherPage('Modifier un événements', 'modifierEvent.php', 'admin');
 }
 
 function afficherSupprimerEvent() {
@@ -203,7 +203,7 @@ function afficherSupprimerEvent() {
     }
     define('EVENTS', $events);
 
-    afficherPage('Supprimer un évent', 'supprimerEvent.php', 'admin');
+    afficherPage('Supprimer un événements', 'supprimerEvent.php', 'admin');
 }
 
 # Goodies
@@ -682,7 +682,7 @@ function afficherAccueil() {
     $events =
         '
         <div class="well">
-            ' . ($events == '' ? '<p>Oups ! On dirait qu\'il n\'y a aucun évent de prévu dans le futur 🙈</p>' : $events) . '
+            ' . ($events == '' ? '<p>Oups ! On dirait qu\'il n\'y a aucun événements de prévu dans le futur 🙈</p>' : $events) . '
         </div>
         ';
     define('EVENTS', $events);
@@ -1080,11 +1080,11 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
     $tableEvents .= $pair ? '' : '</div>'; // Si c'est pair il fait fermer la balise.
     $tableEvents =
         $tableEvents == '' ?
-            '<h3>Hmmm... On dirait qu\'il n\'y a aucun évent qui correspond à vos critères de recherches 🤔</h3>' :
+            '<h3>Hmmm... On dirait qu\'il n\'y a aucun événements qui correspond à vos critères de recherches 🤔</h3>' :
             $tableEvents;
     define('EVENTS', $tableEvents);
 
-    afficherPage('Évents', 'events.php', 'public');
+    afficherPage('Événements', 'events.php', 'public');
 }
 
 function afficherEventPrecis() {
