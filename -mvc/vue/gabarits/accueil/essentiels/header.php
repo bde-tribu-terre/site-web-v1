@@ -48,9 +48,6 @@
                 <a class="nav-link" href="/journaux/">Journaux</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/articles/">Articles</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/trouver-une-salle/">Trouver une salle</a>
             </li>
         </ul>

@@ -47,9 +47,6 @@
             <li class="nav-item<?php echo GABARIT == 'journaux.php' ? ' active' : ''; ?>">
                 <a class="nav-link" href="/journaux/">Journaux</a>
             </li>
-            <li class="nav-item<?php echo GABARIT == 'articles.php' ? ' active' : ''; ?>">
-                <a class="nav-link" href="/articles/">Articles</a>
-            </li>
             <li class="nav-item<?php echo GABARIT == 'trouverUneSalle.php' || GABARIT == 'trouverUneSalleRecherche.php' ? ' active' : ''; ?>">
                 <a class="nav-link" href="/trouver-une-salle/">Trouver une salle</a>
             </li>
