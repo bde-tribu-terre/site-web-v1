@@ -20,8 +20,13 @@
                 bureau, il faut les déclarer en renvoyant les documents à la préfecture.
             </p>
             <p class="text-justify retrait">
-                <a href="/association/fonctionnement/statuts/Statuts-2020-11-02.pdf">
+                <a href="/association/fonctionnement/statuts/Statuts-2021-03-29.pdf">
                     Consulter les statuts de l'association.
+                </a>
+            </p>
+            <p class="text-justify retrait">
+                <a href="/association/fonctionnement/statuts/RI-2021-04-11.pdf">
+                    Consulter le règlement intérieur de l'association.
                 </a>
             </p>
         </div>
