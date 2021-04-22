@@ -5,7 +5,7 @@
             <?php echo CAROUSEL_GOODIES ?>
         </div>
         <div class="col-sm-4">
-            <h3 class="text-center">Prochains événements !</h3>
+            <h3 class="text-center">Prochains événement !</h3>
             <?php echo EVENTS ?>
         </div>
     </div>
