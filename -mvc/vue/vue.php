@@ -682,7 +682,7 @@ function afficherAccueil() {
     $events =
         '
         <div class="well">
-            ' . ($events == '' ? '<p>Oups ! On dirait qu\'il n\'y a aucun événements de prévu dans le futur 🙈</p>' : $events) . '
+            ' . ($events == '' ? '<p>Oups ! On dirait qu\'il n\'y a aucun événement de prévu dans le futur 🙈</p>' : $events) . '
         </div>
         ';
     define('EVENTS', $events);
@@ -1080,7 +1080,7 @@ function afficherEvents($tri, $aVenir, $passes, $rechercheEnCours) {
     $tableEvents .= $pair ? '' : '</div>'; // Si c'est pair il fait fermer la balise.
     $tableEvents =
         $tableEvents == '' ?
-            '<h3>Hmmm... On dirait qu\'il n\'y a aucun événements qui correspond à vos critères de recherches 🤔</h3>' :
+            '<h3>Hmmm... On dirait qu\'il n\'y a aucun événement qui correspond à vos critères de recherches 🤔</h3>' :
             $tableEvents;
     define('EVENTS', $tableEvents);
 
