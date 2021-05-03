@@ -81,6 +81,66 @@
     </div>
     <hr>
     <!-- Ici vont les bureaux -->
+    <!-- \/ AG 2021 \/ -->
+    <div>
+        <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2021">
+            Mandat 2021-2022<!-- (Complet) -->
+        </button>
+        <div class="collapse" id="2021">
+            <div style="margin: 15px" class="card card-body">
+                <div class="well">
+                    <div class="row">
+                        <h3>Assemblée Générale du 29 mars 2021</h3>
+                        <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
+                    </div>
+                    <hr>
+                    <?php /*
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-justify retrait">
+                            <p>Bureau encore en fonction.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <hr>
+                    </div>
+                    <hr>
+                    */ ?>
+                    <div class="row">
+                        <?php /*
+                        <div class="col-sm-6">
+                            <img class="img-arrondi-mini" src="/-images/imgAG2019.jpg" alt="imgAG2019">
+                        </div>
+                        */ ?>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h3>Composition du bureau</h3>
+                            <hr>
+                            <ul class="text-left">
+                                <li>Anaël <span class="pc">Barodine</span> (Président)</li>
+                                <li>Théo <span class="pc">Lam</span> (Président adjoint et VP Événementiel)</li>
+                                <li>Lia-May <span class="pc">Decobecq</span> (Secrétaire et Administratrice FNEB +1)</li>
+                                <li>Léa <span class="pc">Foulatier-Meurgues</span> (Trésorière et VP Culture)</li>
+                                <li>Maxime <span class="pc">Kaiser</span> (Trésorier adjoint)</li>
+                                <li>Claire <span class="pc">Lallemand</span> (VP Communication et Administratrice ÔCampus)</li>
+                                <li>Théo <span class="pc">Franclet</span> (VP Communication)</li>
+                                <li>Aude <span class="pc">Jabbari</span> (VP Événementiel)</li>
+                                <li>Chloé <span class="pc">Guillin</span> (VP Journal)</li>
+                                <li>Antoine <span class="pc">Chimarach</span> (VP Journal)</li>
+                                <li>Kilian <span class="pc">Huet</span> (Administrateur FNEB)</li>
+                                <li>Baptiste <span class="pc">Emery</span> (CM Événementiel)</li>
+                                <li>Ian <span class="pc">Moïse</span> (CM Communication)</li>
+                                <li>Jiliane <span class="pc">Bourriot</span> (CM Événementiel)</li>
+                                <li>Jules <span class="pc">Nicard</span> (CM Événementiel)</li>
+                                <li>Léa <span class="pc">Judic</span> (CM Communication)</li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
     <!-- \/ AG 2020 \/ -->
     <div>
         <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#2020">
@@ -94,17 +154,56 @@
                         <h4>Tribu-Terre, Association des Étudiants Scientifiques de l'Université d'Orléans</h4>
                     </div>
                     <hr>
-                    <!--
                     <div class="row">
                         <div class="col-sm-1"></div>
                         <div class="col-sm-10 text-justify retrait">
-                            <p>Bureau encore en fonction.</p>
+                            <!-- Auteur : Anaël BARODINE. -->
+                            <p>
+                                La crise pandémique du Covid-19 contraint, lors de ce mandat, l'association à
+                                restreindre ses activités.
+                            </p>
+                            <p>
+                                Dès octobre, l'Université ferme ses portes, et ce pour toute la durée de l'année
+                                Universitaire 2020-2021. Tribu-Terre peine à se faire connaître des nouveaux étudiants,
+                                et peu d'entre eux adhèrent à l'association.
+                            </p>
+                            <p>
+                                Le mois de septembre est compliqué mais motivant, les permanences de rentrée sont
+                                organisées pour faire connaître l'association et vendre les trousses à dissection.
+                                Lors de la fermeture de la Faculté, la totalité des activités de Tribu-Terre se stoppent
+                                soudainement. L'Assemblée Générale, initialement prévue et fixée en présentiel, est
+                                tenue en distanciel.
+                            </p>
+                            <p>
+                                Mais cela n'empêche pas Tribu-Terre d'être actif ! Contraints de le réinventer,
+                                l'événement parrainage annuel se déroule à distance, par le biais d'un escape game
+                                sur le thème des Sciences. Les participants se réunissent par équipe en appel vocal, en
+                                compagnie d'un maître du jeu. Ce dernier leur narre l'aventure, énonce les énigmes et
+                                valide les réponses des participants. Cet événement est une réussite et est très
+                                apprécié des participants comme des membres de Tribu-Terre ayant contribué à sa création
+                                et à son annimation.
+                            </p>
+                            <p>
+                                En novembre, Tribu-Terre s'associe avec les associations Amigo (Association du master
+                                Miage) et Infasso (Association de l'IUT d'informatique) pour mettre en place un serveur
+                                Minecraft destiné à tous les étudiants du campus d'Orléans. Un système d'équipe est
+                                développé dans le but de favoriser la coopération entre les joueurs. Le projet est
+                                passif et connaît ses périodes d'activité et ses périodes calmes, mais le serveur
+                                connaît un fier succès ce qui incite sa prolongation pour au moins 3 mois
+                                supplémentaires en mars.
+                            </p>
+                            <p>
+                                Le <a href="/journaux/">journal Omni-Sciences</a> est repris par Chloé <span class="pc">
+                                Guillin</span> qui maintient une superbe et constante ligne éditoriale. Elle est rejoint
+                                par Antoine <span class="pc">Chimarach</span> en janvier pour l'aider dans la tâche.
+                                Pendant toute la durée du mandat, le journal sort tous les mois, pour un total de 5
+                                numéros.
+                            </p>
                         </div>
                         <div class="col-sm-1"></div>
                         <hr>
                     </div>
                     <hr>
-                    -->
                     <div class="row">
                         <?php /*
                         <div class="col-sm-6">
@@ -124,11 +223,14 @@
                                 <li>Lia-May <span class="pc">Decobecq</span> (VP Communication)</li>
                                 <li>Claire <span class="pc">Lallemand</span> (VP Communication)</li>
                                 <li>Théo <span class="pc">Franclet</span> (VP Communication)</li>
-                                <li>Théo <span class="pc">Lam</span> (VP Évent)</li>
-                                <li>Ludwig <span class="pc">Soros</span> (VP Évent & Administrateur ÔCampus)</li>
+                                <li>Théo <span class="pc">Lam</span> (VP Événementiel)</li>
+                                <li>Ludwig <span class="pc">Soros</span> (VP Événementiel & Administrateur ÔCampus)</li>
                                 <li>Léa <span class="pc">Foulatier</span> (VP Goodies)</li>
                                 <li>Hugo <span class="pc">Vedie</span> (VP Goodies)</li>
                                 <li>Chloé <span class="pc">Guillin</span> (VP Journal)</li>
+                                <li>Antoine <span class="pc">Chimarach</span> (CM Journal)</li>
+                                <li>Kilian <span class="pc">Huet</span> (Administrateur FNEB)</li>
+                                <li>Maxime <span class="pc">Kaiser</span> (CM Communication)</li>
                             </ul>
                         </div>
                         <div class="col-sm-3"></div>
@@ -222,7 +324,23 @@
                                 <li>William <span class="pc">Abessolo</span> (VP Partenariats)</li>
                                 <li>Simon <span class="pc">Medelli</span> (VP Culture)</li>
                                 <li>Kevin <span class="pc">Tillay</span> (VP Jardin)</li>
-                                <li>Laure <span class="pc">Gilet</span> (CM Conférences)</li>
+                                <li>Laure <span class="pc">Gilet</span> (VP Conférences)</li>
+                                <li>Cloé <span class="pc">Daudinet</span> (CM Événementiel)</li>
+                                <li>Killian <span class="pc">Milier</span> (CM Culture)</li>
+                                <li>Vélinka <span class="pc">Beaubois</span> (CM Goodies)</li>
+                                <li>Daphné <span class="pc">Rousseau</span> (CM Polyvalente)</li>
+                                <li>Camille <span class="pc">Prima</span> (CM Communication)</li>
+                                <li>Clément <span class="pc">Guillemet</span> (CM Événementiel)</li>
+                                <li>Chloé <span class="pc">Guillin</span> (CM Journal)</li>
+                                <li>Maxence <span class="pc">Piat</span> (CM Goodies)</li>
+                                <li>Romain <span class="pc">Martins</span> (CM Informatique)</li>
+                                <li>Romane <span class="pc">Scherg</span> (CM Partenariats)</li>
+                                <li>Anaël <span class="pc">Barodine</span> (CM Informatique)</li>
+                                <li>Hugo <span class="pc">Vedie</span> (CM Goodies)</li>
+                                <li>Théo <span class="pc">Lam</span> (CM Événementiel)</li>
+                                <li>Théo <span class="pc">Franclet</span> (CM Communication)</li>
+                                <li>Lia-May <span class="pc">Decobecq</span> (CM Communication)</li>
+                                <li>Brice <span class="pc">Jacquesson</span> (CM Communication)</li>
                             </ul>
                         </div>
                     </div>
@@ -290,6 +408,22 @@
                                 <li>Louis <span class="pc">Lefrançois</span> (VP Communication)</li>
                                 <li>Riad <span class="pc">Benchekra</span> (VP Communication)</li>
                                 <li>Arthur <span class="pc">Champenois</span> (CM Communication)</li>
+                                <li>Marie <span class="pc">Eltzer</span> (CM Polyvalente)</li>
+                                <li>Emma <span class="pc">Caillet</span> (CM Photographie)</li>
+                                <li>Jade <span class="pc">Beaumont</span> (CM Journal)</li>
+                                <li>Benoît <span class="pc">Pouce</span> (CM Radio)</li>
+                                <li>Laure <span class="pc">Gilet</span> (CM Culture)</li>
+                                <li>Florian <span class="pc">Branchoux</span> (CM Photographie)</li>
+                                <li>William <span class="pc">Abessolo</span> (CM Partenariats)</li>
+                                <li>Kévin <span class="pc">Tillay</span> (CM Jardin)</li>
+                                <li>Jimi <span class="pc">Marie-Sainte</span> (CM Jardin)</li>
+                                <li>Vélinka <span class="pc">Beaubois</span> (CM Goodies)</li>
+                                <li>Alan <span class="pc">Le Quellenec</span> (CM Goodies)</li>
+                                <li>Ghita <span class="pc">Abdellaoui</span> (CM Événementiel)</li>
+                                <li>Léa <span class="pc">Lucidor</span> (CM Jardin)</li>
+                                <li>Lina <span class="pc">Berrada</span> (CM Communication)</li>
+                                <li>Simon <span class="pc">Medelli</span> (CM Jardin)</li>
+                                <li>Cynthia <span class="pc">Dubois</span> (CM Événementiel)</li>
                             </ul>
                         </div>
                     </div>
