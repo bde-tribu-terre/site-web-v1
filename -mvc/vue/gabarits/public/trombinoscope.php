@@ -54,39 +54,39 @@
                 <div class="col-sm-4">
                     <div class="well">
                         <h3>Président</h3>
-                        <h4>Simon <span class="pc">Medelli</span></h4>
-                        <h5>L3 Pluridisciplinaire</h5>
+                        <h4>Anaël <span class="pc">Barodine</span></h4>
+                        <h5>L3 Informatique</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgSimon.jpg"
-                                alt="imgSimon"
+                                src="/-images/trombi/imgAnael.jpg"
+                                alt="imgAnael"
                         >
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="well">
-                        <h3>Secrétaire</h3>
-                        <h4>Warren <span class="pc">Demuylder</span></h4>
-                        <h5>L2 Physique</h5>
+                        <h3>Président adjoint et VP Événementiel</h3>
+                        <h4>Théo <span class="pc">Lam</span></h4>
+                        <h5>L3 Informatique</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgWarren.jpg"
-                                alt="imgWarren"
+                                src="/-images/trombi/imgTheoL.jpg"
+                                alt="imgTheoL"
                         >
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="well">
-                        <h3>Trésorier</h3>
-                        <h4>Maxence <span class="pc">Piat</span></h4>
-                        <h5>L3 ST</h5>
+                        <h3>Secrétaire et Administratrice FNEB+1</h3>
+                        <h4>Lia-May <span class="pc">Decobecq</span></h4>
+                        <h5>L2 BOPE</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgMaxence.jpg"
-                                alt="imgMaxence"
+                                src="/-images/trombi/imgLia.jpg"
+                                alt="imgLia"
                         >
                     </div>
                 </div>
@@ -95,27 +95,27 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-4">
                     <div class="well">
-                        <h3>Vice Président Général</h3>
-                        <h4>Clément <span class="pc">Guillemet</span></h4>
-                        <h5>L3 SVT</h5>
+                        <h3>Trésorière et VP Culture</h3>
+                        <h4>Léa <span class="pc">Foulatier-Meurgues</span></h4>
+                        <h5>L2 B2MC</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgClement.jpg"
-                                alt="imgClement"
+                                src="/-images/trombi/imgLea.jpg"
+                                alt="imgLea"
                         >
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="well">
-                        <h3>Vice Trésorier</h3>
-                        <h4>Anaël <span class="pc">Barodine</span></h4>
-                        <h5>L3 IMIS</h5>
+                        <h3>Trésorier adjoint</h3>
+                        <h4>Maxime <span class="pc">Kaiser</span></h4>
+                        <h5>L2 SV</h5>
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgAnael.jpg"
-                                alt="imgAnael"
+                                src="/-images/trombi/imgMaxime.jpg"
+                                alt="imgMaxime"
                         >
                     </div>
                 </div>
@@ -160,19 +160,7 @@
         <div class="collapse" id="communication">
             <br>
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="well">
-                        <h3>VP Communication</h3>
-                        <h4>Lia-May <span class="pc">Decobecq</span></h4>
-                        <h5>L2 BOPE</h5>
-                        <hr>
-                        <img
-                                class="img-responsive arrondi"
-                                src="/-images/imgLia.jpg"
-                                alt="imgLia"
-                        >
-                    </div>
-                </div>
+                <div class="col-sm-2"></div>
                 <div class="col-sm-4">
                     <div class="well">
                         <h3>VP Communication</h3>
@@ -181,7 +169,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgClaire.jpg"
+                                src="/-images/trombi/imgClaire.jpg"
                                 alt="imgClaire"
                         >
                     </div>
@@ -194,11 +182,12 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgTheoF.jpg"
+                                src="/-images/trombi/imgTheoF.jpg"
                                 alt="imgTheoF"
                         >
                     </div>
                 </div>
+                <div class="col-sm-2"></div>
             </div>
         </div>
     </div>
@@ -255,7 +244,7 @@
         <div class="collapse" id="journal">
             <br>
             <div class="row">
-                <div class="col-sm-4"></div>
+                <div class="col-sm-2"></div>
                 <div class="col-sm-4">
                     <div class="well">
                         <h3>VP Journal</h3>
@@ -264,18 +253,31 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgChloe.jpg"
+                                src="/-images/trombi/imgChloe.jpg"
                                 alt="imgChloe"
                         >
                     </div>
                 </div>
-                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="well">
+                        <h3>VP Journal</h3>
+                        <h4>Antoine <span class="pc">Chimarach</span></h4>
+                        <h5>L2 ST</h5>
+                        <hr>
+                        <img
+                                class="img-responsive arrondi"
+                                src="/-images/trombi/imgAntoine.jpg"
+                                alt="imgAntoine"
+                        >
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
             </div>
         </div>
     </div>
     <hr>
     <!-- Pôle goodies -->
-    <div>
+    <div style="display: none;">
         <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
@@ -305,34 +307,7 @@
         <div class="collapse" id="goodies">
             <br>
             <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-4">
-                    <div class="well">
-                        <h3>VP Goodies</h3>
-                        <h4>Léa <span class="pc">Foulatier</span></h4>
-                        <h5>L2 B2MC</h5>
-                        <hr>
-                        <img
-                                class="img-responsive arrondi"
-                                src="/-images/imgLea.jpg"
-                                alt="imgLea"
-                        >
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="well">
-                        <h3>VP Goodies</h3>
-                        <h4>Hugo <span class="pc">Vedie</span></h4>
-                        <h5>L3 ST</h5>
-                        <hr>
-                        <img
-                                class="img-responsive arrondi"
-                                src="/-images/imgHugo.jpg"
-                                alt="imgHugo"
-                        >
-                    </div>
-                </div>
-                <div class="col-sm-2"></div>
+                <div class="col-sm-12"></div>
             </div>
         </div>
     </div>
@@ -361,7 +336,7 @@
         </div>
     </div>
     <hr style="display: none;">
-    <!-- Pôle évents -->
+    <!-- Pôle événement -->
     <div>
         <div class="row">
             <div class="col-sm-1"></div>
@@ -370,7 +345,7 @@
                 <h3>Pôle Événementiel</h3>
                 <!-- Auteur : Théo LAM. -->
                 <p class="text-justify retrait">
-                    Le pôle évent a pour rôle la création, l’organisation et la gestion des divers
+                    Le pôle événementiel a pour rôle la création, l’organisation et la gestion des divers
                     <a href="/events/">événements</a> qui rythment l’année universitaire : le pique-nique et la soirée
                     d’intégration marquant le début des études, des soirées à thème tout au long de l’année (Halloween,
                     St Valentin etc…) ou encore la soirée de désintégration pour fêter la fin des examens de fin
@@ -411,7 +386,7 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgTheoL.jpg"
+                                src="/-images/trombi/imgTheoL.jpg"
                                 alt="imgTheoL"
                         >
                     </div>
@@ -424,12 +399,50 @@
                         <hr>
                         <img
                                 class="img-responsive arrondi"
-                                src="/-images/imgLudwig.jpg"
+                                src="/-images/trombi/imgLudwig.jpg"
                                 alt="imgLudwig"
                         >
                     </div>
                 </div>
                 <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Pôle représentation -->
+    <div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <h1>📨</h1>
+                <h3>Pôle Représentation</h3>
+                <!-- Auteur : Xxxx XXXX. -->
+                <p class="text-justify retrait">
+                    Description pôle représentation.
+                </p>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <button class="btn btn-var btn-block" type="button" data-toggle="collapse" data-target="#representation">
+            Afficher les membres
+        </button>
+        <div class="collapse" id="representation">
+            <br>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <div class="well">
+                        <h3>Administrateur FNEB</h3>
+                        <h4>Kilian <span class="pc">Huet</span></h4>
+                        <h5>L1 Physique</h5>
+                        <hr>
+                        <img
+                                class="img-responsive arrondi"
+                                src="/-images/trombi/imgKilian.jpg"
+                                alt="imgKilian"
+                        >
+                    </div>
+                </div>
+                <div class="col-sm-4"></div>
             </div>
         </div>
     </div>
