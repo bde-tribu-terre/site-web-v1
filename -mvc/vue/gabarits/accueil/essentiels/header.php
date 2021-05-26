@@ -3,7 +3,7 @@
         <a href="/">
             <img class="logo-jumbotron" src="/-images/imgLogoMini.png" alt="Logo" style="height: 300px">
         </a>
-        <p class="texte-jumbotron">Association des Étudiants en Science de l'Université d'Orléans</p>
+        <p class="texte-jumbotron">Association des Étudiants en Sciences de l'Université d'Orléans</p>
     </div>
 </div>
 
