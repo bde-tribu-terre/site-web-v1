@@ -14,23 +14,23 @@
                     45071 Orléans Cedex 2, France
                 </p>
                 <p id="telSimon_div">
-                    <!-- Tel de Simon MEDELLI, président. -->
+                    <!-- Tel de Anaël BARODINE, président. -->
                     Tél. :
-                    <span id="telSimon_base64">
-                        <?php echo base64_encode('06 52 49 38 38') ?>
+                    <span id="telAnael_base64">
+                        <?php echo base64_encode('07 83 45 58 00') ?>
                     </span>
                 </p>
                 <button
-                        id="telSimon_button"
+                        id="telAnael_button"
                         class="btn btn-var"
-                        onclick="decoder('telSimon', 'span');"
+                        onclick="decoder('telAnael', 'span');"
                 >
                     Cliquer pour décrypter
                 </button>
                 <p id="mailTT_div">
                     Courriel :
                     <span id="mailTT_base64">
-                        <?php echo base64_encode('tributerre0@gmail.com') ?>
+                        <?php echo base64_encode('contact@bde-tribu-terre.fr') ?>
                     </span>
                 </p>
                 <button
@@ -44,12 +44,12 @@
                     Directeur de publication
                 </h3>
                 <p>
-                    <strong>Simon <span class="pc">Medelli</span></strong>
+                    <strong>Anaël <span class="pc">Barodine</span></strong>
                 </p>
                 <p id="mailDirPubli_div">
                     Courriel :
                     <span id="mailDirPubli_base64">
-                        <?php echo base64_encode('simonmedelli2@gmail.com') ?>
+                        <?php echo base64_encode('informatique@bde-tribu-terre.fr') ?>
                     </span>
                 </p>
                 <button

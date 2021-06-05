@@ -22,7 +22,7 @@
                 <hr>
                 <div id="generale_div" style="height: 50px; word-wrap: break-word;">
                     <p id="generale_base64">
-                        <strong><?php echo base64_encode('tributerre0@gmail.com') ?></strong>
+                        <strong><?php echo base64_encode('contact@bde-tribu-terre.fr') ?></strong>
                     </p>
                 </div>
                 <button
@@ -81,7 +81,7 @@
                 <hr>
                 <div id="culture_div" style="height: 50px; word-wrap: break-word;">
                     <p id="culture_base64">
-                        <strong><?php echo base64_encode('culture.tributerre@gmail.com') ?></strong>
+                        <strong><?php echo base64_encode('culture@bde-tribu-terre.fr') ?></strong>
                     </p>
                 </div>
                 <button
@@ -120,7 +120,7 @@
                 <hr>
                 <div id="informatique_div" style="height: 50px; word-wrap: break-word;">
                     <p id="informatique_base64">
-                        <strong><?php echo base64_encode('tributerre.informatique@gmail.com') ?></strong>
+                        <strong><?php echo base64_encode('informatique@bde-tribu-terre.fr') ?></strong>
                     </p>
                 </div>
                 <button
