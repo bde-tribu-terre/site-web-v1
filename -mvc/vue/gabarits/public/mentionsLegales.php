@@ -13,7 +13,7 @@
                     1A Rue de la Férollerie<br>
                     45071 Orléans Cedex 2, France
                 </p>
-                <p id="telSimon_div">
+                <p id="telAnael_div">
                     <!-- Tel de Anaël BARODINE, président. -->
                     Tél. :
                     <span id="telAnael_base64">
