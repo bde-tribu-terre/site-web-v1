@@ -3,7 +3,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <div class="well">
-                <h3>Événement</h3>
+                <h3>Événements</h3>
                 <hr>
                 <form id="formEvents" method="post">
                     <p> <!-- Créer un événement -->
