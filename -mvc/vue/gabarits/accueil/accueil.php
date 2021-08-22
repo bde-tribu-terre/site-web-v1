@@ -14,10 +14,8 @@
 
     <div class="text-center">
         <div class="row">
-            <div class="col-sm-6">
-                <h3>Les journaux les plus récents !</h3>
-                <?php echo JOURNAUX ?>
-            </div>
+            <h3>Les journaux les plus récents !</h3>
+            <?php echo JOURNAUX ?>
         </div>
     </div>
 
