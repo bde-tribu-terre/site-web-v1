@@ -11,10 +11,6 @@
         <lastmod>2020-12-14</lastmod>
     </sitemap>
     <sitemap>
-        <!-- Sitemap des articles -->
-        <loc>https://bde-tribu-terre.fr/articles/sitemap-articles.xml</loc>
-    </sitemap>
-    <sitemap>
         <!-- Sitemap des évents -->
         <loc>https://bde-tribu-terre.fr/events/sitemap-events.xml</loc>
     </sitemap>
