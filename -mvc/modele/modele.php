@@ -127,10 +127,10 @@ function MdlInfosMembre($id) {
             FROM
                 website_membres
             WHERE
-                idMembre=:idMembres
+                idMembre=:idMembre
             ",
             array(
-                [':idMembres', $id, 'INT']
+                [':idMembre', $id, 'INT']
             ),
             1
         )
@@ -298,17 +298,17 @@ function MdlAjouterLog($code, $message, $anonyme = False) {
         VALUES
             (
                 0,
-                :idMembres,
-                :codeLogActions,
-                :dateLogActions,
-                :descLogActions
+                :idMembre,
+                :codeLog,
+                :dateLog,
+                :descLog
             )
         ",
         array(
-            [':idMembres', !$anonyme ? $_SESSION['membre']['id'] : 0, 'INT'],
-            [':codeLogActions', $code, 'INT'],
-            [':dateLogActions', $dt->format('Y-m-d H-i-s'), 'STR'],
-            [':descLogActions', $message, 'STR']
+            [':idMembre', !$anonyme ? $_SESSION['membre']['id'] : 0, 'INT'],
+            [':codeLog', $code, 'INT'],
+            [':dateLog', $dt->format('Y-m-d H-i-s'), 'STR'],
+            [':descLog', $message, 'STR']
         ),
         0
     );
@@ -320,10 +320,10 @@ function MdlAjouterLog($code, $message, $anonyme = False) {
 function MdlEventsTous($tri, $aVenir, $passes, $maxi) {
     switch ($tri) {
         case 'FP':
-            $triSQL = ' ORDER BY dateEvents DESC';
+            $triSQL = ' ORDER BY dateEvent DESC';
             break;
         case 'PF':
-            $triSQL = ' ORDER BY dateEvents';
+            $triSQL = ' ORDER BY dateEvent';
             break;
         default:
             $triSQL = ''; // Normalement jamais atteint.
@@ -342,10 +342,10 @@ function MdlEventsTous($tri, $aVenir, $passes, $maxi) {
     $ajd = $dt->format('Y-m-d');
     $where = " WHERE 1=2"; // Condition useless pour concaténer après.
     if ($aVenir) {
-        $where .= " OR dateEvents>='" . $ajd . "'";
+        $where .= " OR dateEvent>='" . $ajd . "'";
     }
     if ($passes) {
-        $where .= " OR dateEvents<'" . $ajd . "'";
+        $where .= " OR dateEvent<'" . $ajd . "'";
     }
     ajouterRetourModele(
         'events',
@@ -383,10 +383,10 @@ function MdlEventPrecis($id) {
             FROM
                 website_events
             WHERE
-                idEvent=:idEvents
+                idEvent=:idEvent
             ",
             array(
-                [':idEvents', $id, 'INT']
+                [':idEvent', $id, 'INT']
             ),
             1
         )
@@ -401,19 +401,19 @@ function MdlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
         VALUES
             (
                 0,
-                :titreEvents,
-                :descEvents,
-                :dateEvents,
-                :heureEvents,
-                :lieuEvents
+                :titreEvent,
+                :descEvent,
+                :dateEvent,
+                :heureEvent,
+                :lieuEvent
             )
         ",
         array(
-            [':titreEvents', $titre, 'STR'],
-            [':descEvents', $desc, 'STR'],
-            [':dateEvents', $date, 'STR'],
-            [':heureEvents', $heure . ':' . $minute . ':00', 'STR'],
-            [':lieuEvents', $lieu, 'STR']
+            [':titreEvent', $titre, 'STR'],
+            [':descEvent', $desc, 'STR'],
+            [':dateEvent', $date, 'STR'],
+            [':heureEvent', $heure . ':' . $minute . ':00', 'STR'],
+            [':lieuEvent', $lieu, 'STR']
         ),
         0,
         201,
@@ -429,21 +429,21 @@ function MdlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
         UPDATE
             website_events
         SET
-            titreEvent=:titreEvents,
-            descEvent=:descEvents,
-            dateEvent=:dateEvents,
-            heureEvent=:heureEvents,
-            lieuEvent=:lieuEvents
+            titreEvent=:titreEvent,
+            descEvent=:descEvent,
+            dateEvent=:dateEvent,
+            heureEvent=:heureEvent,
+            lieuEvent=:lieuEvent
         WHERE
             idEvent=:idEvents
         ",
         array(
-            [':idEvents', $id, 'INT'],
-            [':titreEvents', $titre, 'STR'],
-            [':descEvents', $desc, 'STR'],
-            [':dateEvents', $date, 'STR'],
-            [':heureEvents', $heure . ':' . $minute . ':00', 'STR'],
-            [':lieuEvents', $lieu, 'STR']
+            [':idEvent', $id, 'INT'],
+            [':titreEvent', $titre, 'STR'],
+            [':descEvent', $desc, 'STR'],
+            [':dateEvent', $date, 'STR'],
+            [':heureEvent', $heure . ':' . $minute . ':00', 'STR'],
+            [':lieuEvent', $lieu, 'STR']
         ),
         0,
         201,
@@ -458,10 +458,10 @@ function MdlSupprimerEvent($id) {
         DELETE FROM
             website_events
         WHERE
-            idEvent=:idEvents
+            idEvent=:idEvent
         ",
         array(
-            [':idEvents', $id, 'INT']
+            [':idEvent', $id, 'INT']
         ),
         0,
         201,
@@ -496,27 +496,27 @@ function MdlReloadSitemapEvents() {
 function MdlGoodiesTous($tri, $disponible, $bientot, $rupture) {
     switch ($tri) {
         case 'nom':
-            $triSQL = ' ORDER BY titreGoodies';
+            $triSQL = ' ORDER BY titreGoodie';
             break;
         case 'prixAD':
-            $triSQL = ' ORDER BY prixADGoodies';
+            $triSQL = ' ORDER BY prixADGoodie';
             break;
         case 'prixADD':
-            $triSQL = ' ORDER BY prixADGoodies DESC';
+            $triSQL = ' ORDER BY prixADGoodie DESC';
             break;
         case 'prixNAD':
-            $triSQL = ' ORDER BY prixNADGoodies';
+            $triSQL = ' ORDER BY prixNADGoodie';
             break;
         case 'prixNADD':
-            $triSQL = ' ORDER BY prixNADGoodies DESC';
+            $triSQL = ' ORDER BY prixNADGoodie DESC';
             break;
         default:
             $triSQL = '';
     }
     $where = " WHERE 1=2"; // Condition useless pour concaténer après.
-    $where .= $disponible ? " OR categorieGoodies=1" : '';
-    $where .= $bientot ? " OR categorieGoodies=2" : '';
-    $where .= $rupture ? " OR categorieGoodies=3" : '';
+    $where .= $disponible ? " OR categorieGoodie=1" : '';
+    $where .= $bientot ? " OR categorieGoodie=2" : '';
+    $where .= $rupture ? " OR categorieGoodie=3" : '';
     ajouterRetourModele(
         'goodies',
         requeteSQL(
@@ -554,10 +554,10 @@ function MdlGoodiePrecis($id) {
             FROM
                 website_goodies
             WHERE
-                idGoodie=:idGoodies
+                idGoodie=:idGoodie
             ",
             array(
-                [':idGoodies', $id, 'INT']
+                [':idGoodie', $id, 'INT']
             ),
             true
         )
@@ -587,21 +587,21 @@ function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes
         VALUES
             (
                 0,
-                :titreGoodies,
-                :prixADGoodies,
-                :prixNADGoodies,
-                :descGoodies,
-                :categorieGoodies,
-                :miniatureGoodies
+                :titreGoodie,
+                :prixADGoodie,
+                :prixNADGoodie,
+                :descGoodie,
+                :categorieGoodie,
+                :miniatureGoodie
             )
         ",
         array(
-            [':titreGoodies', $titre, 'STR'],
-            [':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), 'STR'],
-            [':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), 'STR'],
-            [':descGoodies', $desc, 'STR'],
-            [':categorieGoodies', $categorie, 'INT'],
-            [':miniatureGoodies', $newName, 'STR']
+            [':titreGoodie', $titre, 'STR'],
+            [':prixADGoodie', $prixADEuro + ($prixADCentimes / 100), 'STR'],
+            [':prixNADGoodie', $prixNADEuro + ($prixNADCentimes / 100), 'STR'],
+            [':descGoodie', $desc, 'STR'],
+            [':categorieGoodie', $categorie, 'INT'],
+            [':miniatureGoodie', $newName, 'STR']
         ),
         0,
         201,
@@ -617,21 +617,21 @@ function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
         UPDATE
             website_goodies
         SET
-            titreGoodie=:titreGoodies,
-            prixADGoodie=:prixADGoodies,
-            prixNADGoodie=:prixNADGoodies,
-            descGoodie=:descGoodies,
-            categorieGoodie=:categorieGoodies
+            titreGoodie=:titreGoodie,
+            prixADGoodie=:prixADGoodie,
+            prixNADGoodie=:prixNADGoodie,
+            descGoodie=:descGoodie,
+            categorieGoodie=:categorieGoodie
         WHERE
-            idGoodie=:idGoodies
+            idGoodie=:idGoodie
         ",
         array(
-            [':idGoodies', $id, 'INT'],
-            [':titreGoodies', $titre, 'STR'],
-            [':prixADGoodies', $prixADEuro + ($prixADCentimes / 100), 'STR'],
-            [':prixNADGoodies', $prixNADEuro + ($prixNADCentimes / 100), 'STR'],
-            [':descGoodies', $desc, 'STR'],
-            [':categorieGoodies', $categorie, 'INT']
+            [':idGoodie', $id, 'INT'],
+            [':titreGoodie', $titre, 'STR'],
+            [':prixADGoodie', $prixADEuro + ($prixADCentimes / 100), 'STR'],
+            [':prixNADGoodie', $prixNADEuro + ($prixNADCentimes / 100), 'STR'],
+            [':descGoodie', $desc, 'STR'],
+            [':categorieGoodie', $categorie, 'INT']
         ),
         0,
         201,
@@ -651,10 +651,10 @@ function MdlSupprimerGoodie($rep, $id) {
         FROM
             website_images_goodie
         WHERE
-            idGoodie=:idGoodies
+            idGoodie=:idGoodie
         ",
         array(
-            [':idGoodies', $id, 'INT']
+            [':idGoodie', $id, 'INT']
         )
     );
     foreach ($images as $image) {
@@ -670,10 +670,10 @@ function MdlSupprimerGoodie($rep, $id) {
             FROM
                 website_goodies
             WHERE
-                idGoodie=:idGoodies
+                idGoodie=:idGoodie
             ",
             array(
-                [":idGoodies", $id, 'INT']
+                [":idGoodie", $id, 'INT']
             ),
             1
         )['miniature'];
@@ -689,10 +689,10 @@ function MdlSupprimerGoodie($rep, $id) {
         DELETE FROM
             website_goodies
         WHERE
-            idGoodie=:idGoodies
+            idGoodie=:idGoodie
         ",
         array(
-            [':idGoodies', $id, 'INT']
+            [':idGoodie', $id, 'INT']
         ),
         0,
         201,
@@ -713,10 +713,10 @@ function MdlImagesGoodie($id) {
             FROM
                 website_images_goodie
             WHERE
-                idGoodie=:idGoodies
+                idGoodie=:idGoodie
             ",
             array(
-                [':idGoodies', $id, 'INT']
+                [':idGoodie', $id, 'INT']
             )
         )
     );
@@ -732,10 +732,10 @@ function MdlAjouterImageGoodie($rep, $id, $fileImput) {
             FROM
                 website_goodies
             WHERE
-                idGoodie=:idGoodies
+                idGoodie=:idGoodie
             ",
             array(
-                [':idGoodies', $id, 'INT']
+                [':idGoodie', $id, 'INT']
             ),
             1
         )['titre'];
@@ -759,13 +759,13 @@ function MdlAjouterImageGoodie($rep, $id, $fileImput) {
         VALUES
             (
                 0,
-                :idGoodies,
-                :lienImagesgoodies
+                :idGoodie,
+                :lienImageGoodie
             )
         ",
         array(
-            [':idGoodies', $id, 'INT'],
-            [':lienImagesgoodies', $newName, 'STR']
+            [':idGoodie', $id, 'INT'],
+            [':lienImageGoodie', $newName, 'STR']
         ),
         0,
         201,
@@ -783,10 +783,10 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
             FROM
                 website_images_goodie
             WHERE
-                idImageGoodie=:idImagesGoodies
+                idImageGoodie=:idImageGoodie
             ",
             array(
-                [':idImagesGoodies', $id, 'INT']
+                [':idImageGoodie', $id, 'INT']
             ),
             1
         )['lien'];
@@ -802,10 +802,10 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
         DELETE FROM
             website_images_goodie
         WHERE
-            idImageGoodie=:idImagesGoodies
+            idImageGoodie=:idImageGoodie
         ",
         array(
-            [':idImagesGoodies', $id, 'INT']
+            [':idImageGoodie', $id, 'INT']
         ),
         0,
         $logguer ? 201 : NULL,
@@ -882,15 +882,15 @@ function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
         VALUES
             (
                 0,
-                :titreJournaux,
-                :dateJournaux,
-                :pdfJournaux
+                :titreJournal,
+                :dateJournal,
+                :pdfJournal
             )
         ",
         array(
-            [':titreJournaux', $titre, 'STR'],
-            [':dateJournaux', $annee . '-' . $mois . '-' . '01', 'STR'],
-            [':pdfJournaux', $newName, 'STR']
+            [':titreJournal', $titre, 'STR'],
+            [':dateJournal', $annee . '-' . $mois . '-' . '01', 'STR'],
+            [':pdfJournal', $newName, 'STR']
         ),
         0,
         201,
@@ -910,10 +910,10 @@ function MdlSupprimerJournal($rep, $id) {
             FROM
                 website_journaux
             WHERE
-                idJournal=:idJournaux
+                idJournal=:idJournal
             ",
             array(
-                [':idJournaux', $id, 'INT']
+                [':idJournal', $id, 'INT']
             ),
             1
         )['pdf'];
@@ -929,10 +929,10 @@ function MdlSupprimerJournal($rep, $id) {
         DELETE FROM
             website_journaux
         WHERE
-            idJournal=:idJournaux
+            idJournal=:idJournal
         ",
         array(
-            [':idJournaux', $id, 'INT']
+            [':idJournal', $id, 'INT']
         ),
         0,
         201,
@@ -1009,7 +1009,12 @@ function MdlAjouterLienPratique($titre, $url) {
 
 function MdlSupprimerLienPratique($id) {
     requeteSQL(
-        "DELETE FROM website_liens WHERE idLien=:idLien",
+        "
+        DELETE FROM
+            website_liens
+        WHERE
+              idLien=:idLien
+        ",
         array(
             [':idLien', $id, 'INT']
         ),
