@@ -1,14 +1,6 @@
 <?php
 ########################################################################################################################
-########################################################################################################################
-###                                                                                                                  ###
-###                                                BASE DE DONNÉE SQL                                                ###
-###                                                                                                                  ###
-########################################################################################################################
-########################################################################################################################
-
-########################################################################################################################
-# Fonction d'automation de requêtes SQL                                                                                #
+# Fonction techniques                                                                                                  #
 ########################################################################################################################
 function MET_SQLLigneUnique($object) {
     if ($object) {
@@ -65,6 +57,30 @@ function requeteSQL($requete, $variables = array(), $nbResultats = 2, $codeMessa
     }
 }
 
+function genererSiteMap($arrayLiens, $destination) {
+    $sitemap = simplexml_load_string(<<<EOT
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+</urlset>
+EOT
+    );
+    if (count($arrayLiens) == 0) {
+        $newURI = $sitemap->addChild('url');
+        $newURI->addChild('loc', 'https://bde-tribu-terre.fr');
+        $newURI->addChild('lastmod', date('Y-m-d'));
+    } else {
+        foreach ($arrayLiens as $lien) {
+            $newURI = $sitemap->addChild('url');
+            $newURI->addChild('loc', $lien);
+            $newURI->addChild('lastmod', date('Y-m-d\TH:i:sP'));
+        }
+    }
+    $sitemap->asXML($destination);
+}
+
 ########################################################################################################################
 # Membres                                                                                                              #
 ########################################################################################################################
@@ -72,16 +88,16 @@ function MdlVerifConnexion($login, $mdp) {
     $membre = requeteSQL(
         "
         SELECT
-            idMembres AS id,
-            loginMembres AS login,
-            prenomMembres AS prenom,
-            nomMembres AS nom,
-            mdpHashMembres AS mdpHash,
-            mdpSaltMembres AS mdpSalt
+            idMembre AS id,
+            loginMembre AS login,
+            prenomMembre AS prenom,
+            nomMembre AS nom,
+            mdpHashMembre AS mdpHash,
+            mdpSaltMembre AS mdpSalt
         FROM
-            Membres
+            website_membres
         WHERE
-            loginMembres=:login
+            loginMembre=:login
         ",
         array(
             [':login', $login, 'STR']
@@ -104,14 +120,14 @@ function MdlInfosMembre($id) {
         requeteSQL(
             "
             SELECT
-                idMembres AS id,
-                loginMembres AS login,
-                prenomMembres AS prenom,
-                nomMembres AS nom
+                idMembre AS id,
+                loginMembre AS login,
+                prenomMembre AS prenom,
+                nomMembre AS nom
             FROM
-                Membres
+                website_membres
             WHERE
-                idMembres=:idMembres
+                idMembre=:idMembres
             ",
             array(
                 [':idMembres', $id, 'INT']
@@ -131,7 +147,7 @@ function MdlAjouterMembre($prenom, $nom, $login, $mdp) {
     requeteSQL(
         "
         INSERT INTO
-            Membres
+            website_membres
         VALUES
             (
                 0,
@@ -163,12 +179,12 @@ function MdlCleExiste($cle) {
     $cle = requeteSQL(
         "
         SELECT
-            idClesInscriptions AS id,
-            strClesInscriptions AS str
+            idCleInscription AS id,
+            strCleInscription AS str
         FROM
-            ClesInscriptions
+            website_cles_inscription
         WHERE
-            strClesInscriptions=:cle
+            strCleInscription=:cle
         ",
         array(
             [':cle', $cle, 'STR']
@@ -181,9 +197,9 @@ function MdlCleExiste($cle) {
         requeteSQL(
             "
             DELETE FROM
-                ClesInscriptions
+                website_cles_inscription
             WHERE
-                idClesInscriptions=:id
+                idCleInscription=:id
             ",
             array(
                 [':id', $cle['id'], 'INT']
@@ -206,19 +222,19 @@ function MdlLogTous() {
         requeteSQL(
             "
             SELECT
-                idLogActions AS idLog,
-                idMembres AS idMembre,
-                prenomMembres AS prenomMembre,
-                nomMembres AS nomMembre,
-                codeLogActions AS code,
-                dateLogActions AS date,
-                descLogActions AS description
+                idLog AS idLog,
+                idMembre AS idMembre,
+                prenomMembre AS prenomMembre,
+                nomMembre AS nomMembre,
+                codeLog AS code,
+                dateLog AS date,
+                descLog AS description
             FROM
-                LogActions
+                website_log
                     NATURAL JOIN
-                Membres
+                website_membres
             ORDER BY
-                dateLogActions
+                dateLog
                 DESC
             "
         )
@@ -278,7 +294,7 @@ function MdlAjouterLog($code, $message, $anonyme = False) {
     requeteSQL(
         "
         INSERT INTO
-            LogActions
+            website_log
         VALUES
             (
                 0,
@@ -336,14 +352,14 @@ function MdlEventsTous($tri, $aVenir, $passes, $maxi) {
         requeteSQL(
             "
             SELECT
-                idEvents AS id,
-                titreEvents AS titre,
-                descEvents AS description,
-                dateEvents AS date,
-                heureEvents AS heure,
-                lieuEvents AS lieu
+                idEvent AS id,
+                titreEvent AS titre,
+                descEvent AS description,
+                dateEvent AS date,
+                heureEvent AS heure,
+                lieuEvent AS lieu
             FROM
-                Events
+                website_events
             " . $where . "
             " . $triSQL . "
             " . $maxiSQL . "
@@ -358,16 +374,16 @@ function MdlEventPrecis($id) {
         requeteSQL(
             "
             SELECT
-                idEvents AS id,
-                titreEvents AS titre,
-                descEvents AS description,
-                dateEvents AS date,
-                heureEvents AS heure,
-                lieuEvents AS lieu
+                idEvent AS id,
+                titreEvent AS titre,
+                descEvent AS description,
+                dateEvent AS date,
+                heureEvent AS heure,
+                lieuEvent AS lieu
             FROM
-                Events
+                website_events
             WHERE
-                idEvents=:idEvents
+                idEvent=:idEvents
             ",
             array(
                 [':idEvents', $id, 'INT']
@@ -381,7 +397,7 @@ function MdlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
     requeteSQL(
         "
         INSERT INTO
-            Events
+            website_events
         VALUES
             (
                 0,
@@ -411,15 +427,15 @@ function MdlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
     requeteSQL(
         "
         UPDATE
-            Events
+            website_events
         SET
-            titreEvents=:titreEvents,
-            descEvents=:descEvents,
-            dateEvents=:dateEvents,
-            heureEvents=:heureEvents,
-            lieuEvents=:lieuEvents
+            titreEvent=:titreEvents,
+            descEvent=:descEvents,
+            dateEvent=:dateEvents,
+            heureEvent=:heureEvents,
+            lieuEvent=:lieuEvents
         WHERE
-            idEvents=:idEvents
+            idEvent=:idEvents
         ",
         array(
             [':idEvents', $id, 'INT'],
@@ -440,9 +456,9 @@ function MdlSupprimerEvent($id) {
     requeteSQL(
         "
         DELETE FROM
-            Events
+            website_events
         WHERE
-            idEvents=:idEvents
+            idEvent=:idEvents
         ",
         array(
             [':idEvents', $id, 'INT']
@@ -459,10 +475,10 @@ function MdlReloadSitemapEvents() {
     $events = requeteSQL(
         "
             SELECT
-                idEvents AS id
+                idEvent AS id
             FROM
-                Events
-            ORDER BY dateEvents
+                website_events
+            ORDER BY dateEvent
             "
     );
 
@@ -471,7 +487,7 @@ function MdlReloadSitemapEvents() {
         array_push($arrayEvents, 'https://bde-tribu-terre.fr/events/?id=' . $event['id']);
     }
 
-    MdlGenererSiteMap($arrayEvents, racine() . 'events/sitemap-events.xml');
+    genererSiteMap($arrayEvents, racine() . 'events/sitemap-events.xml');
 }
 
 ########################################################################################################################
@@ -506,15 +522,15 @@ function MdlGoodiesTous($tri, $disponible, $bientot, $rupture) {
         requeteSQL(
             "
             SELECT
-                idGoodies AS id,
-                titreGoodies AS titre,
-                prixADGoodies AS prixAD,
-                prixNADGoodies AS prixNAD,
-                descGoodies AS description,
-                categorieGoodies AS categorie,
-                miniatureGoodies AS miniature
+                idGoodie AS id,
+                titreGoodie AS titre,
+                prixADGoodie AS prixAD,
+                prixNADGoodie AS prixNAD,
+                descGoodie AS description,
+                categorieGoodie AS categorie,
+                miniatureGoodie AS miniature
             FROM
-                Goodies
+                website_goodies
             " . $where . "
             " . $triSQL . "
             "
@@ -528,17 +544,17 @@ function MdlGoodiePrecis($id) {
         requeteSQL(
             "
             SELECT
-                idGoodies AS id,
-                titreGoodies AS titre,
-                prixADGoodies AS prixAD,
-                prixNADGoodies AS prixNAD,
-                descGoodies AS description,
-                categorieGoodies AS categorie,
-                miniatureGoodies AS miniature
+                idGoodie AS id,
+                titreGoodie AS titre,
+                prixADGoodie AS prixAD,
+                prixNADGoodie AS prixNAD,
+                descGoodie AS description,
+                categorieGoodie AS categorie,
+                miniatureGoodie AS miniature
             FROM
-                Goodies
+                website_goodies
             WHERE
-                idGoodies=:idGoodies
+                idGoodie=:idGoodies
             ",
             array(
                 [':idGoodies', $id, 'INT']
@@ -567,7 +583,7 @@ function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes
     requeteSQL(
         "
         INSERT INTO
-            Goodies
+            website_goodies
         VALUES
             (
                 0,
@@ -599,15 +615,15 @@ function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
     requeteSQL(
         "
         UPDATE
-            Goodies
+            website_goodies
         SET
-            titreGoodies=:titreGoodies,
-            prixADGoodies=:prixADGoodies,
-            prixNADGoodies=:prixNADGoodies,
-            descGoodies=:descGoodies,
-            categorieGoodies=:categorieGoodies
+            titreGoodie=:titreGoodies,
+            prixADGoodie=:prixADGoodies,
+            prixNADGoodie=:prixNADGoodies,
+            descGoodie=:descGoodies,
+            categorieGoodie=:categorieGoodies
         WHERE
-            idGoodies=:idGoodies
+            idGoodie=:idGoodies
         ",
         array(
             [':idGoodies', $id, 'INT'],
@@ -630,12 +646,12 @@ function MdlSupprimerGoodie($rep, $id) {
     $images = requeteSQL(
         "
         SELECT
-            idImagesGoodies AS id,
-            lienImagesGoodies AS lien
+            idImageGoodie AS id,
+            lienImageGoodie AS lien
         FROM
-            ImagesGoodies
+            website_images_goodie
         WHERE
-            idGoodies=:idGoodies
+            idGoodie=:idGoodies
         ",
         array(
             [':idGoodies', $id, 'INT']
@@ -650,11 +666,11 @@ function MdlSupprimerGoodie($rep, $id) {
         $miniature = requeteSQL(
             "
             SELECT
-                miniatureGoodies AS miniature
+                miniatureGoodie AS miniature
             FROM
-                Goodies
+                website_goodies
             WHERE
-                idGoodies=:idGoodies
+                idGoodie=:idGoodies
             ",
             array(
                 [":idGoodies", $id, 'INT']
@@ -671,9 +687,9 @@ function MdlSupprimerGoodie($rep, $id) {
     requeteSQL(
         "
         DELETE FROM
-            Goodies
+            website_goodies
         WHERE
-            idGoodies=:idGoodies
+            idGoodie=:idGoodies
         ",
         array(
             [':idGoodies', $id, 'INT']
@@ -692,12 +708,12 @@ function MdlImagesGoodie($id) {
         requeteSQL(
             "
             SELECT
-                idImagesGoodies AS id,
-                lienImagesGoodies AS lien
+                idImageGoodie AS id,
+                lienImageGoodie AS lien
             FROM
-                ImagesGoodies
+                website_images_goodie
             WHERE
-                idGoodies=:idGoodies
+                idGoodie=:idGoodies
             ",
             array(
                 [':idGoodies', $id, 'INT']
@@ -712,11 +728,11 @@ function MdlAjouterImageGoodie($rep, $id, $fileImput) {
         $titre = requeteSQL(
             "
             SELECT
-                titreGoodies AS titre
+                titreGoodie AS titre
             FROM
-                Goodies
+                website_goodies
             WHERE
-                idGoodies=:idGoodies
+                idGoodie=:idGoodies
             ",
             array(
                 [':idGoodies', $id, 'INT']
@@ -739,7 +755,7 @@ function MdlAjouterImageGoodie($rep, $id, $fileImput) {
     requeteSQL(
         "
         INSERT INTO
-            ImagesGoodies
+            website_images_goodie
         VALUES
             (
                 0,
@@ -763,11 +779,11 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
         $lienImage = requeteSQL(
             "
             SELECT
-                lienImagesGoodies AS lien
+                lienImageGoodie AS lien
             FROM
-                ImagesGoodies
+                website_images_goodie
             WHERE
-                idImagesGoodies=:idImagesGoodies
+                idImageGoodie=:idImagesGoodies
             ",
             array(
                 [':idImagesGoodies', $id, 'INT']
@@ -784,9 +800,9 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
     requeteSQL(
         "
         DELETE FROM
-            ImagesGoodies
+            website_images_goodie
         WHERE
-            idImagesGoodies=:idImagesGoodies
+            idImageGoodie=:idImagesGoodies
         ",
         array(
             [':idImagesGoodies', $id, 'INT']
@@ -804,12 +820,12 @@ function MdlReloadSitemapGoodies() {
     $goodies = requeteSQL(
         "
             SELECT
-                idGoodies AS id
+                idGoodie AS id
             FROM
-                Goodies
+                website_goodies
             WHERE
-                categorieGoodies=1 OR categorieGoodies=2
-            ORDER BY titreGoodies
+                categorieGoodie=1 OR categorieGoodie=2
+            ORDER BY titreGoodie
             "
     );
 
@@ -818,7 +834,7 @@ function MdlReloadSitemapGoodies() {
         array_push($arrayGoodies, 'https://bde-tribu-terre.fr/goodies/?id=' . $goodie['id']);
     }
 
-    MdlGenererSiteMap($arrayGoodies, racine() . 'goodies/sitemap-goodies.xml');
+    genererSiteMap($arrayGoodies, racine() . 'goodies/sitemap-goodies.xml');
 }
 
 ########################################################################################################################
@@ -830,14 +846,14 @@ function MdlJournauxTous($maxi = NULL) {
         requeteSQL(
             "
             SELECT
-                idJournaux AS id,
-                titreJournaux AS titre,
-                dateJournaux AS date,
-                pdfJournaux AS pdf
+                idJournal AS id,
+                titreJournal AS titre,
+                dateJournal AS date,
+                pdfJournal AS pdf
             FROM
-                Journaux
+                website_journaux
             ORDER BY
-                dateJournaux
+                dateJournal
                 DESC
             " . ($maxi ? 'LIMIT ' . $maxi : '') . "
             "
@@ -862,7 +878,7 @@ function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
     requeteSQL(
         "
         INSERT INTO
-            Journaux
+            website_journaux
         VALUES
             (
                 0,
@@ -890,11 +906,11 @@ function MdlSupprimerJournal($rep, $id) {
         $pdf = requeteSQL(
             "
             SELECT
-                pdfJournaux AS pdf
+                pdfJournal AS pdf
             FROM
-                Journaux
+                website_journaux
             WHERE
-                idJournaux=:idJournaux
+                idJournal=:idJournaux
             ",
             array(
                 [':idJournaux', $id, 'INT']
@@ -911,9 +927,9 @@ function MdlSupprimerJournal($rep, $id) {
     requeteSQL(
         "
         DELETE FROM
-            Journaux
+            website_journaux
         WHERE
-            idJournaux=:idJournaux
+            idJournal=:idJournaux
         ",
         array(
             [':idJournaux', $id, 'INT']
@@ -930,11 +946,11 @@ function MdlReloadSitemapJournaux() {
     $journaux = requeteSQL(
         "
             SELECT
-                pdfJournaux AS pdf
+                pdfJournal AS pdf
             FROM
-                Journaux
+                website_journaux
             ORDER BY
-                dateJournaux
+                dateJournal
                 DESC
             "
     );
@@ -944,7 +960,7 @@ function MdlReloadSitemapJournaux() {
         array_push($arrayJournaux, 'https://bde-tribu-terre.fr/journaux/' . $journal['pdf']);
     }
 
-    MdlGenererSiteMap($arrayJournaux, racine() . 'journaux/sitemap-journaux.xml');
+    genererSiteMap($arrayJournaux, racine() . 'journaux/sitemap-journaux.xml');
 }
 
 ########################################################################################################################
@@ -956,13 +972,13 @@ function MdlLiensPratiquesTous() {
         requeteSQL(
             "
             SELECT
-                idLiensPratiques AS id,
-                titreLiensPratiques AS titre,
-                urlLiensPratiques AS url
+                idLien AS id,
+                titreLien AS titre,
+                urlLien AS url
             FROM
-                LiensPratiques
+                website_liens
             ORDER BY
-                idLiensPratiques
+                idLien
             "
         )
     );
@@ -972,17 +988,17 @@ function MdlAjouterLienPratique($titre, $url) {
     requeteSQL(
         "
         INSERT INTO
-            LiensPratiques
+            website_liens
         VALUES
             (
                 0,
-                :titreLiensPratiques,
-                :urlLiensPratiques
+                :titreLien,
+                :urlLien
             )
         ",
         array(
-            [':titreLiensPratiques', $titre, 'STR'],
-            [':urlLiensPratiques', $url, 'STR']
+            [':titreLien', $titre, 'STR'],
+            [':urlLien', $url, 'STR']
         ),
         0,
         201,
@@ -993,9 +1009,9 @@ function MdlAjouterLienPratique($titre, $url) {
 
 function MdlSupprimerLienPratique($id) {
     requeteSQL(
-        "DELETE FROM LiensPratiques WHERE idLiensPratiques=:idLiensPratiques",
+        "DELETE FROM website_liens WHERE idLien=:idLien",
         array(
-            [':idLiensPratiques', $id, 'INT']
+            [':idLien', $id, 'INT']
         ),
         0,
         201,
@@ -1024,11 +1040,11 @@ function MdlRecupBinomesParrainages($email) {
                     p2.parrain AS p2parrain,
                     p0.groupe AS groupe
                 FROM
-                    Parrainage p0
+                    website_parrainage p0
                         JOIN
-                    Parrainage p1
+                    website_parrainage p1
                         JOIN
-                    Parrainage p2
+                    website_parrainage p2
                         ON
                             p1.email = p0.binome1
                                 AND
@@ -1066,7 +1082,7 @@ function MdlRechercherSalle($nom) {
         $return = curl_exec($curl);
         curl_close($curl);
         $arrayRetour = MET_SQLLignesMultiples(json_decode($return)->retour);
-    } catch (Exception $e) {
+    } catch (Exception) {
         ajouterMessage(
             601,
             'Les informations sur la salle "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.'
