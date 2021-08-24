@@ -1,5 +1,5 @@
 <?php
-define('RACINE', '../');
+const RACINE = '../';
 require_once(RACINE . '-mvc/controleur/controleur.php');
 if (
     $form['_name'] == 'formRechercherMail' &&

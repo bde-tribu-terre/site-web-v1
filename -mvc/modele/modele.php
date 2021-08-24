@@ -169,13 +169,13 @@ function MdlAjouterMembre($prenom, $nom, $login, $mdp) {
         201,
         'L\'inscription a bien été enregistrée.'
     );
-    MdlAjouterLog(601, $prenom . ' ' . $nom . ' s\'est inscrit(e) avec succès sous le login "' . $login . '".', True);
+    MdlLogAdmin('OK', $prenom . ' ' . $nom . ' s\'est inscrit(e) avec succès sous le login "' . $login . '".');
 }
 
 ########################################################################################################################
 # Clés d'inscription                                                                                                   #
 ########################################################################################################################
-function MdlCleExiste($cle) {
+function MdlCleExiste($cle): bool {
     $cle = requeteSQL(
         "
         SELECT
@@ -189,9 +189,7 @@ function MdlCleExiste($cle) {
         array(
             [':cle', $cle, 'STR']
         ),
-        1,
-        NULL,
-        NULL
+        1
     );
     if ($cle) {
         requeteSQL(
@@ -208,6 +206,7 @@ function MdlCleExiste($cle) {
             201,
             'La clé d\'inscription "' . $cle['str'] . '" a été détruite avec succès.'
         );
+        MdlLogAdmin('OK', 'Clé d\'inscription "' . $cle['str'] . '" détruite.');
         return true;
     }
     return false;
@@ -216,23 +215,17 @@ function MdlCleExiste($cle) {
 ########################################################################################################################
 # Log des actions                                                                                                      #
 ########################################################################################################################
-function MdlLogTous() {
+function MdlGetLog() {
     ajouterRetourModele(
         'log',
         requeteSQL(
             "
             SELECT
                 idLog AS idLog,
-                idMembre AS idMembre,
-                prenomMembre AS prenomMembre,
-                nomMembre AS nomMembre,
-                codeLog AS code,
                 dateLog AS date,
-                descLog AS description
+                messageLog AS description
             FROM
                 website_log
-                    NATURAL JOIN
-                website_membres
             ORDER BY
                 dateLog
                 DESC
@@ -241,53 +234,15 @@ function MdlLogTous() {
     );
 }
 
-/**
- * Ajoute au log un code accompagné d'un message.
- * @param string $code
- * Le code du log qui est la caractéristique principale pour identifier l'action.
- * <ul>
- * <li>1 : Évents
- * <ul>
- * <li>101 : Ajout d'un évent</li>
- * <li>102 : Modification d'un évent</li>
- * <li>103 : Suppression d'un évent</li>
- * </ul>
- * </li>
- * <li>2 : Goodies
- * <ul>
- * <li>201 : Ajout d'un goodie</li>
- * <li>202 : Modification d'un goodie</li>
- * <li>203 : Suppression d'un goodie</li>
- * <li>204 : Ajout d'une image de goodie</li>
- * <li>205 : Suppression d'une image de goodie</li>
- * </ul>
- * </li>
- * <li>3 : Journaux
- * <ul>
- * <li>301 : Ajout d'un journal</li>
- * <li>302 : Suppression d'un journal</li>
- * </ul>
- * </li>
- * <li>6 : Membres
- * <ul>
- * <li>601 : Inscription d'un membre</li>
- * </ul>
- * </li>
- * <li>7 : Liens
- * <ul>
- * <li>701 : Ajout d'un lien</li>
- * <li>702 : Suppression d'un lien</li>
- * </ul>
- * </li>
- * </ul>
- * @param string $message
- * Une description de l'action.
- * @param boolean $anonyme
- * Si omit alors l'auteur sera la personne identifiée par la session ouverte. Si mit à True, alors l'auteur sera le
- * système (anonyme).
- * @throws Exception
- */
-function MdlAjouterLog($code, $message, $anonyme = False) {
+function MdlLogAdmin($status, $message) {
+    MdlLog('ADMIN', $status, (isset($_SESSION['membre']) ? html_entity_decode($_SESSION['membre']['prenom'], ENT_QUOTES) . ' ' . html_entity_decode($_SESSION['membre']['nom'], ENT_QUOTES) . ' (' . $_SESSION['membre']['id'] . ')' : 'UNKNOWN') . ': ' . $message);
+}
+
+function MdlLogApi($status, $message) {
+    MdlLog('API', $status, $message);
+}
+
+function MdlLog($context, $status, $message) {
     $timestamp = time();
     $dt = new DateTime('now', new DateTimeZone('Europe/Paris'));
     $dt->setTimestamp($timestamp);
@@ -298,17 +253,13 @@ function MdlAjouterLog($code, $message, $anonyme = False) {
         VALUES
             (
                 0,
-                :idMembre,
-                :codeLog,
                 :dateLog,
-                :descLog
+                :messageLog
             )
         ",
         array(
-            [':idMembre', !$anonyme ? $_SESSION['membre']['id'] : 0, 'INT'],
-            [':codeLog', $code, 'INT'],
             [':dateLog', $dt->format('Y-m-d H-i-s'), 'STR'],
-            [':descLog', $message, 'STR']
+            [':messageLog', '[' . $context . ']' . '[' . $status . ']' . '[' . 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '] ' . $message, 'STR']
         ),
         0
     );
@@ -318,24 +269,15 @@ function MdlAjouterLog($code, $message, $anonyme = False) {
 # Évents                                                                                                               #
 ########################################################################################################################
 function MdlEventsTous($tri, $aVenir, $passes, $maxi) {
-    switch ($tri) {
-        case 'FP':
-            $triSQL = ' ORDER BY dateEvent DESC';
-            break;
-        case 'PF':
-            $triSQL = ' ORDER BY dateEvent';
-            break;
-        default:
-            $triSQL = ''; // Normalement jamais atteint.
-    }
-    switch ($maxi) {
-        case NULL:
-            $maxiSQL = '';
-            break;
-        default:
-            $maxiSQL = ' LIMIT ' . $maxi;
-            break;
-    }
+    $triSQL = match ($tri) {
+        'FP' => ' ORDER BY dateEvent DESC',
+        'PF' => ' ORDER BY dateEvent',
+        default => '',
+    };
+    $maxiSQL = match ($maxi) {
+        NULL => '',
+        default => ' LIMIT ' . $maxi,
+    };
     $timestamp = time();
     $dt = (new DateTime('now', new DateTimeZone('Europe/Paris')));
     $dt->setTimestamp($timestamp);
@@ -420,7 +362,7 @@ function MdlCreerEvent($titre, $date, $heure, $minute, $lieu, $desc) {
         'L\'évent "' . $titre . '" a été ajouté avec succès !'
     );
     MdlReloadSitemapEvents();
-    MdlAjouterLog(101, 'Ajout de l\'évent "' . $titre . '".');
+    MdlLogAdmin('OK', 'Ajout de l\'évent "' . $titre . '".');
 }
 
 function MdlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
@@ -449,7 +391,7 @@ function MdlModifierEvent($id, $titre, $date, $heure, $minute, $lieu, $desc) {
         201,
         'L\'évent "' . $titre . '" a été modifié avec succès !'
     );
-    MdlAjouterLog(102, 'Modification de l\'évent "' . $titre . '".');
+    MdlLogAdmin('OK', 'Modification de l\'évent "' . $titre . '".');
 }
 
 function MdlSupprimerEvent($id) {
@@ -468,7 +410,7 @@ function MdlSupprimerEvent($id) {
         'L\'évent a été supprimé avec succès !'
     );
     MdlReloadSitemapEvents();
-    MdlAjouterLog(103, 'Suppression d\'un évent (ID : ' . $id . ').');
+    MdlLogAdmin('OK', 'Suppression d\'un évent (ID : ' . $id . ').');
 }
 
 function MdlReloadSitemapEvents() {
@@ -494,25 +436,14 @@ function MdlReloadSitemapEvents() {
 # Goodies                                                                                                              #
 ########################################################################################################################
 function MdlGoodiesTous($tri, $disponible, $bientot, $rupture) {
-    switch ($tri) {
-        case 'nom':
-            $triSQL = ' ORDER BY titreGoodie';
-            break;
-        case 'prixAD':
-            $triSQL = ' ORDER BY prixADGoodie';
-            break;
-        case 'prixADD':
-            $triSQL = ' ORDER BY prixADGoodie DESC';
-            break;
-        case 'prixNAD':
-            $triSQL = ' ORDER BY prixNADGoodie';
-            break;
-        case 'prixNADD':
-            $triSQL = ' ORDER BY prixNADGoodie DESC';
-            break;
-        default:
-            $triSQL = '';
-    }
+    $triSQL = match ($tri) {
+        'nom' => ' ORDER BY titreGoodie',
+        'prixAD' => ' ORDER BY prixADGoodie',
+        'prixADD' => ' ORDER BY prixADGoodie DESC',
+        'prixNAD' => ' ORDER BY prixNADGoodie',
+        'prixNADD' => ' ORDER BY prixNADGoodie DESC',
+        default => '',
+    };
     $where = " WHERE 1=2"; // Condition useless pour concaténer après.
     $where .= $disponible ? " OR categorieGoodie=1" : '';
     $where .= $bientot ? " OR categorieGoodie=2" : '';
@@ -608,7 +539,7 @@ function MdlAjouterGoodie($rep, $titre, $categorie, $prixADEuro, $prixADCentimes
         'Le goodie "' . $titre . '" a été ajouté avec succès !'
     );
     MdlReloadSitemapGoodies();
-    MdlAjouterLog(201, 'Ajout du goodie "' . $titre . '".');
+    MdlLogAdmin('OK', 'Ajout du goodie "' . $titre . '".');
 }
 
 function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes, $prixNADEuro, $prixNADCentimes, $desc) {
@@ -638,7 +569,7 @@ function MdlModifierGoodie($id, $titre, $categorie, $prixADEuro, $prixADCentimes
         'Le goodie ' . $titre . ' a été modifié avec succès !'
     );
     MdlReloadSitemapGoodies();
-    MdlAjouterLog(202, 'Modification du goodie "' . $titre . '".');
+    MdlLogAdmin('OK', 'Modification du goodie "' . $titre . '".');
 }
 
 function MdlSupprimerGoodie($rep, $id) {
@@ -699,7 +630,7 @@ function MdlSupprimerGoodie($rep, $id) {
         'Le goodie a été supprimée avec succès !'
     );
     MdlReloadSitemapGoodies();
-    MdlAjouterLog(203, 'Suppression d\'un goodie (ID : ' . $id . ').');
+    MdlLogAdmin('OK', 'Suppression d\'un goodie (ID : ' . $id . ').');
 }
 
 function MdlImagesGoodie($id) {
@@ -747,7 +678,8 @@ function MdlAjouterImageGoodie($rep, $id, $fileImput) {
             $rep . $newName
         );
     } catch (Exception $e) {
-        ajouterMessage(501, $e->getMessage());
+        MdlLogAdmin('ERROR', 'Erreur lors de l\'enregistrement de l\'image : ' . $e->getMessage());
+        ajouterMessage(501, 'Erreur lors de l\'enregistrement de l\'image');
         return;
     }
 
@@ -771,7 +703,7 @@ function MdlAjouterImageGoodie($rep, $id, $fileImput) {
         201,
         'L\'image a été ajoutée avec succès !'
     );
-    MdlAjouterLog(204, 'Ajout d\'une image d\'un goodie (ID : ' . $id . ').');
+    MdlLogAdmin('OK', 'Ajout d\'une image d\'un goodie (ID : ' . $id . ').');
 }
 
 function MdlSupprimerImageGoodie($rep, $id, $logguer) {
@@ -792,7 +724,8 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
         )['lien'];
         unlink($rep . $lienImage);
     } catch (Exception $e) {
-        ajouterMessage(501, $e->getMessage());
+        MdlLogAdmin('ERROR', 'Erreur lors de la suppression de l\'image : ' . $e->getMessage());
+        ajouterMessage(501, 'Erreur lors de la suppression de l\'image');
         return;
     }
 
@@ -812,7 +745,7 @@ function MdlSupprimerImageGoodie($rep, $id, $logguer) {
         $logguer ? 'L\'image a été supprimée avec succès !' : NULL
     );
     if ($logguer) {
-        MdlAjouterLog(205, 'Suppression d\'une image d\'un goodie (ID : ' . $id . ').');
+        MdlLogAdmin('OK', 'Suppression d\'une image d\'un goodie (ID : ' . $id . ').');
     }
 }
 
@@ -870,7 +803,8 @@ function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
             $rep . $newName
         );
     } catch (Exception $e) {
-        ajouterMessage(501, $e->getMessage());
+        MdlLogAdmin('ERROR', 'Erreur lors de l\'enregistrement d\'un journal : ' . $e->getMessage());
+        ajouterMessage(501, 'Erreur lors de l\'enregistrement d\'un journal');
         return;
     }
 
@@ -897,7 +831,7 @@ function MdlAjouterJournal($rep, $titre, $mois, $annee, $fileImput) {
         'Le journal "' . $titre . '" a été ajouté avec succès !'
     );
     MdlReloadSitemapJournaux();
-    MdlAjouterLog(301, 'Ajout du journal "' . $titre . '".');
+    MdlLogAdmin('OK', 'Ajout du journal "' . $titre . '".');
 }
 
 function MdlSupprimerJournal($rep, $id) {
@@ -919,7 +853,8 @@ function MdlSupprimerJournal($rep, $id) {
         )['pdf'];
         unlink($rep . $pdf);
     } catch (Exception $e) {
-        ajouterMessage(501, $e->getMessage());
+        MdlLogAdmin('ERROR', 'Erreur lors de la suppression d\'un journal : ' . $e->getMessage());
+        ajouterMessage(501, 'Erreur lors de la suppression d\'un journal');
         return;
     }
 
@@ -939,7 +874,7 @@ function MdlSupprimerJournal($rep, $id) {
         'Le journal a été supprimé avec succès !'
     );
     MdlReloadSitemapJournaux();
-    MdlAjouterLog(302, 'Suppression d\'un journal (ID : ' . $id . ').');
+    MdlLogAdmin('OK', 'Suppression d\'un journal (ID : ' . $id . ').');
 }
 
 function MdlReloadSitemapJournaux() {
@@ -1004,7 +939,7 @@ function MdlAjouterLienPratique($titre, $url) {
         201,
         'Le lien "' . $titre . '" vers "' . $url . '" a été ajouté avec succès !'
     );
-    MdlAjouterLog(701, 'Ajout du lien "' . $titre . '" vers "' . $url . '".');
+    MdlLogAdmin('OK', 'Ajout du lien "' . $titre . '" vers "' . $url . '".');
 }
 
 function MdlSupprimerLienPratique($id) {
@@ -1022,7 +957,7 @@ function MdlSupprimerLienPratique($id) {
         201,
         'Le lien a été supprimé avec succès !'
     );
-    MdlAjouterLog(702, 'Suppression d\'un lien (ID : ' . $id . ').');
+    MdlLogAdmin('OK', 'Suppression d\'un lien (ID : ' . $id . ').');
 }
 
 ########################################################################################################################
@@ -1068,61 +1003,200 @@ function MdlRecupBinomesParrainages($email) {
 ########################################################################################################################
 # Salles (API)                                                                                                         #
 ########################################################################################################################
-function MdlRechercherSalle($nom) {
-    try {
-        // La connexion va être extérieure. On récupère l'adresse publique de la racine du site (qui peut ne pas être
-        // que le nom de domaine), et on ajoute l'adresse de l'API.
-        $api =
-            'https://' . $_SERVER['HTTP_HOST'] . preg_replace(
-                '/\?.*$/',
-                '',
-                $_SERVER['REQUEST_URI']
-            ) . RACINE . 'api/requete/?r=salles&nse=' . preg_replace(
-                '/ /',
-                '+',
-                $nom
-            );
-        $curl = curl_init($api);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        $return = curl_exec($curl);
-        curl_close($curl);
-        $arrayRetour = MET_SQLLignesMultiples(json_decode($return)->retour);
-    } catch (Exception) {
-        ajouterMessage(
-            601,
-            'Les informations sur la salle "' . $nom . '" n\'ont pas pu être récupérées sur l\'API Tribu-Terre.'
-        );
-        $arrayRetour = NULL;
-    }
+function MdlRechercherSalle($nomSalle): void {
     ajouterRetourModele(
         'salles',
-        $arrayRetour
+        requeteSQL(
+            "
+                SELECT
+                    api_universite_salles.id AS id,
+                    api_universite_salles.nom AS nom,
+                    api_universite_groupes_salles.nom AS nomGroupe,
+                    api_universite_batiments.id AS idBatiment,
+                    api_universite_batiments.libelleLong AS nomBatiment,
+                    api_universite_groupes_batiments.id AS codeComposante,
+                    api_universite_groupes_batiments.titre AS titreComposante
+                FROM
+                    api_universite_salles
+                        JOIN
+                    api_universite_groupes_salles
+                        ON
+                            api_universite_groupes_salles.id = api_universite_salles.idGroupe
+                        JOIN
+                    api_universite_batiments
+                        ON
+                            api_universite_batiments.id = api_universite_groupes_salles.idBatiment
+                        JOIN
+                    api_universite_groupes_batiments
+                        ON
+                            api_universite_groupes_batiments.id = api_universite_batiments.idGroupe
+                WHERE
+                    LOWER(api_universite_salles.nom)
+                        LIKE
+                    :nomSalle
+                ",
+            array(
+                [':nomSalle', '%' . $nomSalle . '%', 'STR']
+            )
+        )
     );
 }
 
-########################################################################################################################
-# Génération de sitemap                                                                                                #
-########################################################################################################################
-function MdlGenererSiteMap($arrayLiens, $destination) {
-    $sitemap = simplexml_load_string(<<<EOT
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-</urlset>
-EOT
+function MdlApiGetBatiments(): void {
+    $prepare = getConnect()->prepare(
+        "
+        SELECT
+            api_universite_batiments.id AS id,
+            legende,
+            titre,
+            couleurR,
+            couleurG,
+            couleurB,
+            libelleCourt,
+            libelleLong,
+            idGroupe
+        FROM
+            api_universite_groupes_batiments
+                JOIN
+            api_universite_batiments
+                ON
+                    api_universite_groupes_batiments.id = api_universite_batiments.idGroupe;
+        "
     );
-    if (count($arrayLiens) == 0) {
-        $newURI = $sitemap->addChild('url');
-        $newURI->addChild('loc', 'https://bde-tribu-terre.fr');
-        $newURI->addChild('lastmod', date('Y-m-d'));
-    } else {
-        foreach ($arrayLiens as $lien) {
-            $newURI = $sitemap->addChild('url');
-            $newURI->addChild('loc', $lien);
-            $newURI->addChild('lastmod', date('Y-m-d\TH:i:sP'));
+    $prepare->execute();
+    $batiments = $prepare->fetchAll();
+    $prepare->closeCursor();
+
+    $batimentsJson = [];
+    foreach ($batiments as $batiment) {
+        if (!isset($batimentsJson[$batiment['idGroupe']])) {
+            $batimentsJson[$batiment['idGroupe']] = [
+                'legende' => html_entity_decode($batiment['legende'], ENT_QUOTES),
+                'titre' => html_entity_decode($batiment['titre'], ENT_QUOTES),
+                'couleur' => '#' . str_pad(
+                    dechex(
+                        $batiment['couleurR'] * 256 * 256 +
+                        $batiment['couleurG'] * 256 +
+                        $batiment['couleurB']
+                    ),
+                    6,
+                    '0',
+                    STR_PAD_LEFT
+                ),
+                'batiments' => []
+            ];
         }
+        array_push(
+            $batimentsJson[$batiment['idGroupe']]['batiments'],
+            [
+                'id' => $batiment['id'],
+                'libelle_court' => html_entity_decode($batiment['libelleCourt'], ENT_QUOTES),
+                'libelle_long' => html_entity_decode($batiment['libelleLong'], ENT_QUOTES)
+            ]
+        );
     }
-    $sitemap->asXML($destination);
+
+    ajouterRetourModele(
+        'batiments',
+        $batimentsJson
+    );
+}
+
+function MdlApiGetSalles($idBatiment): void {
+    $prepare = getConnect()->prepare(
+        "
+        SELECT
+            api_universite_groupes_salles.nom AS nomGroupe,
+            idGroupe, api_universite_salles.nom AS nom
+        FROM
+            api_universite_groupes_salles
+                JOIN
+            api_universite_salles
+                ON
+                    api_universite_groupes_salles.id = api_universite_salles.idGroupe
+        WHERE idBatiment=:idBatiment;
+        "
+    );
+    $prepare->bindValue(':idBatiment', $idBatiment, PDO::PARAM_INT);
+    $prepare->execute();
+    $salles = $prepare->fetchAll();
+    $prepare->closeCursor();
+
+    $groupes = [];
+    foreach ($salles as $salle) {
+        if (!isset($groupes[$salle['idGroupe']])) {
+            $groupes[$salle['idGroupe']] = [
+                'nom' => html_entity_decode($salle['nomGroupe'], ENT_QUOTES),
+                'salles' => []
+            ];
+        }
+        array_push(
+            $groupes[$salle['idGroupe']]['salles'], html_entity_decode($salle['nom'], ENT_QUOTES));
+    }
+
+    $groupesJson = [];
+
+    foreach ($groupes as $groupe) {
+        array_push($groupesJson, $groupe);
+    }
+
+    ajouterRetourModele(
+        'salles',
+        $groupesJson
+    );
+}
+
+function MdlApiGetGeoJson($idBatiment): void {
+    $prepare = getConnect()->prepare(
+        "
+        SELECT
+            carved,
+            idBatiment,
+            idPolygon,
+            c1,
+            c2
+        FROM
+            api_universite_polygons
+                JOIN
+            api_universite_coordonnees
+                ON
+                    api_universite_polygons.id = api_universite_coordonnees.idPolygon
+        WHERE idBatiment=:idBatiment;
+        "
+    );
+    $prepare->bindValue(':idBatiment', $idBatiment, PDO::PARAM_INT);
+    $prepare->execute();
+    $coordinates = $prepare->fetchAll();
+    $prepare->closeCursor();
+
+    $polygons = [];
+    foreach ($coordinates as $coordinate) {
+        if (!isset($polygons[$coordinate['idPolygon']])) {
+            $polygons[$coordinate['idPolygon']] = [
+                'carved' => $coordinate['carved'],
+                'coords' => []
+            ];
+        }
+        array_push(
+            $polygons[$coordinate['idPolygon']]['coords'],
+            [
+                floatval($coordinate['c1']),
+                floatval($coordinate['c2'])
+            ]
+        );
+    }
+
+    $geoJson = [
+        'type' => 'MultiPolygon',
+        'coordinates' => [[],[]]
+    ];
+
+    foreach ($polygons as $polygon) {
+        array_push($geoJson['coordinates'][$polygon['carved']], $polygon['coords']);
+    }
+
+    ajouterRetourModele(
+        'geoJson',
+        $geoJson
+    );
 }

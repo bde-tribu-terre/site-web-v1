@@ -1,4 +1,4 @@
 <?php
-const RACINE = '../../../';
+const RACINE = '../../';
 require_once(RACINE . '-mvc/controleur/controleur.php');
-CtlFneb();
+CtlApiUniversite();

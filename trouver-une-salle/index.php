@@ -1,5 +1,5 @@
 <?php
-define('RACINE', '../');
+const RACINE = '../';
 require_once(RACINE . '-mvc/controleur/controleur.php');
 if (isset($_GET['nom'])) {
     if (strtolower($_GET['nom']) == 'terre') {

@@ -90,6 +90,24 @@ if (!file_exists(racine() . 'journaux/sitemap-journaux.xml')) {
 }
 
 ########################################################################################################################
+# Fonction de renvoi REST                                                                                              #
+########################################################################################################################
+function restReturn($httpCode, $data) {
+    header("Content-Type: application/json");
+    http_response_code($httpCode);
+    $meta['source'] = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $meta['start'] = $_SERVER['REQUEST_TIME_FLOAT'];
+    $meta['end'] = microtime(true);
+    $meta['credits'] = 'Anaël BARODINE, étudiant en informatique à l\'Université d\'Orléans, au nom de l\'association étudiante Tribu-Terre.';
+    echo json_encode(
+        array(
+            'metadata' => $meta,
+            'data' => $data
+        )
+    );
+}
+
+########################################################################################################################
 # Admin                                                                                                                #
 ########################################################################################################################
 # Connexion
@@ -519,7 +537,7 @@ function CtlSupprimerLienPratiqueExecuter($id) {
 
 # Log
 function CtlLog() {
-    MdlLogTous();
+    MdlGetLog();
     afficherLog();
 }
 
@@ -556,6 +574,81 @@ function CtlInscriptionExecuter($cleInscription, $prenom, $nom, $login, $mdp) {
     } catch (Exception $e) {
         ajouterMessage($e->getCode(), $e->getMessage());
         CtlInscription();
+    }
+}
+
+########################################################################################################################
+# API - Université                                                                                                     #
+########################################################################################################################
+function CtlApiUniversite() {
+    try {
+        MdlApiGetBatiments();
+        restReturn(
+            200,
+            $GLOBALS['retoursModele']['batiments']
+        );
+        return;
+    } catch (Exception $e) {
+        MdlLogApi('ERROR', 'Erreur interne survenue lors de la requête des bâtiments : ' . '(' . $e->getCode() . ')' . $e->getMessage());
+        restReturn(
+            500,
+            'Erreur interne survenue lors de la requête des bâtiments.'
+        );
+        return;
+    }
+}
+
+########################################################################################################################
+# API - Université - Salles                                                                                            #
+########################################################################################################################
+function CtlApiUniversiteSalles($idBatiment) {
+    try {
+        if (!empty($idBatiment) && ctype_digit($idBatiment)) {
+            MdlApiGetSalles($idBatiment);
+            restReturn(
+                200,
+                $GLOBALS['retoursModele']['salles']
+            );
+        } else {
+            restReturn(
+                400,
+                'Veuillez saisir un ID de bâtiment (nombre entier) comme paramètre HTTP \'id\'.'
+            );
+        }
+    } catch (Exception $e) {
+        MdlLogApi('ERROR', 'Erreur interne survenue lors de la requête des salles : ' . '(' . $e->getCode() . ')' . $e->getMessage());
+        restReturn(
+            500,
+            'Erreur interne survenue lors de la requête des salles.'
+        );
+        return;
+    }
+}
+
+########################################################################################################################
+# API - Université - GeoJSON                                                                                           #
+########################################################################################################################
+function CtlApiUniversiteGeoJson($idBatiment) {
+    try {
+        if (!empty($idBatiment) && ctype_digit($idBatiment)) {
+            MdlApiGetGeoJson($idBatiment);
+            restReturn(
+                200,
+                $GLOBALS['retoursModele']['geoJson']
+            );
+        } else {
+            restReturn(
+                400,
+                'Veuillez saisir un ID de bâtiment (nombre entier) comme paramètre HTTP \'id\'.'
+            );
+        }
+    } catch (Exception $e) {
+        MdlLogApi('ERROR', 'Erreur interne survenue lors de la requête du GeoJSON : ' . '(' . $e->getCode() . ')' . $e->getMessage());
+        restReturn(
+            500,
+            'Erreur interne survenue lors de la requête du GeoJSON.'
+        );
+        return;
     }
 }
 

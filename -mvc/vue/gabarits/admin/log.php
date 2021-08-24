@@ -5,8 +5,6 @@
                 <thead>
                 <tr>
                     <th scope="col">Date et heure</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Membre</th>
                     <th scope="col">Message</th>
                 </tr>
                 </thead>

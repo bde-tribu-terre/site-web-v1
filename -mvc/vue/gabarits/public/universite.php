@@ -32,7 +32,7 @@
                         scrolling="no"
                         frameborder="0"
                         title="Plan Interactif du Campus"
-                        src="/api/plan-universite/"
+                        src="/plan-universite/"
                 ></iframe>
             </div>
         </div>

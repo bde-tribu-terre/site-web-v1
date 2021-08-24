@@ -371,8 +371,6 @@ function afficherLog() {
             '
             <tr>
             <th scope="row">' . genererDate($date) . ' '. $heure . '</th>
-            <th>' . sprintf('%03d', $ligneLog['code']) . '</th>
-            <th>' . genererNom($ligneLog['prenomMembre'], $ligneLog['nomMembre']) . '</th>
             <th>' . $ligneLog['description'] . '</th>
             </tr>
             ';
@@ -996,13 +994,13 @@ function afficherTrouverUneSalleRecherche() {
             $listeSalles .=
                 '
                 <div class="well">
-                    <h4>' . $salle['nom_salle'] . '</h4>
-                    <p>Composante : ' . $salle['titre_composante'] . '</p>
-                    <p>Bâtiment : ' . $salle['nom_batiment'] . '</p>
-                    <p>Emplacement : ' . $salle['nom_groupe'] . '</p>
+                    <h4>' . $salle['nom'] . '</h4>
+                    <p>Composante : ' . $salle['titreComposante'] . '</p>
+                    <p>Bâtiment : ' . $salle['nomBatiment'] . '</p>
+                    <p>Emplacement : ' . $salle['nomGroupe'] . '</p>
                     <p>
                         <a
-                            href="/trouver-une-salle/?nom=' . preg_replace('/ /', '+', $salle['nom_salle']) . '"
+                            href="/trouver-une-salle/?nom=' . preg_replace('/ /', '+', $salle['nom']) . '"
                         >
                             Voir le bâtiment sur le plan
                         </a>
@@ -1014,16 +1012,16 @@ function afficherTrouverUneSalleRecherche() {
         $listeSalles =
             '
             <div class="well">
-                <h4>' . $GLOBALS['retoursModele']['salles'][0]['nom_salle'] . '</h4>
-                <p>Composante : ' . $GLOBALS['retoursModele']['salles'][0]['titre_composante'] . '</p>
-                <p>Bâtiment : ' . $GLOBALS['retoursModele']['salles'][0]['nom_batiment'] . '</p>
-                <p>Emplacement : ' . $GLOBALS['retoursModele']['salles'][0]['nom_groupe'] . '</p>
+                <h4>' . $GLOBALS['retoursModele']['salles'][0]['nom'] . '</h4>
+                <p>Composante : ' . $GLOBALS['retoursModele']['salles'][0]['titreComposante'] . '</p>
+                <p>Bâtiment : ' . $GLOBALS['retoursModele']['salles'][0]['nomBatiment'] . '</p>
+                <p>Emplacement : ' . $GLOBALS['retoursModele']['salles'][0]['nomGroupe'] . '</p>
             </div>
             ';
     }
     define('SALLES', $listeSalles);
-    define('CODE_COMPOSANTE', $GLOBALS['retoursModele']['salles'][0]['code_composante']);
-    define('ID_BATIMENT', $GLOBALS['retoursModele']['salles'][0]['id_batiment']);
+    define('CODE_COMPOSANTE', $GLOBALS['retoursModele']['salles'][0]['codeComposante']);
+    define('ID_BATIMENT', $GLOBALS['retoursModele']['salles'][0]['idBatiment']);
 
     afficherPage('Trouver une salle', 'trouverUneSalleRecherche.php', 'public');
 }

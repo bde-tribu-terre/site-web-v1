@@ -1,4 +1,4 @@
 <?php
 const RACINE = '../../../';
 require_once(RACINE . '-mvc/controleur/controleur.php');
-CtlFneb();
+CtlApiUniversiteSalles($_GET['id'] ?? '');

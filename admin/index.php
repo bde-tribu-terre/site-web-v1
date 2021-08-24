@@ -1,6 +1,6 @@
 <?php
 if (strlen(session_id()) < 1) session_start();
-define('RACINE', '../');
+const RACINE = '../';
 require_once(RACINE . '-mvc/controleur/controleur.php');
 if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
     if ( // Gabarit Créer Évent
@@ -130,122 +130,6 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         CtlSupprimerJournalExecuter(
             $form['id']
         );
-    } elseif ( // Gabarit Ajouter Article
-        $form['_name'] == 'formAjouterArticle' &&
-        $form['_submit'] == 'ajouter'
-    ) {
-        CtlAjouterArticleExecuter(
-            $form['titre'],
-            $form['categorie'],
-            $form['visibilite'],
-            $form['texte']
-        );
-    } elseif ( // Gabarit Ajouter Image Article
-        $form['_name'] == 'formAjouterImageArticle' &&
-        $form['_submit'] == 'ajouter'
-    ) {
-        CtlAjouterImageArticleExecuter(
-            $form['id'],
-            'formAjouterImageArticle_image'
-        );
-    } elseif ( // Gabarit Choix Article
-        $form['_name'] == 'formChoisirArticle' &&
-        $form['_submit'] == 'choisir'
-    ) {
-        CtlChoixArticleExecuter(
-            $form['id']
-        );
-    } elseif ( // Gabarit Modifier Article
-        $form['_name'] == 'formModifierArticle' &&
-        $form['_submit'] == 'modifier'
-    ) {
-        CtlModifierArticleExecuter(
-            $form['id'],
-            $form['titre'],
-            $form['categorie'],
-            $form['visibilite'],
-            $form['texte']
-        );
-    } elseif (
-        $form['_name'] == 'formModifierArticle' &&
-        $form['_submit'] == 'supprimerImages'
-    ) {
-        CtlSupprimerImageArticle(
-            $form['id']
-        );
-    } elseif ( // Gabarit Supprimer Images Article
-        $form['_name'] == 'formSupprimerImageArticle' &&
-        $form['_submit'] == 'supprimer'
-    ) {
-        $arrayIdImages = array();
-        foreach ($form as $name => $value) {
-            if (substr($name, 0, 5) == 'image' && $value = 'on') {
-                array_push($arrayIdImages, substr($name, 5));
-            }
-        }
-        CtlSupprimerImageArticleExecuter(
-            $form['id'],
-            $arrayIdImages
-        );
-    } elseif ( // Gabarit Supprimer Article
-        $form['_name'] == 'formSupprimerArticle' &&
-        $form['_submit'] == 'supprimer'
-    ) {
-        CtlSupprimerArticleExecuter(
-            $form['id']
-        );
-    } elseif ( // Gabarit Ajouter Article Video
-        $form['_name'] == 'formAjouterArticleVideo' &&
-        $form['_submit'] == 'ajouter'
-    ) {
-        CtlAjouterArticleVideoExecuter(
-            $form['titre'],
-            $form['categorie'],
-            $form['visibilite'],
-            $form['lien'],
-            $form['texte']
-        );
-    } elseif ( // Gabarit Choix Article Video
-        $form['_name'] == 'formChoisirArticleVideo' &&
-        $form['_submit'] == 'choisir'
-    ) {
-        CtlChoixArticleVideoExecuter(
-            $form['id']
-        );
-    } elseif ( // Gabarit Modifier Article Video
-        $form['_name'] == 'formModifierArticleVideo' &&
-        $form['_submit'] == 'modifier'
-    ) {
-        CtlModifierArticleVideoExecuter(
-            $form['id'],
-            $form['titre'],
-            $form['categorie'],
-            $form['visibilite'],
-            $form['lien'],
-            $form['texte']
-        );
-    } elseif ( // Gabarit Supprimer Article Video
-        $form['_name'] == 'formSupprimerArticleVideo' &&
-        $form['_submit'] == 'supprimer'
-    ) {
-        CtlSupprimerArticleVideoExecuter(
-            $form['id']
-        );
-    } elseif ( // Gabarit Ajouter Catégorie Article
-        $form['_name'] == 'formAjouterCategorieArticle' &&
-        $form['_submit'] == 'ajouter'
-    ) {
-        CtlAjouterCategorieArticleExecuter(
-            $form['titre']
-        );
-    } elseif ( // Gabarit Renommer Catégorie Article
-        $form['_name'] == 'formRenommerCategorieArticle' &&
-        $form['_submit'] == 'renommer'
-    ) {
-        CtlRenommerCategorieArticleExecuter(
-            $form['id'],
-            $form['titre']
-        );
     }  elseif ( // Gabarit Ajouter Lien Pratique
         $form['_name'] == 'formAjouterLienPratique' &&
         $form['_submit'] == 'ajouter'
@@ -306,51 +190,6 @@ if (isset($_SESSION['membre'])) { // Un membre est actuellement connecté.
         $form['_submit'] == 'supprimerJournalMenu'
     ) {
         CtlSupprimerJournal();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'ajouterArticleMenu'
-    ) {
-        CtlAjouterArticle();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'ajouterImageArticleMenu'
-    ) {
-        CtlAjouterImageArticle();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'modifierArticleMenu'
-    ) {
-        CtlChoixArticle();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'supprimerArticleMenu'
-    ) {
-        CtlSupprimerArticle();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'ajouterArticleVideoMenu'
-    ) {
-        CtlAjouterArticleVideo();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'modifierArticleVideoMenu'
-    ) {
-        CtlChoixArticleVideo();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'supprimerArticleVideoMenu'
-    ) {
-        CtlSupprimerArticleVideo();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'ajouterCategorieArticleMenu'
-    ) {
-        CtlAjouterCategorieArticle();
-    } elseif (
-        $form['_name'] == 'formArticles' &&
-        $form['_submit'] == 'renommerCategorieArticleMenu'
-    ) {
-        CtlRenommerCategorieArticle();
     } elseif (
         $form['_name'] == 'formLiensPratiques' &&
         $form['_submit'] == 'ajouterLienPratiqueMenu'
